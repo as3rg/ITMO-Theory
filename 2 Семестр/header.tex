@@ -1,0 +1,124 @@
+\usepackage{bbold}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\setlength{\columnseprule}{1pt}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathdots}
+
+
+\def\columnseprulecolor{\color{black}}
+
+\everymath{\displaystyle}
+
+\graphicspath{ {./resources/} }
+
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{extendedchars=\true}
+\lstset{style=mystyle}
+
+\newcommand\0{\mathbb{0}}
+\newcommand{\eps}{\varepsilon}
+\newcommand\overdot{\overset{\bullet}}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\Span}{span}
+\newcommand\1{\mathbb{1}}
+\newcommand\textul{\underline}
+\newcommand\vect{\overrightarrow}
+\newcommand{\nm}{\operatorname}
+\newcommand{\suml}{\sum\limits}
+\newcommand{\liml}{\lim\limits}
+\newcommand{\intl}{\int\limits}
+\newcommand{\bigcapl}{\bigcap\limits}
+\newcommand{\bigcupl}{\bigcup\limits}
+\newcommand{\minl}{\min\limits}
+\newcommand{\maxl}{\max\limits}
+\newcommand{\oplusl}{\bigoplus\limits}
+\newcommand{\prodl}{\prod\limits}
+\newcommand{\veel}{\bigvee\limits}
+\DeclareMathOperator{\df}{d}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\bb}{\mathbb}
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+\newcommand{\an}[2]{\lan #1, #2 \ran}
+\newcommand{\fall}{\forall\,}
+\newcommand{\ex}{\exists\,}
+\newcommand{\lto}{\leftarrow}
+\newcommand{\xlto}{\xleftarrow}
+\newcommand{\rto}{\rightarrow}
+\newcommand{\xrto}{\xrightarrow}
+\newcommand{\uto}{\uparrow}
+\newcommand{\dto}{\downarrow}
+\newcommand{\lrto}{\leftrightarrow}
+\newcommand{\Lto}{\Leftarrow}
+\newcommand{\Rto}{\Rightarrow}
+\newcommand{\Uto}{\Uparrow}
+\newcommand{\Dto}{\Downarrow}
+\newcommand{\LRto}{\Leftrightarrow}
+\newcommand{\Rset}{\bb{R}}
+\newcommand{\Rex}{\overline{\bb{R}}}
+\newcommand{\Cset}{\bb{C}}
+\newcommand{\Nset}{\bb{N}}
+\newcommand{\Qset}{\bb{Q}}
+\newcommand{\Zset}{\bb{Z}}
+\newcommand{\Bset}{\bb{B}}
+\renewcommand{\ker}{\nm{Ker}}
+\renewcommand{\span}{\nm{span}}
+\newcommand{\Def}{\nm{def}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mcA}{\mc{A}}
+\newcommand{\mcB}{\mc{B}}
+\newcommand{\mcC}{\mc{C}}
+\newcommand{\mcD}{\mc{D}}
+\newcommand{\us}{\underset}
+\newcommand{\ol}{\overline}
+\newcommand{\ot}{\tilde}
+\newcommand{\vl}{\Biggr|}
+\newcommand{\ub}[2]{\underbrace{#2}_{#1}}
+
+\def\letus{%
+    \mathord{\setbox0=\hbox{$\exists$}%
+             \hbox{\kern 0.125\wd0%
+                   \vbox to \ht0{%
+                      \hrule width 0.75\wd0%
+                      \vfill%
+                      \hrule width 0.75\wd0}%
+                   \vrule height \ht0%
+                   \kern 0.125\wd0}%
+           }%
+}

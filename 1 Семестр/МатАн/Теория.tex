@@ -1,0 +1,2068 @@
+\documentclass[12pt]{article}
+\input{header.tex}
+
+\title{Математический анализ. Теория}
+\author{Александр Сергеев}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Введение}
+\subsection{Множества}
+\textit{Множество} - совокупность уникальных элементов. \\\textit{(Не является определением)}\\\\
+Способы задания множества:
+\begin{enumerate}
+    \item $A = \{1,2, ...\}$ - \textit{перечисление}
+    \item $A = \{ x \in B: \phi (x) \}$ - \textit{через другое множество}
+\end{enumerate}
+Отношения множеств:
+\begin{enumerate}
+    \item $A \subset B \Leftrightarrow \forall\,x \in A \quad x \in B$
+    \item $A = B \Leftrightarrow A \subset B \land B \subset A$
+\end{enumerate}
+Операции над множествами:
+\begin{enumerate}
+    \item $X \times Y = \{ (x,y): x \in X, y \in Y\}$ - Декартово произведение 
+    \item $\bigcupl_{\alpha \in A} X_\alpha = \{ x: \exists\ \alpha\quad x \in X_\alpha\}$ - Объединение
+    \item $\bigcapl_{\alpha \in A} X_\alpha = \{ x: \forall\ \alpha\quad x \in X_\alpha\}$ - Пересечение
+    \item $A^c = \{ x \in U: x \notin A \}$ - Дополнение
+    \item $A \setminus B = A \cap B^c$ - Разность
+    \item $A \triangle B = (A \cup B) \setminus (A \cap B)$ - Исключающее объединение(симметричная разность)
+\end{enumerate}
+Свойства объединения и пересечения:
+\begin{enumerate}
+    \item Коммутативность: $X \cap Y = Y \cap X;\ X \cup Y = Y \cup X$
+    \item Нейтральный элемент: $X \cap U = X;\ X \cup \varnothing = X$
+    \item Ассоциативность: $X\cap(Y \cap Z) = (X \cap Y)\cap Z;\ X \cup (Y \cup Z) = (X \cup Y) \cup Z$
+    \item Дистрибутивность(законы де Моргана):\\ $X\cap(Y\cup Z) = (X \cap Y) \cup (X \cap Z);\ X\cup(Y\cap Z) = (X \cup Y) \cap (X \cup Z)$
+\end{enumerate}
+Законы де Моргана для разности:
+\begin{enumerate}
+    \item $X\setminus(Y \cup Z) = (X \setminus Y) \cap (X \setminus Z)$
+    \item $X\setminus(Y \cap Z) = (X \setminus Y) \cup (X \setminus Z)$
+\end{enumerate}
+\subsection{Логические операции}
+Правила отрицания:
+\begin{enumerate}
+    \item $\overline{\exists\,x: \phi(x)} \Leftrightarrow \forall\,x: \overline{\phi(x)}$
+    \item $\overline{\forall\,x: \phi(x)} \Leftrightarrow \exists\,x: \overline{\phi(x)}$
+\end{enumerate}
+Операции над логическими выражениями:
+\begin{enumerate}
+    \item Имприкация\\$ P \Rightarrow Q \quad \Leftrightarrow \quad Q \lor \overline{P}$
+    \item Эквивалентность\\$P \Leftrightarrow Q \quad \Leftrightarrow \quad Q \land P \lor \overline{Q} \land \overline{P}$
+\end{enumerate}
+\subsection{Семейства}
+\textit{Семейство} - совокупность неупорядоченных элементов. \\\textit{(Не является определением)}\\\\
+\textbf{Определение}\\
+\textit{Семейство элементов X} - отображением множества индексов A в множество X.
+Обозначения: 
+\begin{enumerate}
+    \item $(x_{\alpha})\ _{\alpha \in A},\ x_{\alpha} \in X$
+    \item $A \rightarrow X$
+    \item $\alpha \mapsto x_{\alpha}$
+\end{enumerate}
+Частные случаи семейств:
+\begin{enumerate}
+    \item Упорядоченный набор из n чисел\\$ \{1...n\} \mapsto \mathbb{R}$
+    \item Упорядоченная пара\\$\{1,2\} \mapsto \mathbb{R}$
+    \item Последовательность
+\end{enumerate}
+\subsection{Счетные и несчетные множества}
+\textbf{Определение}\\
+Назовем два множества эквивалентными, если существует биекция между ними\\
+Классы эквивалентности по этому отношению называются \textit{мощностью множества}\\
+Если множество конечно, то его мощность - число его элементов\\
+\textbf{Определение}\\
+Множество \textit{счетно}, если существует биекция между этим множеством и $\bb{N}$\\
+\textbf{Теорема}\\
+Если множество бесконечно, то оно содержит счетное подмножество\\
+\textbf{Доказательство}\\
+Будем по одному выкидывать элементы из множества, нумеруя их\\
+Т.к. множество бесконечно, то для каждого номера такой элемент найдется\\
+\textbf{Теорема}\\
+Бесконечное подмножество в счетном множестве тоже счетно\\
+\textbf{Доказательство}\\
+Пусть $A$ - счетное множество\\
+$B$ - бесконечное подмножество $A$\\
+Пусть у каждого элемента $A$ был номер\\
+Перенумеруем элементы $B$ в порядке возрастания номеров\\
+\textbf{Определение}\\
+Множество \textit{не более чем счетное} - множество, являющееся конечным или счетным\\
+\textbf{Теорема}\\
+Не более чем счетное объединение не более чем счетных множеств не более чем счетно\\
+\textbf{Следствие}\\
+$\bb{N} \times \bb{N}$ счетно\\
+\textbf{Теорема}\\
+$\bb{Q}$ счетно\\
+\textbf{Теорема}\\
+$[0, 1]$ несчетно\\
+\textbf{Определение}\\
+Если множество равномощно $[0, 1]$, то его мощность - \textit{континуум}\\
+\textbf{Теорема}\\
+Пусть $A$ - имеет мощность континуума, $B$ не более чем счетно\\
+Тогда $A \cup B$ имеет мощность континуума\\
+\textbf{Теорема}\\
+Множество всех бесконечных бинарных последовательностей имеет мощность континуума\\
+\textbf{Доказательство}\\
+Сопоставим каждой последовательности $(\epsilon_1, \epsilon_2, \ldots)$ двоичную дробь $0,\epsilon_1\epsilon_2\ldots$\\
+Заметим, что такое сопоставление не будет биективным из-за двойственности представления двоичных дробей\\
+Пусть $A$ - множество конечных двоичных дробей (целая часть 0)\\
+Множество $A$ счетно (можно сопоставить каждой дроби двоичное число из $\bb{N}\cup\{0\}$, полученное отражением числа относительно запятой)\\
+Теперь мы можем построить биекцию между последовательностями и $[0, 1] \cup A$, считая, что элементы $A$ - это "другие" дроби, не содержащиеся в $[0,1]$\\
+Тогда из предыдущей теоремы множество последовательностей равномощно $[0,1]$\\
+\textbf{Континуум-гипотеза}\\
+Пусть $A\subset [0,1]$ и не континуально\\
+Утверждение "Тогда $A$ счетно" невозможно ни доказать, ни опровергунть\\
+\textbf{Утверждение}\\
+$\bb{R}^m, \bb{R}^\infty$ - континуум\\
+$\{f: f:[a,b] \rightarrow \bb{R}\}$ - больше, чем континуум\\
+Если $X$ - множество, то $2^X$ - множество всех подмножество - имеет б\textbf{о}льшую мощность\\
+\section{Последовательности в метрическом пространстве}
+\subsection{Предел вещественной последовательности}
+\textbf{Определение}\\
+Пусть $(x_{n})$ - вещественная последовательность\\
+$(x_{n}) \rightarrow \alpha \quad \Leftrightarrow \quad \forall\,\varepsilon > 0\ \exists\,N \in \mathbb{R}\ \forall\,n > N\ |x_{n} - \alpha| < \varepsilon$\\\\
+Замечания:
+\begin{enumerate}
+    \item $N = N(\varepsilon)$
+    \item Необязательно брать самый оптимальный N
+    \item $N(\varepsilon_0)$ подходит для $\varepsilon \geq \varepsilon_0$
+    \item "$< \varepsilon$" можно заменить на "$< y\varepsilon$" или "$< \varepsilon^{y}$" ($y \in (0; +\infty$)
+\end{enumerate}
+\textbf{Определение}\\
+$\varepsilon$-окружность $\alpha \quad U_\varepsilon(\alpha) = [\alpha-\varepsilon; \alpha+\varepsilon]$\\\\
+\textbf{Определение}\\
+$(x_{n}) \rightarrow \alpha \quad \Leftrightarrow \quad \forall\,\varepsilon > 0\ \exists\,N \in \mathbb{R}\ \forall\,n > N\ x_{n} \in U_\varepsilon(\alpha)$\\\\
+\textbf{Определение}\\
+\textit{Метрика} на $X$ - это отображение $\rho: X\times X \rightarrow \mathbb{R}$, удовлетворяющее свойствам(аксиомам метрики):
+\begin{enumerate}
+    \item $\forall\,x,y\in X\ \rho(x,y) \geq 0$, причем $\rho(x,y) = 0 \Leftrightarrow x=y$
+    \item $\rho(x,y) = \rho(y,x)$
+    \item $\rho(x,z) \leq \rho(x,y) + \rho(y,z)$ - неравенство треугольника
+\end{enumerate}
+\textbf{Определение}\\
+Пара $(X, \rho)$ - \textit{метрическое пространство}\\\\
+Примеры:
+\begin{enumerate}
+    \item \textit{Симплициальная метрика} - $\rho(x,y) = \begin{bmatrix}
+         & 1,\ x\neq y \\
+         & 0,\ x = y
+    \end{bmatrix}.$
+    \item \textit{Метрика Хемминга}\\
+    $X = \text{множество байтов} = \{(\varepsilon_1, ..., \varepsilon_8):\forall\,i\ \varepsilon_i\in \{0,1\}\}$\\
+    $\rho(x,y) = \text{число несовпадающих разрядов}$
+    \item \textit{Метрика городских кварталов}\\
+    $(\mathbb{R}^m, \rho): \rho(x,y) = |x_1-y_1|+|x_2-y_2|+...+|x_m-y_m|$
+    \item \textit{Евклидова метрика}\\
+    $(\mathbb{R}^m, \rho): \rho(x,y) = \sqrt{|x_1-y_1|^2+|x_2-y_2|^2+...+|x_m-y_m|^2}$
+    \item $(\mathbb{R}^m, \rho): \rho(x,y) = \max{ |x_1-y_1|,|x_2-y_2|,...,|x_m-y_m|}$
+\end{enumerate}
+\textbf{Определение}\\
+$(X,\rho)$ - метрическое пространство\\
+$A \subset X$\\
+$\rho_A: A \times A \rightarrow \mathbb{R} : \forall\,a,b\in A\  \rho_A(a,b)=\rho(a,b)$\\
+$(A,\rho_A)$ - \textit{Подпространство метрического пространства}\\\\
+\textbf{Определение}\\
+$(X,\rho)$ - метрическое пространство\\
+$a \in X, r > 0$\\
+\textit{Открытый шар} $B(a,r) = \{x \in X: \rho(a,x) < r\}$\\
+\textit{Закрытый шар} $\overline{B}(a,r) = \{x \in X: \rho(a,x) \leq r\}$\\
+\textit{Сфера} $S(a,r) = \{x \in X: \rho(a,x) = r\}$\\\\
+\textbf{Определение}\\
+\textit{$\varepsilon$-окрестность} точки $a =B(a,\varepsilon)$\\
+\textit{Проколотая $\varepsilon$-окрестность} точки $a = \overdot{B}(a,\varepsilon) = B(a,\varepsilon)\setminus \{a\}$\\\\
+\textbf{Определение}\\
+$A \subset X$ - \textit{Ограниченное} $\\\Leftrightarrow A$ содержится в каком-нибудь шаре(в том числе в шаре с фиксированным центром) $\\\Leftrightarrow \exists\,a\in X, r>0: A \subset B(a,r) \\\Leftrightarrow \exists\,r > 0: A\subset B(b,r)$ для фиксированного $b$\\\\
+\textbf{Определение}\\
+$(x_n)$ - последовательность в $(X,\rho)$\\
+$x_n\rightarrow L \\\Leftrightarrow \liml_{n\rightarrow +\infty}{x_N} = L
+\\\Leftrightarrow \forall\,\varepsilon>0\,\exists\,N>0\,\forall\,n>N\ \rho(x_n,L)<\varepsilon
+\\\Leftrightarrow \forall\,\varepsilon>0\,\exists\,N>0\,\forall\,n>N\ x_n \in U_\varepsilon(L)
+\\\Leftrightarrow (x_n\rightarrow L \Leftrightarrow \rho(x_n,L)\rightarrow 0)$\\\\
+\textbf{Теорема}\\
+Пусть $(x_n)$ - последовательность в $(X,\rho)$\\
+$x_n\rightarrow L$, $x_n\rightarrow M$\\
+Тогда $L=M$.\\
+\textbf{Доказательство}\\
+Для любой окружности верно, что вне нее содержится конечное количество $x_n$.\\
+Пусть $L\neq M$.\\
+Возьмем $U_\varepsilon(L)$ и $U_\varepsilon(M)$ с $\varepsilon = \frac{\rho(L,M)}{2}$. Тогда из свойства для $U_\varepsilon(L)$ следует, что в $U_\varepsilon(M)$ конечное количество членов, что неверно. Отсюда $L=M$, ч.т.д.\\
+Уточнение: $U_\varepsilon(M) \cap U_\varepsilon(L) = \varnothing$, т.к. окрестности - открытые окружности(доказательство очевидно).\\\\
+\textbf{Теорема\\(об ограниченности сходящейся последовательности)}\\
+Пусть $(x_n)$ - последовательность в $(X,\rho)$\\
+$x_n\rightarrow L$\\
+Тогда множество значений $x_n$ ограничено.\\
+($\exists\,B(a,r): \forall\,n\ x_n\in B(a,r))$\\
+\textbf{Доказательство}\\
+$\forall\,\varepsilon>0\,\exists\,N_\epsilon>0\,\forall\,n>N_\epsilon\ x_n \in U_\varepsilon(L)$\\
+Возьмем $\varepsilon$. $R = \epsilon+\maxl_{1 \leq i \leq N_\epsilon}{\rho(x_i,L)}$. Тогда $\forall\,n\ x_n\in B(L,R)$\\\\
+\subsection{Порядковые свойства пределов последовательностей в $\mathbb{R}$}
+\textbf{Теорема\\(о предельном переходе в неравенствах)}\\
+$(x_n),(y_n)$ - вещественные последовательности\\
+$x_n\leq y_n$ для бесконечного количества $n$.\\
+Пусть: $x_n\rightarrow a, y_n \rightarrow b$, где $a,b \in \mathbb{R}$\\
+Тогда $a\leq b$\\
+\textbf{Доказательство}\\
+Пусть $a > b$. Возьмем $\varepsilon = \frac{\rho(a,b)}{2}$. Для некоторого $N \forall\,n>N\ x_n \in U_\varepsilon(a), y_n \in U_\varepsilon(b)$. Отсюда $\forall\,n>N\ y_n \leq b+\varepsilon < a-\varepsilon \leq x_n \Leftrightarrow \forall\,n > N\ y_n < x_n$, что неверно. Тогда $a \leq b$, ч.т.д.\\\\
+\textbf{Теорема о двух городовых}\\
+$(x_n),(y_n),(z_n)$ - вещественные последовательности.\\
+$\forall\,x_n\leq y_n \leq z_n$\\
+Пусть $x_n \rightarrow a, z_n \rightarrow a$\\
+Тогда $y_n \rightarrow a$\\
+\textbf{Доказательство}\\
+$\forall\,\varepsilon >0\ \exists\,N\ \forall\,n>N\ a-\varepsilon<x_n$\\
+Для того же $\varepsilon\ \exists\,K\ \forall\,n>K\ a+\varepsilon>z_n$\\
+При $n>\max(N,K)\ a-\varepsilon<x_n\leq y_n \leq z_n < a+\varepsilon$.\\
+Отсюда $\forall\,\varepsilon>0\ \exists\,S>0\ \forall\,n>S a-\varepsilon<y_n<a+\varepsilon \Leftrightarrow y_n\rightarrow a$\\
+\textbf{Следствие}\\
+$(y_n),(z_n)$ - вещественные последовательности.\\
+$\forall\,n\ |y_n|\leq z_n$\\
+$z_n \rightarrow 0$\\
+Тогда $y_n$ сходится и $\liml_{n\rightarrow +\infty}{y_n}=0$\\\\
+\textbf{Определение}\\
+$(x_n)$ - бесконечно малая последовательность $\Leftrightarrow x_n \rightarrow 0$\\\\
+\textbf{Теорема}\\
+$(x_n)$ - бесконечно малая\\
+$(y_n)$ - ограниченная последовательность\\
+Тогда $(x_n\cdot y_n)$ - бесконечно малая\\
+\textbf{Доказательство}\\
+$x_n \rightarrow 0 \Leftrightarrow |x_n| \rightarrow 0$\\
+$y_n$ - ограниченная $\Leftrightarrow \exists\,R\ \forall\,n\ |y_n|\leq R$\\
+Отсюда $|x_n\cdot y_n| \leq R\cdot|x_n| \rightarrow 0$\\
+Тогда по следствию из теоремы о двух городовых $x_n\cdot y_n \rightarrow 0$, ч.т.д.
+
+\subsection{Отображение}
+\textit{Отображение} - тройка объектов (f,X,Y), где X - область определения, Y - область значений.\\\\
+Обозначения:
+\begin{enumerate}
+    \item $\forall\,x \in X\quad f(x) \in Y$
+    \item $f: X \rightarrow Y$
+    \item $x \mapsto y$
+\end{enumerate}
+Функция - отображение $X \rightarrow \mathbb{R}$\\
+Векторнозначная функция - отображение $X \rightarrow \mathbb{R}^m$\\
+Вещественная последовательность - отображение $\mathbb{N} \rightarrow \mathbb{R}$\\
+Семейство - отображение\\\\
+\textbf{Определение}\\
+Пусть $f:X \rightarrow Y$. Образ $A \subset X\quad f(A) = \{ y \in Y: \exists\,x \in A\quad y=f(x)\}$\\\\
+\textbf{Определение}\\
+Пусть $f:X \rightarrow Y$. Прообраз $B \subset Y\quad f^{-1}(B) = \{ x \in X: f(x) \in B\}$\\
+\textit{(Не является обратным отображением)}\\\\
+Инъекция(взаимно однозначное отображение): $x \neq y\ \Rightarrow f(x) \neq f(y)$\\
+Сюръекция(отображение "на"): $\forall\,y\ \exists\,x: f(x)=y$\\
+Биекция(взаимно однозначное соответствие) = Инъекция $\land$ Сюръекция\\\\
+\textbf{Определение}\\
+\textit{График отображения} $f:X\rightarrow Y\\ \Gamma_f=\{(x,y) \in X \times Y:f(x) = y\}$\\\\
+\textbf{Определение}\\
+Пусть $f:X\rightarrow Y$ - инъективное.\\
+\textit{Обратное отображение} $f^{-1}:f(X) \subset Y\rightarrow X$\\
+$\forall\,y \in f(X)\ \exists\,x\in X: f(x)=y$.\\
+В силу инъективности $f^{-1}(y)=x$\\\\\\
+\textbf{Определение}\\
+$f:X\rightarrow Y\\
+A \subset X$\\
+\textit{Сужение} $f$ на $A$ - это отображение $f|_A: A \rightarrow Y: \forall\,x\in A\ f|_A(x)=f(x)$\\\\
+\textbf{Определение}\\
+$f:X\rightarrow Y\\
+X \subset B$\\
+\textit{Продолжение} $f$ на $B$ - это отображение $F: B \rightarrow Y: \forall\,x\in X\ F(x)=f(x)$\\\\
+\textbf{Определение}\\
+\textit{Тождественное отображение} $id:X\rightarrow X$ - функция $id(x)=x$\\\\
+\textbf{Определение}\\
+$f:X\rightarrow Y\\
+g:Y\rightarrow Z$\\
+\textit{Композиция отображений} - отображение $g\circ f: X \rightarrow Z: (g\circ f)(x)=g(f(x))$\\
+
+\subsection{Вещественные числа}
+\textbf{Определение}\\
+$\mathbb{R}$ - любое множество, которое удовлетворяет аксиомам 1-4
+\begin{enumerate}
+    \item Аксиомы поля
+    \begin{enumerate}
+        \item $"+": \mathbb{R}\times\mathbb{R} \rightarrow \mathbb{R}$:
+        \begin{enumerate}
+            \item Коммутативность $a+b=b+a$
+            \item Ассоциативность $(a+b)+c=a+(b+c)$
+            \item Нейтральный элемент $\exists\,\0: a+\0=a$
+            \item Обратный элемент $\exists\,b: a+b=\0$
+        \end{enumerate}
+        \item $"\cdot": \mathbb{R}\times\mathbb{R} \rightarrow \mathbb{R}$:
+        \begin{enumerate}
+            \item Коммутативность $a\cdot b=b\cdot a$
+            \item Ассоциативность $(a\cdot b)\cdot c=a\cdot(b\cdot c)$
+            \item Нейтральный элемент $\exists\,\1\neq \0: a\cdot\1=a$
+            \item Обратный элемент $\forall\,a \neq \0\ \exists\,b: a\cdot b=\1$
+        \end{enumerate}
+        \item[(v)] Дистрибутивность $a\cdot(b+c)=a\cdot b + a\cdot c$
+    \end{enumerate}
+    \item Аксиомы порядка
+    \begin{enumerate}
+        \item $"\leq"\,=\,\mathbb{R}\times\mathbb{R}$:
+        \begin{enumerate}
+            \item $\forall\,x,y\ x\leq y \lor y\leq x$ - полнота
+            \item $x\leq y, y\leq z \Rightarrow x \leq z$ - транзитивность
+            \item $x \leq y, y\leq x \Leftrightarrow x = y$ - антисимметричность
+            \item $x\leq y \Rightarrow \forall\,z\ x+z \leq y+z$
+            \item $\0\leq x, y \Rightarrow \0\leq xy$
+        \end{enumerate}
+    \end{enumerate}
+    \item Аксиома Архимеда\\
+    $\forall\,x,y>0\ \exists\,n\in \mathbb{N}\ nx>y$\\
+    \textit{Пояснение}: не существует бесконечно больших чисел
+    \item Аксиома Кантора\\
+    $[a_1,b_1] \supset [a_2,b_2] \supset \ldots$ - бесконечное семейство вложенных отрезков в $\mathbb{R}$\\
+    Тогда $\bigcapl_{k\in\mathbb{N}}[a_k,b_k] \neq \varnothing$\\
+    \textit{Замечание}: отрезки не могут быть заменены на (полу)интервалы\\
+
+\end{enumerate}
+Множество, удовлетворяющее аксиомам
+\begin{itemize}
+    \item поля - \textit{поле}
+    \item поля и порядка - \textit{упорядоченное поле}
+\end{itemize}
+$[a,b] = {x: a\leq x\leq b}$ - отрезок\\
+$[a,b) = {x: a\leq x< b}$ - полуинтервал\\
+$(a,b] = {x: a < x \leq b}$ - полуинтервал\\
+$(a,b) = {x: a < x < b}$ - интервал\\
+$\langle a,b\rangle$ - любой из 4 промежутков\\\\
+\textbf{Определение}\\
+$\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty,+\infty\}\\
+\forall\,a\in \mathbb{R}\ -\infty<a<+\infty$\\\\
+\textbf{Теорема}\\
+$\frac12\suml_{(i,k) \in A\times B} (a_ib_k-a_kb_i)^2 = (\suml_{i=1}^n a_i^2)(\suml_{i=1}^n b_i^2)-(\suml_{i=1}^n a_ib_i)^2 \geq 0$ - \textit{Тождество Лагранжа}\\
+$(\suml_{i=1}^n a_i^2)(\suml_{i=1}^n b_i^2)\geq(\suml_{i=1}^n a_ib_i)^2$ - \textit{Неравенство Коши - Буняковского(КБШ)}
+
+\subsection{Нормированное пространство}
+\textbf{Определение}\\
+$K$ - поле(поле скаляров)
+$X$ - линейное(векторное) пространство над полем $K$, если заданы \\$"+": X\times X \rightarrow X$ и $"\cdot": K\times X \rightarrow X$, удволетворяющее аксиомам
+\begin{enumerate}
+    \item $a+b=b+a$
+    \item $(a+b)+c=a+(b+c)$
+    \item $\exists\,\0\in X:\ \forall\,a\ a+\0=a$
+    \item $\forall\,a\ \exists\,-a\in X:\ a + (-a) = \0$
+    \item $\forall\,\lambda,\mu \in K, a\in X\ (\lambda+\mu)\cdot a = \lambda\cdot a + \mu\cdot a$
+    \item $\forall\,\lambda \in K, a,b\in X\ \lambda\cdot(a+b) = \lambda\cdot a + \lambda\cdot b$
+    \item $\forall\,\lambda,\mu \in K, a\in X\ (\lambda\mu)\cdot a = \lambda(\mu\cdot a)$
+    \item $1\cdot a = a$
+\end{enumerate}
+\textbf{Определение}\\
+\textit{Нормированное пространство} - это линейное пространство, в котором задана норма.\\
+\textit{Норма в линейном пространстве $X$ над полем $K$} - это отображение $\|\cdot\|: X \rightarrow \mathbb{R}$, удовлетворяющее аксиомам нормы:
+\begin{enumerate}
+    \item Положительная неопределенность:\\
+    $\|x\| \geq 0$, причем $\|x\|=0 \Leftrightarrow x = \0$
+    \item Положительная однородность\\
+    $\|\lambda x\| = |\lambda|\cdot\|x\|$
+    \item Неравенство треугольника\\
+    $\|x+y\| \leq \|x\| +\|y\|$
+\end{enumerate}
+Свойства нормы:
+\begin{enumerate}
+    \item $p(\sum\lambda_kx_k) \leq \sum\lambda_k p(x_k)\\
+    (x_k\in X, \lambda_k \in K)$
+    \item $p(\0) = 0$
+    \item $p(-x) = p(x)$
+    \item $|p(x)-p(y)| \leq p(x-y)$
+\end{enumerate}
+\textbf{Определение}\\
+\textit{Полунорма} - неотрицательная функция, удовлетворяющая 2 и 3 аксиомам нормы.\\\\
+\textit{Замечание}: в нормированном пространстве $\|x-y\|$ является метрикой, но не всякая метрика может быть порождена нормой.
+\subsection{Арифметические свойства пределов}
+\textbf{Теорема(арифметические свойства предела в нормированном пространстве)}\\
+$(X,\|\cdot\|)$ - нормированное пространство\\
+$(x_n),(y_n)$ - последовательности в $X$\\
+$(\lambda_n)$ - постедовательность скаляров.\\
+Пусть $x_n\rightarrow a, y_n\rightarrow b, \lambda_n \rightarrow \mu$\\
+Тогда:
+\begin{enumerate}
+    \item $x_n\pm y_n \rightarrow a\pm b$\\
+    \textbf{Доказательство}\\
+    $0 \leq \|x_n\pm y_n - (a\pm b)\| \leq \|x_n-a\|+\|y_n-b\| \rightarrow 0 \Rightarrow \|x_n\pm y_n - (a\pm b)\| \rightarrow 0$
+    \item $x_ny_n \rightarrow ab$
+    \item $\lambda_n x_n \rightarrow \mu a$\\
+    \textbf{Доказательство}\\
+    $\|\lambda_n x_n - \mu a\| = \|(\lambda_nx_n-\mu x_n) + (\mu x_n - \mu a)\| \leq \|(\lambda_n-\mu)x_n\| + \|\mu(x_n-a)\| = |\lambda_n-\mu|\cdot\|x_n\|+|\mu|\cdot\|x_n-a\| = |\text{б.м.}|\cdot\|\text{огр.}\|+|\text{огр.}|\cdot\|\text{б.м.}\| = \text{б.м.}$, ч.т.д.
+    \item $\|x_n\| \rightarrow \|a\|$
+    \item $y_n,b\neq 0$ начиная с некоторого места $\frac{x_n}{y_n} \rightarrow \frac{a}{b}$\\
+    \textbf{Доказательство}\\
+    Достаточно доказать, что $\frac 1{y_n} \rightarrow \frac 1b$\\
+    Докажем ограниченность $\frac 1{y_n}$:\\
+    Из предела для $\varepsilon=\frac{|b|}2\, \exists\,N\ \forall\,n>N\ |y_n|>\frac{|b|}2$. Тогда начиная с некоторого $N$ $\frac1{|y_n|} < \frac{2}{b}$\\
+    $|\frac 1{y_n} - \frac 1b | = \frac 1{y_n}\cdot\frac1b\cdot|y_n-b| = \text{ограниченная c некоторого места}\cdot\text{ограниченная}\cdot\text{бесконечно малая} = 0$
+\end{enumerate}
+\subsection{Сходимость к $\infty$}
+В $\mathbb{R}$:\\
+\textbf{Определение}\\
+$(x_n)$ - вещественная последовательность, $x_n \rightarrow +\infty$, если\\
+$\forall\,E > 0\ \exists\, N\ \forall\,n>N\ x_n>E$\\
+или на языке окресностей\\
+$\forall\,U(+\infty)\ \exists\, N\ \forall\,n>N\ x_n\in U(+\infty)$, где $U(+\infty) = (a,+\infty]$ - окрестность $+\infty$\\\\
+Аналогично $x_n\rightarrow -\infty$\\\\
+$x_n\rightarrow \infty \Leftrightarrow |x_n| \rightarrow +\infty$\\
+$x_n$ - бесконечно большая последовательность. При этом $\frac 1{x_n}$ - бесконечно малая последовательность\\\\
+Если $x_n\rightarrow+\infty$, то $x_n \nrightarrow -\infty, x_n \nrightarrow a\in \mathbb{R}$ - единственность предела.\\
+Другими словами если $x_n \rightarrow a \in \overline{\mathbb{R}}$, то он единственный.\\\\
+Все утверждения о пределах актуальны для $\mathbb{R}^m$\\\\
+\textbf{Теоремы}\\
+Если $x_n\rightarrow +\infty$, то $x_n$ не ограничена сверху, но ограничена снизу и имеет минимум\\
+Если $x_n\rightarrow -\infty$, то $x_n$ не ограничена снизу, но ограничена сверху и имеет максимум\\\\
+Если $x_n \leq y_n, x_n \rightarrow a, y_n \rightarrow b, a,b\in \overline{\mathbb{R}}$, тогда $a\leq b$\\
+\textbf{Доказательство теоремы 1}\\
+Пусть для некоторого $E$ $\exists\,k\ \forall\,n>k\ x_n>E$. Тогда минимум $x_n$ - это $\minl_{1\leq n \leq k} x_n$\\
+\textbf{Доказательство теоремы 3}
+\begin{enumerate}
+    \item $a,b \in \mathbb{R}$ - доказано
+    \item $b=+\infty$(включая $a=\pm\infty)$. Тогда $a\leq b$
+    \item $a=+\infty$. Тогда возможно только $b = +\infty$
+\end{enumerate}
+\textbf{Теорема об арифметических свойствах предела в $\overline{\mathbb{R}}$}\\
+$(x_n), (y_n)$ - последовательности в $\mathbb{R}$\\
+$x_n\rightarrow a, y_n \rightarrow b$, где $a,b \in \overline{\mathbb{R}}$\\
+Тогда
+\begin{enumerate}
+    \item $x_n+y_n \rightarrow a+b$
+    \item $x_ny_n \rightarrow ab$
+    \item Если $y_n \neq 0$ с некоторого места, $b\neq 0$, то $\frac{x_n}{y_n} \rightarrow \frac ab$
+\end{enumerate}
+при условии, что правые части утверждений имеют смысл(т.е. нет операций вида $(-\infty)+(+\infty)$, $0\cdot(\pm\infty), \frac{\pm\infty}{\pm\infty}, \frac 00)$\\
+\textit{Замечание}\\
+$\frac{\pm X}0$ может быть интерпретирован как $\pm\infty$
+\subsection{Точные границы числовых множеств}
+\textbf{Определение}\\
+Пусть непустое $E \subset \mathbb{R}$ и ограничено сверху.\\
+\textit{Супремум} $E$ - наименьшая верхняя граница $E$\\
+или $\sup E = \min \{M: \forall\,x\in E\ x\leq M\}$\\
+или $\sup E = S \Leftrightarrow \left\{\begin{array}{l}
+     \forall\,x\in E\ x\leq S\\
+     \forall\,\varepsilon > 0\ \exists\,x\in E\ S-\varepsilon < x 
+\end{array}\right.$\\\\
+\textit{Инфимум} $E$ - наибольшая нижняя граница $E$\\
+или $\inf E = \max \{m: \forall\,x\in E\ m\leq x\}$\\
+или $\inf E = I \Leftrightarrow \left\{\begin{array}{l}
+     \forall\,x\in E\ I \leq x\\
+     \forall\,\varepsilon > 0\ \exists\,x\in E\ x < I+\varepsilon
+\end{array}\right.$
+\subsection{Точки и множества в метрическом пространстве}
+Далее считаем, что $X$ - метрическое пространство, $D \subset X, a \in X$\\\\
+\textbf{Определение}
+\begin{enumerate}
+    \item $a$ - \textit{внутренняя точка} множества $D \Leftrightarrow \exists\,U(a) \subset D$
+    \item $D$ - \textit{открытое множество}, если все его точки внутренние
+    \item $\operatorname{Int}(D)$ - множество внуренних точек $D$\\
+    $\nm{Int}(D) = \underset{F\text{ - открытое}}{\bigcupl_{F \subset D}} F$
+\end{enumerate}
+\textbf{Замечания}
+\begin{enumerate}
+    \item $\varnothing$ и $X$ - открытые множества
+    \item Открытый шар - открытое множество\\
+    \textbf{Доказательство}\\
+    Рассмотрим шар радиуса $r$ с центом в точке $a$, а также точку $x$\\
+    $R = r-\rho(a,x)$\\
+    $U(x) = B(x,R)$\\
+    Докажем, что $U(x) \subset B(a,r)$:\\
+    Рассмотрим $y \in U(x)$:\\
+    $\rho(y,a) \leq \rho(y,x)+\rho(x,a) < R + (r-R) = r$
+\end{enumerate}
+\textbf{Теорема о свойствах открытых множеств}
+\begin{enumerate}
+    \item Объединение любого семейства открытых множеств открыто\\
+    $(G_\alpha)_{\alpha \in A}$ - семейство открытых множеств\\
+    $\bigcupl_{\alpha \in A} G_\alpha$ - открытое множество\\
+    \textbf{Доказательство}\\
+    Пусть $x \in \bigcupl_{\alpha \in A} G_\alpha$\\
+    Тогда $\exists\,\alpha_0:\ x\in G_{\alpha_0}$\\
+    Тогда $\exists\,U(x) \subset G_{\alpha_0} \subset \bigcupl_{\alpha \in A} G_\alpha$, ч.т.д.
+    \item Пересечение конечного семейства открытых множеств открыто\\
+    $(G_\alpha)_{\alpha \in A}$ - семейство открытых множеств\\
+    $\bigcapl_{\alpha \in A} G_\alpha$ - открытое множество\\
+    \textbf{Доказательство}\\
+    Пусть $x \in \bigcapl_{\alpha \in A} G_\alpha$\\
+    Тогда $\forall\,\alpha_0\ x\in G_{\alpha_0}$\\
+    Тогда $\exists\,U(x) \subset G_{\alpha_0} \subset \bigcapl_{\alpha \in A} G_\alpha$, ч.т.д.\\
+    \textbf{Контр-пример для бесконечного семейства}\\
+    $\bigcapl_{k=1}^\infty (-\frac 1k, \frac 1k) = \{0\}$ - не открытое множество в $\mathbb{R}$
+\end{enumerate} 
+%\textbf{Общее замечание}\\
+%$X$ - множество\\
+%$G$ - совокупность подмножеств $X$
+%\begin{enumerate}
+%    \item $\varnothing \in G, X \in G$
+%    \item $G_1, G_2, \ldots \in G \Rightarrow G_1\cup G_2\cup \ldots \in G$ - не обязательно конечное количество
+%    \item $G_1, \ldots, G_n \in G \Rightarrow G_1 \cap \ldots \cap G_n \in G$ - конечное количество
+%\end{enumerate}
+%Назовем члены $G$ открытыми множествами, а окрестностью $x$ любое открытое множество содержащее $x$\\
+%Тогда пределом последовательности $x_n$ можно назвать $a: \forall\,U(a)\ \exists\,N\ \forall\,n>N\ x_n\in U(a)$, но теорема о единственности предела выполняться не будет(к примеру, при $G=\{\varnothing, X\}$ предел любой последовательности - любое число в $X$. Доказательство теоремы о единственности не работает в силу несуществования двух непересекающихся множеств, содержащих последовательность.)\\
+%\textbf{Замечание}
+%\begin{enumerate}
+%    \item $\operatorname{Int} D = \underset{G-\text{открытое}}{\bigcupl_{G:G\subset D}G}$
+%    \item $D$ - открытое множество $\Leftrightarrow D=\operatorname{Int} D$
+%\end{enumerate}
+\textbf{Определение}
+\begin{enumerate}
+    \item Проколотая окрестность $\overdot{U}(a)=B(a,r)\setminus \{a\}$
+    \item $D\subset X$, $a$ - \textit{предельная точка} $D \Leftrightarrow \forall\,\overdot{U}(a)\ \overdot{U}(a)\cap D \neq \varnothing$\\
+    \textit{($a \in D$ или $a\notin D$)}
+\end{enumerate}
+\textbf{Замечание}
+\begin{enumerate}
+    \item $a$ - предельная точка $D \Leftrightarrow \forall\,U(a)\ |\overdot{U}(a)\cap D| = \infty$
+    \item $a$ - предельная точка $D \Leftrightarrow \exists\,(x_n)\neq a \subset D:\ x_n\rightarrow a$\\
+    \textbf{Доказательство $\Rightarrow$}\\
+    Рассмотрим $U_{r_1}(a)$. Возьмем там $d_1$\\
+    Положим $d_2 = \min \rho(a,d_1), \frac {r_1}2$\\
+    Повторим для $d_2\ldots\infty$\\
+    Тогда $(d_n)$ - искомая последовательность\\
+    \textbf{Доказательство $\Leftarrow$}\\
+    В каждой окрестности есть какой-то $x_n$, а значит любая окрестность непустая
+\end{enumerate}
+\textbf{Определение}\\
+$a\in D$ - \textit{изолированная точка}, если $\exists\,U(a):\ U(a)\cap D = {a}$\\\\
+\textbf{Определение}\\
+$D$ - \textit{замкнутое множество} в $X$, если $D$ содержит все свои предельные точки\\\\
+\textbf{Теорема}\\
+$D\subset X$ - замкнутое $\Leftrightarrow D^c=X\setminus D$ - открытое\\
+\textbf{Доказательство $\Rightarrow$}\\
+Пусть правое утверждение ложно. Тогда $\exists\,x\in D^c:\ \forall\,U(x)\ U(x)\not\subset D^c$. Тогда для такого $x$\\
+$\forall\,U(x)\ U(x)\cap D \neq\varnothing \Leftrightarrow \overdot{U}(x)\cap D \neq \varnothing \Leftrightarrow x$ - предельная точка $\Rightarrow x\in D$, т.к. D замкнутое. Отсюда противоречие\\
+Тогда $\exists\,U(x) \subset D^c$, ч.т.д.\\
+\textbf{Доказательство $\Leftarrow$}\\
+$D^c$ - открыто\\
+Если $D$ не замкнуто, то $\exists\,x$ - предельная точка $D, x\notin D$. Тогда $x\in D^c \Rightarrow \exists\, U(x)\subset D^c \Rightarrow x$, т.е. $U(x) \cap D = \varnothing$ - не предельная точка $D$. Тогда $D$ - замкнуто, ч.т.д.\\\\
+\textbf{Теорема о свойствах замкнутых множеств}\\
+В произвольном метрическом пространстве $X$:
+\begin{enumerate}
+    \item $(F_\alpha)_{\alpha \in A}$ - произвольное семейство замкнутых в $X$ множеств. Тогда $\bigcapl_{\alpha \in A} F_\alpha$ - замкнутое
+    \item $(F_\alpha)_{\alpha \in A}$ - произвольное конечное семейство замкнутых в $X$ множеств. Тогда $\bigcapl_{\alpha \in A} F_\alpha$ - замкнутое\\
+    \textbf{Контр-пример для бесконечного семейства}\\
+    В $\mathbb{R}$ $\{x\}$ - замкнутое в $\mathbb{R}$. Рассмотрим $\bigcupl_{k=1}^\infty \{\frac 1k\}$. Тогда $0$ - предельная точка, не содержащаяся в множестве. Тогда множество не замкнутое
+\end{enumerate}
+\textbf{Доказательство}\\
+Из свойств открытых множеств и теоремы о связи открытых и замкнутых множеств\\\\
+\textbf{Определение}\\
+$D\subset X$ - произвольное множество. Тогда \textit{замыкание $\overline{D}$ множества $D$} - это $D\cup\text{(все его предельные точки)}$\\
+\textbf{Замечание}\\
+\textit{Обратим внимание, что $\overline{D}$ содержит все предельные точки $D$, а не свои. Но все же $\overline{D}$ - замкнуто}\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item $\overline{D} = \{a \in X: \exists\,(x_n):\ x_n\rightarrow a, x_n \in D\}$
+    \item $\overline{D} = \underset{F-\text{замкнуто}}{\bigcapl_{F:D\subset F\subset X}} F$,\\
+    т.е. $\overline{D}$ - наименьшее по включению замкнутое множество, содержащее $D$
+    \item $D$ - замкнуто $\Leftrightarrow \overline{D} = D$
+\end{enumerate}
+\textbf{Определение}\\
+$D\subset X$ - произвольное множество\\
+$a$ - \textit{граничная точка} $D$, если $\forall\,\overdot{U}(a)\ \begin{array}{l}
+     \overdot{U}(a) \cap D \neq \varnothing \\
+     \overdot{U}(a) \cap D^c  \neq \varnothing
+\end{array}$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Граничная точка - невнутренняя предельная точка
+    \item Граничная точка - предельная точка $D$ и $D^c$
+    \item Множество граничных точек замкнуто
+    \item Множество предельных точек замкнуто
+\end{enumerate}
+\subsection{Компактность и полнота}
+\textbf{Лемма Гейне-Бореля}\\
+Рассмотрим $\mathbb{R}$\\
+Пусть $[a,b] \subset \bigcupl_{k=1}^\infty (a_k,b_k)$\\
+Тогда найдется конечное число отрезков $k_1\ldots k_n$ таких, что $[a,b] \subset \bigcupl_{i=1}^n (a_{k_i}, b_{k_i})$\\\\
+\textbf{Теоремы об открытых и замкнутых множествах в пространстве и подпространстве}\\
+Пусть $D \subset Y \subset X$, $X,Y$ - метрические пространства с общей метрикой\\
+Тогда
+\begin{enumerate}
+    \item $D$ - открытое в $Y \Leftrightarrow \exists\,G$ - открытое в $X: D=G\cap Y$\\
+    \textbf{Доказательство $\Leftarrow$}\\
+    $G$ - открыто в $X$, $D = G\cap Y$. Доказать, что $D$ открыто в $Y$\\
+    Берем $a\in D$\\
+    $a \in D \Rightarrow a \in G$, а $G$ - открыто. Тогда $\exists\,r:\ B^x(a,r) \subset G \Rightarrow B^x(a,r)\cap Y = B^y(a,r) \subset G\cap Y = D$. Отсюда $a$ - внутренняя точка\\
+    \textbf{Доказательство $\Rightarrow$}\\
+    $D$ - открытое в $Y$\\
+    $D=\bigcupl_{x\in D} B^y(x,r_x)$, где $r_x$ подбираем так, чтобы $B^y(x,r_x) \in D$\\
+    Возьмем $D=\bigcupl_{x\in D} B^x(x,r_x)$. $G$ - открытое множество. Тогда $D = G\cap Y$
+    \item $D$ - замкнутое в $Y \Leftrightarrow \exists\,F$ - замкнутое в $X: D=F\cap Y$\\
+    \textbf{Доказательство}\\
+    $D$ - замкнутое в $Y \Leftrightarrow (Y\setminus D)$ - открытое множество $\Leftrightarrow \exists\,G$ - открытое в $X: (Y\setminus D) = G\cap Y$\\
+    $Y\setminus(Y\setminus D) = Y\setminus(G\cap Y)$\\
+    $D = (Y\setminus G)\cap Y$\\
+    $D = (X\setminus G) \cap Y$. Отсюда $X \setminus G$ - замкнутое
+\end{enumerate}
+\textbf{Определение}\\
+$X$ - метрическое пространство\\
+$K\subset X$\\
+Если $K \subset \bigcupl_{\alpha \in A} G_\alpha$, то множества $G_\alpha$ образует \textit{покрытие} $K$\\
+Если все $G_\alpha$ - открытые, то \textit{открытое покрытие}\\
+$K \subset \bigcupl_{\alpha \in A' \subset A} G_\alpha $ - \textit{подпокрытие}\\\\
+Множество называется \textit{компактным}, если \\
+$\forall\,(G_\alpha)$ - открытые $: K \subset \bigcupl_{\alpha \in A} G_\alpha\ \exists\,G_{\alpha_1}\ldots G_{\alpha_n}: K \subset \bigcupl_{i=1}^n G_{\alpha_i}$\\\\
+\textbf{Теорема}\\
+Пусть $K\subset Y \subset X$\\
+Тогда $K$ - компактно в $Y \Leftrightarrow K$ - компактно в $X$\\
+\textbf{Доказательство $\Rightarrow$}\\
+$K$ - компактно в $Y$\\
+Пусть $K \subset \bigcupl_{\alpha \in A} G_\alpha$ - открытые в $X$\\
+Тогда $K \subset (\bigcupl_{\alpha \in A} G_\alpha) \cap Y = \bigcupl_{\alpha \in A} (G_\alpha \cap Y)$. $G_\alpha \cap Y$ - открыто в $Y$.\\
+В силу компактности $K$ в $Y \exists\,\alpha_1\ldots\alpha_n$\\
+$K \subset \bigcupl_{i=1}^n (G_{\alpha_i} \cap Y) = \bigcupl_{i=1}^n G_{\alpha_i}$\\
+\textbf{Доказательство $\Leftarrow$}\\
+Пусть $K$ компактно в $X$\\
+$K \subset \bigcupl_{\alpha\in A} O_\alpha$, где $O_\alpha$ открыты $Y$\\
+$\forall\,O_\alpha =G_\alpha \cap Y$, где $G_\alpha$ открыты в $X$\\
+$K \subset \bigcupl_{\alpha \in A} G_\alpha$\\
+Тогда $\exists\,\alpha_1\ldots\alpha_n:\ K \subset \bigcupl_{i=1}^n G_{\alpha_i}$\\
+Отсюда $K \subset \bigcupl_{i=1}^n (G_{\alpha_i} \cap Y) = \bigcupl_{i=1}^n O_{\alpha_i}$, ч.т.д.\\
+\textbf{Теорема о простейших свойствах компактных множеств}\\
+$(X, \rho)$ - метрическое пространство\\
+$K \subset X$
+\begin{enumerate}
+    \item $X$ - компактно $\Rightarrow X$ замкнуто и ограничено\\
+    \textbf{Доказательство}\\
+    Докажем, что $K^c$ - открытое\\
+    Пусть $x \in K^c$\\
+    $K \subset \bigcupl_{a\in K} B(a, \frac{\rho(a,x)}2)$\\
+    Т.к. $K$ - компактно, $K \subset \bigcupl_{i=1}^n B(a_i,r_i)$, где $r_i=\frac{\rho(a_i,x)}2$\\
+    $B(a_i,r_i) \cap B(x,r_i) = \varnothing$\\
+    Отсюда $B(x, \min(r_1,\ldots,r_n))$ не пересекает ни одно $B(a_i,r_i)$. Тогда $B(x,\min(r_1,\ldots,r_n)) \cap K = \varnothing \Leftrightarrow B(x,\min(r_1,\ldots,r_n)) \subset K^c$\\
+    Т.о. $x \in K^c \Rightarrow B(x) \subset K^c$, а значит $K^c$ открыто. Тогда $K$ замкнуто, ч.т.д.
+    Выберем $x_0 \in X$. $K \subset X \subset \bigcupl_{n\in \mathbb{N}}B(x_0,n)$\\
+    Из компактности $\exists\,n_1,\ldots,n_m:\ K \subset \bigcupl_{i=1}^m B(x_0, n_i)$\\
+    Тогда $K \subset B(x_0,\max(n_1,\ldots,n_m))$
+    \item $X$ - компактно, а $K$ - замкнутно. Тогда $K$ - компактно\\
+    \textbf{Доказательство}\\
+    $K \subset \bigcupl_{a\in K} G_a$. Тогда $X = \bigcupl_{a\in K} G_a \cup K^c$, где $K^c$ - открыто.\\
+    Тогда $\exists\,a_1,\ldots,a_n:\ X = \bigcupl_{i=1}^n (G_{a_i} \cup K^c)$. Отсюда $K \subset \bigcupl_{a\in K} G_a$, ч.т.д.
+\end{enumerate}
+\textbf{Теорема о компактности в пространстве и в подпространстве}\\
+$K \subset X \subset Y$ - компактно в $X \Leftrightarrow K$ компактно в $Y$\\
+\textbf{Определение}\\
+$a,b\in \mathbb{R}^m$\\
+\textit{Параллелепипед} $[a,b]=\{x\in\mathbb{R}^m: \forall\,i\in\{1\ldots m\}\ a_i\leq x_i\leq b_i\}$\\\\
+\textbf{Лемма о вложенных параллелепипедах}\\
+$[a^{(1)},b^{(1)}] \supset [a^{(2)},b^{(2)}] \supset \ldots$\\
+$[a^{(1)},b^{(1)}] \cap [a^{(2)},b^{(2)}] \cap \ldots \neq \varnothing$\\
+\textbf{Доказательство}\\
+Покоординатно следует из теоремы Кантора\\
+\textbf{Лемма}\\
+Замкнутый параллелепипед компактен\\
+\textbf{Доказательство}\\
+$[A^{(1)},B^{(1)}] \subset \bigcupl_{a\in K} G_a$ - открытые.
+Воспользуемся \textit{половинным делением}\\
+Допустим, что нет конечного подпокрытия\\
+По каждой координате разделим параллелепипед на две части. Тогда он будет разделен на $2^m$ частей\\
+Если бы все части можно было накрыть конечным числом покрытий, то и весь параллелепипед можно\\
+Тогда существует такой "кусочек", который не покрывается конечным числом подпокрытий.\\
+Назовем этот параллелепипед $[A^{(2)}, B^{(2)}]$. Применим к нему такую же логику\\
+Тогда мы получаем бесконечную последовательность вложенных параллелепипедов, каждый из которых не покрывается конечным количеством подпокрытий. $\exists\,x \in [A^{(1)}, B^{(1)}] \cap [A^{(2)}, B^{(2)}] \cap \ldots$. Тогда $\exists\,G_i:\ x \in G_i$. Вместе с $x$ в $G_i$ содержится некая окрестность $B(x, R)$.\\
+Линейные размеры параллелепипедов стремятся к 0, а значит с некоторого момента его размеры по всем координатам будут такими, что $\rho(A,B) < 2R$. Отсюда весь этот параллелепипед поместится в $B(x, R)$. Тогда с некоторого места все параллелепипеды содержатся в некотором покрытии. Противоречие.\\
+Отсюда параллелепипед компактен, ч.т.д.\\\\
+\textbf{Теорема о характеристике компактов в $\mathbb{R}^m$}\\
+Данные утверждения эквивалентны
+\begin{enumerate}
+    \item $K \subset \mathbb{R}^m$ замкнуто и ограничено
+    \item $K \subset \mathbb{R}^m$ компактно
+    \item $K \subset \mathbb{R}^m$ секвенциально компактно
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item[$1\Rightarrow 2$:] $K$ - ограничено $\Rightarrow$ содержится в шаре $\Rightarrow$ содержится в параллелепипеде $\Rightarrow$ содержится в компактном множестве и замкнуто $\Rightarrow$ компактно
+    \item[$2\Rightarrow 3$:]
+    \begin{enumerate}
+        \item Если некая последовательность $(x_n)$ имеет конечное число значений, то какое-то значение повторяется бесконечное количество раз. Тогда оно является частным пределом
+        \item Иначе: пусть $D$ - множество значений $(x_n)$, $|D| = \infty$
+        \begin{enumerate}
+            \item если D не имеет предельных точек\\
+            Пусть $K\subset D$
+            Тогда $\forall\,x\in K\ \exists\,\overdot{B}(x,r'):\ \overdot{B}(x,r')\cap D = \varnothing$\\
+            $K \subset \bigcupl_{a\in K} B(x,r')$\\
+            Тогда каждая такая окрестность покрывает конечное множество точек, а значит $K$ - не компактное - противоречие.
+            \item существует $x_0$ - предельная точка $D$\\
+            Тогда из закрытости $D$ $x_0\in D$ и из определения предельной точки в $D$ существует сходящаяся последовательность к $x_0$. Выкинем из нее элементы, индексы которых меньше, чем у предыдущих и получим подпоследовательность $(x_n)$, сходящуюся к $x_0$, ч.т.д.
+        \end{enumerate}
+    \end{enumerate}
+    \item [$3\Rightarrow 1$:] Пусть $a$ - предельная точка $K$\\
+    Проверим, что $a \in K$\\
+    $\exists\,(x_n): \begin{array}{l}
+         x_n\in K \\
+         x_n \neq a \\
+         x_n\rightarrow a
+    \end{array}$\\
+    Выберем подпоследоватьность $(x_{n_k})$. Из секвенциальной компактности $\exists\,n_k: x_{n_k} \rightarrow x_0 \in K$.\\
+    Из $x_n\rightarrow a$ $(x_{n_k}) \rightarrow a$. Отсюда $x_0 = a$ и $a \in K$. Тогда $K$ замкнуто\\\\
+    Пусть $K$ не ограничено, то существуют сколь угодно большие числа. Выберем $(x_n) \rightarrow \infty$. Тогда $x_{n_k}\rightarrow \infty$, что противоречит секвенциальной компактности. Тогда $K$ ограничено, ч.т.д.
+\end{enumerate}
+\textbf{Определение}\\
+$K \subset X$ - \textit{секвенциально компактно}, если $\forall\,(x_n) \subset K\ \exists\,(n_k)\in\mathbb{N}, x_0\in K:\ (n_k)\uparrow,\ x_{n_k}\rightarrow x_0$\\
+\textbf{Замечания}
+\begin{enumerate}
+    \item В произвольном метрическом пространстве замкнутое + ограниченное $\nRightarrow$ компактное
+    \item $2 \Leftrightarrow 3$ в любом метрическом пространстве
+    \item $2 \nLeftrightarrow 3$ в произвольном топологическом пространстве
+\end{enumerate}
+\textbf{Следствие (принцип выбора Больцано-Вейерштрасса)}\\
+$(x_n)$ - ограниченная последовательность в $\mathbb{R}^m$\\
+Тогда существует сходящаяся подпоследовательность\\
+\textbf{Доказательство}\\
+$x_n$ - ограниченная последовательность\\
+Тогда существует замкнутый параллелепипед $K: \forall\,n\ x_n\in K$\\
+Параллелепипед компактный.
+Тогда $K$ -  секвенциально компактный\\
+Тогда из свойств секвенциальной компактности, ч.т.д.\\
+\textbf{Замечание}\\
+$x_n$ - не ограничено $\Rightarrow\ \exists\,(x_n):x_{n_k} \rightarrow \infty$\\
+\textbf{Определение}\\
+$X$ - метрическое пространство\\
+$(x_n)$ - \textit{фундаментальная последовательность} (последовательность Коши, сходящаяся в себе)\\
+$\forall\,\varepsilon>0\ \exists\,N\ \forall\,n,m>N\ \rho(x_n,x_m) < \varepsilon$\\
+\textbf{Лемма}
+\begin{enumerate}
+    \item $(x_n)$ - фундаментальная последовательность $\Rightarrow (x_n)$ - ограничена\\
+    \textbf{Доказательство}\\
+    Пусть $\varepsilon = 1$\\
+    $\forall\,n_0,m > N(1)\ \rho(x_m,x_{n_0}) < 1$\\
+    Тогда $x_m \in B(x_{n_0},1)$ начиная с $m > N(1)$\\
+    Тогда не в $B(x_{n_0},1)$ конечное число точек, а значит вся последовательность ограничена
+    \item $(x_n)$ - фундаментальная последовательность, $x_{n_k} \rightarrow A$\\
+    Тогда $(x_n) \rightarrow A$\\
+    \textbf{Доказательство}\\
+    $\forall\,\varepsilon>0\ \exists\,N\ \forall\,n,m>N\ \rho(x_m,x_n) < \frac\varepsilon2$\\
+    $x_{n_k} \rightarrow a \Leftrightarrow \forall\,\varepsilon>0\ \exists\,K\ \forall\,k>K\ \rho(x_{n_k}, a) <\frac\varepsilon2$\\
+    $\forall\,\varepsilon>0\ \exists\,M = \max(N(\varepsilon), K(\varepsilon))\ \forall\,m>M\ \rho(x_m,a) \leq \rho(x_m,x_{n_k})+\rho(x_{n_k}, a) < \frac\varepsilon2+\frac\varepsilon2 < \varepsilon$
+\end{enumerate}
+\textbf{Теорема}
+\begin{enumerate}
+    \item $X$ - метрическое пространство\\
+     $(x_n)$ - сходящаяся $\Rightarrow (x_n)$ - фундаментальная\\
+     \textbf{Доказательство}\\
+     $\forall\,\varepsilon>0\ \exists\,N\ \forall\,n>N\ \rho(x_n,a) < \frac\varepsilon2$\\
+     Тогда $\forall\,\varepsilon>0\ \exists\,N\ \forall\,n,m>N\ \rho(x_n,x_m)<\rho(x_n,a)+\rho(x_m,a) < \frac\varepsilon2+\frac\varepsilon2 < \varepsilon$
+     \item в $\mathbb{R}^m: (x_n)$ - фундаментальная $\Rightarrow (x_n)$ - сходится\\
+     \textbf{Доказательство}\\
+     $(x_n)$ - фундаментальная $\Rightarrow\ (x_n)$ - ограниченная$ \Rightarrow \exists\ x_{n_k} \rightarrow a \Rightarrow x_n \rightarrow a$
+\end{enumerate}
+\textbf{Определение}\\
+Метрическое пространство \textit{полно}, если в нем любая фундаментальная последовательность является сходящейся\\
+\textbf{Утверждение (критерий Больцано-Коши)}\\
+$(x_n)$ - сходится в $\mathbb{R}^m \Leftrightarrow \forall\,\varepsilon>0\ \exists\,N\ \forall\,n,m>N\ \|x_n-x_m\| < \varepsilon$
+\section{Пределы и непрерывность отображений}
+\subsection{Всякие прикольные теоремы}
+\textbf{Теорема Кантора}\\
+Пусть $[a_1, b_1] \supset [a_2, b_2] \supset \ldots$, $|[a_n,b_n]| = b_n-a_n \rightarrow 0$. Тогда $\exists!\, c: \bigcapl_{k=1}^\infty [a_k,b_k] = \{c\}$\\
+\textbf{Доказательство}\\
+Т.к. пересечение не пусто, берем любую точку $c \in \bigcapl_{k=1}^\infty [a_k,b_k]$.\\
+Тогда $\forall\,k\ a_k\leq c \leq b_k$\\
+$|a_k-c|\leq b_k-a_k \rightarrow 0$, т.е. $a_k\rightarrow c$\\
+$|b_k-c|\leq b_k-a_k \rightarrow 0$, т.е. $b_k\rightarrow c$\\
+Из единственности предела $c$ единственный\\
+\textbf{Следствие}\\
+$a_k, b_k \rightarrow c$\\\\
+Алгоритм перевода в двоичную дробь: делим наш промежуток пополам. Если число попало в левую половинку, дописываем 0 и переходим в влево, иначе дописываем 1 и переходим вправо.\\
+\textbf{Теорема}
+\begin{enumerate}
+    \item Пусть $\varepsilon_i$ - бесконечная последовательность из 0 и 1.\\
+    Тогда $0,\varepsilon_1\varepsilon_2\varepsilon_3\ldots$ определяет некоторое число из $[0,1]$
+    \item $\forall\,x\in [0,1]$ существует не более двух последовательностей $\varepsilon_i$, задающих $x$
+    \begin{enumerate}
+        \item Если $x$ - двоичное рациональное число кроме 0, т.е. $x = \frac a{2^b} \neq 1$ - две записи
+        \item Иначе - одна запись\\
+        \textbf{Доказательство}\\
+    $x = \bigcapl_{k=1}^\infty\ [0,\varepsilon_1\ldots\varepsilon_k; 0,\varepsilon_1\ldots\varepsilon_k+\frac{1}{2^k}]$
+    \end{enumerate}
+    \item Баг:\\
+    $x$ может оказаться между половинками очередного отрезка, тогда он принадлежит обеим половинкам.\\
+    $x$ окажется на стыке тогда и только тогда, когда он - двоичное рациональное число(на $b$-ом шаге)\\
+    В этом случае $x$ имеет две записи
+    \item Отдельно:
+    $1,00\ldots = 0,11\ldots$
+\end{enumerate}
+В любом упорядоченном поле $\mathbb{R}$, $\mathbb{N} \subset \mathbb{R}$\\\\
+Рассмотрим $A\subset\mathbb{R}$\\
+$A$ - индуктивное, если\begin{enumerate}
+    \item $\1 \in A$
+    \item $\forall\,x\in A\ x+\1 \in A$
+\end{enumerate}
+Самое маленькое индуктивное множество:\\
+$\mathbb{N} = \underset{A-\text{индуктивное}}{\bigcapl_{A\subset R}} A$\\\\
+\textbf{Неравенство Бернулли}\\
+$\forall\,x\geq -1, n\in \mathbb{N}\quad(1+x)^n \geq 1+nx$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item База($n=1$): $1+x \geq 1+x$
+    \item Шаг индукции:\\
+    Пусть $(1+x)^n \geq 1+nx$ - верно\\
+    Докажем $(1+x)^{n+1} \geq 1+(n+1)x$:\\
+    $(1+x)^{n+1}=(1+x)(1+x)^n \geq (1+x)(1+nx) = 1 + nx + x + nx^2 \geq 1+(n+1)x$, ч.т.д.
+\end{enumerate}
+\textbf{Определение}\\
+Множество $A \subset \mathbb{R}$ \textit{ограничено сверху}:\\
+$\exists\,M\in\mathbb{R}:\ \forall\,a\in A\ a\leq M$\\
+Множество $A \subset \mathbb{R}$ \textit{ограничено снизу}:\\
+$\exists\,m\in\mathbb{R}:\ \forall\,a\in A\ a\geq m$\\
+Множество $A \subset \mathbb{R}$ \textit{ограничено}, если оно ограничено сверху и снизу\\
+$x \in A$ - \textit{максимум}, если $\forall\,a\in A\ a\leq x$\\
+$x \in A$ - \textit{минимум}, если $\forall\,a\in A\ a\geq x$\\\\
+\textbf{Теорема}\\
+В любом конечном множестве существует максимальный(минимальный) элемент\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item База: для $n=1$ $A=\{x\}$, $x$ - максимум
+    \item Переход: рассмотрим множество из $n+1$ элементов $A$. Выберем элемент $x$. Множество $A\setminus\{x\}$ имеет максимум $y$. Тогда максимум множества $A$ - это $\max x,y$.
+\end{enumerate}
+\textbf{Определение}\\
+Множество $\mathbb{Q}$ \textit{плотно} в $\mathbb{R}$, если $\forall\,a,b \subset \mathbb{R}\ \exists\,x\in \mathbb{Q}:\ x\in[a,b]$\\
+\textbf{Доказательство для рациональных чисел}\\
+Пусть $n \in \mathbb{N} > \frac 1{b-a}$(существует по теореме Архимеда)\\
+$\frac 1n < b-a$\\
+Возьмем $x=\frac {[na]+1}n \in \mathbb{Q}$\\
+$a=\frac{na-1+1}n < \frac{[na]+1}n \leq \frac{na+1}n = a+\frac 1n < a + (b-a) = b$\\
+Отсюда $a<x< b$, ч.т.д.\\\\
+\textbf{Теорема о существовании супремума}\\
+$E\neq \varnothing \subset \mathbb{R}$, ограниченное сверху\\
+Тогда $\exists\,s \in \mathbb{R}: s = \sup E$\\\\
+\textbf{Доказательство}\\
+Пусть $b_1$ - верхняя граница $E$, $a_1 \in E$\\
+$c_1=\frac{a_1+b_1}2$:
+\begin{enumerate}
+    \item если $c_1$ - верхняя граница, то рассмотрим промежуток $[a_2, b_2]: a_2 = a_1; b_2 = c_1$\\
+    $b_2$ - верхняя граница
+    \item если $c_1$ - не верхняя граница, то рассмотрим промежуток $[a_2, b_2]: a_2 = c_1; b_2 = b_1$\\
+    $b_2$ - верхняя граница
+\end{enumerate}
+$|[a_n,b_n]| = b_n-a_n=\frac{b_1-a_1}{2^n}$\\
+Повторяем аналогичные действия. Тогда по следствию из теоремы Кантора существует единственный $s = \bigcapl_{k=1}^{\infty} [a_n,b_n]$\\
+Проверим, что $s = \sup E$:
+\begin{enumerate}
+    \item $\forall\,x\in E, n\ x\leq b_n$\\
+    $b_n\rightarrow s$\\
+    Отсюда $\forall\,x\in E\ x\leq s$
+    \item $\forall\,\varepsilon\ \exists\,n\ b_n-a_n<\varepsilon$\\
+    $a_n \in E$
+    \item $\forall\,\varepsilon\ \exists\,n\ s < b_n<\varepsilon+a_n$
+\end{enumerate}
+\textbf{Дополнительная часть опеределения}
+\begin{enumerate}
+    \item $E$ не ограничено сверху: $\sup E = +\infty$
+    \item $E$ не ограничено снизу: $\inf E = -\infty$
+    \item $E = \varnothing$: $\sup E = -\infty, \inf E = +\infty$
+\end{enumerate}
+\textbf{Лемма о свойствах супремума}
+\begin{enumerate}
+    \item $D\neq\varnothing \subset E \subset \mathbb{R}$\\
+    Тогда $\sup D \leq \sup E$\\
+    \textbf{Доказательство}\\
+    $\sup E$ - верхняя точка $D$
+    \item $X\subset\mathbb{R}, \lambda\in\mathbb{R}$\\
+    $\lambda X = {\lambda\cdot x: x \in X}$
+    Тогда $\forall\,\lambda>0\ \sup \lambda X = \lambda \sup X$
+    \item $\sup -X = -\inf X$\\
+    $\sup kX = k\sup X, k > 0$\\
+    $\inf kX = k\inf X, k > 0$\\
+    $\sup X+Y = \sup X + \sup Y$\\
+    $\inf X+Y = \inf X + \inf Y$
+\end{enumerate}
+\textbf{Определение}
+\begin{enumerate}
+    \item $f: X \rightarrow \mathbb{R}$, $D \subset X$\\
+    $f$ - ограничена(сверху/снизу) на $D \Leftrightarrow f(D) \subset R$ - ограниченное множество(сверху/снизу)
+    \item $f: \langle a,b \rangle \rightarrow \mathbb{R}$\\
+    $f$ - монотонна $\Leftrightarrow \forall\,x_1,x_2 \in \langle a,b\rangle: x_1 < x_2\quad f(x_1)\leq f(x_2)$
+\end{enumerate}
+\textbf{Теорема о пределе монотонной последовательности}
+\begin{enumerate}
+    \item $(x_n)$ - ограниченная сверху возрастающая вещественная последовательность\\
+    Тогда эта последовательность сходится к $s = \sup x_n$
+    \item $(x_n)$ - ограниченная снизу убывающая вещественная последовательность\\
+    Тогда эта последовательность сходится к $i = \inf x_n$
+    \item $(x_n)$ - ограниченная монотонная последовательность\\
+    Тогда эта последовательность сходится
+\end{enumerate}
+\textbf{Доказательство}\\
+$\forall\,\varepsilon>0\ \exists\,N:\ s-\varepsilon<x_n$\\
+Из возрастания $\forall\,\varepsilon>0\ \exists\,N\ \forall\,n>N\ s-\varepsilon<x_n$\\
+или $\forall\,\varepsilon>0\ \exists\,N\ \forall\,n>N\ 0 \leq s-x_n<\varepsilon$\\
+Т.о. $s = \lim_{n\rightarrow +\infty} x_n$, ч.т.д.\\\\
+\textbf{Замечание}\\
+$x_n$ - возрастающая. Тогда $\exists\,\lim x_n = \sup x_n \in \overline{\mathbb{R}}$\\\\
+\textbf{Лемма (о сходимости к нулю быстро убывающей последовательности)}\\
+Пусть $x_n>0; \lim_{n\rightarrow\infty}\frac{x_{n+1}}{x_n} < 1$\\
+Тогда $x_n \rightarrow 0$\\
+\textbf{Доказательство}\\
+Начиная с некоторого места, $x_n$ убывает. $x_n > 0$. Тогда существует $L: x_n \rightarrow L$.\\
+$L \geq 0$
+\begin{enumerate}
+    \item $L = 0$ - ч.т.д.
+    \item $L > 0$:\\
+    Пусть $\lim_{n\rightarrow\infty}\frac{x_{n+1}}{x_n} = l < 1$\\
+Тогда для $\varepsilon = \frac{1-l}{2}$: $\exists\, N:\ \forall\,n>N\ \frac{x_{n+1}}{x_n} < \frac{l+1}2 < 1$\\
+    \textit{(Из определения предела)}\\
+    В то же время для $\varepsilon = L\frac2{l+1}-L$: $\exists\, N:\ \forall\,n>N\ x_n-L < \varepsilon$\\
+    Рассмотрим $x_n$ для $n>N$:\\
+    $x_n < L\frac2{l+1}$\\
+    % Для $n > N$ рассмотрим $y \in [L; L\frac2{l+1}], y < x_n$\\
+    % $x_n < L\frac2{l+1}$\\
+    % $\frac y{x_n} \geq \frac{L}{L\frac 2{l+1}} = \frac {l+1} 2$\\
+    По лемме о пределе монотонной последовательности $\inf x_n = L$\\
+    Тогда $x_{n+1} \geq L$\\
+    Тогда $\frac {x_{n+1}}{x_n} \geq \frac{l+1}2$. Противоречие\\
+\end{enumerate}
+Отсюда $L = 0$\\\\
+\textbf{Следствие}
+\begin{enumerate}
+    \item $a>1, k \in \mathbb{N}$. Тогда $\lim_{n\rightarrow \infty} \frac{n^k}{a^n} = 0$
+    \item $a>0$. Тогда $\lim_{n\rightarrow \infty} \frac{a^n}{n!} = 0$
+    \item $\lim_{n\rightarrow \infty} \frac{n!}{n^n} = 0$
+\end{enumerate}
+\subsection{Предел отображений}
+\textbf{Определение}\\
+$X, Y$ - метрическое пространство\\
+$D\subset X, f:D\rightarrow Y$\\
+$a$ - предельная точка $D$\\
+Определим:\\
+$\liml_{x\rightarrow a} f(x) = A \Leftrightarrow f(x)\rightarrow A$, если:
+\begin{enumerate}
+    \item Определение по Коши; на языке $\varepsilon-\delta$:\\
+    $\forall\,\varepsilon > 0\ \exists\,\delta>0\ \forall\,x\in D: 0\neq \rho^x(x,a)<\delta\quad\rho^y(f(x),A) < \varepsilon$
+    \item На языке окрестностей:\\
+    $\forall\,U(A)\ \exists\,V(a)\ \forall\,x\in D \cap \overdot{V}(a)\quad f(x)\in U(A)$\\
+    \textit{($U, V$ - окрестности)}
+    \item По Гейне:\\
+    $\forall\,(x_n): \left\{\begin{array}{l}
+        x_n \in D  \\
+        x_n \neq a\\
+        x_n \rightarrow a
+    \end{array}\right.\ f(x_n)\rightarrow A$
+\end{enumerate}
+\textbf{Теорема}\\
+Определения по Коши и по Гейне эквивалентны\\
+\textbf{Доказательство}\\
+$x,y$ - метрические пространства\\
+$f:D\subset X \rightarrow Y$\\
+$a$ - предельная точчка $D$\\
+$A \in Y$\\
+$\liml_{x\rightarrow a} f(x) = A$\\
+Тогда по Коши:\\
+$\forall\,\varepsilon > 0\ \exists\,\delta>0\ \forall\,x\in D: 0\neq \rho^x(x,a)<\delta\quad\rho^y(f(x),A) < \varepsilon$\\
+По Гейне:\\
+$\forall\,(x_n): \left\{\begin{array}{l}
+        x_n \in D  \\
+        x_n \neq a\\
+        x_n \rightarrow a
+\end{array}\right.\ f(x_n)\rightarrow A$
+\begin{enumerate}
+    \item Докажем, что из определения Коши следует определение Гейне\\
+        Возьмем $x_n \in D, x_n \neq a, x_n \rightarrow a$\\
+        Из определения Коши для $\varepsilon$:\\
+        $\exists\,\delta>0\,\forall\,x\in D: 0<\rho(x,a)<\delta\quad\rho(f(x),A) < \varepsilon$\\
+        Из $x_n \rightarrow a$:\\
+        $\exists\,N\ \forall\,n>N\ \rho(x_n,a)<\delta$\\\
+        Тогда $\rho(f(x_n),A) < \varepsilon$, ч.т.д.
+    \item Доказем, что из определения Гейне следует определение Коши\\
+        Пусть определение Коши неверное\\
+        $\exists\,\varepsilon > 0:\ \forall\,\delta>0\ \exists\,x\in D:\ 0<\rho(x,a)<\delta\quad\rho(f(x),A) \geq A$\\
+        Возьмем $\delta = 1$\\
+        $\exists\, x_1\in D\ 0<\rho(x_1,a)<1\quad \rho(f(x_1),A) \geq \varepsilon$\\
+        $\vdots$\\
+        Возьмем $\delta=\frac 1n$:
+        $\exists\, x_n\in D\ 0<\rho(x_n,a)<\frac 1n\quad \rho(f(x_n),A) \geq \varepsilon$\\
+        Отсюда $\rho(x_n,a) \rightarrow 0 \Leftrightarrow x_n \rightarrow a$, а $\rho(f(x_n),A) > \varepsilon$. Тогда $f(x_n)\nrightarrow A$ - противоречие
+    \end{enumerate}
+\textbf{Замечание}
+\begin{enumerate}
+    \item $a$ - предельная точка $D\Rightarrow$ последовательности из определения 3 существуют
+    \item Если $a \in D$, то предел не зависит от $f(a)$
+    \item $f\equiv g$ на некоторой $\overdot{W}(a)$(выколотой окрестности $a$) и $\exists\,\liml_{x\rightarrow a} f(x)=A$, то $\exists\,\liml_{x\rightarrow a} g(x)$ и $\liml_{x\rightarrow a} g(x) = A$
+    \item Определение 2 можно обобщить на случай $X=\overline{\mathbb{R}}, Y = \overline{\mathbb{R}}, D \subset \mathbb{R}, a, A \in \overline{\mathbb{R}}$
+    \item $X,Y$ - метрические пространства\\
+    Определение 2 равносильно \\
+    $\forall\,U\subset Y: A \in U, U - \text{открытое}\ \exists\,V\subset X: a \in V, V -\text{открытое}\ \forall\,x\in D\cap V \setminus \{a\}\ f(x)\in U$\\
+    \textit{(Назовем его топологическим определением предела)}\\
+    \textbf{Доказательство $\Rightarrow$}\\
+    Выберем множество $U$. Тогда существует $U(A) \subset U$\\
+    Выберем множество $V$. Тогда существует $V(a) \subset V$\\
+    Пусть дано Определение 2. Для каждого $U$ будем рассматривать только $U(A)$, а вместо $V$ будем брать только $V(a)$\\
+    \textbf{Доказательство $\Leftarrow$}\\
+    Для каждого $V$ существует $V(a) \subset V$. Сузим $V$ до $V(a)$. От этого утверждение не пострадает\\
+    Если для всех $U$ утверждение верно, то и для всех $U=U(A)$ работает, т.к. это частный случай
+    \item Попробуем обобщить Определение 1 для предела $\infty$. Для этого можно ввести метрику $\rho(a,b)=|\arctan a - \arctan b|$ , считая, что $\arctan \pm\infty = \pm\frac \pi2$\\
+    Тогда $x_n\rightarrow \pm\infty \Leftrightarrow \rho(x_n, \pm\infty) \rightarrow 0$
+\end{enumerate}
+\textbf{Свойства пределов отображений}\\
+$f: D\subset X \rightarrow Y$
+\begin{enumerate}
+    \item $\liml_{x\rightarrow a} f(x) = A, \liml_{x\rightarrow a} f(x) = B \Rightarrow A = B$\\
+    \textbf{Доказательство}\\
+    Предел последовательности $f(x_n)$ из определения Гейне единственный
+    \item (Локальная ограниченность отображения, имеющего предел)\\
+    $\liml_{x\rightarrow a} f(x) = A$\\
+    Тогда $\exists\,U(a): f|_{U(a)\cap D}$ - ограничено\\
+    \textbf{Доказательство}\\
+    Если $a \notin D$: Для $B(A)$ $\exists\,\overdot{U}(a)\ \forall\,x\in \overdot{U}(a)\cap D\ f(x)\in B(A)$\\
+    Если $a \in D$: Для $B(A) = B(A,R+\rho(f(a),A))$ $\exists\,U(a)\ \forall\,x\in U(a)\cap D\ f(x)\in B(A)$
+    \item (Теорема о стабилизации знака)\\
+    $\liml_{x\rightarrow a} f(x) = A$\\
+    $A \neq B$\\
+    $\exists\,U(a):\ \forall\,x\in \overdot{U}(a)\cap D\ f(x) \neq B$\\
+    \textbf{Доказательство}\\
+    Для $B(A, \rho(A,B))$ $\exists\,\overdot{U}(a)\ \forall\,x\in \overdot{U}(a)\cap D\ f(x)\in B(A,\rho(A,B))$, а значит $f(x) \neq B$\\
+    \textbf{Следствие}\\
+    $B = 0$\\
+    Тогда $\sign A = \sign f(x)$ в некоторой окрестности
+    \item $g,f:D\subset X \rightarrow Y$, $X$ - метрическое пространство, $Y$ - нормированное пространство\\
+    $\lambda: D \rightarrow \mathbb{R}$\\
+    $f(x) \xrightarrow[x\rightarrow a]{} A \in Y, g(x) \xrightarrow[x\rightarrow a]{} B\in Y, \lambda(x) \xrightarrow[x\rightarrow a]{} L\in \mathbb{R}$\\
+    Тогда
+    \begin{enumerate}
+        \item $f(x)\pm g(x)\xrightarrow[x\rightarrow a]{} A\pm B$
+        \item $\lambda(x)f(x)\xrightarrow[x\rightarrow a]{} LA$
+        \item $\|f(x)\|\xrightarrow[x\rightarrow a]{} \|A\|$
+    \end{enumerate}
+    \textbf{Доказательство}\\
+    Из определения Гейне\\
+    \textbf{Дополнение}\\
+    При $B \neq 0$:\\
+    $\frac {f(x)}{g(x)} \rightarrow \frac AB$
+\end{enumerate}
+\textbf{Определение}\\
+%$G \subset \mathbb{R}, G$ - открытое множество. Тогда $G=\bigcupl_{\alpha\in A} (a_\alpha, b_\alpha)$,где $\{(a_\alpha, b_\alpha)\}_{\alpha\in A}$\\\\\\\\
+%Пусть $V(x)$ - окрестность, если $\left\{\begin{array}{l}
+%     \forall\,V_1(x),V_2(x)\ \Rightarrow \exists\,V_3(x)\subset V_1(x)\cap V_2(x)\\
+%     \forall\,x,y\ \exists\,V(x),V(y):\ V(x)\cap V(y) \neq \varnothing 
+%\end{array}\right.$\\
+%Отсюда можно определить открытые множества\\
+%Топология \textit{метризуемая}, если $\exists$ метрика на $X$ *
+% *TODO*\\
+Рассмотрим в $\overline{\mathbb{R}}$ метрику $\rho(x,y) = |\arctan x - \arctan y|$
+\begin{enumerate}
+    \item $x_n\rightarrow a \in \mathbb{R} \Leftrightarrow \rho(x_n,a) \rightarrow 0$\\
+    $x_n\rightarrow +\infty \Leftrightarrow \rho(x_n,+\infty) \rightarrow 0$
+    \item Тогда из определения Гейне можно получить предел функции в $\overline{\mathbb{R}}$
+    \item Теоремы об арифметических свойствах предела последовательности в $\overline{\mathbb{R}}$ также выполняются при условии, что все операции имеют смысл (нет выражений вида $+\infty-\infty$ и т.д)
+    \item Также выполняются теоремы об арифметических свойствах пределов отображений\\
+\end{enumerate}
+\textbf{Теорема о предельном переходе в неравенствах}\\
+$f,g:D\subset X \rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+$\forall\,x\in D\setminus\{a\}\ f(x) \leq g(x)$\\
+$\liml_{x\rightarrow a} f(x) = A, \liml_{x\rightarrow a} g(x) = B$, где $A,B \in \overline{\mathbb{R}}$\\
+Тогда $A\leq B$ из определения Гейне\\
+\textbf{Следствие}\\
+$f,g,h: D\subset X \rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+$f(x) \leq g(x) \leq h(x)$ при $x \in D \setminus\{a\}$\\
+$\liml_{x\rightarrow a} f(x) = A, \liml_{x\rightarrow a} h(x) = A$. Тогда $\exists\,\liml_{x\rightarrow a} g(x) = A$ из Гейне\\
+\textbf{Определение}\\
+$f: D\subset X \rightarrow Y$, $a$ - предельная точка $D$\\
+$D'\in D$, $a$ - предельная точка $D'$\\
+Предел $f(x)$ при $x\rightarrow a$ по множеству $D':$ - это $\liml_{x\rightarrow a} f|_{D'}(x)$\\
+\textbf{Определение}\\
+$f:D\subset\mathbb{R} \rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+\textit{Левосторонний предел} при $x\rightarrow a, D' = (-\infty, a) \cap D$ - это\\
+$\liml_{x\rightarrow a} f|_{D'} = \liml_{x\rightarrow a-0} f(x)$\\
+\textit{Правосторонний предел} при $x\rightarrow a, D' = (a, +\infty) \cap D$ - это\\
+$\liml_{x\rightarrow a} f|_{D'} = \liml_{x\rightarrow a+0} f(x)$\\
+\textbf{Теорема о пределе монотонной функции}\\
+$f:D\subset \mathbb{R} \rightarrow \mathbb{R}$ и монотонна, $a\in \overline{\mathbb{R}}$\\
+$D'=(-\infty,a)\cap D$, $a$ - предельная точка $D'$\\
+Тогда
+\begin{enumerate}
+    \item $f\uparrow$ и ограничена сверху $\Rightarrow\exists\,\liml_{x\rightarrow a-0} f(x)$ - конечный\\
+    \textbf{Доказательство}\\
+    Дополнение: $\liml_{x\rightarrow a-0}f(x) = \sup_{D'} f(x)$\\
+    Пусть $\sup_{D'} f(x) = A$\\
+    Докажем $\liml_{x\rightarrow a-0}f(x) = A$\\
+    $\forall\, \varepsilon > 0\ \exists\,x\in D'\ A-\varepsilon<f(x)\leq A$\\
+    Пусть $\delta = |x-a|$\\
+    Тогда при $x':a-\delta =x < x' < a\quad A-\varepsilon < f(x) \leq f(x') \leq A$\\
+    Т.е. $\forall\,\varepsilon > 0\ \exists\,\delta\ \forall\,x:a-\delta < x < a\ A-\varepsilon<f(x)\leq A$\\
+    Т.е. $f(x) \xrightarrow[x\rightarrow a-0]{} A$\\
+    Аналогично для неограниченной функции $f(x) \xrightarrow[x\rightarrow a-0]{} +\infty$
+    \item $f\downarrow$ и ограничена снизу $\Rightarrow\exists\,\liml_{x\rightarrow a-0} f(x)$ - конечный
+    \item Аналогично для правого предела возрастающей ограниченной снизу последовательности
+    \item Аналогично для правого предела убывающей ограниченной сверху последовательности
+\end{enumerate}
+\textbf{Критерий Больцано-Коши для отображений}\\
+Пусть $f:D\subset X \rightarrow Y$ - полное\\
+$a$ - предельная точка $D$\\
+Тогда данные выражения эквивалентны:
+\begin{enumerate}
+    \item $\exists\, \liml_{x\rightarrow a}f(x) \in Y$
+    \item $\forall\,\varepsilon>0\ \exists\,V(a)\ \forall\,x,x' \in D \cap \overdot{V}(a)\ \rho(f(x),f(x')) < \varepsilon$
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item[$1 \Rightarrow 2$] Из существования предела:\\
+    $\forall\,\varepsilon>0\ \exists\,V(a)\ \forall\,x \in D \cap \overdot{V}(a)\ \rho(f(x),A) < \frac\varepsilon2$\\
+    $\forall\,\varepsilon>0\ \exists\,V(a)\ \forall\,x' \in D \cap \overdot{V}(a)\ \rho(f(x),A) < \frac\varepsilon2$\\
+    Отсюда $\forall\,\varepsilon>0\ \exists\,V(a)\ \forall\,x,x' \in D \cap \overdot{V}(a)\ \rho(f(x),f(x')) \leq \rho(f(x),A)+\rho(f(x'),A) < \varepsilon$
+    \item[$2 \Rightarrow 1$] по Гейне\\
+    Возьмем $(x_n): \left\{\begin{array}{l}
+         x_n\in D\\
+         x_n \neq a\\
+         x_n \rightarrow a
+    \end{array}\right.$\\
+    $\forall\,\varepsilon>0\ \exists\,V(a)\ \forall\,x,x' \in D \cap \overdot{V}(a)\ \rho(f(x),f(x')) < \varepsilon$\\
+    И $\forall\,\varepsilon>0\ \exists\,V(a)\ \exists\,N\ \forall\,n>N\ x_n\in V(a)$\\
+    Тогда можем взять $x=x_n, n > N; x' = x_m, m > N$\\
+    Отсюда $(f(x_n))$ - фундаментальная, а значит в $Y$ существует конечный предел $f(x_n)$, ч.т.д.
+\end{enumerate}
+\textbf{Следствие}\\
+$f:D\in\mathbb{R}\rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+Тогда $\exists\,\liml_{x\rightarrow a}f(x) \in \mathbb{R} \Leftrightarrow \forall\,\varepsilon>0\ \exists\,\delta>0\ \forall\,x,x'\in D: \begin{array}{l}
+     0 < |x-a|<\delta\\
+     0 < |x'-a| < \delta
+\end{array}\ |f(x)-f(x')| < \varepsilon$\\
+Для $a=+\infty$ аналогично
+\subsection{Непрерывное отображение}
+\textit{Определение}\\
+Пусть $f:D\subset X \rightarrow Y$, $X,Y$ - метрические пространства\\
+$x_0 \in D$\\
+Говорят, что $f$ непрерывна в $x_0$, если верно одно из утверждений\\
+\textit{(на самом деле тогда верны все)}
+\begin{enumerate}
+    \item $\liml_{x \rightarrow x_0} f(x) = f(x_0)$ либо $x_0$ - изолированная точка
+    \item (по Коши) $\forall\,\varepsilon > 0\ \exists\,\delta > 0\ \forall\,x\in D\ \rho(x,x_0)<\delta\ \rho(f(x), f(x_0)) < \varepsilon$
+    \item (на языке окрестностей) $\forall\,U(f(x_0))\ \exists\,V(x_0)\ \forall\, x\in D \cap V(x_0)\ f(x) \in U(f(x_0))$\\
+    \textit{(Эквивалентна топологическому определению: $V(x_0)$ - открытое множество, содержащее $x_0$, $U(f(x_0))$ - открытое множество, содержащее $f(x_0)$)}
+    \item (по Гейне) $\left.\begin{array}{c}
+         x_n \in D \\
+         x_n \rightarrow x_0
+    \end{array}\right\}\Rightarrow f(x_0) \rightarrow f(x_0)$
+\end{enumerate}
+Доказательство эквивалентности аналогично доказательству эквивалентности определений пределов отображений\\
+\textbf{Определение}\\
+$f:D\subset\mathbb{R} \rightarrow Y$, $x_0\in D$\\
+Если $f|_{D\cap (-\infty, x_0]}$ - непрерывна в $x_0$, то $f$ - \textit{непрерывна в $x_0$ слева}\\
+Если $f|_{D\cap [x_0, +\infty)}$ - непрерывна в $x_0$, то $f$ - \textit{непрерывна в $x_0$ справа}\\
+Если $f$ непрерывна слева и справа в точке $x_0$, то она непрерывна в точке $x_0$\\\\
+\textbf{Обозначения}\\
+Для непрерывных функций\\
+$\liml_{x\rightarrow x_0+0} f(x) = f(x_0+0)$\\
+$\liml_{x\rightarrow x_0-0} f(x) = f(x_0-0)$\\\\
+\textbf{Определение}\\
+Если $f(x_0+0), f(x_0-0) \in \bb{R}$ определены и $f(x_0+0) \neq f(x_0-0)$ или $x_0 \not\in D$ или $f(x_0\pm0) \neq f(x_0)$, то в точке $x_0$ $f(x)$ \textit{имеет скачок(разрыв I рода)}\\
+В данном случае $f$ не является непрерывной, т.е. \textit{имеет разрыв в $x_0$}\\
+Также бывает \textit{разрыв II рода} - $\not\exists\,f(x_0+0) \in \bb{R}$ или $\not\exists\,f(x_0-0) \in \bb{R}$\\
+Если $x_0 \notin D$ и $f(x_0+0) = f(x_0-0)$, то разрыв будем считать \textit{устранимым}\\\\
+\textbf{Определение}\\
+$f:D\subset X \rightarrow Y$ \textit{непрерывна на $D$}, если непрерывна в каждой точке $D$\\
+\textbf{Арифметрические свойства}
+\begin{enumerate}
+    \item $f,g: D\subset X \rightarrow Y$, $Y$ - нормированное пространство\\
+    $\lambda:D \rightarrow \mathbb{R}$\\
+    $x_0\in D, f,g,\lambda$ - непрерывны в $x_0$\\
+    Тогда $f+g,\lambda f, \|f\|$ - непрерывны в $x_0$
+    \item $f,g: D\subset X \rightarrow \mathbb{R}$, $x_0\in D$, $f,g$ - непрерывные в $x_0$\\
+    Тогда $f+g, fg, |f|$ - непрерывны\\
+    $\frac{f}{g}, g(x_0) \neq 0$ - непрерывна\\ 
+\end{enumerate}
+\textbf{Замечание}\\
+Для непрерывности на множестве $D$ теоремы аналогичные\\\\
+\textbf{Теорема о стабилизации знака для непрерывных функций}\\
+$f:D\subset X \rightarrow \mathbb{R}$, $x_0 \in D$, $f$ - непрерывна в $x_0$\\
+Тогда $f(x_0) > 0 \Rightarrow \exists\,U(x_0): f|_{U(x_0)} > 0$\\\\
+\textbf{Теорема о непрерывности композиции}\\
+$f:D\subset X \rightarrow Y$\\
+$g:E\subset Y \rightarrow Z$\\
+$f(D) \subset E, x_0 \in D, f$ - непрерывна в $x_0, f(x_0) \in E, g$ - непрерывна в $f(x_0)$\\
+Тогда $g\circ f$ непрерывна в $x_0$\\
+\textbf{Доказательство}\\
+$\forall\,x_n:\ \left\{\begin{array}{l}
+     x_n \in D\\
+     x_n \rightarrow x_0
+\end{array}\right.\ \left\{\begin{array}{l}
+     f(x_n) \in E\\
+     f(x_n) \rightarrow f(x_0)\\
+\end{array}\right.$\\
+Тогда $g(f(x_n)) \rightarrow g(f(x_0))$\\\\
+\textbf{Теорема о пределе композиции}\\
+$f: D \subset X \rightarrow Y$\\
+$g: E\subset Y \rightarrow Z$\\
+$f(D) \subset E, x_0$ - предельная точка $D, \liml_{x\rightarrow x_0} f(x) = A$\\
+$A$ - предельная точка $E, \liml_{y\rightarrow A} g(y) = B$\\
+Пусть $\exists\,U(x_0)\ \forall\, x\in U(x_0) \cap D\ f(x) \neq A$\\
+Тогда $\exists\,\liml_{x\rightarrow x_0} g(f(x)) = B$\\
+Также предел будет существовать и равен $B$, если $A\in E, g$ - непрерывна в $A$\\
+\textbf{Доказательство}\\
+По Гейне\\
+$\left.\begin{array}{l}
+     x_n \in D\\
+     x_n \rightarrow x_0\\
+     x_n \neq x_0\\
+     f(x_n) \rightarrow A\\
+     f(x_n) \in E\\
+     f(x_n) \neq A \text{ начиная с некоторого места}
+\end{array}\right\} \Rightarrow g(f(x_n)) \rightarrow B$\\\\
+\textbf{Определение}\\
+Функции $\const, x^\alpha (\alpha \in \mathbb{R}), \sin x, \cos x, e^x, \ln x, \arcsin x, \arctan x$ и полученные из них конечным числом арифметрических операций и композиций называются \textit{элементарными функциями}\\
+\textbf{Теорема}\\
+Все элементраные функции непрерывны на своих областях определения\\
+\textbf{Теорема (о топологическом определении непрерывности)}\\
+$f: X \rightarrow Y$, $X, Y$ - метрические пространства\\
+Тогда $f$ - непрерывна на $X \Leftrightarrow \forall\,G\subset Y$ - открытое в $Y\ f^{-1}(G)$ - открыто в $X$\\
+\textbf{Доказательство $\Leftarrow$}\\
+Рассмотрим $a \in X$\\
+Пусть $G\subset Y$ - открытое, $f(a) \in G$\\
+Тогда $f^{-1}(G)$ - открыто в $X, a \in f^{-1}(G)$\\
+Тогда $\exists\ U(a):\ U(a) \subset f^{-1}(G)$, ч.т.д.\\
+\textbf{Доказательство $\Rightarrow$}\\
+Пусть $G \subset Y$ - открытое\\
+Выберем $a \subset f^{-1}(G)$\\
+Тогда $f(a) \in G$\\
+Тогда по определению существует окрестность $U(a) \subset f^{-1}(G)$, ч.т.д.\\
+\textbf{Теорема Вейерштрасса о непрерывном образе компакта}\\
+Пусть $f:X\rightarrow Y$ - непрерывно на $X$, $X,Y$ - метрические пространства, $X$ - компактно\\
+Тогда $f(X)$ - компактно\\
+\textbf{Доказательство}\\
+Пусть $f(X) \subset \bigcupl_{\alpha \in A} G_\alpha$, где $G_\alpha$ - открытые в $Y$\\
+Тогда $X \subset \bigcupl_{\alpha \in A} f^{-1}(G_\alpha)$. Из предыдущей теоремы $f^{-1}(G_\alpha)$ - открыты\\
+Тогда существует конечное подпокрытие $f^{-1}(G_{\alpha_i}): X \subset \bigcupl_{i=1}^n f^{-1}(G_{\alpha_i})$\\
+Тогда $f(X) \subset \bigcupl_{i=1}^n G_{\alpha_i}$\\
+\textbf{Следствие 1}\\
+В условиях теоремы $f(X)$ - замкнутое и ограниченное в $Y$\\
+\textbf{Следствие 2(первая теорема Вейерштрасса)}\\
+Пусть $f: [a,b] \rightarrow \mathbb{R}$ - непрерывно на $[a,b]$\\
+Тогда $f([a,b])$ - ограниченное\\
+\textbf{Следствие 3}\\
+$f:X\neq \varnothing\rightarrow \mathbb{R}$ - непрерывна на $X$, $X$ - компактно\\
+Тогда $\exists\,\min f(X), \max f(X)$\\
+\textbf{Доказательство}\\
+$f(X)$ - замкнуто и ограничено, а значит $\exists\,\sup f(X)$ и $\sup f(X) \in f(X)$, ч.т.д.\\
+\textbf{Следствие 4(вторая теорема Вейерштрасса)}\\
+Пусть $f:[a,b] \rightarrow\mathbb{R}$, непрерывна на $[a,b]$\\
+Тогда $\exists\,\max f,\min f$\\
+% \textbf{Исторический пример}\\
+% Найдем макс. площадь вписанного $n$-угольника\\
+% \textbf{Решение}\\
+% Определим, существует ли максимум\\
+% Заметим, что если $n$-угольник не содержит центр окружности, то его площадь может быть увеличена сдвигом вершины\\
+% Тогда рассмотрим $n$-угольник, содержащий центр окружностиъ\\
+% Пусть его центральные углы $\alpha_1, \ldots, \alpha_n, 0\leq \alpha \leq \pi, \suml_{i=1}^n \alpha_i = 2\pi$\\
+% Площадь $n$-угольника равна $S = \frac12 R^2(\sin\alpha_1 + \ldots + \sin\alpha_n)$\\
+% Рассмотрим множество наборов углов $X = \{\alpha \in \mathbb{R}^n: 0\leq \alpha_i \leq \pi, \sum \alpha_i = 2\pi\}$\\
+% Тогда $S:X\rightarrow \mathbb{R}$\\
+% $X$ - замкнутый шар в $\mathbb{R}^n$\\        //лажа, это не замкнутый шар, а его часть(не забывай об ограничении на каждую из координат
+% Отсюда $X$ ограниченное и замкнутое, а значит компактное\\
+% Отсюда $S(X)$ - компактно. Тогда оно замкнуто и ограничено. Отсюда у него существует максимум\\
+\textbf{Определение}\\
+Пусть $A$ - метрическое пространство\\
+$A$ - \textit{связно}, если невозможно представить $A$ в виде объединения двух открытых непересекающихся множеств\\
+\textbf{Лемма (о связности отрезка)}\\
+$[a,b]$ в $\mathbb{R}$ невозможно представить в виде объединения двух непересекающихся непустых открытых множеств\\
+$\nexists\,G_1, G_2$ - открытые в $\mathbb{R}: [a,b] \subset G_1 \cup G_2, [a,b] \cap G_1 \neq \varnothing, [a,b] \cap G_2 \neq \varnothing, G_1 \cap G_2 = \varnothing$\\
+\textbf{Доказательство}\\
+Пусть $G_1, G_2$ существуют\\
+Пусть $a \in G_1$\\
+Пусть $t = \sup \{x: [a,x] \subset G_1\}$\\
+Пусть $b_2 \in G_2$\\
+Тогда $t \leq b_2$\\
+$t$ - корректно определенная точка на $[a,b]$\\
+Если бы $t$ лежал в $G_1$, то она лежала бы там с некой окрестностью, а значит $t$ не был бы $\sup$. Тогда $t \notin G_1$.\\
+Если бы $t$ лежал в $G_2$, то она лежала бы там с некой окрестностью, а значит $t$ не был бы $\sup$. Тогда $t \notin G_2$.\\
+Отсюда $t \in [a,b], t \notin G_1 \cup G_2$, что невозможно.\\\\
+\textbf{Следствие}\\
+Утверждение верно не только для $[a,b]$, но и для $\langle a, b\rangle$\\
+\textbf{Обозначение}\\
+$C(\langle a,b\rangle)$ - множество функций $f:\langle a,b\rangle \rightarrow \mathbb{R}$, непрерывных на $\langle a,b\rangle$\\
+\textbf{Теорема Больцано - Коши о промежуточном значении}\\
+Пусть $f \in C[a,b]$. Тогда $\forall\,\min f(a),f(b) \leq t \leq \max f(a),f(b)\ \exists\,x\in[a,b]: f(x)=t$\\
+\textbf{Доказательство}\\
+Пусть существует $t_0$, не удовлетворяющее этому условию\\
+Тогда $[a,b] = f^{-1}((-\infty, t_0)) \cup f^{-1}((t_0, -\infty))$, что противоречит теореме\\
+\textbf{Теорема о бутерброде}\\
+Пусть $A,B \subset \mathbb{R}^2, A\cap B = \varnothing$ - выпуклые многоугольники\\
+Тогда существует прямая $l$, рассекающая оба многоугольника на равные многоугольники\\
+\textbf{Доказательство}\\
+Для начала решим задачу разреза одного многоугольника прямой, параллельной вектору $v\in \mathbb{R}^2$\\
+Будем двигать прямую по прямоугольнику и считать $\delta$ - разность площадей частей прямоугольника, расположенных по разные части от прямой\\
+$\delta$ принимает значения от $[-S_A, S_A]$\\
+Заметим, что $\delta$ непрерывна(доказывается через две приближающиеся друг к другу прямые)\\
+Тогда $\delta$ принимает все значения $[-S_A, S_A]$, а значит возможно добиться $\delta = 0$, т.е. разрезать прямоугольник на 2 равные по площади части\\\\
+Будем задавать наш вектор $v$ через угол $\phi$. Для вектора построим прямую, разделяющую $A$ на две равные по площади части\\
+Рассмотрим $\sigma(\phi)$ - разность двух половин, на которые данная прямая рассекает $B$. $\sigma$ будет принимать значения $[-S_B, S_B]$\\
+Заметим, что $\sigma(\phi)$ и $\sigma(\phi + \pi)$ разных знаков\\
+Заметим, что $\sigma(\phi)$(доказывается черед два вектора с близкими друк другу углами. Не забываем, что иногда образуется не треугольник, а четырехугольник. Также уточняем, что точка пересечения прямых лежит в $A$)\\
+Тогда $\sigma$ пересекает 0, ч.т.д.\\\\
+\textbf{Теорема о сохранении промежутка}\\
+$f\in C\langle a,b\rangle, m = \inf f, M = \sup\limits_{} f, m,M \in \overline{\mathbb{R}}$\\
+Тогда $f(\langle a,b\rangle) = \langle m, M\rangle$ (выбор скобок не согласован)\\
+\textbf{Доказательство}\\
+Достаточно проверить, что $\forall\,t\in (m,M)\ \exists\,c:\ f(c) = t$\\
+Если это не так, рассмотрим $t_0$, для которого это не выполняется. Тогда $\langle a, b \rangle = f^{-1}((-\infty, t_0))\cup f^{-1}((t_0, +\infty))$\\
+Заметим, что $(-\infty, t_0)$ и $(t_0, +\infty)$ не пусто\\
+\textbf{Замечание}\\
+Тип промежутка не сохраняется\\
+\textbf{Доказательство}\\
+$sin((0, 2\pi)) = [-1, 1]$\\
+\textbf{Но}\\
+По теореме Вейерштрасса образ отрезка - отрезок\\
+\textbf{Определение}\\
+Пусть $\gamma:[a,b] \rightarrow Y$, $Y$ - метрическое пространство, функция непрерывна\\
+Тогда $\gamma$ - \textit{путь}\\
+\textbf{Определение}\\
+$E \in Y$, $Y$ - метрическое пространство\\
+$E$ - \textit{линейно связное} множество, если $\forall\,A,B \in E\ \exists\,$ непрерывная $\gamma:[a,b] \rightarrow Y: \gamma(a) = A,\gamma(b) = B$\\
+\textbf{Пример}\\
+$E = (\Gamma_{y=\sin \frac1x}) \cup ([(0,-1), (0,1)]$ - отрезок $)$\\
+$E$ - связное, но не линейно связное\\
+\textbf{Лемма}\\
+$E\subset \mathbb{R}$ - линейно связное $\Leftrightarrow E$ - промежуток\\
+\textbf{Доказательство $\Leftarrow$}\\
+Пусть $A, B \in \langle a, b \rangle$\\
+Тогда $\gamma(t \in [0, 1]) = A + t(B-A)$ - искомая функция\\
+\textbf{Доказательство $\Rightarrow$}\\
+Если $E = \varnothing$ - очевидно\\
+Иначе:\\
+$m = \inf E, M = \sup E$\\
+Пусть $\exists\,t \in (m, M), t \notin E$\\
+Из линейной связности для $A < t < B$ существует непрерывный путь из $A$ в $B$. А значит этот путь принимает все значения, включая $t$. Тогда $t \in E$.\\
+Отсюда $(m, M) \in E$, а значит $E = \langle m, M \rangle$\\
+\textbf{Теорема о сохранении линейной связности}\\
+$f: X \rightarrow Y$ - непрерывно\\
+$X$ - линейно связное\\
+Тогда $f(X)$ - линейно связное\\
+\textbf{Доказательство}\\
+Пусть $A, B \in f(X), U, V \in X, f(U) = A, f(V) = B$\\
+Построим путь между $U, V$ - $c: [a,b] \rightarrow X, c(a) = U, c(b) = V, c$ - непрерывно\\
+Тогда $f\circ c$ - путь в $f(x)$\\
+\textbf{Теорема (о непрерывности монотонной функции)}\\
+Пусть $f: \langle a, b \rangle \rightarrow \mathbb{R}$ - монотонная функция\\
+Тогда
+\begin{enumerate}
+    \item У такой функции не может быть разрывов второго рода
+    \item Непрерывность $f \Leftrightarrow f(\langle a, b \rangle)$ - промежуток
+\end{enumerate}
+\textbf{Доказательство п.1}\\
+Не умоляя общности пусть $f$ - возрастающая\\
+Возьмем $x_1 \leq x \leq x_2$\\
+Тогда $f(x_1) \leq f(x) \leq f(x_2)$\\
+Заметим, что у такой функции есть предел (из теоремы о пределе монотонной функции)\\
+Пусть $x \rightarrow x_2 - 0$\\
+Тогда $f(x_1) \leq f(x_1+0) \leq f(x_2)$\\
+Тогда у функции существует конечный односторонний предел справа (аналогично слева)\\
+Тогда в любой точке у данной функции существует односторонний предел, а значит не может быть разрывов второго рода, ч.т.д.\\
+\textbf{Доказательство п.2}\\
+$\Rightarrow$: из теоремы о сохранении промежутка\\
+$\Leftarrow$:\\
+Рассмотрим $x_0 \in (a, b)$\\
+Пусть $f(x_0 + 0) \neq f(x_0)$\\
+Из монотоности $f(x_0) < f(x_0 + 0)$\\
+Тогда $(f(x_0), f(x_0 + 0))$ не лежит в множестве значений(для $x < x_0\ f(x) \leq f(x_0)$, для $x > x_0\ f(x) \geq f(x_0+0)$), но тогда множество значений - не промежуток - противоречие\\
+Аналогично для левостороннего предела\\
+\textbf{Следствие}\\
+Пусть $f:\langle a,b\rangle \rightarrow \mathbb{R}$, $f$ - монотонна\\
+Тогда множество точек разрыва не более чем счетно\\
+\textbf{Доказательство}\\
+Не умоляя общности, пусть $f$ возрастает\\
+Пусть $X$ - множество точек разрыва $f$\\
+Построим инъекцию $\phi: X \rightarrow \mathbb{Q}$:\\
+Пусть $x_0 \in X$ - точка разрыва. Тогда $f$ имеет скачок в этой точке\\
+Тогда $f(x_0-0) < f(x_0+0)$ (неравенство из разрывности)\\
+Тогда $\forall\,x_1<x_0<x_2\ f(x_1) \leq f(x_0-0) < f(x_0+0) \leq f(x_2)$(см. доказательство п.1)\\
+Отсюда пусть $\phi(x_0) = $ любое $a \in \mathbb{Q} \cap (f(x_0-0), f(x_0+0))$\\
+Заметим, что $\phi$ является инъекцией, что и требовалось\\
+Отсюда множество $X$ не более чем счетно\\
+\textbf{Пример}\\
+Пусть $\{r_n, r\in \mathbb{N}\} = \mathbb{Q}$\\
+$f(x) := \suml_{n=1}^\infty \frac{\sign(x-r_n)}{2^n}$\\
+\textbf{Теорема (о существовании и непрерывности обратной функции)}\\
+Пусть $f \in C(\lan a, b \ran), f$ - строго монотонна, $m = \inf f, M = \sup f$\\
+Тогда
+\begin{enumerate}
+    \item $f$ - обратима, $f^{-1}: \lan m, M\ran \rightarrow \lan a, b \ran$, функция биективна 
+    \item $f^{-1}$ строго монотонна и имеет ту же монотонность
+    \item $f^{-1}$ непрерывна
+\end{enumerate}
+\textbf{Определение}\\
+Определим функцию $x^\alpha, \alpha \in \mathbb{Q} \leftrightarrow f_\alpha(x)$
+\begin{enumerate}
+    \item $\alpha = 1: f_1 = \nm{id}$\\
+    $f_1(x)$ непрерывна
+    \item $f_n(x) = x\cdot \ldots\cdot x, n \in \mathbb{N}, n \geq 2$ - непрерывна как произведение\\
+    При нечетном $n$ - непрерывна на $\mathbb{R}$\\
+    При четном $n$ - непрерывна на $(-\infty, 0]$ и $[0, +\infty)$
+    \item $f_{-n}(x) = \frac1{f_n(x)}, n \in \mathbb{N}, x \neq 0$\\
+    Непрерывна на $\mathbb{R}\setminus\{0\}$ и монотонна на $(-\infty, 0)$ и $(0, +\infty)$
+    \item $f_0 = 1$ на $\mathbb{R}$
+    \item $f_\frac1n (x), n \in \bb{R}, n$ - нечетная\\
+    Рассмотрим $f_n$:\\
+    $f_n:\bb{R} \rightarrow \bb{R}$, строго возрастает, непрерывна\\
+    Тогда $\exists\,(f_n)^{-1}: \bb{R} \rightarrow \bb{R}$, она непрерывна и возрастает\\
+    $f_\frac1n := (f_n)^{-1}$
+    \item $f_\frac1n (x), n \in \bb{R}, n$ - нечетная\\
+    Рассмотрим сужение $f_n$ на $\bb{R_+}$:\\
+    $f_n:\bb{R}_+ \rightarrow \bb{R}_+$, строго возрастает, непрерывна\\
+    Тогда $\exists\,(f_n)^{-1}: \bb{R}_+ \rightarrow \bb{R}_+$, она непрерывна и возрастает\\
+    $f_\frac1n := (f_n)^{-1}$
+    \item $f_\frac pq := f_\frac1q\circ f_p, \frac pq$ - несократимая дробь\\
+    Если $p$ - четная или $q$ нечетная, то $f_\frac pq: \bb{R} \rightarrow \bb{R}$\\
+    Иначе $f_\frac pq: \bb{R}_+ \rightarrow \bb{R}_+$
+\end{enumerate}
+\textbf{Свойства}\\
+Пусть $x>0$
+\begin{enumerate}
+    \item $x^{r+s} = x^r\cdot x^s$
+    \item $x^{rs}= (x^r)^s$
+    \item $(xy)^s=x^sy^s$
+\end{enumerate}
+\subsection{Показательная функция}
+\textbf{Определение}\\
+Функция $f:\bb{R} \rightarrow \bb{R}$ называется \textit{показательной}, если она
+\begin{enumerate}
+    \item Непрерывна
+    \item Не является $f \equiv 0$ или $f \equiv 1$
+    \item Удовлетворяет свойству $f(x+y) = f(x)f(y)$
+\end{enumerate}
+\textbf{Свойства показательных функций}\\
+Пусть $f$ - показательная функция. Тогда 
+\begin{enumerate}
+    \item $f(x) > 0, f(0) = 1$\\
+    \textbf{Доказательство}\\
+    Т.к. $f \not\equiv 0$, $\exists\, x_0:\ f(x_0) \neq 0$\\
+    Тогда $f(0+x_0) = f(0)f(x_0)$\\
+    Отсюда $f(0) = 1$\\
+    $\forall\,x\ f(x) \neq 0$, т.к. если $f(x_1) = 0$, то $\forall\,t\ f(t) = f(x_1)f(t-x_1) = 0$, а значит $f\equiv 0$\\
+    $f(x) = f(\frac x2)f(\frac x2) > 0$
+    \item $\forall\,r \in \bb{Q}\ f(rx)=f(x)^r$\\
+    \textbf{Доказательство}\\
+    Если $r \in \bb{N}$, очевидно\\
+    Если $r = -n, n \in \bb{N}$: $1 = f(0) = f(nx-nx) = f(nx)f(-nx) = f(nx)f(rx)$\\ Тогда $f(rx) = \frac 1{f(nx)}$\\
+    Если $r = \frac 1n, n \in \bb{N}$: $f(x) = f(n\frac1n) = f(\frac xn)^n$\\ Тогда $f(\frac xn) = f(x)^{\frac 1n}$\\
+    Если $r = \frac mn, \frac mn$ - несократимая дробь: $f(rx) = f(m\frac xn) = f(\frac xn)^m = f(x)^\frac mn$
+    \item $f$ строго монотонна\\
+    Пусть $a := f(1)$\\
+    $a \neq 1$\\
+    $a > 1 \Rightarrow f(x) \uparrow$\\
+    $a < 1 \Rightarrow f(x) \downarrow$\\
+    \textbf{Доказательство}\\
+    Если $a = 1$, то $\forall\, r \in \bb{Q}\ f(r) = f(r-1)f(1) = f(r-1)$\\
+    Тогда из непрерывности функция тождественна единице, что противоречит условию\\
+    Пусть $a > 1$\\
+    Тогда $\forall\,x>0\ f(x) > 1$:\\
+    $f(1\cdot\frac mn) = a^\frac mn > 1, \frac mn$ - несократимая дробь - по свойствам степенной функции\\
+    Тогда $\forall\,x>0\ f(x) \geq 1$(через предельный переход)\\
+    Тогда $\forall\,x>0\ f(x) > 1$, т.к. $\forall\,x>0\ \exists\,r\in\bb{Q}:\ 0 < r < x$\\
+    Тогда $f(x) = f(r)f(x-r)$. $f(r) > 1, f(x-r) \geq 1$. Отсюда $f(x) > 1$\\
+    Т.о. $f(x)$ строго возрастает: $f(x+h)=f(x)f(h) > f(x)\cdot 1$\\
+    Убывание аналогично
+    \item Множество значений $f$ - это $(0, +\infty)$\\
+    \textbf{Доказательство}\\
+    $f$ строго монотонна и непрерывна. Тогда множество значений $f$ - $(\inf f, \sup f)$\\
+    Из свойств $a^r, r \in \bb{Q}$: $\inf f = 0, \sup f = +\infty$
+    \item Пусть $f, g$ - показательные функции. Тогда если $f(1) = g(1)$, то $f = g$
+\end{enumerate}
+\textbf{Теорема}\\
+Пусть существует $f_0$ - показательная функция такая, что $\liml_{x\rightarrow 0} \frac{f(x)-1}{x} = 1$\\
+\textbf{Доказательство}\\
+Ниже
+\textbf{Теорема}\\
+Пусть $f$ - произвольная показательная функция\\
+Тогда $\exists\,\alpha\in \bb{R}:\ \forall\,f(x)=f_0(\alpha x)$, где $f_0$ - функция из предыдущей теоремы\\
+\textbf{Доказательство}\\
+Множество значений $f_0$ - $(0, +\infty)$\\
+$f(1) = a > 0, a \neq 1$\\
+$\exists\,\alpha \neq 0:\ f_0(\alpha) = a$\\
+Пусть $g(x) = f_0(\alpha x)$\\
+$g$ - показательная функция\\
+$g(1) = a$\\
+Из свойства 5 $f(x) = g(x) = f_0(\alpha x)$, ч.т.д.\\
+\textbf{Следствие 1}\\
+Существует единственная $f_0$ из теоремы 2\\
+\textbf{Доказательство}\\
+Пусть $h$ - показательная функция из теоремы 2\\
+Тогда $\exists\,\alpha:\ h(x) = f_0(\alpha x)$\\
+По теореме 2: $1 \xleftarrow[x\rightarrow 0]{} \frac{h(x)-1}{x} = \frac{f_0(\alpha x) -1}{\alpha x}\alpha \xrightarrow[x\rightarrow 0]{} \alpha$\\
+Отсюда $\alpha = 1, h = f_0$, ч.т.д.\\
+\textbf{Определение}\\
+$f_0$ - \textit{экспонента}\\
+$f_0 = \exp$\\
+$f_0(1) = e$\\
+\underline{Обозначения} $\exp x$ и $e^x$ эквивалентны\\
+\textbf{Следствие 2}\\
+Для любого $a > 0, a \neq 1$ существует единственная показательная функция $f: f(1) = a$\\
+Такую функцию будем обозначать $a^x$\\
+\textbf{Доказательство}\\
+Существование:\\
+Для $a$ из условия $\exists!\,\alpha:\ f_0(\alpha) = a$\\
+Тогда $f(x) = f_0(\alpha x)$\\
+Единственность из свойства 5\\
+\textbf{Следствие 3}\\
+$\forall\,a >0, a\neq 1\ \forall\,x,y \in \bb{R}\ a^{xy} = (a^x)^y = (a^y)^x$\\
+\textbf{Доказательство}\\
+Если $x = 0$, все тривиально (хотя по определению справа не показательная функция)\\
+Если $x \neq 0$:
+$b:= a^x$. Из свойств функции $b > 0, b \neq 1$\\
+Для $y \in \bb{Q}\ a^{xy} = (a^x)^y = b^y$ - из свойств\\
+Для $y\in \bb{R}$ подберем $(r_k) \subset Q, r_k \rightarrow y $\\
+$a^{xr_k} = (a^x)^{r_k}$\\
+Тогда из непрерывности $a^{xr_k} \rightarrow a^{xy}, (a^x)^{r_k} \rightarrow (a^x)^y$\\
+Отсюда $a^{xy} = (a^x)^y$
+\subsection{Логарифм}
+$a^x : \bb{R} \rightarrow (0, +\infty)$ - строго монотонна и непрерывна\\
+Тогда существует обратная функция $\log_a x : (0, +\infty) \rightarrow \bb{R}$ - непрерывная и строго монотонная\\
+\textbf{Свойства}\\
+$a > 0, a \neq 1$
+\begin{enumerate}
+    \item $\log_a xy = \log_a x + \log_a y$    
+    \item $\log_a b^x = x\log_a b$
+    \item $\log_a x = \log_a c \log_c x$
+\end{enumerate}
+\textbf{Доказательство}\\
+$u = v \Leftrightarrow a^u = a^v$
+\begin{enumerate}
+    \item $a^{\log_a xy} = xy = a^{\log_a x}a^{\log_a y} = a^{\log_a x + \log_a y}$
+    \item $a^{\log_a b^x} = b^x = a^{x\log_a b}$
+    \item $\log_a x = \log_a(c^{\log_c x}) = \log_a c \log_c x$
+\end{enumerate}
+\subsection{Степень с произвольным показателем}
+Пусть $\sigma \in \bb{R}, x > 0$\\
+$x^\sigma = e^{\sigma \ln x}$ - степенная функция\\
+\textbf{Теорема}\\
+Пусть $A \subset \bb{R}$ - \textit{рационально зависимое}, если $\exists\,x_1,\ldots,x_n \in A:\ \exists\, r_1, \ldots, r_n \in \bb{Q}$(не все нули)$: r_1x_1+\ldots+r_nx_n = 0$\\
+Пусть $X$ - множество всех рационально независимых подмножеств $\bb{R}$\\
+Введем в $X$ отношение частичного порядка $A \subset B$\\
+//todo 11:30 12.12 аксиома выбора
+\subsection{Тригонометрические функции}
+\textbf{Утверждение}\\
+При $0 < x < \frac\pi2\ \sin x < x < \tg x$ - из площадей\\
+\textbf{Следствие}\\
+$|\sin x| \leq |x|$\\
+\textbf{Утверждение}\\
+$\sin x, \cos x$ - непрерывны на $\bb{R}$\\
+\textbf{Доказательство}\\
+Докажем для $x_0$: $|\sin x - \sin x_0| = 2|\cos \frac{x+x_0}{2} \sin \frac{x-x_0}{2}| \leq 2\frac{|x-x_0|}{2} = |x-x_0|$\\
+\textbf{Утверждение}\\
+$\sin$ монотонен на $[-\frac{\pi}{2}, \frac{\pi}{2}] \Rightarrow \exists\,\arcsin: [-1, 1] \rightarrow [-\frac{\pi}{2}, \frac{\pi}{2}]$\\
+$\cos$ монотонен на $[0, \pi] \Rightarrow \exists\, \arccos: [-1, 1] \rightarrow [0, \pi]$
+\subsection{Асимптотические разложения}
+\textbf{Определение}\\
+$f,g:D\subset X \rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+Если существует $\phi: D \rightarrow \mathbb{R}$ и $\forall\,x\in D\setminus\{a\}\ f(x) = \phi(x)g(x)$
+\begin{enumerate}
+    \item $\phi$ ограничена на $V(a) \cap D$, то \textit{$f$ ограничена по сравнению с $g$ в $V(a)$}\\
+    $f = O(g)$
+    \item $\phi\xrightarrow[x\rightarrow a]{} 0$, то \textit{$f$ бесконечно мала относительно $g$ при $x\rightarrow a$}\\
+    $f = o(g)$ 
+    \item $\phi\xrightarrow[x\rightarrow a]{} 1$, то \textit{$f$ эквивалентна $g$ при $x\rightarrow a$}\\
+    $f \sim g$
+\end{enumerate}
+\textbf{Аналогичные определения}\\
+$f,g:D\subset \mathbb{R} \rightarrow \mathbb{R}$
+\begin{enumerate}
+    \item $\exists\,C > 0\ \forall\,x\in D\ |f(x)| \leq C|g(x)| \Leftrightarrow f=O(g)$ на $D$
+    \item $f=O(g); g=O(f)$ - $f$ и $g$ \textit{асимптотически сравнимы} на $D$
+\end{enumerate}
+\textbf{Замечание}\\
+$f=o(g); g \neq 0$ в $\overdot V(a) \cap D \Leftrightarrow \frac fg \xrightarrow[x\rightarrow a]{}0$\\
+$f \sim g; g \neq 0$ в $\overdot V(a) \cap D \Leftrightarrow \frac fg \xrightarrow[x\rightarrow a]{}1$\\
+\textbf{Примеры свойств}
+\begin{enumerate}
+    \item При $x \rightarrow a: f \sim g \Leftrightarrow f = g+o(g) = g+o(f)$
+    \item $o(f) \pm o(f) = o(f)$
+\end{enumerate}
+\textbf{Эквивалентные функции при $x \rightarrow 0$}\\
+$\begin{array}{ll}
+    \sin x \sim x & \sin x = x + o(x)\\
+    e^x -1 \sim x & e^x = 1 + x + o(x)\\
+    (1+x)^\alpha - 1 \sim \alpha x & (1+x)^\alpha = 1 + \alpha x + o(x)\\
+    \ln(1+x) \sim x & \ln(1+x) = x + o(x)\\
+\end{array}$\\\\
+\textbf{Теорема о замене на эквивалентные функции}\\
+Пусть у нас есть функции $f,g,\widetilde{f}, \widetilde{g}: D \subset X \rightarrow Y$, $a$ - предельная точка $D$\\
+$f \sim \widetilde{f}, g \sim \widetilde{g}$ при $x \rightarrow a$\\
+Тогда
+\begin{enumerate}
+    \item $\exists\liml_{x\rightarrow a} f(x)g(x) \in \overline{\mathbb{R}} \Leftrightarrow \exists\liml_{x\rightarrow a} \widetilde{f}(x)\widetilde{g}(x) \in \overline{\mathbb{R}}$ и при существовании\\
+    $\liml_{x\rightarrow a} f(x)g(x) = \liml_{x\rightarrow a} \widetilde{f}(x)\widetilde{g}(x)$
+    \item $\exists\liml_{x\rightarrow a} \frac{f(x)}{g(x)} \in \overline{\mathbb{R}} \Leftrightarrow \exists\liml_{x\rightarrow a} \frac{\widetilde{f}(x)}{\widetilde{g}(x)} \in \overline{\mathbb{R}}$ и при существовании\\
+    $\liml_{x\rightarrow a} \frac{f(x)}{g(x)} = \liml_{x\rightarrow a} \frac{\widetilde{f}(x)}{\widetilde{g}(x)}$, если $a$ - предельная точка $D'=D\cap \{x: g(x) \neq 0\}$
+\end{enumerate}
+\textbf{Доказательство}\\
+$f(x) = \phi(x)\widetilde{f}(x), g(x) = \psi\widetilde{g}(x)$ в $U(a) \cap D$ и $\phi, \psi \xrightarrow[x\rightarrow a]{} 1$\\
+Тогда
+\begin{enumerate}
+    \item $\liml_{x\rightarrow a} f(x)g(x) = \liml_{x\rightarrow a} \phi(x)\psi(x)\widetilde{f}(x)\widetilde{g}(x) = \liml_{x\rightarrow a} \widetilde{f}(x)\widetilde{g}(x)$\\
+    $\exists\ \liml_{x\rightarrow a} f(x)g(x) \Rightarrow \exists\liml_{x\rightarrow a} \widetilde{f}(x)\widetilde{g}(x)$
+    \item $\liml_{x\rightarrow a} \widetilde{f}(x)\widetilde{g}(x) = \liml_{x\rightarrow a} \frac1{\phi(x)}\frac1{\psi(x)}f(x)g(x) = \liml_{x\rightarrow a} f(x)g(x)$\\
+    $\exists\liml_{x\rightarrow a} \widetilde{f}(x)\widetilde{g}(x) \Rightarrow \exists\ \liml_{x\rightarrow a} f(x)g(x)$
+\end{enumerate}
+\textbf{Определение}\\
+$g_1,g_2,g_3,\ldots: D\subset X\rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+Пусть $\forall\,k\ g_{k+1}=o(g_k), x\rightarrow a$\\
+Тогда набор функций $g_1,g_2,\ldots$ называют \textit{шкалой}\\
+$f = c_1g_1+c_2g_2+\ldots+c_ng_n+o(g_n), x\rightarrow a$ - \textit{асимптотическое разложение по шкале $(g_k)$}\\\\
+\textbf{Теорема о единственности асимптотического разложения}\\
+$f,g_1,\ldots,g_n:D\subset X \rightarrow \mathbb{R}$, $a$ - предельная точка $D$\\
+$g_1,\ldots,g_n$ - шкала асимптотического разложения при $x\rightarrow a$\\
+$f = c_1g_1+c_2g_2+c_3g_3\ldots c_ng_n+o(g_n)$\\
+$f = d_1g_1+d_2g_2+d_3g_3\ldots d_ng_n+o(g_n)$\\
+Тогда $c_i = d_i, i = 1\ldots n$\\
+\textbf{Доказательство}\\
+Пусть $m := min\{k: c_k \neq d_k\}$\\
+Тогда $f=c_1g_1+\ldots+c_mg_m+o(g_m)$\\
+$f=d_1g_1+\ldots+d_mg_m+o(g_m)$\\
+Отсюда $f-f=0=(c_m-d_m)g_m+o(g_m), x\rightarrow a$\\
+$(d_m-c_m)g_m = o(g_m)$\\
+Отсюда  $g_m = o(g_m)$, что невозможно, ч.т.д.\\
+\textbf{Пример}\\
+$f(x) = ax+b+o(1), x\rightarrow +\infty$ (для шкалы $x^1,x^0,x^{-1},\ldots$)\\
+Тогда $y=ax+b$ - \textit{наклонная асимптота} к графику $y=f(x)$\\
+$\liml_{x\rightarrow+\infty}\frac{f(x)}{x} = a$\\
+$\liml_{x\rightarrow+\infty} f(x)-ax = b$\\\\
+\textbf{Теорема (Формула Тейлора для многочленов)}\\
+$f:\mathbb{R}\rightarrow\mathbb{R}$ - многочлен $\deg f = n$, $x_0\in \mathbb{R}$\\
+Тогда $\forall\,x\in\mathbb{R}\\f(x)=f(x_0)+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\ldots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$\\
+\textbf{Доказательство}\\
+Представим $f$ в виде $f(x)=b_0+b_1(x-x_0)+b_2(x-x_0)^2+\ldots+b_n(x-x_0)^n$\\
+Тогда\\
+$f'(x) = 1\cdot b_1+2\cdot b_2(x-x_0)+\ldots+n\cdot b_n(x-x_0)^{n-1}$\\
+$f''(x) = 2\cdot1\cdot b_2+3\cdot2\cdot b_3(x-x_0)+\ldots+n\cdot (n-1)\cdot b_n(x-x_0)^{n-2}$\\
+$\vdots$\\
+$f^{(k)}(x) = k!\cdot b_k+\frac{(k+1)!}{2!}\cdot b_{k+1}(x-x_0)+\ldots+\frac{n!}{(n-k)!}\cdot b_n(x-x_0)^{n-k}$\\
+Отсюда $f(x_0) = b_0, f'(x_0) = 1!\cdot b_1, \ldots f^{(k)}(x_0) = k!\cdot b_k$, из чего следует формула, ч.т.д.\\
+\textbf{Теорема (Формула Тейлора)}\\
+$f:\langle a, b \rangle \rightarrow \mathbb{R}, x_0\in \langle a, b \rangle$, $f$ - $m$ раз дифференцируема на $\langle a, b \rangle$\\
+Тогда $\forall\,x\in\mathbb{R}\\f(x)=f(x_0)+\frac{f'(x_0)}{1!}(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\ldots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + o((x-x_0)^n)$\\
+\subsection{Замечательные пределы}
+\begin{enumerate}
+    \item $\liml_{x\rightarrow 0} \frac{\sin x}{x} = 1$\\
+    \textbf{Доказательство}\\
+    При $x \in (0, \frac{\pi}{2})$ $\sin x < x < \tg x$\\
+    $1 \xleftarrow[x \rightarrow 0]{} \cos x < \frac{\sin x}{x} < 1 \xrightarrow[x \rightarrow 0]{} 1$\\
+    \textbf{Следствие}\\
+    $\liml_{x\rightarrow 0} \frac{1-\cos x}{x^2} = \frac12$\\
+    $\liml_{x\rightarrow 0} \frac{\tg x}{x} = 1$\\
+    $\liml_{x\rightarrow 0} \frac{\arcsin x}{x} = 1$\\
+    $\liml_{x\rightarrow 0} \frac{\arctg x}{x} = 1$\\
+    \textbf{Следствие 2}\\
+    $(\sin x_0)' = \liml_{x\rightarrow x_0} \frac{\sin x - \sin x_0}{x-x_0} = \liml_{x\rightarrow x_0} \frac{2\cos \frac{x+x_0}{2}\sin \frac{x-x_0}{2}}{x-x_0} = \cos x_0$
+    \item $\liml_{x\rightarrow 0} \frac{e^x - 1}{x} = 1$ - из теоремы о существовании экспоненты\\
+    \textbf{Следствие}\\
+    $\liml_{x\rightarrow 0} \frac{a^x-1}{x} = \ln a$
+    \item $\liml_{x\rightarrow 0} \frac{\ln (1+x)}{x} = 1$\\
+    \textbf{Доказательство}\\
+    Замена\\
+    \textbf{Следствие}\\
+    $(\ln x)' = \frac{1}{x}$
+    \item $\liml_{x\rightarrow 0} (1+x)^{\frac{1}{x}} = e$\\
+    \textbf{Доказательство}\\
+    Экспонента от предыдущего предела\\
+    \textbf{Следствие}\\
+    $\liml_{n\rightarrow \infty} (1+\frac1n)^n = e$
+    \item $\liml_{x\rightarrow 0} \frac{(1+x)^\alpha - 1}{x} = \alpha, \alpha \in \bb{R}$\\
+    \textbf{Доказательство}\\
+    Если $\alpha = 0$: $\liml_{x\rightarrow 0} \frac{(1+x)^\alpha - 1)}{x} = 0$\\
+    Иначе: $f:= (1+x)^\alpha - 1$\\
+    Заметим, что $\alpha \ln (1+x) = \ln(f+1)$\\
+    Тогда $\liml_{x\rightarrow 0} \frac{(1+x)^\alpha - 1}{x} = \liml_{x\rightarrow 0} \frac{f(x)}{x} = \liml_{x\rightarrow 0}\frac{f(x)}{\ln (f(x)+1)} \cdot \frac{\alpha \ln (1+x)}{x} = \alpha$
+\end{enumerate}
+\section{Дифференциальное счисление}
+\subsection{Производная}
+\textbf{Определение}\\
+Пусть $f: \lan a, b\ran \rightarrow \bb{R}, x_0 \in \lan a, b \ran$\\
+Если $\exists\, A \in \bb{R}: f(x) = f(x_0) + A(x-x_0)+o(x-x_0), x\rightarrow x_0$, то $f$ - дифференцируема в $x_0$, $A = f'(x_0)$ - производная в $x_0$\\
+$f'(x_0)$ однозначно определено по единственности асимптотического разложения\\
+\textbf{Определение 2}\\
+Пусть $f: \lan a, b\ran \rightarrow \bb{R}, x_0 \in \lan a, b \ran$\\
+Если $\exists\, \liml_{x\rightarrow x_0} \frac{f(x)-f(x_0)}{x-x_0} = A \in \bb{R}$, то $f$ - дифференцируема, $A = f'(x_0)$ - производная\\\\
+Определения 1 и 2 равносильны\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item $f'_\pm(x_0) = \liml_{x\rightarrow x_0\pm0} \frac{f(x)-f(x_0)}{x-x_0}$ - односторонняя производная\\
+    Если существуют и равны $f'_+(x_0)$ и $f'_-(x_0)$, то $f$ дифференцируема в $x_0, f'(x_0) = f'_\pm(x_0)$
+    \item Если $\liml_{x\rightarrow x_0} \frac{f(x)-f(x_0)}{x-x_0} = \infty$, то функция не считается дифференцируемой
+    \item $f$ - дифференцируема $\Rightarrow f$ - непрерывна (для $f'(x_0) = \infty$ не действует)
+\end{enumerate}
+\textbf{Определение}\\
+Пусть $f:\langle a, b \rangle \rightarrow \bb{R}, D$ - множество точек, где $f$ дифференцируема\\
+$f'(x):D\rightarrow \bb{R}$\\
+$f(x) = f(x_0) + f'(x_0)(x-x_0)+o(x-x_0)$\\
+Рассмотрим в $\bb{R}^2$ прямую $y=f(x_0)+f'(x_0)(x-x_0)$ - \textit{касательную} к графику функции в $(x_0, f(x_0))$\\
+\subsection{Правила дифференцирования}
+\textbf{Теорема}\\
+Пусть  $f,g: \langle a, b \rangle \rightarrow \bb{R}$\\
+$f,g$ дифференцируемы в $x_0$\\
+Производные следующих функций существуют и равны ...:
+\begin{enumerate}
+    \item $(f+g)' = f' + g'$
+    \item $\forall\,\alpha \in \bb{R} (\alpha f)' = \alpha f'$
+    \item $(fg)' = f'g+fg'$
+    \item $g(x_0) \neq 0: \left(\frac fg \right)' = \frac{f'g-fg'}{g^2}$\\
+    \textbf{Доказательство}\\
+    $\liml_{h\rightarrow 0} \frac{\frac fg (x_0+h) - \frac fg (x_0)}h = \liml_{h \rightarrow 0} \frac{f(x_0+h)g(x_0)-f(x_0)g(x_0+h)}{hg(x_0+h)g(x_0)} = \\\liml_{h \rightarrow 0} \frac{\frac{f(x_0+h)-f(x_0)}hg(x_0) - f(x_0)\frac{g(x_0+h)-g(x_0)}{h}}{g(x_0+h)g(x_0)} = \frac{f'g-fg'}{g^2}$
+\end{enumerate}
+\textbf{Замечание без доказательств}\\
+Возьмем $\left( \frac{x\sin x}{\ln x}\right)'$\\
+Выберем какой-то $x$. Все остальные $x$ заменим на константу $x_0$ и выпишем производную такой функции. Сделаем так для всех $x$ и возьмем сумму от результатов. В получившемся выражении заменим $x_0$ обратно на $x$\\
+$\left( \frac{x\sin x}{\ln x}\right)' = \frac{\sin x}{\ln x} + \frac{x}{\ln x}\cos x + x\sin\left(-\frac{1}{\ln^2 x} \cdot \frac 1x\right)$\\
+В общем виде $\left(\frac{f}{g}\right) = \frac{f'}{g} + f\left(-\frac{g'}{g^2}\right)$\\
+*TODO какие ограничения*\\
+\textbf{Теорема}\\
+Пусть $f: \langle a, b \rangle \rightarrow \langle c, d \rangle$, дифференцируема на $x \in \lan a, b \ran$\\
+$g: \lan c, d \ran \rightarrow \bb{R}$, дифференцируема в $y = f(x)$\\
+Тогда $g\circ f$ - дифференцируема в $x$ и $(g \circ f)' = g'(f(x))\cdot f'(x)$\\
+\textbf{Доказательство}\\
+$f(x+h) = f(x)+f'(x)h+h\alpha(h), \alpha(h)$ бесконечно малая при $h \rightarrow 0$\\
+$g(y+k) = g(y)+g'(y)k + y\beta(k)$\\
+Тогда $g(f(x+h)) = g(f(x)+f'(x)h+h\alpha(h))$. Заметим, что $f(x) = y, f'(x)h+h\alpha(h), \alpha(h)$ подходит под описание $k$\\
+$g(f(x+h)) = g(f(x)) + g'(f(x))(f'(x)h+h\alpha(h)) + (f'(x)h+h\alpha(h))\beta(k) = \\
+g(f(x)) + g'(f(x))f'(x)h + g'(f(x))h\alpha(h) + (f'(x)h+h\alpha(h))\beta(k)$\\
+Заметим, что $g'(f(x))h\alpha(h) + f'(x)h\beta(k)+h\alpha(h)\beta(k) = o(h)$\\
+Тогда $g(f(x+h)) = g(f(x))+g'(f(x))f'(x)h + o(h)$, ч.т.д.\\
+\textbf{Замечание}\\
+Можно считать, что $\alpha(0) = \beta(0) = 0$. Тогда $\alpha, \beta$ непрерывные, а значит мы считаем композицию непрерывных функций. Отсюда производная существует\\
+\textbf{Теорема (о дифференцировании обратной функции)}\\
+Пусть $f:\lan a, b \ran \rightarrow \bb{R}$, функция непрерывна на $\lan a, b \ran$, строго монотонна, дифференцируема в $x$, $f'(x) \neq 0$\\
+Тогда $f^{-1}$ - дифференцируема в $f(x)$ и $(f^{-1})'(f(x)) = \frac{1}{f'(x)}$\\
+Т.е. $(f^{-1})' = \frac{1}{f'\circ f^{-1}}$\\
+\textbf{Доказательство}\\
+Пусть $x = f^{-1}(y), h = f^{-1}(y+k)-f^{-1}(y)$\\
+$\frac{f^{-1}(y+k) - f^{-1}(y)}k = \frac{h(k)}{f(x+k)-f(x)} = \frac{1}{\frac{f(x+h(k))-f(x)}{k(k)}} \xrightarrow[k\rightarrow 0]{} \frac{1}{f'(x)}$, ч.т.д.\\
+\textbf{Таблица производных}
+\begin{itemize}
+    \item $(x^\alpha)' = \alpha x^{\alpha-1}$
+    \item $(e^x)' = e^x$\\
+    $(a^x)' = \ln a\cdot a^x$
+    \item $\sin' = \cos$\\
+    $\cos' = \sin$\\
+    $\tg' = \frac 1{\cos^2} = \tg^2 + 1$
+    \item $(\ln x)'= \frac 1x$
+    \item $(\arcsin x)' = \frac{1}{\sqrt{1-x^2}}$\\
+    $(\arccos x)' = -\frac{1}{\sqrt{1-x^2}}$\\
+    $(\arctan x)' = \frac{1}{1+x^2}$
+\end{itemize}
+\subsection{Теорема о среднем}
+\textbf{Лемма(о возрастании в точке)}\\
+Пусть $f:\lan a, b\ran \rightarrow \bb{R}$, дифференцируема в $x_0 \in (a,b), f'(x_0) > 0$\\
+Тогда $\exists\,\varepsilon > 0:\begin{array}{cc}
+     \forall\,x\in (x_0, x_0+\varepsilon)\ f(x) > f(x_0)\\
+     \forall\,x\in (x_0-\varepsilon, x_0)\ f(x) < f(x_0)
+\end{array}$\\
+\textbf{Доказательство}\\
+$f'(x_0) = \liml_{h\rightarrow 0} \frac{f(x_0+h)-f(x_0)}{h} > 0$\\
+При $h \rightarrow +0 (\Rightarrow h > 0)\ \exists\,\varepsilon\ f(x_0+h) - f(x_0) > 0$ (из предела)\\
+Аналогично для $h \rightarrow -0$\\
+\textbf{Теорема Ферма}\\
+Пусть $f:\lan a, b \ran \rightarrow \bb{R}, x_0 \in (a,b), f(x_0) = \maxl_{\lan a, b \ran} f, f$ - дифференцируема в $x_0$\\
+Тогда $f'(x_0) = 0$ (необходимое условие экстремума)\\
+\textbf{Доказательство}\\
+Очевидно из леммы\\
+\textbf{Теорема Ролля}\\
+Пусть $f:[a,b] \rightarrow \bb{R}$, непрерывная на $[a,b]$, дифференцируема на $(a,b)$, $f(a) = f(b)$\\
+Тогда $\exists\,c \in (a,b):\ f(c) = 0$\\
+\textbf{Доказательство}\\
+$c$ - найдется среди точек максимума или минимума\\
+По т. Вейерштрасса у этой функции существуют точки максимума или минимума\\
+Если максимум и минимум достигаются только в $a$ и $b$, то $f = const$\\
+Тогда $c$ - любая точка $(a,b)$\\
+Иначе $c$ - любая точка максимума или минимума в $(a,b)$\\
+\textbf{Обозначение}\\
+$\nm{Ln}(x) = ((1-x^2)^n)^{(n)}$ - \textit{многочлен Лежандра}\\
+\textbf{Пример-теорема}\\
+Многочлен $\nm{Ln}(x)$ имеет $n$ различных вещественных корней\\
+\textbf{Доказательство}\\
+Пусть $f,g$ - многочлены\\
+Введем понятие:\\
+Если $f(x) = (x-a)^k g(x), g(a) \neq 0$\\
+Тогда будем говорить, что $a$ - корень кратности $k$\\
+Заметим, что $a$ - корень кратности $k-1$ у $f'(x)$:\\
+$f(x)' = k(x-a)^{k-1}g(x) + (x-a)^kg'(x) = (x-a)^{k-1}(kg(x)-(x-a)g'(x))$\\
+Теперь докажем пример\\
+У $(1-x^2)^n$ - корни -1, 1 имеют кратность $n$. Больше у него корней нет, т.к. их не больше $2n$\\
+Продифференцируем выражение\\
+Тепер -1 и 1 имеют кратность $n-1$. По теореме Ролля в $(-1, 1)$ существует корень. Его кратность будет 1, т.к. всего корней $2n-1$\\
+Продифференцируем выражение еще раз\\
+Тепер -1 и 1 имеют кратность $n-2$. $c$ перестанет быть корнем. В $(-1, c)$ и $(c, 1)$ будут корни по теореме Ролля. Их кратность будет $1$\\
+Тогда после $n-1$ дифференцирований корни -1 и 1 будут иметь кратность 1. Степень многочлена будет $n+1$\\ Аналогично предыдущим случаям будет $n-1$ корней кратности 1\\
+После еще одного дифференцирования -1 и 1 перестанут быть корнями. Многочлен будет иметь $n$ корней кратности 1. Т.о. все они различны, ч.т.д.\\
+\textbf{Теорема Лагранжа}\\
+Пусть $f:[a,b] \rightarrow \bb{R}$\\
+Функция непрерывна на отрезке $[a,b]$ и дифференцируема на $(a,b)$\\
+Тогда $\exists\,c\in(a,b):\ \frac{f(b)-f(a)}{b-a} = f'(c)$\\
+\textbf{Теорема Коши}\\
+Пусть $f, g:[a,b] \rightarrow \bb{R}$\\
+Функции непрерывны на отрезке $[a,b]$ и дифференцируемы на $(a,b)$\\
+$g' \neq 0$ в $(a,b)$\\
+Тогда $\exists\,c\in(a,b):\ \frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f'(c)}{g'(c)}$\\
+\textbf{Замечание}\\
+Если $g(b)=g(a)$, то $g'(x)$ в какой-то момент будет 0 по теореме Ролля. Тогда $g(b) \neq g(a)$\\
+\textbf{Доказательство}\\
+Пусть $F(x) = f(x)-kg(x)$\\
+Подберем $k: F(a) = F(b)$:\\
+$k = \frac{f(b)-f(a)}{g(b)-g(a)}$\\
+Т.к. $F(a) = F(b)$, то $\exists\,c\in (a,b)\ F'(c) = 0$, т.е. $f'(c) = k g'(c)$, ч.т.д.\\
+\textbf{Следствие}\\
+$f: \lan a, b \ran \rightarrow \bb{R}$, дифференцируема на $\lan a, b \ran$\\
+Пусть $\exists\,M>0:\ \forall\,x\in \lan a,b \ran\ |f'(x)| \leq M$\\
+Тогда $\forall\,x,x+h \in \lan a,b\ran\ |f(x+h)-f(x)| \leq M|h|$\\
+\textbf{Следствие 2}\\
+$f\in C[x_0, x_0+h]$, дифференцируема на $(x_0, x_0+h]$\\
+Пусть $\exists\,\liml_{x\rightarrow x_0+0} f'(x) = k\in \overline{\bb{R}}$\\
+Тогда $\exists\,f_+'(x_0) = k$\\
+\textbf{Доказательство}\\
+$f_+'(x_0) = \liml_{t\rightarrow +0} \frac{f(x_0+t)-f(x_0)}{t}$\\
+По т. Лагранжа $\exists\,c\in(x_0, x_0+t):\ \frac{f(x_0+t)-f(x_0)}{t} = f'(c)$\\
+Тогда $f_+'(x_0) = \liml_{t\rightarrow +0} f'(c) = k$\\
+\textbf{Теорема Дарбу}\\
+$f:[a,b] \rightarrow \bb{R}$, дифференцируемая на $[a,b]$\\
+Тогда $\forall\, C: \min(f'(a), f'(b)) < C < \max(f'(a), f'(b))\ \exists\,c\in (a,b):\ f'(c) = C$\\
+\textit{(При этом производная не является непрерывной)}\\
+\textbf{Доказательство}\\
+Пусть $g(x) = f(x) - Cx$\\
+Тогда $g'(a)$ и $g'(b)$ разных знаков\\
+Пусть $g'(a) > 0, g'(b) < 0$\\
+По т. Вейерштрасса $\exists\,c: g(c) = \maxl_{[a,b]} g(x), c \neq a,b$ по лемме\\
+Тогда $g'(c) = 0$\\
+\textbf{Следствие}\\
+Если $f$ дифференцируема на $\lan a,b \ran$, то $f'(\lan a, b \ran)$ - промежуток\\
+\textbf{Следствие 2}\\
+$f'$ не может иметь разрывов первого рода\\
+\subsection{Производные высших порядков}
+\textbf{Определение}\\
+$f:\lan a,b \ran \rightarrow \bb{R}$, дифференцируемая на $\lan a,b \ran$\\
+Тогда $f':\lan a, b\ran \rightarrow \bb{R}$\\
+Если нашлась $x_0\in\lan a,b\ran: \exists\,(f')'(x_0)$, то говорят, что $(f')'(x_0)$ - это вторая производная в $f_0$\\
+Аналогично далее\\
+Аналогично для односторонних производных (заранее сужаем область определения до требуемой)\\
+Пусть $E$ - промежуток на $\bb{R}$. За $C^n(E)$ будем обозначать множество функций, определенных на $E$, $n$ раз дифференцируемых на $E$, и $f^{(n)}$ - непрерывных на $E$\\
+$C^\infty E = \bigcapl_{n\in \bb{N}} C^n(E)$\\
+\textbf{Замечание}\\
+$C^E \supsetneqq C^1(E) \supsetneqq C^2(E) \supsetneqq \ldots \supset C^\infty(E)$\\\\
+\textbf{Лемма}\\
+Пусть $r: \lan a,b \ran \rightarrow \bb{R}, x_0 \in \lan a, b \ran$, \\
+$r$ - $n-1$ раз дифференцируема на $\lan a, b \ran$, \\
+$r$ - $n$ раз дифференцируема в $x_0$ и $r(x_0) = r'(x_0) = \ldots = r^{(n)}(x_0) = 0$\\
+Тогда $r(x) = o((x-x_0)^n), x \rightarrow x_0$\\
+\textbf{Доказательство}\\
+Докажем по индукции
+\begin{enumerate}
+    \item База\\
+    $r(x) = r(x_0) + r'(x_0)(x-x_0) + o(x-x_0)$\\
+    Тогда $r(x) = o(x-x_0)$
+    \item Переход (от n к n+1)\\
+    Пусть $R(x)$ дифференцируема $n$ раз на $\lan a, b \ran$, $n+1$ раз - в $x_0$, $R(x_0) = \ldots = R^{(n+1)} (x_0) = 0$
+    Тогда $r(x):= R'(x)$ - удовлетворяет предположению индукции\\
+    Тогда $r(x) = o((x-x_0)^n)$\\
+    Отсюда $\frac{R(x)}{(x-x_0)^{n+1}} = \frac{R(x)-R(x_0)}{x-x_0} \frac{1}{(x-x_0)^n}$\\
+    По теореме Лагранжа для некоторой $c \in (\min(x, x_0), \max(x, x_0))$:\\
+    $\frac{R(x)-R(x_0)}{x-x_0} \frac{1}{(x-x_0)^n} = \frac{R'(c)}{(x-x_0)^n}$\\
+    $|\frac{R(x)}{(x-x_0)^{n+1}}| = \frac{|R'(c)|}{|x-x_0|^n} \leq \frac{|R'(c)|}{|c-x_0|^n} = \frac{|r(c)|}{|c-x_0|^n} \xrightarrow[x\rightarrow x_0]{} 0$
+\end{enumerate}
+\textbf{Формула Тейлора с остатком в форме Пеано}\\
+$f: \lan a, b \ran \rightarrow \bb{R}$, $n-1$ раз дифференцируема на $\lan a, b\ran$, $n$ раз - в $x_0 \in \lan a, b \ran$\\
+Тогда $f(x) = \suml_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k + \underset{x \rightarrow x_0}o((x-x_0)^n)$\\
+\textbf{Доказательство}\\
+$r(x):= f(x) - \suml_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$\\
+$r(x_0) = 0$\\
+$r'(x_0) = f'(x_0) - \suml_{k=0}^{n-1} \frac{f^{(k+1)}(x_0)}{k!}(x-x_0)^k = 0$\\
+$r^{(l)}(x_0) = f^{(l)}(x_0) - \suml_{k=l}^n \frac{f^{(k)}(x_0)}{(k-l)!}(x-x_0)^{k-l} = 0, l \leq n$\\
+Из леммы $r(x) = \underset{x\rightarrow x_0}{o((x-x_0)^n)}$\\
+\textbf{Обозначения}\\
+$T_n(f, x_0)(x) = \suml_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$ - многочлен Тейлора $n$-ой степени функции $f$ в точке $x_0$\\
+Формула Тейлора: $f(x) = T_n(f, x_0)(x) + R_n$, где $R_n$ - остаток в формуле Тейлора\\
+$R_n = o((x-x_0)^n)$\\
+\textbf{Теорема}\\
+Пусть у нас есть рациональная функция $\frac{P(x)}{Q(x)}, P, Q$ - многочлены, $\deg P < \deg Q$\\
+$Q(x) = (x-a_1)^{k_1}\cdot\ldots\cdot (x-a_n)^{k_n}$\\
+Тогда существует n серий вещественных коэффициентов: $\alpha_1,\ldots,\alpha_{k_1}; \beta_1, \ldots, \beta_{k_2}; \ldots; \omega_1, \ldots, \omega_{k_n}$ таких, что\\
+$\frac{P(x)}{Q(x)} = (\frac{\alpha_1}{x-a_1}+\ldots+\frac{\alpha_{k_1}}{(x-a_1)^{k_1}}) + \ldots + (\frac{\omega_1}{x-a_n}+\ldots+\frac{\omega_{k_n}}{(x-a_n)^{k_n}})$\\
+\textbf{Доказательство}\\
+Получим серию $\alpha$: $\frac{P}{Q} = \frac{1}{(x-a_1)^{k_1}}\cdot F_1, F_1 = \frac{P(x)}{(x-a_2)^{k_2}\cdot\ldots\cdot (x-a_n)^{k_n}}$\\
+Заметим, что $F_1 \in C^{\infty}$\\
+Отсюда \\
+$\frac{P}{Q} = \frac{1}{(x-a_1)^{k_1}}\cdot (\alpha_{k_1} + \alpha_{k_1-1}(x-a_1)+ \ldots + \alpha_1(x-a_1)^{k_1-1} + \alpha_0(x-a_1)^{k_1} + o((x-a_1)^{k_1})) = \frac{\alpha_{k_1}}{(x-a_1)^{k_1}} + \ldots + \frac{\alpha_1}{(x-a_1)} + \alpha_0 + \frac{o((x-a_1)^{k_1})}{(x-a_1)^{k_1}}$\\
+Наблюдение:\\
+$\frac{P}{Q} - (\frac{\alpha_{k_1}}{(x-a_1)^{k_1}} + \ldots + \frac{\alpha_1}{(x-a_1)}) \xrightarrow[x\rightarrow a_1]{} \alpha_0$ - т.е. это конечный предел. Значит знаменатель $(x-a_1)$ полностью ушел из знаменателя (иначе бы предел был $\infty$)\\
+Рассмотрим $R(x) = \frac{P}{Q} - (\frac{\alpha_{k_1}}{(x-a_1)^{k_1}} + \ldots + \frac{\alpha_1}{(x-a_1)}) - (\frac{\beta_{k_2}}{(x-a_2)^{k_2}} + \ldots + \frac{\beta_1}{(x-a_2)}) - \ldots - (\frac{\omega_{k_n}}{(x-a_n)^{k_n}} + \ldots + \frac{\omega_1}{(x-a_n)})$\\
+$R(x)$ - рациональная дробь со знаменателем $Q$\\
+По выше описанной логике в $R(x)$ полностью сократятся все знаменатели\\
+Т.о. $R(x)$ - многочлен. При $x \rightarrow \infty\ R(x) \rightarrow 0$. Отсюда $R(x) = \const$\\
+Т.е. $R(x) \equiv 0$\\
+\textbf{Замечание}\\
+Для нахождения числителей раскладываем $F_i$ в формулы Тейлора\\
+//todo научиться это делать\\
+\textbf{Теорема (формула Тейлора с остатком в форме Лагранжа)}\\
+Пусть $f \in C^n(\lan a, b \ran)$, существует $f^{(n+1)}$ на $\lan a, b \ran, x_0, x \in \lan a, b \ran$\\
+Тогда $\exists\,C \in (x_0, x)$ (или $(x, x_0)$)\\
+$f(x) = f(x_0) + \ldots + \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \frac{f^{(n+1)}(C)}{(n+1)!}(x-x_0)^{n+1}$\\
+\textit{(Заметим, что $C$ зависит от $x$)}\\
+\textbf{Доказательство}\\
+$\phi(t) := f(x) - \suml_{k=0}^n \frac{f^{(k)}(t)}{k!}(x-t)^k, t \in [x_0, x]$(или наоборот)\\
+$\phi(x) = 0$\\
+$\phi(x_0) = f(x) - T_n(f, x_0)(x) = R_n(x)$ - остаток в формуле Тейлора\\
+$\phi'(t) = -f'(t)-\suml_{k=1}^n(\frac{f^{(k+1)}(t)}{k!}(x-t)^k - \frac{f^{(k)}(t)}{(k-1)!}(x-t)^{k-1}) = -\frac{f^{(n+1)}(t)}{n!}(x-t)^n$\\\\
+$\psi(t) = (x-t)^{n+1}$\\
+$\psi(x) = 0, \psi(x_0) = (x-x_0)^{n+1}$\\
+По теореме Коши:\\
+$\frac{R_n(x)}{(x-x_0)^{n+1}} = \frac{\phi(x)-\phi(x_0)}{\psi(x)-\psi(x_0)} = \frac{\phi'(c)}{\psi'(c)} = \frac{-\frac{f^{(n+1)}(c)}{n!}(x-c)^n}{-(n+1)(x-c)^n}, c \in [x_0, x]$\\
+Тогда $R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Теорема эквивалентна следующему утверждению:\\
+    $\exists\,\theta\in (0, 1):\ f(x) = T_n(f, x_0)(x) + \frac{f^{(n+1)}(x_0+\theta(x-x_0))}{(n+1)!}(x-x_0)^{n+1}$
+    \item В доказательстве вместо $\psi$ можно взять функцию $(x-t)$\\
+    Тогда $R_n(x) = \frac{f^{(n+1)}(x_0+\theta(x-x_0))}{(n+1)!}(x-x_0)^{n+1}(1-\theta)^n$
+\end{enumerate}
+\textbf{Метод Ньютона}\\
+Пусть у нас есть дважды дифференцируемая функция $f(x)$ с неизвестным корнем $\xi$ и точка $x_1$. Сгенерируем последовательность $x_n$, приближающуюся к $\xi$\\
+Пусть $x_{n+1}$ - точка пересечения OX и касательной к $f$ в точке $x_n$\\
+$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$\\
+\textbf{Оценка}\\
+Найдем разность $\xi - x_{n+1} = \xi - x_n + \frac{f(x_n)}{f'(x_n)} = \frac{f(x_n)+f'(x_n)(\xi - x_n)}{f'(x_n)}$\\
+$0 = f(\xi) = f(x_n) + \frac{f'(x_n)}{1!}(\xi - x_n) + \frac{f''(c)}{2!}(\xi - x_n)^2$ по формуле Тейлора, $c$ - между $\varepsilon$ и $x_n$\\
+Тогда $\xi - x_{n+1} = -\frac12 \frac{f''(c)}{f'(x_n)}(\xi-x_n)^2$\\
+Пусть $m := \minl_{\lan a, b\ran} |f'(x)|$\\
+$M := \maxl_{\lan a, b \ran} |f''(x)|$\\
+$|\xi - x_{n+1}| = \frac12 \frac{f''(c)}{f'(x_n)}|\xi-x_n|^2 \leq \frac{M}{2m}|\xi-x_n|^2 \leq \frac{M}{2m} \frac{M^2}{4m^2} |\xi - x_{n-1}|^4 \leq \ldots \leq |\xi - x_1| ^{2^n} \frac{M^{1+2+4+\ldots+2^{n-1}}}{(2m)^{1+2+4+\ldots+2^{n-1}}} = \frac{2m}{M}|\frac{M}{2m}(\xi - x_1)|^{2^n}$\\
+Тогда при хорошем $x_1$ точность будет очень быстро увеличиваться с каждым шагом\\
+\textbf{Следствие}\\
+Пусть $f \in C^\infty \lan a,b \ran$ и $\exists\,M, A\ \forall\,t \in \lan a,b\ran\ \forall\,n\ f^{(n)}(t) \leq M\cdot A^n$\\
+Тогда $\forall\,x, x_0 \in \lan a, b \ran\ T_n(f, x_0)(x-x_0) \xrightarrow[n \rightarrow +\infty]{} f(x)$\\
+\textbf{Доказательство}\\
+Из предыдущей теоремы $|f(x) - T_n(f, x_0)(x)| = |\frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^n| \leq \frac{MA^{n+1}}{(n+1)!}|x-x_0|^{n+1} = MA\frac{|A(x-x_0)|^{n+1}}{(n+1)!} \xrightarrow[n\rightarrow \infty]{} 0$\\
+\textbf{Таблица формул Тейлора}\\
+При $x_0 = 0$\\
+$e^x = 1+x+\frac{x^2}{2!}+\ldots + \frac{x^n}{n!} + o(x^n)$\\
+$\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \ldots + (-1)^n\frac{x^{2n+1}}{(2n+1)!} + o(x^{2n+2})$\\
+$\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \ldots + (-1)^n\frac{x^{2n}}{(2n)!} + o(x^{2n+1})$\\
+$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} + \ldots + (-1)^{n-1}\frac{x^n}{n}+o(x^n)$\\
+$(1+x)^\alpha = 1+\begin{pmatrix}\alpha\\1\end{pmatrix}x+\begin{pmatrix}\alpha\\2\end{pmatrix}x^2 + \ldots + \begin{pmatrix}\alpha\\n\end{pmatrix}x^n + o(x^n)$, где\\
+$\alpha \in \bb{R}, \begin{pmatrix}\alpha\\n\end{pmatrix} = \frac{\alpha(\alpha-1)\cdot\ldots\cdot(\alpha-n+1)}{n!}$
+\subsection{Равномерная непрерывность}
+\textbf{Определение}\\
+Пусть $f: X \rightarrow Y, X, Y$ - метрические пространства, $f$ - непрерывная на $X$\\
+Если $\forall\,\varepsilon > 0\ \exists\,\delta > 0\ \forall\,x,x_0: \rho(x, x_0) < \delta\ \rho(f(x), f(x_0)) < \varepsilon$, то функция - \textit{равномерно непрерывная}\\
+\textbf{Теорема Кантора}\\
+$f: X \rightarrow Y$ - непрерывная на $X, X$ - компактно, $X, Y$ - метрическое пространство\\
+Тогда $f$ - равномерно непрерывна на $X$\\
+\textbf{Доказательство}\\
+Докажем от противного\\
+Докажем, что $\exists\,\varepsilon > 0: \forall\,n \in \bb{N}\ \exists\,x_n, x'_n \in X:\ \rho(x_n, x'_n) < \frac{1}{n}, \rho(f(x_n), f(x'_n)) \geq \varepsilon$\\
+Т.к. $X$ компактно, $\exists\,n_k: x_{n_k} \rightarrow a \in X$\\
+Отсюда $x'_{n_k} \rightarrow a$\\
+Тогда $\rho(f(x_n), f(x'_n)) \rightarrow 0$ - противоречие\\
+\textbf{Следствие}\\
+$f:[a,b]\rightarrow \bb{R}$ - непрерывна\\
+Тогда $f$ - равномерно непрерывная\\
+\textbf{Замечание}\\
+Если отображение равномерно непрерывное на двух множествах, то оно непрерывно и на их объединении\\
+TODO проверить\\
+\textbf{Минутка из теории игр}\\
+Пусть у нас есть "прямоугольное" поле для игры в Hex, играют два игрока - белый и черный\\
+Игроку выделены две противоположные стороны прямоугольника. Требуется, закрашивая клетки, провести путь между клетками\\
+Утверждается, что в этой игре не бывает ничьих\\
+\textbf{Доказательство}\\
+Встанем в нижний угол и будем оттуда вести линию так, чтобы слева от линии были белые клетки, а справа - черные\\
+Заметим, что мы можем построить такую линию\\
+Заметим, что длина линии конечна\\
+Тогда когда-то линия упрется куда-то\\
+Линия не может зациклиться\\
+Тогда линия всегда упрется в какую-то стенку\\
+Тогда вдоль линии будет находиться выигрышный путь для черных или белых\\
+\textbf{Теорема Брауэра о неподвижной точке}
+\begin{enumerate}
+    \item Пусть в $\bb{R}^m$ $B = B(0,1)$ и $f: B \rightarrow B$ - непрерывная\\
+    Тогда $\exists\,x\in B: f(x)=x$
+    \item Пусть $f:[0,1]^2 \rightarrow [0,1]^2$ - непрерывное\\
+    Тогда $\exists\,x\in [0,1]^2: f(x) = x$\\
+    \textbf{Доказательство}\\
+    Будем задавать точку следующим образом: $x = (x_1, x_2)$\\
+    $f(x) = (f_1(x_1, x_2), f_2(x_1, x_2))$\\
+    Рассмотрим $\rho(x, y) := \max |x_1 - y_1|, |x_2 - y_2|$ - непрерывная на нашем квадрате (т.к. зажата между 0 и евклидовой метрикой)\\
+    Для евклидовой метрики будем использовать $\|x-y\|$\\
+    Пусть в квадрате нет неподвижных точек\\
+    Тогда рассмотрим функцию $x\mapsto \rho(x, f(x))$. Эта функция положительна, непрерывна\\
+    Тогда по т. Вейерштрасса существует минимум $\varepsilon := \max \rho(x, f(x)) > 0$\\
+    $f$ по т. Кантора равномерно непрерывна, т.е. для $\varepsilon\ \exists\,\delta < \varepsilon:\ \forall\,x,x_0:\ \|x-x_0\| < \delta\sqrt2\ \|f(x)-f(x_0)\| < \varepsilon$\\
+    Возьмем доску для игры в $\nm{Hex}(n, n), n: \frac {\sqrt{2}}{n} < \delta$\\
+    Преобразуем ее, взяв центры ее клеток и соединив их. Тогда мы получим прямоугольную сетку с диагоналями. Покраска клеток теперь эквивалентна покраске ее центра\\
+    Стороны первого игрока - левая и правая, второго - верхняя и нижняя\\
+    Сожмем сетку до размеров $1\times1$. Теперь каждому узлу $(v_1, v_2)$ в сетке соответствует точка $(\frac{v_1}{n}, \frac{v_2}{n})$\\
+    Теперь покрасим точки следующим образом: $\nm{color}(v) = \min(i: |f_i(\frac{v_i}{n}) - \frac{v_i}{n}| \geq \varepsilon)$ (хотя бы одна координата подходит по выше описанным причинам)\\
+    По предыдущим рассуждениям существует одноцветный путь от нижней грани к верхней или от левой грани к правой\\
+    Пронумеруем вершины в этом пути: $v^0, v^1, \ldots, v^N$\\
+    Пусть путь имеет цвет 1 (путь - слева направо)\\
+    Тогда $v^0_1 = 0$\\
+    $f_1(\frac{v^0}{n}) \geq 0$ - по условию\\
+    Т.к. цвет - 1, то $f_1(\frac{v^0}{n}) - \frac{v^0_1}{n} \geq \varepsilon$\\
+    $v^N_1 = 1$\\
+    $f_1(\frac{v^N}{n}) \leq 1$\\
+    Т.к. цвет - 1, то $f_1(\frac{v^N}{n}) - \frac{v^N_1}{n} \leq -\varepsilon$\\
+    Заметим, что в какой-то момент мы перейдем от $f_1(\frac{v^i}{n}) - \frac{v^i_1}{n} \geq \varepsilon$ к $f_1(\frac{v^i}{n}) - \frac{v^i_1}{n} \leq -\varepsilon$\\
+    При переходе к следующему пункту значение $\frac{v_1^i}n$ меняеся на $\frac 1n < \delta$, $f_1(\frac{v^i}{n})$ - менее чем на $\varepsilon$\\
+    Отсюда переход на $2\varepsilon$ невозможен, ч.т.д.\\
+\end{enumerate}
+\subsection{Монотонность и экстремумы}
+\textbf{Теорема (критерий монотонности)}\\
+$f \in C\lan a, b \ran$, диффереренцируема на $(a,b)$\\
+Тогда\\
+$f \uparrow$(нестрого) на $\lan a, b \ran \Leftrightarrow f'\geq 0$ на $(a,b)$\\
+$f \downarrow$(нестрого) на $ \lan a, b \ran \Leftrightarrow f'\leq 0$ на $(a,b)$\\
+\textbf{Доказательство $\Rightarrow$}\\
+Из определения производной\\
+\textbf{Доказательство $\Leftarrow$}\\
+Из т. Лагранжа:\\
+Возьмем $x_0 < x_1$\\
+$f(x_1) - f(x_0) = f'(c) (x_1 - x_0) \geq 0$ для некоторого $c \in (a,b)$\\
+\textbf{Следствие}\\
+$f: \lan a, b \ran \rightarrow \bb{R}$\\
+Тогда $f = \const \Leftrightarrow f\in C\lan a, b\ran \land f'\equiv 0$ на $(a,b)$\\
+\textbf{Доказательство $\Rightarrow$} из определения\\
+\textbf{Доказательство $\Leftarrow$}\\
+Из теоремы $f$ нестрого возрастает и нестрого убывает\\
+Тогда $f = \const$\\
+\textbf{Следствие 2}\\
+$f \in C\lan a, b \ran$, дифференцируема на $(a,b)$\\
+Тогда $f$ строго возрастает $\Leftrightarrow \left\{\begin{array}{l}
+     f'\geq 0 \text{ на } (a,b)\\
+     f' = 0 \text{(не является тождественным 0 ни на каком интервале)}
+\end{array}\right.$\\
+\textbf{Доказательство $\Rightarrow$} по теореме и следствию 1\\
+\textbf{Доказательство $\Leftarrow$}\\
+Она нестрого возрастает\\
+Но если есть промежутки, где она константа, то в этих промежутках $f'(x)$ - константа\\
+Отсюда она строго возрастает, ч.т.д.\\
+\textbf{Следствие 3}\\
+Пусть $f, g \in C [a,b\ran$ и дифференцируемы на $(a,b)$\\
+$f(a) \leq g(a)$\\
+При $x\in(a,b)$ $f'(x) \leq g'(x)$\\
+Тогда $f(x) \leq g(x)$\\
+\textbf{Доказательство}\\
+Рассмотрим $g(x) - f(x)$\\
+Она неотрицательна и всегда возрастает\\
+\textbf{Определение}\\
+Пусть $f:X \rightarrow \bb{R}$\\
+Тогда $x_0 \in X$ - \textit{точка локального максимума}, если $\exists\,U(x_0): \forall\,x\in U(x_0)\ f(x) \leq f(x_0)$\\
+$x_0 \in X$ - \textit{точка строгого локального максимума}, если $\exists\,U(x_0): \forall\,x\in \overdot{U}(x_0)\ f(x) < f(x_0)$\\
+\textit{Локальный экстремум} - локальный максимум или локальный минимум\\
+\textbf{Определение}\\
+Пусть $f:\lan a, b \ran \rightarrow \bb{R}$\\
+Точка $x$ \textit{стационарная}, если $f'(x) = 0$\\\
+\textbf{Определение}\\
+$f:\lan a,b \ran \rightarrow \bb{R}$\\
+Точка $x_0$ - точка строгого возрастания, если $\exists\,U(x_0):$\\
+$\forall\,x \in U(x_0), x > x_0\ f(x) > f(x_0)$\\
+$\forall\,x \in U(x_0), x < x_0\ f(x) < f(x_0)$\\
+\textbf{Теорема о необходимом и достаточном условии экстремума}\\
+$f: \lan a, b \ran \rightarrow \bb{R}$\\
+$x_0 \in (a,b)$\\
+\textit{(интервал!!!)}\\
+Тогда
+\begin{enumerate}
+    \item Если $f$ - дифференцируема в $x_0$, $x_0$ - локальный экстремум. Тогда $f'(x_0) = 0$\\
+    \textbf{Доказательство}\\
+    По т. Ферма
+    \item Пусть $f$ - $n$ раз дифференцируема в окрестности $x_0$\\
+    $f'(x_0) = f''(x_0) = \ldots = f^{(n-1)}(x_0) = 0$\\
+    $f^{(n)}(x_0) \neq 0$\\
+    Если $f^{(n)}(x_0) > 0$:\\
+    Если $n$ - четная, то $x_0$ - минимум\\
+    Если $n$ - нечетная, то $x_0$ - не экстремум. $x_0$ - точка строгого возрастания\\
+    Если $f^{(n)}(x_0) < 0$:\\
+    Если $n$ - четная, то $x_0$ - максимум\\
+    Если $n$ - нечетная, то $x_0$ - не экстремум. $x_0$ - точка строгого убывания\\
+    \textbf{Доказательство}\\
+    Распишем формулу Тейлора\\
+    $f(x) = f(x_0) + 0 + \ldots + \frac{f^{(n)}}{n!}(x-x_0)^n + o((x-x_0)^n)$\\
+    Тогда в некоторой окрестности $x_0$ знак $\frac{f^{(n)}}{n!}(x-x_0)^n$ совпадает со знаком $\frac{f^{(n)}}{n!}(x-x_0)^n + o((x-x_0)^n)$\\
+    Отсюда свойства очевидны
+\end{enumerate}
+\end{document}

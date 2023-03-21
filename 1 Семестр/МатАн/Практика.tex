@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+\input{header.tex}
+
+\title{Математический анализ. Практика}
+\author{Александр Сергеев}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Урок 05.09.2022}
+Пусть есть функция $f(x)$\\\\
+\textbf{Определение}\\
+$f(x)$ - Инъекция, если $\forall x_0\ \overline{\exists x: f(x)=f(x_0)}$\\\\
+\textbf{Определение}\\
+$f(x)$ - Сюръекция, если $\forall y_0\ \exists x: f(x)=y_0$\\\\
+\textbf{Определение}\\
+$f(x)$ - Биекция, если $\forall y_0\ \exists! x: f(x)=y_0$\\\textit{(Сюръекция+Инъекция)}\\\\
+Биекция из $A$ в $B$ $\Leftrightarrow |A| = |B|$\\\\
+Сравним мощности групп чисел:\\
+1) $|\mathbb{Z}| = |\mathbb{N}|$\\
+\textbf{Доказательство}\\
+Получим биекцию, сопоставив значениям $2k$ из $\mathbb{N}$ значения $k$ из $\mathbb{Z}$, а значениям $2k+1$ из $\mathbb{N}$ значения $-(1+k)$ из $\mathbb{Z}$. Ч.т.д.\\\\
+2) $|\mathbb{Q}| = |\mathbb{N}|$\\
+\textbf{Доказательство}\\
+Представим числа из $\mathbb{Q}$ как $\frac{p}{q}$, где $p$ - целое, $q$ - положительное.
+Составим таблицу, отложив по горизонтали p, а по вертикали q:\\
+\begin{center}
+\begin{tabular}{ |c|c c c c c c| } 
+ \hline
+   & 0 & 1 & -1 & 2 & -2 & 3\\
+   \hline
+ 1 & 1 & 2 & 3 & 5 & 8 & 11 \\ 
+ 2 & . & 4 & 6 & . & . & \\ 
+ 3 & . & 7 & 9 & & & \\ 
+ 4 & . & 10 & & & & \\ 
+ 5 & . &  & & & & \\ 
+ \hline
+\end{tabular}
+\end{center}
+Мы получили бесконечную таблицу всех значений $\mathbb{Q}$. Пронумеруем ее по диагонали в направлении сверху вниз справа налево, пропуская повторяющиеся значения. Мы получили биекцию из $\mathbb{N}$ в $\mathbb{Q}$. Отсюда два множества равномощны, ч.т.д.\\\\
+3)$|\mathbb{R}| = |\mathbb{N}|$\\
+\textbf{Доказательство}\\
+Выберем $X=[0;1)$, где все числа $x \in X$ содержат в своей записи только 0 и 1.\\
+Пусть $|X| = |\mathbb{N}|$.\\
+Сопоставим каждому числу из $\mathbb{N}$ число из $X$.\\
+Мы получили биекцию:
+\begin{center}
+    \begin{tabular}{c|c}
+        1 & $0,r_{11}\ r_{12}\ r_{13}\ r_{14}\ ...$ \\
+        2 & $0,r_{21}\ r_{22}\ r_{23}\ r_{24}\ ...$\\
+        3 & $0,r_{31}\ r_{32}\ r_{33}\ r_{34}\ ...$\\
+        4 & $0,r_{41}\ r_{42}\ r_{43}\ r_{44}\ ...$\\
+    \end{tabular}
+\end{center}
+Возьмем число $0,\overline{r_{11}}\ \overline{r_{22}}\ \overline{r_{33}}\ \overline{r_{44}}\ ...$, где $\overline{x} = 1-x$. Это число отличается как минимум одной цифрой от каждого числа в таблице. При этом в нем нет $(9)$, что гарантирует, что каждое число в $X$ может быть представлено единственным способом. Тогда мы получили число, не содержащееся в таблице. Отсюда $|X| > |\mathbb{N}| \Rightarrow |\mathbb{R}| > |\mathbb{N}|$, ч.т.д.\\\\
+Свойства мощности:
+\begin{enumerate}
+    \item $|A| = \infty \Rightarrow |A^2| = |A|$
+    \item $|2^A| > |A|$, где $2^A$ - \textit{булеан} - множество всех подмножеств A.
+    \item {
+            $\left.
+          \begin{array}{l}
+            \text{Существует инъекция из }A\text{ в }B\\
+            \text{Существует инъекция из }B\text{ в }A \\
+          \end{array}
+        \right\} \Rightarrow |A| = |B|$
+        }
+\end{enumerate}
+\section{Урок 12.09.2022\\Последовательности}
+Методы нахождения пределов:
+\begin{enumerate}
+    \item Теорема о двух городовых
+    \item Линейность: \\$x_n\rightarrow A, y_n\rightarrow B, \alpha, \beta \in \mathbb{R} \Rightarrow \alpha x_n+\beta y_n \rightarrow \alpha A+\beta B$\\
+    $\$x_n\rightarrow A, y_n\rightarrow B \Rightarrow x_ny_n\rightarrow AB$\\
+    $\$x_n\rightarrow A, y_n\rightarrow B \Rightarrow \frac{x_n}{y_n}\rightarrow \frac{A}{B}$, если $B \neq 0 \land \exists\,N:\ \forall\,n>N\ y_n \neq 0$
+    \item Доказательство существование предела: \\
+    Пусть $x_n$ монотонно возрастающая(убывающая) последовательность, ограниченная сверху(снизу). Тогда $x_n$  сходится.
+\end{enumerate}
+$\lim\limits_{n\rightarrow +\infty}{\frac{\ln{n}}{n}} = 0$
+\section{Урок 19.09.2022\\Частичный предел}
+\textbf{Определение}\\
+$x_n \sim y_n \Leftrightarrow \lim\limits_{n\rightarrow\infty} \frac{x_n}{y_n} = 1$\\
+$x_n, y_n$ - эквивалентные последовательности\\\\
+$\lim\limits_{x\rightarrow 0} \frac{\sin x}{x} = 1$ - первый замечательный предел\\\\
+Правило Лопиталя:\\
+$f(x),g(x) \rightarrow \infty \Rightarrow \lim \frac{f(x)}{g(x)} = \lim \frac{f`(x)}{g`(x)}$\\\\
+\textbf{Определение}\\
+\textit{Подпоследовательность} - упорядоченное подмножество с индуцированным порядком(т.е. если в последовательности элемента стояли в определенном порядке, то те элементы, которые попали в подпоследовательность, стоят в ней в том же порядке)\\\\
+\textbf{Определение}\\
+Пусть $x_{n_k}$ - подпоследовательность $x_n$. Тогда $x_{n_k} \xrightarrow[n_k\rightarrow\infty]{} a$ - \textit{частичный предел $x_n$}\\\\
+\textbf{Определение}\\
+$\sup A$ - наименьшая верхняя граница $A$\\
+$\inf A$ - наибольшая нижняя граница $A$\\
+$\sup A,\inf A \in \overline{\mathbb{R}} = \mathbb{R}\cup\{\pm\infty\}$\\
+$\sup A,\inf A$ всегда существуют.\\\\
+$\sup \{\text{ частичные пределы } x_n\}$ - верхний предел\\
+$\inf \{\text{ частичные пределы } x_n\}$ - нижние предел\\
+\section{Урок 17.10.2022\\Предел функии}
+$\forall\,\varepsilon > 0\ \exists\,\delta\ \forall\,x:\ 0<\rho(x,a)<\delta\quad \rho(f(x),A) < 0$\\
+$f(x)$ - непрерывна в $a$, если $\lim\limits_{x\rightarrow a} f(x) = f(a)$\\
+Для непрерывной $f(x)$ $\forall\,\varepsilon > 0\ \exists\,\delta\ \forall\,x:\ \rho(x,a)<\delta\quad \rho(f(x),A) < 0$ (в том числе при $x=a$)\\\\
+Если $F$ непрерывна, то $\lim\limits_{x\rightarrow a} F(f(x)) = F(\lim\limits_{x\rightarrow a} f(x))$\\
+$e^x = 1+\frac x{1!} + \frac{x^2}{2!}+\ldots$\\
+\textbf{Определение}\\
+Пусть $a: a$ - предельная в $D_f$ и не содержится там\\
+Тогда $a$ - \textit{особая точка}\\
+$a$ - \textit{устранимая}, если существует предел в точке $a$.
+Тогда определим $f(x)=\left\{\begin{array}{ll}
+     f(x), & x\neq a\\
+     \lim\limits_{x\rightarrow a} f(x), & x = a 
+\end{array}\right.$ - устранение особенностей\\
+$f'(x) = \lim\limits_{\partial x\rightarrow 0} \frac{f(x+\partial x)-f(x)}{\partial x}$\\
+$f(x+h)=f(x)+hf'(x)+g(h)$, где $g(h) = f(x+h)-f(x)-hf'(x)$\\
+$\lim\limits_{h \rightarrow 0} \frac{g(h)}{h} = 0 \Leftrightarrow g(h) = o(h)$(на самом деле $g(h) \in o(h)$, но так не пишут)\\
+Тогда $\exists\, f'(x)\rightarrow f(x+h)=f(x)+hf'(x)+o(h)$\\
+Отсюда $e^{x+h} = e^x+he^x+o(h)$\\
+$e^h = 1 + h + o(h)$\\\\
+$\sin h = \sin (0+h) = \sin 0 + h\sin' x+o(x) = x+o(x)$
+$\lim\limits_{x\rightarrow 0} \frac{\sin x}{x} = \lim\limits_{x\rightarrow 0} \frac{x+o(x)}{x} = 1$
+\section{Урок 24.10.2022}
+\begin{enumerate}
+    \item $o(x)+o(x)=o(x)$
+    \item $o(o(x)) = o(x)$
+    \item $xo(x) = o(x^2)$
+    \item $o(1) = \{f: f \rightarrow 0\}$
+    \item $o(x^3) = o(x)$, но не наоборот
+    \item $\frac{1+o(1)}{1+o(1)} = 1+o(1)$
+    \item $o(x)+o(x^2) = o(x)$
+\end{enumerate}
+$f'(x) = \lim\limits_{x\rightarrow a} \frac{f(x)-f(a)}{x-a}$\\
+Если функция дифференцируема:\\
+$f(x) = f(a) + f'(a)(x-a) + o(x-a)$, где $o(x-a) = f(x)-f(a)-f'(a)(x-a)$
+\section{Урок 14.11.2022}
+\textbf{Определение}\\
+Функция $f$ называется \textit{дифференцируемой} в точке $x$, если $f(x+\delta x) - f(x) = A\delta x +o(\delta x)$, где $A$ - константа\\
+Если $f$ дифференцируема, то $A = f'(x)$\\
+$A\delta x$ - \textit{дифференциал} в точке $x$\\
+\textbf{Свойства дифференциала $\diff x$}
+\begin{enumerate}
+    \item $\diff (\alpha f + \beta g) = \alpha \diff f + \beta \diff g$
+    \item $\diff (fg) = f\diff g + g \diff f$ - Формула Лейбница
+    \item $\diff 1 = \diff 1\cdot1 = 1\diff 1 + 1\diff 1$\\
+    $\diff 1 = 0$
+    \item $\diff (\diff x) = 0$
+\end{enumerate}
+$\diff (\diff f) = \diff^2 f = \diff (f'(x)\diff x) = (\diff x)\diff f'(x) + f'(x) \diff (\diff x) = f''(x)(\diff x)^2$\\
+\textbf{Определение}\\
+$f$ - \textit{гладкая}, если она дифференцируема до бесконечности (на практике - дифференцируема столько, сколько нужно)
+\section{Урок 5.12.2022}
+Функция \textit{возрастает} в $x_*$, если в некоторой выколотой окрестности $x_*$ $\frac{f(x)-f(x_*)}{x-x_*} \geq0$\\
+Тогда $f'(x_*) \geq 0$\\
+Если $f'(x_*) > 0$, то функция возрастает\\\\
+
+\end{document}
+

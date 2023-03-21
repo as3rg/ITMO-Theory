@@ -1,0 +1,828 @@
+\documentclass[12pt]{article}
+\input{header.tex}
+
+\title{Математический анализ. Теория}
+\author{Александр Сергеев}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Интеграл}
+\subsection{Неопределенный интеграл}
+\textbf{Определение}\\
+$f,F: \lan a, b \ran \rto \Rset$\\
+$F$ -- \textit{первообразная} функции $f$, если $F$ дифференцируема на $\an ab$ и $\fall\,x\in \lan a, b\ran\ F'(x) = f(x)$\\
+\textbf{Теорема 1}\\
+Если $f$ непрерывна на $\lan a, b \ran$, то первообразная существует\\
+\textbf{Теорема 2}\\
+Пусть $F$ - первообразная $f$ на $\lan a, b\ran$\\
+Тогда
+\begin{enumerate}
+    \item $\fall c \in \Rset\ F+c$ - тоже первообразная
+    \item Если $G$ - первообразная, то $G-F = \const$
+\end{enumerate}
+\textbf{Определение}\\
+\textit{Неопределенный} интеграл на $\lan a, b \ran$ -- множество всех первообразных\\
+$\intl f(x)\df x = \{ F: F'=f \}$\\
+\textbf{Таблица первообразных}\\
+$\intl x^P \df x = \frac{x^{P+1}}{P+1} + C, P \neq -1$\\
+$\intl \frac1x \df x = \ln |x| + C$\\
+$\intl e^x\df x = e^x + C$\\
+$\intl a^x\df x = \frac{a^x}{\ln a}$\\
+$\intl \sin x \df x = -\cos x + C$\\
+$\intl \cos x \df x = \sin x + C$\\
+$\intl \frac1{\cos^2 x}\df x = \tg x + C$\\
+$\intl \frac1{\sin^2 x}\df x = -\ctg x + C$\\
+$\intl \frac{\df x}{x^2 + 1} = \arctg x + C$\\
+$\intl \frac{dx}{1-x^2} = \frac12 \ln |\frac{1+x}{1-x}| + C = \nm{arcth} x + C$\\
+$\intl \frac{\df x}{\sqrt{1-x^2}} = \arcsin x + C$\\
+$\intl \frac{\df x}{\sqrt{1+x^2}} = \ln |x+\sqrt{1+x^2}| + C= \nm{arcsh} x + C$ -- "длинный логарифм"\\\\
+\textbf{Гиперболические функции}\\
+$e^{ix} = \cos x + i\sin x$ - из ряда Тейлора\\
+$\cos x = \frac{e^{ix}+e^{-ix}}2$\\
+$\sin x = \frac{e^{ix}-e^{-ix}}{2i}$\\
+$\ch x = \frac{e^{x}+e^{-x}}2$ -- гиперболический косинус\\
+$\sh x = \frac{e^{x}-e^{-x}}2$ -- гиперболический синус\\
+$\ch^2 x - \sh^2 x = 1$\\
+$\sh 2x = 2\sh x \ch x$\\\\
+\textbf{Теорема о свойствах неопределенного интеграла}\\
+Пусть $f, g$ - имеют первообразные на $\lan a, b \ran$\\
+Тогда
+\begin{enumerate}
+    \item $\intl f + g = \intl f + \intl g$\\
+    $\intl af = a\intl f$
+    \item Пусть $\phi: \lan p, q \ran \rto \lan a, b \ran$\\
+    $\intl f(\phi(t))\phi'(t)\df t = \intl f(x)\df x |_{x:= \phi(t)} = F(\phi(t)) + C$\\
+    \textbf{Замечание}\\
+    Пусть $\phi$ обратима\\
+    Тогда $F(x) = \intl f(\phi(t))\phi'(t)\df t |_{t:= \phi^{-1}(x)}$
+    \item $\fall \alpha \neq 0, \beta \in \Rset$\\
+    $\intl f(\alpha x + \beta)\df x = \frac1\alpha F(\alpha x + \beta) + C$
+    \item $f, g$ -- дифференцируемы и $f'g$ имеет первообразную\\
+    Тогда $fg'$ имеет первообразную\\
+    $\intl fg' = fg - \intl f'g$
+\end{enumerate}
+\textbf{Определение}\\
+Дифференциал $\df \phi(x) = \phi'(x)\df x$\\
+\subsection{Правило Лопиталя}
+\textbf{Лемма об ускоренной сходимости}\\
+$f, g: D \subset \Rset \rto \Rset, a\in \Rex$ - предельная точка $D$\\
+Пусть $\ex U(a):\ f,g\neq 0$ в $\overdot{U}(a)$\\
+$\liml_{x\rto a} f(x) = 0, \liml_{x\rto a} g(x) = 0$\\
+Тогда $\fall x_k: \begin{array}{l}
+     x_k \rto a\\
+     x_k \in D\\
+     x_k \neq a
+\end{array} \ex y_k: \begin{array}{cc}
+     y_k \rto a\\
+     y_k \in D\\
+     y_k \neq a\\
+     \liml_{k \rto \infty} \frac{f(y_k)}{f(x_k)} = 0\\
+     \liml_{k \rto \infty} \frac{f(y_k)}{g(x_k)} = 0
+\end{array}$\\
+\textbf{Доказательство}\\
+Выберем $y_k$ как подпоследовательность $x_k$\\
+$\fall k \frac{f(x_l)}{f(x_k)},\frac{f(x_l)}{g(x_k)} \xrto[l\rto \infty]{}$\\
+Тогда $\ex l_0: |\frac{f(x_{l_0})}{f(x_k)}|,|\frac{f(x_{l_0})}{g(x_k)}| < \frac1k$\\
+Отсюда $y_k := x_{l_0}$\\\\
+\textbf{Правило Лопиталя}\\
+$f,g: \lan a, b \ran \rto \Rset, a \in \Rex$ -- дифференцируемы на $(a,b)$\\
+$\liml_{x\rto a} \frac{f(x)}{g(x)}$ - неопределенность\\
+Пусть $\liml_{x\rto a}\frac{f'(x)}{g'(x)} = A \in \Rex$\\
+Тогда $\ex \liml_{x\rto a} \frac{f(x)}{g(x)} = A$\\
+\textbf{Доказательство}\\
+По Гейне\\
+Возьмем $x_k: \begin{array}{l}
+     x_k \rto a\\
+     x_k \in (a, b)\\
+     x_k \neq a
+\end{array}$\\
+Из леммы берем $y_k: \begin{array}{l}
+     y_k \rto a\\
+     y_k \in (a, b)\\
+     y_k \neq a
+\end{array}$\\
+По т. Коши $\frac{f(x_k)-f(y_k)}{g(x_k)-g(y_k)} = \frac{f'(\xi_k)}{g'(\xi_k)}, \xi$ -- между $x_k$ и $y_k$ (т.е. $\xi_k \rto a$)\\
+$\frac{f(x_k)}{g(x_k)} = \frac{f(y_k)}{g(x_k)} + \frac{f'(\xi_k)}{g'(\xi_k)}(1-\frac{g(y_k)}{g(x_k)})$\\
+$\frac{f(x_k)}{g(x_k)} \xrto[k\rto \infty]{} \frac{f'(\xi_k)}{g'(\xi_k)} = A$\\
+\textbf{Замечание}\\
+\underline{Работает только на неопределенностях}\\
+\textbf{Следствие}\\
+$\frac{x}{\ln x} \xrto[x\rto+\infty]{} +\infty$\\
+$\frac{x^a}{e^x} = (\frac{x}{e^{\frac{x}{n}}})^a \xrto[x\rto +\infty]{} 0$\\\\
+\textbf{Теорема Штольца}\\
+$x_n, y_n \rto 0, y_n$ -- строго монотонная\\
+$\liml_{n \rto \infty} \frac{x_n-x_{n-1}}{y_n-y_{n-1}} = a \in \Rex$\\
+Тогда $\frac{x_n}{y_n} \rto a$\\
+\textbf{Замечание}\\
+При $a = 0$ требуем монотонность $x_n$\\
+\textbf{Замечание}\\
+При $x_n, y_n \rto \infty$ теорема тоже верна\\
+\textbf{Доказательство}\\
+\begin{enumerate}
+    \item $a > 0, a \in \Rset$\\
+    \textbf{Утверждение}\\
+    $p < \frac ab,\frac cd < q \Rightarrow p < \frac{a + c}{b + d} < q$\\\\
+    $\fall 0 < \eps < a\ \ex N_1\ \fall n > N \geq N_1\ a-\eps < \frac{x_{N+1} - x_N}{y_{N+1} - y_N} < a + \eps$
+    $\fall 0 < \eps < a\ \ex N_1\ \fall n > N \geq N_1\ a-\eps < \frac{x_{N+2} - x_{N+1}}{y_{N+2} - y_{N+1}} < a + \eps$\\
+    $\vdots$\\
+    $\fall 0 < \eps < a\ \ex N_1\ \fall n > N \geq N_1\ a-\eps < \frac{x_n - x_{n-1}}{y_n - y_{n-1}} < a + \eps$\\
+    Отсюда $\fall 0 < \eps < a\ \ex N_1\ \fall n > N \geq N_1\ a-\eps < \frac{x_n - x_N}{y_n - y_N} < a + \eps$\\
+    Устремим $n$ к $\infty$\\
+    Тогда $a-\eps < \frac{x_N}{y_N} < a + \eps$, т.е. $\frac{x_N}{y_N} \rto a$
+    \item $a < 0$ -- аналогично
+    \item $a = \pm\infty$\\
+    Аналогично $\frac{x_N}{y_N} \rto a$
+    \item $a = 0$ (потребуем монотонность $x_n$)\\
+    Пусть $\frac{x_n-x_{n-1}}{y_n-y_{n-1}} \rto +\infty$\\
+    Перевернем дробь. Через доказанное выше
+\end{enumerate}
+\textbf{Упражнение}\\
+Посчитаем $1^k + 2^k + \ldots + n^k$\\
+Рассмотрим функцию $f(x) = 1 + x + x^2 + \ldots + x^n = \frac{x^{n+1}-1}{x-1}$\\
+$x\frac{\df}{\df x} f(x) = x + 2x^2 + \ldots + nx^n$\\
+$(x\frac{\df}{\df x})^2 f(x) = x + 2^2x^2 + \ldots + n^2x^n$\\
+$(x\frac{\df}{\df x})^k f(x) = x + 2^kx^2 + \ldots + n^kx^n$\\
+Отсюда $1^k + 2^k + \ldots + n^k = ((x\frac{\df}{\df x})^k f)(1)$\\
+Заметим, что в результате дифференцирования мы получим дробь, знаменатель которой при подстановке 1 обращается в 0\\
+Но данный дефект возникает лишь из-за формы записи. На самом деле функция непрерывна, поэтому можно взять ее предел в 1\\
+$1^k + 2^k + \ldots + n^k = \liml_{x \rto 1} (x\frac{\df}{\df x})^k f$\\
+Применим правило Лопиталя\\
+$1^k + 2^k + \ldots + n^k = (\frac1{(k+1)!}(\frac{\df}{\df x})^k (x-1)^{k+1}(x\frac{\df}{\df x})^k \frac{x^{n+1}-1}{x-1}) (1)$
+\subsection{Определенный интеграл}
+\textbf{Определение}\\
+Пусть $\eps$ - множество ограниченных плоских фигур\\
+$\sigma: \eps \rto [0, +\infty)$ - \textit{площадь}, если
+\begin{enumerate}
+    \item Аддитивность -- $A = A_1 \sqcup A_2 \Rto \sigma(A) = \sigma(A_1)+\sigma(A_2)$, где $\sqcup$ -- дизъюнктное объединение (объединение непересекающихся фигур)
+    \item Нормировка -- $\sigma([a,b]\times[c,d]) = (b-a)(d-c)$
+\end{enumerate}
+\textbf{Замечание}
+\begin{enumerate}
+    \item $A \subset B \in \eps \Rto \sigma A \leq \sigma B$\\
+    \textbf{Доказательство}\\
+    $B = A \sqcup (B \setminus A) \Rto \sigma(B) = \sigma(A) + \sigma(B\setminus A) \geq \sigma(A)$
+    \item $A$ - вертикальный отрезок $\Rto \sigma(A) = 0$\\
+    \textbf{Доказательство}\\
+    Впишем отрезок в прямоугольник с шириной $\eps$\\
+    Для любого $\eps$ это возможно. Отсюда площадь стремится к 0
+    \item Мы не доказываем, что такая функция существует
+\end{enumerate}
+\textbf{Определение}\\
+$\sigma: \eps \rto [0, +\infty)$ - \textit{ослабленная площадь}, если
+\begin{enumerate}
+    \item Монотонность
+    \item Нормировка
+    \item Ослабленная аддитивность:\\
+    Если $A = A_1 \cup A_2, A_1 \cap A_2 \subset$ вертикальный отрезок, то $\sigma A = \sigma A_1 + \sigma A_2$\\
+    \textbf{UPD}\\
+    Позже предыдущее утверждение было заменено на следующее:\\
+    Если вертикальная прямая $l$ делит фигуру на $A$ на части $A_r$ и $A_r$(части могут иметь общие точки на $l$), то $\sigma A = \sigma A_l + \sigma A_r$
+\end{enumerate}
+\textbf{Примеры}
+\begin{enumerate}
+    \item $\sigma A := \inf \{ \suml_{k=1}^n S(P_k): A \subset \bigcupl_{k=1}^n P_k\}$, где $P_k$ - прямоугольник
+    \item $\sigma A := \inf \{ \suml_{k=1}^\infty S(P_k): A \subset \bigcupl_{k=1}^\infty P_k\}$, где $P_k$ - прямоугольник\\
+    \textbf{Эти площади разные}\\
+    К примеру, рассмотрим $C = [0,1]^2 \cap \Qset \times \Qset$\\
+    $\sigma_1(C) = 1$\\
+    $\sigma_2(C) = 0$
+\end{enumerate}
+\textbf{Определение}\\
+$f: \lan a,b\ran \rto \Rset$\\
+Положительная срезка $f^+ = \max(f,0)$\\
+Отрицательная срезка $f^- = \max(-f, 0)$\\
+$f = f^+ - f^-$\\
+$|f| = f^+ + f^-$\\
+\textit{Подграфик} $(F,E) = \{ (x,y) \in \Rset^2: x \in E, 0 \leq y \leq f(x)\}$\\
+\textbf{Определенный интеграл}\\
+$f:[a,b] \rto \Rset$ -- непрерывная\\
+Тогда \textit{определенный интеграл} f по $[a,b]$ - $\intl_a^b f(x)\df x = \sigma(\text{ПГ}(f^+, [a,b]))-\sigma(\text{ПГ}(f^-, [a,b]))$, где $\sigma$ -- ослабленная площадь\\
+\textbf{Замечания}
+\begin{enumerate}
+    \item $f\geq 0 \Rto \intl_a^b f \geq 0$
+    \item $f \equiv C \Rto \intl_a^b f = C(b-a)$
+    \item $\intl_a^b -f = -\intl_a^bf$
+    \item Можно считать, что $\intl_a^a f = 0$
+\end{enumerate}
+\textbf{Свойства}
+\begin{enumerate}
+    \item Аддитивность по промежутку\\
+    $\intl_a^b f = \intl_a^c f + \intl_c^b f$
+    \item Монотонность\\
+    $f \us{[a,b]}\leq g [a,b] \Rto \intl_a^bf \leq \intl_a^bg$
+    \item $(b-a) \us{[a,b]}\min f \leq \intl_a^b f \leq (b-a)\us{[a,b]}\max f$
+    \item $|\intl_a^b f| \leq \intl_a^b |f|$
+\end{enumerate}
+\textbf{Теорема о среднем}\\
+Пусть $f \in C[a,b]$\\
+Тогда $\ex c \in [a,b]: \intl_a^b f = f(c)(b-a)$\\
+\textbf{Доказательство}\\
+Если $a = b$ -- тривиально\\
+Иначе по утверждению 3: $\min f \leq \frac{1}{b-a}\intl_a^b f \leq \max f$\\
+Т.к. $f$ принимает все значения между минимумом и максимумом, то $\ex c: f(c) = \frac{1}{b-a}\intl_a^b f$\\\\
+\textbf{Определение}\\
+Пусть $f \in C[a,b]$\\
+$\Phi: [a,b] \to \Rset, \Phi(x) = \intl_a^x f$ -- интеграл с переменным верхним пределом\\
+$\Psi: [a,b] \to \Rset, \Psi(x) = \intl_x^b f$ -- интеграл с переменным нижним пределом\\
+\textbf{Теорема Барроу}\\
+$f\in C[a,b], \Phi$ -- интеграл с переменным верхним пределом\\
+Тогда $\Phi$ дифференцируема на $[a,b]$ и $\Phi'(x) = f(x)$\\
+\textbf{Доказательство}\\
+Пусть $x \in (a,b), y > x$\\
+$\Phi_+' = \liml_{y \rto x+0} \frac{\Phi(y) - \Phi(x)}{y-x} = \liml_{y\rto x+0}\frac{\intl_x^y f}{y-x} = \liml_{y\rto x+0}f(c), c\in [x,y] = f(x)$\\
+Аналогично $\Phi_-' = f(x)$\\
+Тогда $\Phi'(x) = f(x)$\\
+\textbf{Замечание}\\
+$\Psi'(x) = -f(x)$\\
+\textbf{Теорема (Формула Ньютона-Лейбница)}\\
+Пусть $F$ -- первообразная $f$ на $[a,b], f \in C[a,b]$\\
+Тогда $\intl_a^b f = F(b)-F(a)$\\
+\textbf{Доказательство}\\
+По т. Барроу $\Phi$ -- первообразная\\
+Тогда $F = \Phi + C$\\
+$\intl_a^b f = \Phi(b) = \Phi(b) - \Phi(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a)$\\
+\textbf{Замечание}\\
+Теорема Барроу -- это теорема о существовании первообразной у непрерывной функции\\
+Также площадь под графиком непрерывной функции не зависит от $\sigma$\\
+\textbf{Соглашение}\\
+При $c > d\ \intl_c^d f := - \intl_d^c f$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item Линейность\\
+    $f, g \in C[a,b], \alpha, \beta \in \Rset$
+    $\intl_a^b (\alpha f + \beta g) = \alpha \intl_a^b f + \beta \intl_a^b$\\
+    \textbf{Пример (неравенство Чебышева)}\\
+    $f, g \in C[a,b]$ -- монотонно возрастающие/убывающие\\
+    $I_f := \frac1{b-a}\intl_a^b f$ -- \textit{среднее значение функции}\\
+    Тогда $I_f I_g \leq I_{fg}$\\
+    \textbf{Доказательство}\\
+    $x,y \in [a,b]$\\
+    Тогда $(f(x)-f(y))(g(x)-g(y)) \geq 0$ -- из монотонности\\
+    $f(x)g(x) - f(y)g(x)-f(x)g(y)+f(y)g(y) \geq 0$\\
+    Проинтегрируем по $x$ по $[a,b]$:\\
+    $\intl_a^b f(x)g(x) - f(y)\intl_a^b g(x) - f(y)g(y)(b-a) \geq 0$\\
+    Поделим на $b-a$:\\
+    $I_{fg} - f(y)I_g - I_f g(y) + f(y)g(y) \geq 0$\\
+    Проинтегрируем по $y$ по $[a,b]$ и поделим на $b-a$:\\
+    $I_{fg} - I_fI_g-I_fI_g + I_{fg} \geq 0$\\
+    $I_{fg} \geq I_fI_g$
+    \item Интегрирование по частям\\
+    $f, g \in C^1[a,b]$\\
+    $\intl_a^b fg' = fg\vl_a^b - \intl_a^b gf'$\\
+    \textbf{Пример}\\
+    $H_n = \frac{1}{n!}\intl_{-\frac\pi2}^{\frac\pi2}(\frac{\pi^2}4 - x^2)^n\cos x \df x = F_n(\pi^2)$ -- какой-то многочлен степени $n$\\
+    % $H_n = \frac{1}{n!}\intl_{-\frac\pi2}^{\frac\pi2}(\frac{\pi^2}4 - x^2)^n\cos x \df x = \begin{bmatrix}
+    % f = (\frac{\pi^2}4 - x^2)^n && g' = \cos x\\
+    % f' = n(\frac{\pi^2}4 - x^2)^{n-1}(-2x) && g = \sin x
+    % \end{bmatrix} = \frac{1}{n!}(\frac{\pi^2}4 - x^2)^{n^2}\sin x \vl_{-\frac\pi2}^{\frac\pi2} + \frac{2}{(n-1)!}\intl_{-\frac\pi2}^{\frac\pi2}(\frac{\pi^2}4 - x^2)^{n-1}x\sin x \df x = \begin{bmatrix}
+    %     g' = \sin x && f = (\frac{\pi^2}4 - x^2)^{n-1}x\\
+    %     g = -\cos x && f' = 2(n-1)(\frac{\pi^2}4 - x^2)^{n-2}x^2 + (\frac{\pi^2}4 - x^2)^{n-1)
+    % \end{bmatrix}$
+    Пример -- полный треш. Если вам надо, смотрите видео:\\
+    \url{https://www.youtube.com/live/7ZQr_OKhuq4?feature=share&t=7020}\\
+    Таймкод: 1:57:00
+    \item Замена переменных в интеграле\\
+    $f \in C\an ab$\\
+    $\phi: \an ab \rto \an ab, \phi \in C^1$\\
+    $[p,q] \in \an ab$\\
+    Тогда $\intl_p^q f(\phi(t))\phi'(t)\df t = \intl_{\phi(p)}^{\phi(q)} f(x)\df x$\\
+    \textbf{Доказательство}\\
+    $F$ -- первообразная $f$\\
+    $F(\phi(t))$ -- первообразная $f(\phi(t))\phi'(t)$\\
+    $\intl_p^q f(\phi(t))\phi'(t)\df t = F(\phi(q)) - F(\phi(p)) = \intl_{\phi(p)}^{\phi(q)} f(x)\df x$\\
+    \textbf{Замечание}
+    \begin{enumerate}
+        \item Может оказаться, что $\phi(p) > \phi(q)$
+        \item $\phi[p,q]$ может быть крупнее $[\phi(p), \phi(q)]$
+    \end{enumerate}
+    \textbf{Пример (Формула Тейлора с остатком в интегральной форме)}\\
+    $a,b \in \Rex, a < b, f \in C^{n+1}\an ab, x, x_0 \in \an ab$\\
+    Тогда $f(x) = \suml_{k=0}^n \frac1{k!}f^{(k)}(x_0)(x-x_0)^k + \frac1{n!}\intl_{x_0}^x (x-t)^n f^{(n+1)}(t)\df t$\\
+    \textbf{Доказательство}\\
+    Индукция по $n$:\\
+    \begin{enumerate}
+        \item $n = 0$:\\
+        $f(x) = f(x_0) = \intl_{x_0}^x f'(t)\df t$
+        \item Интегрирование по частям\\
+        Пусть доказано для $n$\\
+        $\frac1{n!}\intl_{x_0}^x (x-t)^n f^{(n+1)}(t)\df t = \begin{bmatrix}
+        f = f^{(n+1)} && g' = (x-t)^n\\
+        f' = f^{(n+2)} && g = -\frac{(x-t)^{n+1}}{n+1}
+        \end{bmatrix} = -\frac1{n!}\frac{(x-t)^{n+1}}{n+1}f^{(n+1)}(t) \vl_{t=x_0}^{t=x} + \frac1{(n+1)!}\intl_{x_0}^x (x-t)^{n+1}f^{(n+2)}(t)\df t = \frac{(x-x_0)^{n+1}}{(n+1)!}f^{(n+1)}(x_0) + \frac1{(n+1)!}\intl_{x_0}^x (x-t)^{n+1}f^{(n+2)}(t)\df t$
+    \end{enumerate}
+    \textbf{Замечание}\\
+    Формулу Тейлора можно интегрировать\\
+    $F$ -- первообразная $f$\\
+    Проинтегрируем слагаемое:\\
+    $\intl_{x_0}^x \frac{f^{(k)}(x_0)(x-x_0)^k}{k!} = \frac{f^{(k)}(x_0)(x-x_0)^{k+1}}{(k+1)!}\vl_{x=x_0}^{x=x} = \frac{f^{(k)}(x_0)(x-x_0)^{k+1}}{(k+1)!} = \frac{F^{(k+1)}(x_0)(x-x_0)^{k+1}}{(k+1)!}$\\
+    \textbf{Пример}\\
+    $\frac1{1+x^2}=1-x+x^2-\ldots + (-1)^nx^{2n} + o(x^{2n})$\\
+    Тогда $\arctan x = F(0) + x - \frac{x^3}{3} + \frac{x^5}{5} - \ldots + o(x^{2n+1})$\\
+\end{enumerate}
+\textbf{Утверждение}\\
+$\pi$ -- иррациональное (даже $\pi^2$ -- иррациональное)\\
+\textbf{Доказательство}\\
+Пусть $\pi^2 = \frac km$\\
+Тогда $m^n F(\frac km)$ -- целое число, где $F$ -- из примера к интегрированию по частям\\
+Отсюда $m^n F(\frac km) =  \frac{m^n}{n!}\intl_{-\frac\pi2}^{\frac\pi2}(\frac{\pi^2}4 - x^2)^n\cos x \df x$ -- положительное целое число\\
+Отсюда выражение $\geq 1$\\
+$|\frac{m^n}{n!}\intl_{-\frac\pi2}^{\frac\pi2}(\frac{\pi^2}4 - x^2)^n\cos x \df x| \leq \frac{m^n}{n!}\intl_{-\frac\pi2}^{\frac\pi2}|(\frac{\pi^2}4 - x^2)^n\cos x| \df x \leq \frac{m^n 3^n \pi}{n!} \xrto[n \rto +\infty]{} 0$\\
+\subsection{Продолжение свойств интеграла}
+\textbf{Определение}\\
+\begin{enumerate}
+    \item $f: [a,b] \rto \Rset$ -- кусочно непрерывная, если функция непрерывна всюду, кроме конечного числа точек, где у нее разрыв 1 рода
+    \item $f$ -- кусочно непрерывная функция\\
+    $x_0 = a < x_1 < \ldots < x_n = b$ -- точки разрыва ($a,b$ могут и не быть разрывными)\\
+    $\intl_a^b f(x)\df x := \suml_{i=1}^n\intl_{x_{i-1}}^{x_i} f$
+    \item Пусть $f$ -- кусочно непрерывная на $[a,b]$\\
+    $F:[a,b] \rto \Rset$ -- \textit{почти первообразная} функции $f$, если\\
+    \begin{enumerate}
+        \item $F$ -- непрерывна на $[a,b]$
+        \item $F'(x) = f(x)$ при $x \in [a,b]$, кроме конечного числа точек
+    \end{enumerate}
+    Если $F_i$ -- первообразная $f$ на $[x_{i-1}, x_i]$\\
+    Тогда $F(x) = \left[\begin{array}{ll}
+         F_1(x),& x \in [x_0, x_1]\\
+         F_2(x) + c_1,& x \in [x_1, x_2]\\
+         \vdots\\
+         F_n(x) + c_{n-1}, & x\in [x_{n-1}, x_n]
+    \end{array}\right.$,\\
+    где $c_i = F_i(x_i) - F_{i+1}(x_i)$
+\end{enumerate}
+\textbf{Утверждение}\\
+Если $f$ -- кусочно непрерывная на $[a,b]$\\
+$F$ -- первообразная\\
+Тогда $\intl_a^b f = F(b) - F(a)$\\
+\textbf{Доказательство}\\
+$\intl_a^b f(x)\df x := \suml_{i=1}^n\intl_{x_{i-1}}^{x_i} f = \suml_{i=1}^n F_i(x_i) - F_i(x_{i-1}) = \suml_{i=1}^n F(x_i) - F(x_{i-1}) = F(b) - F(a)$\\
+\textbf{Пример}\\
+Пусть $a_1 \leq a_2 \leq \ldots \leq a_n, b_1 \leq b_2 \leq \ldots \leq b_n$\\
+Тогда $\frac{a_1 + a_2 + \ldots + a_n}{n}\frac{b_1 + \ldots + b_n}{n} \leq \frac{a_1b_1 + \ldots + a_nb_n}{n}$ -- неравенство Чебышева (ч.с.)\\
+\textbf{Доказательство}\\
+Определим функции как $F_a(x) = \suml_{i=1}^{\lfloor x \rfloor} a_i, F_b(x) = \suml_{i=1}^{\lfloor x \rfloor} b_i$\\
+Тогда неравенство выполняется по неравенству Чебышева\\
+\textbf{Замечание}\\
+Утверждается, что все доказанные свойства интеграла выполняются и для кусочно-непрерывных функций\\
+\subsection{Приложение определенного интеграла}
+\textbf{Общая схема}\\
+Пусть фиксирован $\an ab$\\
+Обозначения: $\nm{Segm}\an ab = \{ [p,q]: [p,q] \subset \an ab\}$\\
+\textbf{Определение}\\
+Отображение $\Phi: \nm{Segm}\an ab \rto \Rset$ -- функция промежутка\\
+$\Phi$ -- \textit{Аддитивная функция промежутка}, если $\fall c \in (p,q)\ \Phi[p,q] = \Phi[p,c] + \Phi[c,q]$\\
+\textbf{Определение}\\
+$\Phi: \nm{Segm}\an ab \rto \Rset$ -- аддитивная функция промежутка\\
+$f: \an ab \rto \Rset$ -- протность а.ф.п. $\Phi$, если $\fall \delta \in \nm{Segm}\an ab\ |\delta|\cdot\inf_\delta f \leq \Phi(\delta) \leq |\delta|\cdot\sup_\delta f$\\
+\textbf{Основной пример}\\
+$\Phi[p,q] := \intl_a^b f(x)\df x$\\
+Тогда $f$ -- плотность\\
+\textbf{Теорема 1 (о вычислении а.ф.п. по плотности)}\\
+$\Phi: \nm{Segm}\an ab \rto \Rset$ -- а.ф.п\\
+$f: \an ab \rto \Rset$ -- плотность $\Phi$, непрерывна\\
+Тогда $\fall [p,q] \in \nm{Segm}\an ab\ \Phi[p,q] = \intl_p^q f$\\
+\textbf{Доказательство}\\
+Пусть $F(x) = \left[\begin{array}{ll}
+     0, & x = p \\
+     \Phi[p,x] & p < x \leq q
+\end{array}\right.$\\
+Докажем, что $F$ -- первообразная $f$\\
+$F'_+(x) = \liml_{h \rto 0+0} \frac{F(x+h)-F(x)}{h} = \liml_{h \rto 0+0} \frac{\Phi[p, x+h]-\Phi[p,c]}h = \liml_{h\rto 0+0} \frac{\Phi[x, x+h]}{h}$\\
+$\inf_{[p,q]} \leq \frac{1}{q-p}\Phi[p,q] \leq \sum_{[p,q]} f$\\
+Отсюда $F'_+(x) = \liml_{h\rto 0+0} f(x+\theta h), \theta \in [0,1] = f(x)$\\
+Аналогично $F'_-(x) = f(x)$\\
+$\Phi[p,q] = F(q)-F(p) = \intl_p^q f(x)\df x$\\
+\textbf{Пример}\\
+Пусть $r = f(\phi)$ -- функция в полярных координатах\\
+$\phi \in \an{\phi_0}\phi$\\
+Пусть $\Phi: \nm{Segm}\an {\phi_0}\phi \rto \Rset$\\ -- площадь сектора $(f, \an{\phi_0}\phi)$\\
+Т.е. $\Phi$ -- Отображение $[\alpha, \beta] \mapsto \sigma($Сектор$(f, \an\alpha\beta))$\\
+Это аддитивная функция промежутка\\
+\textbf{Теорема}\\
+$f: \an{\phi_0}{\phi_1} \rto \Rset_+$ -- непрерывна, $\an{\phi_0}{\phi_1} \subset [0, 2\pi]$\\
+Тогда $\sigma($Сектор$(f, \an\alpha\beta)) = \frac12 \intl_\alpha^\beta f^2(\phi)\df \phi$\\
+($[\alpha, \beta] \in \an{\phi_0}{\phi_1}$)\\
+\textbf{Доказательство}\\
+Проверим, что $\frac12 \intl_\alpha^\beta f^2(\phi)\df \phi$ -- плотность а.ф.п. $\Phi$\\
+Т.е. проверим неравенство $\fall [\alpha, \beta]\ \min_{\phi \in [\alpha, \beta]}(\frac12 f^2(\phi))(\beta - \alpha) \leq \Phi([\alpha, \beta]) \leq \max_{\phi \in [\alpha, \beta]}(\frac12 f^2(\phi))(\beta - \alpha)$\\
+Рассмотрим произвольный сектор\\
+Круговой сектор $(\min f, [\alpha, \beta])\subset $ Сектор$(f, [\alpha, \beta])\subset$ Круговой сектор $(\max f, [\alpha, \beta])$ из геометрических соображений\\
+Отсюда $\frac12(\beta-\alpha) (\min f)^2 \leq \Phi([\alpha, \beta]) \leq \frac12(\beta - \alpha)(\max f)^2$\\
+\textbf{Пример}\\
+$x = r(t-\sin t)$\\
+$y = r(1 + \cos t$ -- циклоида (координата точки на поверхности катящегося колеса)\\
+Найдем площадь арки(периода) циклоиды\\
+Происходят геометрические рассуждения, которые плохо конвертируются в конспект, поэтому оставляю ссылку: \url{https://www.youtube.com/live/CaG68GvecLw?feature=share&t=6813}\\
+Посчитаем площадь через интеграл\\
+$S = \intl_0^{2\pi r}y(x)\df x = \intl_0^{2\pi} r(1-\cos t)\df (r(t-\sin t)) = \intl_0^{2\pi} r(1-\cos t)r(1-\cos t)\df t = r^2\intl_0^{2\pi} (1 - 2\cos t + \cos^2t) \df t = 2\pi r^2 + r^2\intl_0^{2\pi} \frac{\cos 2t + 1}2 \df t = 2\pi r^2 + \pi r^2 = 3\pi r^2$\\
+\textbf{Пример 2}\\
+Пусть задана кривая $(x(t), y(t))$ -- путь\\
+Научимся считать площадь сектора $[t_0, t_1]$\\
+Перейдем в полярные координаты (считая, что $\phi_0 \leq \phi_1$):\\
+$S = \frac12 \intl_{\phi_0}^{\phi_1} r^2(\phi)\df \phi = \begin{bmatrix}
+    \phi = \arctan \frac{y(t)}{x(t)}\\
+    r = \sqrt{x^2(t)+y^2(t)}
+\end{bmatrix} = \frac12 \intl_{t_0}^{t_1} (x^2+y^2)\frac1{1 + \frac{y^2}{x^2}} \frac{x'y-xy'}{x^2} \df t = \frac12 \intl_{t_0}^{t_1} (x^2+y^2)\frac{x'y-xy'}{x^2+y^2}\df t = \frac12\intl_{t_0}^{t_1}(x'y-x'y)\df t$\\
+\textbf{Пример 3 (Изопериметрическое неравенство)}\\
+Пусть $G \subset \Rset^2$ -- замкнутая, ограниченная, выпуклая фигура\\
+Пусть $\nm{diam}(G) \leq 1$, где $\nm{diam}(G) = \sup (\rho(x,y): x,y \in G$\\
+(Из компактности $G$, а значит $\nm{diam}(G) = \max (\rho(x,y): x,y \in G$)\\
+Тогда $\sigma(G) \leq \frac\pi4$\\
+\textbf{Доказательство}\\
+Зададим фигуру в полярных координатах\\
+Граница фигуры -- выпуклая функция\\
+Выберем на поверхности точку $A$, где функция дифференцируема(точек недифференцируемости не более чем счетное множество). Проведем в этой точке касательную и повернем фигуру, чтобы касательная стала вертикальной, а фигура была расположена в правой полуплоскости\\
+Зададим функцию $f(\phi), \phi \in (-\frac\pi2, \frac\pi2$ следующим образом:\\
+Проведем из точки $A$ прямую под углом $\phi$\\
+Она пересечет границу в точке $B$\\
+Тогда $f(\phi) = |AB|$\\
+$\sigma G = \frac12 \intl_{-\frac\pi2}^{\frac\pi2} f^2(\phi)\df \phi = \frac12 \intl_0^{\frac\pi2} f^2(\phi)\df \phi + \frac12 \intl_{-\frac\pi2}^0 f^2(\phi)\df \phi = \frac12 \intl_0^{\frac\pi2} f^2(\phi)\df \phi + \frac12 \intl_0^{\frac\pi2} f^2(\phi-\frac\pi2)\df \phi = \frac12 \intl_0^{\frac\pi2} (f^2(\phi)+f^2(\phi-\frac\pi2)) \df \phi$\\
+$(f^2(\phi)+f^2(\phi-\frac\pi2))$ -- квадрат длины некоторой хорды в $G$\\
+Отсюда $\sigma G = \frac12 \intl_0^{\frac\pi2} (f^2(\phi)+f^2(\phi-\frac\pi2)) \df \phi \leq \frac12 \intl_0^{\frac\pi2} 1 \df \phi = \frac\pi4$
+\subsection{Интегральные суммы}
+\textbf{Определение}\\
+Пусть $[a,b]$ -- отрезок суммирования\\
+Разделим отрезок конечным набором точек $x_0, \ldots, x_n$\\
+$a = x_0 < x_1 < \ldots < x_n = b$\\
+$i$-ый отрезок -- $[x_{i-1}, x_i]$\\
+$\max |x_i - x_{i-1}|$ = ранг дробления = мелкость\\
+Оснащение -- $\xi_1, \ldots, \xi_n$ -- набор точек таких, что $\xi_i \in [x_{i-1}, x_i]$\\
+$f: [a,b] \rto \Rset$\\
+Тогда $\suml_{i=1}^n f(\xi_i)(x_i-x_{i-1})$ -- Риманова сумма\\
+\textbf{Теорема об интеграле как пределе Римановых сумм}\\
+$f \in C[a,b]$\\
+Тогда $\fall \eps > 0 \ex \delta > 0 \fall$ дроблений $a = x_0 < x_1 < \ldots < x_n = b$, у которых ранг $< \delta |\intl_a^b f(x)\df x - \suml_{i=1}^n f(x_i)(x_i - x_{i-1})| < \eps$\\
+\textbf{Доказательство}\\
+Зафиксируем $\eps$\\
+Для этого $\eps\ \ex \delta > 0 \fall x_1, x_2 \in [a,b]: |x_2-x_1| < \delta |f(x_1)-f(x_2)| < \frac\eps{b-a}$ -- по т. Кантора\\
+Отсюда $|\intl_a^b f-\suml_{i=1}^n f(x_i)(x_i-x_{i-1})| = |\suml_{i=1}^n (\intl_{x_{i-1}}^{x_i} f(x)\df x - f(x_i)(x_i-x_{i-1}))| = |\suml_{i=1}^n (\intl_{x_{i-1}}^{x_i} f(x)\df x - \intl_{x_{i-1}}^{x_i} f(x_i)\df x)| = |\suml_{i=1}^n \intl_{x_{i-1}}^{x_i} (f(x)-f(x_i))\df x| \leq \suml_{i=1}^n |\intl_{x_{i-1}}^{x_i} (f(x)-f(x_i))\df x| \leq \suml_{i=1}^n \intl_{x_{i-1}}^{x_i} |f(x)-f(x_i)|\df x < \suml_{i=1}^n \intl_{x_{i-1}}^{x_i} \frac\eps{b-a}\df x = \intl_a^b \frac\eps{b-a}\df x = \eps$\\
+\textbf{Пример}\\
+$\intl_0^1 x\df x$\\
+Разобъем отрезок $[0,1]$ на отрезки по $\frac1n$\\
+Т.е. $\intl_0^1 x\df x = \liml_{n\rto \infty} \frac in \frac1n = \liml_{n\rto \infty} \frac{n+1}{2n} = \frac12$\\
+\textbf{Замечание}\\
+Пусть $|f'(x)| \leq M$ на $[a,b]$\\
+Разделим отрезок на части $\frac{b-a}n$\\
+$x_i = a + \frac{b-a}ni$\\
+Тогда $|\intl_a^b f - \suml_{i=1}^n f(a+\frac{b-a}ni)\frac{b-a}n| < $ по т. Лагранжа $ < \suml_{i=1}^n \intl_{x_{i-1}}^{x_i} |f'(\ol x_i)|(x_i-x) \df x \leq \suml_{i=1}^n M\intl_{x_{i-1}}^{x_i} (x_i-x)\df x = \suml_{i=1}^n M\frac{(x_i-x_{i-1})^2}2 = \frac M2 (\frac{b-a}n)^2 n$\\
+\textbf{Обобщенная теорема о плотности}\\
+Пусть $f: \an ab \rto \Rset$\\
+$\Phi: \nm{Segm}\an ab \rto \Rset$\\
+$\fall \Delta \in \nm{Segm}\an ab$ заданы $m_\Delta, M_\Delta:$
+\begin{enumerate}
+    \item $m_\Delta\cdot|\Delta| \leq \Phi(\Delta) \leq M_\Delta\cdot|\Delta|$
+    \item $\fall x \in \Delta\ m_\Delta \leq f(t) \leq M_\Delta$
+    \item $\fall x \in \an ab\ \fall \Delta \ni x: |\Delta| \rto 0\ M_\Delta-m_\Delta \rto 0$\\
+\end{enumerate}
+Тогда $\fall [p,q] \in \nm{Segm}\an ab\ \Phi[p,q] = \intl_p^q f$\\
+\textbf{Доказательство}\\
+$F(x) = \left.\begin{array}{ll}
+   \Phi[p,x],  & p < x \leq q \\
+    0, & x=p
+\end{array}\right.$\\
+$\Delta := [x,x+h]$\\
+$m_\Delta \leq \frac{F(x+h)-F(x)}{h} = \frac{\Phi(\Delta)}{|\Delta|} \leq M_\delta$\\
+$m_\Delta \leq f(x) \leq M_\Delta$\\
+Тогда $| \frac{F(x+h)-F(x)}h - f(x)| \leq M_\Delta - m_\Delta \xrto[h\rto 0]{} 0$\\
+Т.е. $F_+'(x) = f(x)$\\
+Аналогично $F_-'(x) = f(x)$\\
+Т.о. $\Phi[p,q] = F(q)-F(p) = \intl_p^q f$\\
+\textbf{Пример}\\
+Пусть $a > 0$\\
+$f: \an ab \rto \Rset, f \geq 0$\\
+$\Phi_x, \Phi_y: \nm{Segm}\an ab \rto \Rset$\\
+Пусть $\Phi_x[p,q] = V_{\Omega^x}$\\
+$\Phi_y[p,q] = V_{\Omega^y}$\\
+$\Omega^x = \{(x,y,z) \in \Rset^3: x \in [p,q], \sqrt{y^2+z^2} \leq f(x)\}$ -- фигура вращения вокруг $OX$\\
+$\Omega^y = \{(x,y,z) \in \Rset^3: p \leq \sqrt{x^2+z^2} \leq q, 0 \leq y \leq f(\sqrt{x^2+y^2}) \}$ -- фигура вращения вокруг $OY$\\
+$\Phi_x, \Phi_y$ -- а.ф.п.\\
+\textbf{Теорема}\\
+$f\in C[p,q], f \geq 0$\\
+Тогда $\Phi_x[p,q] = \pi\intl_p^q f^2(x)\df x$\\
+$\Phi_y[p,q] = 2\pi\intl_p^q xf(x)\df x$\\
+\textbf{Доказательство}\\
+Для $\Phi_x$ -- очевидно (из 1 теоремы о плотности)\\
+Для $\Phi_y$:\\
+Проверим, что $2\pi xf(x)$ -- плотность $\Phi_y$\\
+Из геометрических соображений:\\
+$V(\Omega^y[\alpha, \beta]) \leq \pi(\beta^2 - \alpha^2)\max_{[\alpha, \beta]}f = (\beta-\alpha)\pi (\beta+\alpha)\max_{[\alpha, \beta]} f \leq (\beta - \alpha) \pi \max_{[\alpha, \beta]} 2x \max_{[\alpha, \beta]} f$\\
+$V(\Omega^y[\alpha, \beta]) \geq \pi(\beta^2 - \alpha^2)\min_{[\alpha, \beta]}f = (\beta-\alpha)\pi (\beta+\alpha)\min_{[\alpha, \beta]} f \geq (\beta - \alpha) \pi \min_{[\alpha, \beta]} 2x \min_{[\alpha, \beta]} f$\\
+Отсюда $M_\Delta := \pi \max_\Delta 2x \max_\Delta f(x)$\\
+$m_\Delta := \pi \min_\Delta 2x \min_\Delta f(x)$\\
+Т.о. условие 1 выполнено\\
+$m_\Delta \leq 2\pi x f(x) \leq M_\Delta$ -- условие 2 выполнено\\
+$max_\Delta 2x \max_\Delta f(x) - \min_\Delta\min_\Delta f(x) \rto 0$ по непрерывности $f$ и $2x$ -- условие 3 выполнено\\
+\textbf{Пример}\\
+Найдем объем тора с радиусом сечения $r$ и радиусом кольца $R$\\
+Формула прямой -- $y = \sqrt{r^2 - (x-R)^2}$\\
+Отсюда $V = 4\pi \intl_{R-r}^{R+r} x\sqrt{r^2 - (x-R)^2} \df x = 4\pi \intl_{R-r}^{R+r} (x-R)\sqrt{r^2-(x-R)^2}\df x + 4\pi R \intl_{R-r}^{R+r} \sqrt{r^2-(R-x)^2}\df x = 0$(из симметричности относительно $R$)$ + 4\pi R\frac12 \pi r^2 = 2\pi R\pi r^2$\\
+\subsubsection{Длина пути}
+$\gamma: [a,b] \rto \Rset^m$, непрерывная -- путь\\
+$\gamma(a)$ -- начало пути, $\gamma(b)$ -- конец пути\\
+$t \mapsto \begin{pmatrix}
+\gamma_1(t)\\
+\vdots\\
+\gamma_m(t)
+\end{pmatrix}$, где $\gamma_i: [a,b] \rto \Rset$ -- $i$-ая координатная функция пути\\
+$v(t) = \begin{pmatrix}
+    \gamma_1'(t)\\
+    \vdots\\
+    \gamma_m'(t)
+\end{pmatrix}$ -- вектор скорости пути в точке $t$\\
+$\liml_{h\rto 0}\frac{\gamma(t+h)-\gamma(t)}{h} = v(t)$ -- считается покоординатно\\
+Путь гладкий, если $\fall i\ \gamma_i \in C^1$
+\textit{Носитель пути} -- $\gamma([a,b])$\\
+\textbf{Определение}\\
+$l$ -- функция на множестве гладких путей называется длиной пути, если
+\begin{enumerate}
+    \item $l \geq 0$
+    \item $l$ -- аддитивна:
+    $\fall \gamma: [a,b] \rto \Rset^m\ \fall c \in [a,b] l(\gamma) = l(\gamma|_{[a,c]})+l(\gamma|_{[c,b]})$
+    \item $\gamma, \ol\gamma$ -- два пути в $\Rset^m, C_\gamma, C_{\ol\gamma}$ -- их носители\\
+    Пусть $\ex T: C_\gamma \rto C_{\ol \gamma}$ -- сжатие:\\
+    $\fall x,y \rho(T(x), T(y)) \leq \rho(x,y)$\\
+    Тогда $l(\ol \gamma) \leq l(\gamma)$
+    \item $\gamma(t) = \vect A+t\cdot\vect v \Rto l(\gamma) = \rho(\gamma(a), \gamma(b)$ -- длина прямолинейного пути
+\end{enumerate}
+\textbf{Замечание 1}\\
+\begin{enumerate}
+    \item Длина дуги $\geq$ длина хорды\\
+    (по свойству 3: ортогонально проецируем дугу на хорду)
+    \item При "расширении" длина дуги растет
+    \item При движении пространства (изометрии) длина пути не меняется
+\end{enumerate}
+\textbf{Теорема о длине гладкого пути}\\
+Пусть $\gamma: [a,b] \rto \Rset^m, \gamma \in C^1$\\
+$l(\gamma) = \intl_a^b \|\gamma'(t)\|\df t$\\
+\textbf{Доказательство}\\
+Пусть $\gamma$ -- инъекция. Т.е. путь не проходит через одну точку два раза. Если это не так, разобъем путь на несколько и посчитаем их длины отдельно\\
+Проверим, что $\|\gamma'(t)\|$ -- плотность а.ф.п. $\ub{\subset [a,b]}{[p,q]} \mapsto l(\gamma|_{[p,q]})$\\
+$m_i(\Delta) = \min_{t\in\Delta}\gamma_i'(t)$\\
+$M_i(\Delta) = \max_{t\in\Delta}\gamma_i'(t)$\\
+$m_\Delta = \sqrt{\suml_{i=1}^m m_i^2(\Delta)}$\\
+$M_\Delta = \sqrt{\suml_{i=1}^m M_i^2(\Delta)}$\\
+Тогда свойства 2 ($m_\Delta \leq \|\gamma'(t)\| \leq M_\Delta)$) и 3 ($M_\Delta - m_\Delta \xrto[|\Delta| \rto 0]{} 0$) очевидны, т.к. $\|\gamma'(t)\| = \sqrt{\suml_{i=1}^m (\gamma_i'(t))^2}$\\
+Докажем, что $m_\Delta |\Delta| \leq l(\gamma|_\Delta) \leq M_\Delta |\Delta|$\\
+Зафиксируем $\Delta = [t_0, t_1]$\\
+$\letus \vec M = (M_1(\Delta), \ldots, M_m(\Delta))$\\
+$\ot \gamma(t): \Delta \rto \Rset^m$\\
+$\ot \gamma(t) := \vec M t$\\
+Проверим $T: C_\gamma \rto C_{\ot \gamma}: \gamma(t) \mapsto \ot \gamma(t)$ -- растяжение\\
+Пусть $p < q$\\
+$\rho(\gamma(p), \ot \gamma(q)) = \sqrt{\suml_{i=1}^m (\gamma_i(p) - \ot\gamma_i(q))^2} = \sqrt{\suml_{i=1}^m (\gamma_i'(\ol p)(p-q))^2} \leq |p-q|\sqrt{\suml_{i=1}^m (M_i[p,q])^2} = \|\vec M[p,q]\||p-q| = l(\ot\gamma|_{[p,q]}) = \rho(\ot\gamma(p), \ot\gamma(q))$\\
+Т.е. $l(\gamma|_{[p,q]}) \leq l(\ot\gamma|_{[p,q]}) = \|\vec M_{[p,q]}\||p-q| = \|\vec M_{\Delta}\||\Delta|$\\
+Аналогично $\|\vec m_{\Delta}\||\Delta| \leq l(\gamma|_{\Delta})$\\
+$l(\gamma) = \intl_a^b \|\gamma'(t)\|\df t$, ч.т.д.\\
+\textbf{Пример}\\
+Посчитаем длину дуги эллипса\\
+$\frac{x^2}{a^2} + \frac{y^2}{b^2}=1$\\
+Пусть $a > b$
+Параметризуем его: $(x, y) = (a\sin t, b\cos t)$\\
+$\gamma' = (a\cos t, -b\sin t)$\\
+$\|\gamma'\| = a^2\cos^2 t + b^2 \sin^2 t = a^2(1 -\eps^2 \sin^2 t), t = \frac{\sqrt{a^2 - b^2}}{a}$\\
+Тогда $L[0,T] = a\intl_0^T\sqrt{1-\eps^2 \sin^2 t}\df t$ -- не берется(\\
+Формула -- Эллиптический интеграл $II$ рода\\
+\textbf{Следствие}\\
+$f:[a,b] \rto \Rset, f\in C^1$\\
+Тогда $l(\Gamma(f, [a,b])) = \intl_a^b \sqrt{1 + f'(x)^2}\df x$\\
+\textbf{Доказательство}\\
+$\Gamma(f, [a,b])$ -- носитель пути $x \mapsto (x, f(x))$\\
+$\gamma(x) = (x, f(x)), \gamma'=(1,f'), \|\gamma'\| = \sqrt{1 + f'^2}$\\
+\textbf{Следствие 2}\\
+$r: [\alpha, \beta] \rto \Rset, r \in C^1$ -- функция в полярных координатах\\
+$\gamma(\phi) = (r(\phi)\cos \phi, r(\phi)\sin\phi)$\\
+Тогда $l(\phi) = \intl_a^b \sqrt{r^2 + r'^2}\df \phi$\\
+\textbf{Определение (способ определения длины пути)}\\
+Разобъем кривую на $n$ частей "точками" $\alpha = t_0 < t_1 < \ldots < t_n = \beta$\\
+Тогда $l(\gamma) = \sup_{n, (t_i)} \suml_{i=1}^n \rho(\gamma(t_i), \gamma(t_{i-1}))$\\
+\textbf{Определение}\\
+$f:[a, b] \rto \Rset$\\
+Тогда \textit{вариация} $f$ на $[a,b]$ $\nm{Var}_a^b f = \sup_{n, (t_i)} \suml_{i=1}^n |f(t_i)-f(t_{i-1})|$\\
+Если $f \in C^1, \nm{Var}_a^b f = $ длина пути $ = \intl_a^b |f'|$\\
+\textbf{Лемма}\\
+$f:[a,b] \rto \Rset, \nm{Var}_a^b f$ -- ограничена\\
+Тогда $\ex p,q: [a,b]\rto \Rset$ -- монотонные такие, что $f\equiv p-q$\\
+\textbf{Доказательство}\\
+$f(x)-f(a)=p(x)-q(x)$, где\\
+$2p(x) = \nm{Ver}_a^x f(x)+(f(x)-f(a))$\\
+$2q(x) = \nm{Ver}_a^x f(x) - (f(x) - f(a))$\\
+Докажем, что $p,q$ -- возрастяют\\
+$|f(y)-f(x)| \leq \nm{Var}_x^y f$\\
+Отображение $\Delta \mapsto \nm{Var}_\Delta f$ -- а.ф.п.\\
+Для $x < y\ 2(p(y)-p(x))=\nm{Var}_x^y f + f(y)-f(x) \geq 0$\\
+Т.е. $p(y) \geq p(x)$, ч.т.д.\\
+Кстати, $p(x) + q(x) = \nm{Var}_a^x f$\\
+\subsection{Конечные $\eps$-сети}
+\textbf{Упражнение}
+Пусть $(X, \rho)$ -- метрическое пространство, $K \subset X$ -- компактно $\LRto K$ -- секвенциально компактно\\
+\textbf{Определение}
+Пусть $(X, \rho)$ -- метрическое пространство, $D \subset X, \eps > 0$\\
+Множество $N \subset X$ -- $\eps$-сеть множества $D$, если $\fall x \in D \ \ex y \in N: \rho(x, y) < \eps$\\
+Если $N$ -- конечное, то $N$ -- конечная $\eps$-сеть\\
+\textbf{Определение}\\
+$D$ -- сверхограниченное, если в $X$, если $\fall \eps > 0 \ \ex$ конечная $\eps$-сеть $N \subset X$\\
+\textbf{Лемма 1}\\
+$D$ -- сверхограниченно в $X \LRto D$ -- сверхограниченно в $D$ (в себе)\\
+\textbf{Доказательство $\Lto$} -- тривиально\\
+\textbf{Доказательство $\Rto$}\\
+Возьмем $\eps > 0$\\
+Берем $\frac\eps2$ в $X: N = \{ x_1, \ldots, x_n\}$\\
+$\fall i B(x_i, \frac\eps2)$ выберем какую-нибудь $y_i \in D$ (если такая есть)\\
+Тогда $\{ y_1, y_2, \ldots, y_n\}$ -- $\eps$-сеть $D$\\
+\textbf{Лемма 2}\\
+$f: D \rto Y, D$ -- сверхограниченное\\
+$f$ -- равномерно непрерывно\\
+Тогда $f(D)$ -- сверхограниченно\\
+\textbf{Доказательство}\\
+Равномерная непрерывность $\fall \eps > 0\ \ex \delta > 0: \fall x_1, x_2: \rho(x_1, x_2) < \delta\ \rho(f(x_1), f(x_2)) < \eps$\\
+Зафиксируем $\eps$\\
+Возьмем конечную $\delta$-сеть в $D =: N$\\
+$f(N)$ -- конечная $\eps$-сеть в $Y$\\
+\textbf{Лемма 3}\\
+$D$ -- сверхограниченно $\LRto$ любая последовательность в $D$ содержит фундаментальную подпоследовательность\\
+\textbf{Доказательство $\Rto$}\\
+Возьмем последовательность $(x_n)$\\
+$\ex$ конечная 1-сеть $\{y_1, \ldots, y_k\}$\\
+Тогда $\ex i: B(y_i, 1)$ содержит бесконечно много членов последовательности\\
+Пусть $x_k \in B(y_i, 1)$\\
+Тогда $n_1 := k$\\
+$\ex$ конечная $\frac12$-сеть $D$, а значит конечная $\frac12$-сеть $D \cap B(y_i, 1)$\\
+Повторим действия\\
+Получившаяся последовательность $y_i$ фундаментальна\\
+\textbf{Доказательство $\Lto$}\\
+Докажем от противного\\
+Пусть $\ex \eps > 0:$ не существует конечной $\eps$-сети\\
+Возьмем $x_1$\\
+Т.к. сети не существует, то $\ex x_2 \in D \setminus B(x_1, \eps)$\\
+$\ex x_3 \in D \setminus \bigcup_{i=1}^2 B(x_i, \eps)$\\
+И т.д.\\
+Построена последовательность $x_n \in D: \fall k, l\ \rho(x_k, x_l) \geq \eps$ -- не фундаментальная\\
+Отсюда противоречие\\
+\textbf{Теорема}\\
+$D$ -- метрическое пространство\\
+Тогда эквивалентны следующие утверждения:
+\begin{enumerate}
+    \item $D$ -- компактно
+    \item $D$ -- сверхограниченное и полное
+\end{enumerate}
+\textbf{Доказательство $1 \Rto 2$}
+$D$ -- компактно\\
+Если $D$ -- неполное, то $\ex (x_n) \in D$ -- фундаментальная, но не имеющая предела\\
+Тогда $\fall (n_k)\ x_{n_k}$ -- не имеет предела\\
+(Т.к. фундаментальная последовательность сходится, если ее подпоследовательность сходится)\\
+Это противоречит секвенциальной компактности
+Если $D$ -- не сверхограниченное\\
+Тогда $\ex (x_n)$, не содержащей фундаментальную\\
+Но тогда нет и сходящейся, что противоречит секвенциальной компактности\\
+\textbf{Доказательство $2 \Rto 1$}\\
+$D$ -- сверхограниченное и полное\\
+Тогда любая последовательность содержит фундаментальную подпоследовательность (в силу полноты -- сходящуюся)\\
+Это секвенциальная компактность\\
+\textbf{Следствие}\\
+$X$ -- полное метрическое пространство $D \subset X$\\
+Тогда эквивалентны следующие утверждения
+\begin{enumerate}
+    \item $D$ -- компактно
+    \item $D$ -- сверхограниченное и замкнутое
+\end{enumerate}
+\textbf{Теорема о формулах центральных прямоугольников и трапеций}\\
+Пусть $f \in C^2[a,b], a=x_0 < x_1 < \ldots < x_n = b, \delta = \max_i (x_i - x_{i-1})$\\
+$t = \frac{x_i + x_{i-1}}2$\\
+Тогда выполняются две формулы
+\begin{enumerate}
+    \item $| \intl_a^b f(x)\df x - \suml_{i=1}^n f(t_i)(x_i-x_{i-1})| < \frac{\delta^2}8 \intl_a^b |f''(x)|\df x$
+    \item $| \intl_a^b f(x)\df x - \suml \frac{f(x_i) + f(x_{i-1})}2 (x_i - x_{i-1})| < \frac{\delta^2}8 \intl_a^b |f''(x)| \df x$
+\end{enumerate}
+При равномерном дроблении $\delta = \frac{b-a}n:$\\
+$M:= \max |f''(x)|, \frac{\delta^2}8 \intl_a^b |f''(x)| \df x \leq \frac{M(b-a)^3}{n^2}$\\
+\textbf{Доказательство (только 2)}\\
+Пусть $\df g:= g'(x) \df x$\\
+$\intl_{x_{i-1}}^{x_i} d(x)\df x = \intl_{x_{i-1}}^{x_i} f(x) \df (x-t_i)$\\
+//todo
+\section{Выпуклость}
+Множество $A \subset \Rset^m$ называется выпуклым, если\\
+$\fall x,y \in A\ [x,y] \subset A$,\\
+где $[x,y] = \{ x + t(y-x), y \in [0,1]\} = \{ \alpha x + (1-\alpha)y, \alpha \in [0,1] \}$ -- отрезок прямой, содержащей $x,y$\\
+\textbf{Определение}\\
+$f: \lan a, b \ran \rto \Rset$\\
+Если $\fall x,y \in \lan a, b \ran\ \fall \alpha \in [0,1]\ f(\alpha x + (1-\alpha) y) \leq \alpha f(x) + (1-\alpha) f(y)$, то $f$ -- выпуклая (выпуклая вниз) на $\lan a, b \ran$\\
+Если $\fall x,y \in \lan a, b \ran\ \fall \alpha \in [0,1]\ f(\alpha x + (1-\alpha) y) \geq \alpha f(x) + (1-\alpha) f(y)$, то $f$ -- вогнутая (выпуклая вверх) на $\lan a, b \ran$\\
+\textbf{Примеры}\\
+$e^x$ -- выпуклая\\
+$x^2$ -- выпуклая\\
+\textbf{Замечание}\\
+$f$ -- выпуклая $\LRto$ любая хорда(отрезок, соединяющий две точки графика) расположена нестрого выше графика $\LRto$ надграфик выпуклый\\
+\textit{Надграфиком} $f$ на $\lan a, b \ran$ называется $\{ (x,y): x \in \lan a, b\ran, y \geq f(x)\}$\\
+\textbf{Определение}\\
+$f: \lan a, b \ran \rto \Rset$\\
+Если $\fall x,y \in \lan a, b \ran\ \fall \alpha \in (0,1)\ f(\alpha x + (1-\alpha) y) \lessgtr \alpha f(x) + (1-\alpha) f(y)$, то $f$ -- строго выпуклая/вогнутая на $\lan a, b \ran$\\
+\textbf{Лемма о трех хордах}\\
+$f: \lan a, b \ran \rto \Rset$\\
+Тогда эквивалентны:
+\begin{enumerate}
+    \item $f$ выпуклая на $\lan a, b \ran$
+    \item $\fall x_1 < x_2 < x_3 \in \an ab\ \frac{f(x_2)-f(x_1)}{x_2-x_1} \leq \frac{f(x_3)-f(x_1)}{x_3-x_1} \leq \frac{f(x_3)-f(x_2)}{x_3-x_2}$
+\end{enumerate}
+\textbf{Доказательство $\Rto$}\\
+Докажем первое неравенство\\
+$x_2 = \frac{x_3-x_2}{x_3-x_1}x_1 + \frac{x_2-x_1}{x_3-x_1}x_3$\\
+Тогда неравенство 1 $\LRto f(x_2) \leq f(x_1) \frac{x_3-x_2}{x_3-x_1} + f(x_3)\frac{x_2-x_1}{x_3-x_1}$\\
+При $\alpha = \frac{x_3-x_2}{x_3-x_1}, 1 - \alpha = \frac{x_2-x_1}{x_3-x_1}$ получаем знакомое неравенство\\
+Второе неравенство аналогично\\
+\textbf{Доказательство $\Lto$}\\
+Очевидно из предыдущего доказательства\\
+\textbf{Следствие}\\
+$f$ строго выпукла $\LRto$ строгое неравенство в теореме\\
+\textbf{Замечание}\\
+Если $f,g$ -- выпуклые на $\lan a, b \ran$, то $f+g$ -- выпуклая\\
+$f$ -- выпуклая, то $-f$ -- вогнутая\\
+\textbf{Теорема об односторонней дифференцируемости выпуклой функции}\\
+$f$ -- выпуклая на $\lan a, b \ran$\\
+Тогда $\fall x \in \an ab\ \ex f_+'(x), f_-'(x)$ -- конечные\\
+и $\fall x_1, x_2 \in (a,b), x_1 \leq x_2\ f_-'(x_1) \leq f_+'(x_1) < \frac{f(x_2)-f(x_1)}{x_2-x_1} \leq f_-'(x_2) \leq f_+'(x_2)$\\
+\textbf{Доказательство}\\
+Сделать предельный переход в лемме о 3 хордах\\
+$g(\xi) := \frac{f(\xi)-f(x_1)}{\xi - x_1}, \xi \in (a,b) \setminus \{x_1\}$\\
+$g(\xi) \uto$ по лемме о 3 хордах\\
+При $\xi \in (x_1, x_2)$\\
+Т.к. функция монотонна, $\ex \liml_{\xi \rto x_1 + 0} g(\xi)$\\
+Возьмем $\xi_0 \leq \xi_1 < x_1 < \xi_2 < \xi_3 < x_2 < \xi_4 \leq \xi_5$\\
+Из лемм о трех хордах(средние неравенства) и монотонности(крайние неравенства):\\
+$\frac{f(\xi_0)-f(x_1)}{\xi_0 - x_1} \leq \frac{f(\xi_1)-f(x_1)}{\xi_1 - x_1} \leq \frac{f(\xi_2)-f(x_1)}{\xi_2 - x_1} \leq \frac{f(x_2) -f(x_1)}{x_2-x_1} \leq \frac{f(\xi_3)-f(x_2)}{\xi_3 - x_2} \leq \frac{f(\xi_4)-f(x_2)}{\xi_4-x_2} \leq \frac{f(\xi_5)-f(x_2)}{\xi_5-x_2}$\\
+Пусть $\xi_1 \rto x_1 - 0, \xi_2 \rto x_1 + 0, \xi_3 \rto x_2 - 0, \xi_4 \rto x_2 + 0$\\
+Отсюда $C_0 \leq f_-'(x_1) \leq f_+'(x_1) \leq \frac{f(x_2) -f(x_1)}{x_2-x_1} \leq f_-'(x_2) \leq f_+'(x_2) \leq C_5$, где $C_0 = \frac{f(\xi_0)-f(x_1)}{\xi_0-x_1}, C_5 = \frac{f(\xi_5)-f(x_2)}{\xi_5-x_2}$\\
+Отсюда производные конечные(ограничены $C_0$ и $C_5$)\\
+\textbf{Воспоминания о прошлом семе}\\
+Если $\ex f_+'(x_0)$, то $f$ -- непрерывна справа в $x_0$\\
+\textbf{Следствие}\\
+$f$ -- выпуклая на $\lan a, b \ran$\\
+Тогда она непрерывна на $(a,b)$\\
+(т.к. у нее есть левосторонние и правосторонние производные, то она непрерывна слева и справа, т.е. непрерывна)\\
+\textbf{Контр-пример для $[a,b]$}\\
+$f(1) = 2$\\
+$f(-1) = 2$\\
+$f(x) = x^2, x \in (a,b)$\\
+Функция выпукла, но не непрерывна на $[a,b]$\\
+\textbf{Теорема}\\
+$f$ -- дифференцируема на $\an ab$\\
+Тогда $f$ -- выпуклая вниз на $\lan a,b\ran \LRto$ график расположен не ниже любой касательной, т.е. $\fall x_0, x \in \lan a,b\ran f(x) \geq f'(x_0)(x-x_0)+f(x_0)$\\
+\textbf{Доказательство $\Rto$}\\
+Требуемое неравенство есть в предыдущей теореме\\
+\textbf{Доказательство $\Lto$}\\
+Возьмем $x_1 < x_0 < x_2$\\
+Тогда $\frac{f(x_1)-f(x_0)}{x_1-x_0} \leq f'(x_0) \leq \frac{f(x_2)-f(x_0)}{x_2-x_0}$\\
+По лемме о трех хордах $f$ -- выпуклая\\
+\textbf{Определение}\\
+Пусть имеется выпуклая фигура $A \subset \Rset^2$\\
+$b \in A$ - граничная точка\\
+Прямая $l: b \in l$ -- опорная прямая, если $A$ полностью содержится в одной из полуплоскостей, образованных прямой\\
+\textbf{Утверждение}\\
+$f$ -- выпуклая на $\an ab$\\
+Тогда $\fall x \in \an ab$ через $(x, f(x))$ можно провести опорную прямую к надграфику $f$\\
+(для $x \in (a,b)$ есть односторонняя дифференцируемость, можем провести одностороннюю касательную)\\
+(для $x = a$ и $x = b$ можем провести вертикальные прямые или касательные, если односторонние производные есть и конечны)\\
+\textbf{Утверждение 2}\\
+Если $A \subset \Rset^2$ -- замкнутая и ограниченная выпуклая фигура, то через каждую граничную точку можно провести опорную прямую\\
+\textbf{Доказательство}\\
+Возьмем точку $b$\\
+Докажем, что для нее можно провести опорную прямую\\
+Для этого выберем оси $X, Y$ так, чтобы проекция $b$ на $X$ была внутренней точкой проекции фигуры на $X$\\
+Теперь определим функцию $f(x) := \inf (y: (x,y) \in A)$ -- нижнюю часть границы фигуры\\
+Данная функция выпуклая, а значит в точке $b$ к ней можно провести опорную прямую\\
+\textbf{Замечание}\\
+$f$ -- выпуклая на $\an ab$\\
+Тогда $f$ дифференцируема на $\an ab$ всюду, кроме не более чем счетного множества точек (возможно, пустого)\\
+\textbf{Доказательство}\\
+Пусть $E$ -- множество точек, где не существует производной\\
+Но существуют $f_-'(x) < f_+'(x)$\\
+Тогда $\fall x_1 < x_2 \in E\ f_-'(x_1) < f_+'(x_1) \leq f_-'(x_2) < f_+'(x_2)$\\
+Тогда для $x \in E$ построим отображение $q(x) \in (f_-'(x), f_+'(x)) \cap \Qset$\\
+$q: E \rto \Qset$ -- инъекция\\
+Отсюда $E$ не более чем счетно\\
+\textbf{Теорема (дифференциальный критерий выпуклости)}
+\begin{enumerate}
+    \item $f$ -- непрерывна на $\an ab$, дифференцируема на $(a,b)$\\
+    Тогда $f$ -- выпукла (строго выпукла) $\LRto f'$ возрастает (строго возрастает)
+    \textbf{Доказательство $\Rto$}\\
+    По теореме об односторонней дифференцируемости $f'_-(x_1) \leq f'_-(x_2)$ при $x_1 < x_2$\\
+    ($f_-' = f'$ из дифференцируемости)\\
+    Знак строгий, если $f$ строго выпукла(смотри доказательство теоремы)\\
+    \textbf{Доказательство $\Lto$}\\
+    Проверим лемму о трех хордах\\
+    $x_1 < x_2 < x_3$\\
+    Тогда $\frac{f(x_1)-f(x_2)}{x_1-x_2} = f'(\xi_1), x_1 < \xi_1 < x_2$ -- по т. Лагранжа\\
+    $\frac{f(x_2)-f(x_3)}{x_2-x_3} = f'(\xi_2), x_2 < \xi_2 < x_3$\\\\
+    Из возрастания $f'(\xi_1) \leq f'(\xi_2)$ (при строгом возрастании знак $<$)
+    \item $f$ -- непрерывна на $\an ab$, дважды дифференцируема на $(a,b)$\\
+    Тогда $f$ -- выпукла $\LRto f'' \geq 0$
+    \textbf{Доказательство}\\
+    $f'$ - возрастает $\LRto f'' \geq 0$
+\end{enumerate}
+\textbf{Пример 1}\\
+При $x \in (0, \frac \pi2)\ \sin x \geq \frac2\pi x$\\
+При $x = 0 \lor x = \frac\pi2$ достигается равенство\\
+\textbf{Доказательство}\\
+$(\sin x)' = \cos x$ -- строго убывает на промежутке\\
+Тогда функция строго вогнутая на промежутке\\
+Отсюда значение функции строго выше хорды, соединяющей $(0, 0)$ и $(\frac\pi2, 1)$ (ее уравнение $y = \frac2\pi x$)
+\end{document}

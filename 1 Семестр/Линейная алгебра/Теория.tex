@@ -1,0 +1,2234 @@
+\documentclass[12pt]{article}
+\input{header.tex}
+\title{Линейная алгебра. Теория}
+\author{Александр Сергеев}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Аналитическая геометрия}
+\subsection{Элементы векторной алгебры}
+\subsubsection{Основные определения}
+\textit{Вектор(геометрический)} - направленный отрезок; упорядоченная пара точек пространства\\\\
+$\vect{0} = \vect{AA}$\\\\
+$|\vect{AB}|$ - длина отрезка AB\\\\
+$\vect{a}\parallel\vect{b} \Leftrightarrow$ - вектора \textit{коллинеарны}, т.е. лежат на одной прямой или параллельных\\\\
+$\forall\,\vect{a}\parallel\vect{0}$\\\\
+$\vect{a} = \vect{b} \Leftrightarrow \left\{\begin{array}{ll}
+     & |\vect{a}| = |\vect{b}| \\
+     & \vect{a}\upuparrows\vect{b}
+\end{array}\right.$\\\\
+\textit{Свободные вектора} - вектора, не зависящие от точки приложения\\\\
+$\vect{a}, \vect{b}, \ldots$ - \textit{компланарны}, если лежат в одной плоскости или в параллельных плоскостях.\\\\
+$\vect{a_0}$ - орт $\vect{a} \Leftrightarrow \left\{\begin{array}{l}
+     \vect{a_0} \upuparrows \vect{a} \\
+     |\vect{a_0}| = 1
+\end{array}\right.$\\\\
+Операции над векторами:
+\begin{enumerate}
+    \item $\vect{c} = \vect{a}\pm\vect{b}$ - сложение/вычитание
+    \item $\vect{c} = \alpha\vect{a}$ - умножение на скаляр
+\end{enumerate}
+Свойства операций:
+\begin{enumerate}
+    \item $(\vect{a}+\vect{b})+\vect{c} = \vect{a}+(\vect{b}+\vect{c})$ - ассоциативность сложения
+    \item $\vect{a}+\vect{b} = \vect{b}+\vect{a}$ - коммутативность сложения
+    \item $\exists \vect{0}: \vect{a}+\vect{0} = \vect{a}$ - нейтральный элемент относительно сложения
+    \item $\exists\, \vect{-a}: \vect{a}+\vect{-a} = \vect{0}$ - существование противоположного элемента
+    \item $\forall \vect{a},\vect{b}, \alpha \in \mathbb{R}\ \alpha(\vect{a}+\vect{b})=\alpha\vect{a}+\alpha\vect{b}$ - дистрибутивность отностиетльно сложения
+    \item $\forall \alpha, \beta \in \mathbb{R}, \vect{a}\ (\alpha+\beta)\vect{a} = \alpha\vect{a}+\beta\vect{b}$ - дистрибутивность
+    \item $\forall \alpha,\beta \in \mathbb{R}\  \alpha(\beta\vect{a})=(\alpha\beta)\vect{a}=\beta(\alpha\vect{a})$
+    \item $\forall\vect{a}\ 1\cdot\vect{a}=\vect{a}$
+\end{enumerate} - аксиомы линейного пространства\\\\
+\textbf{Определение}\\
+Пусть $\vect{v_1}\ldots\vect{v_k} \in V_3\\
+\vect{v}=\suml_{i=1}^{k}\alpha_i\vect{v_i},\ d\alpha_i\in \mathbb{R}$\\
+$\vect{v}$ - \textit{линейная комбинация векторов}\\
+\textit{Тривиальная линейная комбинация}: $\forall\,i\ d_i=0$\\\\
+\textbf{Определение}\\
+$\vect{v_1}\ldots\vect{v_k}$ - \textit{линейная независимая система векторов}, если любая нулевая линейная комбинация этих векторов тривиальна.\\
+Иначе - \textit{линейно зависимая система векторов}.\\\\
+Свойства:
+\begin{enumerate}
+    \item Если в системе есть нулевой вектор, то такая система всегда линейно зависима.
+    \item Если подсистема системы векторов линейно зависима, то и вся система линейно зависима.
+    \item Система векторов линейно зависима $\Leftrightarrow$ найдется вектор, который является линейной комбинацией других.
+    \item Если вектора коллинеарны, то они линейно зависимы.
+\end{enumerate}
+\textbf{Определение}\\
+\textit{Базисом прямой} называется любой ненулевой вектор на этой прямой\\
+\textit{Базисом прямой} называется упорядоченная пара любых неколлинеарных вектора.\\
+\textit{Базисом пространства} называется упорядоченная тройка любых некомпланарных вектора.\\\\
+\textbf{Определение}\\
+Пусть $\vect{l_1},\vect{l_2},\vect{l_3}$ - базис пространства;\\
+$\vect{V} = \alpha_1\cdot\vect{l_1}+\alpha_2\cdot\vect{l_2}+\alpha_3\cdot\vect{l_3}$.\\Тогда $\alpha_1,\alpha_2,\alpha_3$ - координаты этого вектора.\\\\
+\textbf{Теорема}
+\begin{enumerate}
+    \item Любой вектор, параллельный плоскости, выражается через ее базис единственным образом. 
+    \item Любой вектор, параллельный плоскости, выражается через ее базис единственным образом. 
+    \item Любой вектор в пространстве выражается через его базис единственным образом.
+    \item[0.] Для любого вектора его координаты относительно базиса определяются однозначно.
+\end{enumerate}
+Свойства:
+\begin{enumerate}
+    \item $\vect{a} = \vect{b} \Leftrightarrow $ равны координаты этих векторов относительно фиксированного базиса
+    \item $\vect{c}=\vect{a}+\vect{b} \Leftrightarrow \forall\,i\ c_i=a_i+b_i$
+    \item $\vect{b}=\lambda\vect{b} \Leftrightarrow \forall\,i\ b_i=\lambda b_i$
+\end{enumerate}
+\textbf{Определение}\\
+$\vect{a}\parallel\vect{b}, \vect{b} \neq \vect{0} \Leftrightarrow \frac{a_1}{b_1}=\frac{a_2}{b_2}=\frac{a_3}{b_3}$\\\\
+\textbf{Теорема}\\
+Система из более 2 компланарных векторов линейно зависима.\\
+Система из более 3 векторов линейно зависима.
+\subsubsection{Системы координат в пространстве/плоскости}
+\textbf{Определение}\\
+Будем говорить, что в пространстве задана \textit{Декартова система координат}, если зафиксирована точка $(\cdot)O$ - \textit{начало координат} - и зафиксирован базис $(\vect{e_1}, \vect{e_2}, \vect{e_3})$, приложенный к точке\\
+$(\cdot) M = (m_1,m_2,m_3) \leftrightarrow \vect{OM} = m_1\vect{e_1}+m_2\vect{e_2}+m_3\vect{e_3}$.\\
+Оси координат(прямые, проходящие через $(\cdot)O$ и направленные в сторону базисного вектора):
+\begin{itemize}
+    \item OX - ось абсцисс
+    \item OY - ось ординат
+    \item OZ - ось аппликат
+\end{itemize}
+\textbf{Задача}\\
+Разделить отрезок $AB$ точкой $M$ в отношении $\lambda$ к $\mu$\\
+\textbf{Решение}\\
+$\forall\, i\ m_i=\frac{\lambda b_k+\mu a_k}{\lambda+\mu}$\\\\
+В дальнейшем рассматриваем \textit{прямоугольную декартову систему коордиат} - ортонормированную систему координат:\\
+$\vect{e_i}\cdot\vect{e_j} = (\vect{e_i}, \vect{e_j}) = \left\{\begin{array}{l}
+     1, i = j \\
+     0, i \neq j
+\end{array}\right.$  \\\\
+$|\vect{a}| = \sqrt{a_1^2+a_2^2+a_3^2}$\\
+$\vect{a_0} = \frac{\vect{a}}{|\vect{a}|}$ - орт.\\
+$\vect{a_0} = (\cos \alpha, \cos \beta, \cos \gamma)$, где $\alpha, \beta, \gamma$ - углы между вектором и $OX, OY, OZ$. Косинусы называют \textit{направляющими}.\\
+$\cos^2 \alpha+\cos^2 \beta+\cos^2 \gamma = 1$\\\\
+\textbf{Определение}\\
+\textit{Полярная система координат} - система координат в плоскости, задаваемая точкой и лучом, где положение точки определяется длиной ее \textit{радиус-вектора} и полярным углом между радиус-вектором и данным лучом.\\\\
+Зададим полярную системой координат точкой O и лучом OX, а д.с.к. - точкой O и базисом OXY.\\
+Отсюда\\
+$(\phi, r) \rightarrow (r\cos \phi, r\sin \phi)$\\
+$(x,y) \rightarrow (\sqrt{x^2+y^2}, \phi)$, где $\phi = \operatorname{atan2}(x,y)$ с учетом знака $x,y$\\\\
+\subsubsection{Основные преобразования д.с.к.}
+\begin{enumerate}
+    \item Параллельный перенос д.с.к. на $\vect{OO'}: \vect{O'M} = \vect{OM}-\vect{OO'}$
+    \item Поворот д.с.к в плоскости на $\phi: (\alpha-\phi, r) = R_O^\phi((\alpha, r))$, где $R_O^\phi$ -  поворот д.с.к на $\phi$.\\
+    $\begin{pmatrix}
+         x'\\
+         y'
+    \end{pmatrix} = \begin{pmatrix}
+         \cos\phi & \sin\phi \\
+         -\sin\phi & \cos\phi
+    \end{pmatrix}
+    \begin{pmatrix}
+         x\\
+         y
+    \end{pmatrix}$ - матрица поворота.
+    \item Поворот д.с.к. в пространстве(через матрицы).
+\end{enumerate}
+\subsubsection{Скалярное произведение}
+$(\vect{a},\vect{b}) = \vect{a}\cdot\vect{b} = |\vect{a}||\vect{b}|\cos \angle(\vect{a},\vect{b})$\\
+Свойства:
+\begin{enumerate}
+    \item Симметричность $\vect{a}\cdot\vect{b} = \vect{b}\cdot\vect{a}$
+    \item Аддитивность по первому аргументу $(\vect{a_1}+\vect{a_2})\cdot\vect{b} = \vect{a_1}\cdot\vect{b}+\vect{a_2}\cdot\vect{b}$
+    \item Однородность по первому аргументу $\forall\,\lambda \in \mathbb{R}\ (\lambda\vect{a},\vect{b}) = \lambda(\vect{a},\vect{b)}$
+    \item Положительная определенность $\vect{a}\cdot\vect{a} \geq 0$, причем $\vect{a}\cdot\vect{a}=0 \Leftrightarrow \vect{a} = 0$
+\end{enumerate}
+Из свойств 1-3 - линейность по второму аргументу.\\\\
+\textbf{Замечание}\\
+В линейной алгебре любая функция $V\times V \rightarrow \mathbb{R}$, удовлетворяющая аксиомам 1-4 называется скалярным произведением.\\\\
+$|\vect{a}| = \sqrt{\vect{a}\cdot\vect{a}}$\\\\
+\textbf{Доказательство свойства 2 для данного скалярного произведения}\\
+1) Если $\vect{b} = 0$ - очевидно\\
+2) Если $\vect{b} \neq 0$:\\
+Введем д.с.к. таким образом, чтобы $\vect{i} \parallel \vect{b}$.\\
+$\vect{i} = \frac{\vect{b}}{|\vect{b}|}\\
+(\vect{a_1}+\vect{a_2}, \vect{i}) = |\vect{a_1}+\vect{a_2}|\cos \alpha = $ первая координата $(\vect{a_1}+\vect{a_2}) = $ первая координата $\vect{a_1}$ + первая координата $\vect{a_2} = (\vect{a_1}, \vect{i}) + (\vect{a_2}, \vect{i})$.\\
+Отсюда $(\vect{a_1}+\vect{a_2},\vect{b}) = |\vect{b}|(\vect{a_1}+\vect{a_2},\vect{i})=|\vect{b}|((\vect{a_1},\vect{i})+(\vect{a_2},\vect{i})) = (\vect{a_1},\vect{b})+(\vect{a_2},\vect{b})$, ч.т.д.\\\\
+$(\vect{a},\vect{b})=0 \Leftrightarrow \vect{a}\bot\vect{b}$\\\\
+$(\vect{a},\vect{b}) = \ldots = a_1b_1+a_2b_2+a_3b_3$\\\\
+\textbf{Определение}\\
+$\frac{|(\vect{a},\vect{b})|}{
+|\vect{b}|}$ - проекция $\vect{a}$ на $\vect{b}$.\\
+\subsubsection{Векторное произведение}
+\textbf{Определение}\\
+$\vect{a}\times \vect{b} = [\vect{a},\vect{b}] = \vect{c}:$
+\begin{enumerate}
+    \item $\vect{c}\bot\vect{a},\vect{b}$
+    \item $\vect{a},\vect{b},\vect{c}$ - правая тройка
+    \item $|\vect{c}|=|\vect{a}||\vect{b}|\sin \angle(\vect{a},\vect{b})$
+\end{enumerate}
+Свойства:
+\begin{enumerate}
+    \item Антисимметричность $[\vect{a},\vect{b}] = -[\vect{b},\vect{a}]$
+    \item Аддитивность по первому аргументу $[\vect{a_1}+\vect{a_2},\vect{b}] = [\vect{a_1},\vect{b}]+[\vect{a_2},\vect{b}]$
+    \item Однородность по первому аргументу $\forall\,\lambda \in \mathbb{R}\ [\lambda\vect{a},\vect{b}] = \lambda [\vect{a},\vect{b}]$
+    \item $|[\vect{a},\vect{b}]|$ - площадь параллелограмма, натянутого на $\vect{a},\vect{b}$
+\end{enumerate}
+Из аксиом 1-3 следует линейность по второму аргументу.\\
+$[\vect{a},\vect{b}] = 0 \Leftrightarrow \vect{a} \parallel \vect{b}$\\\\
+$[\vect{a},\vect{b}] = \ldots = \vect{i}(a_2b_3-a_3b_2) -\vect{j} (a_1b_3-a_3b_1) + \vect{k}(a_1b_2-a_2b_1)\\ = \begin{vmatrix}
+    \vect{i} & \vect{j} & \vect{k} \\
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3
+\end{vmatrix}$\\
+\textbf{Доказательство}\\
+Для $i$-ой координаты:\\
+$((\vect{a_1}+\vect{a_2})\times \vect{b}, \vect{e_i}) = (\vect{a_1}\times \vect{b},\vect{e_i})+(\vect{a_2}\times \vect{b},\vect{e_i})$ (где $\vect{e_i}$ - $i$-ый вектор базиса) - из свойств смешенного произведения. Также это $i$-ая координата.\\
+Отсюда для всех координат выполняется аддитивность. Тогда векторное произведение аддитивно, ч.т.д.
+\subsubsection{Смешанное произведение}
+$\vect{a}\vect{b}\vect{c} = (\vect{a}\times\vect{b})\cdot\vect{c}$\\
+Свойства:
+\begin{enumerate}
+    \item $\vect{a}\vect{b}\vect{c} = \pm V_\text{параллелепипеда}$. + при правой тройке, - при левой
+    \item $\vect{a}\vect{b}\vect{c} = \vect{c}\vect{a}\vect{b} = \vect{b}\vect{c}\vect{a} = -\vect{c}\vect{b}\vect{a} =
+    -\vect{a}\vect{c}\vect{b} =
+    -\vect{b}\vect{a}\vect{c}$
+    \item Аддитивность по первому аргументу $(\vect{a_1}+\vect{a_2})\vect{b}\vect{c} = \vect{a_1}\vect{b}\vect{c}+\vect{a_2}\vect{b}\vect{c}$
+    \item Однородность $\forall\,\lambda \in \mathbb{R}\ (\lambda\vect{a})\vect{b}\vect{c} = \lambda(\vect{a}\vect{b}\vect{c})$
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Из геометрии
+    \item Из пункта 1(т.к. параллелепипед один)
+    \item $(\vect{a_1}+\vect{a_2})\vect{b}\vect{c} = \vect{b}\vect{c}(\vect{a_1}+\vect{a_2}) = \vect{b}\vect{c}\vect{a_1}+\vect{b}\vect{c}\vect{a_2} = \vect{a_1}\vect{b}\vect{c}+\vect{a_2}\vect{b}\vect{c}$\\
+    \textit{(Замечание!!! Аддитивность векторного произведения доказывается через этот пункт)}
+    \item Аналогично пункту 3
+\end{enumerate}
+Из 2-4 следует линейность по всем аргументам.\\\\
+$\vect{a}\vect{b}\vect{c} = 0 \Leftrightarrow V=0\Leftrightarrow \vect{a},\vect{b},\vect{c}$ - компланарны.\\
+$\vect{a}\vect{b}\vect{c}=\begin{vmatrix}
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3 \\
+    c_1 & c_2 & c_3
+\end{vmatrix}$
+\subsubsection{Двойное векторное произведение}
+$\vect{a}\times (\vect{b}\times\vect{c}) = \vect{b}(\vect{a}\cdot\vect{c})-\vect{c}(\vect{a}\cdot\vect{b})$\\
+\textbf{Доказательство}\\
+Пусть $\vect{i} \upuparrows \vect{b}$\\
+$\vect{j} \parallel (\vect{b},\vect{c})$\\
+$\vect{k}$ - по правилу правой тройки.\\
+$\vect{b} = (b_1,0,0)$\\
+$\vect{c} = (c_1, c_2,0)$\\
+$\vect{a} = (a_1,a_2,a_3)$.\\
+Если $\vect{a},\vect{b},\vect{c}$ - не коллинеарны\\
+$\vect{a}\times (\vect{b}\times\vect{c}) = (a_2b_1c_2,-a_1b_1c_2, 0) = (b_1a_1c_1+b_1a_2c_2-c_1a_1b_1,-a_1b_1c_2,0) = (b_1,0,0)(a_1c_1+a_2c_2)-(c_1,c_2,0)(a_1b_1) = \vect{b}(\vect{a}\cdot\vect{c})-\vect{c}(\vect{a}\cdot\vect{b})$, ч.т.д.\\
+Если коллинеарны: очевидно.
+\subsection{Прямая на плоскости.\\Плоскость и прямая в пространстве}
+\textbf{Определение}\\
+Уравнение вида $Ax+By+C=0\ (A^2+B^2\neq 0)$, где $x,y$ - координаты в некоторой д.с.к на плоскости, а также уравнение вида $Ax+By+Cz+D=0\ (A^2+B^2+C^2\neq0)$, где $x,y,z$ - координаты в некотором д.с.к. в пространстве, называется \textit{алгебраическим уравнением первого порядка(линейным уравнением)}\\\\
+\textbf{Теорема}\\
+Любая прямая на плоскости(любая плоскость в пространстве) может быть задана линейным уравнением\\
+Любое линейное уравнение на плоскости(в пространстве) определяет некоторую прямую(плоскость).\\
+\textbf{Доказательство прямого утверждения}\\
+Докажем для прямой.\\
+Пусть $L$ - прямая. Введем д.с.к., где ось $X$ проходит через $L$.\\
+$M \in L \Leftrightarrow y = 0$(линейное уравнение).\\
+\textbf{Лемма}\\
+Если в какой-то д.с.к. прямая задается линейным уравнением, то и в любой другой д.с.к. она тоже будет задаваться линейным уравнением.\\
+\textbf{Доказательство}\\
+Любые две д.с.к. могут быть совмещены путем композиции параллельного переноса и сдвига. \\
+Пусть в первой системе координат задана прямая $Ax+By+C=0$.
+\begin{enumerate}
+    \item Для переноса:\\
+$\left\{\begin{array}{l}
+    x'=x-x_0  \\
+    y'=y-y_0 
+\end{array}\right.$\\
+Тогда в новой системе координат эта же прямая будет задана уравнением $Ax'+By'+(C+Ax_0+By_0)=0$
+\item Для поворота:\\
+$\left\{\begin{array}{l}
+    x=x'\cos\alpha-y'\sin\alpha\\
+    y=x'\sin\alpha+y'\cos\alpha 
+\end{array}\right.$\\
+Тогда в новой системе координат эта же прямая будет задана уравнением $(A\cos\alpha+B\sin\alpha)x'+(B\cos\alpha-A\sin\alpha)y'+C=0$
+\end{enumerate}
+\textbf{Доказательство обратного утверждения}\\
+$Ax+By+C=0\ (A^2+B^2\neq0)$\\
+Пусть $A\neq 0$. Возьмем точку $(-\frac CA,0)$.Она будет лежать на прямой. Аналогично для $B$. Тогда уравнение имеет как минимум одно решение.\\
+Возьмем любую точку $M_0(x_0,y_0)$\\
+$\left\{\begin{array}{l}
+    Ax_0+By_0+C=0  \\
+    Ax+By+C=0 
+\end{array}\right. \Rightarrow A(x-x_0)+B(y-y_0)=0 \Leftrightarrow (A,B)\cdot(x-x_0,y-x_0)=0 \Leftrightarrow (A,B)\perp (x,y)$. Получаем, что уравнение задает множество направленных отрезков с началом в $M_0$, перпендикулярных $(A,B)$. Отсюда это прямая. Такая прямая задается единственным образом.\\
+\textbf{Определение}\\
+$(A,B)$ в уравнении прямой и $(A,B,C)$ в уравнении плоскости называется \textit{вектором нормали}.
+\begin{enumerate}
+    \item \textbf{Прямая на плоскости}
+\begin{enumerate}
+    \item Общее уравнение\\
+    $Ax+By+C=0\ (A^2+B^2\neq0)$
+    \item Уравнение в отрезках\\
+    $\frac xa+\frac yb = 1$, если $L$ не проходит через $(0,0)$\\
+    $a,b$ - отрезки на координатных осях, которые отсекает прямая
+    \item Через нормаль $\vect{N}(A,B)$ и точку $M_0(x_0,y_0)$\\
+    $\vect{N}\cdot(\vect{OM}-\vect{OM_0}) = 0$\\
+    $A(x-x_0)+B(y-y_0)=0$
+    \item Каноническое и параметрическое уравнение прямой\\
+    $M_0 \in L\\
+    \vect{S} = (l,m)\\
+    \vect{S} \parallel L\\
+    \vect{M_0M} = t\vect{S}\\
+    \left\{\begin{array}{l}
+        x=tl+x_0  \\
+        y = tm+y_0
+    \end{array}\right.$ - параметрическое уравнение прямой\\
+    $t=\frac{x-x_0}l=\frac{y-y_0}m$ - каноническое уравнение прямой\\
+    \textit{Замечание}\\
+    Если знаменатель 0, то от числителя требуется быть 0, а $\frac00$ - любое число
+    \item Нормальное уравнение\\
+    $\vect{n_0} \perp L, |\vect{n_0}| = 1, \rho(0,L)=p \geq 0, M \in L$\\
+    Зададим $\vect{n_0}$ через направляющие косинусы:\\
+    В такой записи $\vect{n_0}$ смотрит в сторону прямой $L$\\
+    $\vect{n_0} = (\cos\alpha,\sin\alpha)$\\
+    $\operatorname{\text{Пр}}_{\vect{n_0}} \vect{OM} = p \Leftrightarrow (\vect{OM},\vect{n_0}) = p \Leftrightarrow x\cos\alpha+y\sin\alpha-p=0$
+    \item Полярное уравнение прямой\\
+    Рассмотрим полярную систему координат:\\
+    $\left\{\begin{array}{l}
+        x=r\cos\phi  \\
+        y=r\sin\phi
+    \end{array}\right.$\\
+    $x\cos\alpha+y\sin\alpha-p=0$\\
+    Отсюда $r\cos\phi\cos\alpha+r\sin\phi\sin\alpha-p=0 \Leftrightarrow r\cos (\phi-\alpha)=p$ - полярное уравнение прямой, где $\phi$ - угол наклона точки, $\alpha$ - угол наклона нормали, $r$ - расстояние до точки, $p$ - расстояние до прямой\\
+    $\cos(\phi-\alpha) = \frac p r$
+\end{enumerate}
+\item\textbf{Плоскость в пространстве}
+\begin{enumerate}
+    \item Общее уравнение\\
+    $Ax+By+Cz+D=0\ (A^2+B^2+C^2\neq0)$
+    \item Уравнение в отрезках\\
+    $\frac xa+\frac yb +\frac zc= 1$, если $\alpha$ не проходит через $(0,0,0)$\\
+    $a,b,c$ - отрезки на координатных осях, которые отсекает плоскость
+    \item Через нормаль $\vect{N}(A,B,C)$ и точку $M_0(x_0,y_0,z_0)$\\
+    $\vect{N}\cdot(\vect{OM}-\vect{OM_0}) = 0$\\
+    $A(x-x_0)+B(y-y_0)+C(z-z_0)=0$
+    \item Через параллельный вектор $\vect{a}$ и точки $M_1,M_2$.\\ Выберем произвольную точку $M$.\\
+    $M \in \alpha \Leftrightarrow \vect{M_1M_2}\vect{M_1M}\vect{a} = 0$
+    \item Нормальное уравнение\\
+    $\vect{n_0} \perp \alpha, |\vect{n_0}| = 1, \rho(0,\alpha)=p \geq 0, M \in \alpha$\\
+    В такой записи $\vect{n_0}$ смотрит в сторону плоскости $\alpha$\\
+    Зададим $\vect{n_0}$ через направляющие косинусы:\\
+    $\vect{n_0} = (\cos\alpha,\cos\beta,\cos\gamma)$\\
+    $\operatorname{\text{Пр}}_{\vect{n_0}} \vect{OM} = p \Leftrightarrow (\vect{OM},\vect{n_0}) = p \Leftrightarrow x\cos\alpha+y\cos\beta+z\cos\gamma-p=0$\\
+\end{enumerate}
+\item \textbf{Прямая в пространстве}
+\begin{enumerate}
+    \item Первый способ задания
+    \begin{enumerate}
+        \item $\left\{\begin{array}{l}
+            A_1x+B_1y+C_1z+D=0  \\
+            A_2x+B_2y+C_2z+D=0
+        \end{array}\right.$\\\\
+        $(A_1,B_1,C_1) \nparallel (A_2,B_2,C_2)$
+    \end{enumerate}
+    \item Из первого способа\\
+    $\left\{\begin{array}{ll}
+            A_1x+B_1y+C_1z+D=0, & \vect{N_1} = (A_1,B_1,C_1)  \\
+            A_2x+B_2y+C_2z+D=0, & \vect{N_2} = (A_2,B_2,C_2)
+        \end{array}\right.$\\\\
+        $(A_1,B_1,C_1) \nparallel (A_2,B_2,C_2)$\\
+        $\vect{S} = \vect{N_1}\times\vect{N_2}$\\
+        Точку $M_0$ находим путем подстановки одной из координат в систему.
+    \item Каноническое и параметрическое уравнение прямой\\
+    $M_0 \in L\\
+    \vect{S} = (l,m,n)\\
+    \vect{S} \parallel L\\
+    \vect{M_0M} = t\vect{S}\\
+    \left\{\begin{array}{l}
+        x=tl+x_0  \\
+        y = tm+y_0\\
+        z = tn+z_0
+    \end{array}\right.$ - параметрическое уравнение прямой\\
+    $t=\frac{x-x_0}l=\frac{y-y_0}m=\frac{z-z_0}n$ - каноническое уравнение прямой\\
+    \textit{Замечание}\\
+    Если знаменатель 0, то от числителя требуется быть 0, а $\frac00$ - любое число
+\end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}
+    \item \textbf{Расстояние от точки до прямой в плоскости}\\
+    $L: x\cos\alpha + y\sin\alpha - p = 0$ - нормальное уравнение\\
+    $M' = (x',y')$ - точка\\
+    $d=\rho(M',L)$\\
+    $\vect{n_0} = (\cos\alpha,\sin\alpha)$\\
+    $\delta = \operatorname{\text{Пр}}_{\vect{n_0}}\vect{OM'}-p$\\
+    $d = |\delta| = |x'\cos\alpha+y'\sin\alpha-p| = \frac{|Ax'+By'+C|}{\sqrt{A^2+B^2}}$
+    \item \textbf{Расстояние от точки до плоскости}\\
+    $L: x\cos\alpha + y\cos\beta + z\cos\gamma - p = 0$ - нормальное уравнение\\
+    $M' = (x',y',z')$ - точка\\
+    $d=\rho(M',L)$\\
+    $\vect{n_0} = (\cos\alpha,\cos\beta,\cos\gamma)$\\
+    $\delta = \operatorname{\text{Пр}}_{\vect{n_0}}\vect{OM'}-p$\\
+    $d = |\delta| = |x'\cos\alpha+y'\cos\beta+z'\cos\gamma-p| = \frac{|Ax'+By'+Cz'+D|}{\sqrt{A^2+B^2+C^2}}$
+    \item \textbf{Расстояние от точки до прямой в пространстве}\\
+    $L(\vect{S},N_0)$\\
+    $M'=(x',y',z')$\\
+    $d=\frac{|\vect{M_0M}\times\vect{S}|}{|\vect{S}|}$
+    \item \textbf{Расстияние между скрещивающимися прямыми}\\
+    $d(L_1,L_2) = \frac{V_{\text{параллелепипеда } \vect{S_1} \vect{S_2} \vect{M_1M_2}}}{S_{\text{плоскости } \vect{S_1} \vect{S_2}}} = \frac{|\vect{S_1}, \vect{S_2}, \vect{M_1M_2}|}{|\vect{S_1} \times \vect{S_2}|}$
+\end{enumerate}
+\textbf{Взаимное расположение прямой и плоскости}
+\begin{enumerate}
+    \item $L \parallel \alpha$ или $L \subset \alpha$\\
+    Условие параллельности:\\
+    $L(\vect{S},M_0)$\\
+    $\alpha: Ax+By+Cz+D=0$\\
+    $\vect{S} \perp \vect{N} \Leftrightarrow (\vect{S},\vect{N}) = 0 \Leftrightarrow Al+Bm+Cn = 0$\\
+    $M_0 \in \alpha \Leftrightarrow Ax_0+By_0+Cz_0+D=0  \Leftrightarrow L \subset \alpha$\\
+    $\rho(L,\alpha)=\rho(M_0,\alpha)$
+    \item $L \cap \alpha = P$\\
+    Пересечение возможно найти, решая систему уравнений.
+\end{enumerate}
+\textbf{Взаимное расположение} 
+\begin{enumerate}
+    \item \textbf{прямых на плоскости}\\
+    $L_1 \parallel L_2 $ или $L_1 = L_2$\\
+    при $\frac{A_1}{A_2} = \frac{B_1}{B_2} \Leftrightarrow \vect{N_1} \parallel \vect{N_2} \Leftrightarrow \vect{S_1} \parallel \vect{S_2} \Leftrightarrow \frac{S_{1x}}{S_{2x}} = \frac{S_{1y}}{S_{2y}}$\\
+    Причем $L_1=L_2 \Leftrightarrow \frac{A_1}{A_2} = \frac{B_1}{B_2}=\frac{C_1}{C_2}$
+    \item \textbf{плоскостей в пространстве}\\
+    $\alpha_1 \parallel \alpha_2 $ или $\alpha_1 = \alpha_2$\\
+    при $\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2} \Leftrightarrow \vect{N_1} \parallel \vect{N_2}$\\
+    Причем $\alpha_1=\alpha_2 \Leftrightarrow \frac{A_1}{A_2} = \frac{B_1}{B_2}=\frac{C_1}{C_2} = \frac{D_1}{D_2}$
+    \item \textbf{прямых в пространстве}
+    \begin{enumerate}
+        \item $L_1 \parallel L_2 $ или $L_1 = L_2$\\
+        при $\vect{S_1} \parallel \vect{S_2} \Leftrightarrow \frac{S_{1x}}{S_{2x}} = \frac{S_{1y}}{S_{2y}} = \frac{S_{1z}}{S_{2z}}$\\
+        Причем $L_1=L_2 \Leftrightarrow \vect{M_1M_2} \parallel \vect{S_1} \parallel \vect{S_2}$
+        \item $P = L_1\cap L_2 \Leftrightarrow \vect{S_1} \nparallel \vect{S_2} \land \vect{S_1}, \vect{S_2}, \vect{M_1M_2} - \text{компланарны} \Leftrightarrow \left\{\begin{array}{l}
+             \vect{S_1} \nparallel \vect{S_2}  \\
+              (\vect{S_1}, \vect{S_2}, \vect{M_1M_2}) = 0
+        \end{array}\right.$
+        \item $L_1, L_2$ - скрещиваются $\Leftrightarrow \vect{S_1},\vect{S_2},\vect{M_1M_2} $ - не компланарны $\Leftrightarrow (\vect{S_1}, \vect{S_2}, \vect{M_1M_2}) \neq 0$
+    \end{enumerate}
+\end{enumerate}
+\textbf{Задача о поиске общего перпендикуляра $L$ к $L_1$ и $L_2$}\\
+Пусть $\begin{array}{l}
+     \alpha_1(L_1,L)  \\
+     \alpha_2(L_2,L) 
+\end{array}$\\
+Найдем $\vect{S} = \vect{S_1}\times \vect{S_2}$.\\
+$\vect{N_1} = \vect{S_1}\times\vect{S}$\\
+$\vect{N_2} = \vect{S_2}\times\vect{S}$\\
+Отсюда $\alpha_1(\vect{N_1},M_1), \alpha_2(\vect{N_2},M_2)$\\
+Тогда $L = \alpha_1 \cap \alpha_2$\\\\
+\textbf{Задача о поиске точки $P'$, симметричной данной точке $P$}
+\begin{enumerate}
+    \item \textbf{Относительно плоскости $\alpha$}\\
+    Возьмем вектор нормали $\vect{N} = (A,B,C)\\\vect{N} \parallel PP'$.\\
+    Отсюда $PP': \frac{x-p_x}A=\frac{y-p_y}B=\frac{z-p_z}C=t\in\mathbb{R}$. Решая систему, найдем $Q = \alpha \cap PP'\\
+    P' = P + 2\vect{PQ}$
+    \item \textbf{Относительно прямой $L(\vect{S},M_0)$ в пространстве}\\
+    Пусть $\alpha(P, \vect{S})$\\
+    $Q = \alpha \cap L$\\
+    $P' = P + 2\vect{PQ}$
+\end{enumerate}
+\subsection{Кривые второго порядка на плоскости}
+\textbf{Определение}\\
+\textit{Алгебраические уравнения второго порядка} - это уравнения вида\\ $a_{11}x^2+2a_{12}xy+a_{22}y^2+2a_1x+2a_2y+a_0=0\ (a_{11}^2+a_{12}^2+a_{22}^2 \neq 0)$, где $x,y$ - координаты точек в д.с.к.\\
+Кривые второго порядка: \begin{enumerate}
+    \item Невырожденные
+    \begin{enumerate}
+        \item Эллипс
+        \item Гипербола
+        \item Парабола
+    \end{enumerate}
+    \item Вырожденные
+    \begin{enumerate}
+        \item пара пересекающихся прямых
+        \item пара параллельных прямых
+        \item пара совпадающих прямых(прямая)
+        \item точка
+        \item $\varnothing$
+    \end{enumerate}
+\end{enumerate}
+\subsubsection{Канонические уравнения невырожденных кривых второго порядка и их основные свойства}
+\begin{enumerate}
+    \item Эллипс
+    \begin{enumerate}
+        \item Определение 1:\\
+        Геометрическое место точек, для которых сумма расстояний для двух данных точек $F_1$ и $F_2$ - величина постоянная и равная $2a$\\
+        $F_1M+F_2M=2a > F_1F_2$
+        \item Каноническое уравнение:\\
+        \textit{Эллипс рассматривается в канонической д.с.к}\\
+        $F_1=(-c,0), F_2=(c,0)$\\
+        Тогда эллипс задается уравнением $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$, где \\
+        $a$ - большая полуось\\
+        $b = \sqrt{a^2-c^2}$ - малая полуось\\
+        $F_1,F_2$ - фокусы\\
+        $r_1=MF_1, r_2=MF_2$ - фокальные радиусы
+        \item Эксцентриситет:\\
+        $\varepsilon = \frac ca < 1$\\
+        Если эллипс - окружность, то $\varepsilon = 0$
+        \item Фокальные радиусы:\\
+        $r_{1,2} = a\pm \varepsilon x$
+        \item Директрисы:\\
+        $D_1: x=-\frac a\varepsilon = -\frac{a^2}c$\\
+        $D_2: x=\frac a\varepsilon = \frac{a^2}c$\\
+        $\frac {r_1}{d_1} = \frac {r_2}{d_2}=\varepsilon$, где $d_i = \rho(M,D_i)$
+        \item Определение 2:\\
+        Геометрическое место точек, для которых отношение $\frac rd = const < 1$, где $r$ - расстояние до данной точки $F$ на плоскости, $d$ - расстояние до данной прямой $D$ на плоскости
+    \end{enumerate}
+    \item Гипербола
+    \begin{enumerate}
+        \item Определение 1:\\
+        Геометрическое место точек, для которых модуль разности расстояний до двух фиксированных точек $F_1$ и $F_2$ - величина постоянная и равная $2a$\\
+        $|F_1M-F_2M| = 2a < F_1F_2$
+        \item Каноническое уравнение:\\
+        \textit{Гипербола рассматривается в канонической д.с.к.}\\
+        $F_1=(-c,0), F_2=(c,0), c > a$\\
+        Тогда гипербола задается уравнением $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$, где \\
+        $a$ - действительная полуось\\
+        $b = \sqrt{c^2-a^2}$ - мнимая полуось\\
+        $F_1,F_2$ - фокусы\\
+        $r_1=MF_1, r_2=MF_2$ - фокальные радиусы\\
+        $y=\pm\frac bax$ - асимптоты\\
+        Если $a=b$, то гипербола называется \textit{равнобочной}
+        \item Эксцентриситет:\\
+        $\varepsilon = \frac ca > 1$
+        \item Фокальные радиусы:\\
+        Левая вервь: $r_{1,2} = -\varepsilon x \mp a$\\
+        Правая вервь: $r_{1,2} = \varepsilon x \pm a$
+        \item Директрисы:\\
+        $D_1: x=-\frac a\varepsilon = -\frac{a^2}c$\\
+        $D_2: x=\frac a\varepsilon = \frac{a^2}c$\\
+        $\frac {r_1}{d_1} = \frac {r_2}{d_2}=\varepsilon$, где $d_i = \rho(M,D_i)$
+        \item Определение 2:\\
+        Геометрическое место точек, для которых отношение $\frac rd = const > 1$, где $r$ - расстояние до данной точки $F$ на плоскости, $d$ - расстояние до данной прямой $D$ на плоскости
+    \end{enumerate}
+    \item Парабола
+    \begin{enumerate}
+        \item Определение 1:\\
+        Геометрическое место точек, для которых расстояние до фиксированной точки плоскости $F$ и до прямой $D$ равны\\
+        $\rho(M,D)=MF$
+        \item Каноническое уравнение:\\
+        \textit{Эллипс рассматривается в канонической д.с.к.}\\
+        $\rho(F,D) = p$ - фокальный параметр\\
+        $F=(\frac p2,0)$\\
+        $D: x=-\frac p2$\\\\
+        $y^2=2px$ - каноническое уравнение, где\\
+        $r=MF$ - фокальный радиус\\
+        $D$ - директриса
+        \item Эксцентриситет:\\
+        $\varepsilon =  1$
+        \item Фокальные радиусы:\\
+        $r=x+\frac p2$
+        \item Директрисы:\\
+        $\frac rd = \varepsilon = 1$
+        \item Определение 2 = Определение 1
+    \end{enumerate}
+\end{enumerate}
+\textbf{Определение}\\
+\textit{Касательная} - предельное положение секущей
+\begin{enumerate}
+    \item Эллипс
+    \begin{enumerate}
+        \item Касательная:\\
+        $\frac{xx_0}{a^2}+\frac{yy_0}{b_2} = 1$, где $(x_0, y_0)$ - точка касания
+        \item Полярная система координат:\\
+        Начало координат выбрано в одном из фокусов $F$, ось задана в сторону соответствующей директрисы $D$\\
+        $r=\frac{p}{1+\varepsilon\cos\phi}$\\
+        $p = q\varepsilon$ - фокальный параметр\\
+        $q$ - расстояние от $F$ до $D$\\
+        $q = \frac a\varepsilon - c \Rightarrow p=a-c\varepsilon = \frac{b^2}a$
+        \item Полярная система координат 2:\\
+        Начало координат выбрано в одном из фокусов $F$, ось задана в сторону, противоположную соответствующей директрисе $D$\\
+        $r=\frac{p}{1+\varepsilon\cos\phi+\pi} = \frac{p}{1-\varepsilon\cos\phi}$
+        \item Оптические свойства:\\
+        Луч, выпущенный из одного фокуса, попадает во второй        
+    \end{enumerate}
+    \item Гипербола
+    \begin{enumerate}
+        \item Касательная:\\
+        $\frac{xx_0}{a^2}-\frac{yy_0}{b_2} = 1$, где $(x_0, y_0)$ - точка касания
+        \item Полярная система координат:\\
+        Начало координат выбрано в одном из фокусов $F$, ось задана в сторону соответствующей директрисы $D$\\
+        Для первой ветви:\\
+        $r=\frac{p}{1+\varepsilon\cos\phi}$\\
+        Для второй ветви:\\
+        $r=\frac{-p}{1-\varepsilon\cos\phi}$\\
+        $p = q\varepsilon$ - фокальный параметр\\
+        $q$ - расстояние от $F$ до $D$\\
+        $q = c - \frac a\varepsilon \Rightarrow p=c\varepsilon - a = \frac{b^2}a$
+        \item Полярная система координат 2:\\
+        Начало координат выбрано в одном из фокусов $F$, ось задана в сторону, противоположную соответствующей директрисе $D$\\
+        $r=\frac{p}{1+\varepsilon\cos\phi+\pi} = \frac{p}{1-\varepsilon\cos\phi}$
+        \item Оптические свойства:\\
+        Луч, выпущенный из одного фокуса, отражается так, как если бы он шел из второго фокуса(мнимый источник света).
+        \item Асимптоты гиперболы:\\
+        Пусть асимптота $y=kx+c$ левой верхней части гиперболы $y=y(x)=b\sqrt{\frac{x^2}{a^2}-1}$ \\
+        $\left\{\begin{array}{l}
+             k = \liml_{x\rightarrow +\infty} \frac{y(x)}x = \ldots = \frac ab \\
+             c = \liml_{x\rightarrow +\infty} y(x)-kx = \ldots = 0
+        \end{array}\right.$\\
+        Из симметрии асимптоты $y=\pm\frac bax$
+    \end{enumerate}
+    \item Парабола
+    \begin{enumerate}
+        \item Касательная:\\
+        $yy_0=p(x+x_0)$, где парабола  $y^2=2px$, где $(x_0, y_0)$ - точка касания
+        \item Полярная система координат:\\
+        Начало координат выбрано в фокусе $F$, ось задана в сторону директрисы $D$\\
+        $r=\frac{p}{1+\varepsilon\cos\phi} = \frac{p}{1+\cos\phi}$\\
+        $p = q\varepsilon = q$ - фокальный параметр\\
+        $q$ - расстояние от $F$ до $D$
+        \item Полярная система координат 2:\\
+        Начало координат выбрано в фокусе $F$, ось задана в сторону, противоположную директрисе $D$\\
+        $r=\frac{p}{1+\varepsilon\cos\phi+\pi} = \frac{p}{1-\cos\phi}$
+        \item Оптические свойства:\\
+        Луч, выпущенный из фокуса, идет параллельно оси.
+    \end{enumerate}
+    \end{enumerate}
+    \subsubsection{Приведение уравнения кривой второго порядка к каноническому виду}
+    $a_{11}x^2+2a_{12}xy+a_{22}y^2+2a_1x+2a_2y+a_0 = 0; (a_{11}^2+a_{22}^2+a_{12}^2\neq 0)$\\
+    Заметим, что если применить параллельный перенос и поворот, то тип уравнения не изменится.
+    \begin{enumerate}
+        \item $a_{12} \neq 0$\\
+         Сделмаем поворот, чтобы в новом уравнении отсутствовало слагаемое $x'y'$\\
+         $\left\{\begin{array}{l}
+              x=x'\cos \alpha - y'\sin \alpha  \\
+              y = x'\sin \alpha + y'\cos\alpha
+         \end{array}\right., \alpha \in (-\frac \pi2, \frac \pi2)$\\
+         Подставим в уравнение и найдем коэффициент при $x'y'$:\\
+         $-2a_{11}\cos\alpha\sin\alpha+2a_{12}(\cos^2\alpha-\sin^2\alpha)+2a_{22}\sin\alpha\cos\alpha=0$\\
+         Отсюда:\\
+         $\tan^2\alpha+\frac{a_{11}-a_{22}}{a_{12}}\tan\alpha-1=0$\\
+         Отсюда находим $\alpha$
+         \item $a_{12} = 0$
+         \begin{enumerate}
+             \item $a_{11}\neq 0; a_{22}\neq0$:\\
+             $a_{11}x^2+2a_1x=a_{11}(x^2+\frac{2a_1}{a_{11}}x)=a_{11}(x+\frac{a_1}{a_{11}})^2-\frac{a_1^2}{a_{11}}$\\
+             Сделаем параллельный перенос:\\
+             $\left\{\begin{array}{l}
+              x' = x + \frac{a_1}{a_{11}}\\
+              y' = y + \frac{a_2}{a_{22}}
+            \end{array}\right.$\\
+            и получаем уравнение вида $a_{11}x'^2+a_{22}y'^2+a_0'=0$
+            \begin{enumerate}
+                \item $a_0 \neq 0$\\
+                $\frac{x'^2}{\frac{-a_0'}{a_{11}}}+\frac{y'^2}{\frac{-a_0'}{a_{22}}} = 1$ - парабола или гипербола
+                \item $a_0 = 0$\\
+                Точка или скрещивающиеся прямые
+            \end{enumerate}
+            \item $a_{11} \neq 0; a_{22} = 0$\\
+             Сделаем параллельный перенос:\\
+             $\left\{\begin{array}{l}
+              x' = x + \frac{a_1}{a_{11}}\\
+              y' = y
+            \end{array}\right.$\\
+            и получаем уравнение вида $a_{11}x'^2+2a_{2}y'+a_0'=0$
+            \begin{enumerate}
+                \item $a_2\neq 0$\\
+                Парабола
+                \item $a_2=0$\\
+                Пустое множество, пара скрещивающихся или параллельных прямых
+            \end{enumerate}
+            \item $a_{11} = 0; a_{22}\neq0$:\\
+            Аналогично
+        \end{enumerate}
+    \end{enumerate}
+    \subsection{Поверхности второго порядка}
+    \textbf{Определение}\\
+    Множество точек пространства, координаты которых удовлетворяют алгебраическим уравнениям второго порядка, называются \textit{поверхностями второго порядка}\\
+    $a_{11}x^2+a_{22}y^2+a_{33}z^2+2a_{12}xy+2a_{13}xz+2a_{23}yz+a_1x+a_2y+a_3z+a_0 = 0\\ (a_{11}^2+a_{22}^2+a_{33}^2+a_{12}^2+a_{13}^2+a_{23}^2 \neq 0)$\\\\
+    \textbf{Определение}\\
+    \textit{Метод сечений} - метод изучения формы поверхности, заданной уравнением в д.с.к., построением сечений фигуры плоскостями(в нашем случае $x=0; y=0; z=0$)\\ 
+    Всего 15 типов:
+    \begin{enumerate}
+        \item Невырожденные
+        \begin{enumerate}
+            \item Элипсоид
+            \item Двуполостной гиперболоид
+            \item Однополостной гиперболоид
+            \item Параболоиды элиптические
+            \item Параболоиды гиперболические
+            \item Конус
+        \end{enumerate}
+        \item Вырожденные
+        \begin{enumerate}
+            \item Элиптический цилиндр
+            \item Гиперболический цилиндр
+            \item Параболический цилиндр
+            \item Пара пересекающихся плоскостей
+            \item Пара параллельных плоскостей
+            \item Плоскость
+            \item Прямая
+            \item Точка
+            \item $\varnothing$
+        \end{enumerate}
+    \end{enumerate}
+    \subsubsection{Невырожденные уравнения второго порядка}
+    \begin{enumerate}
+        \item Элипсоид\\
+        $\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$\\
+        Сечения:
+        \begin{enumerate}
+            \item $x = h \in (-a,a); y = h \in (-b,b); z = h \in (-c,c)$ - эллипс
+            \item $x=\pm a; y = \pm b; z = \pm c$ - точки
+            \item $x = h \notin [-a,a]; y = h \notin [-b,b]; c = h \notin [-c,c]$ - $\varnothing$
+        \end{enumerate}
+        \item Гиперболоид
+        \begin{enumerate}
+            \item Однополостной\\
+            Каноническое уравнение\\
+            $\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1$\\
+            \textit{Горловое сечение} - сечение в $z=0$(Самое маленькое)
+            \item Двуполостной\\
+            $\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=-1$\\
+            Рассмотрим сечение $z=h$:\\
+            Сечение $\varnothing$ при $h < c$\\
+            Сечение - точка при $h=c$\\                
+        \end{enumerate}
+        \item Конус\\
+        $\frac{x^2}{a^2}+\frac{y^2}{b^2}=\frac{z^2}{c^2}$\\
+        Если $a=b$, то конус - \textit{конус вращения}\\
+        В таком случае поверхность образована прямыми, проходящими через $(0,0)$\\
+        Сечения:
+        \begin{enumerate}
+            \item $z=0$ - точка
+            \item $z=h \neq 0$ - эллипс
+            \item $mx+ny=0$ - скрещивающиеся прямые
+            \item $z=\pm \frac ca x$ - гипербола
+            \item Секущая прямая, параллельная прямой на поверхности - парабола
+        \end{enumerate}
+        \item Параболоиды
+        \begin{enumerate}
+            \item Эллиптический\\
+            $\frac{x^2}{2p}+\frac{y^2}{2q}=z$\\
+            $p=q$ - параболоид вращения\\
+            Сечения:
+            \begin{enumerate}
+                \item $z=h\geq 0$ - эллипс
+                \item $x=h; y = h$ - параболы
+            \end{enumerate}
+            \item Гиперболический\\
+            $\frac {x^2}{2p}-\frac{y^2}{2q}=z$\\
+            Сечения:
+            \begin{enumerate}
+                \item $z=h\neq0$ - гиперболы
+                \item $z=0$ - скрещивающиеся прямые-асимтоты гипербол
+                \item $x=h; y = h$ - параболы
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \subsubsection{Цилиндрические поверхности}
+    \textbf{Определение}\\
+    Поверхность, образованная всеми прямыми $L$, проходящими через точку пространственной кривой $l$ параллельно заданному вектору $\vect{a} \neq \vect{0}$, называется \textit{цилиндрической поверхностью}\\
+    $L$ - обращующая поверхность\\
+    $l$ - направляющая\\\\
+    \textbf{Утверждение}\\
+    Множество точек пространства, удовлетворяющих заданному уравнению $F(x,y)=0$, образуют цилиндрическую поверхность с образующей, параллельной $OZ$, и направляющей плоской кривой, задаваемой уравнением $F(x,y)=0$ в плоскости, параллельной $OXY$
+    \subsubsection{Цилиндрические поверхности второго порядка}
+    \begin{enumerate}
+        \item Эллиптический цилиндр\\
+        $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$
+        \item Гиперболический цилиндр\\
+        $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$
+        \item Параболический цилиндр\\
+        $y=2px^2$
+        \item Пара пересекающихся плоскостей\\
+        $\frac{x^2}{a^2}-\frac{y^2}{b^2}=0$
+        \item Пара параллельных плоскостей\\
+        $\frac{x^2}{a^2}=1$
+        \item Плоскость\\
+        $\frac{x^2}{a^2}=0$
+    \end{enumerate}
+
+\section{Линейная алгебра}
+\subsection{Алгебраические структуры}
+\subsubsection{Алгебраическая структура. Группа}
+\textbf{Определение}\\
+Пусть у нас есть множества $A,B,C$. $*: A \times B \rightarrow C$ - \textit{закон внешней композиции}\\
+Если при этом $*: A\times A \rightarrow A$ - \textit{закон внутренней композиции} - \textit{алгебраическая операция} - \textit{бинарная операция}\\\\
+\textbf{Определение}
+\begin{enumerate}
+    \item $a*b = b*a$ - \textit{коммутативность(симметричность)}
+    \item $(a*b)*c = a*(b*c)$ - \textit{ассоциативность}
+\end{enumerate}
+\textbf{Определение}\\
+$(A,\Omega, S)$, где $A$ - множество, $\Omega$ - множество отношений, $S$ - множество алгебраических операций называется \textit{алгебраической структурой}\\
+$S=\varnothing$ - \textit{модель}\\
+$\Omega=\varnothing$ - \textit{алгебра}(возможна коллизия имен с будущими "алгебрами")\\\\
+\textbf{Определение}\\
+$(A,*)$ - \textit{группа}, если
+\begin{enumerate}
+    \item $(a*b)*c = a*(b*c)$ - ассоциативность *
+    \item $\exists\,e: e*a=a*e=a$
+    \item $\exists\,a^{-1}: a^{-1}*a=a*a^{-1}=e$
+\end{enumerate}
+\textit{(считаем, что во всех множествах определено отношение равенства)}\\\\
+\textbf{Определение}\\
+Группа называется \textit{Алебевой}, если $a*b=b*a$(умножение коммутативно)\\\\
+\textbf{Уточнение}\\
+\textit{Исторические обозначения}
+\begin{enumerate}
+    \item * иногда обозначают + в Абелевых группах. Нейтральный элемент обозначают $\0$ и называют \textit{нулем}. Обратный элемент называют \textit{противоположным}. Группу называют \textit{аддитивной}
+    \item * иногда обозначают $\cdot$ в группах. Нейтральный элемент обозначают $\1$ и называют \textit{единицей}. Обратный элемент называют \textit{обратным}. Группу называют \textit{мультипликативной}
+\end{enumerate}
+\textbf{Свойства Абелевых групп}
+\begin{enumerate}
+    \item $a+x=b+x \Leftrightarrow a=b$\\
+    \textbf{Доказательство}\\
+    $a+x+(-x)=b+x+(-x)$, т.к. если к равным элементам прибавить другие равные элементы, то результаты действий равны\\
+    $a+(x+(-x))=b+(x+(-x))$, т.к. + ассоциативен\\
+    $a+\0=b+\0$\\
+    $a=b$, ч.т.д.
+    \item $a+x=b\Rightarrow \exists!\,\text{решение } x \text{ уравнения}; x=b+(-a)$\\
+    \textbf{Доказательство}\\
+    Докажем, что $x=b+(-a)$ - решение\\
+    $a+(b+(-a))=b$\\
+    $a+b+(-a)=a+(-a)+b=b$, ч.т.д.\\
+    Докажем, что $x$ - единственный\\
+    Пусть $x_1, x_2$ - решения:\\
+    $a+x_1=b=a+x_2$\\
+    Тогда $a+x_1+(-a)=a+x_2+(-a)$\\
+    $a+(-a)+x_1=a+(-a)+x_2$\\
+    $x_1=x_2$. Отсюда существует одно решение, ч.т.д.
+    \item $\0$ и $-a$ - единственные\\
+    \textbf{Доказательство}\\
+    Пусть $\0'$ - нейтральный элемент\\
+    $a+\0'=a$\\
+    Из второго свойства $\0'=a+(-a)=\0$. Тогда нулевой элемент единственный\\
+    Пусть $(-a)'$ - противоположный элемент\\
+    $a+(-a)'=\0$\\
+    $(-a)'=\0+(-a)=-a$. Отсюда противоположный элемент единственный, ч.т.д.
+\end{enumerate}
+\subsubsection{Кольцо и поле}
+\textbf{Определение}\\
+Рассмотрим $(K,+,\cdot)$:
+\begin{enumerate}
+    \item + ассоциативно
+    \item + коммутативно
+    \item Существует нейтральный элемент $\0$ по +
+    \item Существует противоположный элемент по +
+    \item $(a+b)\cdot c=a\cdot c+b\cdot c$ - правая дистрибутивность\\
+    $a\cdot (b+c)=a\cdot b+a\cdot c$ - левая дистрибутивность
+    \item $\cdot$ ассоциативно
+    \item $\cdot$ коммутативно
+    \item Существует нейтральный элемент $\1\neq \0$ по $\cdot$
+    \item Существует противоположный элемент по $\cdot$ для всех элементов кроме элемента $\0$
+\end{enumerate}
+Если выполняются аксиомы:
+\begin{enumerate}
+    \item 1-5 - \textit{кольцо} (тогда аксиомы 1-4 - \textit{аддитивная группа кольца}
+    \item 1-6 - \textit{ассоциативное кольцо}
+    \item 1-7 - \textit{ассоциативное коммутативное кольцо}
+    \item 1-8 - \textit{ассоциативное коммутативное кольцо с единицей}
+    \item 1-9 - \textit{Поле} (тогда аксиомы 6-9 - Абелева группа для ненулевых элементов по умножению - \textit{мультипликативная группа кольца})
+\end{enumerate}
+\textbf{Свойства}
+\begin{enumerate}
+    \item $K$ - ассоциативное коммутативное кольцо\\
+    $a\cdot\0=\0\cdot a=\0$\\
+    \textbf{Доказательство}\\
+    $a\cdot(\0+\0) = a\cdot\0$\\
+    $a\cdot\0+a\cdot\0=a\cdot\0$\\
+    $a\cdot\0 = \0$, ч.т.д.
+    \item $K$ - ассоциативное коммутативное кольцо с единицей\\
+    Тогда $\1$ единственное\\
+    \textbf{Доказательство}\\
+    Пусть есть $\1'$ - нулевой элемент по умножению\\
+    Тогда $\1'=\1\cdot\1' = \1$. Отсюда $\1$ единственная
+    \item \textbf{Определение}\\
+    $K$ называется \textit{областью целостности}, если $a\cdot b = \0 \Leftrightarrow a=\0 \lor b=\0$\\\\
+    Всякое поле является областью целостности\\
+    \textbf{Доказательство}\\
+    Пусть $a\neq \0$. Тогда для него есть противоположный элемент $a^{-1}$\\
+    $ab=\0$\\
+    $a^{-1}(ab)=a^{-1}\0=\0$\\
+    $(a^{-1}a)b=\0$\\
+    $\1b=\0$\\
+    $b=\0$, ч.т.д.
+\end{enumerate}
+\subsubsection{Линейное пространство. Алгебра}
+Рассмотрим $(V,+,\cdot)$, где \\
+$+: V\times V \rightarrow V$, \\
+$\cdot: V\times K \rightarrow V$(операция умножения на скаляр), $K$ - поле\\
+$\cdot: V\times V \rightarrow V$\\
+$a,b,c \in V; \alpha,\beta \in K$
+\begin{enumerate}
+    \item $(a+b)+c=a+(b+c)$
+    \item $a+b=b+a$
+    \item $\exists\,\0\in V: a+\0=a$
+    \item $\exists\,-a\in V: (-a)+a=a+(-a)=\0$
+    \item $(\alpha+\beta)a=\alpha a + \beta a$ - дистрибутивность
+    \item $(\alpha\beta)a=\alpha(\beta a)$
+    \item $\alpha(a+b)=\alpha a + \alpha b$
+    \item $\exists\,\1 \in K: \1a = a\1=a$
+    \item $(a+b)c=ac+bc$ - правая дистрибутивность\\
+    $a(b+c)=ab+ac$ - левая дистрибутивность
+    \item $\alpha(ab)=(\alpha a)b=a(\alpha b)$
+    \item $(ab)c=a(bc)$
+    \item $ab=ba$
+    \item $\exists! e\in V: ea=ae=a$
+    \item $\forall\,a\neq \0 \exists\,a^{-1}\in V:\ a^{-1}a=aa^{-1}=e$
+\end{enumerate}
+Если выполняются аксиомы:
+\begin{enumerate}
+    \item 1-4 - Абелева аддитивная группа
+    \item 1-4,9 - кольцо
+    \item 1-8 - линейное пространство над полем $K$
+    \item 1-10 - \textit{алгебра}
+    \item 1-11 - ассоциативная алгебра
+    \item 1-12 - ассоциативная коммутативная алгебра
+    \item 1-13 - ассоциативная коммутативная унитальная алгебра
+    \item 1-14 - ассоциативная коммутативная унитальная алгебра с делением
+\end{enumerate}
+\textbf{Свойства}\\
+Все свойства кольца переносятся на алгебру\\
+Все свойства абелевой группы переносятся на линейное пространство
+\begin{enumerate}
+    \item $a\cdot 0 = 0\cdot a = \0$\\
+    \textbf{Доказательство}\\
+    $\exists\,-a\cdot 0$\\
+    $a\cdot0=a\cdot(0+0)=a\cdot0+a\cdot 0$\\
+    $a\cdot0+(-a\cdot0)=a\cdot0+a\cdot 0+(-a\cdot0)$\\
+    $\0 = a\cdot0$, ч.т.д.
+    \item $\alpha \cdot \0 = \0$\\
+    Доказательство аналогично
+\end{enumerate}
+\textbf{Примеры линейных пространств}
+\begin{enumerate}
+    \item $\mathbb{R}^n$
+    \item $V_3$ - пространство векторов (направленных отрезков)
+    \item Пространство функций $f: X \rightarrow \mathbb{R}$
+    \item $P_n$ - пространство многочленов с вещественными коэффициентами степени не более $n$
+\end{enumerate}
+\subsubsection{Нормированное и метрическое пространство}
+\textbf{Определение}\\
+\textit{Норма} $\|\cdot\| : V \rightarrow \mathbb{R}:$, где $V$ - \underline{линейное пространство}
+\begin{enumerate}
+    \item $\|x\|=0 \Rightarrow x = \0$ - невырожденность
+    \item $\forall\,\lambda\in K\ \|\lambda x\| = |\lambda|\|x\|$ - однородность
+    \item $\|x+y\| \leq \|x\| + \|y\|$ - неравенство треугольника
+\end{enumerate}
+$(V,\|\cdot\|)$ - нормированное пространство\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $x = \0 \Leftrightarrow \|x\| = 0$\\
+    \textbf{Доказательство $\Rightarrow$}\\
+    $\|\0\| = \|0\cdot\0\| = 0\cdot\|\0\| = 0$
+    \item $\|x\| \geq 0$\\
+    \textbf{Доказательство}\\
+    $0 = \|\0\| = \|x+(-x)\| \leq \|x\| + \|-x\| = 2\|x\|$\\
+    $0 \leq \|x\|$
+\end{enumerate}
+\textbf{Определение}\\
+Пусть $X$ - \textul{множество}\\
+\textit{Метрика} $\rho: X\times X \rightarrow \mathbb{R}_+:$
+\begin{enumerate}
+    \item $\rho(x,y) = 0 \Leftrightarrow x = y$ - невырожденность
+    \item $\rho(x,y) = \rho(y,x)$ - симметричность
+    \item $\rho(x,y) \leq \rho(x,z) + \rho(z,y)$ - неравенство треугольника
+\end{enumerate}
+В метрическом пространстве норма $\|\cdot\|$ порождает метрику $\rho(x,y) = \|x-y\|$\\
+Нормы
+\begin{enumerate}
+    \item Евклидова норма:\\
+    $\|x\|_2 = \sqrt{\suml_{i=1}^n x_i^2}$\\
+    Сфера - привычная\\
+    $\suml_{i=1}^n |x_iy_i| \leq \|x\|\cdot\|y\|$ - неравенство Коши-Буняковского(Шварца)
+    \item Октаэдрическая норма\\
+    $\|x\|_1 = \suml_{i=1}^n |x_i|$\\
+    Сфера - октаэдр
+    \item Кубическая норма\\
+    $\|x\|_\infty = \maxl_{i=1}^n |x_i|$\\
+    Сфера - куб
+\end{enumerate}
+\textbf{Определение}\\
+Пусть $V$ - алгебра над полем $\mathbb{R}(\mathbb{C})$\\
+$(V,\|\cdot\|)$ - называется нормированной алгеброй, если норма согласована с операцией умножения аргументов:\\
+$\|xy\| \leq \|x\|\cdot\|y\|$\\
+Если алгебра с единицей $e$, то требуется $\|e\| = 1$\\
+\textbf{Определение}\\
+\textit{Отношение эквивалентности $\sim$} - рефлексивное симметричное транзитивное отношение\\
+Примеры
+\begin{enumerate}
+    \item Равенство
+    \item Параллельность
+    \item Подобие
+    \item Экививалентность функций ($\liml_{x\rightarrow 0} \frac{f(x)}{g(x)} = 1$)
+\end{enumerate}
+\textbf{Определение}\\
+Два элемента принадлежат одному \textit{классу эквивалентности}, если между ними выполняется отношение эквивалентности\\
+$M_a = \{b\in M: b \sim a\}$, где $\sim$ - отношение эквивалентности\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\forall\,a\ M_a \neq \varnothing$, т.к. $a \in M_a$ по рефлексивности
+    \item $\forall\,a,b\ (M_a = M_b) \oplus (M_a \cap M_b = \varnothing)$
+\end{enumerate}
+\textbf{Определение}\\
+$f_M=\{M_a\}_{a \in M}$ - фактор-множество (фактор-пространство) множества $M$
+\subsection{Алгебра комплексных чисел}
+\subsubsection{Нормированное пространство комплексных чисел}
+\textbf{Определение}\\
+\textit{Множеством комплексных чисел $\mathbb{C}$} назовем элементы линейного пространства $\mathbb{R}^2$ над полем $\mathbb{R}$ с эвклидовой нормой\\
+$z \in \mathbb{C} \leftrightarrow (x,y) \in \mathbb{R}^2$\\
+$\|z\| = |z| = \sqrt{x^2+y^2}$\\
+$z_1+z_2 = (x_1+x_2,y_1+y_2)$\\
+$\lambda z = (\lambda x, \lambda y)$\\
+и выполнены все свойства операций сложения векторов и умножения их на скаляр\\\\
+Различные формы записи комплексного числа
+\begin{enumerate}
+    \item $z \in \mathbb{C} \leftrightarrow (x,y) \in \mathbb{R}^2$ - декартова форма записи\\
+    $z = (x,y)$
+    \item В базисе $\vect{e}, \vect{i}: |\vect{e}|=|\vect{i}|=1, \vect{e}\perp\vect{i}$\\
+    $z = x\cdot e+y\cdot i$\\
+    $x\cdot e \leftrightarrow x$\\
+    $z = x + yi$ - алгебраическая форма записи, где $i$ - мнимая единица\\\\
+    $x = \re z$ - \textit{действительная часть}\\
+    $y = \im z$ - \textit{мнимая часть}\\\\
+    Если $\re z = 0$, чисто \textit{мнимое}\\
+    Если $\im z = 0$, чисто действительное, $z \in \mathbb{R}$
+    \item Введем полярную систему координат\\
+    $\left\{\begin{array}{l}
+        x=r\cos \phi\\
+        y=r\sin\phi
+    \end{array}\right.$\\\\
+    $z=x+iy = r(\cos\phi+i\sin\phi)$ - тригонометрическая форма записи\\
+    $|z| = r$\\
+    $\arg z = \phi$ - \textit{аргумент}, $\arg z \in [0,2\pi)$ или $\arg\in [-\pi,\pi)$(возможен любой диапазон шириной $2\pi$)\\
+    $\Arg z \in [0,2\pi)$ - \textit{главный аргумент}\\
+    $\arg z = \Arg z + 2\pi k, k \in \mathbb{Z}$
+    \item $e^{i\phi}=\cos\phi + i\sin\phi$\\
+    $|e^{i\phi}|=1$\\
+    $\arg e^{i\phi} = \phi$\\
+    $z = r(\cos\phi+i\sin\phi)=re^{i\phi}$ - показательная форма
+\end{enumerate}
+\subsubsection{Нормированная алгебра комплексного числа}
+Введем операцию умножения, согласованную с нормой:\\
+Заметим, что\\
+$i^2=i\cdot i= \lambda +\mu i \in \mathbb{C}, \lambda,\mu \in \mathbb{R}$\\
+С одной стороны,  $\forall\,x\in\mathbb{R}\ |i^2+ix|^2 = |i(i+x)|^2\leq|i|^2|i+x|^2=|i+x|^2=x^2+1$\\
+С другой стороны, $\forall\,x\in\mathbb{R}\ |i^2+ix|^2 = |\lambda+\mu i+ix|^2 = \lambda^2+(\mu+x)^2=\lambda^2+2\mu x+\mu^2+x^2$\\
+Отсюда $\forall\,x\in\mathbb{R}\ \lambda^2+2\mu x + \mu^2 \leq 1$\\Такое возможно только при $\mu = 0$\\
+Тогда $\lambda^2 \leq 1$\\
+Тогда $i^2 = \lambda \in \mathbb{R}$\\
+$2 \leq \sqrt{(\lambda+1)^2+4} = |(\lambda+1)+2i| = |i^2+2i+1| = |(i+1)^2| \leq |i+1|^2=\sqrt{2}=2$\\
+Отсюда $\sqrt{(\lambda+1)^2+4} = 2 \Leftrightarrow \lambda = -1$\\
+$i^2 = -1$\\\\
+\textbf{Определение}\\
+$z_1=a_1+b_1i$\\
+$z_2=a_2+b_2i$\\
+$z_1z_2=(a_1a_2-b_1b_2)+i(a_1b_2+a_2b_1)$\\
+Отсюда $(1,0)=e=1$ - нейтральный элемент относительно умножения\\
+$z_1z_2 = (r_1\cos\phi_1r_2\cos\phi_2-r_1\sin\phi_1r_2\sin\phi_2)+i(r_1\cos\phi_1r_2\sin\phi_2+r_2\cos\phi_2r_1\sin\phi_1) = r_1r_2(\cos(\phi_1+\phi_2)+i\sin(\phi_1+\phi_2)) = |z_1||z_2|(\cos(\phi_1+\phi_2)+i\sin(\phi_1+\phi_2))$\\
+Отсюда $|z_1z_2| = |z_1||z_2|$ - согласование с умножением\\\\
+Геометрический смысл умножения: поворот первого вектора на аргумент второго с изменением длины в $|z_2|$ раз\\\\
+Проверим аксиомы:
+\begin{enumerate}
+    \item Левая и правая дистрибутивность:\\
+    Проверяется через декартову форму раскрытием скобок
+    \item Инвариант порядка умножения на скаляр:\\
+    Проверяется через декартову форму раскрытием скобок
+\end{enumerate}
+$\mathbb{C}$ - нормированная ассоциативная коммутативная алгебра с единицей
+\subsubsection{Операция сопряжения комплексного числа. Поле}
+\textbf{Определение}\\
+Пусть $z=a+bi$\\
+$\overline{z}=a-bi$ - сопряженное с $z$\\\\
+$\overline{z}$ и $z$ симметричны относительно $OX$\\
+$\Arg z = - \Arg \overline{z}$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\overline{\overline{z}} = z$
+    \item $z = \overline{z} \Leftrightarrow z \in \mathbb{R}$
+    \item $\overline{z_1+z_2} = \overline{z_1}+\overline{z_2}$
+    \item $\overline{z_1z_2} = \overline{z_1}\cdot\overline{z_2}$
+    \item $\re z = \frac{z+\overline{z}}{2}$
+    \item $\im z = \frac{z-\overline{z}}{2i}$
+    \item $\forall\,z\neq 0\ \exists\,z^{-1}:\ zz^{-1}=z^{-1}z=1$\\
+    $z^{-1} = \frac{\overline{z}}{|z|^2} = \frac1{|z|}(\cos(-\phi)+i\sin(-\phi)) = \frac1{|z|}(\cos\phi-i\sin\phi)$\\
+    Отсюда $\mathbb{}{C}$ - поле\\\\
+    Тогда введем операцию деления: $\frac{z_1}{z_2} = z_1z_2^{-1} = \frac{z_1\overline{z_2}}{|z_2|^2}$
+    \item $\overline{(\frac{z_1}{z_2})} = \frac{\overline{z_1}}{\overline{z_2}}$
+    \item $|z|=|\overline{z}|$
+    \item $z\overline{z} = |z|^2=|\overline{z}|^2$
+\end{enumerate}
+\textbf{Замечание}\\
+Если $V$ - конечномерное пространство, то все нормы этого пространства \textit{эквивалентны}, т.е. $\rho_1(x) = \Theta(\rho_2(x))$
+\subsubsection{Формула Муавра\\Корень n-ой степени из комплексного числа}
+\textbf{Свойства}
+\begin{enumerate}
+    \item $e^{2\pi ik} = 1$
+    \item $e^{i(\phi_1+\phi_2)} = e^{i\phi_1}e^{i\phi_2}$
+    \item $|e^{i\phi}| = 1$
+    \item $e^{-i\phi} = \frac1{e^{i\phi}}$
+    \item $\cos \phi = \frac{e^{i\phi}+e^{-i\phi}}{2}$\\
+     $\sin \phi = \frac{e^{i\phi}-e^{-i\phi}}{2i}$ - формулы Эйлера
+    \item $z^n = |r|^ne^{ni\phi}, n \in \mathbb{Z}$ - формула Муавра\\
+    Найдем $z:z=\sqrt[n]{w}$\\
+    $\left\{\begin{array}{l}
+        |z|^n=|w|\\
+        n\phi = \arg w+2\pi k, k \in \mathbb{Z}
+    \end{array}\right.$\\
+    Отсюда $\left\{\begin{array}{l}
+        |z|^n=|w|\\
+        \phi = \frac{\arg w+2\pi k}n, k\in\mathbb{Z}
+    \end{array}\right.$\\
+    Из основной теоремы алгебры $w=z^n$ имеет ровно $n$ корней с учетом кратности\\
+    $z=\sqrt[n]{|w|}e^{i\frac{\arg w+2\pi k}n}, k \in 0\ldots n-1$\\
+    \textbf{Следствие}\\
+    $\sqrt z = \sqrt{a+bi} = \left\{\begin{array}{l}
+         \pm\sqrt\frac{|z|+a}2\pm i\sqrt\frac{|z|-a}2, b > 0\\
+         \pm\sqrt\frac{|z|+a}2\mp i\sqrt\frac{|z|-a}2, b < 0
+    \end{array}\right.$
+\end{enumerate}
+\subsubsection{Применение}
+\begin{enumerate}
+    \item Пусть $p(z)$ - многочлен $n$-ой степени с действительными коэффициентами,\\
+    Тогда $p(x) = a_nz^n+a_{n-1}z^{n-1} + \ldots + a_0$\\
+    Отсюда $p(\overline{x}) = \overline{p(x)}$\\
+    Отсюда $p(z) = 0 \Leftrightarrow p(\overline{z}) = 0$
+    \item $\sin^3 \phi = \left(\frac{e^{i\phi}-e^{-i\phi}}{2i}\right)^3 = \frac{e^{3i\phi}-3e^{i\phi}+3e^{-i\phi}-e^{-3i\phi}}{-8i} = \frac{e^{3i\phi}-e^{-3i\phi}+3e^{-i\phi}-3e^{i\phi}}{-8i} = -\frac14 \sin 3\phi + \frac34 \sin \phi$
+    \item $\cos 3\phi = \re(\cos 3\phi + i\sin 3\phi) = \re((\cos \phi + i\sin\phi)^3) =\cos^3 \phi - 3\cos\phi\sin^2\phi$
+    \item $\suml_{k=0}^n \sin kx = \im \suml_{k=0}^n e^{ikx} \overset{q=e^{ix}}= \im \suml_{k=0}^n q^k = \im \frac{1-q^{n+1}}{1-q} = \im \frac{1-e^{ix(n+1)}}{1-e^{ix}} = \im \frac{e^\frac{ix(n+1)}{2}(e^\frac{-ix(n+1)}{2}-e^\frac{ix(n+1)}{2})}{e^\frac{ix}{2}(e^\frac{-ix}{2}-e^\frac{ix}{2})} = \im e^{\frac{inx}{2}}\frac{2i\sin\frac{(n+1)x}{2}}{2i\sin \frac x2} = \frac{\sin \frac{(n+1)x}{2}}{\sin \frac x2}\sin \frac{nx}{2}$
+\end{enumerate}
+\subsubsection{Экспонента комплексного числа}
+Пусть $e^z = \exp z = e^x(\cos y + i\sin y = e^x e^{iy}$, где $z = x+iy$\\
+Свойства:
+\begin{enumerate}
+    \item $|e^z|=e^x=e^{\re z}$\\
+    $\arg e^z = y = \im z$
+    \item $e^{2\pi ki} = 1, k \in \mathbb{Z}$
+    \item $\forall\,z_1,z_2 \in \mathbb{C}\ e^{z_1}e^{z_2} = e^{z_1+z_2}$
+    \item $\forall\,z\in\mathbb{C}\ e^{-z} = \frac{1}{e^z}$
+    \item $e^{z+2\pi k i} = e^z$
+\end{enumerate}
+$\liml_{z\rightarrow \infty} (1+\frac1z)^z = e$\\
+$e^z = \suml_{k=0}^\infty \frac{z^k}{k!}$\\\\
+$\cos z = \frac{e^{iz}+e^{-iz}}2$\\
+$\sin z = \frac{e^{iz}-e^{-iz}}{2i}$\\
+$\tg z = \frac1i\frac{e^{iz}-e^{-iz}}{e^{iz}+e^{-iz}} = \frac1i\frac{e^{2iz}-1}{e^{2iz}+1}$\\
+\textbf{Тригонометрические функции}\\
+$\sh x = \frac{e^x-e^{-x}}{2}$\\
+$\ch x = \frac{e^x+e^{-x}}{2}$\\
+$\th x = \frac{\sh x}{\ch x}$\\
+$\cth x = \frac{\ch x}{\sh x}$\\\\
+$\ch^2 z + \sh^2 z = \ch 2z$\\
+$\ch^2 z - \sh^2 z = 1$\\
+$2\sh z \ch z = \sh 2z$\\
+$\ch^2 \frac z2 = \frac{1+\ch z}{2}$\\
+$\sh^2 \frac z2 = \frac{\ch z-1}{2}$\\
+$1-\th^2 z = \frac{1}{\ch^2 z}$\\
+$\cth^2 z - 1 = \frac{1}{\sh^2 z}$\\
+$\sh -z = - \sh z$\\
+$\ch -z = \ch z$\\
+$\th -x = -\th x$\\
+$\cth -x = -\cth x$\\
+$\sh x = \suml_{k=0}^\infty \frac{x^{2k+1}}{(2k+1)!} = x + \frac{x^3}{3!} + \frac{x^5}{5!} + \ldots$\\
+$\ch x = \suml_{k=0}^\infty \frac{x^{2k}}{(2k)!} = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \ldots$\\
+$\sin z = \frac{\sh iz}{i}$\\
+$\cos z = \ch iz$
+\subsubsection{Логарифм комплексного числа}
+Пусть $w = \ln z$, $w = u + iv$\\
+Тогда $z = e^w = e^u (\cos v + i \sin v)$\\
+$w = \ln |z| + i\arg z$\\
+$\ln z = \ln |z| + i\Arg z + 2\pi ki, k \in \mathbb{Z}$\\
+\textbf{Замечание}\\
+$\ln z_1z_2 = \ln z_1 + \ln z_2 + 2\pi k, k \in \mathbb{Z}$ - с точностью до периода
+\subsection{Линейные пространства}
+Для всех линейных пространств над полем $K$:\\
+$K = \mathbb{R}$ - вещественное линейное пространство\\
+$K = \mathbb{C}$ - комплексное линейное пространство\\
+\subsubsection{Линейная комбинация}
+\textbf{Определение}\\
+\textit{Линейной комбинацией} векторов $v_1, v_2, \ldots, v_n$ из $V$ называется вектор $\suml_{i=1}^n d_iv_i, d_i \in K$\\
+\textbf{Определение}\\
+Вектора $u,v$ называются \textit{пропорциональными}, если $\exists\,k: u = kv$ или $v = ku$\\
+\textbf{Определение}\\
+Пусть $v_1, \ldots, v_m \in V$\\
+\textit{Линейная оболочка векторов} $\Span(v_1,\ldots,v_n) = \left\{ \suml_{i=1}^n d_iv_i: d_i \in K\right\}$ - множество всех линейных комбинаций\\
+\textbf{Определение}\\
+Система векторов является \textit{линейно независимой}, если любая линейная комбинация тривиальна, т.е.\\
+$\suml_{i=1}^n d_iv_i = \0 \Leftrightarrow d_1 = \ldots = d_n = 0$\\
+Иначе система \textit{линейно зависима}\\\\
+\textbf{Теорема}
+\begin{enumerate}
+    \item Система линейно зависима тогда и только тогда, когда какой-то вектор является линейной комбинацией других
+    \item Если подсистема линейно зависима, то и система линейно зависима
+    \item Если $v_1,\ldots,v_n$ линейно независима и $v_1, \ldots, v_{n+1}$ линейно зависима, то $v_{n+1}$ - линейная комбинация $v_1,\ldots,v_n$
+\end{enumerate}
+\textbf{Следствие}
+\begin{enumerate}
+    \item $\0 \in V \Rightarrow V$ - линейно зависима
+    \item Если система линейно независима, то подсистема линейно независима
+    \item Если в системе есть пропорциональные вектора, то система линейно зависима
+\end{enumerate}
+\textbf{Теорема о прополе}\\
+Если в системе есть хотя бы один ненулевой вектор, то всегда можно выделить линейно независимую подсистему с сохранением исходной линейной оболочки\\
+\textbf{Алгоритм}\\
+Рассмотрим все "префиксы" $S_i = \{ v_1, \ldots, v_i$ \} нашей системы нашей системы $V = \{ v_1, \ldots, v_n \}$\\
+Пойдем от префикса $S_n$. Если $\Span S_i = \Span S_{i-1}$, то $v_i$ - линейная комбинация. Тогда выкинем его\\
+Т.о. оставшиеся вектора будут линейно независимой подсистемой с исходной линейной оболочкой\\
+\subsubsection{Порождающая система. Конечномерные пространства. Базис}
+\textbf{Определение}\\
+Система $v_1, v_2, \ldots$ называется \textit{порождающей} в пространстве $V$, если любой вектор из $V$ может быть представлен как линейная комбинация этих векторов\\
+Если существует такая конечная система, то пространство $V$ \textit{конечномерная}\\
+Иначе \textit{бесконечномерная}\\\\
+\textbf{Теорема}\\
+Следующие утверждения эквивалентны
+\begin{enumerate}
+    \item $v_1, v_2, \ldots, v_n \in V$ - линейно независимая и порождающая
+    \item $v_1, v_2, \ldots, v_n \in V$ - максимальная линейно независимая система из $V$
+    \item $v_1, v_2, \ldots, v_n \in V$ - минимальная порождающая система в $V$
+\end{enumerate}
+\textbf{Определение}\\
+$v$ называют \textit{базисом} пространство $V$\\
+\textbf{Доказательство $1 \Rightarrow 2$}\\
+$v_1, v_2, \ldots, v_n \in V$ - линейно независимая и порождающая($\Span(v_1, \ldots, v_n) = V$\\
+Возьмем линейно независимую систему $u_1, \ldots, u_m$\\
+Рассмотрим $u_1, v_1, \ldots, v_n$. Эта система линейно зависима\\
+Выполним прополку \underline{справа} и получим $u_m, v_{i_1}, \ldots, v_{i_k}$. Тогда мы получили линейно независимую систему, в которой количество элементов не превосходит $n$ (т.к. как минимум один мы выкинули)\\
+Будем аналогично последовательно добавлять \underline{слева} остальные элементы из $u$. После прополки $u$ не уйдут, т.к. они линейно независимы и находятся слева\\
+При этом в получившейся системе количество элементов также не превосходит $n$. Тогда $m \leq n$, а значит $v$ - максимальный набор, ч.т.д.\\
+\textbf{Доказательство $1 \Leftarrow 2$}\\
+$v_1, v_2, \ldots, v_n \in V$ - максимальная линейно независимая система из $V$\\
+Добавим в нее любой вектор $u$ из $V$. Из максимальности новая система будет линейно зависимой. Отсюда $u$ - линейная комбинация $v$. Т.к. вектор любой, то любой вектор из $V$ является линейной комбинацией $v$. Тогда $v$ - порождающая, ч.т.д.\\
+\textbf{Доказательство $1 \Rightarrow 3$}\\
+$v_1, v_2, \ldots, v_n \in V$ - линейно независимая и порождающая($\Span(v_1, \ldots, v_n) = V$\\
+$u_1, \ldots, u_m$ - порождающая система\\
+Рассмотрим последовательность $v_n, u_1, \ldots, u_m$. Т.к. $u$ порождающая, то мы получили линейно зависимую систему\\
+Выполним для нее прополку \underline{справа}\\
+В получившейся системе элементов не больше $m$\\
+Будем аналогично вводить элементы $v$ \underline{слева}. Все $v$ останутся, т.к. они слева и линейно независимы\\
+Тогда в исходной системе будет не менее $n$ элементов и не более $m$. Отсюда $v$ - минимальная\\
+\textbf{Доказательство $1 \Leftarrow 3$}\\
+Пусть $v_1, v_2, \ldots, v_n \in V$ - минимальная порождающая система. Применим прополку\\
+С одной стороны, мы получим линейно независимую систему. Т.к. оболочка сохраняется, то система порождающая\\
+С другой стороны, новая система не может быть меньше, т.к. $v$ - минимальная порождающая система\\\\
+\textbf{Теорема}
+\begin{enumerate}
+    \item Любую линейно независимую систему можно дополнить до базиса\\
+    \textbf{Доказательство}\\
+    Пусть $v_1, \ldots, v_n$ - наша система\\
+    Если она порождающая, то она является базисом\\
+    Если она не порождающая, добавим в нее вектор, не являющийся линейной комбинацией и повторим рассуждения
+    \item Из любой порождающей системы можно извлечь базис\\
+    \textbf{Доказательство}\\
+    Выполним прополку
+\end{enumerate}
+\subsubsection{Координаты вектора в линейном пространстве. Изоморфизм линейных пространств}
+\textbf{Определение}\\
+Пусть $V$ - линейное пространство над полем $K(\mathbb{R}, \mathbb{C})$\\
+$e_1, \ldots, e_n$ - базис $V$\\
+Тогда $\forall\,x\in V\ x=\suml_{i=1}^n x_i e_i, x_i \in K$\\
+$x_1, \ldots, x_n$ - \textit{координаты вектора} $x$ относительно базиса $e_1, \ldots, e_n$\\
+$x = \begin{pmatrix}
+     x_1\\
+     x_2\\
+     \vdots\\
+     x_n
+\end{pmatrix}$ - \textit{координатный столбец}\\
+\textbf{Теорема}\\
+Координаты любого вектора относительно фиксированного базиса определяются единственным образом\\
+\textbf{Доказательство}\\
+Пусть это не так\\
+Тогда $x = \suml_{i=1}^n x_ie_i = \suml_{i=1}^n x_i'e_i$\\
+Тогда $\suml_{i=1}^n (x_i - x_i') e_i = \0$\\
+Но т.к. базис линейно независимый, то $\forall\,i = 1\ldots n\ x_i-x_i' = 0$, т.е. $x_i = x_i'$\\
+Отсюда базис единственный\\\\
+\textbf{Определение}\\
+$V, V'$ - линейные пространства над полем $K$ называются \textit{изоморфизмом} ($V \cong V'$), если существует взаимооднозначное соответствие(биекция) между $V$ и $V'$, сохраняющее линейность:\\
+$\left.\begin{array}{c}
+     x \in V \leftrightarrow x'\in V'\\
+     y \in V \leftrightarrow y' \in V'
+\end{array}\right\} \Rightarrow\ x+\lambda y \leftrightarrow x' + \lambda y'$\\
+\textbf{Свойства изоморфизма}
+\begin{enumerate}
+    \item $\0 \in V \leftrightarrow \0' \in V'$\\
+    \textbf{Доказательство}\\
+    $\0 = \0 + \lambda\0 \leftrightarrow x' + \lambda x'$ при любых $\lambda$. Из биекции $x' = \lambda x'$, откуда $x' = \0$
+    \item $x \in V \leftrightarrow x' \in V' \Rightarrow -x \in V \leftrightarrow -x' \in V'$
+    \item $\forall\, \alpha_1,\ldots, \alpha_m \in K\ \suml_{i=1}^m \alpha_i x_i \leftrightarrow \suml_{i=1}^m \alpha_i x_i'$\\
+    Доказательство методом математической индукции
+    \item $x_1,\ldots, x_m$ - линейно (не)зависимое $\Leftrightarrow x_1',\ldots,x_m'$ - линейно (не)зависимое\\
+    \textbf{Доказательство}\\
+    Пусть $x_1,\ldots, x_m$ - линейно зависимое\\
+    Тогда существует $(\alpha_m): \suml_{i=1}^m \alpha_i x_i = \0$\\
+    Отсюда $\suml_{i=1}^m \alpha_i x_i' = \0$, а значит $x_1',\ldots,x_m$ линейно зависимая
+    \item $x_1,\ldots,x_m$ - порождающая в $V \leftrightarrow x_1',\ldots,x_m'$ - порождающая в $V'$\\
+    \textbf{Доказательство}\\
+    $x = \suml_{i=1}^m \alpha_i x_i \leftrightarrow x' = \suml_{i=1}^m\alpha_i x_i'$
+    \item $x_1,\ldots, x_m$ - базис $\Leftrightarrow x_1',\ldots,x_m'$ - базис
+\end{enumerate}
+\textbf{Теорема}\\
+$V, V'$ - конечномерные линейные пространства над полем $K$\\
+$V \cong V' \Leftrightarrow \dim V = \dim V'$\\
+\textbf{Доказательство $\Rightarrow$}\\
+Из свойства 6\\
+\textbf{Доказательство $\Leftarrow$}\\
+Пусть $e_1, \ldots, e_n$ - базис $V$\\
+$e_1', \ldots, e_n'$ - базис $V'$\\
+Определим сопоставление: $x = \suml_{i=1}^n x_i e_i \leftrightarrow x' = \suml_{i=1}^n x_i e_i'$\\
+Т.к. координаты разложения по базису определяются единственным образом, то сопоставление взаимооднозначное\\
+Т.к. $x+\lambda y = \suml_{i=1}^n (x_i+\lambda y_i)e_i \leftrightarrow \suml_{i=1}^n (x_i+\lambda y_i)e_i' \suml_{i=1}^n x_ie_i' + \lambda \suml_{i=1}^n y_ie_i' = x' + \lambda y'$, то выполняется линейность\\
+Тогда $V, V'$ изоморфны, ч.т.д.\\\\
+\textbf{Следствия}
+\begin{enumerate}
+    \item Любое пространство $V$ над полем $K$ размерности $n$ изоморфно пространству $K^n$\\
+    \textbf{Доказательство}\\
+    $x = \suml_{i=1}^n x_ie_i \leftrightarrow x = \begin{pmatrix}
+        x_1\\
+        \vdots\\
+        x_n
+    \end{pmatrix} \in K^n$
+    \item $\cong$ - отношение эквивалентности на множестве конечномерных линейных пространств над одним и тем же полем
+\end{enumerate}
+\subsubsection{Линейное подпространство. Ранг системы векторов. Пересечение, сумма, прямая сумма}
+\textbf{Определение}\\
+Пусть $V$ - линейное пространство над полем $K$\\
+$L \subset V$ - \textit{линейное подпространство}, если $L$ - \textit{линейное пространство}\\\\
+\textbf{Теорема}\\
+$L$ - линейное подпространство $V \Leftrightarrow \forall\,x,y\in L, \lambda\in K\ \lambda x, \lambda x + y \in L$(т.е. $L$ \textit{замкнуто} относительно операции сложения)\\
+\textbf{Доказательство $\Rightarrow$}\\
+Из аксиом 1-8\\
+\textbf{Доказательство $\Leftarrow$}\\
+Проверим аксиомы:\\
+1,2 следуют из $L \subset V$\\
+3: $\lambda=0 \Rightarrow \lambda x = \0 \in L$\\
+4: $\lambda = -1 \Rightarrow -x \in L$\\
+5-8 следуют из $L \subset L$\\
+\textbf{Замечания}
+\begin{enumerate}
+    \item $L$ - линейное подпространство $\Rightarrow \0 \in L$
+    \item $\dim L \leq \dim V$\\
+    \textbf{Доказательство}\\
+    Пусть $\dim L > \dim V = \Span(e_1,\ldots, e_n)$\\
+    Тогда $\exists\ e_{n+1}$ такой, что $e_1,\ldots,e_{n+1}$ - линейно независимые, что невозможно в $V$
+\end{enumerate}
+\textbf{Определение}\\
+Пусть $v_1,\ldots,v_m \in V$\\
+Линейно независимая подсистема $v_{i_1},\ldots,v_{i_k}$ называется \textit{базой набора}, если $L = \Span(v_1,\ldots,v_m) = \Span(v_{i_1},\ldots,v_{i_k})$\\
+Другими словами, $v_{i_1},\ldots,v_{i_k}$ - базис линейного подпространства $L$\\
+\textbf{Определение}\\
+$\rg(v_1, \ldots, v_m) = \dim (\Span(v_1,\ldots,v_m))$ - ранг системы векторов\\\\
+\textbf{Определение}\\
+\textit{Элементарными преобразованиями системы векторов} называются следующие операции:
+\begin{enumerate}
+    \item Добавление в набор нулевого вектора/удаление из набора нулевого вектора
+    \item Перестановка векторов
+    \item умножение любого вектора на $\lambda \neq 0$
+    \item замена любого вектора на его сумму с любыми другими векторами набора
+\end{enumerate}
+\textbf{Теорема}\\
+Ранг системы векторов не меняется при элементарных преобразованиях этой системы\\\\
+\textbf{Определение}\\
+Пусть $L_1,L_2$ - линейные подпространства $V$\\
+$L_1 \cap L_2 = \{x\in V: x\in L_1 \land x\in L_2 \}$\\
+$L_1 + L_2 = \{ x+y: x\in L_1, y \in L_2\}$\\
+Пересечение и сумма являются линейными подпространствами\\\\
+\textbf{Теорема (формула Грассмана)}\\
+$\dim(L_1+L_2) = \dim L_1 + \dim L_2 - \dim (L_1 \cap L_2)$\\
+\textbf{Доказательство}\\
+Пусть $L_1 \cap L_2 \neq \{\varnothing\}$\\
+Тогда $L_1 \cap L_2 = \Span(e_1, \ldots, e_k)$, где $e_1,\ldots,e_k$ - базис\\
+Дополним $e_1,\ldots,e_k$ векторами $u_1,\ldots,u_m$ до базиса $L_1$\\
+Тогда $\dim L_1 = k+m$\\
+Дополним $e_1,\ldots,e_k$ векторами $v_1,\ldots,v_s$ до базиса $L_2$\\
+Тогда $\dim L_2 = k+s$\\
+Докажем, что $L_1 + L_2 = \Span(e_1,\ldots,e_k,u_1,\ldots,u_m,v_1,\ldots,v_s)$ и система $e_1,\ldots,e_k,u_1,\ldots,u_m,v_1,\ldots,v_s$ - базис
+\begin{enumerate}
+    \item Система порождающая
+    \item Система линейно независимая\\
+    Докажем $\suml \alpha_i e_i + \suml \beta_i u_i + \suml \gamma_i v_i = \0$:\\
+    $A = \suml \alpha_i e_i + \suml \beta_i u_i = \suml -\gamma_i v_i$\\
+    Заметим, что $A \in L_1, L_2$. Отсюда $A = \suml \omega_i e_i$\\
+    Тогда $\suml \omega_i e_i + \sum \gamma_i v_i = \0$\\
+    Отсюда $\suml \omega_i e_i = \sum \gamma_i v_i = \0$\\
+    Тогда $\forall\,i\ \omega_i = 0, \forall\,i\ \gamma_i = 0$\\
+    $\suml \alpha_i e_i + \suml \beta_i u_i = \suml \omega_i e_i = \0$\\
+    Тогда $\suml \alpha_i e_i = \suml \beta_i u_i$\\
+    Отсюда $\forall\,i\ \alpha_i = 0, \forall\,i\ \beta_i = 0$\\
+    Т.о. система линейно независимая, ч.т.д.\\
+\end{enumerate}
+\textbf{Определение}\\
+Линейные подпространства $L_1,\ldots,L_m$ называют \textit{дизъюнктными}, если $\forall\,x_1,\ldots,x_m: x_i\in L_i\ (x_1+\ldots+x_m = \0 \Leftrightarrow x_1=\ldots=x_m=\0)$\\\\
+\textbf{Определение}\\
+$L_1,\ldots,L_m$ - дизъюнктные линейные подпространства\\
+Тогда $\oplusl L_i := \suml L_i$ - \textit{прямая сумма}\\\\
+\textbf{Теорема(эквивалентность условия прямой суммы)}\\
+$L=\suml_{i=1}^m L_i$ - прямая - эквивалентно следующим утверждениям:
+\begin{enumerate}
+    \item $\forall\,i=1\ldots m\ L_i \cap \suml_{j\neq i} L_j = \{\0\}$
+    \item Базис $L$ - "объединение"(конкатенация) базисов $L_i$
+    \item $\forall\,x\in L\ \exists!\, x_1,\ldots,x_m: x_i \in L_i, x = \suml_{i=1}^m x_i$
+\end{enumerate}
+\textbf{Доказательство}\\
+Докажем, что исходное утверждение эквивалентно каждому
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item $\Rightarrow$:
+        Пусть $L=\oplusl_{i=1}^m L_i$, т.е. $L_1,\ldots,L_m$ - дизъюнктные\\
+        Тогда $\suml_{i=1}^m x_i = \0 \Leftrightarrow \forall\,i x_i = \0$\\
+        Пусть $v \in L_i \cap \suml_{j\neq i} L_j$\\
+        $v \in L_i \Rightarrow v = x_i$\\
+        $v \in \suml_{j\neq i} L_j \Rightarrow v = x_1+\ldots+x_{i-1} + x_{i+1} + \ldots + x_m$\\
+        Отсюда $x_i = \suml_{j\neq i} x_j$\\
+        Тогда $\suml_{j\neq i} x_j - x_i = \0$\\
+        Заметим, что $-x_i \in L_i$\\
+        Тогда обозначим за $(x_m')$ последовательность $x_1,\ldots,x_{i-1},-x_i,x_{i+1},\ldots,x_m$\\
+        Из дизъюнктности $\suml x_i' = \0 \Leftrightarrow x_i'=\0 \Leftrightarrow x_i = \0 \Leftrightarrow v = \0$\\
+        Тогда $L_i \cap \suml_{j \neq i} L_j = \{\0\}$, ч.т.д.
+        \item $\Leftarrow$:
+        Пусть $L_i \cap \suml_{j \neq i} L_j = \{\0\}, \forall\,j\ x_j \in L_j, \suml_{j=1}^m x_j = \0$\\
+        Тогда $-x_i = \suml_{j \neq i}x_j \in \suml_{j \neq i}L_j$\\
+        $-x_i \in L_i \cap \suml_{j \neq i}L_j = \{\0\}$\\
+        Отсюда $-x_i = \0$\\
+        Тогда $\forall\,i\ x_i = \0$\\
+        Отсюда $L_1,\ldots,L_m$ - дизъюнктные, ч.т.д.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+        \item $\Leftarrow$\\
+        Пусть $L_i = \Span(e_1^i, \ldots, e_{k_i}^i), L=\suml_{i=1}^m L_i$ - прямая сумма\\
+        Докажем, что $e_1^1, \ldots, e_{k_1}^1, \ldots, e_1^m, \ldots, e_{k_m}^m$ - базис\\
+        Система $e_1^1, \ldots, e_{k_i}^1, \ldots, e_1^m, \ldots, e_{k_i}^m$ порождающая (по очевидным причинам)\\
+        Система линейно независимая:\\
+        Пусть $x_i \in L_i$. Тогда из дизъюнктности $\suml_{i=1}^m x_i = \0 \Leftrightarrow \forall\,i\ x_i = \0$\\
+        $x_i = \0 \Leftrightarrow \suml_{j=1}^{k_i} \alpha_j^i e_j^i = \0 \Leftrightarrow \alpha_j^i = 0$\\
+        Тогда $\suml_{i=1}^m \suml_{j=1}^{k_i} \alpha_j^i e_j^i = \0 \Leftrightarrow \alpha_j^i = 0$, ч.т.д.
+        \item $\Rightarrow$\\
+        В обратную сторону аналогично доказательству линейной независимости
+    \end{enumerate}
+    
+    \item Пусть $x \in \suml_{i=1}^m L_i$ и $x = \suml_{i=1}^m x_i = \suml_{i=1}^m x_i'$\\
+    Тогда $\suml_{i=1}^m (x_i-x_i') = \0, (x_i-x_i') \in L_i$\\
+    $y_i := x_i - x_i', \suml_{i=1}^m y_i = \0$\\
+    Тогда из дизъюнктности $\forall\,i\ y_i = \0$\\
+    Тогда представление единственное, ч.т.д.
+\end{enumerate}
+\textbf{Следствие}\\
+$\dim \oplusl L_i = \suml \dim L_i$\\
+\textbf{Замечания}
+\begin{enumerate}
+    \item $L_1 + L_2$ - прямая $\Leftrightarrow L_1 \cap L_2 = \{\0\}$\\
+    В таком случае $\dim L_1 \oplus L_2 = \dim L_1 + \dim L_2$
+    \item $V = L_1 \oplus L_2$\\
+    Тогда $L_2$ - \textit{прямое дополнение} $L_1$\\
+    Тогда $L_1$ - прямое дополнение $L_2$
+    \item Пусть $V = \oplusl_i L_i$\\
+    Тогда $\forall\,x\in V\ \exists!\,x_1 \in L_1, x_2\in L_2, \ldots, x_m \in L_m: x = x_1 + x_2 + \ldots + x_m$. $x_i$ - \textit{проекция} вектора $x$ на $L_i$\\
+    $\oplusl_{j\neq i} L_j$ - \textit{прямое дополнение} $L_i$
+\end{enumerate}
+\textbf{Утверждение}\\
+У каждого линейного подпространства $L$ существует единственное дополнение до $V$\\
+\textbf{Доказательство}\\
+Пусть $L = \Span(e_1,\ldots,e_k)$\\
+Дополним наш базис векторами до базиса $V$, добавив $e_{k+1},\ldots,e_n$\\
+Тогда единственное дополнение $L' := \Span(e_{k+1}, \ldots, e_n)$\\
+$V = L \oplus L'$\\\\
+\textbf{Определение}\\
+Пусть $L\subset V$ - линейное подпространство, $x_o \in V$\\
+\textit{Линейное многообразие(афинное пространство)} $P = x_0 + L = \{x=x_0 + l : l \in L\}$\\
+\textbf{Теорема}\\
+Пусть $P_k = x_k + L_k, k =1,2$\\
+Тогда $P_1 = P_2 \Leftrightarrow \left\{\begin{array}{l}
+     L_1 = L_2 = L\\
+     x_1 - x_2 \in L
+\end{array}\right.$\\
+\textbf{Доказательство $\Rightarrow$}\\
+$\forall\,l_1 \in L_1\ \exists\,l_2 \in L_2:$\\
+$x_1 + l_1 = x_2 + l_2$\\
+Тогда $x_1-x_2 = l_2-l_1$\\
+Если $l_1 = \0$, то $x_1-x_2 = l_2 \in L_2$\\
+Если $l_2 = \0$, то $x_1-x_2 = -l_1 \in L_1$\\
+Отсюда $x_2-x_1 \in L_1 \cap L_2$\\
+$\forall\,l_1 \in L_1\ l_1 = x_2-x1+l_2 \in L_2$\\
+Отсюда $L_1 \subset L_2$\\
+Аналогично $L_2 \subset L_1$\\
+Тогда $L_1 = L_2 = L, x_2-x_1 \in L$\\
+\textbf{Доказательство $\Leftarrow$}\\
+Пусть $L = L_1 = L_2$\\
+$P_1 = x_1+L$\\
+$P_2 = x_2 + L$\\\\
+$\forall\,l_\in L\ x=x_1+l = x_1-x_2+x_2+l = x_2 + (x_1-x_2+l) = x_2 + l' \in P_2$(т.к. $x_1-x_2+l \in L$\\
+Отсюда $P_1 \subset P_2$\\
+Аналогично $P_2 \subset P_1$\\
+Отсюда $P_1 = P_2$, ч.т.д.\\\\
+\textbf{Следствие}\\
+Пусть $P =x_0 + L$\\
+Тогда $\forall\,x_1 \in P\ P'=x_1+L = P$\\\\
+\textbf{Определение}\\
+Пусть $L \subset V$ - линейное подпространство\\
+Тогда $x\sim y \Leftrightarrow x-y \in L$\\\\
+\textbf{Определение}\\
+$V|_L = \{P=x+L : x\in V\}$ назовем \textit{фактор-пространством}\\\\
+Введем линейное пространство над фактор-пространствами\\
+\textbf{Определение}\\
+Пусть $P_{x_1} = x_1+L, P_{x_2}=x_2+L$\\
+$P_{x_1},P_{x_2} \in V|_L \lambda \in K$\\
+Определим операции:\\
+$P_{x_1} + P_{x_2} = P_{x_1+x_2}$\\
+$\lambda P_x = P_{\lambda x}$\\
+$P_0 = L$ - нейтральный элемент\\
+$-P_x = P_{-x}$ - противоположный элемент\\
+Будут выполняться все аксиомы линейного пространства\\\\
+\textbf{Теорема}\\
+Пусть $\dim L = k, \dim V = n$\\
+Тогда $\dim V|_L = n-k$\\
+\textbf{Доказательство}\\
+Пусть $L = \Span l_1,\ldots,l_k$, где $l_1,\ldots,l_k$ - базис $L$\\
+Дополним базис $L$ до базиса $V$, добавив $l_{k+1},\ldots,l_n$\\
+Тогда базисом $V|_L$ будут пространства $P_i = l_{k+i} + L$\\
+Докажем это\\
+Система порождающая:\\
+$\forall\,x \in V\ x=\suml_{i=1}^k \alpha_il_i + \suml_{j=1}^{n-k} \alpha_{k+j}l_{k+j}, \suml_{i=1}^k \alpha_il_i \in L$\\
+Пусть $y = \suml_{j=1}^{n-k} \alpha_{k+j}l_{k+j}$\\
+$x - y \in L$\\
+Отсюда $P_x = P_y$\\
+$P_x = P_y = P_{\suml_{j=1}^{n-k} \alpha_{k+j}l_{k+j}} = \suml_{j=1}^{n-k} \alpha_{k+j}P_{l_{k+j}} \in V|_L$\\
+Отсюда $P_{l_{k+1}}, \ldots, P_{l_n}$ - порождающая система, ч.т.д.\\
+Система линейно независимая:\\
+Пусть $\suml_{j=1}^{n-k} \alpha_{n+j} P_{l_{n+j}} = P_0 = L$\\
+$\suml_{j=1}^{n-k} \alpha_{n+j} P_{l_{n+j}} = P_{\suml_{j=1}^{n-k} \alpha_{n+j} l_{n+j}}$\\
+$\suml_{j=1}^{n-k} \alpha_{n+j} P_{l_{n+j}} = P_0 \Leftrightarrow \suml_{j=1}^{n-k} \alpha_{n+j} l_{n+j} - \0 \in L$\\
+Тогда $\suml_{j=1}^{n-k}\alpha_{n+j}  l_{n+j}\in L$, а значит $\suml_{j=1}^{n-k} \alpha_{n+j} l_{n+j} = \suml_{i=1}^k \beta_i l_i$\\
+Отсюда $\suml_{j=1}^{n-k} \alpha_{n+j} l_{n+j} + \suml_{i=1}^k -\beta_i l_i = \0$\\
+Т.к. $l_1,\ldots, l_n$ - базис, то $\alpha_i = 0, \beta_i = 0$\\
+Т.о. $\suml_{j=1}^{n-k} P_{l_{n+j}} = P_0 \Rightarrow \alpha_{n+j} = 0$\\
+Отсюда $\dim V|_L = n-k$\\
+\section{Алгебра матриц}
+\subsection{Основные понятия}
+\textbf{Определение}\\
+Матрицей размерности $m\times n$ называется таблица некоторых объектов, занумерованная двумя индексами: номер строки($1\ldots m$) и номер столбца($1\ldots n)$\\\\
+Далее говорим только про матрицы чисел\\
+$A = \begin{pmatrix}
+S_1\\
+S_2\\
+\vdots\\
+S_m\end{pmatrix}$, где $S_i$ - $i$-ая строка - \textit{строчная запись}\\
+$\Span(S_1,\ldots,S_m)$ - \textit{пространство строк}\\\\
+$A = \begin{pmatrix}A_1 & A_2 & \ldots & A_n\end{pmatrix}$, где $A_i$ - $i$-ый столбец - \textit{столбцовая запись}\\
+$\Span(A_1,\ldots, A_n)$ - столбцовая запись\\
+Квадратные матрицы:\\
+$E = \begin{pmatrix}
+1 & 0 & \ldots & 0\\
+0 & 1 & \ldots & 0\\
+\vdots & \vdots &  & \vdots\\
+0 & 0 & \ldots & 1\\\end{pmatrix}$ - \textit{единичная матрица}\\
+$A = \begin{pmatrix}
+a_{11} & 0 & \ldots & 0\\
+0 & a_{22} & \ldots & 0\\
+\vdots & \vdots &  & \vdots\\
+0 & 0 & \ldots & a_{nn}\\\end{pmatrix}$ - \textit{диагональная матрица}\\
+След диагональной матрицы $\nm{tr} A = \suml_{i=1}^n a_{ii}$\\
+$L = \begin{pmatrix}
+a_{11} & 0 & \ldots & 0\\
+a_{21} & a_{22} & \ldots & 0\\
+\vdots & \vdots &  & \vdots\\
+a_{n1} & a_{n2} & \ldots & a_{nn}\\\end{pmatrix}$ - \textit{нижнедиагональная матрица}\\
+$U = \begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+0 & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots &  & \vdots\\
+0 & 0 & \ldots & a_{nn}\\\end{pmatrix}$ - \textit{верхнедиагональная матрица}\\\\
+\subsection{Операции над матрицами}
+\begin{enumerate}
+    \item $C = A+ B = (a_{ij} + b_{ij})_{m\times n}$ - сложение матриц одной размерности
+    \item $\lambda C = {\lambda c_{ij}}_{m\times n}$ - умножение на скаляр
+    \item Нулевая матрица - нейтральный элемент
+    \item $-A$ - противоположный элемент
+\end{enumerate}
+Пространство вещественных матриц - линейное пространство, т.к. все операции выполняются поэлементно\\
+Размерность пространства матриц $m\times n$ - $mn$\\\\
+\textbf{Определение}\\
+$A$ и $B$ \textit{согласованы}, если $A_{m\times k}, B_{k\times n}$\\
+$C = A\cdot B = ( c_{ij} = \suml_{s=1}^k a_{is}b_{sj})_{m\times n}$\\
+Дополнительные аксиомы
+\begin{enumerate}
+    \item[9.]  Если $A,B,C$ согласованы\\
+    $(A+B)C = AC+BC$\\
+    $A(B+C) = AB+AC$
+    \item[10.] $\alpha(AB) = (\alpha A)B = A(\alpha B)$
+    \item[11.] $(A\cdot B)C = A(B\cdot C)$\\
+    \textbf{Доказательство выполнения аксиомы}\\
+    Пусть $A_{mk}, B_{kp}, C_{p*}$\\
+    $(AB)_{is} = \suml_{r=1}^k A_{ir}B_{rs}$\\
+    $((AB)C)_{ij} = \suml_{s=1}^p (AB)_{is}C_{sj} = \suml_{s=1}^p (\suml_{r=1}^k A_{ir}B_{rs})C_{sj} = \suml_{s=1}^p (\suml_{r=1}^k A_{ir}B_{rs}C_{sj}) = \suml_{r=1}^k\suml_{s=1}^p ( A_{ir}B_{rs}C_{sj}) = \suml_{r=1}^k A_{ir} \suml_{s=1}^p ( B_{rs}C_{sj}) = \suml_{r=1}^k A_{ir} ( BC)_{rj} = (A(BC))_{ij}$
+\end{enumerate}
+\subsection{Операция транспорирования}
+$(A_{m\times n})^T = A_{n\times m}': a_{ij} = a_{ji}'$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $(A^T)^T = A$
+    \item $(A+B)^T = A^T+B^T$
+    \item $(\alpha A)^T = \alpha A^T$
+    \item $(AB)^T = B^TA^T$
+\end{enumerate}
+\subsection{Обратная матрица}
+\textbf{Определение}\\
+$A^{-1}_{n\times n}$ - \textit{обратная матрица}, если $A^{-1}A=AA^{-1} = E$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item Такая матрица единственная\\
+    \textbf{Доказательство}\\
+    Пусть существует $B: AB=BA=E$\\
+    $A^{-1}A=E$\\
+    $A^{-1}AB = B$\\
+    $A^{-1} = B$, ч.т.д.
+    \item $(A^{-1})^{-1} = A$
+    \item Для $\alpha \neq 0$: $(\alpha A)^{-1} = \frac1\alpha A^{-1}$
+    \item $E^{-1} = E$
+    \item $(AB)^{-1} = B^{-1}A^{-1}$(при существовании обратных матриц и согласованности $A,B$)\\
+    \textbf{Доказательство}\\
+    $(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1}=AA^{-1} = E$\\
+    $B^{-1}A^{-1}AB = B^{-1}(A^{-1}A)B = B^{-1}B = E$
+    \item $(A^T)^{-1} = (A^{-1})^T$\\
+    \textbf{Доказательство}\\
+    $(AA^{-1})^T = E^T = (A^{-1}A)^T$\\
+    $(A^{-1})^TA^T = E = A^T(A^{-1})^T$\\
+    Тогда $(A^{-1})^T=(A^T)^{-1}$
+\end{enumerate}
+\subsection{Ранг матрицы}
+$\rg_{row} A = \dim \Span (S_1,\ldots,S_m)$ - \textit{строчный ранг матрицы} (число линейно независимых строк матрицы)\\
+Отрезок строки $\widetilde{S_j}$ длины $k$ - $k$ столбцов строки $j$\\
+Не умоляя общности, будем считать, что столбцы подряд идущие: $(a_{j1}, a_{j2}, a_{j3},\ldots,a_{jk}), 1\leq k \leq n$\\
+Аналогично для столбцов\\
+\textbf{Теорема}\\
+$A_1,\ldots,A_n$ - линейно зависима\\
+Тогда отрезки длины $k$ $\widetilde{A_1}, \ldots, \widetilde{A_n}$ - линейно зависимы\\
+\textbf{Доказательство}\\
+Очевидно из определения отрезка\\
+\textbf{Следствие}\\
+Пусть отрезки $\widetilde{A_1}, \ldots, \widetilde{A_n}$ - линейно независимы\\
+Тогда $A_1,\ldots,A_n$ - линейно независима\\\\
+\textit{Аналогично для строк и их отрезков}\\
+\textbf{Теорема}\\
+Пусть первые $S_1, \ldots, S_k$ - база пространства строк (т.е. $S_1,\ldots, S_k$ линейно независимы и порождающие пространство строк)\\
+$\widetilde{A_1}, \ldots, \widetilde{A_n}$ - отрезки столбцов длины $k$\\
+$\widetilde{A_1}, \ldots, \widetilde{A_n}$ линейно зависимы $\Rightarrow A_1, \ldots, A_n$ линейно зависимы\\
+\textbf{Доказательство}\\
+$S_1, \ldots, S_k$ - база $\Rightarrow \forall\,j=1\ldots m-k\ S_{k+j} = \suml_{p=1}^k \alpha_{jp}S_p, \alpha_{jp} \in K$\\
+Т.к. $\widetilde{A_1}, \ldots, \widetilde{A_n}$ - линейно зависимы, то $\exists \{\alpha_i\}$ - не все нули $: \suml_{i=1}^n \alpha_i\widetilde{A_i} = \0$\\
+Покажем, что в таком случае $\suml_{i=1}^n \alpha_i A_i = \0$\\
+Для первых $k$ координат верно из выбора $\alpha_i$\\
+Для $k+1$-ой координаты это тоже верно:\\
+Заметим, что $S_{k+1}$ порождается базой\\\\
+\textbf{Теорема}\\
+$\forall\,A: \rg_{row} A = \rg_{col} A =: \rg A$ - \textit{ранг матрицы}\\
+\textbf{Доказательство}\\
+Пусть $\rg_{row} A = k$\\
+Будем считать, что $S_1, \ldots, S_K$ - база строк\\
+Рассмотрим отрезки $\widetilde{A_n}$ длины $k$\\
+Пусть $\rg (\widetilde{A_1}, \ldots, \widetilde{A_n}) = r$\\
+Т.к. $\widetilde{A_1}, \ldots, \widetilde{A_n}$ отрезки длины $k$, то они элементы $k$-мерного пр-ва. Тогда $r \leq k$\\
+Покажем, что $\rg(A_1, \ldots, A_n) = r$\\
+Пусть $\widetilde{A_{i_1}, \ldots, \widetilde{A_{i_r}}}$ - база $\widetilde{A_1}, \ldots, \widetilde{A_n}$\\
+По следствию из теоремы $A_{i_1}, \ldots, A_{i_r}$ линейно независимы\\
+$\widetilde{A_{i_1}, \ldots, \widetilde{A_{i_r}}}, \widetilde{A_j}$ - линейно зависима\\
+Тогда $A_{i_1}, \ldots, A_{i_r}, A_j$ - линейно зависима\\
+Тогда $\rg_{col} A = r \leq k = \rg_{row} A$\\
+Аналогично $\rg_{col} A = r \geq k = \rg_{row} A$\\
+Т.о. $\rg_{col} = \rg_{row}$, ч.т.д.\\\\
+\textbf{Свойства ранга матрицы}
+\begin{enumerate}
+    \item $\rg A_{m\times n} \leq n,m$
+    \item $\rg A^T = \rg A$
+    \item $\alpha \neq 0, \rg \alpha A = \rg A$
+    \item $\rg (A+B) \leq \rg A + \rg B$\\
+    \textbf{Доказательство}\\
+    $\rg (A+B) = \dim\Span(A_1+B_1, \ldots, A_n+B_n)$\\
+    $\Span(A_1+B_1, \ldots, A_n+B_n) \subset \Span(A_1, \ldots, A_n) + \Span(B_1, \ldots, B_n)$\\
+    $\dim\Span(A_1+B_1, \ldots, A_n+B_n) \leq \dim\Span(A_1, \ldots, A_n) + \dim\Span(B_1, \ldots, B_n)$\\
+    Т.о. $\rg(A+B) \leq \rg(A) + \rg(B)$
+    \item Пусть $A,B$ согласованы. $\rg(AB) \leq \min \rg A, \rg B$\\
+    \textbf{Доказательство}\\
+    $C = A_{m\times k}B_{k\times n} = \begin{pmatrix}C_1 = AB_1 & C_2 = AB_2 & \cdots & C_n = AB_n \end{pmatrix}$\\
+    Заметим, что $AB_j$ - линейная комбинация столбцов $A_1,\ldots, A_n$\\
+    Отсюда $\Span(C_1, C_2, \ldots, C_n) \subset \Span(A_1, \ldots, A_n)$\\
+    Тогда $\rg C \leq \rg A$, т.е. $\rg AB \leq \rg A$\\
+    Аналогично $\rg AB = \rg B^{-1}A^{-1} \leq \rg B^{-1} = \rg B$\\
+    Тогда $\rg AB \leq \rg A, \rg B$
+    \item Ранг матрицы не меняется при элементарных преобразованиях, проводимых над столбцами и строками
+\end{enumerate}
+\textbf{Определение}\\
+Если $AB=BA$, то матрицы \textit{перестановочные}\\
+\textbf{Определение}\\
+Матрица имеет \textit{трапециевидную форму}, если она имеет форму $\begin{pmatrix} 
+a_{11} & a_{12} &\ldots& \ldots & \ldots & a_{1n}\\
+0 & a_{22} & \ldots & \ldots & \ldots & a_{2n}\\
+0 & 0 & \ddots & \vdots & \vdots & \vdots \\
+0 & 0 & \ldots & a_{mm} & \ldots & a_{mn}
+\end{pmatrix}$, где $a_{ii} \neq 0$\\
+\textbf{Теорема}\\
+Любая матрица $A_{m\times n}$ элементарными преобразованиями строк и перестановкой столбцов может быть приведена к трапиевидной форме\\
+Причем число строк в трапециевидной форме совпадет с $\rg A$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Если $a_{11} = 0$\\ 
+    Тогда перестановкой строк и столбцов поставим на позицию $(1,1)$ ненулевой элемент (т.к. матрица ненулевая, такой элемент найдется). Затем перейдем к пункту 2
+    \item Если $a_{22} \neq 0$\\
+    Занулим столбец $A_1$ и применим алгоритм к матрице $A[2:][2:]$\\
+    \textit{Учтем, что при перестановке столбика в подматрице нужно переставлять столбец исходной матрицы}
+    \item В какой-то момент мы либо попадем в нулевую подматрицу, либо закончатся строки). Если подматрица стала нулевой, удалим строки, соответствующие данной подматрице.
+    \item В результирующей матрице $a_{11}'\ldots a_{kk} \neq 0$\\
+    Заметиим, что в результирующей матрице каждая строка не является линейной комбинацией строк ниже, а значит и никаких любых. Тогда ранг матрицы равен количеству строк
+\end{enumerate}
+\section{Системы линейных алгебраических уравнений}
+\subsection{Основные понятия. Теорема Кронекера-Капелли}
+$\left\{\begin{array}{cc}
+     a_{11} x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = b_1 \\
+     a_{21} x_1 + a_{22}x_2 + \ldots + a_{2n}x_n = b_2 \\
+     \vdots\\
+     a_{m1} x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n = b_m \\
+\end{array}\right.$, где $a_{ij} \in \mathbb{R}(\mathbb{C})$\\
+$A = (a_{ij})_{m\times n}$ - \textit{матрица коэффициентов} СЛАУ\\
+$X = \begin{pmatrix}
+x_1\\x_2\\\vdots\\ x_n
+\end{pmatrix}$ - \textit{столбец неизвестных}\\
+$B = \begin{pmatrix}
+b_1\\b_2\\\vdots\\ b_m
+\end{pmatrix}$ - \textit{столбец свободных членов}\\
+$AX=B$ - \textit{матричная форма записи}\\
+$\suml_{i}A_iX_i = B$, где $A_i$ - столбец $A$ - \textit{векторная форма записи}\\\\
+Матрица вида $A|B$ называется \textit{расширенной матрицей системы}\\
+Если $B = \0$, то система называется \textit{однородной} (СЛОУ)\\
+Если $B \neq \0$, то система называется \textit{неоднородной} (СЛНУ)\\
+Если существует решение, то система называется \textit{разрешимой}(\textit{совместной})\\
+Если решений нет, то система называется \textit{неразрешимой}(\textit{несовместной})\\
+Если решение существует и единственное, то система называется \textit{определенной}\\
+Если решения существуют и их много, то система называется \textit{неопределенной}\\
+\textbf{Замечание}\\
+$AX=\0$ всегда совместна\\\\
+\textbf{Теорема Кронекера-Капелли}\\
+Система совместна тогда и только тогда, когда $\rg A = \rg A|B$\\
+\textbf{Доказательство}\\
+Запишем систему в векторной форме\\
+Система совместна $\Leftrightarrow \exists (X_i)$, что $\suml_i A_iX_i=B \Leftrightarrow B \in \Span(A_1,\ldots, A_n) \Leftrightarrow \Span(A_1,\ldots,A_n) = \Span(A_1,\ldots,A_n,B) \Leftrightarrow \rg A = \rg A|B$\\
+При этом разложение единственное\\
+\textbf{Следствие}\\
+$\rg A|\0 = \rg A \Rightarrow$ система $AX=\0$ совместна всегда
+\subsection{Множество решенией СЛОУ. Структура ощего решения СЛНУ. Альтернатива Фредгольма}
+\textbf{Теорема}\\
+$AX = \0$\\
+Тогда $\forall\,U_1,U_2$ - решения$, U_1+\lambda U_2$ - решение\\
+\textbf{Доказательство}\\
+$AU_1 = \0, AU_2 = \0$. Тогда $A(U_1+\lambda U_2) = AU_1 + \lambda AU_2 = 0\0$, ч.т.д.\\
+\textbf{Замечание}\\
+Множество решений СЛОУ является линейным подпространством $\mathbb{R}^n(\mathbb{C}^n)$\\
+\textbf{Теорема 2}\\
+$AX=\0$, $L$ - общее решение системы\\
+$1 \leq \rg A = k \leq n$\\
+Тогда $ \dim L = n-k = n-\rg A$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Пусть $\rg A = k < n, \rg A_1\ldots A_n =  k$\\
+    Не умоляя общности, предположим, что $A_1,\ldots, A_k$ - линейно независимые\\
+    Тогда $\forall\,j=1\ldots n-k\ A_{k+j} = \suml_{i=1}^k \alpha_i^j A_i$\\
+    Тогда $\alpha_1^j A_1 + \ldots + \alpha_k^j A_k - A_{k+j} = \0$\\
+    Тогда $u_j = \begin{pmatrix}
+        \alpha_1^j\\
+        \vdots\\
+        \alpha_k^j\\
+        0\\
+        \ldots\\
+        -1\\
+        \ldots\\
+        0
+    \end{pmatrix}$ - решение($-1$ в строке $k+j$)\\
+    Докажем, что $u_1, \ldots, u_{n-k}$ - базис $L$\\
+    Очевидно, что $u_1, \ldots, u_{n-k}$ линейно независимые, т.к. $-1$ стоят в различных местах\\
+    Покажем, что $u_1, \ldots, u_{n-k}$ - порождающая система\\
+    Пусть $v$ - решение\\
+    Тогда $v' = v+\suml_{j}v_{k+j}u_j$ - решение\\
+    $Av' = A_1v'_1 + A_2v'_2 + \ldots + A_kv'_k + 0 + \ldots + 0 = \0$\\
+    Из линейной независимости $A_1 \ldots A_k$: $v'_1 = \ldots = v'_k = 0$, т.е. $v' = \0$\\
+    Отсюда $v'$ - линейная комбинация $u_1, \ldots, u_{n-k}$\\
+    $\dim u_1, \ldots, u_{n-k} = n - k$, ч.т.д.
+    \item Если $k = n$, то все столбцы линейно независимые\\
+    Тогда $\suml_{i=1}^n X_iA_i = \0$\\
+    Тогда из линейной независимости $X=\0$
+\end{enumerate}
+\textbf{Следствие}\\
+Если $1 \leq \rg A < n$, решений бесконечно много\\
+Если $\rg A = n$, единственное решение $X=\0$\\
+\textbf{Теорема(о структуре решения СЛНУ)}\\
+СЛОУ 1: $Ax=\0$\\
+СЛНУ 2: $Ax+b = \0$\\
+Пусть СЛНУ 2 совместна, $X_0$ - решение СЛНУ 2\\
+Если $X$ - решение СЛНУ 2, то $X=X_0+U$, где $U$ - решение СЛОУ 1\\
+Если $U$ - решение СЛОУ 1, то $X=X_0+U$ - решение СЛНУ 2\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Пусть $X$ - решение СЛНУ 2.\\
+    $AX=B$\\
+    Тогда $A(X-X_0)=AX-AX_0 = B-B=\0$\\
+    Отсюда $U=X-X_0$ - решение СЛОУ 1
+    \item Пусть $U$ - решение СЛОУ 1\\
+    Тогда $AX = A(X_0+U) = AX_0+AU=B+\0=B$. Тогда $X$ - решение СЛНУ 2
+\end{enumerate}
+\textbf{Определение}\\
+Базис общего решения СЛОУ 1 называется \textit{фундаментальной системой решенией}\\
+$L=\Span u_1, \ldots, u_{n-k}$\\
+\textbf{Следствие}\\
+\textit{(если СЛНУ 2 совместна)}
+\begin{enumerate}
+    \item Общее решение СЛНУ 2 является линейным многообразием размерности $n-\rg A$\\
+    $P=X_0+L$, где $X_0$ - частное решение СЛНУ 2, $L$ - общее решение СЛОУ 1
+    \item $1 \leq \rg A < n$ - СЛНУ 2 имеет бесконечно много решений
+    \item $\rg A = n$, система имеет единственное решение
+\end{enumerate}
+\textbf{Теорема(Альтернатива Фредгольма)}\\
+Либо система $A_{m \times n}X = B$ совместна при любом $B \in \mathbb{R}^m$, либо $A^T y = \0$ имеет нетривиальное решение\\
+\textit{(но не одновременно)}\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Пусть $\exists\,B:\ A_{m \times n}x=B$ - не имеет решений\\
+    Тогда $\rg A < \rg A|B \leq n$\\
+    Тогда $\exists\, A_j = \suml_{i\neq j} \alpha_i A_i$\\
+    Отсюда $A^T \begin{pmatrix}
+        \alpha_1\\\alpha_2\\\vdots\\\alpha_{j-1}\\-1\\\alpha_{j+1}\\\vdots\\\alpha_n
+    \end{pmatrix} = \0$ - нетривиальное решение
+    \item Пусть $A_{m\times n}^Tx = 0$ - не имеет нетривиальных решений\\
+    Тогда $\rg A^T = \rg A = n$\\
+    Тогда $\rg A = n = \rg A|B$ - система определена при любых $B$
+\end{enumerate}
+\subsection{Метод Гаусса решения СЛАУ}
+Элементарные преобразования
+\begin{enumerate}
+    \item Добавление/удаление уравнения с нулевыми коэффициентами
+    \item Умножение уравнения на \underline{ненулевой} коэффициент
+    \item Перестановка уравнений
+    \item Замена уравнения на его сумму с другими строками
+    \item Изменение нумерации неизвестных
+\end{enumerate}
+\textbf{Замечания}
+\begin{enumerate}
+    \item Элементарные преобразования заменяют систему на эквивалентную
+    \item Элементарные преобразования системы эквивалентны элементарным преобразованиям расширенной матрицы
+\end{enumerate}
+\textbf{Теорема}\\
+Элементарными преобразованиями матрицы $A|B$ систему $AX=B$ можно заменить на эквивалентную систему с трапециевидной матрицей коэффициентов\\
+Причем число строк в результирующей матрице будет равно $\rg A = k$\\
+Если $k = n$, то матрица будет треугольной\\
+\textbf{Доказательство}\\
+Преобразуем $A$ в трапециевидную форму, выполняя синхронные преобразования столбца $B$\\
+(заметим, что вычеркивать строки нельзя, т.к. нельзя терять значение в столбце $B$)\\\\
+\textbf{Метод Гаусса(прямой ход)}\\
+Приведем матрицу коэффициентов системы к трапециевидной форме\\
+Если существуют строки вида $000\ldots0|b\neq 0$ то решений нет\\
+(В таком случае $\rg A \neq \rg A|B = \rg A'|B'$, где $A'|B'$ - матрица после преобразований)\\
+Иначе вычеркнем нулевые строки. Тогда мы получим "настоящую" трапециевидную матрицу\\
+\textbf{Метод Гаусса(обратный ход)}
+\begin{enumerate}
+    \item $k = n$\\
+    Тогда существует единственное решение\\
+    Матрица в таком случае треугольная\\
+    Будем последовательно исключать неизвестные, подставляя уже извесные значения\\
+    Тогда на каждом шаге будем получать систему на ранг меньше\\
+    Приведем нашу матрицу к виду $(E|X_0)$, где $X_0$ - частное решение
+    \item $k < n$\\
+    Тогда множество решений - линейное многообразие $P = x_0 + L$\\
+    Тогда обрежем нашу матрицу до треугольной, занеся лишние столбцы в свободный член, и найдем $x_0$ и $L$\\
+    Тогда "бывшие неизвестные" станут параметрами, определяющими конкретное решение в множестве решений\\
+    Перейдем к первому пункту\\
+\end{enumerate}
+\textbf{Нахождение обратной матрицы методом Гаусса}\\
+$AA^{-1}=E \Leftrightarrow AX = E \Leftrightarrow \left\{\begin{array}{l}
+     AX_1 = E_1 \\
+     AX_2 = E_2 \\
+     \vdots\\
+     AX_n = E_n\\
+\end{array}\right.$\\
+Найдем $X$, решив системы уравнений\\
+$X$ существует тогда и только тогда, когда все системы совместны, т.е. $\rg A|E_1 = \rg A|E_2 = \ldots = \rg A|E_n = \rg A = n$\\
+Заметим, что мы будем решать $n$ систем с одной матрицей коэффициентов. Вместо одного столбца выпишем сразу $n$ столбцов свободных членов $E_1,\ldots,E_n$. Применим метод Гаусса и получим $E|A^{-1}_1A^{-1}_2\ldots A^{-1}_n$\\
+Докажем, что $A^{-1}A = E$\\
+Пусть $B: BA=E$\\
+Тогда $BAA^{-1}=BE=EA^{-1}$\\
+Отсюда $B=A^{-1}$\\
+\textbf{Теорема}\\
+Для матрицы $A_{n\times n}$ существует матрица $A^{-1}$ тогда и только тогда, когда $\rg A = n$\\
+\textbf{Следствие}\\
+Пусть есть система $A_{n\times n}X=B$\\
+Существует единственное решение тогда и только тогда, когда $A$ обратима, причем $X = A^{-1}B$\\
+\textbf{Доказательство}\\
+Единственное решение существует при $\rg A = n$, а тогда существует $A^{-1}$ и наоборот\\
+\textbf{Теорема (о ранге произведения матриц)}\\
+Пусть $A_{n\times n}, \rg A = n$\\
+Тогда $\forall\, B_{m\times n}\ \rg B = \rg (BA)$\\
+$\forall\, B_{n\times m}\ \rg B = \rg (AB)$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $\rg AB \leq \min \rg A, \rg B$ - было доказано\\
+    $\rg B = \rg A^{-1}AB$ (обратная матрица существует, т.к. $\rg A = n$)\\
+    Тогда $\rg B = \rg A^{-1}AB \leq \rg AB  \leq \rg B$\\
+    Тогда $\rg B = \rg AB$
+    \item $\rg BA = \rg (BA)^T = \rg A^TB^T = \rg B^T = \rg B$ (из предыдущего пункта)
+\end{enumerate}
+\subsection{Геометрический смысл СЛАУ}
+\textbf{Определение}\\
+Множество точек пространства $\bb{R}^n$, удовлетворяющих уравнению $A_1x_1+\ldots+A_nB_n+B=0$ называется \textit{гиперплоскостью}\\
+Тогда система - пересечение $m$ гиперплоскостей\\
+Тогда система совместна тогда и только тогда, когда пересечение не пусто\\
+Пусть $n = 3$:
+\begin{enumerate}
+    \item $\rg A = \rg A|B = 1$ (система совместна)\\
+    Тогда у нас одна плоскость
+    \item $\rg A = \rg A|B = 2$ (система совместна)\\
+    Тогда у нас два независимых линейных уравнения, т.е. две неравных непараллельных плоскости, а остальные плоскости являются их линейной комбинацией\\
+    Получаем прямую пересечения этих плоскостей
+    \item $\rg A = \rg A|B = 3$ (система совместна)\\
+    Тогда у нас три независимых линейных уравнения, т.е. три неравных непараллельных плоскости, а остальные плоскости являются их линейной комбинацией\\
+    Получаем единственную точку пересечения
+    \item $1 = \rg A \leq \rg A|B = 2$\\
+    Тогда есть две параллельные плоскости, а остальные параллельны им или совпадают\\
+    Тогда пересечение пусто
+    \item $2 = \rg A \leq \rg A|B = 3$\\
+    Тогда мы получаем пересекающиеся прямые без общей линии пересечения\\
+    Общее пересечение пусто\\
+\end{enumerate}
+\subsection{Матрица перехода от старого базиса к новому\\Связь координат вектора в новом и старом базисе}
+Пусть $V$ - линейное пространство над полем $\bb{R}(\bb{C})$\\
+Пусть $e_1, \ldots, e_n$ - старый базис\\
+$e_1',\ldots,e_n'$ - новый базис\\
+$\forall\,x\in V\ x = \suml_{i = 1}^n x_ie_i = \suml_{i=1}^n x_i'e_i'$\\
+Свяжем $x_i$ и $x_i'$\\
+Пусть $e_j' = \suml_{i=1}^n t_{ij} e_i$ - координаты нового базиса в старом\\
+$e_j' \leftrightarrow T_j = \begin{pmatrix}
+    t_{1j}\\
+    \vdots\\
+    t_{nj}
+\end{pmatrix}$\\
+Тогда матрица перехода от старого базиса к новому:\\
+$T_{e \rightarrow e'} = \begin{pmatrix}
+    T_1 & T_2 & \ldots & T_n
+\end{pmatrix}$\\
+$(e_1'\ldots e_n') = (e_1\ldots e_n) T_{e \rightarrow e'}$\\
+Свойства матриц перехода
+\begin{enumerate}
+    \item $\rg T = n$ (т.к. все столбцы линейно независимы)
+    \item $\exists\,T^{-1}$ - матрица перехода от нового базиса к старому\\
+    \textbf{Доказательство}\\
+    Т.к. $\rg T = n$, то обратная матрица существует\\
+    $e' = eT$\\
+    Тогда $e'T^{-1} = eTT^{-1} = e$\\
+    \item Связь координат в старом и новом базисе\\
+    $x = \suml_{j=1}^n x_j'e_j' = \suml_{j=1}^n\suml_{i=1}^n x_j't_{ij}e_i = \suml_{i=1}^n e_i(\suml_{j=1}^n t_{ij}x_j')$\\
+    Отсюда $\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix} = T_{e\rightarrow e'}\begin{pmatrix}x_1'\\\vdots\\x_n'\end{pmatrix}$
+\end{enumerate}
+\section{Определители}
+\subsection{Полилинейная антисимметричная форма\\Определитель числовой матрицы}
+Пусть V - линейное пространство над полем $\bb{R}(\bb{C})$\\
+$f: V^P \rightarrow K$\\
+\textbf{Определение}\\
+Отображение называется \textit{полилинейным}, если оно линейно по каждому аргументу, т.е. $f(\ldots, a+\lambda b, \ldots) = f(\ldots, a, \ldots) + \lambda f(\ldots,b,\ldots)$\\
+При $p = 1$ - линейная форма\\
+При $p = 2$ - билинейная форма\\
+\textbf{Правило Эйнштейна}\\
+Будем обозначать за $x^i e_i$ сумму $\suml_{i=1}^n x^ie_i$\\
+(Т.е. в случае, если у двух объектов записаны одинаковые индексы, при этом у одного - сверху, у другого - снизу)\\\\
+Договоримся для векторов из $V$ писать у координат индекс сверху, а у векторов индекс - снизу\\
+Т.е. $x=\suml_{i=1}^n x_ie_i \Leftrightarrow x = x^ie_i$\\\\
+Пусть $\xi_i \in V$\\
+$f(\xi_1, \ldots, \xi_p) = f(\xi_1^{i_1}e_{i_1}, \ldots, \xi_p^{i_p}e_{i_p}) = \xi_1^{i_1}\xi_2^{i_2}\ldots\xi_p^{i_p}f(e_{i_1}, \ldots, e_{i_p})$\\
+$\alpha_{i_1,i_2,\ldots, i_p} := f(e_{i_1}, \ldots, e_{i_p})$ - компоненты полиноминальной формы $f$ относительно базиса $e_1, \ldots, e_n$\\
+Т.о. $f$ однозначно определяется своими значениями на всевозможных наборах базисных векторов, т.е. всеми $\alpha_{i_1,i_2,\ldots, i_p}$\\
+\textbf{Определение}\\
+Полилинейная форма называется \textit{антисимметричной}, если она равна 0 при совпадении любых двух аргументов\\
+\textbf{Теорема}\\
+$f$ антисимметрична тогда и только тогда, когда $f(\ldots,a,\ldots, b,\ldots) = -f(\ldots, b, \ldots, a, \ldots)$\\
+\textbf{Доказательство}\\
+$f(\ldots, a+b, \ldots, a+b, \ldots) = 0 = f(\ldots, a, \ldots, b, \ldots) + f(\ldots, a, \ldots, a, \ldots) + f(\ldots, b, \ldots, a, \ldots) + f(\ldots, b, \ldots, b, \ldots)$\\
+Отсюда $f(\ldots, a, \ldots, b, \ldots) = -f(\ldots, b, \ldots, a, \ldots)$\\
+\textbf{Следствие}\\
+$\alpha_{\ldots, m, \ldots, k, \ldots} = -\alpha_{\ldots, k, \ldots, m, \ldots}$\\
+$\alpha_{\ldots, m, \ldots, m, \ldots} = 0$\\
+\textbf{Следствие}\\
+$p > n \Rightarrow f = 0$\\
+\textbf{Обозначение}\\
+Полилинейная антисимметричная форма = $p$-форма\\\\
+Рассмотрим $n$ форму для $V: \dim V = n$:\\
+$\alpha_{i_1\ldots i_n} = f(e_{i_1},\ldots,e_{i_n})$\\
+Если хотя бы два индекса совпали, то $\alpha_{i_1\ldots i_n} = 0$\\
+В остальных случаях $i_1, \ldots i_n$ - перестановка $n$ чисел\\
+\textbf{Определение}\\
+\textit{Подстановка} - биекция $\phi: \{1,2,\ldots, n\} \rightarrow \{1,2,\ldots, n\}$\\
+Перестановка - образ $\phi(\{1,2,\ldots, n\})$\\
+\textbf{Теорема}\\
+Любую перестановку можно привести к тривиальной $(1,\ldots, n)$ за конечное число транспозиций(перестановок 2-х элементов)\\
+\textbf{Определение}\\
+Четностью перестановки назовем четность числа транспозиций, с помощью которых она приводится к тривиальной\\
+$\epsilon(\sigma) = \left\{\begin{array}{ll}
+     1,&\text{если перестановка нечетная}\\
+     0,&\text{если перестановка четная}
+\end{array}\right.$\\
+\textit{Знаком перестановки} назовем $(-1)^{\epsilon(\sigma)}$\\
+$\alpha_{i_1, \ldots, i_n} = (-1)^{\epsilon(\sigma)}\alpha_{1,2,\ldots, n}$\\
+Пусть $\alpha_f = \alpha_{1,2,\ldots, n}$\\
+$\alpha_{i_1, \ldots, i_n} = (-1)^{\epsilon(\sigma)}\alpha_f$\\
+Т.о. $f(\xi_1, \ldots, \xi_n) = \alpha_f \suml_{\sigma \in S_n} (-1)^{\epsilon(\sigma)} \xi_1^{i_1}\ldots\xi_n^{i_n}$, где $(i_1, \ldots, i_n) = \sigma$\\
+\textbf{Определение}\\
+D-n-форма - n-форма такая, что $\alpha_f = 1$\\
+$D(\xi_1, \ldots, \xi_n) = \suml_{\sigma \in S_n} (-1)^{\epsilon(\sigma)} \xi_1^{i_1}\ldots\xi_n^{i_n}$, где $(i_1, \ldots, i_n) = \sigma$\\
+$\forall\,f\ f(\xi_1, \ldots, \xi_n) = \alpha_f D(\xi_1, \ldots, \xi_n)$\\
+Такая форма единственная\\
+\textbf{Определение}\\
+\textit{Определителем} системы векторов $\xi_1, \ldots, \xi_n \in V$ называется $D(\xi_1, \ldots, \xi_n) =: \det (\xi_1, \ldots, \xi_n)$ относительно фиксированного базиса $e_1, \ldots, e_n$\\
+\textbf{Определение}\\
+Пусть $V = \bb{R}^n(\bb{C}^n)$\\
+$E_j = \begin{pmatrix}0\\0\\\vdots\\0\\1 - \text{j-ая строка}\\0\\\vdots\\0\end{pmatrix}$ - базис\\
+$A_k = \begin{pmatrix}a_{1k}\\\vdots\\a_{nk}\end{pmatrix}$\\
+Тогда $\det (A_1, \ldots, A_n) = \suml_{\sigma \in S_n} (-1)^{\epsilon(\sigma)}a_{i_11}\ldots a_{i_nn}$\\
+\textbf{Замечания}
+\begin{enumerate}
+    \item Матрица не обязательно числовая
+    \item $\det E = 1$
+    \item $f(A) = f(E) \det A$
+\end{enumerate}
+\subsection{Некоторые сведения из теории перестановок}
+\textbf{Определение}\\
+\textit{Произведением перестановок} называется результат действия композиции соответствующих подстановок\\
+\textit{Обратной перестановкой} называется $\phi = \sigma^{-1}: \phi\sigma = id$\\
+\textbf{Определение}\\
+Инверсией в перестановке назовем два элемента $\alpha, \beta$ такие, что $\alpha$ стоит до $\beta$ и $\alpha > \beta$\\
+\textbf{Теорема}
+\begin{enumerate}
+    \item $\epsilon(\sigma) = \epsilon(\sigma^{-1})$\\
+    \textbf{Доказательство}\\
+    *TODO*
+    \item Транспозиция любых двух элементов может быть получена нечетным числом транспозиций соседних элементов\\
+    \textbf{Доказательство}\\
+    Пусть у нас есть элементы $\alpha, \beta$, которые мы ходим поменять\\
+    Сделаем m шагов, чтобы переместить $\alpha$ к $\beta$. Затем за шаг поменяем их местами. Теперь сделаем еще m шагов, чтобы поставить $\beta$ на бывшее место $\alpha$. Тогда всего $2m+1$ шаг
+    \item Транспозиция двух соседних элементов перестановки меняет четность числа инверсий на противоположную\\
+    \textbf{Доказательство}\\
+    Пусть мы поменяли $\alpha$ и $\beta$ местами\\
+    Заметим, что в результате перестановки все инверсии, образованные $\alpha$ и $\beta$ с остальными элементами, сохранились. Тогда появилась или исчезла инверсия между $\alpha$ и $\beta$. Тогда число инверсий изменилось на 1, ч.т.д.
+    \item $(-1)^{\epsilon(\sigma)} = (-1)^{\nm{inv}\sigma}$\\
+    \textbf{Доказательство}\\
+    Пусть у нас была четная перестановка $\sigma$\\
+    Тогда за четное число транспозиций получим тривиальную перестановку\\
+    Каждая транспозиция - это нечетное число транспозиций соседних\\
+    Значит суммарно четное число транспозиций соседних\\
+    А значит четность числа инверсий не поменяется\\
+    Т.е. в тривиальной перестановке число инверсий четное, то и в исходной было четное\\
+    Отсюда в четной перестановке четное число инверсий\\
+    Аналогично для нечетной перестановки
+\end{enumerate}
+\textbf{Следствие}\\
+$\det A = \suml_{\sigma \in S_n} (-1)^{\nm{inv}\sigma}a_{i_11}\ldots a_{i_nn}$\\
+\subsection{Свойства определителя}
+\begin{enumerate}
+    \item $\det A^T = \det A$\\
+    \textbf{Доказательство}\\
+    $\det A^T = \suml_{\sigma \in S_n} (-1)^{\nm{inv}\sigma}a_{1i_1}\ldots a_{ni_n}$\\
+    Упорядочим $a_{1i_1}\ldots a_{ni_n}$ по второму параметру. Тогда в первом параметре мы получим перестановку, обратную $\sigma$\\
+    $\det A^T = \suml_{\sigma \in S_n} (-1)^{\nm{inv}\sigma}a_{\sigma^{-1}(1)1}\ldots a_{\sigma^{-1}(n)n}$\\
+    $\det A^T = \suml_{\sigma \in S_n} (-1)^{\nm{inv}\sigma^{-1}}a_{\sigma^{-1}(1)1}\ldots a_{\sigma^{-1}(n)n}$\\
+    Заметим, что $\sigma^{-1}$ пробегает все множество. Отсюда мы получили\\
+    Отсюда мы получили исходную формулу, ч.т.д.\\
+    \textbf{Замечание}\\
+    Все свойства определителя, доказанные для столбцов, верны и для строк
+    \item Линейность определителя\\
+    $\det(\ldots, A_i+\lambda B_i, \ldots) = \det(\ldots, A_i, \ldots) + \lambda \det(\ldots, B_i, \ldots)$\\
+    \textbf{Доказательство}\\
+    Из полилинейности определителя\\
+    \item \textbf{Следствие}\\
+    $\det(\ldots, \0, \ldots) = 0$\\
+    $\det(\lambda A) = \lambda^n \det(A)$
+    \item Антисимметричность\\
+    $\det (\ldots, B, \ldots, B, \ldots) = 0$\\
+    $\det (\ldots, A_i, \ldots, A_j, \ldots) = -\det (\ldots, A_j, \ldots, A_i, \ldots)$ (столбцы поменяли местами)
+    \item $\det(\ldots, A_i, \ldots, A_j, \ldots) = \det (\ldots, A_i+\lambda A_j, \ldots, A_j, \ldots)$
+    \item $\begin{vmatrix}
+    A^1 & 0 & 0 & 0\\
+    \vdots & A^2 & 0 & 0\\
+    \vdots & \vdots & \ddots & 0\\
+    \vdots & \vdots & &  A^n
+    \end{vmatrix} = \prod \det A^i$, где $A^i$ - подматрицы нашей матрицы\\
+    Такая матрица называется \textit{ступенчатой}\\
+    \textbf{Доказательство}\\
+    Методом мат. индукции
+    \begin{enumerate}
+        \item База. Докажем, что $\begin{vmatrix}
+            A & \0\\
+            * & B
+        \end{vmatrix} = \det A \det B$
+        \begin{enumerate}
+            \item $\begin{vmatrix}
+                E & 0\\
+                0 & E
+            \end{vmatrix} = 1 = \det E \det E$
+            \item $\begin{vmatrix}
+                A_{n\times n} & 0\\
+                * & E
+            \end{vmatrix}$\\
+            Занулим * линейными преобразованиями.\\
+            Пусть $f(A_1,\ldots, A_n) = \begin{vmatrix}
+                A & 0\\
+                0 & E
+            \end{vmatrix}$\\
+            $f$ - n-форма по очевидным соображениеям\\
+            Заметим, что $f(A_1, \ldots, A_n) = f(E_1, \ldots, E_n) D(A_1, \ldots, A_n) = 1\cdot \det A = \det A$
+            \item Аналогично для матрицы $\begin{vmatrix}
+                A_{n\times n} & 0\\
+                * & B_{m\times m}
+            \end{vmatrix}$ введем m-форму\\
+            $f(B_1, \ldots, B_m) = f(E_1, \ldots, E_m) D(B_1, \ldots, B_m) = \det A\det B$
+        \end{enumerate}
+        \item Индукционный переход очевиден
+    \end{enumerate}
+    \item $\det A = \suml_{i=1}^n a_{ij}A_{ij}$, где $A_{ij} = (-1)^{i+j} M_{ij}$ - алгебраическое дополнение, $M_{ij}$ - минор, j фиксированный\\
+    \textbf{Доказательство}\\
+    $\det A = \begin{vmatrix}
+        a_{11} & a_{12} & \ldots & a_{1n}\\
+        0 & a_{22} & \ldots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & a_{n2} & \ldots & a_{nn}
+    \end{vmatrix} + \begin{vmatrix}
+        0 & a_{12} & \ldots & a_{1n}\\
+        a_{21} & a_{22} & \ldots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & a_{n2} & \ldots & a_{nn}
+    \end{vmatrix} + \ldots +
+    \begin{vmatrix}
+        0 & a_{12} & \ldots & a_{1n}\\
+        0 & a_{22} & \ldots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{n1} & a_{n2} & \ldots & a_{nn}
+    \end{vmatrix}$\\
+    Поднимем свапами $a_{i1}$ на первые строки в каждой матрице\\
+    Тогда в матрицах, где i - нечетное, знак определителя не сменится (т.к. свапов будет четное число), а в матрицах, где i - нечетное, поменяется\\
+    Т.о. мы получим $\det A = (-1)^{1+1}\begin{vmatrix}
+        a_{11} & a_{12} & \ldots & a_{1n}\\
+        0 & a_{22} & \ldots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & a_{n2} & \ldots & a_{nn}
+    \end{vmatrix} + (-1)^{2+1}\begin{vmatrix}
+        a_{21} & a_{22} & \ldots & a_{2n}\\
+        0 & a_{12} & \ldots & a_{1n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & a_{n2} & \ldots & a_{nn}
+    \end{vmatrix} + \ldots + (-1)^{n+1}
+    \begin{vmatrix}
+        a_{n1} & a_{n2} & \ldots & a_{nn}\\
+        0 & a_{12} & \ldots & a_{1n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{n-1\,1} & a_{n-1\,2} & \ldots & a_{n-1\,n}
+    \end{vmatrix}$\\
+    Теперь применим свойство о ступенчатых матрицах. Тогда для первого столбца формула работает\\
+    Докажем для j-ого столбца. Для этого свапами переместим j на первую позицию знак поменяется $j-1$ раз, получив матрицу $A'$, для которой формула доказана
+    \item $\suml_{i=1}^n a_{ik} A_{ij} = 0, k \neq j$\\
+    Рассмотрим матрицу, полученную из $A$ заменой k-ого столбца на j-ый. Тогда данная формула будет формулой ее определителя. Но т.к. в этой матрице два одинаковых столбца, то ее определитель 0
+    \item $\det (A\cdot B) = \det A \det B$\\
+    \textbf{Доказательство}\\
+    Зафиксируем $A$ и рассмотрим функцию $f(B_1, \ldots, B_n) = \det (C_1 = AB_1, \ldots, C_n = AB_n)$\\
+    $f$ является n-формой\\
+    $\det AB = f(B_1, \ldots, B_n) = f(E_1, \ldots, E_n)D(B_1, \ldots, B_n) = \det A \det B$
+\end{enumerate}
+\subsection{Формула для обратной матрицы}
+\textbf{Определение}\\
+Матрица называется невырожденной, если ее определитель не равен 0\\
+\textbf{Теорема Крамера}\\
+Матрица обратима тогда и только тогда, когда матрица невырожденная\\
+Причем матрица может быть найдена по формуле $A^{-1} = \frac{1}{\det A}\begin{pmatrix}
+    A_{11} & A_{12} & \ldots & A_{1n}\\
+    A_{21} & A_{22} & \ldots & A_{2n}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    A_{n1} & A_{n2} & \ldots & A_{nn}\\
+\end{pmatrix}^T$, где $A_{ij}$ - алгебраическое дополнение\\
+Матрица дополнений называется \textit{союзной/взаимной/присоединенной}\\
+\textbf{Доказательство $\Rightarrow$}\\
+Т.к. матрица $A$ обратима, то существует $A^{-1}$\\
+$AA^{-1} = E$\\
+$\det AA^{-1} = \det A \det A^{-1} = 1$\\
+Отсюда $\det A \neq 0$\\
+\textbf{Доказательство $\Leftarrow$}\\
+Т.к. матрица невырожденная, то ее определитель не 0\\
+Из вышедоказанных свойств произведение исходной матрицы на матрицу из формулы(и наоборот) равно единичной матрице\\
+Тогда формула верна. А значит исходная матрица обратима\\
+\textbf{Замечание}\\
+$\det A^{-1} = \frac{1}{\det A}$\\
+\textbf{Следствие (теорема Крамера)}\\
+Пусть у нас есть система $A_{n\times n}X = B$\\
+Единственное решение существует тогда и только тогда, когда определитель $A$ не равен 0\\
+Причем $X_i = \frac{\Delta_i}{\Delta}, \Delta_i = \det (A_1, \ldots, A_{i-1}, B, A_{i+1}, \ldots, A_n), \Delta = \det A$\\
+\textbf{Доказательство}\\
+$X = A^{-1}B = \frac{1}{\det A}\begin{pmatrix}
+    \Delta_1\\
+    \Delta_2\\
+    \vdots\\
+    \Delta_n
+\end{pmatrix}$
+\subsection{Теорема Лапласа}
+\textbf{Определение}\\
+Выберем $k$ строк $i_1 < \ldots < i_k$ и $k$ столбцов $j_1 < \ldots < j_k$\\
+Тогда \textit{минором k-ого порядка} назовем определитель матрицы $M_{j_1\ldots j_k}^{i_1\ldots i_k}$, полученной вычеркиванием всех остальных строк и столбцов\\
+\textit{Дополнительным минором} нашего минора k-ого порядка назовем определитель матрицы $\overline{M}_{j_1\ldots j_k}^{i_1\ldots i_k}$, полученной вычеркиванием выбранных строк\\
+\textit{Алгебраическое дополнение} $A_{j_1\ldots j_k}^{i_1\ldots i_k} = (-1)^{i_1+\ldots+i_k+j_1+\ldots+j_n}\overline{M}_{j_1\ldots j_k}^{i_1\ldots i_k}$\\\\
+\textbf{Теорема Лапласа}\\
+Выберем $k$ строк $i_1 < \ldots < i_k$\\
+Тогда $\det A = \suml_{1 \leq j_1 < j_2 < \ldots < j_k \leq n} A_{j_1\ldots j_k}^{i_1\ldots i_k}M_{j_1\ldots j_k}^{i_1\ldots i_k}$\\
+\textbf{Доказательство}\\
+Методом математической индукции
+\begin{itemize}
+    \item База (для 1 строки):\\
+    Зафиксируем $i$. Получаем известную формулу
+    \item Пусть верно для $k-1$ строки\\
+    % Т.е. $\det A = \suml_{1 \leq j_1 < \ldots < j_{k-1} \leq n} A_{j_1\ldots j_{k-1}}^{i_1\ldots i_{k-1}}M_{j_1\ldots j_{k-1}}^{i_1\ldots i_{k-1}}$\\
+    % Разложим по $k$-ой строке: $A_{j_1\ldots j_{k-1}}^{i_1\ldots i_{k-1}} = \\\suml_{j\in (1\ldots n) \setminus (j_1 \ldots j_{k-1})} (-1)^{N(i_1)+\ldots+N(i_{k-1})+N'(j_1)+\ldots+N'(j_{k-1})} a_{i_kj} M_{j_1\ldots j_{k-1} j}^{i_1\ldots i_k}$, где $N(i)/N'(j)$ - номер строки $i$/столбца $j$ исходной матрицы после вычеркиваний\\
+    //todo
+\end{itemize}
+\textbf{Замечание}\\
+Формулу для ступенчатой матрицы можно получить из теоремы Лапласа\\
+\subsection{Второе определение ранга матрицы}
+\textbf{Определение}\\
+Ранг матрицы - это наибольший порядок минора, отличного от нуля\\
+$\det A_{m\times n} = \max k: \exists\,i_1 < \ldots < i_k, j_1 < \ldots < j_k: M_{j_1\ldots j_k}^{j_1\ldots j_k}\\$
+Такой минор называется \textit{базисным}, его строки и столбцы - базисные\\\\
+\textbf{Теорема}\\
+Определения эквивалентны\\
+\textbf{Доказательство}\\
+Пусть $\rg^1 A$ - ранг по первому определению, $\rg^2 A$ - по второму\\
+Пусть $\rg^1 A = k$\\
+$A_{j_1}\ldots A_{j_k}$ - база столбцов\\
+$S_{i_1}\ldots S_{i_k}$ - база строк\\
+$M_{j_1\ldots j_k}^{j_1\ldots j_k} = \det (A'_{j_1} \ldots A'_{j_k})$, где $A'_{j_k}$ - отрезок столбца $A_{j_k}$\\
+Т.к. $A_{j_1}\ldots A_{j_k}$ - линейно независимые. Тогда по теореме $A'_{j_1}\ldots A'_{j_k}$ - линейно независимые\\
+Теперь возьмем столбцы $j'_1\ldots j'_s, s>k$\\
+Т.к. $s > \rg^1 A$, то $A_{j'_1}\ldots A_{j'_s}$ линейно зависимы\\
+Тогда и $A'_{j'_1}\ldots A'_{j'_s}$ линейно зависимые\\
+Тогда $\det (A_{j'_1}\ldots A_{j'_s}) = M_{j'_1\ldots j'_s}^{j'_1\ldots j'_s} = 0$\\
+Отсюда $\rg^2 A = k$, ч.т.д.\\
+\textbf{Метод окаймляющих миноров}
+\begin{enumerate}
+    \item Если $a_{ij} \neq 0$\\ Если все миноры второго порядка, содержащие $a_{ij}$, равны 0, то ранг - 1
+    \item Если $\exists\,M^{ii_0}_{jj_0} \neq 0$\\Если все миноры третьего порядка, содержащие строки $i,i_0$ и столбцы $j, j_0$, равны 0, то ранг - 2
+    \item Аналогично
+\end{enumerate}
+\textbf{Теорема}\\
+Метод окаймляющих миноров работает:)\\
+\textbf{Доказательство}\\
+Пусть $M_{j_1\ldots j_k}^{j_1\ldots j_k} \neq 0$, а все миноры $k+1$-го порядка, окаймпляющие его, равны 0\\
+Рассмотрим определитель $\begin{pmatrix}
+    a_{i_1j_1} & \ldots & a_{i_1j_k} & a_{i_1j}\\
+    \vdots & \vdots & \vdots & \vdots\\
+    a_{i_kj_1} & \ldots & a_{i_kj_k} & a_{i_kj}\\
+    a_{ij_1} & \ldots & a_{ij_k} & a_{ij}\\
+\end{pmatrix} = X$.\\
+Заметим, X = 0:\\
+Если $i$ совпадает с $i_1 \ldots i_k$, то определитель 0\\
+Иначе по условию\\
+$X = \suml_{s=1}^k a_{ij_s}A'_{is} \pm a_{ij}M_{j_1\ldots j_k}^{i_1\ldots i_k}$, где $A'$ - дополнение матрицы из определителя\\
+$M_{j_1\ldots j_k}^{i_1\ldots i_k} \neq 0$\\
+Тогда $a_{ij} = \suml_{s=1}^k a_{ij_s} \frac{\mp A'_{is}}{M_{j_1\ldots j_k}^{i_1\ldots i_k}} = \suml_{s=1}^k \lambda_s a_{ij_s}$\\
+Отсюда $A_j = \suml_{s=1}^k\lambda_s A_{j_s}$\\
+Т.о. любой столбец является линейной комбинацией $A_{j_1}\ldots A_{j_k}$\\
+Т.о. $\rg A = k$
+\subsection{Методы вычисления определителей n-ого порядка}
+\begin{enumerate}
+    \item Приведение к треугольному виду\\
+    //TODO
+    \item Метод выделения линейных множителей\\
+    //TODO
+    \item Метод рекурентных соотношений\\
+    //todo
+    \item Разложение в сумму определителей\\
+    //todo
+    \item Метод изменения элементов на константу\\
+    //todo
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\input{header.tex}
+
+\title{Линейная алгебра. Практика}
+\author{Александр Сергеев}
+\date{}
+
+\begin{document}
+\maketitle
+\textbf{Пример}\\\\
+$\left\{
+\begin{array}{c}
+     a_{11}x_1+a_{12}x_2=b_1 \\
+     a_{21}x_1+a_{22}x_2=b_1
+\end{array}
+\right.$ - Система линейных неоднородных уравнений.\\\\
+$\left(\begin{array}{cc}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+\end{array}\right)
+\left(\begin{array}{cc}
+    x_1  \\
+    x_2
+\end{array}\right) = 
+\left(\begin{array}{cc}
+    b_1  \\
+    b_2
+\end{array}\right)\\\\
+\left\{
+\begin{array}{cc}
+     & (a_{11}a_{22}-a_{12}a_{21})x_1=b_1a_{22}-a_{12}b_2 \\
+     & (a_{12}a_{21}-a_{11}a_{22})x_2=b_1a_{21}-a_{11}b_2
+\end{array}
+\right.$\\\\
+$\left\{
+\begin{array}{cc}
+     & x_1=\frac{b_1a_{22}-a_{12}b_2}{a_{11}a_{22}-a_{12}a{21}} \\
+     & x_2=\frac{b_1a_{21}-a_{11}b_2}{a_{12}a_{21}-a_{11}a_{22}}
+\end{array}
+\right.$\\\\
+$\Delta_i$ - определитель матрицы, где $i$-ый столбец заменен на столбец свободных членов.\\\\
+$\left\{
+\begin{array}{cc}
+     & x_1=\frac{\Delta_1}{\Delta} \\
+     & x_2=\frac{\Delta_2}{\Delta}
+\end{array}
+\right.$\\\\
+\textbf{Определение}\\
+$\det A = \sum\limits(-1)^{inv(\sigma)}\cdot a_{1i_1}\cdot a_{2i_2}\cdot\ldots\cdot a_{ni_n}$, где $\sigma = (i_1, i_2, \ldots, i_n)$, где $inv(S)$ - количество пар $(a,b): a,b\in S, a > b$\\\\
+\textbf{Теорема Крамера}\\
+$\det A \neq 0 \Leftrightarrow \exists !\ \text{решение}\  x_i=\frac{\Delta_i}{\Delta},\ \text{где} \\
+\Delta_i$ - определитель матрицы, где $i$-ый столбец заменен на столбец свободных членов.\\\\
+Свойства:
+\begin{enumerate}
+    \item $|A|=|A^T|$
+    \item Все свойства строк выполняются для столбцов
+    \item $|\ldots, A_i+B_i, \ldots| = |\ldots, A_i, \ldots| + |\ldots, B_i, \ldots|$, где $A_i, B_i$ - столбцы - свойство аддитивности по столбцам
+    \item $|\ldots, k\cdot A_i, \ldots| = k\cdot |\ldots, A_i, \ldots|$
+    \item Если в матрице есть нулевой столбец, то определитель = 0
+    \item $|\ldots, A_i,\ldots, A_j, \ldots| = -|\ldots, A_j, \ldots, A_i, \ldots|$
+    \item Отслюда $|\ldots, S,\ldots, S, \ldots| = 0$
+    \item $|\ldots, A_i,\ldots, A_j, \ldots| = |\ldots, A_i+\lambda A_j, \ldots, A_j, \ldots|$ - линейное преобразование 
+    \item 
+$\left|\begin{array}{ccc}
+        \ldots&\ldots&\ldots \\
+        a_{i1} & \ldots& a_{in}\\
+        \ldots&\ldots&\ldots
+\end{array}\right| = \sum\limits_{j=1}^n a_{ij}\cdot A_{ij}$, \\где $A_{ij}=(-1)^{i+j}\cdot M_{ij}$ - дополнение, \\$M_{ij}$ - минор(матрица, полученная вычеркиванием i строки и j столбца).
+\end{enumerate}
+\textbf{Теорема}\\
+\textit{Пучок плоскостей}, проходящих через $\alpha_1 \cap \alpha_2$ задается уравнением $a(A_1x+B_1y+C_1z+D_1)+b(A_2x+B_2y+C_2z+D_2)=0$\\\\
+\textbf{Пересечение линейных пространств}\\
+Пусть $L_1, L_2 \subset V$ - линейные подпространства линейного пространства\\
+$L_1 = \Span (a_1, \ldots, a_k), a_1, \ldots, a_k$ - базис
+$L_2 = \Span (b_1, \ldots, b_m), b_1, \ldots, b_k$ - базис\\\\
+Рассмотрим $u \in L_1 \cap L_2$\\
+$u = \suml_{i=1}^k x_i a_i = \suml_{i=1}^m y_i b_i$\\
+$\suml_{i=1}^k x_i a_i - \suml_{i=1}^m y_i b_i = 0$ - СЛОУ\\
+$\begin{pmatrix}
+    a_1 & a_2 & \ldots & a_k & -b_1 & \ldots & -b_m
+\end{pmatrix}\begin{pmatrix}
+    x_1\\x_2\\\vdots\\x_k\\y_1\\\vdots\\y_m
+\end{pmatrix} = \0$\\
+Решая систему в общем виде, можем найти все вектора пересечения\\
+Отсюда можно найти базис\\
+
+\end{document}
