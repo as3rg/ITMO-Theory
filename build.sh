@@ -11,4 +11,4 @@ do
   fi
   # latexmk -pdf "$line" 1> /dev/null
 done
-find ~+ -name '*.aux' -o -name '*.fdb_latexmk' -o -name '*.log' -o -name '*.out' | tr "\n" "\0" | xargs -0 rm
+find ~+ -name '*.aux' -o -name '*.fdb_latexmk' -o -name '*.log' -o -name '*.fls' -o -name '*.out' | tr "\n" "\0" | xargs -0 rm
