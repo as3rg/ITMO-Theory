@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\input{header.tex}
+\input{../../header.tex}
 \title{Линейная алгебра. Теория}
 \author{Александр Сергеев}
 \date{}
@@ -156,22 +156,22 @@ $\ker \mcA_1 \subset \ker \mcA = U_0, \ker \mcA_1 \subset U_1$\\
 $\mcA \in L(U, V)$\\
 $\xi_1, \ldots, \xi_n$ -- базис $U$\\
 $\nu_1, \ldots, \nu_m$ -- базис $V$\\
-$\fall u \in U\ u = \suml_{i = 1}^n u_i \xi_i \lrto u = \begin{pmatrix}
+$\fall u \in U\ u = \sum_{i = 1}^n u_i \xi_i \lrto u = \begin{pmatrix}
 u_1\\u_2\\\vdots\\u_n
 \end{pmatrix}$\\
-$\fall v \in V\ v = \suml_{i = 1}^m v_i \nu_i \lrto v = \begin{pmatrix}
+$\fall v \in V\ v = \sum_{i = 1}^m v_i \nu_i \lrto v = \begin{pmatrix}
 v_1\\v_2\\\vdots\\v_m
 \end{pmatrix}$\\
-$\fall v \in \im \mcA\ v = \mcA u = \suml_{i=1}^n u_i \mcA \xi_i$\\
+$\fall v \in \im \mcA\ v = \mcA u = \sum_{i=1}^n u_i \mcA \xi_i$\\
 $\mcA$, как линейное отображение, полностью определяется значениями $\mcA$ на базисных векторах\\
-$\mcA_{\xi_i} = \suml_{j=1}^m a_{ji} \nu_j \lrto \begin{pmatrix}
+$\mcA_{\xi_i} = \sum_{j=1}^m a_{ji} \nu_j \lrto \begin{pmatrix}
     a_{1i}\\\vdots\\a_{mi}
 \end{pmatrix}$\\
 $A = (A_1 \ldots A_n)$ - матрица линейного отображения в базисах $(\xi, \nu)$\\\\
 \underline{Если $\mcA \in \nm{End}(v)$ -- линейный оператор, то считаем, что исходный и конечный базис совпадают}\\
-$v = \suml_{j=1}^m v_j \nu_j$\\
-$v = \mcA u = \suml_{i = 1}^n u_i \mcA_{\xi_i} = \suml_{i=1}^n u_i\suml_{j=1}^m a_{ji}\nu_j = \suml_{j=1}^m(\suml_{i=1}^n a_{ji}u_i)\nu_j$\\
-Т.к. координаты введены единственным образом, то $\fall j\ v_j = \suml_{i=1}^n a_{ji}u_i \LRto v = \mcA u \LRto v = Au$\\
+$v = \sum_{j=1}^m v_j \nu_j$\\
+$v = \mcA u = \sum_{i = 1}^n u_i \mcA_{\xi_i} = \sum_{i=1}^n u_i\sum_{j=1}^m a_{ji}\nu_j = \sum_{j=1}^m(\sum_{i=1}^n a_{ji}u_i)\nu_j$\\
+Т.к. координаты введены единственным образом, то $\fall j\ v_j = \sum_{i=1}^n a_{ji}u_i \LRto v = \mcA u \LRto v = Au$\\
 \textbf{Примеры}
 \begin{enumerate}
     \item $\epsilon: \underset{e_1\ldots e_n}V \rto \underset{e_1 \ldots e_n}V$\\
@@ -185,12 +185,12 @@ $L(U, V) \cong M_{m\times n}$ -- пространство всех матриц 
 \textbf{Доказательство}\\
 Соответствие между $\mcA$ и $A$ взаимооднозначное\\
 Докажем линейность\\
-$(\mcA+\lambda \mcB)_{\xi_i} = \mcA_{\xi_i}+\lambda\mcB_{\xi_i} = \suml_{j=1}^m a_{ji}\nu_j + \lambda \suml_{j=1}^m b_{ji}\nu_j = \suml_{j=1}^m(a_{ji} + \lambda b_{ji})\nu_j \lrto A+\lambda B$\\\\
+$(\mcA+\lambda \mcB)_{\xi_i} = \mcA_{\xi_i}+\lambda\mcB_{\xi_i} = \sum_{j=1}^m a_{ji}\nu_j + \lambda \sum_{j=1}^m b_{ji}\nu_j = \sum_{j=1}^m(a_{ji} + \lambda b_{ji})\nu_j \lrto A+\lambda B$\\\\
 \textbf{Утверждение}\\
 $\mcA\mcB \lrto AB$\\
 \textbf{Доказательство}\\
 $\underset{\xi_1\ldots\xi_n}{U}\xrto[\mcB]{} \underset{\theta_1\ldots\theta_r}{W} \xrto[\mcA]{} \underset{\nu_1\ldots\nu_m}{V}$
-$(\mcA\mcB)_{\xi_i} = \mcA(\mcB_{\xi_i}) = \mcA(\suml_{k=1}^r b_{ki}\theta_k) = \suml_{k=1}^r b_{ki}\mcA_{\theta_k} = \suml_{k=1}^rb_{ki}\suml_{j=1}^m a_{jk}\nu_j = \suml_{j=1}^m(\suml_{k=1}^r a_{jk}b_{ki})\nu_i = \suml_{j=1}^m AB_{jk} \nu_j \lrto \begin{pmatrix}
+$(\mcA\mcB)_{\xi_i} = \mcA(\mcB_{\xi_i}) = \mcA(\sum_{k=1}^r b_{ki}\theta_k) = \sum_{k=1}^r b_{ki}\mcA_{\theta_k} = \sum_{k=1}^rb_{ki}\sum_{j=1}^m a_{jk}\nu_j = \sum_{j=1}^m(\sum_{k=1}^r a_{jk}b_{ki})\nu_i = \sum_{j=1}^m AB_{jk} \nu_j \lrto \begin{pmatrix}
     \vdots
 \end{pmatrix}$\\
 \textbf{Утверждение}\\
@@ -251,7 +251,7 @@ $e_1,\ldots, e_n$ -- базис $V$\\
 \textbf{Доказательство}\\
 Выберем базис $e_1, \ldots, e_n$\\
 Тогда $\mcA \us{e}\lrto A_{n\times n}$\\
-$\det \mcA = \det (\mcA e_1, \ldots, \mcA e_n) = \det(\suml_{i_1=1}^n a_{i_11}e_{i_1}, \ldots, \suml_{i_n=1}^n a_{i_nn}e_{i_n}) =\\ \suml_{i_1=1}^n\ldots\suml_{i_n=1}^n a_{i_11}\ldots a_{i_nn}\det(e_{i_1}, \ldots, e_{i_n}) = \suml_{\sigma \in S_n}(-1)^{\nm{inv}(\sigma)}a_{i_11}\ldots a_{i_nn}\det(e_1,\ldots, e_n) = \suml_{\sigma \in S_n}(-1)^{\nm{inv}(\sigma)}a_{i_11}\ldots a_{i_nn} = \det A$\\
+$\det \mcA = \det (\mcA e_1, \ldots, \mcA e_n) = \det(\sum_{i_1=1}^n a_{i_11}e_{i_1}, \ldots, \sum_{i_n=1}^n a_{i_nn}e_{i_n}) =\\ \sum_{i_1=1}^n\ldots\sum_{i_n=1}^n a_{i_11}\ldots a_{i_nn}\det(e_{i_1}, \ldots, e_{i_n}) = \sum_{\sigma \in S_n}(-1)^{\nm{inv}(\sigma)}a_{i_11}\ldots a_{i_nn}\det(e_1,\ldots, e_n) = \sum_{\sigma \in S_n}(-1)^{\nm{inv}(\sigma)}a_{i_11}\ldots a_{i_nn} = \det A$\\
 Т.о. в нашем базисе это верно\\
 Теперь докажем, что в $e_1', \ldots e_n'$ -- базисе $V$ -- это тоже верно\\
 $\mcA \us{e'}\lrto A'$\\
@@ -307,12 +307,12 @@ $\det \mcA\mcA^{-1} = \det\mcA\det \mcA^{-1} = \det \epsilon = 1$\\\\
 \end{enumerate}
 \textbf{Определение}\\
 $A_{n\times n}$\\
-$\tr A := \suml_{i=1}^n a_{ii}$ -- след матрицы\\
+$\tr A := \sum_{i=1}^n a_{ii}$ -- след матрицы\\
 \textbf{Теорема 3}\\
 Если матрицы подобные, то $\tr A = \tr B$\\
 \textbf{Доказательство}\\
 $A, B$ -- подобные $\Rto \ex$ невырожденная $C: A=C^{-1}BC=SBC$\\
-$\tr A = \suml_{i=1}^na_{ii}=\suml_{i=1}^n\suml_{k=1}^n S_{ik}(BC)_{ki} = \suml_{i=1}^n\suml_{k=1}^n S_{ik}\suml_{m=1}^nB_{km}C_{ki} = \suml_{m=1}^n\suml_{k=1}^n B_{km}\suml_{i=1}^nC_{mi}S_{ik} = \suml_{m=1}^n\suml_{k=1}^n B_{km} E_{mk} = \suml_{k=1}^n B_{kk} = \tr B$\\
+$\tr A = \sum_{i=1}^na_{ii}=\sum_{i=1}^n\sum_{k=1}^n S_{ik}(BC)_{ki} = \sum_{i=1}^n\sum_{k=1}^n S_{ik}\sum_{m=1}^nB_{km}C_{ki} = \sum_{m=1}^n\sum_{k=1}^n B_{km}\sum_{i=1}^nC_{mi}S_{ik} = \sum_{m=1}^n\sum_{k=1}^n B_{km} E_{mk} = \sum_{k=1}^n B_{kk} = \tr B$\\
 \textbf{Следствие}\\
 $A$ и $A'$ матрицы $\mcA \in \nm{End}(V)$ в разных базисах\\
 Тогда $\tr A = \tr A'$(из формулы перехода)\\
@@ -342,7 +342,7 @@ $\fall x\in L\ \mcA x \in L$\\
 Пусть $e_1, \ldots, e_k$ -- базис $L$\\
 Дополним его до базиса $V$:\\
 $V = \span (e_1, \ldots, e_k, e_{k+1}, \ldots, e_n)$\\
-$\mcA e_{j\in 1\ldots k} \in L \Rto \mcA e_j = \suml_{i=1}^k a_{ij}e_i \lrto A_j = \begin{pmatrix}
+$\mcA e_{j\in 1\ldots k} \in L \Rto \mcA e_j = \sum_{i=1}^k a_{ij}e_i \lrto A_j = \begin{pmatrix}
     a_{1j}\\
     \vdots\\
     a_{k_j}\\
@@ -368,22 +368,22 @@ $e_{k+1}, \ldots, e_n$ -- базис $n$\\
     \0\\A^2_{j-k}
 \end{pmatrix}$\\
 \textbf{Следствие 2}\\
-$V = \oplusl_{i=1}^m L_i$\\
+$V = \oplus_{i=1}^m L_i$\\
 $L_i \subset V$ -- инвариантные линейные пространства относительно $\mcA \in \nm{End}(V)$\\
 Тогда существует базис $V$ такой, что матрица оператора $\mcA$ имеет блочно-диагональный вид(аналогично предыдущему следствию)\\
 Пусть $A|_{L_j}: L_j \rto L_j$ (эндоморфизм)\\
 Тогда $\mcA|_{L_j} \lrto A_i$\\
 \textbf{Следствие 3}\\
-$V = \oplusl_{i=1}^m L_i$\\
+$V = \oplus_{i=1}^m L_i$\\
 $L_i \subset V$ -- инвариантные линейные пространства относительно $\mcA \in \nm{End}(V)$\\
 $\mcA_i = \mcA: L_i \rto V$\\
-Тогда $\im \mcA = \oplusl_{i=1}^m \im \mcA^j$\\
+Тогда $\im \mcA = \oplus_{i=1}^m \im \mcA^j$\\
 \textbf{Доказательство}\\
-$V = \oplusl_{i=1}^m L_i$\\
-$\fall x\in V\ \ex! x_1 \in L_1,\ldots,x_m \in L_m:\ x=\suml_{i=1}^m x_i$\\
-$\mcA x = \suml_{i=1}^m \mcA x_i$\\
+$V = \oplus_{i=1}^m L_i$\\
+$\fall x\in V\ \ex! x_1 \in L_1,\ldots,x_m \in L_m:\ x=\sum_{i=1}^m x_i$\\
+$\mcA x = \sum_{i=1}^m \mcA x_i$\\
 $\mcA x_i \in \im \mcA_i$\\
-Отсюда $\im \mcA = \suml_{i=1}^m \im \mcA_i$\\
+Отсюда $\im \mcA = \sum_{i=1}^m \im \mcA_i$\\
 Докажем дизъюнктность\\
 Пусть $y_i \in \im \mcA_i$\\
 Тогда $\ex x_i \in L_i: y_i = \mcA x_i = \mcA_i x_i$\\
@@ -457,7 +457,7 @@ $v_1, \ldots, v_m$ -- соответствующие СВ\\
     Докажем для $m+1$ от противного\\
     Пусть $\lambda_{m+1} \neq \lambda_{j \in 1\ldots m}, v_{m+1}$ -- соответсвует $\lambda_{m+1}$\\
     Пусть $v_1,\ldots,v_{m+1}$ линейно зависимые\\
-    Тогда $v_{m+1} = \suml_{i=1}^m \alpha_i v_i$\\
+    Тогда $v_{m+1} = \sum_{i=1}^m \alpha_i v_i$\\
     //todo
 \end{enumerate}
 \textbf{Следствие 1}\\
@@ -469,11 +469,11 @@ $v_1 + \ldots + v_m = \0, v_i \in V_{\lambda_i}$\\
 Тогда линейная комбинация СВ $=\0$, чего не может быть из теоремы\\
 Тогда $v_i = \0$, откуда дизъюнктность\\
 \textbf{Следствие 2}\\
-Пусть $V = \oplusl_{\lambda  \text{ -- СЧ}} V_\lambda$\\
+Пусть $V = \oplus_{\lambda  \text{ -- СЧ}} V_\lambda$\\
 $\mcA_\lambda = \mcA|_{V_\lambda} \in \nm{End}(V_\lambda)$\\
 Тогда $\chi_\mcA(t) = \prod_{\lambda \text{ -- СЧ}}\chi_{\mcA_\lambda}(t)$\\
 \textbf{Доказательство}\\
-$V = \oplusl_{\lambda \text{ -- СЧ}} V_\lambda$\\
+$V = \oplus_{\lambda \text{ -- СЧ}} V_\lambda$\\
 $V_\lambda$ -- инвариант относительно $\mcA$\\
 Тогда существует базис такой, что $A = \begin{pmatrix}
     A^{\lambda_1} & \ldots & \0\\
@@ -492,12 +492,12 @@ $\Lambda = \nm{diag}(\lambda_1, \ldots, \lambda_n)$\\
 \textbf{Замечание}\\
 $\mcA$ -- ОПС $\LRto$ в $V$ существует базис из СВ\\
 \textbf{Теорема}\\
-Если все корни $\chi_\mcA(t) \in K$, т.е. являются СЧ (т.е. $\suml_{\lambda \text{ -- СЧ}} \alpha(\lambda) = n = \deg \chi_\mcA(t)$)\\
+Если все корни $\chi_\mcA(t) \in K$, т.е. являются СЧ (т.е. $\sum_{\lambda \text{ -- СЧ}} \alpha(\lambda) = n = \deg \chi_\mcA(t)$)\\
 $\mcA$ -- ОПС $\LRto \fall \lambda$ -- СЧ $\alpha(\lambda) = \gamma(\lambda)$\\
 \textbf{Доказательство}\\
 $\gamma(\lambda) \leq \alpha(\lambda)$\\
-$\mcA$ -- ОПС $\LRto \ex$ базис из СВ $\LRto М = \oplusl_{\lambda \text{ -- СЧ}} V_{\lambda} \LRto n = \suml_{\lambda \text{ -- СЧ}} \gamma(\lambda)$\\
-Отсюда $n = \suml_{\lambda \text{ -- СЧ}} \alpha(\lambda), \alpha = \gamma$\\
+$\mcA$ -- ОПС $\LRto \ex$ базис из СВ $\LRto М = \oplus_{\lambda \text{ -- СЧ}} V_{\lambda} \LRto n = \sum_{\lambda \text{ -- СЧ}} \gamma(\lambda)$\\
+Отсюда $n = \sum_{\lambda \text{ -- СЧ}} \alpha(\lambda), \alpha = \gamma$\\
 \textbf{Следствие}\\
 Если $\lambda_1, \ldots, \lambda_n$ попарно различные СЧ $\mcA$, то $\mcA$ - ОПС\\
 \textbf{Определение}\\
@@ -518,108 +518,108 @@ $A' = T^{-1}AT$\\
 \textbf{Доказательство $\Rto$}\\
 //todo\\
 \textbf{Определение}\\
-Пусть $V = \oplusl_{i=1}^m L_i, L_i$ -- линейное подпространство\\
-Тогда $\fall v\in V \ex! v_1, \ldots v_m: v_i \in L_i, v=\suml_{i=1}^m v_i$\\
+Пусть $V = \oplus_{i=1}^m L_i, L_i$ -- линейное подпространство\\
+Тогда $\fall v\in V \ex! v_1, \ldots v_m: v_i \in L_i, v=\sum_{i=1}^m v_i$\\
 Зададим $\rho_i \in \nm{End}(V): \rho_i v = v_i \in L_i$\\
 $\rho_i$ -- \textit{оператор проектирования(проектор)} на $L_i$\\
 Свойства:
 \begin{enumerate}
     \item $\fall i \neq j\ \rho_i \rho_j = \0$
-    \item $\suml_{i=1}^m \rho_i = \epsilon$
+    \item $\sum_{i=1}^m \rho_i = \epsilon$
     \item $\rho_i^k = \rho_i, k \in \Nset$ -- идемпотентность
     \item $\im \rho_i = L_i$\\
-    $\ker \rho_i = \suml_{j \neq i} L_j$
+    $\ker \rho_i = \sum_{j \neq i} L_j$
 \end{enumerate}
 \textbf{Утверждение}\\
 Пусть $\rho_1, \ldots, \rho_m \in \nm{End}(V)$, удовлетворяющие свойствам 1 и 2\\
-Тогда $V = \oplusl_{i=1}^m \im \rho_i$ (т.е. $\rho$ -- проектор на $L_i = \im \rho_i$)\\
+Тогда $V = \oplus_{i=1}^m \im \rho_i$ (т.е. $\rho$ -- проектор на $L_i = \im \rho_i$)\\
 \textbf{Доказательство}\\
 Докажем $1, 2 \Rto 3$\\
-$\rho_i = \rho_i \epsilon = \rho_i \suml_{i=1}^m \rho_j = \rho_i^2$\\
-Докажем, что $V = \oplusl_{i=1}^m \im \rho_i$\\
-$\fall v \in V\ v = \epsilon v = \suml_{i=1}^m \rho_i v \Rto V = \suml_{i=1}^m \im \rho_i$\\
+$\rho_i = \rho_i \epsilon = \rho_i \sum_{i=1}^m \rho_j = \rho_i^2$\\
+Докажем, что $V = \oplus_{i=1}^m \im \rho_i$\\
+$\fall v \in V\ v = \epsilon v = \sum_{i=1}^m \rho_i v \Rto V = \sum_{i=1}^m \im \rho_i$\\
 Докажем дизъюнктность\\
 $\0 = v_1 (\in \im \rho_1) + \ldots + v_m (\in \im \rho_m)$\\
 $\fall i = 1\ldots m\ v_i = \rho_i \omega_i (\ex \omega_i \in V)$\\
-$v_i = \rho_i \omega_i = $ из свойства 3 $ = \rho_i (\suml_{j=1}^m \rho_j \omega_j) = \rho_i (\suml_{j=1}^m v_j) = \rho_i \0 = \0$, ч.т.д.\\
+$v_i = \rho_i \omega_i = $ из свойства 3 $ = \rho_i (\sum_{j=1}^m \rho_j \omega_j) = \rho_i (\sum_{j=1}^m v_j) = \rho_i \0 = \0$, ч.т.д.\\
 \textbf{Теорема о спектральном разложении о.п.с.}\\
 $\fall \mcA \in \nm{End}(V)$ -- о.п.с.\\
-Тогда $\mcA = \suml_{\lambda \text{ -- С.Ч.}} \lambda \rho_\lambda$, где $\rho_\lambda$ -- проектор на $V_\lambda$\\
+Тогда $\mcA = \sum_{\lambda \text{ -- С.Ч.}} \lambda \rho_\lambda$, где $\rho_\lambda$ -- проектор на $V_\lambda$\\
 \textbf{Доказательство}\\
 Обозначение: Пусть все $\lambda$ -- С.Ч.
-$\mcA$ -- о.п.с $\LRto V = \oplusl_{\lambda} V_\lambda$\\
-$v = \suml_{\lambda} v_\lambda, v_\lambda \in V_\lambda$\\
-$\fall v\in V\ \mcA v = \mcA(\suml_\lambda v_\lambda) = \suml_\lambda (\mcA v) = \suml_\lambda \lambda v_\lambda = \suml_\lambda \lambda\rho_\lambda(v) = (\suml_\lambda \lambda\rho_\lambda) v$\\
-Отсюда $\mcA = \suml_\lambda \lambda \rho_\lambda$ -- \textit{спектральное разложение}\\
+$\mcA$ -- о.п.с $\LRto V = \oplus_{\lambda} V_\lambda$\\
+$v = \sum_{\lambda} v_\lambda, v_\lambda \in V_\lambda$\\
+$\fall v\in V\ \mcA v = \mcA(\sum_\lambda v_\lambda) = \sum_\lambda (\mcA v) = \sum_\lambda \lambda v_\lambda = \sum_\lambda \lambda\rho_\lambda(v) = (\sum_\lambda \lambda\rho_\lambda) v$\\
+Отсюда $\mcA = \sum_\lambda \lambda \rho_\lambda$ -- \textit{спектральное разложение}\\
 \textbf{Следствие}\\
-$A$ -- диагонализируема $\Rto\ex \rho_\lambda, \lambda$ -- С.Ч. $A: A = \suml_\lambda \lambda \rho_\lambda$\\
+$A$ -- диагонализируема $\Rto\ex \rho_\lambda, \lambda$ -- С.Ч. $A: A = \sum_\lambda \lambda \rho_\lambda$\\
 \textbf{Определение}\\
 $(A_m)_{m=1}^\infty$ -- последовательность матриц $A_{n\times n} = (a_{ij}^m)_{n\times n}, m$ -- индекс, а не степень\\
-$\liml_{m \rto \infty} A_m = A = (a_{ij})_{n\times n} \LRto \fall i,j = 1\ldots n\ a_{ij}=\liml_{m\rto \infty} a_{ij}^m$\\
+$\lim_{m \rto \infty} A_m = A = (a_{ij})_{n\times n} \LRto \fall i,j = 1\ldots n\ a_{ij}=\lim_{m\rto \infty} a_{ij}^m$\\
 \textbf{Немного про ряды}\\
-$\suml_{m=1}^\infty a_m$ -- числовой ряд ($a_m \in \Rset(\Cset)$)\\
-$S_m = \suml_{i=1}^m a_k$ -- частичная сумма ряда\\
+$\sum_{m=1}^\infty a_m$ -- числовой ряд ($a_m \in \Rset(\Cset)$)\\
+$S_m = \sum_{i=1}^m a_k$ -- частичная сумма ряда\\
 Если $S_m$ сходится, то ряд называется сходящимся\\
 \textbf{Определение}\\
-$\suml_{m=1}^\infty A_m$ -- ряд из матриц\\
-$\suml_{m=1}^\infty A_m$ -- сходится $\LRto \fall i,j = 1\ldots n\ \suml_{m=1}^\infty a_{ij}^m$ -- сходится\\
+$\sum_{m=1}^\infty A_m$ -- ряд из матриц\\
+$\sum_{m=1}^\infty A_m$ -- сходится $\LRto \fall i,j = 1\ldots n\ \sum_{m=1}^\infty a_{ij}^m$ -- сходится\\
 \textbf{Далее про ряды}\\
-$\suml_{n=1}^\infty u_n(x), u_n: \Rset \rto \Rset$ -- функциональный ряд\\
+$\sum_{n=1}^\infty u_n(x), u_n: \Rset \rto \Rset$ -- функциональный ряд\\
 При фиксированном $x$ -- числовой ряд\\
 Множество $x$ таких, что числовой ряд сходится -- множество поточечной сходимости ряда $= E$\\
-$\suml_{m=1}^\infty C_m (x-x_0)^m$ -- степенные ряды\\
+$\sum_{m=1}^\infty C_m (x-x_0)^m$ -- степенные ряды\\
 Утверждается, что ряд сходится при $|x-x_0| < R$, где $R$ -- радиус сходимости\\
 В $\Cset$ -- круг сходимости\\
 В $\Rset$ -- интервал сходимости\\
-Для $\Rset:\ \frac1R = \overline{\liml_{m\rto \infty}} \sqrt[m]{|C_m|}$\\
+Для $\Rset:\ \frac1R = \overline{\lim_{m\rto \infty}} \sqrt[m]{|C_m|}$\\
 Примеры сходящихся рядов -- ряды Тейлора-Маклорена\\
-$e^x = \suml_{m=1}^\infty \frac{x^m}{m!}$, сходится при $|x-x_0| \leq \infty$\\
-$\sin x = \suml_{m=0}^\infty \frac{(-1)^m x^{2m+1}}{(2m+1)!}$, сходится при $|x| \leq \infty$\\
+$e^x = \sum_{m=1}^\infty \frac{x^m}{m!}$, сходится при $|x-x_0| \leq \infty$\\
+$\sin x = \sum_{m=0}^\infty \frac{(-1)^m x^{2m+1}}{(2m+1)!}$, сходится при $|x| \leq \infty$\\
 На окружности (при $|x-x_0| = R$) ряд может как сходиться, так и расходиться\\
 \textbf{Определение}\\
-Пусть $f(x) = \suml_{m=0}^\infty C_m x^m, |x| \leq R$\\
-Тогда $f(A):= \suml_{m=0}^\infty C_m A^m$ (если ряд сходится)\\
+Пусть $f(x) = \sum_{m=0}^\infty C_m x^m, |x| \leq R$\\
+Тогда $f(A):= \sum_{m=0}^\infty C_m A^m$ (если ряд сходится)\\
 \textbf{Теорема 1 (первый способ вычисления $f(A)$ для диагонализируемой матрицы)}\\
 Пусть $A_{n\times n}$ диагонализируема\\
-$f(x) = \suml_{m=1}^\infty C_m x^m, |x| \leq R$\\
-Тогда если $\fall \lambda$ -- СЧ $|\lambda| < R$, то ряд $\suml_{m=1}^\infty C_m A^m$ сходится\\
+$f(x) = \sum_{m=1}^\infty C_m x^m, |x| \leq R$\\
+Тогда если $\fall \lambda$ -- СЧ $|\lambda| < R$, то ряд $\sum_{m=1}^\infty C_m A^m$ сходится\\
 $f(A) = T\nm{diag}(f(\lambda_1), \ldots, f(\lambda_n))T^{-1}$, где $\Lambda = T^{-1}AT = \nm{diag}(\lambda_1, \ldots, \lambda_n)$\\
 \textbf{Теорема}\\
 $A_{n\times n}$ диагонализируема, а значит $\ex T: \Lambda = T^{-1}AT = \nm{diag}(\lambda_1, \ldots, \lambda_n)$\\
-$S_m = \suml_{k = 0}^m C_k A^k, R = \infty$\\
+$S_m = \sum_{k = 0}^m C_k A^k, R = \infty$\\
 $A^k = (T \Lambda T^{-1})^k = T \Lambda^k T^{-1} = T\nm{diag}(\lambda_1^k, \ldots, \lambda_n^k)T^{-1}$\\
-Отсюда $S_m = T\nm{diag}(\suml_{k=0}^m C_k\lambda_1^k, \ldots, \suml_{k=0}^m C_k\lambda_n^k)T^{-1}$ (т.к. $R = \infty$, то все ряды сойдутся)\\
-$S = \liml_{m\rto \infty} S_m = T\nm{diag}(f(\lambda_1), \ldots, f(\lambda_n))T^{-1}$\\
+Отсюда $S_m = T\nm{diag}(\sum_{k=0}^m C_k\lambda_1^k, \ldots, \sum_{k=0}^m C_k\lambda_n^k)T^{-1}$ (т.к. $R = \infty$, то все ряды сойдутся)\\
+$S = \lim_{m\rto \infty} S_m = T\nm{diag}(f(\lambda_1), \ldots, f(\lambda_n))T^{-1}$\\
 \textbf{Теорема 2 (второй способ вычисления $f(A)$ для диагонализируемой матрицы)}\\
 Пусть $A_{n\times n}$ диагонализируема\\
-$f(x) = \suml_{m=0}^\infty C_m x^m, |x| \leq R$\\
-Тогда если $\fall \lambda$ -- СЧ $|\lambda| < R$, то ряд $\suml_{m=1}^\infty C_m A^m$ сходится\\
-$f(A) = \suml_{\lambda \text{-- СЧ}} f(\lambda) \rho_\lambda$, где $A = \suml_{\lambda \text{ -- СЧ}} \lambda\rho_\lambda$ -- спектральное разложение\\
+$f(x) = \sum_{m=0}^\infty C_m x^m, |x| \leq R$\\
+Тогда если $\fall \lambda$ -- СЧ $|\lambda| < R$, то ряд $\sum_{m=1}^\infty C_m A^m$ сходится\\
+$f(A) = \sum_{\lambda \text{-- СЧ}} f(\lambda) \rho_\lambda$, где $A = \sum_{\lambda \text{ -- СЧ}} \lambda\rho_\lambda$ -- спектральное разложение\\
 \textbf{Доказательство}\\
-$A$ -- диагонализируема $\Rto A = \suml_{\lambda \text{ -- СЧ}} \lambda \rho_\lambda$\\
-Тогда $A^k = (\suml_{\lambda \text{ -- СЧ}} \lambda \rho_\lambda)^k = \suml_{\lambda \text{ -- СЧ}} \lambda^k \rho_\lambda$\\
-Отсюда $S_m = \suml_{k=0}^m C_k A^k = \suml_{k=0}^m C_k\suml_{\lambda \text{ -- СЧ}} \lambda^k \rho_\lambda =  \suml_{\lambda \text{ -- СЧ}} (\suml_{k=0}^mC_k\lambda^k) \rho_\lambda \xrto[m \rto \infty]{} \suml_{\lambda \text{ -- СЧ}} f(\lambda) \rho_\lambda$\\
+$A$ -- диагонализируема $\Rto A = \sum_{\lambda \text{ -- СЧ}} \lambda \rho_\lambda$\\
+Тогда $A^k = (\sum_{\lambda \text{ -- СЧ}} \lambda \rho_\lambda)^k = \sum_{\lambda \text{ -- СЧ}} \lambda^k \rho_\lambda$\\
+Отсюда $S_m = \sum_{k=0}^m C_k A^k = \sum_{k=0}^m C_k\sum_{\lambda \text{ -- СЧ}} \lambda^k \rho_\lambda =  \sum_{\lambda \text{ -- СЧ}} (\sum_{k=0}^mC_k\lambda^k) \rho_\lambda \xrto[m \rto \infty]{} \sum_{\lambda \text{ -- СЧ}} f(\lambda) \rho_\lambda$\\
 \textbf{Следствие}\\
-$A$ -- диагонализируема, $f(x) = \suml_{m=0}^\infty C_m x^m, |x| < R$\\
+$A$ -- диагонализируема, $f(x) = \sum_{m=0}^\infty C_m x^m, |x| < R$\\
 $\fall \lambda$ -- СЧ $|\lambda| < R$\\
 $t \in \Rset(\Cset): \fall \lambda$ -- СЧ $|t\lambda| < R$\\
 Тогда $f(At) = T\nm{diag}(f(\lambda_1 t), \ldots, f(\lambda_nt))T^{-1}$\\
-или $f(At) = \suml_{\lambda \text{-- СЧ}} f(\lambda t) \rho_\lambda$\\
+или $f(At) = \sum_{\lambda \text{-- СЧ}} f(\lambda t) \rho_\lambda$\\
 \textbf{Пример}\\
-$\exp At = e^{At} = \suml_\lambda e^{t\lambda}\rho_\lambda = T \nm{diag}(e^{\lambda_1t}, \ldots, e^{\lambda_nt})T^{-1}$\\
+$\exp At = e^{At} = \sum_\lambda e^{t\lambda}\rho_\lambda = T \nm{diag}(e^{\lambda_1t}, \ldots, e^{\lambda_nt})T^{-1}$\\
 \textbf{Свойства}
 \begin{enumerate}
     \item $e^{A(t_1 + t_2)} = e^{At_1}e^{At_2}$
     \item $e^{A0} = E$
     \item $(e^{At})'=Ae^{At} = e^{At}A$\\
     \textbf{Доказательство}\\
-    $(e^{At})' = (\suml_\lambda f(\lambda t)\rho_\lambda)'=\suml_\lambda \lambda e^{\lambda t}\rho_\lambda = (\suml_{\lambda} \lambda \rho_\lambda)(\suml_{\lambda} e^{t\lambda} \rho_\lambda) = Ae^{At} = e^{At}A$
+    $(e^{At})' = (\sum_\lambda f(\lambda t)\rho_\lambda)'=\sum_\lambda \lambda e^{\lambda t}\rho_\lambda = (\sum_{\lambda} \lambda \rho_\lambda)(\sum_{\lambda} e^{t\lambda} \rho_\lambda) = Ae^{At} = e^{At}A$
 \end{enumerate}
 \textbf{Поиск обратной матрицы}\\
 Пусть $A$ диагонализируема\\
 $\fall \lambda\ \lambda \neq 0 \LRto \ex A^{-1}$\\
 $A^{-1} = T\nm{diag}(\frac1{\lambda_1}, \ldots, \frac1{\lambda_n})T^{-1}$\\
-$A^{-1} = \suml_\lambda \frac1\lambda \rho_\lambda$\\
+$A^{-1} = \sum_\lambda \frac1\lambda \rho_\lambda$\\
 \textbf{Определение}\\
 $\sqrt[m]A$ -- арифметический корень\\
 Если $\fall \lambda\ \lambda \geq 0$, то результат определен однозначно\\
@@ -654,9 +654,9 @@ $V_\Cset$ -- линейное пространство\\
 Тогда $e_1, \ldots, e_n$ -- базис $V_\Cset (\dim V = \dim V_\Cset)$\\
 \textbf{Доказательство}\\
 $\fall z \in V_\Cset: z = x+iy, x,y \in V$\\
-$x = \suml_{j=1}^n x_je^j$\\
-$y = \suml_{j=1}^n y_je^j$\\
-Отсюда $z = \suml_{j=1}^n(x_j + iy_j) e_j$, т.е. $e_1, \ldots, e_n$ -- порождающая\\
+$x = \sum_{j=1}^n x_je^j$\\
+$y = \sum_{j=1}^n y_je^j$\\
+Отсюда $z = \sum_{j=1}^n(x_j + iy_j) e_j$, т.е. $e_1, \ldots, e_n$ -- порождающая\\
 //todo
 Отсюда $e_1, \ldots, e_n$ -- линейно независимые\\
 \textbf{Определение}\\
@@ -679,7 +679,7 @@ $\fall z=x+iy\in V_\Cset\ \mcA_\Cset z = \mcA x + i\mcA y \in V_\Cset$\\
     $\mcA \us{e}\lrto A = (a_{ij})_{n\times n}, a_{ij} \in \Rset$\\
     Тогда $\mcA_\Cset \us e\lrto A_\Cset = A = (a_{ij})_{n\times n}$\\
     \textbf{Доказательство}\\
-    $\mcA_\Cset e_j = \ldots = \mcA e_j = \suml_{k=1}^n a_{kj}e_k$\\
+    $\mcA_\Cset e_j = \ldots = \mcA e_j = \sum_{k=1}^n a_{kj}e_k$\\
     Отсюда $A_\Cset = A$
     \item $\chi_\mcA(t) = \chi_{\mcA_\Cset}(t)$ (т.к. матрицы равны)
     \item $\fall z \in V_\Cset\ \ol{\mcA_\Cset z} = \mcA_\Cset(\ol z)$
@@ -695,8 +695,8 @@ $\fall z=x+iy\in V_\Cset\ \mcA_\Cset z = \mcA x + i\mcA y \in V_\Cset$\\
 $\mcA \in \nm{End}(V)$\\
 \textit{Нормализованный многочлен} -- многочлен, старший коэффициент которого 1\\
 Нормализованный многочлен $\psi(t)$ называется \textit{аннулятором} элемента $x \in V$, если $\psi(\mcA)x = \0$\\
-$\psi(t) = t^m + a_{m-1}t^{m-1} + \ldots + a_0 = \prodl_{\lambda \text{ -- корень многочлена}} (t-\lambda)^{m(\lambda)}$, где $m(\lambda)$ -- кратность корня\\
-$\psi(\mcA) = \mcA^m + a_{m-1} \mcA^{m-1} + \ldots + a_0\epsilon = \prodl_{\lambda \text{ -- корень}} (A-\lambda\epsilon)^{m(\lambda)}$\\
+$\psi(t) = t^m + a_{m-1}t^{m-1} + \ldots + a_0 = \prod_{\lambda \text{ -- корень многочлена}} (t-\lambda)^{m(\lambda)}$, где $m(\lambda)$ -- кратность корня\\
+$\psi(\mcA) = \mcA^m + a_{m-1} \mcA^{m-1} + \ldots + a_0\epsilon = \prod_{\lambda \text{ -- корень}} (A-\lambda\epsilon)^{m(\lambda)}$\\
 \textbf{Определение}\\
 Минимальный аннулятор $x$ -- аннулятор минимальной степени\\
 \textbf{Теорема о минимальном аннуляторе элемента}\\
@@ -712,9 +712,9 @@ $\mcA \in \nm{End}(V)$
     $\epsilon = \psi(\mcA)$
     \item $x \neq \0$\\
     Пусть $x, \mcA x, \ldots, \mcA^{m-1}x$ -- линейно независимые и $m$ максимальное\\
-    $\ex! \alpha_1, \ldots, \alpha_{m-1}: \mcA^m x = \suml_{i=0}^{m-1} \alpha_i \mcA^i x$\\
-    $(\mcA^m - \suml_{i=0}^{m-1} \alpha_i \mcA^i) x = \0$\\
-    $\psi(t) = t^m - \suml_{i=0}^{m-1} \alpha_i t^i$ -- минимальный и определен единственным образом
+    $\ex! \alpha_1, \ldots, \alpha_{m-1}: \mcA^m x = \sum_{i=0}^{m-1} \alpha_i \mcA^i x$\\
+    $(\mcA^m - \sum_{i=0}^{m-1} \alpha_i \mcA^i) x = \0$\\
+    $\psi(t) = t^m - \sum_{i=0}^{m-1} \alpha_i t^i$ -- минимальный и определен единственным образом
 \end{enumerate}
 \textbf{Доказательство 2}\\
 //todo\\
@@ -735,7 +735,7 @@ $\mcA \in \nm{End}(V)$
     $\phi(t) := \nm{lcm} (\psi_1, \ldots, \psi_n)$\\
     Тогда $\fall j \phi(t) = a_j(t)\psi_j(t)$\\
     Докажем, что $\phi(t)$ -- аннулятор\\
-    $\fall v \in V \phi(\mcA)v = \phi(\mcA) \suml_{j=1}^m v_j e_j = \suml_{j=1}^m \phi(\mcA) v_j e_j = \suml_{j=1}^m a_j(t)\psi_j(t) v_j e_j = \0$\\
+    $\fall v \in V \phi(\mcA)v = \phi(\mcA) \sum_{j=1}^m v_j e_j = \sum_{j=1}^m \phi(\mcA) v_j e_j = \sum_{j=1}^m a_j(t)\psi_j(t) v_j e_j = \0$\\
     Т.о. $\phi$ -- аннулятор
     \item Докажем, что любой другой аннулятор делится на $\phi$\\
     Пусть $\phi_1(t)$ -- аннулятор $\mcA$\\
@@ -761,14 +761,14 @@ $(A-\mu E)^{-1} = \frac1{\det(A - \mu E)}(b_{ij} := A_{ji})$\\
 $b_{ij}$ - многочлен $n-1$ степени от $\mu$\\
 Отсюда $(A-\mu E)^{-1} = \frac1{\det(A-\mu E)}(\mu^{n-1} B_{n-1} + \ldots + B_0)$, где $B_i$ -- матрица $n \times n$\\
 Отсюда $\det (A-\mu E)E = (A-\mu E)(\mu^{n-1} B_{n-1} + \ldots + B_0) = -\mu^n B_{n-1} + \mu^{n-1}(AB_{n-1}-B_{n-2}) + \ldots + \mu (AB_1 - B_0) + AB_0$\\
-$\det(A-\mu E)E = \chi(\mu) E = \suml_{k=0}^n \alpha_k \mu^k E$\\
-$\suml_{k=0}^n \alpha_k \mu^k E = -\mu^n B_{n-1} + \mu^{n-1}(AB_{n-1}-B_{n-2}) + \ldots + \mu (AB_1 - B_0) + AB_0$\\
+$\det(A-\mu E)E = \chi(\mu) E = \sum_{k=0}^n \alpha_k \mu^k E$\\
+$\sum_{k=0}^n \alpha_k \mu^k E = -\mu^n B_{n-1} + \mu^{n-1}(AB_{n-1}-B_{n-2}) + \ldots + \mu (AB_1 - B_0) + AB_0$\\
 Отсюда $\alpha_0 E = AB_0$\\
 $\alpha_1 E = AB_1 - B_0$\\
 $\vdots$\\
 $\alpha_{n-1} E = AB_{n-1} - B_{n-2}$\\
 $\alpha_n E = -B_{n-1}$\\
-$\chi (A) = \suml_{k=0}^n \alpha_k A^k = AB_0 + A(AB_1 - B_0) + A^2 (AB^2 - B^1) + \ldots + A^{n-1} (AB_{n-1}-B_{n-2}) = \0$\\
+$\chi (A) = \sum_{k=0}^n \alpha_k A^k = AB_0 + A(AB_1 - B_0) + A^2 (AB^2 - B^1) + \ldots + A^{n-1} (AB_{n-1}-B_{n-2}) = \0$\\
 \textbf{Следствие}\\
 $\fall \mcA \in \nm{End}(V)\ \chi_\mcA$ делится на $\phi_\mcA$\\
 \textbf{Следствие 2}\\
@@ -798,8 +798,8 @@ $\chi_\mcA$ делится на $\phi_\mcA(t) \Rto \lambda$ -- корень $\ch
 Получаем второй способ получения С.Ч. $\mcA$\\
 $m(\lambda) \leq \alpha(\lambda)$
 \subsection{Операторное разложение единицы. Корневое подпространство}
-$\phi(t) = \prodl_\lambda (t-\lambda)^{m(\lambda)} = (t-\lambda)^{m(\lambda)} \prodl_{\mu \neq \lambda} (t-\mu)^{m(\lambda)} = (t-\lambda)^{m(\lambda)}\phi_\lambda(t), \phi_\lambda(t) := \prodl_{\mu \neq \lambda} (t-\mu)^{m(\lambda)}$\\
-$\deg \phi = m = \suml_{\lambda} m(\lambda)$\\
+$\phi(t) = \prod_\lambda (t-\lambda)^{m(\lambda)} = (t-\lambda)^{m(\lambda)} \prod_{\mu \neq \lambda} (t-\mu)^{m(\lambda)} = (t-\lambda)^{m(\lambda)}\phi_\lambda(t), \phi_\lambda(t) := \prod_{\mu \neq \lambda} (t-\mu)^{m(\lambda)}$\\
+$\deg \phi = m = \sum_{\lambda} m(\lambda)$\\
 \textbf{Определение}\\
 $I_\lambda := \{ p \in P_{m-1}: p$ делится на $\phi_\lambda\}$ -- главный идеал, порождающий многочлен $\phi_\lambda$\\
 $I_\lambda$ -- линейное подпространство $P_{m-1}$\\\\
@@ -814,16 +814,16 @@ $P_{m-1} = \bigoplus_\lambda I_\lambda$\\
 \textbf{Доказательство}
 \begin{enumerate}
     \item Проверим, что $I_\lambda$ дизъюнктны\\
-    $\0 = \suml_\lambda p_\lambda(t) = \suml_\lambda a_\lambda(t)\phi_\lambda(t) = \ub{\text{делится на $(t-\lambda)^{m(\lambda)}$}}{a_\lambda(t)\ub{\text{не делится на $(t-\lambda)^{m(\lambda)}$}}{\phi_\lambda(t)}} + \ub{\text{делится на $(t-\lambda)^{m(\lambda)}$}}{\suml_{\mu \neq \lambda} a_\mu(t)\phi_\mu(t)}$\\
+    $\0 = \sum_\lambda p_\lambda(t) = \sum_\lambda a_\lambda(t)\phi_\lambda(t) = \ub{\text{делится на $(t-\lambda)^{m(\lambda)}$}}{a_\lambda(t)\ub{\text{не делится на $(t-\lambda)^{m(\lambda)}$}}{\phi_\lambda(t)}} + \ub{\text{делится на $(t-\lambda)^{m(\lambda)}$}}{\sum_{\mu \neq \lambda} a_\mu(t)\phi_\mu(t)}$\\
     Отсюда $a_\lambda(t)$ делится на $(t-\lambda)^{m(\lambda)}$, но $\deg a_\lambda \leq m(\lambda) - 1$\\
     Тогда $a_\lambda(t) = 0 \LRto p_\lambda(t) \equiv 0 \Rto$ дизъюнктные\\
-    \item $\oplusl_\lambda I_\lambda \subset P_{m-1}, \dim P_{m-1} = m$\\
-    $\dim \oplusl_\lambda I_\lambda = \suml_\lambda m(\lambda) = m$\\
-    Отсюда $P_{m-1} = \oplusl_\lambda I_\lambda$
+    \item $\oplus_\lambda I_\lambda \subset P_{m-1}, \dim P_{m-1} = m$\\
+    $\dim \oplus_\lambda I_\lambda = \sum_\lambda m(\lambda) = m$\\
+    Отсюда $P_{m-1} = \oplus_\lambda I_\lambda$
 \end{enumerate}
 \textbf{Следствие}\\
-$\fall p \in P_{m-1} \ex ! (p_\lambda): p_i \in I_i, p=\suml_\lambda p_\lambda$\\
-В частности, для $p\equiv 1\ \ex! (p_\lambda): p_i \in I_i, 1=\suml_\lambda p_\lambda$ -- полиноминальное разложение единицы (порожденное многочленом $\phi$)\\
+$\fall p \in P_{m-1} \ex ! (p_\lambda): p_i \in I_i, p=\sum_\lambda p_\lambda$\\
+В частности, для $p\equiv 1\ \ex! (p_\lambda): p_i \in I_i, 1=\sum_\lambda p_\lambda$ -- полиноминальное разложение единицы (порожденное многочленом $\phi$)\\
 $p_\lambda(t) = a_\lambda(t)\phi_\lambda(t)$\\
 \textbf{Замечание}
 \begin{enumerate}
@@ -833,33 +833,33 @@ $p_\lambda(t) = a_\lambda(t)\phi_\lambda(t)$\\
     $p_\mu(t) = a_\mu \phi_\mu(t)$\\
     $p_\lambda(t)p_\mu(t) = a_\lambda(t)a_\mu(t)\phi_\lambda(t)\phi_\mu(t) = b(t)\phi(t)$
     \item Пусть все корни $\phi$ взаимно-простые, т.е. $\fall \lambda\ m(\lambda) = 1$\\
-    $\phi(t) = \prodl_\lambda (t-\lambda)$\\
+    $\phi(t) = \prod_\lambda (t-\lambda)$\\
     $\deg a_\lambda(t) \leq m(\lambda) - 1 = 0$\\
     Отсюда $a_\lambda(t) = \const$
 \end{enumerate}
 \textbf{Теорема Лагранжа}\\
 Пусть все корни $\phi(t)$ взаимно прострые\\
-Т.е. $\fall \lambda: m(\lambda) = 1\ \phi(t) = \prodl_\lambda (t-\lambda)$\\
-Тогда $\fall p \in P_{m-1}\ p(t) = \suml_\lambda \frac{p(\lambda)}{\phi'(\lambda)}\phi_\lambda(t)$\\
+Т.е. $\fall \lambda: m(\lambda) = 1\ \phi(t) = \prod_\lambda (t-\lambda)$\\
+Тогда $\fall p \in P_{m-1}\ p(t) = \sum_\lambda \frac{p(\lambda)}{\phi'(\lambda)}\phi_\lambda(t)$\\
 ($a_\lambda = \frac{p(\lambda)}{\phi'(\lambda)}$)\\
 \textbf{Доказательство}\\
-$\ex! (p_\lambda): p_i \in I_i, p(t) = \suml_\lambda \ub{\phi_\lambda(t)\in I_\lambda}{a_\lambda \phi_\lambda(t)}$\\
-$p(\lambda) = \suml_\mu a_\mu \phi_\mu(\lambda) = a_\lambda \phi_\lambda(\lambda) \Rto a_\lambda = \frac{p(\lambda)}{\phi_\lambda(\lambda)}$\\
-$\phi(t) = \prodl_\mu (t-\mu) = (t-\lambda) \ub{\phi_\lambda(t)}{\prodl_{\mu \neq \lambda} (t-\mu)}$\\
-$\phi'(t) = \suml_\mu \prodl_{\xi \neq \mu}(t-\xi)$\\
-$\phi'(\lambda) = \prodl_{\xi \neq \lambda} (\lambda - \xi) = \phi_\lambda(\lambda)$\\
+$\ex! (p_\lambda): p_i \in I_i, p(t) = \sum_\lambda \ub{\phi_\lambda(t)\in I_\lambda}{a_\lambda \phi_\lambda(t)}$\\
+$p(\lambda) = \sum_\mu a_\mu \phi_\mu(\lambda) = a_\lambda \phi_\lambda(\lambda) \Rto a_\lambda = \frac{p(\lambda)}{\phi_\lambda(\lambda)}$\\
+$\phi(t) = \prod_\mu (t-\mu) = (t-\lambda) \ub{\phi_\lambda(t)}{\prod_{\mu \neq \lambda} (t-\mu)}$\\
+$\phi'(t) = \sum_\mu \prod_{\xi \neq \mu}(t-\xi)$\\
+$\phi'(\lambda) = \prod_{\xi \neq \lambda} (\lambda - \xi) = \phi_\lambda(\lambda)$\\
 Отсюда $a_\lambda = \frac{p(\lambda)}{\phi'(\lambda)}$\\
 \textbf{Следствие}\\
 $\fall \lambda: m(\lambda) = 1$\\
-$1 = \suml_\lambda p_\lambda \Rto p(t) = t = \suml_\lambda t p_\lambda$\\
+$1 = \sum_\lambda p_\lambda \Rto p(t) = t = \sum_\lambda t p_\lambda$\\
 \textbf{Доказательство}\\
-$1 = \suml_\lambda a_\lambda \phi_\lambda(t) = \suml_\lambda \frac1{\phi'(\lambda)}\phi_\lambda(t)$\\
-$t = \suml_\lambda \frac\lambda{\phi'(\lambda)}\phi_\lambda(t) = \suml_\lambda \lambda p_\lambda(t)$\\\\
-Пусть $\phi(t) = \prodl_\lambda (t-\lambda)^{m(\lambda)}$ -- минимальный многочлен $\mcA \in \nm{End}(V)$\\
+$1 = \sum_\lambda a_\lambda \phi_\lambda(t) = \sum_\lambda \frac1{\phi'(\lambda)}\phi_\lambda(t)$\\
+$t = \sum_\lambda \frac\lambda{\phi'(\lambda)}\phi_\lambda(t) = \sum_\lambda \lambda p_\lambda(t)$\\\\
+Пусть $\phi(t) = \prod_\lambda (t-\lambda)^{m(\lambda)}$ -- минимальный многочлен $\mcA \in \nm{End}(V)$\\
 Построим полиноминальное разложение $1$, порождающее многочлен $\phi$\\
-$1 = \suml_\lambda p_\lambda(t) = \suml_\lambda a_\lambda(t)\phi_\lambda(t)$\\
-$\epsilon = \suml_\lambda \ub{\rho \text{-- спектр. проектор оператора $\mcA$}}{p_\lambda(\mcA)} = \suml_\lambda a_\lambda(\mcA) \phi_\lambda(\mcA)$\\
-$\epsilon = \suml_\lambda \rho_\lambda$ -- операторное разложение единицы (порожденное оператором)\\
+$1 = \sum_\lambda p_\lambda(t) = \sum_\lambda a_\lambda(t)\phi_\lambda(t)$\\
+$\epsilon = \sum_\lambda \ub{\rho \text{-- спектр. проектор оператора $\mcA$}}{p_\lambda(\mcA)} = \sum_\lambda a_\lambda(\mcA) \phi_\lambda(\mcA)$\\
+$\epsilon = \sum_\lambda \rho_\lambda$ -- операторное разложение единицы (порожденное оператором)\\
 \underline{\textbf{Спектральный оператор действует не на собственное подпространство}}\\\\
 \textbf{Свойства}\\
 Пусть $\lambda \neq \mu$\\
@@ -872,8 +872,8 @@ $1 = 1 \LRto p_\lambda = \epsilon$\\
 Если все корни взаимно прострые:\\
 $\fall \lambda\ m(\lambda) = 1$\\
 По следствию из т. Лагранжа:\\
-$\epsilon = \suml_\lambda p_\lambda$\\
-$\mcA = \suml_\lambda \lambda p_\lambda$\\
+$\epsilon = \sum_\lambda p_\lambda$\\
+$\mcA = \sum_\lambda \lambda p_\lambda$\\
 Далее покажем, что $p_\lambda$ -- проекторы на $V_\lambda$, т.е. совпадает со спектральным разложением о.п.с\\
 Т.е. $\mcA$ -- о.п.с.\\
 \textbf{Определение}\\
@@ -884,7 +884,7 @@ $V_\lambda = \ker (\mcA - \lambda \epsilon) \subset \ker (\mcA - \lambda \epsilo
 \textbf{Теорема о корневом подпространстве}
 \begin{enumerate}
     \item $K_\lambda$ -- инвариантно относительно $\mcA$
-    \item $\im \rho_\lambda = K_\lambda (\Rto \oplusl_\lambda K_\lambda = V)$
+    \item $\im \rho_\lambda = K_\lambda (\Rto \oplus_\lambda K_\lambda = V)$
     \item $(t-\lambda)^{m(\lambda)}$ минимальный многочлен для $A\vl_{K_\lambda} \in \nm{End}(K_1)$
 \end{enumerate}
 \textbf{Доказательство}
@@ -901,7 +901,7 @@ $V_\lambda = \ker (\mcA - \lambda \epsilon) \subset \ker (\mcA - \lambda \epsilo
     $x \in K_\lambda = \ker (\mcA - \lambda \epsilon)^{m(\lambda)}$\\
     Пусть $\mu \neq \lambda$\\
     $\rho_\mu x = a_\mu(\mcA)\ub{b(\mcA)(\mcA - \lambda \epsilon)^{m(\lambda)}}{\phi_\mu(\mcA)}x = \0$\\
-    $x = \epsilon x = \suml_\mu \rho_\mu x = \rho_\lambda x \in \im \rho_\lambda$\\
+    $x = \epsilon x = \sum_\mu \rho_\mu x = \rho_\lambda x \in \im \rho_\lambda$\\
     Отсюда $K_\lambda \subset \im \rho_\lambda$
     \item $\mcB = \mcA\vl_{K_\lambda} \in \nm{End}(K_\lambda)$\\
     Проверим, что $(t-\lambda)^{m(\lambda)}$ -- минимальный многочлен\\
@@ -910,8 +910,8 @@ $V_\lambda = \ker (\mcA - \lambda \epsilon) \subset \ker (\mcA - \lambda \epsilo
     Пусть $(t-\lambda)^k$ -- минимальный многочлен, $k < m(\lambda)$\\
     $\phi_1 (t) := (t-\lambda)^k \phi_\lambda(t), \deg \phi_1 \leq \deg \phi$\\
     Покажем, что $\phi_1$ -- аннулятор $\mcA$\\
-    $\fall v \in V=\oplusl_\mu K_\mu\ v = \suml_\mu \ub{\in K_\mu}{v_\mu}$ -- раскладывается единственным образом\\
-    $\phi_1(\mcA) v = \suml_\mu (\mcA - \lambda \epsilon)^k \ub{\text{содержит множитель $(\mcA - \lambda \epsilon)^{m(\lambda)}$}}{\phi_\lambda(\mcA)}\ub{\in \ker (\mcA - \lambda \epsilon)^{m(\lambda)}}{v_\mu} = \suml_{\mu \neq \lambda} (\mcA - \lambda \epsilon)^k b_\mu(\mcA)(\mcA - \lambda \epsilon)^{m(\lambda)}v_\mu + (\mcA - \lambda \epsilon)^k \phi_\lambda(\mcA)v_\lambda = \0$\\
+    $\fall v \in V=\oplus_\mu K_\mu\ v = \sum_\mu \ub{\in K_\mu}{v_\mu}$ -- раскладывается единственным образом\\
+    $\phi_1(\mcA) v = \sum_\mu (\mcA - \lambda \epsilon)^k \ub{\text{содержит множитель $(\mcA - \lambda \epsilon)^{m(\lambda)}$}}{\phi_\lambda(\mcA)}\ub{\in \ker (\mcA - \lambda \epsilon)^{m(\lambda)}}{v_\mu} = \sum_{\mu \neq \lambda} (\mcA - \lambda \epsilon)^k b_\mu(\mcA)(\mcA - \lambda \epsilon)^{m(\lambda)}v_\mu + (\mcA - \lambda \epsilon)^k \phi_\lambda(\mcA)v_\lambda = \0$\\
     Отсюда $\phi_1$ аннулятор $\mcA$, причем степени меньшей, чем $\phi$, что противоречит минимальности $\phi$\\
     Отсюда $(t-\lambda)^{m(\lambda)}$ минимальный многочлен $\mcB$
 \end{enumerate}
@@ -920,16 +920,16 @@ $\fall \lambda\ m(\lambda) \leq \dim K_\lambda$ (очевидно из п.3 те
 \textbf{Следствие 2}\\
 $\mcA$ -- о.п.с $\LRto \fall \lambda\ m(\lambda) = 1$\\
 \textbf{Доказательство $\Rto$}\\`
-$V = \oplusl_\lambda V_\lambda$\\
-Пусть $\phi(t):= \prodl_{\lambda \text{ -- СЧ}} (t-\lambda)$\\
+$V = \oplus_\lambda V_\lambda$\\
+Пусть $\phi(t):= \prod_{\lambda \text{ -- СЧ}} (t-\lambda)$\\
 Очевидно аннулятор $\mcA$, причем минимальный\\
-$\fall v \in V\ v = \suml_\lambda \ub{\in V_\lambda}{v_\lambda}$ -- раскладывается единственным образом\\
-$\phi(\mcA) = \prodl_{\mu} \prodl_\lambda (\mcA - \lambda \epsilon)\ub{\in V_\mu = \ker (\mcA - \mu \epsilon)}{v_\mu} = \prodl_\mu \prodl_{\lambda \neq \mu} (\mcA - \lambda \epsilon)(\mcA - \mu \epsilon) v_\mu = \0$\\
+$\fall v \in V\ v = \sum_\lambda \ub{\in V_\lambda}{v_\lambda}$ -- раскладывается единственным образом\\
+$\phi(\mcA) = \prod_{\mu} \prod_\lambda (\mcA - \lambda \epsilon)\ub{\in V_\mu = \ker (\mcA - \mu \epsilon)}{v_\mu} = \prod_\mu \prod_{\lambda \neq \mu} (\mcA - \lambda \epsilon)(\mcA - \mu \epsilon) v_\mu = \0$\\
 \textbf{Доказательство $\Lto$}\\
 $\fall \lambda\ m(\lambda) = 1$\\
-$\phi(t) = \prodl_\lambda (t-\lambda)$\\
+$\phi(t) = \prod_\lambda (t-\lambda)$\\
 $\fall \lambda\ K_\lambda = \ker (\mcA - \lambda \epsilon)^1 = V_\lambda$\\
-Отсюда $\oplusl_\lambda K_\lambda = V = \oplusl_{\lambda}V_\lambda \LRto \mcA$ -- о.п.с.\\
+Отсюда $\oplus_\lambda K_\lambda = V = \oplus_{\lambda}V_\lambda \LRto \mcA$ -- о.п.с.\\
 \subsection{Нильпотентные операторы. Разложение Жордана}
 \textbf{Определение}\\
 $\mcB \in \nm{End}(V)$ называется \textit{нильпотентным}, если $\chi_\mcB = t^\nu, \nu \geq 1$\\
@@ -940,41 +940,41 @@ $\fall \mcA \in \nm{End}(V)$\\
 $\ex \mc{D}$ -- оператор простой структуры $\in \nm{End}(V), \mcB$ нильпотентный $\in \nm{End}(V): \mcA = \mc D + \mcB$, причем $\mcB \mc D = \mc D \mcB$\\
 \textbf{Доказательство}\\
 $\phi(t)$ -- минимальный многочлен $\mcA$(все корни $\in K$)\\
-$\epsilon = \suml_\lambda \rho_\lambda$\\
-$\mcD:= \suml_\lambda \lambda \rho_\lambda$\\
+$\epsilon = \sum_\lambda \rho_\lambda$\\
+$\mcD:= \sum_\lambda \lambda \rho_\lambda$\\
 Проверим, что $\mcD$ -- о.п.с.\\
 Достаточно убедиться, что $\lambda$ -- СЧ $\mcD, \im \rho_\lambda = V_\lambda^D$ -- собственное подпространство для $\mcD$\\
 Пусть $v_\lambda \in \im \rho_\lambda$\\
-$\mcD v_\lambda = \suml_\mu \mu \ub{\mu \neq \lambda \Rto \ldots = 0}{\rho_\mu \ub{\in \im \rho_\lambda}{v_\lambda}} = \lambda \rho_\lambda v_\lambda = \lambda v_\lambda \Rto \lambda$ -- СЧ $\mcD$\\
-$V = \oplusl_\mu \im \rho_\mu$ -- дизъюнктны\
+$\mcD v_\lambda = \sum_\mu \mu \ub{\mu \neq \lambda \Rto \ldots = 0}{\rho_\mu \ub{\in \im \rho_\lambda}{v_\lambda}} = \lambda \rho_\lambda v_\lambda = \lambda v_\lambda \Rto \lambda$ -- СЧ $\mcD$\\
+$V = \oplus_\mu \im \rho_\mu$ -- дизъюнктны\
 Отсюда $\im \rho_\lambda \subset V_\lambda^\mcD$\\
-$V = \oplusl_\lambda \im p_\lambda \subset \oplusl_\lambda V_\lambda^\mcD \subset V$\\
+$V = \oplus_\lambda \im p_\lambda \subset \oplus_\lambda V_\lambda^\mcD \subset V$\\
 Отсюда $\im p_\lambda = V_\lambda^\mcD$\\
 $\mcD$ -- о.п.с\\
-$V = \oplusl_\lambda V_\lambda^\mcD$\\
-$D = \suml_\lambda \rho_\lambda$ -- спектральное разложение $\mcD$\\
+$V = \oplus_\lambda V_\lambda^\mcD$\\
+$D = \sum_\lambda \rho_\lambda$ -- спектральное разложение $\mcD$\\
 $\mcB := \mcA - \mcD$\\
 $\nu := \max_\lambda m(\lambda)$\\
 Покажем, что $\mcB^\nu = \0$\\
-$(\mcA - \mcD)^\nu = (\mcA - \suml_\lambda \lambda \rho_\lambda)^\nu = (\mcA\suml_\lambda \rho_\lambda - \suml_\lambda \lambda\rho_\lambda)^\nu = (\suml_\lambda (\mcA - \lambda \epsilon)\rho_\lambda)^\lambda = \suml_\lambda (\mcA - \lambda \epsilon)^\nu\rho_\lambda = \suml_\lambda b_\lambda(\mcA) (\mcA - \lambda \epsilon)^{m(\lambda)} \phi_\lambda(\mcA) = \0$\\
-$\mcB\mcD = (\mcA - \suml_\lambda \lambda \rho_\lambda)(\suml_\mu \mu \rho_\mu) = (\suml_\mu \mu \rho_\mu)(\mcA - \suml_\lambda \lambda \rho_\lambda) = \mcD\mcB$\\
+$(\mcA - \mcD)^\nu = (\mcA - \sum_\lambda \lambda \rho_\lambda)^\nu = (\mcA\sum_\lambda \rho_\lambda - \sum_\lambda \lambda\rho_\lambda)^\nu = (\sum_\lambda (\mcA - \lambda \epsilon)\rho_\lambda)^\lambda = \sum_\lambda (\mcA - \lambda \epsilon)^\nu\rho_\lambda = \sum_\lambda b_\lambda(\mcA) (\mcA - \lambda \epsilon)^{m(\lambda)} \phi_\lambda(\mcA) = \0$\\
+$\mcB\mcD = (\mcA - \sum_\lambda \lambda \rho_\lambda)(\sum_\mu \mu \rho_\mu) = (\sum_\mu \mu \rho_\mu)(\mcA - \sum_\lambda \lambda \rho_\lambda) = \mcD\mcB$\\
 \textbf{Теорема (единственность разложения Жордана)}\\
 Разложение Жордана $\mcA = \us{\text{о.п.с}}\mcD + \us{\text{нильпот.}}\mcB$ возможно единственным образом\\
 \textbf{Доказательство}\\
 Пусть $\mcA = \us{\text{о.п.с}}\mcD' + \us{\text{нильпот.}}\mcC$\\
-$\mcD' = \suml_\mu \mu Q_\mu$ -- спектральное разложение\\
+$\mcD' = \sum_\mu \mu Q_\mu$ -- спектральное разложение\\
 Достаточно доказать, что
 \begin{enumerate}
     \item множество $\mu$ с.ч. $\mcD'$ совпадает с множеством с.ч. $\mcA$
-    \item $\im Q_\lambda = K_\lambda(D = \suml_\lambda \lambda \rho_\lambda, \im \rho_\lambda = K_\lambda)$\\
+    \item $\im Q_\lambda = K_\lambda(D = \sum_\lambda \lambda \rho_\lambda, \im \rho_\lambda = K_\lambda)$\\
     $\Rto \mcD = \mcD'$
     \item $\mcC = \mcA - \mcD' = \mcA - \mcD = \mcB$
 \end{enumerate}
-$(\mcA - \mu\epsilon)Q_\mu = (\suml_\xi \xi Q_\xi + \mcC - \mu\epsilon)Q_\mu = \mcC Q_\mu$\\
+$(\mcA - \mu\epsilon)Q_\mu = (\sum_\xi \xi Q_\xi + \mcC - \mu\epsilon)Q_\mu = \mcC Q_\mu$\\
 Покажем, что $\mcC Q_\mu = Q_\mu \mcC$\\
 $\letus \lambda \neq \mu\ (\lambda - \mu)\mcC Q_\lambda C Q_\mu = \lambda Q_\lambda C Q_\mu = Q_\lambda C \mu Q_\mu = Q_\lambda D' C Q_\mu - Q_\lambda CD' Q_\mu = Q_\lambda(D'C-CD')Q_\mu = \0$\\
 Отсюда $Q_\lambda C Q_\mu = \0 = Q_\mu C Q_\lambda, \lambda \neq \mu$\\
-$\suml_\lambda Q_\lambda C Q_\mu = \suml_\mu Q_\lambda C Q_\mu$\\
+$\sum_\lambda Q_\lambda C Q_\mu = \sum_\mu Q_\lambda C Q_\mu$\\
 При $\lambda = \mu: CQ_\mu = Q_\mu C$\\
 $(\mcA - \mu \mcC)^k Q_\mu = \mcC^kQ_\mu$\\
 Пусть $m(\mu)$ -- минимальное $k: (\mcA - \mu \epsilon)^{m(\mu)} = \0$\\
@@ -985,26 +985,26 @@ $\fall x \in \im Q_\mu\ \psi_\mu(\mcA)x = \0$\\
 $\phi$ -- минимальный многочлен, т.е. аннулятор любых элементов, в частности и $\im Q_\mu$\\
 Тогда $\phi$ делится на $\psi_\mu$\\
 Тогда $\fall \mu\ \mu$ -- корень $\phi$\\
-Рассмотрим $\prodl_\mu \psi_\mu (t)$. Покажем, что это аннулятор $\mcA$\\
-$\fall v \in V\ v = \suml_\mu \ub{\in \im Q_\mu}{v_\mu}$\\
-$\psi(\mcA)v = \suml_\xi \psi(\mcA)v_\xi = \suml_\xi b_\xi(\mcA)\psi_\xi(\mcA)v_\xi = \0$\\
+Рассмотрим $\prod_\mu \psi_\mu (t)$. Покажем, что это аннулятор $\mcA$\\
+$\fall v \in V\ v = \sum_\mu \ub{\in \im Q_\mu}{v_\mu}$\\
+$\psi(\mcA)v = \sum_\xi \psi(\mcA)v_\xi = \sum_\xi b_\xi(\mcA)\psi_\xi(\mcA)v_\xi = \0$\\
 Отсюда $\psi$ -- аннулятор $\mcA$\\
 Тогда $\psi$ делится на $\phi$\\
 Т.о. $\psi \equiv \phi$\\
 Докажем пункт 2\\
 $(\mcA - \lambda \epsilon)^{m(\lambda)}Q_\lambda = \0$\\
 $\im Q_\lambda \subset \ker (\mcA - \lambda\epsilon)^{m(\lambda)} = K_\lambda$\\
-$V = \oplusl \im Q_\lambda \subset \oplusl_\lambda K_\lambda = V$\\
+$V = \oplus \im Q_\lambda \subset \oplus_\lambda K_\lambda = V$\\
 $\im Q_\lambda = K_\lambda = \im p_\lambda$\\
 \textbf{Теорема 3}\\
 $\mcA = \mcD + \mcB$ -- разложение Жордана\\
 $\chi_\mcA \equiv \chi_\mcD$\\
 \textbf{Доказательство}\\
-$\mcD = \suml_\lambda \lambda p_\lambda$\\
+$\mcD = \sum_\lambda \lambda p_\lambda$\\
 $\mcB = \mcA - \mcD$\\
 $\mcB = \0^\nu, \nu = \max m(\lambda)$\\
 $\mcA,\mcB,\mcD$ -- попарно перестановочные\\
-$\epsilon = \suml_\lambda \rho_\lambda$\\
+$\epsilon = \sum_\lambda \rho_\lambda$\\
 $\im p_\lambda = K_\lambda = \ker (\mcA - \lambda \epsilon)^{m(\lambda)}$\\
 $(\chi_\mcA(\mu))^\nu = (\det \mcA - \mu \epsilon)^\nu = \det (\mcA - \mu \epsilon)^\nu$\\
 $t \in K, (\mcA - \mu \epsilon)^\nu - t^\nu \mcB^\nu = (\mcA - \mu\epsilon - t\mcB)((\mcA - \mu\epsilon)^{\nu - 1} + (\mcA - \mu\epsilon)^{\nu - 2}t\mcB + \ldots + t^{\nu-1}\mcB^{\nu - 1})$\\
@@ -1023,7 +1023,7 @@ $\dim K_\lambda = \alpha(\lambda)$\\
 //todo 16.03 10:25\\
 \subsection{Жорданова форма матрицы. Жорданов базис. Функция от матрицы}
 Пусть все корни $\chi(t)\in K$\\
-$V = \oplusl_\lambda K_\lambda$\\
+$V = \oplus_\lambda K_\lambda$\\
 $K_\lambda = \ker (\mcA - \lambda \epsilon)^{m(\lambda)}$\\
 Построим в каждом $K_\lambda$ такой базис, что матрица оператора в нем будет иметь определенный вид. Этот вид и базис будут называться жордановыми\\
 Пусть $K_\lambda =: K, m(\lambda) =: m, \mcB = (\mcA - \lambda \epsilon)\vl_{K_\lambda = K}$\\
@@ -1075,7 +1075,7 @@ $\begin{array}{l}
     \vdots & \ddots & \ddots & \ddots & \vdots\\
     0 & \ddots & 0 & \lambda & 1\\
     0 & 0 & \ldots & 0 & \lambda
-\end{pmatrix}$ -- клетка Жордана $m$-ого порядка (блок нижнего уровня)
+\end{pmatrix}$ -- клетка Жордана $m$-ого порядка (блок нижнего уровня)\\
 Каждая клетка соответствует одному циклическому базису размера $m$\\
 Рассмотрим теперь блочную матрицу $\nm{diag}(\ub{\text{блок среднего уровня}}{J_1, \ldots J_1}, \ldots, \ub{\text{блок среднего уровня}}{J_m, \ldots, J_m})$ -- блок верхнего уровня, отвечающий корневому подпространству $K_\lambda$\\
 Каждый блок среднего уровня соответствует башне соответствующей высоты\\
@@ -1088,7 +1088,7 @@ $J = \nm{diag}($блоки верхнего уровня всех корневы
 \textbf{Обоснование алгоритма}\\
 Пусть $\mcB K = \im \mcB$\\
 $Z_0 = \mcB K$\\
-$Z_r = \mcB K + K_1, r = 1\ldots m$\\
+$Z_r = \mcB K + K_r, r = 1\ldots m$\\
 $Z_m = \mcB K + K_m = K$\\
 $Z_0 \subseteq Z_1 \subseteq \ldots \subseteq Z_m$\\
 $\ol K_1\subset K_1: Z_1 = Z_0 \oplus \ol K_1$\\
@@ -1102,20 +1102,20 @@ $\mcB^r K = \mcB^r \ol K_{r+1}\oplus \mcB^r \ol K_{r+2} \oplus \ldots \oplus \mc
 \textbf{Доказательство}\\
 $K = \ol K_1 \oplus \ldots \oplus \ol K_m \oplus \mcB K$ (1)\\
 $\fall x \in K:\ \ex! (x_i \in \ol K_j): x = x_1 + \ldots + x_m + \mcB x', x' \in K $\\
-$\mcB^r x = \suml_{j=1}^m \mcB^r \ub{\in K_j = \ker \mcB^j}{x_j} + \mcB^{r+1}x' = \suml_{j=r+1}^m \mcB^r x_j +\mcB^{r+1}x' \in \suml_{j=r+1}^m \mcB^r \ol K_j + \mcB^{r+1}K$\\
+$\mcB^r x = \sum_{j=1}^m \mcB^r \ub{\in K_j = \ker \mcB^j}{x_j} + \mcB^{r+1}x' = \sum_{j=r+1}^m \mcB^r x_j +\mcB^{r+1}x' \in \sum_{j=r+1}^m \mcB^r \ol K_j + \mcB^{r+1}K$\\
 Докажем дизъюнктность\\
-$\suml_{j=r+1}^m \mcB^r x_j +\mcB^{r+1}x' = \0$\\
-$\mcB^r\ub{\in K_r \subset Z_r \ol K_1 \oplus \ol K_r  \oplus \mcB K}{(\suml_{j=r+1}^m \ub{\in \ol K_j}{x_j} + \mcB x')}=\0$\\
-$\suml_{j=r+1}^m \ub{\in \ol K_j}{x_j} + \mcB x' = \suml_{j=1}^m x_j + \mcB y'$\\
+$\sum_{j=r+1}^m \mcB^r x_j +\mcB^{r+1}x' = \0$\\
+$\mcB^r\ub{\in K_r \subset Z_r \ol K_1 \oplus \ol K_r  \oplus \mcB K}{(\sum_{j=r+1}^m \ub{\in \ol K_j}{x_j} + \mcB x')}=\0$\\
+$\sum_{j=r+1}^m \ub{\in \ol K_j}{x_j} + \mcB x' = \sum_{j=1}^m x_j + \mcB y'$\\
 В силу единственности разложения и дизъюнктности $\ol K_j$ и $\mcB K$ $\fall j\ x_j = \0$\\
 $\0 + \mcB^{r+1} = \0$ -- дизъюнктность\\\\
-$K = \ol K_1 \oplusl \ldots \oplus \ol K_m \oplus \mcB K$\\
+$K = \ol K_1 \oplus \ldots \oplus \ol K_m \oplus \mcB K$\\
 $\mcB K = \mcB \ol K_2 \oplus \mcB \ol K_3 \oplus \ldots \oplus \mcB \ol K_m \oplus \mcB^2 K$\\
 $\vdots$\\
 $\mcB^{m-1}K = \mcB^{m-1}\ol K_m \oplus \ub{=\0}{\mcB^m K}$\\
 Отсюда следствие\\
 \textbf{Следствие}\\
-$K = \ol K_1 \oplusl \ldots \oplus \ol K_m \oplus \mcB \ol K_2 \oplus \ldots \oplus \mcB\ol K_m \oplus \mcB^3 \ol K_3 \oplus \ldots \oplus \mcB^3 \ol K_m \oplus \ldots \oplus \mcB^{m-1}\ol K_m$\\
+$K = \ol K_1 \oplus \ldots \oplus \ol K_m \oplus \mcB \ol K_2 \oplus \ldots \oplus \mcB\ol K_m \oplus \mcB^3 \ol K_3 \oplus \ldots \oplus \mcB^3 \ol K_m \oplus \ldots \oplus \mcB^{m-1}\ol K_m$\\
 Сумма представляется в виде пирамиды\\
 \begin{tabular}{ccccc}
      & & & & $\ol K_m$\\
@@ -1123,7 +1123,7 @@ $K = \ol K_1 \oplusl \ldots \oplus \ol K_m \oplus \mcB \ol K_2 \oplus \ldots \op
      & & $\iddots$ & $\iddots$ & $\vdots$\\
      & $\ol K_2$ & \ldots & $\mcB^{m-3}\ol K_{m-1}$ & $\ol \mcB^{m-2} K_m$\\
      $\ol K_1$ & $\mcB \ol K_2$ & \ldots & $\mcB^{m-2}\ol K_{m-1}$ & $\ol \mcB^{m-1} K_m$\\
-\end{tabular}
+\end{tabular}\\
 Данная таблица соответствует башням\\
 $\mcB^{r-1}\ol K_r \subset V_\lambda$\\
 $\mcB (\mcB^{r-1}\ol K_r) = \mcB^r \ol K^r = \-$\\
@@ -1150,8 +1150,8 @@ $K_1, \ldots, K_{r-1}$ дизъюнктны с $\ol K_r$\\
 Т.о. $x = \0$\\
 Тогда ядро тривиально, ч.т.д.\\
 \textbf{Следствие}\\
-$\dim V_\lambda = \gamma(\lambda) = \suml_{r=1}^m d_r$\\
-$\dim K_\lambda = \alpha(\lambda) = \suml_{r=1}^m r d_r$\\
+$\dim V_\lambda = \gamma(\lambda) = \sum_{r=1}^m d_r$\\
+$\dim K_\lambda = \alpha(\lambda) = \sum_{r=1}^m r d_r$\\
 \textbf{Следствие 2 (теорема Фробениуса)}\\
 $\fall r = 1\ldots m\ d_r = \rg \mcB^{r-1} - 2\rg \mcB^r + \rg \mcB^{r+1}$\\
 (при $r = m\ d_m = \rg \mcB^{m-1}$)\\
@@ -1181,11 +1181,11 @@ $\ol K_r = \span (g_1, \ldots, g_d)$\\
 \end{tabular}
 $\mcB^j$ -- изоморфизм, т.е. базис переходит в базис\\
 $\mcB^j g_1 \ldots \mcB^j g_d$ -- базис $\mcB^j \ol K^r$ -- циклический базис\\
-Тогда $J_r = \oplusl_{i=1}^d \span (\mcB^{r-1} g_i, \ldots, \mcB g_i, g_i)$\\
+Тогда $J_r = \oplus_{i=1}^d \span (\mcB^{r-1} g_i, \ldots, \mcB g_i, g_i)$\\
 $\mcA(\mcB^j g_i) = (\mcB + \lambda\epsilon)\mcB^j g_i = \mcB^{j+1}g_i + \lambda \mcB^j g_i$
 $\mcA\vl_{\span (\mcB^{r-1} g_i, \ldots, \mcB g_i, g_i)} \us{\text{в цикл.базисе}}\lrto J_r$ -- клетка Жордана размерности $r\times r$ -- блок нижнего уровн\\
 $\mcA\vl_{J_i} \lrto = \nm{diag}(\ub{\text{$d_r$ штук}}{J_r(\lambda), \ldots, J_r(\lambda)}) = \mc T_{J_r}(\lambda)$
-$\mcA\vl_{K = \oplusl_{r=1}^m J_r} \lrto \nm{diag}(\mc T_{J_1}(\lambda), \ldots, \mc T_{J_m}(\lambda)) = \mc J(\lambda)$\\
+$\mcA\vl_{K = \oplus_{r=1}^m J_r} \lrto \nm{diag}(\mc T_{J_1}(\lambda), \ldots, \mc T_{J_m}(\lambda)) = \mc J(\lambda)$\\
 $\mcA \lrto \nm{diag}(\mc J(\lambda_1), \mc J(\lambda_2), \ldots) = \mc J_A = \mc J$
 //todo 13:11 16.03
 \section{Черная магия}

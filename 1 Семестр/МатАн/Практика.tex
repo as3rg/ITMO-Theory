@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\input{header.tex}
+\input{../../header.tex}
 
 \title{Математический анализ. Практика}
 \author{Александр Сергеев}
@@ -135,15 +135,15 @@ $f(x) = f(a) + f'(a)(x-a) + o(x-a)$, где $o(x-a) = f(x)-f(a)-f'(a)(x-a)$
 Функция $f$ называется \textit{дифференцируемой} в точке $x$, если $f(x+\delta x) - f(x) = A\delta x +o(\delta x)$, где $A$ - константа\\
 Если $f$ дифференцируема, то $A = f'(x)$\\
 $A\delta x$ - \textit{дифференциал} в точке $x$\\
-\textbf{Свойства дифференциала $\diff x$}
+\textbf{Свойства дифференциала $\df x$}
 \begin{enumerate}
-    \item $\diff (\alpha f + \beta g) = \alpha \diff f + \beta \diff g$
-    \item $\diff (fg) = f\diff g + g \diff f$ - Формула Лейбница
-    \item $\diff 1 = \diff 1\cdot1 = 1\diff 1 + 1\diff 1$\\
-    $\diff 1 = 0$
-    \item $\diff (\diff x) = 0$
+    \item $\df (\alpha f + \beta g) = \alpha \df f + \beta \df g$
+    \item $\df (fg) = f\df g + g \df f$ - Формула Лейбница
+    \item $\df 1 = \df 1\cdot1 = 1\df 1 + 1\df 1$\\
+    $\df 1 = 0$
+    \item $\df (\df x) = 0$
 \end{enumerate}
-$\diff (\diff f) = \diff^2 f = \diff (f'(x)\diff x) = (\diff x)\diff f'(x) + f'(x) \diff (\diff x) = f''(x)(\diff x)^2$\\
+$\df (\df f) = \df^2 f = \df (f'(x)\df x) = (\df x)\df f'(x) + f'(x) \df (\df x) = f''(x)(\df x)^2$\\
 \textbf{Определение}\\
 $f$ - \textit{гладкая}, если она дифференцируема до бесконечности (на практике - дифференцируема столько, сколько нужно)
 \section{Урок 5.12.2022}

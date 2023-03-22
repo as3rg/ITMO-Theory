@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\input{header.tex}
+\input{../../header.tex}
 
 \title{Дискретная математика. Теория}
 \author{Александр Сергеев}
@@ -73,11 +73,11 @@ $R \subset A \times B\\
 S \subset B \times C$\\
 \textit{Композиция отношений} $T=R\circ S = RS: a\,T\,b \Leftrightarrow \exists c: a\,R\,c \land c\,S\,b\\
 R^n = R\circ R^{n-1}; R^0=I\\
-R^*=\bigcupl_{k=0}^\infty R^k$ - рефлексивно-транзитивное замыкание\\
-$R^+=\bigcupl_{k=1}^\infty R^k$ - транзитивное замыкание\\\\
+R^*=\bigcup_{k=0}^\infty R^k$ - рефлексивно-транзитивное замыкание\\
+$R^+=\bigcup_{k=1}^\infty R^k$ - транзитивное замыкание\\\\
 \textbf{Теорема}\\
 Пусть $K$ - множество всех транзитивных отношений на $A$, содержащих $R$.\\
-$\bigcapl_{S\in K}S = \operatorname{TrCl} R$.\\
+$\bigcap_{S\in K}S = \operatorname{TrCl} R$.\\
 Тогда $\operatorname{TrCl} R = R^+$\\
 \textbf{Доказательство}\\
 Докажем $\operatorname{TrCl} R \subset R^+.\\
@@ -89,7 +89,7 @@ R \subset R^+.$\\
 По индукции докажем $\forall\,k\geq 1\ R^k\subset S:$\\
 \begin{enumerate}
     \item $R \subset S$
-    \item $a R^{k+1} b \Rightarrow \exists\,c:\ a R^k c \land c R b \Rightarrow a S c \land c S b \Rightarrow a \S b$. Отсюда $R^{k+1} \subset S \Rightarrow \bigcupl_{k=1}^\infty R^k \subset S \Rightarrow R^+ \subset S \Rightarrow R^+ \subset \bigcapl_{S \in k} S$.
+    \item $a R^{k+1} b \Rightarrow \exists\,c:\ a R^k c \land c R b \Rightarrow a S c \land c S b \Rightarrow a \S b$. Отсюда $R^{k+1} \subset S \Rightarrow \bigcup_{k=1}^\infty R^k \subset S \Rightarrow R^+ \subset S \Rightarrow R^+ \subset \bigcap_{S \in k} S$.
 \end{enumerate}
 Из 1 и 2 $\operatorname{TrCl} R = R^+$, ч.т.д.\\\\\\
 \textbf{Определение}\\
@@ -312,7 +312,7 @@ $\begin{array}{cc}
     \vdots & \vdots\\
     x_{n+k}=x_{i_k}\downarrow x{j_k} & (n+k)^2 \text{способов}\\
 \end{array}$\\
-Тогда количество функций $\leq$ число программ $\prodl_{i=1}^k(n+i-1)^2 \leq (n+k)^{2k} = 2^{2k\log_2 (n+k)}\leq 2^{3C\cdot 2^n} \overset{*}{=} (2^{2^n})^{3C}$\\
+Тогда количество функций $\leq$ число программ $\prod_{i=1}^k(n+i-1)^2 \leq (n+k)^{2k} = 2^{2k\log_2 (n+k)}\leq 2^{3C\cdot 2^n} \overset{*}{=} (2^{2^n})^{3C}$\\
 (*) Пусть $k=C\frac{2^n}{n}$\\
 $2k\log_2 (n+k) = \frac{2C\cdot 2^n}{n}\log_2(n+\frac{C\cdot 2^n}{n})\leq \frac{2C\cdot 2^n}{n}log_2(C\cdot 2^n)=\frac{2C\cdot 2^n(\log_2 C+n)}n = \frac{d\cdot 2^n}n+2c\cdot 2^n \leq 3C\cdot 2^n$\\(т.к. $\frac dn \rightarrow 0$)\\
 Доля функций, которые можно реализовать за менее $O(\frac {2^n}n)$, стремится к 0\\
@@ -333,7 +333,7 @@ $2k\log_2 (n+k) = \frac{2C\cdot 2^n}{n}\log_2(n+\frac{C\cdot 2^n}{n})\leq \frac{
 \end{center}
 Нарежем таблицу на горизонтальные полосы ширины $s$. Всего их $p=\left\lceil \frac {2^n}s \right\rceil$\\
 Теперь обнулим все полосы, кроме $i$-ой. Всего мы можем получить $p\cdot 2^s$ функций(т.к. не более $2^s$ вариантов столца высоты $s$). Назовем такие функции $g_{i,mask}$, где $mask$ - значения\\
-$f(x_1,\ldots,x_k,y_1,\ldots,y_{n-k})=\veel_{i=1}^p g_{i,mask[y_1,\ldots,y_{n-k}]}(x_1,\ldots,x_k)$\\
+$f(x_1,\ldots,x_k,y_1,\ldots,y_{n-k})=\bigvee_{i=1}^p g_{i,mask[y_1,\ldots,y_{n-k}]}(x_1,\ldots,x_k)$\\
 Возьмем демультиплексор, адресом для которого будут выступать $x_1\ldots x_k$. На вход ему подадим единицу. Каждый выход будет соответствовать одной строчке в нашей таблице. Тогда 1 будет только на том выходе, которому соответствуют наши $x_1\ldots x_k$. На такой демультиплексор уйдет $2^k$ элементов. Далее для каждой полосы соберем все возможные функции $g$, взяв or от всех строк данной полосы, на которых $g$ равна 1. На одну такую функцию уйдет не более $s$ операций or. Всего таких функций $2^s$ на одну полосу, а полос $\frac{2^k}s$. Итого на все это уйдет $s2^s\frac{2^k}s = 2^{s+k}$. Далее для каждого набора $y_1\ldots y_{n-k}$ объединим все $g$ в один блок через or, которые соответствуют данному набору. Всего наборов $2^{n-k}$, а $g$ - $\frac{2^k}s$. Отсюда на этот фрагмент уйдет $\frac{2^n}s$ элементов. Потом с помощью мультиплексора, где адресом будет $y_1\ldots y_{n-k}$, выберем нужный нам набор. На это уйдет $2^{n-k}$ элементов.\\
 Обобщая:
 \begin{enumerate}
@@ -361,7 +361,7 @@ $f(x_1,\ldots,x_k,y_1,\ldots,y_{n-k})=\veel_{i=1}^p g_{i,mask[y_1,\ldots,y_{n-k}
 \textbf{Определение}\\
 \textit{Алфавит} - произвольное конечное непустое множество (обозначаются $\Sigma$)\\
 \textit{Буква} или \textit{Символ} - элементы этого множества (обозначаются $a,b,c,\ldots$)\\
-\textit{Множество слов над алфавитом $\Sigma$} или \textit{цепочка} или \textit{строка} - $\suml_{i=0}^\infty\ \Sigma^i$ (обозначают $u,v,w,x,y,z$ или $\alpha, \beta, \gamma, \ldots$)\\
+\textit{Множество слов над алфавитом $\Sigma$} или \textit{цепочка} или \textit{строка} - $\sum_{i=0}^\infty\ \Sigma^i$ (обозначают $u,v,w,x,y,z$ или $\alpha, \beta, \gamma, \ldots$)\\
 Конкатенация $\cdot: \Sigma^*\times\Sigma^* \rightarrow \Sigma^*$ - получение строки путем приписывания второго операнда к концу первого\\
 \textbf{Свойства конкатенации}
 \begin{enumerate}
@@ -378,7 +378,7 @@ $c$ - \textit{код} над $\Sigma$, если существует $c: U\right
 $|c(a\in \Pi)| = \lceil \log_2 |\Pi| \rceil$\\\\
 Теперь попробуем сделать код непостоянной длины\\
 Пусть $f:\Pi \rightarrow \mathbb{N}$ - частота появления каждой буквы алфавита $\Pi$ в неком тексте\\
-Минимизируем $\suml_{a\in\Pi} f(a)|c(a)| = \suml_{a\in\Pi} f(a)l(a)$ для данного текста, где $l(a)=|c(a)|$\\
+Минимизируем $\sum_{a\in\Pi} f(a)|c(a)| = \sum_{a\in\Pi} f(a)l(a)$ для данного текста, где $l(a)=|c(a)|$\\
 \textit{Код Хаффмана} - оптимальный префиксный бинарный код\\
 \textbf{Определение}\\
 Код называется \textit{префиксным}, если $a \neq b \Rightarrow c(a)$ - не префикс $c(b)$\\
@@ -389,11 +389,11 @@ $|c(a\in \Pi)| = \lceil \log_2 |\Pi| \rceil$\\\\
 Тогда $\exists\,\alpha\beta\in \Pi^*:\ c(\alpha)=c(\beta)$\\
 Пусть строчки различаются с $i$-ого символа. $c(\alpha_i)$ - префикс $c(\beta_i)$ или наоборот, что противоречит условию, ч.т.д.\\\\
 \textbf{Неравенство Крафта-Макмилана}\\
-Однозначно декодируемый разделяемый бинарный код с длинами слов $l_1,l_2,\ldots,l_n$ существует $\Leftrightarrow \suml_{i=1}^n 2^{-l_i} \leq 1$\\
+Однозначно декодируемый разделяемый бинарный код с длинами слов $l_1,l_2,\ldots,l_n$ существует $\Leftrightarrow \sum_{i=1}^n 2^{-l_i} \leq 1$\\
 \textbf{Доказательство $\Leftrightarrow$}\\
 Следует из Леммы\\
 \textbf{Доказательство $\Rightarrow$}\\
-Доказать: если код однозначно декодируемый $\Rightarrow \suml_{i}2^{-l_i} \leq 1$\\
+Доказать: если код однозначно декодируемый $\Rightarrow \sum_{i}2^{-l_i} \leq 1$\\
 Выберем $\Pi = \{a,b\}$\\
 Выберем кодовые слова $\alpha_1, \alpha_2,\ldots,\alpha_n$, являющиеся однозначно декодируемые\\
 Рассмотрим полукольцо над словами\\
@@ -401,16 +401,16 @@ $|c(a\in \Pi)| = \lceil \log_2 |\Pi| \rceil$\\\\
 $S^k=(\alpha_1+\alpha_2+\ldots+\alpha_n)^k$\\
 Мы получили сумму $n^k$ различных произведений (конкатенаций). Никакие два члена не равны из однозначности декодируемости\\
 Пусть $a=b=\frac12$\\
-Тогда $\alpha_1+\alpha_2+\ldots+\alpha_n = \suml_{i=1}^n (\frac12)^{l_i}$, где $l_i$ - длина $\alpha_i$\\
+Тогда $\alpha_1+\alpha_2+\ldots+\alpha_n = \sum_{i=1}^n (\frac12)^{l_i}$, где $l_i$ - длина $\alpha_i$\\
 Длины всех всех произведений от $k$ (как минимум) до $Lk: L = \max_i l_i$\\
 Сгруппируем все произведения длины $k$. Их количество $\leq 2^k$, а каждый член произведения равен $\frac1{2^k}$. Тогда сумма каждой группы не больше $1$\\
 Отсюда $S^k \leq Lk$\\
-Но $S = \suml_{i=1}^n 2^{-l_i}$\\
-Тогда $\forall\,k\ (\suml_{i=1}^n 2^{-l_i})^k \leq Lk$\\
+Но $S = \sum_{i=1}^n 2^{-l_i}$\\
+Тогда $\forall\,k\ (\sum_{i=1}^n 2^{-l_i})^k \leq Lk$\\
 Если $S > 1$, то с некоторого места $S^k > Lk$\\
-Отсюда $S \leq 1 \Leftrightarrow \suml_{i=1}^n 2^{-l_i} \leq 1$, ч.т.д.\\
+Отсюда $S \leq 1 \Leftrightarrow \sum_{i=1}^n 2^{-l_i} \leq 1$, ч.т.д.\\
 \textbf{Лемма}\\
-$\suml_{i=1}^n 2^{-l_i} \leq 1\Rightarrow$ существует оптимальный \underline{префиксный} код с длинами $l_1,\ldots,l_n$\\
+$\sum_{i=1}^n 2^{-l_i} \leq 1\Rightarrow$ существует оптимальный \underline{префиксный} код с длинами $l_1,\ldots,l_n$\\
 \textbf{Доказательство}\\
 Упорядочим $l_i: l_1 \leq l_2 \leq \ldots \leq l_n$\\
 Возьмем отрезок длины 1 и последовательно отложим слева отрезки длин $2^{-l_i}$\\
@@ -433,7 +433,7 @@ $2^{l_{j+1}-l_1}+2^{l_{j+1}-l_2}+\ldots+2^{l_{j+1}-l_j}+1>2^{l_{j+1}-1}$\\
 Рассмотрим вершину $a$ на максимальной глубине. 
 \begin{enumerate}
     \item У нее есть брат $b$: если бы его не было, дерево было бы неоптимальным
-    \item если $a,b$ имеют не минимальные $f_a,f_b$: поменяем местами $a,b$ местами с $x,y$, имеющими минимальные $f_x,f_y$. Тогда сумма $\suml_{a\in\Pi} f(a)l(a)$ не увеличится (к примеру, по перестановочному неравенству), а значит мы получим оптимальное дерево. Отсюда такое дерево существует
+    \item если $a,b$ имеют не минимальные $f_a,f_b$: поменяем местами $a,b$ местами с $x,y$, имеющими минимальные $f_x,f_y$. Тогда сумма $\sum_{a\in\Pi} f(a)l(a)$ не увеличится (к примеру, по перестановочному неравенству), а значит мы получим оптимальное дерево. Отсюда такое дерево существует
 \end{enumerate}
 \textbf{Алгоритм Хаффмана}\\
 $\Pi = \{a_1,a_2,\ldots,a_n\}$\\
@@ -446,7 +446,7 @@ $\Pi = \{a_1,a_2,\ldots,a_n\}$\\
     $f_z = f_x + f_y$\\
     Мы получили алфавит $\Pi'$. Решим для него задачу построения минимального кода с суммой $\Phi'$. Затем сделаем замену $c(x) = c(z)\cdot0, c(y) = c(z)\cdot1$\\
     После замены мы получили сумму\\
-    $\Phi' = \suml_{a\in\Pi\setminus \{x,y\}} f(a)l(a) + f_zl_z = \suml_{a\in\Pi\setminus \{x,y\}} f(a)l(a) + (f_x+f_y)(l_x-1) = \suml_{a\in\Pi\setminus \{x,y\}} f(a)l(a) + f_xl_x+f_yl_y - (f_x+f_y) = \Phi - (f_x+f_y)$, где $\Phi$ - сумма для $n$ элементов\\
+    $\Phi' = \sum_{a\in\Pi\setminus \{x,y\}} f(a)l(a) + f_zl_z = \sum_{a\in\Pi\setminus \{x,y\}} f(a)l(a) + (f_x+f_y)(l_x-1) = \sum_{a\in\Pi\setminus \{x,y\}} f(a)l(a) + f_xl_x+f_yl_y - (f_x+f_y) = \Phi - (f_x+f_y)$, где $\Phi$ - сумма для $n$ элементов\\
     Отсюда $\Phi = \Phi'+f_x+f_y$\\
     Т.к. $\Phi'$ - минимальное по индукционному переходу(сумма для кода из $n-1$ элементов), а $f_x, f_y$ - по условию, то $\Phi$ -  минимальное
 \end{enumerate}
@@ -469,11 +469,11 @@ $\Pi = \{a_1,a_2,\ldots,a_n\}$\\
 $\operatorname{len} C(S) = q$\\
 Заметим, что $q = \lceil -\log_2 R-L \rceil$ точно подойдет\\
 Тогда $q \leq \lceil -\log_2 R-L \rceil$\\
-$R-L = 1\cdot\frac{f_{S_1}}{m}\cdot\frac{f_{S_2}}{m}\cdot\ldots = \frac{\prodl_{i=1}^n f_i^{f_i}}{m^m}$, где $m = |S|$\\
-$R-L = \frac{\prodl_{i=1}^n f_i^{f_i}}{m^m} = \suml_{i=1}^n f_i\log_2 f_i - m\log_2 m = \suml_{i=1}^n f_i\log_2 f_ - \suml_{i=1}^n f_i log_2 m = m\suml_{i=1}^n \frac{f_i}{m}\log_2\frac{f_i}{m}$\\
+$R-L = 1\cdot\frac{f_{S_1}}{m}\cdot\frac{f_{S_2}}{m}\cdot\ldots = \frac{\prod_{i=1}^n f_i^{f_i}}{m^m}$, где $m = |S|$\\
+$R-L = \frac{\prod_{i=1}^n f_i^{f_i}}{m^m} = \sum_{i=1}^n f_i\log_2 f_i - m\log_2 m = \sum_{i=1}^n f_i\log_2 f_ - \sum_{i=1}^n f_i log_2 m = m\sum_{i=1}^n \frac{f_i}{m}\log_2\frac{f_i}{m}$\\
 $p_i = \frac{f_i}m$ - вероятность вхождения\\
-$R-L = m\suml_{i=1}^n p_i\log_2 p_i$\\
-$q \leq m\suml_{i=1}^n p_i\log_2 \frac1{p_i} = m\cdot H(p_1,\ldots,p_n)$
+$R-L = m\sum_{i=1}^n p_i\log_2 p_i$\\
+$q \leq m\sum_{i=1}^n p_i\log_2 \frac1{p_i} = m\cdot H(p_1,\ldots,p_n)$
 \subsection{Алгоритмы семейства LZ}
 Разделим токены на 2 типа: символы и ссылки $(d_i, f_i)$ - повтори повтори последние $d_i$ повторяя их, выпиши $f_i$ символов\\
 *TODO*
@@ -489,7 +489,7 @@ $q \leq m\suml_{i=1}^n p_i\log_2 \frac1{p_i} = m\cdot H(p_1,\ldots,p_n)$
 Из ошибок будем рассматривать только ошибки замены символа другим\\
 Для этого будем использовать \textit{контрольные суммы}
 \subsubsection{Расстояние Хемминга}
-$H(s,t) = \suml_{i=1}^n |s_i - t_i|$ - Расстояние Хемминга\\
+$H(s,t) = \sum_{i=1}^n |s_i - t_i|$ - Расстояние Хемминга\\
 Докажем, что расстояние Хемминга - метрика:\\
 Для этого докажем неравенство треугольника:\\
 $(H(x,z) \leq H(x,y) + H(y,z)$\\
@@ -513,8 +513,8 @@ $\forall\,i\neq j\ H(c_i, c_j) > 2d$\\\\
 \textbf{Эквивалентное утверждение}\\
 Код $c$ исправляет $d$ ошибок, если\\
 $\forall\,i\neq j\ S(c_i,d) \cap S(c_j, d) = \varnothing$\\\\
-Пусть $|S(x,d)| = \suml_{i=1}^n \binom{N}{K}$ - объем шара\\
-$\suml_{i=1}^n |S(c_i, d)| \leq 2^m$\\
+Пусть $|S(x,d)| = \sum_{i=1}^n \binom{N}{K}$ - объем шара\\
+$\sum_{i=1}^n |S(c_i, d)| \leq 2^m$\\
 Заметим, что радиусы шаров одинаковые\\
 Отсюда $nS(x,d) \leq 2^m$, где $x$ - любой код\\
 \textit{(Граница Хемминга)}
@@ -532,9 +532,9 @@ $\suml_{i=1}^n |S(c_i, d)| \leq 2^m$\\
 Отсюда длина конечного кода $m \approx k+\log k$\\
 Такой код будет очень близок к нижней границе - границе Хемминга\\
 В информационные биты последовательно занесем нашу строку\\
-В коде $b$ подберем контрольные биты так, что $\forall\,j\ \underset{i \& (1<<j) \neq 0}{\oplusl_{i=1}^m} b_i = 0$\\
+В коде $b$ подберем контрольные биты так, что $\forall\,j\ \underset{i \& (1<<j) \neq 0}{\bigoplus_{i=1}^m} b_i = 0$\\
 Заметим, что контрольные биты друг на друга не влияют\\
-Номер поврежденного бита $e = \suml_{i\text{-ый к. бит повр}} i$\\\\
+Номер поврежденного бита $e = \sum_{i\text{-ый к. бит повр}} i$\\\\
 \textbf{Теорема}\\
 В коде Хемминга $H(c_i, c_j) \geq 3$\\
 \textbf{Доказательство}\\
@@ -588,15 +588,15 @@ $a! = 1^{\overline{n}} = n^{\underline{n}}$\\\\
 \begin{enumerate}
     \item $\binom{n}{k} = \binom{n}{n-k}$
     \item $\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$ - треугольник Паскаля
-    \item $(a+b)^n = \suml_{i=0}^n \binom{n}{i}a^ib^{n-i}$
+    \item $(a+b)^n = \sum_{i=0}^n \binom{n}{i}a^ib^{n-i}$
 \end{enumerate}
 \textbf{Теорема(формула включений-исключений)}\\
-$|A_1\cup A_2\cup \ldots\cup A_n| = \suml_{\varnothing \neq I \subset \{1,\ldots,n\}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i|$\\
+$|A_1\cup A_2\cup \ldots\cup A_n| = \sum_{\varnothing \neq I \subset \{1,\ldots,n\}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i|$\\
 \textbf{Доказательство}\\
-$|A_1\cup A_2\cup \ldots\cup A_n| =\\ |(A_1\cup A_2\cup \ldots\cup A_{n-1})\cup A_n| =\\ |A_1\cup A_2\cup \ldots\cup A_{n-1}| + |A_n| - |(A_1\cup A_2\cup \ldots\cup A_{n-1}) \cap A_n| =\\ \underset{I \neq \varnothing}{\suml_{I \subset \{1,\ldots,n-1\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i| + |A_i| - |A_1 \cap A_n\cup A_2 \cap A_n\cup \ldots\cup A_{n-1} \cap A_n| =\\ \underset{I \neq \varnothing}{\suml_{I \subset \{1,\ldots,n-1\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i| + |A_i| - \underset{I \neq \varnothing}{\suml_{I \subset \{1,\ldots,n-1\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i \cap A_n|=\\
-\underset{n \notin I, I \neq \varnothing}{\suml_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i| + \underset{I = \{n\}}{\suml_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i| + 
-\underset{n \in I, I \neq \{n\}}{\suml_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i| =\\ 
-\underset{I \neq \varnothing}{\suml_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcapl_{i \in I} A_i|$, ч.т.д.
+$|A_1\cup A_2\cup \ldots\cup A_n| =\\ |(A_1\cup A_2\cup \ldots\cup A_{n-1})\cup A_n| =\\ |A_1\cup A_2\cup \ldots\cup A_{n-1}| + |A_n| - |(A_1\cup A_2\cup \ldots\cup A_{n-1}) \cap A_n| =\\ \underset{I \neq \varnothing}{\sum_{I \subset \{1,\ldots,n-1\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i| + |A_i| - |A_1 \cap A_n\cup A_2 \cap A_n\cup \ldots\cup A_{n-1} \cap A_n| =\\ \underset{I \neq \varnothing}{\sum_{I \subset \{1,\ldots,n-1\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i| + |A_i| - \underset{I \neq \varnothing}{\sum_{I \subset \{1,\ldots,n-1\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i \cap A_n|=\\
+\underset{n \notin I, I \neq \varnothing}{\sum_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i| + \underset{I = \{n\}}{\sum_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i| + 
+\underset{n \in I, I \neq \{n\}}{\sum_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i| =\\ 
+\underset{I \neq \varnothing}{\sum_{I \subset \{1,\ldots,n\}}} (-1)^{|I|+1}|\bigcap_{i \in I} A_i|$, ч.т.д.
 \subsection{Алгоритмы генерации}
 *TODO*
 \subsection{Числа Каталана}
@@ -617,7 +617,7 @@ $|A_1\cup A_2\cup \ldots\cup A_n| =\\ |(A_1\cup A_2\cup \ldots\cup A_{n-1})\cup 
 Проблема: среди "п.с.к. длины i + п.с.к. n-i" могут быть те, что разбиваются на две неоднозначно(к примеру, "()()()"). Тогда требуется не считать их несколько раз\\
 Чтобы правильно посчитать "п.с.к. длины i + п.с.к. n-i", потребуем, чтобы первая п.с.к. не разбивалась на две\\
 Тогда "п.с.к. длины i + п.с.к. n-i" = "(п.с.к. длины i-1) + п.с.к. n-i"\\
-Отсюда $C_n = C_{n-1} + \suml_{i=1}^{n-1}C_{i-1}C_{n-i} = \suml_{i=1}^{n}C_{i-1}C_{n-i}$\\
+Отсюда $C_n = C_{n-1} + \sum_{i=1}^{n-1}C_{i-1}C_{n-i} = \sum_{i=1}^{n}C_{i-1}C_{n-i}$\\
 Первые числа Каталана: $C_0 = 1, C_1 = 1, C_2 = 2, C_3 = 5, C_4 = 14, C_5 = 42, \ldots$\\
 Также научимся считать $A_{m,b}$ - количество п.с.к., являющиейся суффиксом п.с.к. с начальным балансом $b$, длины $m$\\
 $A_{m,b} = A_{m-1, b+1}+(b > 0 ? A_{m-1,b-1} : 0)$
@@ -625,7 +625,7 @@ $A_{m,b} = A_{m-1, b+1}+(b > 0 ? A_{m-1,b-1} : 0)$
 Рассмотрим бинарные деревья (считаем, если потомок один, то задано, левый он или правый, причем деревья в таком случае различны)\\
 Посчитаем количество деревьев из $n$ вершин(обозначим количество за $T_n)$\\
 Возьмем корень. Пусть в левом поддереве $i$ вершин. Тогда в правом - $n-i-1$\\
-Тогда $T_n = \suml_{i=0}^{n-1}T_iT_{n-i-1} = \suml_{i=1}^{n}T_{i-1}T_{n-i}$\\
+Тогда $T_n = \sum_{i=0}^{n-1}T_iT_{n-i-1} = \sum_{i=1}^{n}T_{i-1}T_{n-i}$\\
 Тогда $C_n = T_n$\\
 Построим изоморфизм между деревьями и п.с.к.\\
 Тогда дереву с левым поддеревом $\alpha$ и правым поддеревом $\beta$ п.с.к. $"(\alpha)\beta"$(отсутствие потомка = потомок - пустое дерево)
@@ -642,10 +642,10 @@ $p_{n,k} = p_{n-k,k}+p_{n,k-1}$(если взяли $k$ в сумму + если
 Количество разбиений множества размера $n$ на $k$ множеств $S_{n,k} = \begin{Bmatrix} n\\k\end{Bmatrix}$ - число Стирлинга 2 рода\\
 $\begin{Bmatrix} n\\k\end{Bmatrix} = \begin{Bmatrix} n-1\\k-1\end{Bmatrix} + k\begin{Bmatrix} n-1\\k\end{Bmatrix}$\\
 Число Белла $B_n$ - количество разбиений множества размера $n$ на подмножества\\
-$B_n = \suml_{k}\begin{Bmatrix} n\\k\end{Bmatrix}$\\
+$B_n = \sum_{k}\begin{Bmatrix} n\\k\end{Bmatrix}$\\
 Числа Стирлинга 1 рода $\begin{bmatrix} n\\k\end{bmatrix}$ - количество перестановок $n$ элементов с $k$ циклами\\
 $\begin{bmatrix} n\\k\end{bmatrix} = \begin{bmatrix} n-1\\k-1\end{bmatrix} + (n-1)\begin{bmatrix} n-1\\k\end{bmatrix}$\\
-$n! = \suml_{k}\begin{bmatrix} n\\k\end{bmatrix}$
+$n! = \sum_{k}\begin{bmatrix} n\\k\end{bmatrix}$
 \subsection{Перестановки}
 \subsubsection{Циклическое представление}
 Рассмотрим перестановку P. Представим ее в виде массива чисел. Тогда для всех индексов построим ребро $i \rightarrow p[i]$\\
@@ -710,12 +710,12 @@ $G = \{g_1,\ldots,g_n\}, e = g_1$\\
      & $g_1$ & $g_2$ & \ldots & $g_n$ \\
      \hline
      $g_1$ & $g_1$ & $g_2$ & \ldots & $g_n$\\
-     \vdots\\
-     $g_i$ & $g_ig_1 = g_{\pi_1}$ & $g_ig_2=g_{\pi_2}$ & \ldots & $g_ig_n = g_{\pi_n}$ \\
-     \vdots\\
-     $g_j$ & $g_jg_1 = g_{\sigma_1}$ & $g_jg_2=g_{\sigma_2}$ & \ldots & $g_jg_n = g_{\sigma_n}$ 
-     \vdots\\
-     $g_k$ & $g_kg_1 = g_{\theta_1}$ & $g_kg_2=g_{\theta_2}$ & \ldots & $g_kg_n = g_{\theta_n}$ 
+     $\vdots$\\
+     $g_i$ & $g_ig_1 = g_{\pi_1}$ & $g_ig_2=g_{\pi_2}$ & $\ldots$ & $g_ig_n = g_{\pi_n}$ \\
+     $\vdots$\\
+     $g_j$ & $g_jg_1 = g_{\sigma_1}$ & $g_jg_2=g_{\sigma_2}$ & $\ldots$ & $g_jg_n = g_{\sigma_n}$ 
+     $\vdots$\\
+     $g_k$ & $g_kg_1 = g_{\theta_1}$ & $g_kg_2=g_{\theta_2}$ & $\ldots$ & $g_kg_n = g_{\theta_n}$ 
 \end{tabular}\\
 Пусть $e \leftrightarrow id$\\
 Сопоставим $g_i$ и перестановку $\pi$, $g_j$ - перестановку $\sigma$\\
@@ -759,12 +759,12 @@ $F = \sigma \in S_n, a = [a_1, \ldots, a_n] \in A$\\
 Множество неподвижных точек $I_g = \{a \in A: g\cdot a = a\}$\\
 Стабилизатор $a\in A\ \nm{St} a = \{g: g\cdot a = a\}$\\
 \textbf{Лемма}\\
-$\suml_{g\in G} |I_g| = \suml_{a \in A} |\nm{St} a|$\\
+$\sum_{g\in G} |I_g| = \sum_{a \in A} |\nm{St} a|$\\
 \textbf{Доказательство}\\
-$\suml_{g\in G} |I_g| = \suml_{g \in G} \suml_{a \in A: ga = a} 1$\\
-$\suml_{a \in A} |\nm{St} a| = \suml_{a \in A} \suml_{g \in G: ga = a} 1$\\
+$\sum_{g\in G} |I_g| = \sum_{g \in G} \sum_{a \in A: ga = a} 1$\\
+$\sum_{a \in A} |\nm{St} a| = \sum_{a \in A} \sum_{g \in G: ga = a} 1$\\
 \textbf{Теорема (лемма Бернсайда)}\\
-$|A/G| = \frac{\suml_{g\in G} |I_g|}{|G|}$\\
+$|A/G| = \frac{\sum_{g\in G} |I_g|}{|G|}$\\
 \textbf{Доказательство}\\
 \begin{tabular}{c|c c c c}
     & $a_1$ & $a_2$ & $a_i$ & $a_j$\\
@@ -775,11 +775,11 @@ $|A/G| = \frac{\suml_{g\in G} |I_g|}{|G|}$\\
 //todo\\
 \textbf{Определение}\\
 \textit{Ожерелье} $\in N_{n,k}$ - объект, состоящий из $k$ видов элементов и имеющий длину (количество элементов) $n$, такой, что ожерелье равно полученному из него циклическим сдвигом\\
-$|N_{n,k}| = \frac{\suml_{i = 0}^{n-1} |I_i|}{n} = \frac{\suml_{i = 0}^{n-1} k^{\nm{cyc}(n,i)}}{n} = \frac{\suml_{i = 0}^{n-1} k^{\nm{gcd}(n,i)}}{n}$\\
+$|N_{n,k}| = \frac{\sum_{i = 0}^{n-1} |I_i|}{n} = \frac{\sum_{i = 0}^{n-1} k^{\nm{cyc}(n,i)}}{n} = \frac{\sum_{i = 0}^{n-1} k^{\nm{gcd}(n,i)}}{n}$\\
 //todo что такое циклы\\
 \textbf{Лемма}\\
 $\nm{cyc}(n,i) = \nm{gcd}(n,i)$\\
 \textbf{Формула Пойа}\\
-$|A/G| = \frac{\suml_{g \in G} k^{\nm{cyc}(n,i)}}{|G|}$\\
+$|A/G| = \frac{\sum_{g \in G} k^{\nm{cyc}(n,i)}}{|G|}$\\
 //todo что такое циклы\\
 \end{document}

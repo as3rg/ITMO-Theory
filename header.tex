@@ -14,9 +14,8 @@
 
 \def\columnseprulecolor{\color{black}}
 
-\everymath{\displaystyle}
-
 \graphicspath{ {./resources/} }
+
 
 \usepackage{listings}
 \usepackage{xcolor}
@@ -57,19 +56,11 @@
 \DeclareMathOperator{\rg}{rg}
 \DeclareMathOperator{\Span}{span}
 \newcommand\1{\mathbb{1}}
-\newcommand\textul{\underline}
+\newcommand\ul{\underline}
+\renewcommand{\bf}{\textbf}
+\renewcommand{\it}{\textit}
 \newcommand\vect{\overrightarrow}
 \newcommand{\nm}{\operatorname}
-\newcommand{\suml}{\sum\limits}
-\newcommand{\liml}{\lim\limits}
-\newcommand{\intl}{\int\limits}
-\newcommand{\bigcapl}{\bigcap\limits}
-\newcommand{\bigcupl}{\bigcup\limits}
-\newcommand{\minl}{\min\limits}
-\newcommand{\maxl}{\max\limits}
-\newcommand{\oplusl}{\bigoplus\limits}
-\newcommand{\prodl}{\prod\limits}
-\newcommand{\veel}{\bigvee\limits}
 \DeclareMathOperator{\df}{d}
 \DeclareMathOperator{\tr}{tr}
 \newcommand{\bb}{\mathbb}
@@ -122,3 +113,7 @@
                    \kern 0.125\wd0}%
            }%
 }
+\DeclareMathOperator*\dlim{\underline{lim}}
+\DeclareMathOperator*\ulim{\overline{lim}}
+
+\everymath{\displaystyle}
