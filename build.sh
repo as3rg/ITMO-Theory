@@ -1,3 +1,4 @@
+cd -- "$( dirname -- "${BASH_SOURCE[0]}" )"
 RED='\033[0;31m'          # Red
 GREEN='\033[0;32m'        # Green
 find ~+ -name "*.tex" | while read line
