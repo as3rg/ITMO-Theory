@@ -1182,14 +1182,178 @@ $\ol K_r = \span (g_1, \ldots, g_d)$\\
 $\mcB^j$ -- изоморфизм, т.е. базис переходит в базис\\
 $\mcB^j g_1 \ldots \mcB^j g_d$ -- базис $\mcB^j \ol K^r$ -- циклический базис\\
 Тогда $J_r = \oplus_{i=1}^d \span (\mcB^{r-1} g_i, \ldots, \mcB g_i, g_i)$\\
-$\mcA(\mcB^j g_i) = (\mcB + \lambda\epsilon)\mcB^j g_i = \mcB^{j+1}g_i + \lambda \mcB^j g_i$
+$\mcA(\mcB^j g_i) = (\mcB + \lambda\epsilon)\mcB^j g_i = \mcB^{j+1}g_i + \lambda \mcB^j g_i$\\
 $\mcA\vl_{\span (\mcB^{r-1} g_i, \ldots, \mcB g_i, g_i)} \us{\text{в цикл.базисе}}\lrto J_r$ -- клетка Жордана размерности $r\times r$ -- блок нижнего уровн\\
-$\mcA\vl_{J_i} \lrto = \nm{diag}(\ub{\text{$d_r$ штук}}{J_r(\lambda), \ldots, J_r(\lambda)}) = \mc T_{J_r}(\lambda)$
+$\mcA\vl_{J_i} \lrto \nm{diag}(\ub{\text{$d_r$ штук}}{J_r(\lambda), \ldots, J_r(\lambda)}) = \mc T_{J_r}(\lambda)$\\
 $\mcA\vl_{K = \oplus_{r=1}^m J_r} \lrto \nm{diag}(\mc T_{J_1}(\lambda), \ldots, \mc T_{J_m}(\lambda)) = \mc J(\lambda)$\\
-$\mcA \lrto \nm{diag}(\mc J(\lambda_1), \mc J(\lambda_2), \ldots) = \mc J_A = \mc J$
+$\mcA \lrto \nm{diag}(\mc J(\lambda_1), \mc J(\lambda_2), \ldots) = \mc J_A = \mc J$\\
 //todo 13:11 16.03
+\subsection{Функция от матрицы, приводимой к жордановой форме}
+Пусть $f(x) = \sum_{k=0}^\infty c_k x^k, |x| < R$\\
+$f(A) = \sum_{k=0}^\infty c_k A^k$\\
+$\letus T(j_1, \ldots, j_n), A=T\mcJ T^{-1}$\\
+Пусть $\mcJ = \nm{diag}(\mcJ_1, \ldots, \mcJ_n)$
+Тогда $\mcJ^k = \nm{diag}(\mcJ(\lambda_1)^k, \ldots, \mcJ(\lambda_n)^k)$\\
+$A^k = T\nm{diag}(\mcJ(\lambda_1)^k, \ldots, \mcJ(\lambda_n)^k)T^{-1}$\\
+$f(A) = T\nm{diag}(f(\mcJ(\lambda_1)), \ldots, f(\mcJ(\lambda_n)))T^{-1}$\\
+$J_r = \begin{pmatrix}
+    \lambda & 1 & 0 & \ldots & 0\\
+    0 & \lambda & 1 & \ldots & 0\\
+    \vdots & \ddots & \ddots & \ddots & \vdots\\
+    0 & \ddots & 0 & \lambda & 1\\
+    0 & 0 & \ldots & 0 & \lambda
+\end{pmatrix} = \lambda E_{r\times r} + I_r, I_r = \begin{pmatrix}
+    0 & 1 & 0 & \ldots & 0\\
+    0 & 0 & 1 & \ldots & 0\\
+    \vdots & \ddots & \ddots & \ddots & \vdots\\
+    0 & \ddots & 0 & 0 & 1\\
+    0 & 0 & \ldots & 0 & 0
+\end{pmatrix}$\\
+$I_r^2 = \begin{pmatrix}
+    0 & 0 & 1 & 0 & \ldots & 0\\
+    0 & 0 & 0 & 1 & \ldots & 0\\
+    \vdots & \ddots & \ddots & \ddots & \ddots & \vdots\\
+    0 & \ddots & 0 & 0 & 0 & 1\\
+    0 & 0 & \ldots & 0 & 0 & 0\\
+    0 & 0 & \ldots & 0 & 0 & 0
+\end{pmatrix}$\\
+Т.е. ряд единиц "уезжает вверх"\\
+Отсюда $J_r^k = (\lambda E_{r\times r} + I_r)^k = \sum_{m=0}^k C_k^m \lambda ^{k-m} I_r^m = C_k^0\begin{pmatrix}
+    \lambda^k & 0 & 0 & \ldots & 0\\
+    0 & \lambda^k & 0 & \ldots & 0\\
+    \vdots & \ddots & \ddots & \ddots & \vdots\\
+    0 & \ddots & 0 & \lambda^k & 0\\
+    0 & 0 & \ldots & 0 & \lambda^k
+\end{pmatrix} + C_k^1 \begin{pmatrix}
+    0 & \lambda^{k-1} & 0 & \ldots & 0\\
+    0 & 0 & \lambda^{k-1} & \ldots & 0\\
+    \vdots & \ddots & \ddots & \ddots & \vdots\\
+    0 & \ddots & 0 & 0 & \lambda^{k-1}\\
+    0 & 0 & \ldots & 0 & 0
+\end{pmatrix} + \ldots\\ = \begin{pmatrix}
+    C_k^0\lambda^k & C_k^1\lambda^{k-1} & C_k^2\lambda^{k-2} & \ldots & C_k^{k-r+1}\lambda^{k-r+1} & 0 & 0 & \ldots 0\\
+    0 & C_k^0\lambda^k & C_k^1\lambda^{k-1} & C_k^2\lambda^{k-2} & \ldots & C_k^{k-r+1}\lambda^{k-r+1} & 0 & \ldots & 0\\
+    0 & 0 & \ddots & \ddots & \ddots & \ddots & \ddots & \ddots & \ddots\\
+\end{pmatrix}$\\
+//todo 23.03 10:27
 \section{Черная магия}
 $(\ln |x|)' = \frac1x$\\
 Отсюда $(\ln |y|)' = \frac{y'}{y}$\\
 $y' = y (\ln |y|)'$ (удобно)
+\section{Тензоры}
+\subsection{Линейные формы. Сопряженное пространство. Ковариантные и контрвариантные преобразования}
+$V$ -- линейное пространство над $K(\Rset, \Cset)$\\
+\textbf{Определение}\\
+Линейная функция $f:V\rto K$ называется \textit{линейной формой(линейным функционалом)}\\
+Т.е. $f(x_1 + \lambda x_2) = f(x_1) + \lambda f(x_2)$\\
+\textbf{Пример}
+\begin{enumerate}
+    \item Скалярное умножение на фиксированный вектор
+    \item $A_{n\times n}, f:M_{n\times n} \rto \Rset(\Cset)$\\
+    $f(A) = \tr A$
+    \item $P_n, t_0 \in \Rset$\\
+    Пусть $f^j = P_n \rto \Rset, f^j(p) = \frac{p^{(j)}(t)}{j!}(t_0)$\\
+    Тогда $f^0, f^1, \ldots$ -- линейная форма
+    \item $f: \ub{\text{функции, непрерывные на }\Rset}C(\Rset) \rto \Rset$
+    $\delta(f) := f(0)$ -- $\delta$-функция Дирака\\
+    $\delta(f)$ -- линейная форма на бесконечномерном пространстве
+\end{enumerate}
+$n:=\dim V$\\
+$V^* = \{ f: V \rto K\, f \text{ -- линейнаяя форма}\}$\\
+$\0(x) := 0, \0 \in V^*$\\
+$\fall f\in V^*\ -f\in V^*$\\
+Тогда $V^*$ -- линейное пространство над полем $K$\\
+$V^*$ -- \textit{сопряженное(дуальное)} к $V$\\\\
+Вспоминаем правило Эйнштейна\\
+Выражение $\alpha^i\beta_i := \sum_{i}\alpha_i\beta_i$\\
+иначе: $\alpha^i := \alpha_i$\\\\
+$f\in V^*\\ \fall x \in V\ f(x) = f(x^i e_i) = x^i \ub{a_i \in K}{f(e_i)}$\\
+$a:= f(e_i)$ называется \textit{коэффициентами линейной формы} $f$\\
+Тогда $f(x) = x^i a_i$ -- $f$ полностью описывается значениями на базисных элементах\\
+Тогда $f \lrto a = \begin{pmatrix}
+    a_1 & a_2 & \ldots & a_n
+\end{pmatrix}$ -- зависит от выбора базиса\\
+Сопоставление -- изоморфизм\\
+\textbf{Фанфакт}\\
+textit{естественный изоморфизм} -- изоморфизм, который не зависит от выбора базиса. Но это не наш случай\\
+$V^* \cong K_n (K^n)$ -- пространство $n$-мерных строк\\
+\textbf{Определение}\\
+$\omega^i \in V^*, x = x^i e_i$\\
+$\fall x\in V \omega^i (x)=x_i$ -- координатные функции\\
+(очевидно, что $\omega^i \in V^*, w^i(x_1+\lambda x_2) = x_1^i + \lambda x_2^i$)\\
+$w^i (e_j) = \delta_j^i = +(i == j) \lrto \begin{pmatrix}
+    0 & 0 & \ldots & \ub{i}1 & \ldots & 0)
+\end{pmatrix}$\\
+\textbf{Теорема}\\
+$\omega^1, \ldots, \omega^n$ -- базис $V^*$\\
+\textbf{Доказательство}\\
+$\omega^1, \ldots, \omega^n$ -- линейно независимые\\
+$\alpha_i \omega^i = \0$\\
+$\alpha_i \in K$\\
+$j=1@\dots n\ \alpha_i\omega^i(e_j)=\alpha_i \delta_j^i = \alpha_j \Rto \alpha_j = 0 \Rto $ линейно независимые\\
+$\dim V^* = n \Rto $ базис\\
+\textbf{Следствие}\\
+$a_i$ -- координаты $f$ в базисе $\omega^1@\dots\omega^n$\\
+\textbf{Доказательство}\\
+$f(x)=x^ia_i = \omega^i(x)a_i \LRto f=a_i\omega^i$\\
+\textbf{Определение}\\
+$\omega=\begin{pmatrix}
+    \omega^1 & \ldots & \omega^n
+\end{pmatrix}$ называется \textit{сопряженным(дуальным)} базисом к базису $e$ пространства $V$\\\\
+Вопрос: есть другой базис в $V^*$. Будет ли он сопряженным к некоторому базису $V$\\
+\textbf{Теорема}\\
+$\omega'^1, \ldots, \omega'^n$ -- базис $V^*$\\
+Тогда $\ex e'_1, \ldots, e'_n$ -- базис в $V$ такой, что $\omega'$ сопряжен с $e'$\\
+\textbf{Доказательство}\\
+Пусть $e'_1, \ldots, e'_n$ -- базис в $V$\\
+Базис $V\ \omega^1, \ldots, \omega^n$ сопряжен с $e$\\
+$\omega'^1, \ldots, \omega'^n$ -- базис $V^* \Rto \begin{pmatrix}
+    \omega'^1 & \ldots & \omega^n
+\end{pmatrix} = \begin{pmatrix}
+    \omega^1 & \ldots & \omega^n
+\end{pmatrix}T_{\omega \rto \omega'}$\\
+$\begin{pmatrix}
+    \omega'^1\\\vdots\\\omega^n
+\end{pmatrix} = \ub{=:S_{\omega \rto \omega'}}{T_{\omega \rto \omega'}^T}\begin{pmatrix}
+    \omega^1\\\vdots\\\omega^n
+\end{pmatrix}$\\
+Построим новый базис $e'$\\
+$T_{e\rto e'} = S^{-1} = T$\\
+$\begin{pmatrix}
+    e_1' & \ldots & e_n'
+\end{pmatrix}:= \begin{pmatrix}
+    e_1 & \ldots & e_n
+\end{pmatrix}T$ -- тоже базис по определению\\
+Покажем, что $\omega'$ сопряжен к $e'$, т.е. $\omega'^i$ -- координатные функции по отношению к $e'$\\
+Пусть $s^i_j = s_{ij}, t^i_j = t_{ij}$\\
+$\fall x\in V\ \omega'^i(x) = s^i_k\omega^k(x) = s^i_k x^k = \ub{\ub{E}{(ST)_j^i} = \delta_j^i}{s^i_k t_j^k} x'^i = \delta^i_j x'^j = x'^i$\\
+Отсюда $\omega'^i$ -- координатная функция $\Rto$ базис сопряженный\\
+\textbf{Замечание}\\
+Вообще говоря, базис $e'$ существует и единственный (очевидно из доказательства)
+\textbf{Следствие}\\
+$\begin{pmatrix}
+    \omega'^1\\\vdots\\\omega^n
+\end{pmatrix} = S\begin{pmatrix}
+    \omega^1\\\vdots\\\omega^n
+\end{pmatrix}, S = T_{\omega \rto \omega'}^T$\\
+Тогда $a'=aT$\\
+$T = S^{-1} = T_{e\rto e'}$\\
+$x'=Sx$\\
+\textbf{Доказательство}\\
+$X' = SX$ очевидно($X=TX'=S^{-1}X'$)\\
+$\begin{pmatrix}
+    \omega'^1 & \ldots & \omega^n
+\end{pmatrix} = \begin{pmatrix}
+    \omega^1 & \ldots & \omega^n
+\end{pmatrix} T_{\omega \rto \omega'}$\\
+$a^T = T_{\omega\rto \omega'}(a')^T$
+$a=a'T^T_{\omega\rto\omega'} = a'S \LRto a'=aS^{-1}aT$\\\\
+\textbf{Определение}\\
+Если координаты вектора при смене базиса изменяются по тому же закону(т.е. с той же матрицей), что и сам базис, то такой закон называется \textit{ковариантным(согласованным)}, координаты вектора называются \textit{ковариантными} координатами, а сам вектор называется \textit{ковариантным} или \textit{ковектором}\\
+Элементы $V^*$ -- это ковекторы (линейная форма $\equiv$ ковектор)\\
+В противном случае, если координаты вектора при смене базиса изменяются по закону, провоположному(т.е. с обратной матрицей) тому, по которому сам базис, то такой вектор называется \textit{контрвариантным}, координаты -- \textit{контрвариантными}, вектор -- \textit{контровариантным} или просто вектором\\
+Элементы $V$ -- контрвариантные векторы\\
+Принято писать индекс координаты контрвектора сверзу, а ковариантного -- снизу\\\\
+$\fall f \in V^*, x\in V\ f(x) = x'ia'_i = s^i_k x^k a_m t^m_i = \ub{\delta^m_k}{t^m_i s^i_k} x^k a_m = x^ka_k$\\
+Т.о. форма записи $f$ -- инвариант относительно замены базиса
 \end{document}
