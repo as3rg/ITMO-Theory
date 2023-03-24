@@ -1015,5 +1015,57 @@ $\pi \not\in \Qset \Rto \fall m,n \in \Nset, m\neq n\ \sin n \neq \sin m$\\
 Возьмем некоторую окрестность $\alpha$\\
 Будем генерировать последовательность, лежащую в этой окрестности, и сдвигать границу
 \section{Несобственный интеграл}
-//todo \url{https://www.youtube.com/live/0IxxDn_hJ_E?feature=share&t=7245}
+\textbf{Определение}
+\begin{enumerate}
+    \item $f: [a, b) \rto \Rset, -\infty < a < b \leq +\infty$ -- допустимая, если $\fall A \in (a, b)\ f\vl_{[a,A]}$ -- кусочно непрерывная
+    \item $\Phi(A) = \int_a^A f(x)\df x$\\
+    Если $\ex \lim_{A \rto b-0} \Phi(A) \in \Rex$, то он называется несобственным интегралом $f$ на $[a,b)$\\
+    Отозначение: $\int_a^{\rto b} f(x)\df x$
+\end{enumerate}
+Если $\not\ex \lim \Phi(A)$ -- несобственный интеграл не существует\\
+Если $\lim_{A \rto b-0} \Phi(A)$ -- конечный, то интеграл сходится\\
+Если $\lim_{A \rto b-0} = \infty$ -- интеграл расходится\\
+Аналогично определяем $\int_{\rto a}^b f(x)\df x$\\
+$\int_{-\infty}^{+\infty} f := \int_{-\infty}^c f + \int_c^{+\infty} f$\\
+\textbf{Пример}\\
+$\int_1^{+\infty} \frac1x \df x = \lim_{A \rto +\infty} \int_1^A \frac1x\df x = \lim_{A \rto +\infty} \ln A = +\infty$\\
+\textbf{Пример}\\
+$\int_{\rto 0}^1 \frac1x \df x = \lim_{A\rto +0} \ln A = +\infty$\\\\
+$f: (a,b) \rto \Rset, -\infty \leq a < b \leq +\infty$\\
+$x_1 < \ldots < x_n \in (a,b), n$ -- нечетное\\
+Пусть $f$ допустимо на каждом из промежутков $(a, x_1], [x_1,x_2), (x_2, x_3], [x_3, x_4), \ldots, [x_n, b)$\\
+Тогда $\int_a^b f = \int_{\rto a}^{x_1} f + \int_{x_1}^{\rto x_2} f + \int_{\rto x_2}^{x_3} f + \ldots + \int_{x_n}^{\rto b} f$\\
+Если хотя бы один интеграл не существует или сумма некорректная (есть $+\infty$ и $-\infty$), то интеграл расходится\\
+\textbf{Пример}\\
+$\int_{-1}^1 \frac1x \df x = \ub{-\infty}{\int_{-1}^{\rto 0}\frac1x \df x} + \ub{+\infty}{\int_{\rto 0}^1 f}$\\
+Данный интеграл расходится\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item Критерий Больцано-Коши о сходимости несобственного интеграла\\
+    $f$ -- допустимая на $[a,b)\ -\infty < a < b \leq +\infty$\\
+    Тогда $\int_a^{\rto b} f$ -- сходится $\LRto \fall \eps > 0\ \ex \delta \in (a,b):\ \fall A,B \in (\delta, b)\ |\int_A^B f| < \eps$\\
+    \textbf{Доказательство}\\
+    $\ex \lim_{R\rto b-0}\Phi(R) \in \Rset \LRto \fall \eps > 0\ \ex \delta \in (a,b)\ \fall A,B \in (\delta, b)\ |\Phi(A)-\Phi(B)| < \eps$ -- критерий Больцано-Коши\\
+    $\int f$ -- расходится $\Rto \ex A_n, B_n \rto b-0: \int_{A_n}^{B_n} f \not\rto 0$\\
+    \textbf{Пример}\\
+    $\int_1^{+\infty} \frac1x \df x, A_n = n, B_n = 2n$\\
+     Тогда $\int_n^{2n}\frac1x\df x \geq \frac1{2n}n = \frac12$ -- расходится\\
+     \textbf{Пример}\\
+     $\int_{-1}^1 \frac1x \df x, A_n = \frac1{2n}, B_n = \frac1n$\\
+     $\int_{\frac1{2n}}^{\frac1n} \frac1x \df x \geq 2n\frac1{2n} = 1$
+     \item Аддитивность по промежутку\\
+     $f$ -- допустима $[a,b), c\in (a,b)$\\
+     Тогда $\int_a^{\rto b} f, \int_c^{\rto b} f$ сходятся/расходятся одновременно\\
+     И в случае сходимости $\int_a^{\rto b} f = \int_a^c f + \int_c^{\rto b} f$\\
+     \textbf{Следствие}\\
+     Если $\int_a^{\rto b}f$ -- сходится, то $\int_A^{\rto b}f \xrto[A\rto b-0]{} 0$
+     \item $f, g$ -- допустимы на $[a, b), \int_a^{\rto b} f, \int_a^{\rto b} g$ -- сходятся, $\lambda \in \Rset$\\
+     Тогда $\lambda f, f\pm g$ -- допустимы $\int_a^{\rto b} \lambda f = \lambda\int_a^{\rto b}, \int_a^{\rto b} (f + g) = \int_a^{\rto b}f + \int_a^{\rto b} g$
+     \item $\int_a^{\rto b} f, \int_a^{\rto b} g$ -- существуют в $\Rex, f \leq g$\\
+     Тогда $\int_a^{\rto b} f \leq \int_a^{\rto b} g$
+     \item $f, g$ -- дифференцируемые на $[a,b)$\\
+     $f', g'$ -- допустимые на $[a,b)$\\
+     Тогда* $\int_a^{\rto b} fg' = fg\vl_a^{\rto b}-\int_a^{\rto b} f'g$, где $fg\vl_a^{\rto b} = (\lim_{B \rto b-0} fg(b)) - f(a)$\\
+     * -- если здесь существуют два предела из трех, то существует и третье и равенство выполняется
+\end{enumerate}
 \end{document}
