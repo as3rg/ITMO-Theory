@@ -1068,4 +1068,74 @@ $\int_{-1}^1 \frac1x \df x = \ub{-\infty}{\int_{-1}^{\rto 0}\frac1x \df x} + \ub
      Тогда* $\int_a^{\rto b} fg' = fg\vl_a^{\rto b}-\int_a^{\rto b} f'g$, где $fg\vl_a^{\rto b} = (\lim_{B \rto b-0} fg(b)) - f(a)$\\
      * -- если здесь существуют два предела из трех, то существует и третье и равенство выполняется
 \end{enumerate}
+\section{Несколько классических неравенств}
+\textbf{Неравенство Йенсена}\\
+$f$ -- выпуклая на $\an ab$\\
+Тогда $\fall a_1, \ldots, a_n \in \an ab\ \fall \alpha_1,\ldots,\alpha_n \geq 0: \sum_i \alpha_i = 1\ f(\sum_i \alpha_i x_i) \leq \sum_i \alpha_i f(x_i)$\\
+\textbf{Доказательство}\\
+$x^* := \sum_i \alpha_i x_i$\\
+Тогда $x^* \leq \sum_i \alpha_i (\max_i x_i) = \max_i x_i$\\
+Аналогично $x^* \geq \min_i x_i$\\
+Тогда $x^* \in \an ab$\\
+Проведем в $x^*$ опорную прямую $y = kx+b$\\
+$f(x^*) = kx^*+b = k\sum_i \alpha_i x_i + b\sum_i \alpha_i = \sum_i \alpha_i(kx_i + b) \leq \sum_i \alpha_if(x_i)$ -- из выпуклости\\
+Заметим, что в $a, b$ последний переход может не выполняться, если опорная прямая вертикальная. Но тогда $x^* = \max_i x_i = \min_i x_i \Rto \fall x_i: \alpha_i = 0 \lor x^* = x_i$, что доказывается тривиально\\
+\textbf{Пример}\\
+Неравенство Коши\\
+$\fall a_1, \ldots, a_n > 0\ \frac{a_1 + \ldots + a_n}n \geq \sqrt[n]{a_1\ldots a_n}$\\
+\textbf{Доказательство}\\
+$\ln (\frac1n a_1 + \ldots + \frac1n a_n) \geq \frac1n (\ln a_1 + \ldots + \ln a_n)$\\
+Применим неравенство для вогнутых функций\\
+\textbf{Интегральное неравенство Йенсена}\\
+$f$ -- выпуклая на $\an AB$\\
+$\phi: [a,b] \rto \an AB$ -- непрерывная\\
+$\lambda: [a,b] \rto [0, \infty), \int_a^b \lambda(x)\df x = 1$ -- непрерывная\\
+Тога $f(\int_a^b \lambda(x)\phi(x)\df x) \leq \int_a^b \lambda(x)f(\phi(x))$\\
+\textbf{Доказательство}\\
+Докажем для случая $\lambda > 0$ в силу сложности доказательства в общем случае\\
+$x^* = \int_a^b \lambda(x)\phi(x)\df x \leq \max \phi \int_a^b \lambda(x)\df x, \geq \min \phi \int_a^b \lambda(x)\df x$\\
+Рассмотрим $y=kx+l$ -- опорную прямую в $x^*$\\
+$f(x^*) = kx^*+l = \int_a^b \lambda(k\phi + l) \leq \int_a^b \lambda(x)f(\phi(x)) \df x$\\
+Тут существует проблема, аналогичная предыдущей теореме. Но выкинуть все точки, где $\lambda = 0$ мы не можем, т.к. получившееся множество будет сложным\\
+\textbf{Пример (Продолжение)}\\
+$\frac1{b-a}\int_a^b f(x)\df x$ -- среднее арифметическое $f$ на $[a,b]$\\
+Тогда cреднее геометрическое -- это $\exp (\frac1{b-a}\int_a^b \ln f(x) \df x)$\\
+\textbf{Теорема}\\
+$\phi \in C[a,b], \phi > 0$\\
+Тогда $\ln (\frac1{b-a}\int_a^b \phi(x)\df x) \geq \frac1{b-a}\int_a^b \ln \phi(x) \df x$\\
+\textbf{Доказательство}\\
+$f(t) = \ln t$ -- вогнутая\\
+Применим неравенство Йенсена: $\phi$ -- это $\phi$\\
+$\lambda(x) = \frac1{b-a}$\\
+\textbf{Неравенство Гельдера}\\
+Заметим, что $\fall p > 1\ \ex q > 1: \frac1p + \frac1q = 1, q$ -- \textit{сопряженный}\\
+$\sum_{i=1}^n a_ib_i \leq (\sum_i a_i^p)^{\frac1p}(\sum_i b_i^q)^{\frac1q}$\\
+\textbf{Доказательство}\\
+$f(x) = x^p, p > 1$ -- выпуклая при $x > 0$\\
+По неравенству Йенсена $(\sum_i \alpha_i x_i)^p \leq \sum_i \alpha_i x_i^p$\\
+$\alpha_i = \frac{b_i}{\sum_j b_j^q}$. Тогда $\alpha_i > 0, \sum_i \alpha_i = 1$\\
+$x_i := a_ib_i^{-\frac1{p-1}} (\sum_j b_j^q)$\\
+$(\sum_i \alpha_i x_i)^p = (\sum_i a_i b_i^{q-\frac1{p-1}})^p = (\sum_i a_i b_i)^p$\\
+$\sum_i \alpha_ix_i^p = \sum_i \frac{b_i^q}{\sum_j b_j^q} a_i^p b_i^{-\frac{p}{p-1}}(\sum_j b_j)^p = \sum_i (a_i^p (\sum_j b_j^q)^{p-1}) = (\sum_i a_i^p)(\sum_j b_j^q)^{p-1}$\\
+$(\sum_i a_i b_i)^p \leq (\sum_i a_i^p)(\sum_j b_j^q)^{p-1}$\\
+Возведем в степень $\frac1p$\\
+$\sum_i a_ib_i \leq (\sum_i a_i^p)^{\frac1p}(\sum_j b_j^q)^{\frac1q}$\\
+\textbf{Замечание}\\
+В неравенстве Йенсена равенство достигается при $x_1 = \ldots = x_n$\\
+Отсюда в неравенстве Гельдера = достигается при $\fall i,j\ x_i = x_j \LRto x_i^p = x_j^p = \lambda \LRto a_i^pb_i^{-q} = a_j^pb_j^{-q} = \lambda \LRto a_i^p = \lambda b_i^q$\\
+Т.е. вектора $\vec{(a_i^p)_i} \| \vec{(b_j^q)_j}$\\
+\textbf{Замечание}\\
+$|\sum_i a_i b_i| \leq \sum_i |a_i b_i| \leq (\sum_i |a_i|^p)^{\frac1p}(\sum_i |b_i|^q)^{\frac1q}$ -- общий вид неравенства Гельдера\\
+$a_1, \ldots, a_n, b_1 \ldots, b_n \in \Rset$\\
+Равенство при $\vec{(a_i^p)_i} \| \vec{(b_j^q)_j}$\\
+\textbf{Интегральное неравенство Гельдера}\\
+$p,q > 1, \frac1p + \frac1p = 1, f,g \in C[a,b]$\\
+Тогда $\int_a^b |fg| \leq (\int_a^b |f|^p)^{\frac1p}(\int_a^b |g|^q)^{\frac1q}$\\
+\textbf{Доказательство}\\
+$x_k := a+k\frac{b-a}n, k = 0\ldots n$\\
+$a_k := f(x_k) (\frac{b-a}n)^{\frac1p}, b_k = g(x_k)(\frac{b-a}n)^{\frac1q}$\\
+$\sum_k a_k b_k = \sum_k |f(x_k)g(x_k)|\frac{b-a}n \xrto[n\rto +\infty]{} \int_a^b |fg|$\\
+$(\sum a_k^p)^{\frac1p} = (\sum_k |f(x_k)|^p \frac{b-a}n)^{\frac1p} \xrto[n\rto +\infty]{} (\int_a^b |f|^p)^\frac1p$\\
+$(\sum_k b_k^q)^{\frac1q} \rto (\int_a^b |g|^q)^{\frac1q}$\\
+//todo \url{https://www.youtube.com/live/o6ELETIz7dU?feature=share&t=5288}
 \end{document}
