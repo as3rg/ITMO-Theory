@@ -1137,5 +1137,21 @@ $a_k := f(x_k) (\frac{b-a}n)^{\frac1p}, b_k = g(x_k)(\frac{b-a}n)^{\frac1q}$\\
 $\sum_k a_k b_k = \sum_k |f(x_k)g(x_k)|\frac{b-a}n \xrto[n\rto +\infty]{} \int_a^b |fg|$\\
 $(\sum a_k^p)^{\frac1p} = (\sum_k |f(x_k)|^p \frac{b-a}n)^{\frac1p} \xrto[n\rto +\infty]{} (\int_a^b |f|^p)^\frac1p$\\
 $(\sum_k b_k^q)^{\frac1q} \rto (\int_a^b |g|^q)^{\frac1q}$\\
-//todo \url{https://www.youtube.com/live/o6ELETIz7dU?feature=share&t=5288}
+\textbf{Замечание}\\
+При $p=2$ неравенство Гельдера = КБШ\\
+\textbf{Неравенство Минковского}\\
+$p\geq 1, a_1, \ldots, a_n, b_1, \ldots, b_n \in \Rset$\\
+Тогда $(\sum_i |a_i+b_i|^p)^{\frac1p} \leq (\sum_i |a_i|^p)^{\frac1p} + (\sum_i |b_i|^p)^{\frac1p}$\\
+Это утверждение о том, что $(a_1, \ldots, a_n) \mapsto (\sum_i |a_i+b_i|^p)^{\frac1p}$ -- норма в $\Rset^n$\\
+\textbf{Доказательство}\\
+Если $p = 1$, очевидно\\
+Если $p > 1$:\\
+Пусть $a_i, b_i > 0$\\
+Тогда $\sum_i a_i (a_i + b_i)^{p-1} \leq (\sum_i a_i^p)^{\frac1p}(\sum_i 
+(a_i + b_i)^p)^{\frac1q}$\\
+$\sum_i b_i (a_i + b_i)^{p-1} \leq (\sum_i b_i^p)^{\frac1p}(\sum_i (a_i + b_i)^p)^{\frac1q}$\\
+Тогда $(\sum_i (a_i+b_i)^p)^1 \leq ((\sum_i a_i^p)^{\frac1p} + (\sum_i b_i^p)^{\frac1p})(\sum_i (a_i + b_i)^p)^{\frac1q}$\\
+$(\sum_i (a_i+b_i)^p)^{\frac1p} \leq (\sum_i a_i^p)^{\frac1p} + (\sum_i b_i^p)^{\frac1p}$\\
+Для произвольных $a_i, b_i$ заметим, что $(\sum_i (a_i+b_i)^p)^1 \leq (\sum_i (|a_i|+|b_i|)^p)^1$\\
+//todo дописать
 \end{document}
