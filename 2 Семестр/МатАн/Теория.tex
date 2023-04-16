@@ -598,7 +598,7 @@ $\gamma(\phi) = (r(\phi)\cos \phi, r(\phi)\sin\phi)$\\
 Тогда $l(\gamma) = \sup_{n, (t_i)} \sum_{i=1}^n \rho(\gamma(t_i), \gamma(t_{i-1}))$\\
 \textbf{Определение}\\
 $f:[a, b] \rto \Rset^n$\\
-Тогда \textit{вариация} $f$ на $[a,b]$ $\nm{Var}_a^b f = \sup_{n, (t_i)} \sum_{i=1}^n |f(t_i)-f(t_{i-1})|$\\
+Тогда \textit{вариация} $f$ на $[a,b]$ $\nm{Var}_a^b f = \sup_{n, (t_i)} \sum_{i=1}^n \|f(t_i)-f(t_{i-1})\|$\\
 Если $f \in C^1, \nm{Var}_a^b f = $ длина пути $ = \int_a^b |f'|$\\
 \textbf{Лемма}\\
 $f:[a,b] \rto \Rset, \nm{Var}_a^b f$ -- ограничена\\
@@ -613,7 +613,7 @@ $|f(y)-f(x)| \leq \nm{Var}_x^y f$\\
 Для $x < y\ 2(p(y)-p(x))=\nm{Var}_x^y f + f(y)-f(x) \geq 0$\\
 Т.е. $p(y) \geq p(x)$, ч.т.д.\\
 Кстати, $p(x) + q(x) = \nm{Var}_a^x f$\\
-\subsection{Конечные $\eps$-сети}
+\section{Конечные $\eps$-сети}
 \textbf{Упражнение}\\
 Пусть $(X, \rho)$ -- метрическое пространство, $K \subset X$ -- компактно $\LRto K$ -- секвенциально компактно\\
 \textbf{Определение}\\
@@ -621,7 +621,7 @@ $|f(y)-f(x)| \leq \nm{Var}_x^y f$\\
 Множество $N \subset X$ -- $\eps$-сеть множества $D$, если $\fall x \in D \ \ex y \in N: \rho(x, y) < \eps$\\
 Если $N$ -- конечное, то $N$ -- конечная $\eps$-сеть\\
 \textbf{Определение}\\
-$D$ -- сверхограниченное, если в $X$, если $\fall \eps > 0 \ \ex$ конечная $\eps$-сеть $N \subset X$\\
+$D$ -- сверхограниченное в  $X$, если $\fall \eps > 0 \ \ex$ конечная $\eps$-сеть $N \subset X$\\
 \textbf{Лемма 1}\\
 $D$ -- сверхограниченно в $X \LRto D$ -- сверхограниченно в $D$ (в себе)\\
 \textbf{Доказательство $\Lto$} -- тривиально\\
@@ -757,7 +757,7 @@ $c_k - b_k = c_k \frac1{4(2k+1)^2}$\\\\
 $\pi = \frac{\prod_{k=1}^{+\infty} (1 + \frac1{4k^2-1})}{\prod_{k=1}^{+\infty} \frac1{4k^2-1}}$\\\\
 По формуле Валлиса $\sqrt \pi = \lim_{k\rto + \infty} \frac1{\sqrt k}\frac{2\cdot 4 \cdot \ldots \cdot (2k)}{1\cdot 3 \cdot \ldots \cdot (2k-1)} = \lim_{k\rto + \infty} \frac1{\sqrt k} \frac{(2^k k!)^2}{(2k)!} = \lim_{k\rto +\infty} \frac1{\sqrt k} \frac{(2^k k^k e^{-k}\sqrt{k})^2 C_1^2}{(2k)^{2k}e^{-2k}\sqrt {2k}C_1} = \frac{C_1}{\sqrt{2}}$\\
 Отсюда $C_1 =\sqrt{2\pi}$\\
-Тогда $n! = n^n e^{-n}\sqrt n e^{2\pi}$ -- формула Стирлинга\\
+Тогда $n! = n^n e^{-n}\sqrt {2\pi n}$ -- формула Стирлинга\\
 \section{Выпуклость}
 Множество $A \subset \Rset^m$ называется выпуклым, если\\
 $\fall x,y \in A\ [x,y] \subset A$,\\
@@ -1203,7 +1203,49 @@ $\letus\ g(t,x) = x^{t-1}e^{-x}$
     $\frac{(2n-3)!!}{(2n-2)!!}\frac\pi2\sqrt n = \frac1{\frac{(2n-2)!!}{(2n-3)!!}\frac1{\sqrt {n-1}}}\frac{\sqrt n}{\sqrt{n-1}}\frac\pi2 \rto \frac{\sqrt\pi}2$\\
     $\sqrt n\int_0^{+\infty} e^{-ny^2}\df y \us{z=\sqrt n y}= \int_0^{+\infty}e^{-z^2}\df z \rto \frac{\sqrt\pi}2$
 \end{enumerate}
-//todo continue \url{https://www.youtube.com/live/tYOFdAXEMx4?feature=share&t=4738}
+\textbf{Определение}\\
+Пусть $f$ -- допустима на $[a,b)$\\
+$\int_a^{\rto b} f$ -- абсолютно сходимый, если
+\begin{enumerate}
+    \item Он сходится
+    \item $\int_a^{\rto b} |f|$ -- сходится
+\end{enumerate}
+\textbf{Теорема}\\
+Пусть $f$ -- допустима на $[a,b)$\\
+Тогда эквивалентны следующие утверждения:
+\begin{enumerate}
+    \item $\int_a^b f$ абсолютно сходится
+    \item $\int_a^b |f|$ сходится
+    \item $\int_a^b f^+, \int_a^b f^-$ оба сходятся
+\end{enumerate}
+\textbf{Доказательство $1 \Rto 2$}\\
+Очевидно\\
+\textbf{Доказательство $2 \Rto 3$}\\
+$0 \leq f^+ \leq |f|, 0 \leq f^- \leq |f|$. Тогда по признаку сходимости\\
+\textbf{Доказательство $3 \Rto 1$}\\
+$f = f^+ - f^-, |f| = f^+ + f^-$\\
+\textbf{Примеры}\\
+$\int_1^{+\infty} \frac{\sin x}{x^p} \df x, p \in \Rset$\\
+При каких $p$ сходится, абсолютно сходится?\\
+$|\frac{\sin x}{x^p}| \leq \frac1{x^p}, p > 1$ -- абсолютно сходится (и сходится)\\
+$p \leq 0$: $\int_{2\pi k}^{2\pi k + \pi}\frac{\sin x}{x^p} \geq \frac1{(2\pi k)^p}\int_{2\pi k}^{2\pi k + \pi}\sin x = \frac2{(2\pi k)^p} \xrto[k\rto +\infty]{} +\infty$\\
+Это же рассуждение и для $\int_1^{+\infty} |\frac{\sin x}{x^p}|$ -- расходится\\
+$0 < p \leq 1$: $\int_0^{+\infty} \frac{\sin x}{x^p}\df x = \left[\begin{array}{cc}
+    f=\frac1{x^p} & g'=\sin x\\
+    f'=-\frac p{x^{p+1}} & g=-\cos x
+\end{array}\right] = \frac{-\cos x}{x^{p+1}}\vl_1^{+\infty} - p\int_1^{+\infty} \frac{\cos x}{x^{p+1}}\df x$ -- сходится\\
+Рассмотрим $\int_1^{+\infty}\frac{|\sin x|}{x^p}\df x$\\
+Возможны следующие доказательства:
+\begin{enumerate}
+    \item Заметим, что в большинстве точек $|\sin x| \geq 10^{-6}$. Тогда в большинстве точек $\int_1^{+\infty}\frac{|\sin x|}{x^p}\df x \geq 10^{-6}\int_1^{+\infty} \frac1{x^p}\df x$ -- расходится\\ 
+    (Другими словами: проинтегрируем по множеству точек, где $|\sin x| \geq 10^{-6}$)
+    \item $|\sin x| \geq \sin^2 x$\\
+    $\int_1^{+\infty} \frac{|\sin x|}{x^p} \geq \int_1^{+\infty} \frac{\sin^2 x}{x^p} = \ub{+\infty}{\int_1^{+\infty}} \frac1{2x^p} - \ub{\text{сходится}}{\int_1^{+\infty} \frac{\cos 2x}{2x^p}}$ -- расходится
+    \item $\int_{2\pi k}^{3\pi k} \frac{|\sin x|}{x^p} \geq \int_{2\pi k}^{3\pi k}\frac{|\sin x|}x \geq \frac1{3\pi k}\int_{2\pi k}^{3\pi k}|\sin x| = \frac2{3\pi} \not\rto 0$ -- отсюда расходится
+\end{enumerate}
+\textbf{Замечание}\\
+$\int_a^b f(x)\df x$ сходится $\not \Rto f(x)\xrto[x\rto b]{} 0$\\
+$\int_a^b |f(x)|\df x$ сходится $\not \Rto f(x)\xrto[x\rto b]{} 0$
 \section{Несколько классических неравенств}
 \textbf{Неравенство Йенсена}\\
 $f$ -- выпуклая на $\an ab$\\
@@ -1293,4 +1335,36 @@ $(\sum_i (a_i+b_i)^p)^{\frac1p} \leq (\sum_i a_i^p)^{\frac1p} + (\sum_i b_i^p)^{
 $f,g \in C[a,b], p\geq 1$\\
 Тогда $(\int_a^b |f+g|^p)^{\frac1p} \leq (\int_a^b |f|^p)^{\frac1p} + (\int_a^b |g|^p)^{\frac1p}$\\
 \textbf{Доказательство}: самостоятельно
+\section{Ряды}
+\subsection{Простейшие свойства}
+Пусть $(a_n)$ -- вещественная последовательность. Тогда $\sum_{i=1}^{+\infty} a_i$ -- числовой ряд\\
+$S_N = a_1 + \ldots + a_N$ -- частичная сумма\\
+Если $S = \lim_{N\rto +\infty} S_N$ -- существует и конечен, то говорят, что $\sum_{n=1}^{+\infty} a_n$ сходится к $S$ -- сумме ряда\\
+Если существует $\lim_{N\rto +\infty} S_N = \pm \infty$ -- ряд расходится, сумма -- $\pm \infty$\\
+Если $\not \ex \lim S_N$ -- ряд расходится\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Суммирование может быть с любой точки
+    \item $a_n = S_n - S_{n-1}$\\
+    Тогда возможно построить последовательность с любой последовательностью частичных сумм
+\end{enumerate}
+\textbf{Примеры}\\
+$e^x = \sum_{n=1}^{+\infty} \frac{x_n}n! = e^x$\\
+\textbf{Доказательство}\\
+$e^x = 1 + x + \frac{x^2}{2!} + \ldots + \frac{x^n}{n!} + {e^{c_{n,x}}}{(n+1)!}x^{n+1}$\\
+$C_{n,x} \in [0, x]$\\
+Тогда $S_n = e^x - \frac{e^{C_{n,x}}}{(n+1)!}x^{n+1} \us{x\text{-- фиксированное}}\rto e^x$\\
+\textbf{Теорема о иррациональности $e^2$}\\
+$e^2$ иррационально\\
+\textbf{Доказательство}\\
+Пусть это не так. Тогда $e^2 = \frac{2k}n$ (не требуем несократимости)\\
+$en=2ke^{-1}$\\
+$en(2k-1)!=(2k)!e^{-1}$\\
+$e = 1 + 1 + \frac12 + \ldots + \frac1{n!}+\frac{e^c}{(n+1)!}, c \in [0,1]$\\
+$(1 + 1 + \frac12 + \ldots + \frac1{(2k-1)!} + \frac1{(2k)!} + \ldots)n(2k-1)!$\\
+$= \ub{\text{целое число}}{(1 + 1 + \frac12 + \ldots + \frac1{(2k-1)!})n(2k-1)!} + \ub{\leq n\frac1{2k} + n\frac1{(2k)^2} + \ldots= \frac{\frac n{2k}}{1-\frac1{2k}} = \frac{e^{-2}}{1-\frac1{2k}}\leq 2e^{-2} <\frac13}{n(\frac1{2k} + \frac1{2k{2k+1}} + \ldots)}$\\
+$e^{-1} = 1 - 1 + \frac12 - \frac13 + \ldots - \frac1{(2k-1)!} + \frac1{(2k)!}+\frac{e^c}{(n+1)!}, c \in [0,1]$\\
+$(2k)!e^{-1} = \ub{\text{целое}}{(2k)!(1 - 1 + \frac12 - \frac13 + \ldots - \frac1{(2k-1)!} + \frac1{(2k)!})} \\+ \ub{\text{отр. и по модулю не превосходит } \frac1{2k+1} + \frac1{(2k+1)(2k+2)} + \ldots < \frac13}{(-\frac1{2k+1} + \frac1{(2k+1)(2k+2)} - \ldots)}$\\
+Т.о. слева число чуть больше целого, а справа -- чуть меньше целого\\
+Тогда равенство не выполняется. Отсюда $e^2$ иррациональное
 \end{document}

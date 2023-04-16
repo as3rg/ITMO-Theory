@@ -258,7 +258,7 @@ $e_1,\ldots, e_n$ -- базис $V$\\
 \textbf{Доказательство}\\
 Выберем базис $e_1, \ldots, e_n$\\
 Тогда $\mcA \us{e}\lrto A_{n\times n}$\\
-$\det \mcA = \det (\mcA e_1, \ldots, \mcA e_n) = \det(\sum_{i_1=1}^n a_{i_11}e_{i_1}, \ldots, \sum_{i_n=1}^n a_{i_nn}e_{i_n}) =\\ \sum_{i_1=1}^n\ldots\sum_{i_n=1}^n a_{i_11}\ldots a_{i_nn}\det(e_{i_1}, \ldots, e_{i_n}) = \sum_{\sigma \in S_n}(-1)^{\nm{inv}(\sigma)}a_{i_11}\ldots a_{i_nn}\det(e_1,\ldots, e_n) = \sum_{\sigma \in S_n}(-1)^{\nm{inv}(\sigma)}a_{i_11}\ldots a_{i_nn} = \det A$\\
+$\det \mcA = \det (\mcA e_1, \ldots, \mcA e_n) = \det(\sum_{i_1=1}^n a_{i_11}e_{i_1}, \ldots, \sum_{i_n=1}^n a_{i_nn}e_{i_n}) =\\ \sum_{i_1=1}^n\ldots\sum_{i_n=1}^n a_{i_11}\ldots a_{i_nn}\det(e_{i_1}, \ldots, e_{i_n}) = \sum_{\sigma \in S_n}(-1)^{\inv(\sigma)}a_{i_11}\ldots a_{i_nn}\det(e_1,\ldots, e_n) = \sum_{\sigma \in S_n}(-1)^{\inv(\sigma)}a_{i_11}\ldots a_{i_nn} = \det A$\\
 Т.о. в нашем базисе это верно\\
 Теперь докажем, что в $e_1', \ldots e_n'$ -- базисе $V$ -- это тоже верно\\
 $\mcA \us{e'}\lrto A'$\\
@@ -1317,12 +1317,12 @@ $\omega'^1, \ldots, \omega'^n$ -- базис $V^*$\\
 Пусть $e'_1, \ldots, e'_n$ -- базис в $V$\\
 Базис $V\ \omega^1, \ldots, \omega^n$ сопряжен с $e$\\
 $\omega'^1, \ldots, \omega'^n$ -- базис $V^* \Rto \begin{pmatrix}
-    \omega'^1 & \ldots & \omega^n
+    \omega'^1 & \ldots & \omega'^n
 \end{pmatrix} = \begin{pmatrix}
     \omega^1 & \ldots & \omega^n
 \end{pmatrix}T_{\omega \rto \omega'}$\\
 $\begin{pmatrix}
-    \omega'^1\\\vdots\\\omega^n
+    \omega'^1\\\vdots\\\omega'^n
 \end{pmatrix} = \ub{=:S_{\omega \rto \omega'}}{T_{\omega \rto \omega'}^T}\begin{pmatrix}
     \omega^1\\\vdots\\\omega^n
 \end{pmatrix}$\\
@@ -1338,10 +1338,10 @@ $\begin{pmatrix}
 $\fall x\in V\ \omega'^i(x) = s^i_k\omega^k(x) = s^i_k x^k = \ub{\ub{E}{(ST)_j^i} = \delta_j^i}{s^i_k t_j^k} x'^i = \delta^i_j x'^j = x'^i$\\
 Отсюда $\omega'^i$ -- координатная функция $\Rto$ базис сопряженный\\
 \textbf{Замечание}\\
-Вообще говоря, базис $e'$ существует и единственный (очевидно из доказательства)
+Вообще говоря, базис $e'$ существует и единственный (очевидно из доказательства)\\
 \textbf{Следствие}\\
 $\begin{pmatrix}
-    \omega'^1\\\vdots\\\omega^n
+    \omega'^1\\\vdots\\\omega'^n
 \end{pmatrix} = S\begin{pmatrix}
     \omega^1\\\vdots\\\omega^n
 \end{pmatrix}, S = T_{\omega \rto \omega'}^T$\\
@@ -1351,7 +1351,7 @@ $x'=Sx$\\
 \textbf{Доказательство}\\
 $X' = SX$ очевидно($X=TX'=S^{-1}X'$)\\
 $\begin{pmatrix}
-    \omega'^1 & \ldots & \omega^n
+    \omega'^1 & \ldots & \omega'^n
 \end{pmatrix} = \begin{pmatrix}
     \omega^1 & \ldots & \omega^n
 \end{pmatrix} T_{\omega \rto \omega'}$\\
@@ -1582,4 +1582,152 @@ $t_\kappa^{j_m}s_{i_k}^\kappa = \delta_{i_k}^{j_m}$\\
 $\beta'^{i_1, \ldots, \hat{i_k},\ldots, i_q}_{j_1, \ldots \hat{j_m} \ldots j_p} = \ub{\beta^{i_1, \ldots, \hat{i_k},\ldots, i_q}_{j_1, \ldots \hat{j_m} \ldots j_p}}{\alpha'^{r_1,\ldots,\omega,\ldots,r_q}_{u_1,\ldots,\omega,\ldots u_p}}t_{u_1}^{j_1}\ldots \hat{t_\kappa^{j_m}} \ldots t_{u_p}^{j_m} s_{i_1}^{r_1}\ldots \hat{s_{i_k}^\kappa}\ldots s_{i_q}^{r_q}$\\
 Свертка может быть по нескольким парам индексов\\
 Если в результате свертки получится тензор (0,0), т.е. число, то свертка \textit{полная}\\
+\subsection{Транспонирование тензоров. Кососимметричные и симметричные тензоры}
+$\alpha=(\alpha_{ij}) \leadsto A^T = B = (\beta_{ij}), \beta_{ij}=\alpha_{ji}$\\
+Обобщим операцию транспонирования\\
+Пусть $\alpha \in T_{(p,q)}, p \geq 2$\\
+$\alpha^{i_1,\ldots,i_q}_{j_1,\ldots,*,\ldots,\delta,\ldots,j_p}$ -- зафиксируем все, кроме $*, \delta$\\
+Т.о. мы извлекли из матрицы тензора слой -- двумерную матрицу\\
+Получили матрицу $\ot \alpha_{*\delta}$\\
+Протранспонируем ее\\
+Т.о. $\beta^{i_1,\ldots,i_q}_{j_1,\ldots,\delta,\ldots,*,\ldots,j_p} = \alpha^{i_1,\ldots,i_q}_{j_1,\ldots,*,\ldots,\delta,\ldots,j_p}$\\
+\textbf{Определение}\\
+$\alpha \in T_{(p,q)}, p \geq 2$\\
+$\beta = \sigma(\alpha)$ называется тензором, полученным транспонированием тензора $\alpha$ по перестановке $\sigma$, если $\beta^{i_1,\ldots,i_q}_{j_1,\ldots,j_p} = \alpha^{i_1,\ldots,i_q}_{j_{\sigma_1},\ldots,j_{\sigma_p}}$\\
+\textbf{Замечание}\\
+Любая перестановка $\sigma$ -- конечное число транспозиций 2-х элементов\\\\
+Заметим, что не любая многомерная матрица -- тензор\\
+Проверим, что $\beta$ -- тензор\\
+\textbf{Корректность}\\
+Достаточно проверить для $\sigma$ -- транспозиции двух элементов\\
+Возьмем $\beta'^{k_1,\ldots,k_q}_{m_1,\ldots,\ub{\text{r-ая}}*,\ldots,\ub{\text{l-ая}}\delta,\ldots,m_p}$\\
+$\beta'^{k_1,\ldots,k_q}_{m_1,\ldots,*,\ldots,\delta,\ldots,m_p}=\alpha^{k_1,\ldots,k_q}_{m_1,\ldots,\delta,\ldots,*,\ldots,m_p}$\
+Т.к. $\alpha$ -- тензор:\\
+$\alpha^{k_1,\ldots,k_q}_{m_1,\ldots,\delta,\ldots,*,\ldots,m_p} = \ub{\beta^{i_1,\ldots,i_q}_{j_1,\ldots, j_l, \ldots, j_r,\ldots,j_p}}{\alpha^{i_1,\ldots,i_q}_{j_1,\ldots,j_r,\ldots,j_l,\ldots,j_p}} t_{m_1}^{i_1}\ldots t_\delta^{j_r}\ldots t_*^{j_l}\ldots t_{m_p}^{j_p}s_{i_1}^{k_1}\ldots s_{i_q}^{k_q}$\\\\
+Теперь посмотрим на операцию транспонирования с точки зрения полилинейной функции\\
+$\fall \xi_1, \ldots, \xi_p \in V\ \fall \eta^1,\ldots,\eta^q \in V^*$\\
+$\beta=\sigma(\alpha)$\\
+$\beta(\xi_1,\ldots,\xi_p,\eta^1,\ldots,\eta^q) = \beta^{i_1,\ldots,i_q}_{j_1,\ldots,j_p}\xi_1^{j_1}\ldots\xi_p^{j_p}\eta_{i_1}^1\ldots \eta_{i_q}^q$\\
+$=\alpha^{i_1,\ldots,i_q}_{j_{\sigma_1},\ldots,j_{\sigma_p}}\xi_{\sigma_1}^{j_{\sigma_1}}\ldots\xi_{\sigma_p}^{j_{\sigma_p}}\eta_{i_1}^1\ldots \eta_{i_q}^q= \alpha(\xi_{\sigma_1},\ldots,\xi_{\sigma_p},\eta^1,\ldots,\eta^q)$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Транспониование тензора можно определить по аналогии по верхним индексам, если $q\geq 2$
+    \item Тензоры можно транспонировать только по одному типу индексов: либо по верхним, либо по нижним, в отличие от произвольной многомерной матрицы
+    \item Мы будем работать только с нижними индексами, но все свойства и теоремы работают и для верхних индексов
+\end{enumerate}
+\textbf{Свойства}
+\begin{enumerate}
+    \item Из определения очевидно, что $\sigma$ -- линейная операция\\
+    $\sigma(\alpha_1 + \lambda\alpha_2) = \sigma(\alpha_1)+\lambda\sigma(\alpha_2)$
+    \item $\alpha=f^1 \otimes \ldots \otimes f^p \otimes \ot \alpha \in T_{(p,q)}, f^i \in V^*, \ot\alpha \in T_{(0,q)}$\\
+    Тогда $\fall \sigma: \beta=\sigma(\alpha) \fall \xi_i \in V \fall \eta^j \in V^* \beta(\xi_1,\ldots, \xi_p,\eta^1,\ldots,\eta^q)=\alpha(\xi_{\sigma_1},\ldots,\xi_{\sigma_p},\eta^1,\ldots,\eta^q)$\\
+    $= f^1(\xi_{\sigma_1})\cdot \ldots \cdot f^p(\xi_{\sigma_p}) \cdot \ot \alpha(\eta^1,\ldots,\eta^q) = f^{\sigma^{-1}_1}(\xi_1)\ldots f^{\sigma^{-1}_p}(\xi_p) \alpha(\eta^1,\ldots,\eta_q)$\\
+    Отсюда $\beta = f^{\sigma^{-1}_1} \otimes\ldots \otimes f^{\sigma^{-1}_p} \otimes \ot \alpha$
+\end{enumerate}
+$\alpha$ -- называется симметричным тензором, если $\fall \sigma\ \sigma(\alpha)=\alpha$\\
+$\alpha$ -- кососимметричная(антрисимметричная/альтернированная), если $\fall \sigma\ \sigma(\alpha)=(-1)^{\inv(\sigma)}\alpha$\\
+Заметим, что симметричность $\LRto$ симметричность при транспозиции(свапе) $\LRto \fall (n,k): \alpha(\xi_1,\ldots, \ub{\text{k-ая}}\mu, \ldots, \ub{\text{m-ая}}\nu, \ldots, \xi_p, \eta^1,\ldots) = \alpha(\xi_1,\ldots, \ub{\text{m-ая}}\nu, \ldots, \ub{\text{k-ая}}\mu, \ldots, \xi_p, \eta^1,\ldots)$\\
+Заметим, что кососимметричность $\LRto$ кососимметричность при транспозиции(свапе)\\
+$\LRto \fall (n,k): \alpha(\xi_1,\ldots, \ub{\text{k-ая}}\mu, \ldots, \ub{\text{m-ая}}\nu, \ldots, \xi_p, \eta^1,\ldots) = -\alpha(\xi_1,\ldots, \ub{\text{m-ая}}\nu, \ldots, \ub{\text{k-ая}}\mu, \ldots, \xi_p, \eta^1,\ldots)$\\
+\textbf{Теорема}\\
+$\alpha$ кососимметричная $\LRto \fall (k,m)\ \alpha(\ldots, \mu, \ldots, \mu, \ldots, \nu^1, \ldots) = 0 \LRto \fall (k,m) \alpha^{\ldots}_{\ldots, i, \ldots, i, \ldots} = 0$\\
+\textbf{Доказательство}\\
+Смотри доказательство для полилинейной ассиметричной формы\\
+\textbf{Примеры}
+\begin{enumerate}
+    \item $f(\vec a, \vec b, \vec c) := \vec a, \vec b, \vec c = (\vec a \times \vec b, \vec c): V^3_3 \rto \Rset$\\
+    $f \in T_{(3,0)}$\\
+    $f$ -- кососимметричный тензор
+    \item $\beta \in T_{(3,0)}, n=3, \beta$ -- кососимметричная\\
+    Тогда тензор имеет следующий вид\\
+    $\left(\begin{array}{ccc|ccc|ccc}
+        0 & 0 & 0 & 0 & 0 & -b & 0 & b & 0\\
+        0 & 0 & b & 0 & 0 & 0 & -b & 0 & 0\\
+        0 & -b & 0 & b & 0 & 0 & 0 & 0 & 0
+    \end{array}\right), b = \beta(e_1, e_2, e_3)$
+    \item $A = (\alpha_{ij}) \in T_{(2, 0)}$. Тогда симметричность и антисимметричность согласуется с свойствами матриц
+    \item $(\alpha_{ijk}) \in T_{(3,0)}, n = 3$\\
+    $\left(\begin{array}{ccc|ccc|ccc}
+        c & a & d   & a & x & b   & d & b & y\\
+        a & x & b   & x & e & z   & b & z & g\\
+        d & b & y   & b & z & g   & y & g & f
+    \end{array}\right)$
+\end{enumerate}
+\subsection{Операция $\Sim$ и $\alt$ для тензоров}
+\textbf{Определение}\\
+$\fall \alpha\in T_{(p \geq 2, q)}\ \Sim \alpha = \frac1{p!}\sum_{\sigma\in S_p} \sigma(\alpha)$ -- симметрирование для тензора $\alpha$ по нижним индексам\\
+$\fall \alpha\in T_{(p \geq 2, q)}\ \Sim \alpha = \frac1{p!}\sum_{\sigma\in S_p} (-1)^{\inv \sigma}\sigma(\alpha)$ -- альтернирование для тензора $\alpha$ по нижним индексам\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Т.к. $\sigma$ -- линейный оператор, то $\Sim, \alt$ -- линейные
+    \item Для $\alpha$ -- симметричной $\Sim \alpha = \alpha$
+    Для $\alpha$ -- кососимметричной $\alt \alpha = \alpha$
+    \item Операции $\Sim, \alt$ можно проводить не по всем индексам. Тогда набор индексов, по которым проводится операция, заключается в круглые(для симметрирования) или квадратные(для альтернирования) скобки
+    Если какие-то индексы внутри скобок не участвуют, их выделяют вертикальными чертами
+    \item Очевидно, что можно определить аналогичные операции по верхним индексам
+    \item Пусть $\gamma = \Sim \alpha$\\
+    Тогда $\fall \sigma\ \gamma_{i_1,\ldots, i_p} = \gamma_{i_{\sigma_1},\ldots,i_{\sigma_p}}$\\
+    Пусть $\gamma = \alt \alpha$\\
+    Тогда $\fall \sigma\ \gamma_{i_1,\ldots, i_p} = (-1)^{\inv \sigma}\gamma_{i_{\sigma_1},\ldots,i_{\sigma_p}}$
+\end{enumerate}
+\textbf{Теорема о перестановочности $\sigma$ и $\Sim, \alt$}\\
+$\fall \alpha \in T_{(p \geq 2,q)} \fall \sigma\ \Sim(\sigma(\alpha)) = \sigma(\Sim(\alpha)) = \Sim \alpha$
+$\fall \alpha \in T_{(p \geq 2,q)} \fall \sigma\ \alt(\sigma(\alpha)) = \sigma(\alt(\alpha)) = (-1)^{\inv \sigma}\alt \alpha$\\
+\textbf{Доказательство}\\
+Доказать проще, чем затехать\\
+\textbf{Следствие 1}\\
+$\fall \alpha \Sim \alpha$ -- симметричный, $\alt \alpha$ -- кососимметричный\\
+\textbf{Доказательство}\\
+$\fall \alpha\ \sigma(\Sim \alpha) = \Sim \alpha$ -- симметричный\\
+$\fall \alpha\ \sigma(\alt \alpha) = (-1)^{\inv \sigma} \alt \alpha$ -- кососимметричный\\
+\textbf{Следствие 2}\\
+$\alpha$ -- симметричный $\LRto \alpha = \Sim \alpha$
+$\alpha$ -- кососимметричный $\LRto \alpha = \alt \alpha$\\
+\textbf{Следствие 3}\\
+$\Sim (\Sim \alpha) = \Sim \alpha$\\
+$\alt (\alt \alpha) = \alt \alpha$\\
+$\Sim (\alt \alpha) = 0$\\
+$\alt (\Sim \alpha) = 0$\\
+\textbf{Доказательство}\\
+$\Sim (\alt \alpha) = \Sim (\frac1{p!}\sum_{\sigma} (-1)^{\inv \sigma} \sigma(\alpha)) = \frac1{p!} \sum_\sigma (-1)^{\inv \sigma} \Sim (\sigma(\alpha)) = \Sim \alpha \frac1{p!} \ub{\begin{vmatrix}
+    1 & \ldots & 1\\
+    \vdots & \ddots & \vdots\\
+    1 & \ldots & 1
+\end{vmatrix}}{\sum_\sigma (-1)^{\inv \sigma}} = 0$\\
+$\alt (\Sim (\alpha))$ -- аналогично\\\\
+$T^{\text{сим}}_{(p,q)}$ -- симметрирование $T$ по фиксированному набору\\
+$T^{\text{сим}}_{(p,q)}, T^{\text{кососим}}_{(p,q)}$ -- линейные подпространства $T_{(p,q)}$\\
+Для перестановки $(k,m)$(транспозиция):\\
+$T^{\text{сим}}_{(p,q)} \oplus T^{\text{кососим}}_{(p,q)} = T_{(p,q)}$\\
+\ul{Свойства $\Sim, \alt$ сохраняются, если они производятся не по всем индексам}
+\subsection{p-формы. Внешнее произведение p-формы}
+\textbf{Определение}\\
+f -- p-форма, если $f\in T_{(p,0)}, f$ -- кососимметричный(или $p == 1$)\\
+$f: V^p \rto K$\\
+$f \in V^*$ -- 1-форма\\
+$\ub{\Lambda^p V^* \text{-- пространство p-форм}}{T^{\text{кососим}}_{(p,0)}}$ -- линейное подпространство $T_{(p,0)}$\\
+\textbf{Определение}\\
+$f$ -- $p_1$ -- форма ($f \in \Lambda^{p_1}V^*$)\\
+$g$ -- $p_2$ -- форма ($f \in \Lambda^{p_2}V^*$)\\
+$f\land g := \frac{(p_1+p_2)!}{p_1!p_2!}\alt(\ub{\in T_{(p_1+p_2,0)}}{f \otimes g}) \in \Lambda^{p_1+p_2}V^*$ -- внешнее произведение\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $f\land g = (-1)^{p_1p_2}g^f$
+    В частности $f, g \in \Lambda^1 V^* (V^*)$\\
+    $f\land g = -g\land f$\\
+    $f \land f = 0$\\
+    \textbf{Доказательство}\\
+    $f \in \Lambda^{p_1}V^* \lrto \alpha = (\alpha_{j_1,\ldots,j_{p_1}})$\\
+    $g \in \Lambda^{p_2}V^* \lrto \alpha = (\alpha_{j_2,\ldots,j_{p_2}})$\\
+    $f \otimes g \lrto \gamma = \alpha\otimes \beta \lrto \gamma_{j_1,\ldots,j_{p_1},m_1,\ldots,m_{p_2}} = \alpha_{j_1,\ldots,j_{p_1}}\beta_{m_1,\ldots,m_{p_2}}$\\
+    $g \otimes f \lrto \theta = \beta\otimes \alpha \lrto \theta_{m_1,\ldots,m_{p_2},j_1,\ldots,j_{p_1}} = \beta_{m_1,\ldots,m_{p_2}}\alpha_{j_1,\ldots,j_{p_1}}$\\
+    $\alt f \otimes g = \frac1{(p_1+p_2)!}\sum_\sigma \sigma(\gamma)$\\
+    $\alt g\otimes f = \frac1{(p_1+p_2)!}\sum_\tau \tau(\theta)$\\
+    //todo 13.04 13:12
+    \item $(f + g) \land h = f\land h + g\land h$\\
+    $f\land (g + h) = f \land g + f \land h$
+    \item $(\lambda f) \land g = \lambda(f \land h) = f \land (\lambda g)$
+    \item $f \land \ub{p_1\text{-форма}}\0 = \0 \land f = \ub{(p_1+p_2)\text{-форма}}\0$
+    \item $(f\land g)\land h = f \land (g\land h) = f \land g \land h$
+\end{enumerate}
 \end{document}
