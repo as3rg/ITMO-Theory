@@ -1366,5 +1366,192 @@ $= \ub{\text{целое число}}{(1 + 1 + \frac12 + \ldots + \frac1{(2k-1)!}
 $e^{-1} = 1 - 1 + \frac12 - \frac13 + \ldots - \frac1{(2k-1)!} + \frac1{(2k)!}+\frac{e^c}{(n+1)!}, c \in [0,1]$\\
 $(2k)!e^{-1} = \ub{\text{целое}}{(2k)!(1 - 1 + \frac12 - \frac13 + \ldots - \frac1{(2k-1)!} + \frac1{(2k)!})} \\+ \ub{\text{отр. и по модулю не превосходит } \frac1{2k+1} + \frac1{(2k+1)(2k+2)} + \ldots < \frac13}{(-\frac1{2k+1} + \frac1{(2k+1)(2k+2)} - \ldots)}$\\
 Т.о. слева число чуть больше целого, а справа -- чуть меньше целого\\
-Тогда равенство не выполняется. Отсюда $e^2$ иррациональное
+Тогда равенство не выполняется. Отсюда $e^2$ иррациональное\\
+\textbf{Признаки Абеля и Дирихле}
+\begin{enumerate}
+    \item(Дирихле) $f$ -- допустима на $[a,b)$\\
+    $F(A):= \int_a^A f \df x, F$ -- ограничена\\
+    $g \in C^1, g(x)$ -- монотонна на $[a,b), g(x)\rto 0$\\
+    Тогда $\int_a^{\rto b}fg\df x$ -- сходится
+    \item(Абеля) $f$ -- допустима на $[a,b), \int_a^{\rto b}f\df x$ -- сходится\\
+    $g \in C^1, g(x)$ -- монотонна и ограничена\\
+    Тогда $\int_a^{\rto b}fg\df x$ -- сходится
+\end{enumerate}
+\textbf{Доказательство 1}\\
+Проинтегрируем по частям: $\int_a^A fg = \ub{F(A)g(A)\xrto[A\rto b-0]{} 0}{Fg\vl_a^A} - \int_a^A Fg'$\\
+Т.к. $F$ ограничена, то для некоторого $C\ |F(x)|\leq C$\\
+Тогда $|Fg'| \leq \ub{\text{Зависит от знака g}}\pm Cg$\\
+Отсюда $\int_a^A Fg'$ абсолютно сходится\\
+\textbf{Доказательство 2}\\
+$g(x) \xrto[x\rto b-0]{} S \in \Rset$\\
+$\int_a^A f(g-S+S)\df x = \ub{\text{сходится по Дирихле}}{\int_a^A f(g-S)} + \ub{\xrto[A\rto b-0]{} S\int_a^{\rto b}f}{\int_a^A fS\df x}$\\
+\textbf{Интеграл Дирихле}\\
+$\int_0^{+\infty} \frac{\sin x}x \df x = \frac\pi2$\\
+\textbf{Лемма}\\
+$\cos x + \cos 2x + \ldots + \cos nx = \frac{\sin((n+\frac12)x)}{2\sin \frac x2} - \frac12$\\
+\textbf{Доказательство}\\
+$2\sin \frac x2 \cos kx = \sin((k+\frac12)x) - \sin((k-\frac12)x)$\\\\
+$\int_0^\pi (\cos x + \cos 2x + \ldots + \cos nx) = 0 = \int_0^\pi \frac{\sin((n+\frac12)x)}{2\sin \frac x2}\df x - \frac\pi2$\\
+$\int_0^\pi \frac{\sin (n+\frac12)x}x \us{y=(n+\frac12)x}= \int_0^{(n+\frac12)\pi} \frac{\sin y}{y} \df y \xrto[n\rto +\infty]{} \int_0^{+\infty}\frac{\sin x}x \df x$\\
+$\int_0^\pi \frac{\sin((n+\frac12)x)}{2\sin \frac x2} - \frac{\sin (n+\frac12)x}x \df x = \int_0^\pi \sin(n+\frac12)x \cdot h(x)\df x = \ldots, h(x) = \left\{\begin{array}{cc}
+    \frac1{2\sin \frac x2} - \frac1x, & x \neq 0\\
+    0, & x = 0
+\end{array}\right.$ -- бесконечно дифференцируема на $[0, \pi]$\\
+$\ldots = \frac{-1}{n+\frac12}\cos(n+\frac12)x\cdot h(x)\vl_0^\pi + \frac1{n+\frac12}\int_0^\pi \cos(n+\frac12)x\cdot h' = O(\frac1n)$\\
+Отсюда $\int_0^\pi \frac{\sin (n+\frac12)x}{x} = \int_0^\pi \frac{\sin(n+\frac12)x}{2\sin \frac x2} + O(\frac1n)=\frac\pi2+O(\frac1n)$\\
+$\int_0^{+\infty} \frac{\sin x}x \df x = \frac\pi2$\\
+\textbf{Задача}\\
+Пусть 5 кузнечиков расположены в вершинах правильного пятиугольника. Один кузнечик сидит в начале координат и не может двигаться. Остальные кузнечики могут совершить прыжок через другого, оказавшись в точке, симметричной относительного данного. Вопрос: могул ли кузнечики оказаться в вершинах правильного пятиугольника большего размера?\\
+\textbf{Решение}\\
+Зададим матрицу кузнечиков:\\
+$\mc K = \begin{pmatrix}
+    x_1 & x_2 & \ldots & x_n\\
+    y_1 & y_2 & \ldots & y_n
+\end{pmatrix}$\\
+Если кузнечик $a$ прыгает через кузнечика $b$, то он окажется в точке $2b-a$\\
+Тогда матрица перехода имеет следующий вид:\\
+$\begin{pmatrix}
+    1 & \ldots & 0 & \ldots & 0\\
+    \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & \ldots & \ub{(a, a)}{-1} & \ddots & \vdots\\
+    \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & \ldots & \ub{(b, a)}2 & \ddots & \vdots\\
+    \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & \ldots & 0 & \ldots & 1\\
+\end{pmatrix}$\\
+Если кузнечик $a$ перепрыгивает через нулевого, то матрица перехода имеет вид 
+$\begin{pmatrix}
+    1 & \ldots & 0 & \ldots & 0\\
+    \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & \ldots & \ub{(a, a)}{-1} & \ddots & \vdots\\
+    \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & \ldots & 0 & \ldots & 1\\
+\end{pmatrix}$\\
+Свойства матриц:
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item $\det = \pm 1$
+        \item На $a_{ii}$ -- нечетные, на $a_{ij}$ -- четные
+    \end{enumerate}
+    \item Любая матрица, удовлетворяющая свойствам (a),(b), может быть разложена в произведение данных
+    \item $\letus B: \mc K B = \mc K', \det B = \pm 1, \mc K'$ -- искомое состояние(более крупный пятиугольник)\\
+    Тогда $\ex m: \mc K B^m = \mc K'$ и $B^m$ удовлетворяет условию (b)\\
+    \textbf{Доказательство}\\
+    Построим отображение $\pi$ из множества матриц с определителем $\pm 1$ и целыми коэффициентами (назовем множество $\nm{SL}(n, \Zset)$), сопоставляющее матрице аналогичную матрицу с элементами по модулю 2 (назовем множество $\nm{SL}(n, F_2)$)\\
+    $\pi$ -- гомоморфизм, т.е. $\pi(AB) = \pi(A)\pi(B)$\\
+    Заметим, что в $\nm{SL}(n, \Zset)$ и $\nm{SL}(n, F_2)$ у всех элементов есть обратные(т.к. определитель 1)\\
+    $\nm{SL}(n, F_2)$ -- конечная\\
+    В конечной группе $\fall g\in \nm{SL}(n, F_2)\ \ex m: g^m = E$\\
+    Это легко проверить: будем выписывать $g, g^2, g^3, \ldots$. Т.к. группа конечна, то у данной последовательности есть период. Тогда $\ex l \neq m > 0: g^m = g^l$\\
+    Тогда $g^mg^{-l}=g^{m-l} = E$ (обратная матрица существует, т.к. определитель 1)\\
+    Т.е. $\fall C \in \nm{SL}(n, \Zset)\ \ex m: (\pi C)^m = E \LRto \pi C^m = E$\\
+    Заметим, что $\mc K B = \lambda R \mc K, |\lambda| > 1$, где $R$ -- поворот\\
+    Тогда $\mc K B^m = \lambda^m R^m \mc K$\\
+    Отсюда $\mc K B^m$ -- переводит пятиугольник в пятиугольник большего размера
+\end{enumerate}
+Рассмотрим $B_0 = \begin{pmatrix}
+    -1 & -1 & -1 & -1\\
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+\end{pmatrix}$\\
+$B_0$ переводит один пятиугольник в другой\\
+\begin{tabular}{c|ccccc}
+    $\mc K$ & $v_1$ & $v_2$ & $v_3$ & $v_4$\\
+    $\mc K B_0$ & $v_2-v_1$ & $v_3-v_1$ & $v_4-v_1$ & $-v_1$\\
+    $\mc K B_0^2$ & $v_3-v_2$ & $v_4-v_2$ & $-v_2$ & $v_1-v_2$\\
+    $\mc K (B_0 + B_0^2)$ & $v_3-v_1$ & $\ldots$\\
+\end{tabular}
+Утверждается, что $B_0 + B_0^2$ дает в результате пятиугольник. Воспользуемся свойством 3 и возведем его в степень $m$. Теперь $(B_0 + B_0^2)^m$ представима как композиция прыжков\\
+\textbf{Определение}\\
+Пусть есть ряд $\sum_{i=1}^{+\infty} a_n$\\
+Тогда $\sum_{i=m}^{+\infty} a_n$ -- $m$-ый остаток ряда\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item Пусть $\sum a_n, \sum b_n$ -- сходится\\
+    $\sum (a_n + b_n)$ сходится\\
+    $\sum (a_n + b_n) = \sum a_n + \sum b_n$
+    \item Пусть $\sum a_n$ -- сходится\\
+    $\sum \lambda a_n$ сходится и равен $\lambda\sum a_n$
+    \item \begin{enumerate}
+        \item Если ряд сходится, то и любой остаток сходится\\
+        $\sum_{i=1}^{+\infty} a_i = \sum_{i=1}^{m-1} a_i + \sum_{i=m}^{+\infty} a_i$\\
+        \textbf{Доказательство}\\
+        $N > m: \sum_{i=1}^N a_i = \sum_{i=1}^{m-1} a_i + \sum_{i=m}^N a_i$\\
+        Левая часть сходится и конечна. Тогда и правая часть тоже
+        \item Если какой-то остаток сходится, то и ряд сходится\\
+        \textbf{Доказательство}\\
+        Аналогично
+        \item Пусть $r_m$ -- $m$-ый остаток ряда. Тогда $\sum a_n$ -- сходится $\LRto r_m \rto 0$\\
+        \textbf{Доказательство $\Rto$}\\
+        $\sum_{i=1}^{+\infty} a_i = \ub{\xrto[m\rto \infty]{} \sum_{i=1}^{+\infty} a_i}{\sum_{i=1}^{m-1} a_i} + r_m$\\
+        Тогда $r_m \rto 0$\\
+        \textbf{Доказательство $\Lto$}\\
+        Тривиально
+    \end{enumerate} 
+\end{enumerate}
+\textbf{Утверждение (необходимое условие сходимости ряда)}\\
+$\sum a_n$ -- сходится. Тогда $a_n \rto 0$\\
+\textbf{Доказательство}\\
+$S_N = \sum_{n=1}^N a_n$\\
+$a_n = S_n - S_{n-1} \xrto[n\rto \infty]{} 0$\\
+\textbf{Примеры}
+\begin{enumerate}
+    \item $\sum_n \frac1n$ расходится (по асимптотике гармонического ряда)
+    \item $\sum_n \sin (n\alpha), \alpha\in (0,\pi)$ -- расходится
+\end{enumerate}
+\textbf{Критерий Больцано-Коши о сходимости ряда}\\
+$\sum a_n$ -- сходится $\LRto \ex \lim S_n \in \Rset \LRto \fall \eps\ \ex K: \fall N,M > K |S_N-S_M| < \eps \LRto \fall \eps > 0\ \ex N: \fall n>K\ \fall m\ |a_{n+1} + a_{n+2} + \ldots + a_{n+m}| < \eps$\\
+\textbf{Примеры}
+\begin{enumerate}
+    \item $\sum \frac1n$\\
+    $|\frac1{n+1} + \ldots + \frac1{2n}| > n\frac1{2n} = frac12$
+    \item $\sum \frac1{n^2}$\\
+    $\frac1{n^2} \leq \frac1{n(n-1)} = \frac1{n-1}-\frac1n$\\
+    $\frac1{(n+1)^2} + \ldots + \frac1{(n+m)^2} \leq \frac1n - \frac1{n+1} + \ldots + \frac1{n+m-1} - \frac1{n+m} = \frac1n - \frac1{n+m} < \frac1n < \eps$
+\end{enumerate}
+\subsection{Сходимость положительных рядов}
+Обозначения:\\
+$(a) := (a_n)$\\
+$S_N^{(a)}$ -- частичная сумма ряда\\
+$S^{(a)}$ -- сумма ряда\\
+\textbf{Лемма}\\
+$a_n \geq 0$\\
+Тогда $a_n$ сходится $\LRto$ последовательность $S_N^{(a)}$ ограничена\\
+\textbf{Доказательство}\\
+Очевидно\\
+\textbf{Теорема (признак сравнения)}\\
+$a_n, b_n \geq 0$
+\begin{enumerate}
+    \item Если с некоторого места $a_n \leq k b_n, k > 0$, то\\
+    $\sum b_n$ -- сходится $\Rto \sum a_n$ -- сходится\\
+    $\sum a_n$ -- расходится $\Rto \sum b_n$ -- расходится
+    \item $b_n \neq 0, \lim \frac{a_n}{b_n} = l \in [0,+\infty]$\\
+    При $l = 0$ аналогично первой части\\
+    При $l \in (0, +\infty)\ \sum a_n$ -- сходится $\LRto \sum b_n$ -- сходится\\
+    При $l = +\infty \sum a_n$ -- сходится $\Rto \sum b_n$ -- сходится\\
+    $\sum b_n$ -- расходится $\Rto \sum a_n$ -- расходится
+    \item $a_n, b_n > 0$\\
+    С некоторого места $\frac{a_{n+1}}{a_n} \leq \frac{b_{n+1}}{b_n}$\\
+    Тогда аналогично первой части
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $\fall n\ a_n \leq k b_n \Rto S_n^{(a)} \leq k S_n^{(b)}$\\
+    $\sum b_n$ -- сходится $\Rto S_n^{(b)}$ -- ограничена сверху $\Rto S_n^{(a)}$ -- ограничена сверху $\Rto \sum a_n$ -- сходится
+    Если $\fall n\geq n_0\ a_n \leq b_n \Rto S_n^{(a)} \leq S_n^{(b)}$ -- тривиально
+    \item Если $l \in (0, +\infty)$\\
+    Для $\eps =\frac l2\ \ex n_0: \fall n > n_0\ \frac l2 < \frac{a_n}{b_n} < \frac32 l$\\
+    Тогда из п. 1
+    Если $l = 0$\\
+    $\fall \eps > 0\ ex n_0: \fall n > n_0\ \frac{a_n}{b_n} < \eps$\\
+    Тогда из п.1\\
+    Для $l=+\infty$ -- аналогично
+    \item $\frac{a_{n_0+1}}{a_{n_0}} < \frac{b_{n_0+1}}{b_{n_0}}$\\
+    $\frac{a_{n_0+2}}{a_{n_0+1}} < \frac{b_{n_0+2}}{b_{n_0+1}}$\\
+    $\vdots$\\
+    $\frac{a_n}{a_{n-1}} < \frac{b_n}{b_{n-1}}$\\
+    Отсюда $\frac{a_n}{a_{n_0}} < \frac{b_n}{b_{n_0}}$\\
+    Тогда $a_n < \frac{a_{n_0}}{b_{n_0}} b_n$ -- из п.1
+\end{enumerate}
 \end{document}
