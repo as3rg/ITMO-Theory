@@ -1554,4 +1554,115 @@ $a_n, b_n \geq 0$
     Отсюда $\frac{a_n}{a_{n_0}} < \frac{b_n}{b_{n_0}}$\\
     Тогда $a_n < \frac{a_{n_0}}{b_{n_0}} b_n$ -- из п.1
 \end{enumerate}
+\textbf{Теорема (признак Коши)}\\
+$\sum a_n, a_n \geq 0, K_n := \sqrt[n]{a_n}$\\
+Light:\begin{enumerate}
+    \item $\ex q < 1: $ НСНМ $K_n \leq q$\\
+    Тогда $\sum a_n$ сходится
+    \item $K_n \geq 1$ для бесконечного множества $n$. Тогда $a_n$ расходится
+\end{enumerate}
+Hard: $\letus\ \ex K:=\ulim K_n$. Тогда \begin{enumerate}
+    \item $K < 1$ -- ряд сходится
+    \item $K > 1$ -- ряд расходится
+\end{enumerate}
+\textbf{Замечание}\\
+При $K=1$ признак не работает\\
+Пример: $\sum\frac1n, \sum\frac1{n^2}, K = \ulim \sqrt[n]{\frac1n} = \ulim \sqrt[n]{\frac1{n^2}}=1$, но 1 ряд расходится, а второй сходится\\
+\textbf{Доказательство}\\
+Сравнить с прогрессией:\\
+Light:
+\begin{enumerate}
+    \item Пусть $K_n \leq q$ при $n \geq n_0$\\
+    Н.У.О. $n_0 = 1$\\
+    $\sqrt[n]{a_n} \leq q \LRto a_n \leq q^n$\\
+    Т.к. $q^n$ сходится, то и $a_n$ сходится
+    \item $\sqrt[n]{a_n} \geq 1 \LRto a_n \geq 1$ для бесконечного количества $n$\\
+    Тогда $a_n \not\rto 0 \Rto$ ряд расходится
+\end{enumerate}
+Hard:
+\begin{enumerate}
+    \item $q:=\frac{K+1}2$\\
+    Из технического описания $\ulim$: $\ex n_0: \fall n \geq n_0\ K_n < q$
+    \item Из технического описания $\ulim$: $\ex$ бесконечного много $n: \sqrt[n]{a_n} > 1$
+\end{enumerate}
+\textbf{Примеры}\\
+$\sum_{n=1}^{+\infty} n^{2023}e^{-n}$\\
+$K:= \lim \sqrt[n]{n^{2023}e^{-n}}=\frac1e < 1$\\
+\textbf{Теорема (признак Даламбера)}\\
+$\sum a_n, a_n > 0, D_n := \frac{a_{n+1}}{a_n}$\\
+Light:\begin{enumerate}
+    \item $\ex q < 1: $ НСНМ $D_n \leq q$\\
+    Тогда $\sum a_n$ сходится
+    \item $D_n \geq 1$ НСНМ. Тогда $a_n$ расходится
+\end{enumerate}
+Hard: $\letus\ \ex D:=\lim D_n$. Тогда \begin{enumerate}
+    \item $D < 1$ -- ряд сходится
+    \item $D > 1$ -- ряд расходится
+\end{enumerate}
+\textbf{Замечание}\\
+При $D=1$ признак не работает\\
+\textbf{Доказательство}\\
+Сравнить с прогрессией\\
+Light:\\
+\begin{enumerate}
+    \item Н.У.О. $\frac{a_{n+1}}{a_n} \leq q$ при $n \geq 1$\\
+    Т.е. $a_2 \leq qa_1$\\
+    $a_3 \leq qa^2$\\
+    $\vdots$\\
+    $a_n \leq qa_{k-1}$\\
+    $a_k \leq q^{k-1} a_1 = q^k(q^{-1})a_1$\\
+    Тогда по признаку сравнения ряд расходится
+    \item Н.У.О. $\frac{a_{n+1}}{a_n} \geq 1$ при $n \geq 1$\\
+    Т.е. $a_2 \geq a_1 > 0$\\
+    $a_3 \geq a_2$\\
+    $\vdots$\\
+    $a_n \geq a_{n-1}$\\
+    Отсюда $a_n \geq a_1$, т.е. $a_n \not\rto 0$
+\end{enumerate}
+Hard:
+\begin{enumerate}
+    \item $q = \frac{D+1}2$\\
+    Тогда по определению $lim$: $\ex n_0: \fall n \geq n_0\ D_n < q$\\
+    Дальше по Light 1
+    \item $\ex n_0: \fall n > n_0\ D_n > 1$\\
+    Далее по Light 2
+\end{enumerate}
+\textbf{Теорема (признак Раабе)}\\
+$\sum a_n, a_n > 0$\\
+Если $n(\frac{a_n}{a_{n+1}} - 1) \geq p > 1$ НСНМ, то ряд сходится\\
+Если $n(\frac{a_n}{a_{n+1}} - 1) \leq 1$ -- расходится\\
+\textbf{Доказательство}\\
+Сравните $a_n$ с $\frac1{n^p}$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $\frac{a_n}{a_{n+1}}\geq 1 + \frac pn$\\
+    Возьмем $1 < S < p$\\
+    Заметим, что $\lim_{n\rto +\infty} \frac{(1+\frac1n)^S-1}{\frac1n} = S < p$\\
+    Т.е. НСНМ $\frac{(1+\frac1n)^S-1}{\frac1n} < p$\\
+    $\frac{\frac1{n^S}}{\frac1{(1+n)^S}}=(1+\frac1n)^S < 1 + \frac pn$\\
+    $\frac{a_n}{a_{n+1}} > \frac{\frac1{n^S}}{\frac1{(1+n)^S}}$\\
+    $\sum \frac1{n^S}$ -- сходится\\
+    Тогда $\sum a_n$ -- сходится
+    \item $\frac{a_n}{a_{n+1}} \leq 1+\frac1n = \frac{\frac1n}{\frac1{n+1}}$\\
+    $\frac{\frac1{n+1}}{\frac1n} \leq \frac{a_{n+1}}{a_n}$
+    $\sum \frac1n$ -- расходится\\
+    Тогда $\sum a_n$ -- расходится
+\end{enumerate}
+\textbf{Следствие}\\
+Пусть $\ex \lim n(\frac{a_n}{a_{n+1}}-1) = p$\\
+При $p > 1$ -- ряд $\sum a_n$ сходится\\
+При $p < 1$ -- ряд $\sum a_n$ сходится\\
+\textbf{Теорема (интегральный признак Коши)}\\
+$f: [1, +\infty) \rto \Rset, f \geq 0$, непрерывная, монотонная\\
+Тогда $\sum_{k=1}^{+\infty} f(k), \int_1^{+\infty} f(x)\df x$ -- сходятся/расходятся одновременно\\
+\textbf{Доказательство}\\
+Если $f\not\equiv0$, возрастает, то тривиально:\\
+НСНМ $a$ $f \geq \eps$\\
+Тогда $\int_1^{+\infty} f \geq \int_a^{+\infty} \eps \df x = +\infty$ -- расходится\\
+Сумму также расходится\\
+Если $f$ убывает:\\
+$\sum_{k=1}^{n-1} f(k) \geq \int_1^n f(x)\df x$ -- из графика\\
+$\sum_{k=2}^n f(k) \leq \int_1^n f(x)\df x$ -- из графика\\
+Отсюда они сходятся/расходятся одновременно\\
+//todo continue url{https://www.youtube.com/live/46TKmI9S1Nw?feature=share&t=4855}
 \end{document}

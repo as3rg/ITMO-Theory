@@ -1728,6 +1728,284 @@ $f\land g := \frac{(p_1+p_2)!}{p_1!p_2!}\alt(\ub{\in T_{(p_1+p_2,0)}}{f \otimes 
     $f\land (g + h) = f \land g + f \land h$
     \item $(\lambda f) \land g = \lambda(f \land h) = f \land (\lambda g)$
     \item $f \land \ub{p_1\text{-форма}}\0 = \0 \land f = \ub{(p_1+p_2)\text{-форма}}\0$
-    \item $(f\land g)\land h = f \land (g\land h) = f \land g \land h$
+    \item $(f\land g)\land h = f \land (g\land h) = f \land g \land h$\\
+    \textbf{Доказательство}\\
+    % $g \land h = \frac{(p_2+p_3)!}{p_2!p_3!}\ub{\frac1{(p_2+p_3)!\sum_{\sigma\in S_{p_2+p_3}}(-1)^{\inv \sigma}\sigma(g\otimes h)}}{\alt(g\otimes h)} = \frac1{p_2!p_3!}\sum_{\sigma\in S_{p_2+p_3}}(-1)^{\inv \sigma}\sigma(g\otimes h)$\\
+    % $f\land (g\land h) = \frac{(p_1+p_2+p_3)!}{p_1!(p_2+p_3)!}\frac1{p_2!p_3!}\alt(f\otimes \sum_{\sigma\in S_{p_2+p_3}}(-1)^{\inv \sigma} \sigma(g\otimes h))$\\
+    $f \land g = \frac1{p_1!p_2!}\sum_{\sigma \in S_{p_1+p_2}}(-1)^{\inv \sigma} \sigma(f\otimes g)$\\
+    $(f\land g) \land h = \frac{(p_1+p_2+p_3)!}{(p_1+p_2)!p_1!p_2!p_3!}\alt(\sum_{\sigma \in S_{p_1+p_2}} (-1)^{\inv\sigma}\sigma(f\otimes g)\otimes h)$\\
+    Рассмотрим $\alt(\sum_{\sigma \in S_{p_1+p_2}} (-1)^{\inv\sigma}\sigma(f\otimes g)\otimes h) = \sum_{\sigma \in S_{p_1+p_2}} (-1)^{\inv\sigma}\alt(\ub{\tau(f\otimes g\otimes h)}{\sigma(f\otimes g)\otimes h}) = \ldots$\\
+    Возьмем $\tau$ -- перестановку такую, что первые $p_1+p_2$ индексов переставляются, а последние $p_3$ индекса не меняются\\
+    $(-1)^{\inv \sigma} = (-1)^{\inv \tau}$\\
+    $\ldots = \sum_{\sigma \in S_{p_1+p_2}} (-1)^{\inv \sigma}(-1)^{\inv \sigma} \alt(f\otimes g \otimes h) = \alt(f\otimes g\otimes h)\sum_{\sigma \in S_{p_1+p_2}} 1 = (p_1+p_2)!\alt(f\otimes g \otimes h)$\\
+    $(f\land g) \land h = \frac{(p_1+p_2+p_3)!}{p_1!p_2!p_3!}\alt(f\otimes g \otimes h)$\\
+    Аналогично $f \land (g\land h) = \frac{(p_1+p_2+p_3)!}{p_1!p_2!p_3!}\alt(f\otimes g \otimes h)$
+\end{enumerate}
+Пусть $f^i \in V^* = \Lambda^1V^*$ -- 1-форма, $j = 1\ldots p$\\
+$f^1\land \ldots \land f^p = \frac{p!}{1!\ldots1!} \alt(f^1\otimes \ldots \otimes f^p) \in \Lambda^p V^*$\\
+$\omega^{j_1}\land \ldots \land \omega^{j_p} = p! \alt(\omega^{j_1}\otimes \ldots \otimes \omega^{j_p}) \in \Lambda^p V^*$\\
+$\omega^i \land \omega^j = 2\alt(\omega^i \otimes \omega^j) = \omega^i\otimes \omega^j - \omega^j\otimes \omega^i$\\
+$\omega^i\land \omega^j = -\omega^j\land \omega^i$\\
+$\omega^i\land \omega_i = 0$\\
+$\omega^{j_1}\land \ldots \land \omega^\kappa \land \ldots \land \omega^m \land \ldots \land \omega^{j_p} = -\omega^{j_1}\land \ldots \land \omega^m \land \ldots \land \omega^\kappa \land \ldots \land \omega^{j_p}$\\
+$\omega^{j_1}\land \ldots \land \omega^\kappa \land \ldots \land \omega^\kappa \land \ldots \land \omega^{j_p} = 0$\\
+\textbf{Теорема (о базисе пространства внешних форм)}\\
+$\{ \omega^{j_1}\land \ldots \land \omega^{j_p}: j_1 < \ldots < j_p \}$ -- базис пространства $\Lambda^pV^*$\\
+\textbf{Доказательство}\\
+$\fall f \in \Lambda^p V^* \LRto \left\{\begin{array}{cc}
+    f\in T_{p,0}\\
+    \alt f = f
+\end{array}\right.$\\
+$f = \alpha_{j_1,\ldots,j_p}\omega^{j_1}\otimes \ldots \otimes \omega^{j_p}$\\
+$\alt f = \alpha_{j_1,\ldots,j_p}\omega^{j_1} \alt(\omega^{j_1}\otimes \ldots \otimes \omega^{j_p})$\\
+$ = \frac{\alpha_{j_1,\ldots,j_p}\omega^{j_1}}{p!}\omega^{j_1}\land \ldots \land \omega^{j_p} = \frac1{p!}\sum_{j_1<\ldots<j_p} \sum_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}\omega^{j_{\sigma_1}}\land \ldots \land \omega^{j_{\sigma_p}}$\\
+$ = \frac1{p!}\sum_{j_1<\ldots<j_p} \sum_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}(-1)^{\inv\sigma}\omega^{j_1}\land \ldots \land \omega^{j_p}$\\
+$ = \sum_{j_1<\ldots<j_p} \ub{\beta_{j_1,\ldots,j_p}}{(\frac1{p!}\sum_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}(-1)^{\inv\sigma})}\omega^{j_1}\land \ldots \land \omega^{j_p}$ -- порождающая\\
+Существуют координаты p-формы $f$ относительно базиса $\omega^{j_1}\land \ldots \land \omega^{j_p}m j_1<\ldots<j_p$\\
+Проверим линейную независимость\\
+$\0 = \sum_{j_1<\ldots<j_p}\beta_{j_1,\ldots,j_p}\ub{p!\ub{\frac1{p!}\sum_{\sigma\in S_p}(-1)^{\inv \sigma}\sigma(\omega^{j_1}\otimes\ldots\otimes\omega^{j_p})}{\alt(\omega^{j_1}\otimes \ldots\otimes\omega^{j_p})}}{\omega^{j_1}\land\ldots\land\omega^{j_p}} = \sum_{j_1<\ldots<j_p} \sigma_{\sigma\in S_p}(-1)^{\inv \sigma} \omega^{j_{\sigma_1}} \otimes \ldots \otimes \omega^{j_{\sigma_p}}$\\
+Т.к. базис $T_{(p,0)}$, $\fall \alpha_{j_1,\ldots,j_p} = 0$\\
+$\beta_{j_1,\ldots,j_p} = 0$
+Тогда линейно независимые\\
+\textbf{Следствие 1}\\
+$\dim \Lambda^pV^* = C_n^p = \frac{n!}{p!(n-p)!}$\\
+\textbf{Следствие 2}\\
+$\fall f \in \Lambda^P V^*$\\
+$f = \sum_{j_1<\ldots<j_p} \beta_{j_1,\ldots,j_p} \omega^{j_1}\land \ldots\land \omega^{j_p}$\\
+$\beta_{j_1,\ldots,j_p} = \alpha_{j_1,\ldots,j_p} = f(e_{j_1}, \ldots, e_{j_p}), j_1 < \ldots < j_p$\\
+\textbf{Доказательство}\\
+Из доказательства теоремы:\\
+$\beta_{j_1,\ldots,j_p} = \frac1{p!}\sum_{\sigma \in S_p} \alpha_{j_{\sigma_1},\ldots,j_{\sigma_p}}(-1)^{\inv \sigma} = \alpha_{[j_1,\ldots,j_p]}, j_1<\ldots<j_p$\\
+$f = \alt f \Rto \alpha_{[j_1, \ldots,j_p]} = \alpha_{j_1,\ldots,j_p}$, т.к. $j_1<\ldots<j_p$\\
+\textbf{Теорема}\\
+$f^i \in \Lambda^1 V^*, j = 1\ldots p$ -- 1-формы\\
+$\fall \xi_1,\ldots,\xi_p \in V$\\
+$(f^1 \land \ldots \land f^p)(\xi_1,\ldots,\xi_p) = \begin{vmatrix}
+    f^1(\xi_1) & \ldots & f^1(\xi_p)\\
+    \vdots & \ddots & \vdots\\
+    f^p(\xi_1) & \ldots & f^p(\xi_p)
+\end{vmatrix}$\\
+$f^j \lrto a^j = \begin{pmatrix}
+    a_1^j & \ldots & a_p^j
+\end{pmatrix}$ -- координатные строки в $V^*$ относительно $\omega^i$\\
+$\xi_i \lrto \begin{pmatrix}
+    \xi_i^1\\
+    \vdots\\
+    \xi_i^n
+\end{pmatrix}$ -- координаты в $V$ относительно $e_j$\\
+$f^j(\xi_i) = a_k^j \xi_i^k = a^j\xi_i$\\
+$f^1 \land \ldots \land f^p(\xi_1,\ldots,\xi_p) = \det(\begin{pmatrix}
+    a^1\\
+    \vdots\\
+    a^p
+\end{pmatrix} \cdot \begin{pmatrix}
+    \xi_1 & \ldots & \xi_p
+\end{pmatrix})$\\
+\textbf{Замечание}\\
+Если $p=n$: $f^1 \land \ldots \land f^p(\xi_1,\ldots,\xi_p)=\det A \det \xi$\\
+\textbf{Доказательство}\\
+$f^1 \land \ldots \land f^p(\xi_1,\ldots,\xi_p) = p!\frac1{p!}\sum_{\sigma \in S_p} (-1)^{\inv \sigma} \sigma(f^1 \otimes \ldots\otimes f^p)(\xi_1,\ldots,\xi_p) = \sum_{\sigma\in S_p} (-1)^{\inv \sigma} f^{\sigma_1}\otimes\ldots\otimes f^{\sigma_p}(\xi_1,\ldots,\xi_p) = \sum_{\sigma \in S_p} (-1)^{\inv \sigma} f^{\sigma_1}(\xi_1)\ldots f^{\sigma_p}(\xi_p) = \det (f^i(\xi_j))$\\
+\textbf{Следствие 1}\\
+$\fall \xi_1,\ldots,\xi_p \in V\ \omega^{j_1},\ldots,\omega^{j_p}(\xi_1,\ldots,\xi_p) = \begin{vmatrix}
+    \xi_1^{j_1} & \ldots & \xi_p^{j_1}\\
+    \vdots & \ddots & \ldots\\
+    \xi_1^{j_p} & \ldots & \xi_p^{j_p}
+\end{vmatrix}$\\
+\textbf{Следствие 2}\\
+$f^1 \land \ldots \land f^p = \sum_{j_1<\ldots < j_p} \ub{\beta_{j_1,\ldots, j_p} \text{ для } f^1\land \ldots \land f^p}{\begin{vmatrix}
+    a^1_{j_1} & \ldots & a^1_{j_p}\\
+    \vdots & \ddots & \vdots\\
+    a^p_{j_1} & \ldots & a^p_{j_p}
+\end{vmatrix}} \omega^{j_1} \land \ldots \land \omega^{j_p}$\\
+\textbf{Доказательство}\\
+$\beta_{j_1 < \ldots < j_p} = \alpha_{j_1,\ldots, j_p} = (f^1\land\ldots \land f^p)(e_{j_1},\ldots,e_{j_p}) = \begin{vmatrix}
+    f^1(e_{j_1}) & \ldots & f^1(e_{j_p})\\
+    \vdots & \ddots & \vdots\\
+    f^p(e_{j_1}) & \ldots & f^p(e_{j_p})
+\end{vmatrix} = \begin{vmatrix}
+    a^1_{j_1} & \ldots & a^1_{j_p}\\
+    \vdots & \ddots & \vdots\\
+    a^p_{j_1} & \ldots & a^p_{j_p}
+\end{vmatrix}$, т.к. $a_j^i = f^i(e_j)$ по определению коэффициентов формы $f$\\
+В частности, при $p=n$: $f^1\land\ldots\land f^n = \det A \omega^1 \land \ldots \land \omega^n$\\
+\textbf{Следствие 3}\\
+$\det(\begin{pmatrix}
+    a^1\\\vdots\\a^p
+\end{pmatrix}\cdot \begin{pmatrix}
+    \xi_1 & \ldots & \xi_p
+\end{pmatrix}) = \sum_{j_1<\ldots < j_p} \begin{vmatrix}
+    a^1_{j_1} & \ldots & a^1_{j_p}\\
+    \vdots & \ddots & \vdots\\
+    a^p_{j_1} & \ldots & a^p_{j_p}
+\end{vmatrix}\cdot \begin{vmatrix}
+    \xi_1^{j_1} & \ldots & \xi_p^{j_1}\\
+    \vdots & \ddots & \vdots\\
+    \xi_1^{j_p} & \ldots & \xi_p^{j_p}
+\end{vmatrix}$\\
+В частности, при $p=n$: $\det(A\xi) = \det A \det \xi$\\
+\textbf{Определение}\\
+Пусть $g \in T_{0,q}, \alt g = g$:\\
+$g$ называется \textit{поливектор}(q-вектор)\\
+Если $q \in T_{(0,1)}$ -- $g$ -- 1-вектор\\
+Линейное пространство $q$-векторов $\mc V^qV$\\
+Аналог внешнего произведения: $g_1 \in \mc V^{q_1}V, g_2 \in \mc V^{q_2} V, g_1\lor g_2 = \frac{(p_1+p_2)!}{p_1!p_2!}\alt(g_1 \otimes g_2)$ -- по верхним индексам\\
+$\{e_{i_1}\land \ldots \land e_{i_q}, i_1 < \ldots < i_q\}$ -- базис $\mc V^qV$\\
+Пусть $p=q$\\
+$\fall f^1, \ldots, f^p \in V^*$\\
+$V \cong V^{**}\ \fall \xi \in V\ \xi(f) = f(\xi)$\\
+$\xi \in \mc V^1 V$\\
+$\xi_1\lor \ldots\lor\xi_p(f^1, \ldots, f^p) = \begin{vmatrix}
+    \xi_1(f^1) & \ldots & \xi_p(f^1)\\
+    \vdots & \ddots & \vdots\\
+    \xi_1(f^p) & \ldots & \xi_p(f^p)
+\end{vmatrix} = \begin{vmatrix}
+    f^1(\xi_1) & \ldots & f^1(\xi_p)\\
+    \vdots & \ddots & \vdots\\
+    f^p(\xi_1) & \ldots & f^p(\xi_p)
+\end{vmatrix} = f^1\land \ldots \land f^p(\xi_1,\ldots,\xi_p)$
+\subsection{Евклидовы и унитарные пространства}
+\subsubsection{Скалярное и псевдоскалярное произведение. Евклидово и унитарное пространство. Норма в евклидовом и унитарном пространстве}
+\textbf{Определение}\\
+Пусть $V$ -- линейное пространство над $\Rset$ (вещественное линейное пространство)\\
+$(\cdot,\cdot): V^2 \rto \Rset$ называется скалярным произведением, если\\
+$\fall x,y \in V, \lambda \in \Rset$
+\begin{enumerate}
+    \item $(x, y) = (y,x)$ -- симметричность
+    \item $(x_1 + x_2, y) = (x_1, y) + (x_2, y)$ -- аддитивность по первому аргументу
+    \item $(\lambda x, y) = \lambda(x,y)$ -- однородность по 1 аргументу
+    \item $(x, x) \geq 0$, причем $=0 \LRto x=\0$
+\end{enumerate}
+\textbf{Следствие}\\
+Линейность по второму аргументу\\
+$(V, (\cdot, \cdot))$ -- вещественное линейное пространство с заданным на нем скалярным произведением -- Евклидово пространство\\
+\textbf{Определение}\\
+Пусть $V$ -- линейное пространство над $\Cset$\\
+$(\cdot,\cdot): V^2 \rto \Rset$ называется псевдоскалярным произведением, если\\
+$\fall x,y \in V, \lambda \in \Cset$
+\begin{enumerate}
+    \item $(x, y) = \ol{(y,x)}$
+    \item $(x_1 + x_2, y) = (x_1, y) + (x_2, y)$ -- аддитивность по первому аргументу
+    \item $(\lambda x, y) = \lambda(x,y)$ -- однородность по 1 аргументу
+    \item $(x,x) = \ol{(x, x)} \Rto (x,x) \in \Rset$\\
+    $(x, x) \geq 0$, причем $=0 \LRto x=\0$
+\end{enumerate}
+\textbf{Следствие}\\
+$(x, y_1 + y_2) = (x, y_1) + (x, y_2)$ -- аддитивность по второму аргументу\\
+$(x, \lambda y) = \ol{(\lambda y,x)} = \ol\lambda (x, y)$\\
+Вместе: полуторолинейность\\
+$(\Cset, (\cdot, \cdot))$ -- унитарное пространство (псевдоевклидово)\\
+\textbf{Замечание}\\
+Иногда будем называть псевдоскалярное пространство скалярным (читай контекст)\\
+\textbf{Примеры}
+\begin{enumerate}
+    \item $V_3, (\vec a, \vec b) = |\vec a||\vec b|\cos \phi$
+    \item $\Rset^n, x \in \Rset^n, x = \begin{pmatrix}
+        x_1\\\vdots\\x_n
+    \end{pmatrix}, x_i \in \Rset$\\
+    $(x,y) := \sum x_iy_i$
+    \item $\Cset^n, x \in \Cset^n, x = \begin{pmatrix}
+        x_1\\\vdots\\x_n
+    \end{pmatrix}, x_i \in \Cset$\\
+    $(x,y) = \sum x_i\ol{y_i}$
+\end{enumerate}
+\textbf{Определение}\\
+Норма $\|\cdot\|: V\rto K, V$ -- V -- линейное пространство над полем $K$
+\begin{enumerate}
+    \item $\|x\| = 0 \Rto x = \0$ -- невырожденность
+    \item $\|\lambda x \| = |\lambda| \|x\|$ -- однородность
+    \item $\|x+y\| \leq \|x\| + \|y\|$
+\end{enumerate}
+\textbf{Определение}\\
+$(V, (\cdot, \cdot))$ -- евклидово/унитарное пространство\\
+$\|x\|:=\sqrt{(x,x)}$ -- евклидова норма\\
+Докажем аксиомы
+\begin{enumerate}
+    \item Очевидно
+    \item $\|\lambda x\| = \sqrt{(\lambda x, \lambda x)} = \sqrt{(\lambda\ol\lambda)(x,x)} = |\lambda|\sqrt{(x,x)} = |\lambda|\|x\|$
+    \item 
+    \textbf{К.Б.Ш.}\\
+    $|(x,x)| \leq \|x\|\|y\|$, причем $|(x,x)| = \|x\|\|y\| \LRto x,y$ линейно зависимых\\
+    \textbf{Доказательство}\\
+    $\fall \alpha, \beta \in \Cset$\\
+    $0 \leq (\alpha x + \beta y, \alpha x + \beta y) = \alpha\ol\alpha(x,x) + \alpha\ol\beta(x,y) + \ol\alpha\beta(y,x) + \beta\ol\beta(y,y) = \ldots$\\
+    Пусть $\alpha:= (y,y) \in \Rset$\\
+    $\beta := -(x,y) \in \Cset$\\
+    $\ldots = \alpha(\|x\|^2\|x\|^2 - \ub{|(x,y)|^2}{\ol{(x,y)}(x,y)} - (x,y)(y,x) + |(x,y)|^2) = \alpha(\|x\|^2\|y\|^2 - (x,y)^2) \geq 0$\\
+    $\alpha \geq 0$\\
+    Отсюда $\|x\|\|y\| \geq (x,y)$\\
+    Если $x = 0$ или $y = 0$, то неравенство 0\\
+    Если $x,y\neq 0, |(x,y)|=\|x\|\|y\|$\\
+    $\alpha, \beta \neq 0$
+    Тогда $0 \leq (\alpha x + \beta y, \alpha x + \beta y) = \alpha(\ub{0}{\|y\|^2\|x\|^2 - |(x,y)|^2}) = 0$\\
+    Тогда $\ex \alpha, \beta \neq 0 : \|\alpha x + \beta y\| = 0 \LRto \alpha x + \beta y = \0 \LRto$ $x, y$ линейно зависимые\\
+    Пусть $\ex \alpha, \beta \neq 0: \alpha x + \beta y = \0$\\
+    $\left\{\begin{array}{ccc}
+        \ub{\neq 0}{\alpha (x,x)} + \beta(y,x) = 0 & \Rto & \alpha\|x\|^2 = -\beta(y,x)\\
+        \alpha (x,y) + \ub{\neq 0}{\beta(y,y)} = 0 & \Rto & \beta\|y\|^2 = -\alpha(x,y)
+    \end{array}\right.$\\
+    Тогда $\alpha\beta\|x\|^2\|y\|^2 = \alpha\beta(y,x)(x,y) = |(x,y)|^2$\\
+    \textbf{Доказательство выполнения аксиомы}\\
+    $\|x+y\|^2 = (x+y,x+y) = \|x\|^2 + (x,y) + (y, x) + \|y\|^2 = \|x\|^2 + \|y\|^2 + 2\ub{\leq |(x,y)|}{\Re((x,y))} \leq \|x\|^2 + \|y\|^2 + 2|(x,y)| \leq \|x\|^2+\|y\|^2 + 2\|x\|\|y\| = (\|x\|+\|y\|)^2$\\
+    $\|x+y\| \leq \|x\| + \|y\|$
+\end{enumerate}
+\textbf{Определение}\\
+$\fall x, y \in (V, (\cdot, \cdot))$\\
+$\|x\|$ -- длина вектора\\
+$\cos \angle(x,y) = \frac{(x,y)}{\|x\|\|y\|}$ -- косинус угла между векторами\\
+$|\cos \angle(x,y)| \leq 1$ -- по КБШ\\
+\subsubsection{Процесс ортогональный Грама-Шмидта. О.Н.Б. (ортонормированный базис). Ортогональное дополнение}
+\textbf{Определение}\\
+$(V, (\cdot,\cdot))$ -- евклидово/унитарное\\
+$\fall x,y \in V$ называются ортогональными, если $(x,y) = 0$\\
+$\0$ ортогонален всем векторам\\
+\textbf{Определение}\\
+Система векторов $v_1, \ldots, v_m$ называется ортогональной, если вектора попарно ортогональны\\
+Система векторов называется ортонормированными, если вектора попарно ортогональны и нормированы($\|v_i\| = 1$)\\
+\textbf{Утверждение}\\
+Ненулевые $v_1, \ldots, v_m$ ортогональны $\Rto v_1,\ldots, v_m$ система линейно независимая\\
+\textbf{Доказательство}\\
+Пусть $\sum_{k=1}^m \alpha_k v_k = \0$\\
+$v_j(\sum_{k=1}^m \alpha_k v_k) = \sum_{k=1}^m \alpha_k v_jv_k = \0$\\
+$\sum_{k=1}^m \alpha_k v_jv_k = \sum_{k=1}^m \alpha_k \ub{\0 \text{ при } k\neq j}{v_jv_k} = \alpha_j \ub{\neq 0}{(v_j, v_j)}$\\
+Тогда $\fall i\ \alpha_i = 0$\\
+Отсюда вектора линейно независимые\\
+\textbf{Теорема (процесс ортогонализации Грама-Шмидта)}\\
+Любую систему векторов $a_1, \ldots, a_m$ можно заменить на систему ортогональных векторов $b_1,\ldots, b_k$ таким образом, что $\span(a_1,\ldots, a_m) = \span(b_1, \ldots, b_k)$, причем $k \leq m$, $k = m \LRto$ система линейно независимая\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Пусть $a_1, \ldots, a_m$ линейно независимые
+    Построим $b$ индукционно:
+    \begin{enumerate}
+        \item Возьмем $a_1, a_2$\\
+        $b_1:= a_1$\\
+        $b_2 := a_2 - c_1a_1$\\
+        $c_1: (b_2, b_1) = 0 \LRto 0 = (a_2, b_1) - c_1(a_1,a_1) \LRto c_1 = \frac{(a_2, b_1)}{(a_1,a_1)}$\\
+        $\span(a_1,a_2) = \span(b_1,b_2)$, т.к. $b_2$ линейно независим с $a_1,a_2$\\
+        \item $a_1,\ldots,a_k \rto b_1,\ldots,b_k$ -- ортогональные\\
+        $\ub{\text{линейно независимый}}{\span(a_1, \ldots, a_k)} = \ub{\text{попарно орт.}}{\span(b_1,\ldots,b_k)} \Rto$ линейно независимые\\
+        \item Покажем для $k+1$\\
+        $b_{k+1} = a_{k+1} - \sum_{i=1}^k c_ib_i$\\
+        $c_i$ такой, чтобы $\fall i = 1\ldots k\ (b_{k+1}, b_i) = 0$
+        $c_i := \frac{(a_{k+1}, b_i)}{(b_i, b_i)}$\\
+        $b_{k+1} \in \span(a_1,\ldots, a_{k+1})$\\
+        $b_{k+1} \perp b_j, j = 1\ldots k$\\
+        $\span(a_1,\ldots,a_k) = \span(b_1, \ldots, b_k)$\\
+        $b_{k+1}$ линейно независимый с $(a_1, \ldots, a_k)$\\
+        $\span(a_1,\ldots, a_{k+1}) = \span(b_1,\ldots, b_{k+1})$\\
+    \end{enumerate}
+    \item Если $a_1, \ldots, a_m$ линейно зависимые, предварительно выполним прополку $a$\\
+    Если без прополки, то некоторые $b_i$ будут $\0$
+\end{enumerate}
+\textbf{Определение}\\
+$L \subset V$ -- линейное подпространство\\
+$L^\perp = \{y \in V: (x,y) = 0 \fall x \in L\}$ -- ортогональное дополнение\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $L^\perp$ -- линейное подпространство
+    \item $V = L \oplus L^\perp$
+    \item $(L^\perp)^\perp = L$
+    \item $(L_1 \cap L_2)^\perp = L_1^\perp \cup L_2^\perp$
+    $(L_1 \cup L_2)^\perp = L_1^\perp \cap L_2^\perp$
+    \item $\0^\perp = V, V^\perp = \0$
 \end{enumerate}
 \end{document}
