@@ -1980,9 +1980,9 @@ $\sum_{k=1}^m \alpha_k v_jv_k = \sum_{k=1}^m \alpha_k \ub{\0 \text{ при } k\n
         $b_1:= a_1$\\
         $b_2 := a_2 - c_1a_1$\\
         $c_1: (b_2, b_1) = 0 \LRto 0 = (a_2, b_1) - c_1(a_1,a_1) \LRto c_1 = \frac{(a_2, b_1)}{(a_1,a_1)}$\\
-        $\span(a_1,a_2) = \span(b_1,b_2)$, т.к. $b_2$ линейно независим с $a_1,a_2$\\
+        $\span(a_1,a_2) = \span(b_1,b_2)$, т.к. $b_2$ линейно независим с $a_1,a_2$
         \item $a_1,\ldots,a_k \rto b_1,\ldots,b_k$ -- ортогональные\\
-        $\ub{\text{линейно независимый}}{\span(a_1, \ldots, a_k)} = \ub{\text{попарно орт.}}{\span(b_1,\ldots,b_k)} \Rto$ линейно независимые\\
+        $\ub{\text{линейно независимый}}{\span(a_1, \ldots, a_k)} = \ub{\text{попарно орт.}}{\span(b_1,\ldots,b_k)} \Rto$ линейно независимые
         \item Покажем для $k+1$\\
         $b_{k+1} = a_{k+1} - \sum_{i=1}^k c_ib_i$\\
         $c_i$ такой, чтобы $\fall i = 1\ldots k\ (b_{k+1}, b_i) = 0$
@@ -1991,21 +1991,280 @@ $\sum_{k=1}^m \alpha_k v_jv_k = \sum_{k=1}^m \alpha_k \ub{\0 \text{ при } k\n
         $b_{k+1} \perp b_j, j = 1\ldots k$\\
         $\span(a_1,\ldots,a_k) = \span(b_1, \ldots, b_k)$\\
         $b_{k+1}$ линейно независимый с $(a_1, \ldots, a_k)$\\
-        $\span(a_1,\ldots, a_{k+1}) = \span(b_1,\ldots, b_{k+1})$\\
+        $\span(a_1,\ldots, a_{k+1}) = \span(b_1,\ldots, b_{k+1})$
     \end{enumerate}
     \item Если $a_1, \ldots, a_m$ линейно зависимые, предварительно выполним прополку $a$\\
     Если без прополки, то некоторые $b_i$ будут $\0$
 \end{enumerate}
+\textbf{Следствие 1}\\
+В $(V, (\cdot, \cdot))$ всегда существует о.н.б.\\
+\textbf{Доказательство}\\
+Применим Грама-Шмидта и нормируем\\
+\textbf{Следствие 2}\\
+В $(V, (\cdot, \cdot))$ любую ортогональную систему можно дополнить до ортонормированного базиса\\
 \textbf{Определение}\\
 $L \subset V$ -- линейное подпространство\\
 $L^\perp = \{y \in V: (x,y) = 0 \fall x \in L\}$ -- ортогональное дополнение\\
 \textbf{Свойства}
 \begin{enumerate}
-    \item $L^\perp$ -- линейное подпространство
-    \item $V = L \oplus L^\perp$
-    \item $(L^\perp)^\perp = L$
-    \item $(L_1 \cap L_2)^\perp = L_1^\perp \cup L_2^\perp$
-    $(L_1 \cup L_2)^\perp = L_1^\perp \cap L_2^\perp$
+    \item $L^\perp$ -- линейное подпространство\\
+    \textbf{Доказательство}\\
+    $\fall y_1, y_2 \in L^\perp, \lambda \in K, x \in L\ (x,\lambda y_1 + y_2) = \ol\lambda\ub{0}{(x,y_1)} + \ub{0}{(x, y_2)}$
+    Отсюда $\lambda y_1 + y_2 \in L^\perp$ -- линейное подпространство
+    \item $V = L \oplus L^\perp$\\
+    \textbf{Доказательство}\\
+    Докажем, что $L, L^\perp$ -- дизъюнктные\\
+    $y \in L \cap L^\perp \Rto (y, y)=0 \LRto y = \0$ -- дизъюнктные\\
+    Пусть $L = \span(a_1, \ldots, a_k)$\\
+    Дополним $a_1,\ldots, a_k$ векторами $a_{k+1}, \ldots, a_n$ до базиса $V$\\
+    Тогда $V = L \oplus \span(a_{k+1},\ldots, a_n)$\\
+    $\fall a_{k+j}\ (a_i, a_{k+j}) = 0$\\
+    Тогда $(a_i, \sum_{j=1}^{n-k} \alpha_j a_{k+j}) = 0$\\
+    Тогда $(\sum_{i = 1}^k \beta_i a_i, \sum_{j=1}^{n-k} a_{k+j}) = 0$\\
+    Отсюда $\span(a_{k+1}, \ldots, a_n) \subset L^\perp$\\
+    $V = L \oplus \span(a_{k+1}, \ldots, a_n), L, L^\perp$ -- дизъюнктные\\
+    Тогда $L^\perp = \span(a_{k+1},\ldots, a_n)$\\
+    Тогда $V = L \oplus L^\perp$
+    \item $(L^\perp)^\perp = L$\\
+    \textbf{Доказательство}\\
+    $L\oplus L^\perp = V = L\perp \oplus (L^\perp)^\perp$\\
+    $\fall x \in L, y \in L^\perp (x, y) = 0 \Rto x \in (L^\perp)^\perp \Rto L \subset (L^\perp)^\perp$\\
+    Тогда $L = L^\perp$
+    \item $(L_1 \cap L_2)^\perp = L_1^\perp + L_2^\perp$\\
+    $(L_1 + L_2)^\perp = L_1^\perp \cap L_2^\perp$\\
+    \textbf{Доказательство}\\
+    Докажем 1\\
+    Пусть $y \in (L_1 + L_2)^\perp$\\
+    Тогда $\fall \ub{\in L_1}{x_1} + \ub{\in L_2}{x_2} \in L_1 + L_2\ (x_1 + x_2, y) = (x_1, y) + (x_2, y) = 0$\\
+    \begin{enumerate}
+        \item $x_2 = 0$\\
+        $\fall x_1 \in L_1\ (x_1, y) = 0 \Rto y \in L^\perp$\\
+        $(x_2, y) = 0$\\
+        Тогда $y \in L_1^\perp \cap L_2^\perp$\\
+        Отсюда $(L_1+L_2)^\perp \subset L_1^\perp \cap L_2^\perp$
+        Обратно: $y \in L_1^\perp \cap L_2^\perp$\\
+        $\fall x_1\ (x_1, y) = 0$\\
+        $\fall x_2\ (x_2, y) = 0$\\
+        Отсюда $(x_1 + x_2, y) = 0 \Rto y \in (L_1 + L_2)^\perp$\\
+        $L_1^\perp \cap L_2^\perp \subset (L_1 + L_2)^\perp$
+        \item Из предыдущего пункта\\
+        $(L_1^\perp + L_2^\perp)^\perp = (L_1^\perp)^\perp \cap (L_2^\perp)^\perp = L_1 \cap L_2$\\
+        $L_1^\perp + L_2^\perp = ((L_1^\perp + L_2^\perp)^\perp)^\perp = (L_1 \cap L_2)^\perp$
+    \end{enumerate}
     \item $\0^\perp = V, V^\perp = \0$
 \end{enumerate}
+\subsection{Матрица Грама и ее своства. Ортогональные и унитарные матрицы}
+$(V, (\cdot, \cdot))$\\
+$e_1, \ldots, e_n$ -- базис\\
+$\fall x,y \in V\ x \us e \lrto \begin{pmatrix}
+    x_1\\\vdots\\x_n\\
+\end{pmatrix}\\
+    y \us e \lrto \begin{pmatrix}
+        y_1\\\vdots\\y_n
+\end{pmatrix}$\\
+$(x,y) = (\sum_{i=1}^n x_i e_i, \sum_{i=1}^n y_ie_i) = \sum_i \sum j x_i \ol{y_j} (e_i, e_j)$\\
+Пусть $g_{ij} = (e_i, e_j)$\\
+$\Gamma = (g_{ij})$ -- матрица грамма базиса $e_1, \ldots, e_n$\\
+$(x,y) = x^\perp \Gamma \ol y$ -- координатная форма записи скалярного произведения\\
+В частности, если $e$ -- о.н.б., то $g_{ij} = \sigma_{ij}$\\
+$\Gamma = E$\\
+$(x, y) = x^\perp \ol y = \sum_{i=1}^n x_i \ol{y_i}$\\
+$(x,x) = x^\perp \ol x = \sum_{i=1}^n x_i \ol{x_i} = \sum_{i=1}^n |x_i|^2$\\
+\textbf{Замечание}\\
+Если $V$ евклидово пространство, то, очевидно, все комплексные сопряжения можно убрать\\
+\textbf{Определение}\\
+$A_{n\times n}$\\
+$A^*$ называется сопряженной к $A$, если $A^* = \ol{A^T}$\\
+$*$ -- операция сопряжения\\
+$(A+\lambda B)^* = A^* + \ol \lambda B^*$\\
+\textbf{Определение}\\
+Матрица $A_{n \times n}$ -- самосопряженная, если $A^* = A$\\
+Если $a_{ij} \in \Rset$, то самосопряженная = симметричная\\
+Если $a_{ij} \in \Cset$, то самосопряженная = эрмитова\\
+Очевидно, что $\Gamma^* = \Gamma$, т.е. самосопряженная\\
+\textbf{Определение}\\
+$a_1, \ldots, a_k \in V$\\
+$G(a_1,\ldots, a_k) = ((a_i, a_j))_{k\times k}$ -- матрица Грама для системы векторов\\
+$\Gamma = G(e_1,\ldots, e_n)$\\
+$G = G^*$\\
+\textbf{Теорема об определителе матрица Грама}\\
+$g(a_1, \ldots, a_k) := \det G(a_1,\ldots, a_k)$\\
+Применим к векторам алгоритм Грама-Шмидта\\
+$a_1, \ldots, a_k \leadsto b_1, \ldots, b_k$\\
+Тогда $g(a_1, \ldots, a_k) = \prod_{i=1}^k \|b_i\|^2$\\
+\textbf{Доказательство}\\
+$g(a_1, \ldots, a_k) = \begin{vmatrix}
+    (a_1, a_1) & (a_1, a_2) & \ldots & (a_1, a_k)\\
+    \vdots & \ddots & \ddots & \vdots\\
+    (a_k, a_1) & (a_k, a_2) & \ldots & (a_k, a_k)\\
+\end{vmatrix}$
+Заменим в матрица все $a_1$ на $b_1$\\
+2 строка -= 1 строка $\cdot c_1$\\
+Тогда $\fall j = 2\ldots k\ \begin{array}{ll}
+    (a_2, a_j) - c_1 (b_1, a_j) = (a_2-c_1b_1, a_j) = (b_2, a_j)\\
+    (a_2, b_1) - c_1(b_1,b_1) = (b_2, b_1) = 0
+\end{array}$\\
+2 столбец -= 1 столбец $\cdot c_1$\\\\
+$\fall j=3\ldots k\ \begin{array}{ll}
+    (a_j, a_2) - c_1(a_j b_1) = (a_j, a_2 - c_1 b_1) = (a_j, b_2)\\
+    (b_1, a_2) - c_1(b_1, a_1) = (b_1, b_2) = 0
+\end{array}$\\
+Тогда после этих двух шагов в матрице не осталось $a_2$\\
+Применим аналогичные действия, зная, что $b_i = a_i - c_1 b_1 - \ldots - c_{i-1}b_{i-1}$\\
+Таким образом мы получим матрицу, где вместо $a_i$ будут $b_i$\\
+По построению определитель не поменялся\\
+Тогда $g(a_1, \ldots, a_k) = g(b_1, \ldots, b_k) = \det \nm{diag}(\|b_1\|^2, \ldots, \|b_k\|^2) = \prod_{i=1}^k \|b_i\|^2$\\
+\textbf{Следствие 1}\\
+$a_1, \ldots, a_k$ -- линейно независимые $\LRto g(a_1, \ldots, a_k) > 0$\\
+\textbf{Доказательство}\\
+Если $a_1, \ldots, a_k$ линейно незавиимые $\us{\text{Г.Ш.}}\lrto b_1, \ldots, b_k$ -- линейно независимые $\LRto \|b_i\|^2 > 0$\\
+\textbf{Следствие 2}\\
+$a_1, \ldots, a_{k-1}$ -- линейно независимые\\
+$\|b_k\|^2 = \frac{g(a_1, \ldots, a_k)}{g(a_1, \ldots, a_{k-1})}$\\
+\textbf{Свойства матрицы Грама}\\
+$\Gamma = G(e_1, \ldots, e_n), e$ -- базис\\
+1 + 2 -- положительно определенная матрица ($\Gamma > 0$)
+\begin{enumerate}
+    \item $\Gamma = \Gamma^*$
+    \item $\fall x \neq \0\ x^T\Gamma \ol x > 0$\\
+    \item $\fall \delta k = g(e_1, \ldots, e_k)\ \delta k > 0$\\
+    $\delta k$ -- угловой минор\\
+    В частности, при $k = n \delta k = g > 0$, т.е. $\Gamma$ невырожденная\\
+    \textbf{Доказательство}\\
+    $e_1, \ldots, e_k$ -- линейно независимые $\LRto g(e_1, \ldots, e_k) > 0$
+    \item $e_1, \ldots, e_n; e'_1, \ldots, e'_n$ -- базисы $V$\\
+    $T = T_{e\rto e'}$\\
+    $\Gamma = G(e_1, \ldots, e_n)$\\
+    $\Gamma' = G(e'_1, \ldots, e'_n)$\\
+    Тогда $\Gamma' = T^T \Gamma \ol T$\\
+    \textbf{Доказательство}\\
+    $(x, y) = x'^T \Gamma' \ol y' = x^T \Gamma \ol y$\\
+    $\Gamma' = (g'_{ij})$\\
+    $g'_{ij} = (e'_1, \ldots, e'_j) = T_i^T \Gamma \ol{T_j} \LRto \Gamma' = T^T \Gamma \ol T$
+\end{enumerate}
+В частности, если $e, e'$ -- о.н.б. $V$\\
+$\Gamma' = E = \Gamma$\\
+$T^T \ol T = E \LRto \ol{T^T}T = E \LRto T^*T = E \LRto T^{-1} = T^*$\\
+\textbf{Определение}\\
+Невырожденная матрица $Q$ вещественная/комплексная называется ортогональной/унитарной, если $Q^* = Q^{-1}$\\
+\textbf{Свойства унитарной/ортогональной матрицы}
+\begin{enumerate}
+    \item $Q$ -- унитарна/ортогональна $\LRto$ строки(столбцы) попарно ортогональны в стандартном скалярном произведении пространств $\Cset^n(\Rset^n)$\\
+    \textbf{Доказательство}\\
+    $Q$ унитарна/ортогональна $\LRto Q^*Q = QQ^* = E$\\
+    Пусть $Q = \begin{pmatrix}
+        Q_1 & Q_2 & \ldots & Q_n
+    \end{pmatrix}$\\
+    $Q^*Q = \ol{Q^T}Q = \begin{pmatrix}
+        \ol{Q_1^T}\\
+        \vdots\\
+        \ol{Q_n^T}
+    \end{pmatrix}\cdot \begin{pmatrix}
+        Q_1 & Q_2 & \ldots & Q_n
+    \end{pmatrix} = ((Q_i, Q_j)) = E$
+    \item $Q$ унитарна/ортогональна $\LRto Q^{-1}$ унитарна ортогональна\\
+    $\ol A \cdot (\ol{A})^{-1}\ol{AA^{-1}} = \ol E = E$
+    $(Q^{-1})^* = \ol{(Q^{-1})^T}= (\ol{Q^T})^{-1} = (Q^*)^{-1} = Q$\\
+    Тогда $Q = (Q^{-1})^{-1} = {Q^{-1}}^*$
+    \item $Q$ унитарна/ортогональна $\Rto |\det Q| = 1$\\
+    В частности, если $Q$ ортогональная, то $\det Q = \pm 1$\\
+    \textbf{Доказательство}\\
+    $Q^*Q = E$\\
+    $\det Q^* \det Q = 1$\\
+    $\det Q^* = \det(\ol{Q^*}) = \ol{\det Q}$\\
+    $\det Q \ol(\det Q) = |\det Q|^2 = 1$\\
+    \item $Q, R$ унитарная/ортогональная $\Rto QR$ унитарная/ортогональная\\
+    \textbf{Доказательство}\\
+    $(QR)^* = \ol{(QR)^T} = \ol {R^TQ^T} = \ol{R^T}\ol{Q^T} = R^*Q^* = R^{-1}Q^{-1}=(QR)^{-1}$\\
+    \item $e,e'$ -- о.н.б.$V, T = T_{e\rto e'}$\\
+    Тогда $T$ унитарна/ортогональна (см. своство матрицы $\Gamma$)
+\end{enumerate}
+\subsection{Теорема Пифагора. Задача о наилучшем приближении и перпендикуляре. Расстояние от точки до линейного подпространства и многообразия. Объем $k$-мерного параллелепипеда в $n$-мерном пространстве}
+\textbf{Теорема Пифагора}\\
+$\fall y,z \in V: (y, z) = 0$\\
+$\|y+z\|^2 = \|y\|^2 + \|z\|^2$\\
+\textbf{Доказательство}\\
+$\|y+z\|^2 = (y+z, y+z) = \|y\|^2 + \ub0{(z,y)} + \ub0{(y,z)} + \|z\\^2$\\
+\textbf{Следствие}\\
+$x_1, \ldots, x_k$ попарно ортогональны\\
+$\|x_1 + \ldots + x^k\|^2 = \sum_i \|x_i\|^2$\\\\
+Пусть $L \subset V$ -- линейное подпространство\\
+$V = L \oplus L^\perp$\\
+$\fall x \in V\ \ex! x=y+z, y\in L, z \in L^\perp$\\
+$(y,z) = 0$\\
+$y$ -- ортогональная проекция $x$ на $L$\\
+$z$ -- ортогональной составляющей $x$ относительно $L$ или перпендикуляром, опущенном из $x$ на линейное подпространство $L$\\
+\textbf{Теорема о наилучшем приближении}\\
+$L \subset V$ -- линейное подпространство\\
+$\fall x \in V\ \ex! y\in L, z \in L^\perp: x = y+z$\\
+$\fall l\neq y \in L \|x-y\|\leq \|x-l\|$\\
+Т.е. $y$ является наилучшим приближением к $x$ из элементов пространства $L$\\
+(Любая наклонная длиннее перпендикуляра)\\
+\textbf{Доказательство}\\
+$\fall l \neq y \in L$\\
+$\| x - l \|^2 = \|y + z - l\|^2 = \|y-l\|^2 + \|z\| > \|z\|^2 = \|x-y\|^2$\\\\
+Как найти перпендикуляр?\\
+$L = \span(a_1, \ldots, a_k), a$ -- базис\\
+$x = y + z, y \in L, z \in L^\perp$\\
+Пусть $y = \sum_{i=1}^k c_i a_i$\\
+$x = \sum_{i=1}^k c_ia_i + z$\\
+$(x, a_j) = \sum_{i=1}^k c_i (a_i, a_j) + \ub0{(z, a_j)}$\\
+$(x, a_j) = \sum_{i=1}^k c_i (a_i, a_j)$\\
+$G^T(a_1, \ldots, a_k)\begin{pmatrix}
+    c_1\\\vdots\\c_k
+\end{pmatrix} = \begin{pmatrix}
+    (x, a_1)\\\vdots\\(x,a_k)
+\end{pmatrix}$ -- СЛНУ относительно $c_i$\\
+$a_1, \ldots, a_k$ -- линейно независимые $\LRto g(a_1, \ldots, a_k) > 0 \LRto G(a_1,\ldots, a_k)$ -- невырожденная $\LRto \ex!$ решение $\Rto y = \sum_{i=1}^k c_i a_i$ -- определен однозначно\\
+\textbf{Определение}\\
+$\dist(x, L) = \min_{l\in L} \|x-l\| = \|x-y\|=\|z\|$\\
+\textbf{Теорема о расстоянии до линейного подпространства}\\
+$L = \span(a_1, \ldots, a_k), a$ -- базис\\
+$\dist^2(x,L) = \frac{g(a_1, \ldots, a_k, x)}{g(a_,1 \ldots, a_k)}$\\
+\textbf{Доказательство}\\
+$\dist^2(x,L) = \|z\|^2$\\
+$a_1, \ldots, a_k \leadsto b_1, \ldots, b_k$\\
+$\span(a_1, \ldots, a_k) = \span(b_1, \ldots, b_k)$\\
+$z = x - \ub{z}{\sum_{i=1}^k c_ia_i} = x - \sum_i \ot c_i b_i$\\
+$(z, y) = 0$\\
+$a_1, \ldots, a_k, x = b_1, \ldots, b_k, z =: b_{k+1}$\\
+$\|b_{k+1}\|^2 = \|z\|^2 = \frac{g(a_1, \ldots, a_k, x)}{g(a_1, \ldots, a_k)}$\\
+\textbf{Определение}\\
+$P = x_0 + L$ -- линейное многообразие\\
+$\dist(x, P) = \min_{u \in P} \|x-u\| \ub{u = x_0 + l, l \in L}= \min_{l \in L} \|x-x_0-l\| = \dist(x-x_0, L)$\\\\
+Пусть $P_1, P_2: P_i = x_i + L_i, L_i \subset V, x_i \in V$\\
+$\dist(P_1, P_2) = \min_{u_1\in P_1, u_2 \in P_2} \|u_1 - u_2\| = \min_{l_1 \in L_1, l_2 \in L_2} \|x_1 - x_2 - (l_1 + l_2)\| = \dist(x_1 - x_2, L_1 + L_2) = \frac{\sqrt{g(a_1, \ldots, a_k, x_1-x_2)}}{\sqrt{g(a_1, \ldots, a_k)}} = \frac{V(\Pi(a_1, \ldots, a_k, x_1-x_2))}{V(\Pi(a_1, \ldots, a_k))}$\\
+\textbf{Определение}\\
+$(V, (\cdot, \cdot))$ -- евклидово\\
+$a_1, \ldots, a_k$ -- линейно независимые\\
+$\Pi(a_1, \ldots, a_k) = \{x \in V | x = \sum_{i=1}^k \alpha_i a_i, \_i \in [0, 1]\}$ -- $k$-мерный параллелепипед\\
+(считаем, что все $a_1, \ldots, a_k$ приложены к какой-то одной точке, к $\0$, натянутой на векторы $a_1, \ldots, a_k$)\\
+\textbf{Определение}\\
+$V(\Pi(a_1, \ldots, a_k)) = \sqrt{g(a_1, \ldots, a_k)}$ -- объем $k$-мерного параллелепипеда\\
+$V(\Pi(a_1, \ldots, a_k)) = V(\Pi(a_1, \ldots, a_{k-1}))\|h\|$\\
+$\|h\| = \frac{g(a_1, \ldots, a_k)}{g(a_1, \ldots, a_{k-1})}$\\
+$h \perp \span(a_1, \ldots, a_{k-1})$ из алгоритма Г.Ш.\\
+$h$ -- перпендикуляр, опущенный из $a_k$ на подпространство $\span(a_1, \ldots, a_{k-1})$\\\\
+Пусть $e_1, \ldots, e_n$ -- о.н.б $V$\\
+$\Pi(a_1, \ldots, a_k)$ -- параллелепипед\\
+$a_j \us e\lrto A_j = \begin{pmatrix}
+    a_{1j}\\\vdots\\a_{nj}
+\end{pmatrix}$\\
+$A = \begin{pmatrix}
+    A_1 & \ldots & A_k
+\end{pmatrix}$
+$V(\Pi(a_1, \ldots, a_k)) = \sqrt{\det G(a_1, \ldots, a_k)}$\\
+$(a_i, a_j) = A_i^T A_j$\\
+Тогда $G = A^TA$\\
+Отсюда $V(\Pi(a_1, \ldots, a_k)) = \sqrt{\det G(a_1, \ldots, a_k)} = \sqrt{\det \ub{k\times n}{A^T} \ub{n\times k}A}$\\
+В частности, если $k = n$, то $V(\Pi(a_1, \ldots, a_n)) = |\det A|$\\
+Также можно задать ориентацию базиса: если определитель матрицы перехода из одного базиса в другой > 0, то базисы в одной ориентации. Иначе в разных\\
+Тогда $\det A$ = $+V(\Pi(a_1, \ldots, a_n))$, если $a_1, \ldots, a_n$ и базис в одной ориентации\\
+Иначе $\det A$ = $-V(\Pi(a_1, \ldots, a_n))$\\\\
+Пусть $\mcB \in \nm{End}(V)$ -- невырожденный(изоморфизм)\\
+$x \in \Pi(a_1, \ldots, a_k) \lrto x = \sum_{i=1}^k \alpha_i a_i, \alpha_i \in [0,1]$\\
+$\mc B x = \sum_{i=1}^k \alpha_i \mcB a_i = \sum_{i=1}^k \alpha_i \beta_i \in \Pi(b_1, \ldots, b_k)$\\
+$\mcB(\Pi(a_1, \ldots, a_k)) = \Pi(b_1 := \mcB a_1, \ldots, b_k := \mcB a_k)$\\
+$V(\Pi(b_1, \ldots, b_k)) = \sqrt{g(b_1, \ldots, b_k)} = \sqrt{\det (BA)^T (BA)} = \sqrt{\det A^TB^TBA}$\\
+Если $k = n$, то $V(\Pi(b_1, \ldots, b_k)) = |\det A||\det B| = V(\Pi(a_1, \ldots, a_k)) |\det B|$
 \end{document}
