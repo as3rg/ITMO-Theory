@@ -1270,7 +1270,7 @@ $V$ -- линейное пространство над $K(\Rset, \Cset)$\\
 $n:=\dim V$\\
 $V^* = \{ f: V \rto K\, f \text{ -- линейнаяя форма}\}$\\
 $\0(x) := 0, \0 \in V^*$\\
-$\fall f\in V^*\ -f\in V^*$\\
+$\fall f\in V^*\ (-f)\in V^*$\\
 Тогда $V^*$ -- линейное пространство над полем $K$\\
 $V^*$ -- \textit{сопряженное(дуальное)} к $V$\\\\
 Вспоминаем правило Эйнштейна\\
@@ -1291,7 +1291,7 @@ $\omega^i \in V^*, x = x^i e_i$\\
 $\fall x\in V \omega^i (x)=x_i$ -- координатные функции\\
 (очевидно, что $\omega^i \in V^*, w^i(x_1+\lambda x_2) = x_1^i + \lambda x_2^i$)\\
 $w^i (e_j) = \delta_j^i = +(i == j) \lrto \begin{pmatrix}
-    0 & 0 & \ldots & \ub{i}1 & \ldots & 0)
+    0 & 0 & \ldots & \ub{i}1 & \ldots & 0
 \end{pmatrix}$\\
 \textbf{Теорема}\\
 $\omega^1, \ldots, \omega^n$ -- базис $V^*$\\
@@ -1422,7 +1422,7 @@ $\fall f\in V^* <e_j>(f) = f(e_j) = a_j$ -- координата $f$ в бази
 \textbf{Определение}\\
 $V, V^*$ -- сопряженные линейные пространства над полем $K(\Rset, \Cset)$\\
 $f: V^p\times (V^*)^q \rto K, p, q \geq 0$ -- линейная по каждому аргументу\\
-$f$ -- тензор порядка $(p,q)$ или $p$ раз конвариантом, $q$ раз контрвариантным\\
+$f$ -- тензор порядка $(p,q)$ или $p$ раз ковариантом, $q$ раз контрвариантным\\
 Множество таких функций обозначим $T_{(p,q)}$\\
 $p,q$ -- \textit{валентности}\\
 $r = p+q$ -- полная валентность/ранг тензора (не наш $\rg$)\\
@@ -1444,7 +1444,7 @@ $e, \omega$ -- сопряженные\\
 Для $\nu \in V^*\ \nu = \nu_i \omega^j$\\
 Тогда $f(\xi_1, \ldots, \xi_p, \nu^1, \ldots, \nu^q) = f(\xi_1^{j_1} e_{j_1}, \ldots, \xi_p^{j_p}e_{j_p}, \nu^1_{i_1}\omega^{i_1}, \ldots, \nu^q_{i_q}\omega^{i_p})\\ = \xi_1^{j_1}\ldots\xi_p^{j_p}\nu^1_{i_1}\ldots\nu^q_{i_q}f(e_{j_1},\ldots,e_{j_p},\omega^1,\ldots,\omega^{i_q})$ -- любой тензор определяется значениями на всевозможных наборах $e_j, \omega^i$\\
 $\alpha_{j_1, \ldots, j_p}^{i_1, \ldots, i_q} := f(e_{j_1}, \ldots, e_{j_p},\omega^{i_1}, \ldots, \omega^{i_q})$ -- коэффициенты тензона $f$ относительно базисов $e, \omega$\\
-$f(\xi_1, \ldots, \xi_p, \nu^1, \ldots, \nu^q)\xi_1^{j_1}\ldots\xi_p^{j_p}\nu^1_{i_1}\ldots\nu^q_{i_q}\alpha_{j_1, \ldots, j_p}^{i_1, \ldots, i_q}$\\
+$f(\xi_1, \ldots, \xi_p, \nu^1, \ldots, \nu^q)=\xi_1^{j_1}\ldots\xi_p^{j_p}\nu^1_{i_1}\ldots\nu^q_{i_q}\alpha_{j_1, \ldots, j_p}^{i_1, \ldots, i_q}$\\
 \textbf{Определение}\\
 $S$ -- множество элементов, записанных с помощью двух типов индексов $s_{j_1, \ldots, j_p}^{i_1, \ldots, i_q}$, где $i_k, j_m \in (1,\ldots n)$ называется $p+q$-мерной матрицей порядка $n$\\
 \textbf{Пример}\\
@@ -1539,7 +1539,7 @@ $ = \alpha'^{r_1, \ldots, r_{q_1}}_{u_1, \ldotp, u_{p_1}}\beta'^{\sigma_1, \ldot
 \end{enumerate}
 $\alpha \in T_{(p_1, q_1)} \us{e_1, \ldots, e_n}\lrto f: V^{p_1}\times (V^*)^{q_1} \rto K$ -- полилинейная\\
 $\beta \in T_{(p_2, q_2)} \us{e_1, \ldots, e_n}\lrto f: V^{p_2}\times (V^*)^{q_2} \rto K$ -- полилинейная\\
-Тогда $\gamma = \alpha \otimes \beta \in T_{(p_1 + p_2, q_1 + q_2)} \lrto t: V^{p_1+p_2}\otimes (V^*)^{q_1+q_2} \rto R$\\
+Тогда $\gamma = \alpha \otimes \beta \in T_{(p_1 + p_2, q_1 + q_2)} \lrto t: V^{p_1+p_2}\times (V^*)^{q_1+q_2} \rto R$\\
 $\fall \xi_1, \ldots, \xi_{p_1}, \zeta_1,\ldots, \zeta_{p_2} \in V$\\
 $\fall \eta^1,\ldots, \eta^{q_1}, \theta^1,\ldots, \theta^{q_2} \in V^*$\\
 $t(\xi_1, \ldots, \xi_{p_1}, \zeta_1,\ldots, \zeta_{p_2}, \eta^1,\ldots, \eta^{q_1}, \theta^1,\ldots, \theta^{q_2})$\\
@@ -1660,7 +1660,7 @@ $\fall \alpha\in T_{(p \geq 2, q)}\ \Sim \alpha = \frac1{p!}\sum_{\sigma\in S_p}
 \textbf{Замечание}
 \begin{enumerate}
     \item Т.к. $\sigma$ -- линейный оператор, то $\Sim, \alt$ -- линейные
-    \item Для $\alpha$ -- симметричной $\Sim \alpha = \alpha$
+    \item Для $\alpha$ -- симметричной $\Sim \alpha = \alpha$\\
     Для $\alpha$ -- кососимметричной $\alt \alpha = \alpha$
     \item Операции $\Sim, \alt$ можно проводить не по всем индексам. Тогда набор индексов, по которым проводится операция, заключается в круглые(для симметрирования) или квадратные(для альтернирования) скобки
     Если какие-то индексы внутри скобок не участвуют, их выделяют вертикальными чертами
@@ -1702,7 +1702,7 @@ $T^{\text{сим}}_{(p,q)} \oplus T^{\text{кососим}}_{(p,q)} = T_{(p,q)}$
 \ul{Свойства $\Sim, \alt$ сохраняются, если они производятся не по всем индексам}
 \subsection{p-формы. Внешнее произведение p-формы}
 \textbf{Определение}\\
-f -- p-форма, если $f\in T_{(p,0)}, f$ -- кососимметричный(или $p == 1$)\\
+$f$ -- p-форма, если $f\in T_{(p,0)}, f$ -- кососимметричный(или $p == 1$)\\
 $f: V^p \rto K$\\
 $f \in V^*$ -- 1-форма\\
 $\ub{\Lambda^p V^* \text{-- пространство p-форм}}{T^{\text{кососим}}_{(p,0)}}$ -- линейное подпространство $T_{(p,0)}$\\
@@ -1712,7 +1712,7 @@ $g$ -- $p_2$ -- форма ($f \in \Lambda^{p_2}V^*$)\\
 $f\land g := \frac{(p_1+p_2)!}{p_1!p_2!}\alt(\ub{\in T_{(p_1+p_2,0)}}{f \otimes g}) \in \Lambda^{p_1+p_2}V^*$ -- внешнее произведение\\
 \textbf{Свойства}
 \begin{enumerate}
-    \item $f\land g = (-1)^{p_1p_2}g^f$
+    \item $f\land g = (-1)^{p_1p_2}g\land f$\\
     В частности $f, g \in \Lambda^1 V^* (V^*)$\\
     $f\land g = -g\land f$\\
     $f \land f = 0$\\
@@ -1761,11 +1761,11 @@ $\alt f = \alpha_{j_1,\ldots,j_p}\omega^{j_1} \alt(\omega^{j_1}\otimes \ldots \o
 $ = \frac{\alpha_{j_1,\ldots,j_p}\omega^{j_1}}{p!}\omega^{j_1}\land \ldots \land \omega^{j_p} = \frac1{p!}\sum_{j_1<\ldots<j_p} \sum_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}\omega^{j_{\sigma_1}}\land \ldots \land \omega^{j_{\sigma_p}}$\\
 $ = \frac1{p!}\sum_{j_1<\ldots<j_p} \sum_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}(-1)^{\inv\sigma}\omega^{j_1}\land \ldots \land \omega^{j_p}$\\
 $ = \sum_{j_1<\ldots<j_p} \ub{\beta_{j_1,\ldots,j_p}}{(\frac1{p!}\sum_{\sigma \in S_p} \alpha_{j_{\sigma_1}\ldots j_{\sigma_p}}(-1)^{\inv\sigma})}\omega^{j_1}\land \ldots \land \omega^{j_p}$ -- порождающая\\
-Существуют координаты p-формы $f$ относительно базиса $\omega^{j_1}\land \ldots \land \omega^{j_p}m j_1<\ldots<j_p$\\
+Существуют координаты p-формы $f$ относительно базиса $\omega^{j_1}\land \ldots \land \omega^{j_p}, j_1<\ldots<j_p$\\
 Проверим линейную независимость\\
 $\0 = \sum_{j_1<\ldots<j_p}\beta_{j_1,\ldots,j_p}\ub{p!\ub{\frac1{p!}\sum_{\sigma\in S_p}(-1)^{\inv \sigma}\sigma(\omega^{j_1}\otimes\ldots\otimes\omega^{j_p})}{\alt(\omega^{j_1}\otimes \ldots\otimes\omega^{j_p})}}{\omega^{j_1}\land\ldots\land\omega^{j_p}} = \sum_{j_1<\ldots<j_p} \sigma_{\sigma\in S_p}(-1)^{\inv \sigma} \omega^{j_{\sigma_1}} \otimes \ldots \otimes \omega^{j_{\sigma_p}}$\\
 Т.к. базис $T_{(p,0)}$, $\fall \alpha_{j_1,\ldots,j_p} = 0$\\
-$\beta_{j_1,\ldots,j_p} = 0$
+$\beta_{j_1,\ldots,j_p} = 0$\\
 Тогда линейно независимые\\
 \textbf{Следствие 1}\\
 $\dim \Lambda^pV^* = C_n^p = \frac{n!}{p!(n-p)!}$\\
@@ -1806,7 +1806,7 @@ $f^1 \land \ldots \land f^p(\xi_1,\ldots,\xi_p) = \det(\begin{pmatrix}
 \textbf{Доказательство}\\
 $f^1 \land \ldots \land f^p(\xi_1,\ldots,\xi_p) = p!\frac1{p!}\sum_{\sigma \in S_p} (-1)^{\inv \sigma} \sigma(f^1 \otimes \ldots\otimes f^p)(\xi_1,\ldots,\xi_p) = \sum_{\sigma\in S_p} (-1)^{\inv \sigma} f^{\sigma_1}\otimes\ldots\otimes f^{\sigma_p}(\xi_1,\ldots,\xi_p) = \sum_{\sigma \in S_p} (-1)^{\inv \sigma} f^{\sigma_1}(\xi_1)\ldots f^{\sigma_p}(\xi_p) = \det (f^i(\xi_j))$\\
 \textbf{Следствие 1}\\
-$\fall \xi_1,\ldots,\xi_p \in V\ \omega^{j_1},\ldots,\omega^{j_p}(\xi_1,\ldots,\xi_p) = \begin{vmatrix}
+$\fall \xi_1,\ldots,\xi_p \in V\ \omega^{j_1}\land\ldots\land\omega^{j_p}(\xi_1,\ldots,\xi_p) = \begin{vmatrix}
     \xi_1^{j_1} & \ldots & \xi_p^{j_1}\\
     \vdots & \ddots & \ldots\\
     \xi_1^{j_p} & \ldots & \xi_p^{j_p}
@@ -1849,7 +1849,7 @@ $g$ называется \textit{поливектор}(q-вектор)\\
 Если $q \in T_{(0,1)}$ -- $g$ -- 1-вектор\\
 Линейное пространство $q$-векторов $\mc V^qV$\\
 Аналог внешнего произведения: $g_1 \in \mc V^{q_1}V, g_2 \in \mc V^{q_2} V, g_1\lor g_2 = \frac{(p_1+p_2)!}{p_1!p_2!}\alt(g_1 \otimes g_2)$ -- по верхним индексам\\
-$\{e_{i_1}\land \ldots \land e_{i_q}, i_1 < \ldots < i_q\}$ -- базис $\mc V^qV$\\
+$\{e_{i_1}\lor \ldots \lor e_{i_q}, i_1 < \ldots < i_q\}$ -- базис $\mc V^qV$\\
 Пусть $p=q$\\
 $\fall f^1, \ldots, f^p \in V^*$\\
 $V \cong V^{**}\ \fall \xi \in V\ \xi(f) = f(\xi)$\\
@@ -2064,7 +2064,7 @@ $\fall x,y \in V\ x \us e \lrto \begin{pmatrix}
 \end{pmatrix}$\\
 $(x,y) = (\sum_{i=1}^n x_i e_i, \sum_{i=1}^n y_ie_i) = \sum_i \sum j x_i \ol{y_j} (e_i, e_j)$\\
 Пусть $g_{ij} = (e_i, e_j)$\\
-$\Gamma = (g_{ij})$ -- матрица грамма базиса $e_1, \ldots, e_n$\\
+$\Gamma = (g_{ij})$ -- матрица Грама базиса $e_1, \ldots, e_n$\\
 $(x,y) = x^\perp \Gamma \ol y$ -- координатная форма записи скалярного произведения\\
 В частности, если $e$ -- о.н.б., то $g_{ij} = \sigma_{ij}$\\
 $\Gamma = E$\\
@@ -2220,7 +2220,7 @@ $a_1, \ldots, a_k$ -- линейно независимые $\LRto g(a_1, \ldots
 $\dist(x, L) = \min_{l\in L} \|x-l\| = \|x-y\|=\|z\|$\\
 \textbf{Теорема о расстоянии до линейного подпространства}\\
 $L = \span(a_1, \ldots, a_k), a$ -- базис\\
-$\dist^2(x,L) = \frac{g(a_1, \ldots, a_k, x)}{g(a_,1 \ldots, a_k)}$\\
+$\dist^2(x,L) = \frac{g(a_1, \ldots, a_k, x)}{g(a_1, \ldots, a_k)}$\\
 \textbf{Доказательство}\\
 $\dist^2(x,L) = \|z\|^2$\\
 $a_1, \ldots, a_k \leadsto b_1, \ldots, b_k$\\
@@ -2267,4 +2267,229 @@ $\mc B x = \sum_{i=1}^k \alpha_i \mcB a_i = \sum_{i=1}^k \alpha_i \beta_i \in \P
 $\mcB(\Pi(a_1, \ldots, a_k)) = \Pi(b_1 := \mcB a_1, \ldots, b_k := \mcB a_k)$\\
 $V(\Pi(b_1, \ldots, b_k)) = \sqrt{g(b_1, \ldots, b_k)} = \sqrt{\det (BA)^T (BA)} = \sqrt{\det A^TB^TBA}$\\
 Если $k = n$, то $V(\Pi(b_1, \ldots, b_k)) = |\det A||\det B| = V(\Pi(a_1, \ldots, a_k)) |\det B|$
+\subsection{Коэффициенты Фурье. Тождество Парсеваля. Неравенство Бесселя. Ортогональные проекторы. Полиномы Лежандра}
+$(V, (\cdot, \cdot))$ -- унитарное/евклидово пространство\\
+$e_1, \ldots, e_n$ -- ортогональный базис\\
+$\fall x\in V\ x=\sum_{i=1}^n \chi_ie_i$\\
+$\fall x\in V\ (x, e_j)=\sum_{i=1}^n \chi_i(e_i, e_j) = \chi_j(e_j, e_i) = \chi_j\|e_j\|^2$\\
+$\chi_j = \frac{(x, e_j)}{\|e_j\|^2}$ -- коэффициент Фурье элемента относительно ортогонального базиса\\
+$L_i = \span(e_i), i = 1\ldots n$\\
+$V = \bigoplus_{i=1}^n L_i$\\
+$\fall x\in V\ \ex! (x_i): x = \sum_{i=1}^n x_i, x_i$ -- ортогональная проекция $x$ на $e_i$\\
+$x = \chi_i e_i$\\
+Тогда по т. Пифагора $\|x\|^2 = \sum_{i=1}^n \|x_i\|^2 = \sum_{i=1}^n |\chi_i|^2\|e_i\|^2$ -- тождество Парсеваля\\
+Неравенство Бесселя: $\fall k=1\ldots n\ \sum_{i=1}^k |\chi_i|\|e_i\|^2 \leq \|x\|^2$ -- квадрат длины вектора не меньше суммы квадратов длин его проекций\\
+В частности, если $e$ -- ортонормированный базис\\
+$\chi_j = (x, e_j)$ -- проекция $x$ на вектор $e_j$\\
+$x = \sum_{j=1}^n (x,e_j)e_j$\\
+$x_j = \chi_j e_j$ -- проекция $x$ на вектор $e_j$\\
+$\|x\|^2 = \sum_{i=1}^n |\chi_i|^2$\\
+$\|x\|^2 \geq \sum_{i=1}^k |\chi_i|^2$\\\\
+$\rho_i: V\rto V$ -- проектор\\
+$\fall x \in V\ \rho x:= x_i$\\
+$\ex! (x_i): x=\sum_{i=1}^n \ub{\in L_i}{x_i}$\\
+$\rho_i$ -- оператор ортогонального проектирования\\
+$V = \oplus_{i=1}^k L_i, L_i \subset V$ -- попарно ортогональные линейные подпространства\\
+$V = \span(e_1, \ldots, e_n)$ -- о.н.б.\\
+$\fall x \in V \rho_i x = \sum_{e_j \in L_j} (x_i, e_j)e_j$\\
+\textbf{Примеры ортогональных систем}
+\begin{enumerate}
+    \item Рассмотрим множество полиномов степени не более $n$\\
+    $(p,q) = \int_{-1}^1 p(t)q(t)\df t$\\
+    Рассмотрим многочлены $1, t, t^2, t^3, \ldots, t^n$\\
+    Найдем ортогональный базис\\
+    $\ub{\text{полиномы Лежандра}}{1, t, t^2 - \frac13, t^3 - \frac35t, \ldots}$\\
+    $l_k = \lambda_k ((t^2-1)^k)^{(k)}, \deg l_k = k$ -- общая формула полиномов Лежандра\\
+    Покажем, что $q_k(t):= ((t^2-1)^k)^{(k)}$ ортогональны $1,\ldots, t^{k-1}$\\
+    $(q_k, t^m) = \int_{-1}^1 ((t^2-1)^k)^{(k)} t^m \df t = \int_{-1}^1 t^m \df((t^2-1)^k)^{(k-1)} = $\\
+    $= \ub0{t^m\ub{\pm1\text{ -- корни}}{((t^2-1)^k)^{(k-1)}} \vl_{-1}^1} - m\int_{-1}^1 ((t^2-1)^k)^{(k-1)}t^{m-1} = \ldots$\\
+    $= (-1)m!\ub{((t^2-1)^k)^{k-m-1}\vl_{-1}^1}{\int_{-1}^1 ((t^2-1)^k)^(k-m) \df t}$\\
+    $q_k \perp \span(1, \ldots, t^{k-1}) \Rto q_k \perp \span(l_1, \ldots, l_{k-1}) \Rto l_k \perp \span(l_1, \ldots, l_{k-1})$\\
+    $(uv)^{(k)} = \sum_{m=0}^k C_k^m u^{(m)} v^{(k-m)}$ -- формула Лейбница\\
+    $q_k(1) = ((t^2-1)^k)^{(k)} \vl_{t=1} = ((t-1)^k (t+1)^k)^{(k)} \vl_{t=1} = \sum_{m=0}^k C_k^m ((t-1)^k)^{(m)} ((t+1)^k)^{(k-m)}\vl_{t=1} = C_k^k \ub{k!}{((t-1)^k)^{(k)}} \ub{2^k}{((t+1)^k)^{(0)}} \vl_{t=1} = k!2^k = (2k)!!$\\
+    $l_k = \frac{((t^2-1)^k)^{(k)}}{k!2^k}, l_k(1) = 1$ -- формула многочлена Лежандра в форме Родрига\\
+    $B(x,y) = \int_0^1 (1-t)^{x-1}t^{y-1}\df t$\\
+    $B(x,y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}$\\
+    $\|l_k\|^2 = \frac1{(2^kk!)^2} \int_{-1}^1 ((t^2-1)^k)^{(k)}\df t = \frac1{(2^kk!)^2} \int_{-1}^1 ((t^2-1)^k)^{(k)}((t^2-1)^k)^{(k)}\df t = \frac1{(2^kk!)^2} \int_{-1}^1 ((t^2-1)^k)^{(k)}\df ((t^2-1)^k)^{(k-1)} = -\frac1{((2k)!!)^2} \int_{-1}^1 ((t^2-1)^k)^{(k-1)}((t^2-1)^k)^{(k+1)} = \ldots = \frac{(-1)^k}{((2k)!!)^2} \int_{-1}^1 (t^2-1)^k \ub{(2k)!}{((t^2-1)^k)^{(2k)}}\df t = \frac{(-1)^k(-1)^k(2k)!}{((2k)!!)^2} 2\int_0^1 \frac{t(1-t^2)^k}t \df t = \frac{(2k)!}{((2k)!!)^2}\ub{B(k+1, \frac12)}{\int_0^1 (1-t)^kt^{-\frac12}\df t} = \frac{(2k)!}{((2k)!!)^2} \frac{\Gamma(k+1)\Gamma(\frac12)}{\ub{(k+\frac12)(k-\frac12)+\ldots+\frac12\Gamma(\frac12)}{\Gamma(k+1+\frac12)}} = \frac{(2k)!k!2^{k+1}}{((2k)!!)^2(2k+1)!!} = \frac{2(2k)!(2k)!!}{(2k+1)!(2k)!!} = \frac2{2k+1}$
+    \item $f: [-\pi, \pi] \rto \Rset(\Cset)$\\
+    $(f,g) = \int_{-\pi}^\pi f(t)g(t)\df t$\\
+    $f \in L^1(-\pi, \pi) \lor f \in L^2(-\pi, \pi)$\\
+    \begin{enumerate}
+        \item вещественная ортогональная тригонометрическая система\\
+        $1, \sin t, \cos t, \sin 2t, \cos 2t, \ldots$ -- бесконечномерная ортогональная система\\
+        Несложно проверить, что $(\sin kt, \cos mt) = (\sin kt, \sin mt) = (\cos kt, \cos mt) = 0, k \neq m$\\
+        $\|\cos kt\|^2 = \int_{-\pi}^\pi \cos^2 kt \df t = \int_{-\pi}^\pi \frac{1+\cos 2kt}2 \df t = \pi, k \neq 0$\\
+        $\|1\|^2 = 2\pi$\\
+        $\|\sin kt\|^2 = \pi$\\
+        Пусть $f(t) = \sum_{i=1}^\infty c_n e_n$ -- ряд Фурье\\
+        $c_j = \frac{(f, e_j)}{\|e_j\|^2}$ -- коэффициенты Фурье\\
+        Тогда $a_k := \frac{(f, \cos kt)}{\|\cos kt\|^2} = \frac1\pi \int_{-\pi}^\pi f(t)\cos kt = \df t$\\
+        $b_k := \frac{(f, \sin kt)}{\|\sin kt\|^2} = \frac1\pi \int_{-\pi}^\pi f(t) \sin kt \df t$\\
+        Теперь забьем на сходимость и сопоставим $f$ с последовательностью коэффициентов\\
+        $f \sim \frac{a_0}2 + \sum_{k=1}^\infty a_k \cos kt + b_k \sin kt$ -- ряд Фурье по классической тригонометрической системе
+        \item комплексная ортогональная тригонометрическая система\\
+        $c_k = \widehat{f(k)} = \frac1{\|e^{ikt}\|^2}\int_{-\pi}^{\pi} f(t)e^{-itk}\df t$\\
+        $\|e^{ikb}\|^2 = \int_{-\pi}^\pi e^{ikt}e^{-ikt} \df t = 2\pi$\\
+        $f \sim \sum_{k=-\infty}^\infty c_k e^{ikt}$ -- комплексный ряд Фурье\\
+        \item $L^2([-1,1], \frac{\df t}{\sqrt{1-t^2}})$\\
+        $(f,g) = \int_{-1}^1 f(t)g(t)\frac{\df t}{\sqrt{1-t^2}}$\\
+        $T_n(t) = \cos(n-\arccos t)$ -- полиномы Чебышева\\
+        $\deg T_n = n$
+    \end{enumerate}
+\end{enumerate}
+\subsection{Изометрия евклидоваых/унитарных пространств. Теорема Рисса. Естественный изоморфизм евклидова пространства своему сопряженному}
+$(V, (\cdot, \cdot)_V), (V', (\cdot, \cdot)_{V'})$\\
+\textbf{Определение}\\
+$V, V'$ изометричны, если $V, V'$ изоморфны и сохраняется скалярное произведение\\
+$x,y\in V \lrto x',y' \in V' \Rto (x,y)_V = (x', y')_{V'}$\\
+Отсюда $\|x-y\|_V = \sqrt{(x,y)_V^2} = \sqrt{(x',y')_{V'}^2} = \|x'-y'\|_{V'}$ -- расстояния сохраняются\\
+\textbf{Теорема}\\
+Любые два конечномерных линейных пространства одной размерности изометричны\\
+\textbf{Доказательство}\\
+Пространства изоморфны\\
+Пусть $e$ -- о.н.б. $V$\\
+$e'$ -- о.н.б. $V'$\\
+Тогда $x = \sum_{i=1}^n x_i e_i \lrto \sum_{i=1}^n x_i e_i' = x'$\\
+$\Gamma = G(e_1, \ldots, e_n) = E = G(e_1', \ldots, e_n') = \Gamma'$\\
+$(x,y)_v = \sum_{i=1}^n x_i\ol{y_i} = (x',y')_{V'}$\\\\
+Зафиксируем $y \in V$\\
+$\fall x \in V\ (x,y)=:f(x) \in V^*$\\
+$(\cdot, y): V \rto V^*$\\
+\textbf{Теорема Рисса}\\
+$\fall f \in V^* \ex! y \in V: f(x) = (x,y) \fall x \in V$\\
+Т.е. $V \lrto V^*$ -- взаимооднозначное сопоставление\\
+\textbf{Доказательство}\\
+Докажем единственность\\
+Пусть $y_1, y_2 \in V: f(x) = (x, y_1) = (x, y_2) \fall x \in V$\\
+Тогда $(x, y_1 - y_2) = 0$\\
+Пусть $x = y_1 - y_2$\\
+Тогда $\|y_1-y_2\|^2 = 0 \LRto y_1 = y_2$\\
+Докажем существование\\
+Пусть $e_1, \ldots, e_n$ -- о.н.б. в $V$\\
+$\fall x \in V\ x=\sum_{i=1}^n x_ie_i$\\
+$\fall f \in V^*\ f(x) = \sum_{i=1}^n x_if(e_i)$\\
+Пусть $y_i = \ol{f(e_i)}$\\
+$y = \sum_{i=1}^n y_i e_i$\\
+$f(x) = (x,y)$\\
+Т.о. мы сопоставили $f$ и $y$\\
+Если $V$ -- евклидово (вещественное), то $V \os{P}\cong V^*$ (изоморфизм)\\
+\textbf{Замечание}\\
+$e_1, \ldots, e_n$ -- о.н.б. $V$\\
+$\fall x \in V\ \omega^i(x) = \chi^i = (x, e_i)$\\
+$x = \chi^i e_i$\\
+Тогда $\omega^i \os{P}\lrto e_i$
+\subsection{Тензоры в евклидовом пространстве. Метрические тензоры. Взаимные базисы. Операции опускания и поднимания индексов. Евклидовы тензоры}
+Пусть $(V, (\cdot, \cdot))$ -- евклидово\\
+$e_1, \ldots, e_n$ -- базис $V$\\
+$\Gamma = G(e_1, \ldots, e_n) = (g_{ij})$\\
+$g_{ij} = (e_i, e_j)$\\
+$\Gamma$ -- тензор $\in T_{(2,0)}$ -- 2 раза ковариантный метрический тензор\\
+Покажем, что $\Gamma$ -- тензор\\
+$T = T_{e\rto e'}$\\
+$\Gamma' = T^T \Gamma T$\\
+$g'_{ij} = t^k_i g_{km} t^m_j = g_{km} t^k_i t^m_j$ -- действительно тензор\\
+$\Gamma^{-1} = (g^{ij}) \in T_{(0,2)}$ -- 2 раза контрвариантный метрический тензор\\
+$\Gamma^{-1} \Gamma = E$\\
+$(\Gamma^{-1})' = (\Gamma')^{-1} = (T^T \Gamma T)^{-1} = (T^T)^{-1} \Gamma^{-1} T^{-1} = S^T \Gamma^{-1} S$\\
+$g'^{ij} = s^i_k g^{km} s^j_m = g^{km}s^i_ks^j_m$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\Gamma = \Gamma^T$\\
+    $\Gamma^{-1} = (\Gamma^{-1})^T$\\
+    $g^{ij} = g^{ji}, g_{ij} = g_{ji}$
+    \item $\Gamma\Gamma^{-1} = E = \Gamma^{-1}\Gamma \Rto g^{ik}g_{kj} = g^{ki}g_{kj} = g^{ki}g_{jk} = g^{ik}g_{jk} = \sigma_i^j$
+    \item $\fall x, y \in V\ (x,y) = g_{ij} x^i y^j, (x\neq 0 \Rto (x,x)> 0) \Rto (x \neq 0 \Rto g_{ij}x^ix^j > 0)$
+\end{enumerate}
+\textbf{Определение}\\
+Пусть $e_1, \ldots, e_n $ -- базис $V$\\
+$e^1, \ldots, e^n$ -- базис $V$\\
+$e_i, e^i$ -- взаимные базисы, если $(e_i, e^j) = \sigma_i^j$\\
+\textbf{Теорема}\\
+$\fall e_1, \ldots, e_n$ -- базис $V \ex! e^1, \ldots, e^n$ -- взаимный базис\\
+\textbf{Доказательство}\\
+Пусть $e^1, \ldots, e^n$ -- базис $V$\\
+$T_{e_i \rto e^i} = (x^{km})_{n\times n}$\\
+$\begin{pmatrix}e^1 & \ldots & e^n\end{pmatrix} = \begin{pmatrix}e_1 & \ldots & e_n\end{pmatrix} T_{e_i\rto e^i}$\\
+$(e_i, e^j) = (e_i, x^{kj} e_k) = x^{kj} \ub{g_{ik}}{(e_i, e^k)} = \sigma_i^j$\\
+$g_{ik}x^{kj} = \sigma^j_i \LRto \Gamma T_{e_i \rto e^i} = E$\\
+$T_{e_i \rto e^i} = \Gamma^{-1}$\\
+$e^1,\ldots, e^n$ -- взаимооднозначное с $e_1,\ldots, e_n$\\
+\textbf{Следствие 1}\\
+\begin{enumerate}
+    \item $e_i, e^i$ -- взаимные базисы\\
+    $\begin{pmatrix}
+        e^1 & \ldots & e^n
+    \end{pmatrix} = \begin{pmatrix}
+        e_1 & \ldots & e_n
+    \end{pmatrix}\Gamma^{-1} \lrto e^j = g^{kj}e_k = g^{jk}e_k$\\
+    $\begin{pmatrix}
+        e_1 & \ldots & e_n
+    \end{pmatrix} = \begin{pmatrix}
+        e^1 & \ldots & e^n
+    \end{pmatrix}\Gamma \lrto e_j = g_{kj}e^k = g_{jk}e^k$
+    \item $\Gamma^{-1} = G(e^1, \ldots, e^n)$\\
+    \textbf{Доказательство}\\
+    $(e^i, e^j) = (e^i, g^{jk}e_k) = g^{jk}(e^i,e_k)=g^{jk}\sigma^j_k = g^{ji} \in \Gamma^{-1}$
+\end{enumerate}
+\textbf{Следствие 2}\\
+$e_1, \ldots, e_n$ -- о.н.б.\\
+Тогда $e^i = e_i$\\
+\textbf{Доказательство}\\
+Очевидно, $\Gamma = E = \Gamma^{-1}$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item на практике скалярное произведение, в свою очередь, может быть задано какой-то матрицей Грамма, относительно какого-то другого базиса
+    \item $e_1, \ldots, e_n$ и $e_1', \ldots, e_n'$ -- имеют один класс ориентации, если $\det T_{e\rto e'} > 0$\\
+    Отсюда взаимные базисы принадлежат к одному классу ориентации
+\end{enumerate}
+\textbf{Теорема 2}\\
+Если $e_1, \ldots, e_n$ -- базис пространства $V$\\
+$\omega^1, \ldots, \omega^n$ -- сопряженный базис $V^*$\\
+Тогда $\omega^i \os{P}\lrto e^i \in V \Rto e^1, \ldots, e^1, \ldots, e^n$ -- взаимный с $e_1, \ldots, e_n$\\
+\textbf{Доказательство}\\
+$\fall \omega^i \in V^*\ \ex! e^i \in V: \omega^i(x) = (x, e^i) \fall x \in V$\\
+Пусть $x = e_j\ \ub{\sigma_i^j}{\omega^i(e_j)} = (e_j, e^i) \Rto $ взаимный базис\\
+\textbf{Замечание}\\
+$e$ -- о.н.б. из теоремы Рисса такой, что $\omega^i \os P\lrto e_i$\\
+$\omega^i \os P\lrto e^i$\\
+Отсюда $e^i = e_i$ (снова следствие 2)\\
+\textbf{Определение}\\
+$e_1, \ldots, e_n$ и $e^1, \ldots, e^n$ -- взаимные базисы\\
+$\fall x = x^ie_i = x^j e^j$\\
+$x_j$ -- ковариантные координаты\\
+$x^i$ -- контрвариантные координаты\\\\
+координатная функция относительно базиса $e^i \lrto (x, e_i) = (x_j e^j, e_i) = x_j (e^j, e_i) = x_j \sigma_i^j = x_i$\\
+$\omega^j \lrto (x, e^j) = (x^i e_i, e^j) = x^i(e_i, e^j) = x^i\sigma^j_i = x^j$\\
+$x = (x, e_i)e^i = (x, e^j)e_j$ -- формула Гибса\\
+$T= T_{e\rto e'}$\\
+$\begin{pmatrix}x^1\\\vdots\\x^n\end{pmatrix} = T\begin{pmatrix}x'^1\\\vdots\\x'^n\end{pmatrix}$ -- контрвариантный\\
+$\omega^j \os P \cong e^j$\\
+$x_j \omega^j \cong x_j  e^j$\\
+$\begin{pmatrix}x_1 & \ldots & x_n\end{pmatrix} = \begin{pmatrix}x'^1 & \ldots &x'^n\end{pmatrix}S$ -- ковариантный\\\\
+Рассмотрим координаты как тензоры\\
+$(x^i) \lrto T_{(0,1)}$\\
+$(x_i) \lrto T_{(1,0)}$\\
+Рассмотрим свертку с соответствующим метрическим тензором\\
+$g_{ki} x^i =(e_k, e_i) x^i = (e_k, e_ix^i) = (e_k, x) = (x, e_k) = x_k$\\
+Свертка контрвариантного тензора с ковариантным метрическим тензором дает ковариантный тензор -- опускание индекса\\
+$g^{jk} x_j = (e^j, e^k) x_j = (x_j e^j, e^k) = (x, e^k) = x^k$\\
+Свертка ковариантного тензора с контрвариантным метрическим тензором дает контрвариантный тензор -- поднятие индекса\\\\
+Определим операции для произвольных тензоров\\
+Рассмотрим $\alpha\in T_{(p,q)}$\\
+Операцией опускания поднятия индекса называется преобразование матрицы тензора в результате его свертки с ковариантным/контрвариантным метрическим тензором. При этом, чтобы сохранить соответствия записи элементов в матрице тензора применяют следующие правила записи
+\begin{enumerate}
+    \item Если опускается крайний правый верхний индекс, он становится крайним левым нижним\\
+    $\alpha^{i_1, \ldots, i_{q-1}, \kappa}_{j_1, \ldots, j_p} g_{\kappa,j_0} = \alpha^{i_1, \ldots, i_{q-1}}_{j_0, \ldots, j_p}$
+    \item Если поднимается крайний левый нижний индекс, он становится крайним правым верхним\\
+    $\alpha^{i_1, \ldots, i_q}_{\kappa, j_2, \ldots, j_p} g^{\kappa,i_{q+1}} = \alpha^{i_1, \ldots, i_{q+1}}_{j_2, \ldots, j_p}$
+    \item Если происходит опускание или поднятие остальных индексов, его прежняя позиция обозначается точкой. Сам индекс при этом занимает крайнюю левую нижнюю/правую верхнюю позицию\\
+    $\alpha^{i_1, \ldots, \kappa, \ldots, i_q, \kappa}_{j_1, \ldots, j_p} g_{\kappa,j_0} = \alpha^{i_1, \ldots, \bullet, \ldots, i_q}_{j_0, \ldots, j_p}$\\
+    $\alpha^{i_1, \ldots, i_q}_{j_1, \ldots, \kappa, \ldots, j_p} g^{\kappa,i_{q+1}} = \alpha^{i_1, \ldots, i_{q+1}}_{j_1, \ldots, \bullet, \ldots, j_p}$
+    \item Если опускаются/поднимаются несколько индексов то их прежние позиции обозначаются точками, а сами они записываются по тем же правилам с сохранением исходного порядка
+\end{enumerate}
+Если базис ортонормированный, то поднятие/опускание индексов не меняет тензор\\
+Если $e_1, \ldots, e_n; e_1', \ldots, e_n'$ -- о.н.б. базисы, то $T = T_{e\rto e'}$ -- ортогональная (т.е. $T^{-1} = T^T$)\\
+Тогда $\alpha'^{k^1, \ldots, k_q}_{m_1,\ldots, m_p} = \alpha_{j_1, \ldots, j_p}^{i_1, \ldots, i_q} t^{j_1}_{m_1}\cdot t_{m_p}^{j_p} s_{i_1}^{j_p} \ldots s_{i_q}^{k_q} = \sum_{i_1}\sum_{i_2}\ldots\sum_{i_q} \alpha^{i_1,\ldots, i_q} t^{j_1}_{m_1}\cdot t_{m_p}^{j_p} t^{i_1}_{j_p} \ldots t^{i_q}_{k_q}$\\
+После приведения к о.н.б. в $V$ получаем тензоры, которые отличаются только расположением тензора сверху/снизу. Такие тензоры называются \it{евклидовы} ранза $r=p+q$\\
+Для них нет разницы, сверху или снизу индексы (пока мы переходим по ортонормированным базисам), поэтому пишем все внизу\\
 \end{document}
