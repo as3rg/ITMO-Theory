@@ -2491,5 +2491,154 @@ $g^{jk} x_j = (e^j, e^k) x_j = (x_j e^j, e^k) = (x, e^k) = x^k$\\
 Если $e_1, \ldots, e_n; e_1', \ldots, e_n'$ -- о.н.б. базисы, то $T = T_{e\rto e'}$ -- ортогональная (т.е. $T^{-1} = T^T$)\\
 Тогда $\alpha'^{k^1, \ldots, k_q}_{m_1,\ldots, m_p} = \alpha_{j_1, \ldots, j_p}^{i_1, \ldots, i_q} t^{j_1}_{m_1}\cdot t_{m_p}^{j_p} s_{i_1}^{j_p} \ldots s_{i_q}^{k_q} = \sum_{i_1}\sum_{i_2}\ldots\sum_{i_q} \alpha^{i_1,\ldots, i_q} t^{j_1}_{m_1}\cdot t_{m_p}^{j_p} t^{i_1}_{j_p} \ldots t^{i_q}_{k_q}$\\
 После приведения к о.н.б. в $V$ получаем тензоры, которые отличаются только расположением тензора сверху/снизу. Такие тензоры называются \it{евклидовы} ранза $r=p+q$\\
-Для них нет разницы, сверху или снизу индексы (пока мы переходим по ортонормированным базисам), поэтому пишем все внизу\\
+Для них нет разницы, сверху или снизу индексы (пока мы переходим по ортонормированным базисам), поэтому пишем все внизу
+\section{Линейные операторы в унитарном/евклидовом пространстве}
+\subsection{Сопряженные операторы в унитарном/евклидовом пространстве}
+\textbf{Определение}\\
+$\mcA \in L(U, V)$\\
+$\mcA^*: V^* \rto U^*$ -- сопряженное к $\mcA$\\
+$\fall f \in V^*\ \fall x \in U\ (\mcA^* f)(x) = f(\mcA x)$\\
+Заметим, что $\mcA$ -- линейное отображение\\
+Пусть $\mcA^* f = g$\\
+$g(x) = f(\mcA x) \in K$ -- линейно по $x$, т.к. $\mcA, f$ -- линейные\\
+Тогда $g \in U^*$\\
+Тогда $\mcA^*: V^*\rto U^*$\\
+$\fall \lambda \in K \fall f_1, f_2 \in V^*$\\
+$\fall x \in U\ (\mcA^*(\lambda f_1 + f_2))(x) = ( \lambda f_1 + f_2)(\mcA x) = \lambda f_1(\mcA x) + f_2(\mcA x) = \lambda(\mcA^* f_1)(x)  + (\mcA^* f_2)(x)$\\\\
+$\us x U \os \mcA \rto \us{\mcA x}V$\\
+$\us{g=\mcA^* f}{U^*} \us{\mcA^*}\lto \us f {V^*}$\\
+Пусть $(V, (\cdot, \cdot))$ -- унитарное/евклидово, $\mcA \in \nm{End}(V)$\\
+$V^* \os P \lrto V$ -- естественный изоморфизм\\
+$f \in V^* \os P \lrto y\in V$\\
+$\fall x \in V\ f(x) = (x,y)$\\
+$\mcA^*: V^* \rto V^*$\\
+$\ex!  z \in V \os P \lrto g \in V^*$\\
+$\ex! y \in V \os P \lrto f \in V^*$\\
+$\fall x \in V\ g(x) = (x, z), f(x) = (x, y)$\\
+По определению $\mcA^*: g(x) = (\mcA^* f)(x) = f(\mcA x) = (\mcA x, y)$\\
+$\mcA^*: \ub{\os P \lrto V}{V^*} \rto \ub{\os P \lrto V}{V^*}$\\
+\textbf{Определение}\\
+$\mcA \in \nm{End}(V)$\\
+$\mcA^* \in \nm{End}(V)$ называется сопряженным к $\mcA$, если $\fall x, y \in V\ (x, \mcA^* y) = (\mcA x,y)$\\
+\textbf{Замечание}\\
+$\mcA^*$ зависит от скалярного произведения\\
+При фиксированном скалярном произведении $\mcA^*$ определен однозначно\\
+Если поменять скалярное произведение, получим другое евклидово/унитарное пространство\\
+Тогда и $\mcA^*$ будет другим\\
+\textbf{Свойства сопряженного оператора}
+\begin{enumerate}
+    \item $A, A^{(*)}$ -- матрицы $\mcA$ и $\mcA^*$ в некотором базисе $e_1, \ldots, e_n$ пространства $V$\\
+        Тогда $A^{(*)} = \ol {\Gamma^{-1}} A^* \ol G = \ol{\Gamma^{-1} A^T \Gamma}$\\
+        \textbf{Доказательство}\\
+        $\fall x, y \in V$\\
+        $(x, \mcA^* y) = \sum_{j=1}^n \sum_{i=1}^n g_{ij} x_i \ol{A^{(*)} y}_j = x^T \Gamma \ol{\mcA^{(*)} y}$\\
+        $(\mcA x, y) = \sum_{i=1}^n \sum_{j=1}^n g_{ij} (A x)_i \ol{y}_j = (A x)^T \Gamma y $\\
+        $x^T \Gamma A^{(*)} \ol y = x^T A^T \Gamma \ol y $\\
+        Пусть $x = e_i, y = e_j$\\
+        $( \Gamma \ol{A^{(*)}})_{ij} = (A^T \Gamma)_{ij} $\\
+        $ \Gamma \ol{A^{(*)}} = A^T \Gamma $\\
+        $ \ol{A^{(*)}} = \Gamma^{-1}A^T \Gamma $\\
+        В частности, если о.н.б., то $T = E \Rto A^{(*)} = A^* = \ol{A^T} $
+    \item $\fall \lambda \in K\ (\mcA + \lambda\mcB)^* = \mcA^* + \ol \lambda \mcB^* $\\
+        Если евклидово пространство, то $*$ -- линейное, если унитарное -- полуторолинейное
+    \item $(\mcA \circ \mcB)^* = \mcB^* \mcA^*$\\
+    \item Если $\ex \mcA^{-1}$, то $\ex (\mcA^*)^{-1}$, причем $(\mcA^*)^{-1} = (\mcA^{-1})^* $\\
+        \textbf{Доказательство}\\
+        $(\mcA \mcA^{-1})^* = (E)^* = \eps $\\
+        $(\mcA^{-1})^* \mcA^* = \eps $\\
+        Отсюда $\ex (\mcA^*)^{-1} = (\mcA^{-1})^* $
+    \item $(\mcA^*)^* = \mcA $\\
+        \textbf{Доказательство}\\
+        $(x, \mcA^* y) = (\mcA x, y) $\\
+        $\ol{(\mcA^* y, x)} = \ol{(y, \mcA^x)} $\\
+        $(\mcA^* y, x) = (y, \mcA x)$\\
+        Тогда по определению $\mcA = (\mcA^*)^* $
+    \item $\ker \mcA^* = (\im \mcA)^\perp $\\
+        $\im \mcA^* = (\ker \mcA)^\perp $\\
+        \textbf{Доказательство}\\
+        Пусть $y \in \ker \mcA^*$\\
+        $(x, \ub{0}{\mcA^* y}) = (\mcA x, y)$\\
+        Тогда $y \perp \mcA x \Rto y \perp \im \mcA $\\
+        Тогда $\ker \mcA^* \subset (\im \mcA)^\perp $\\
+        $\dim \ker \mcA^* = \dim \ker A^{(*)} = \ker \ol{ \Gamma^{-1} A^T \Gamma} = n - \rg( \Gamma^{-1}A^T \Gamma) = n - \rg A^T = n - \dim \im \mcA = \dim (\im \mcA)\perp$\\
+        Тогда $\ker \mcA^* = (\im \mcA)^\perp $\\
+        $\ker \mcA = (\im \mcA^*)\perp$\\
+        Тогда $\im \mcA^* = (\ker \mcA)^\perp$\\
+    \item $\chi( \lambda) = 0 \LRto \chi_{\mcA^*} ( \lambda) = 0$\\
+        \textbf{Доказательство}\\
+        $\chi_{\mcA^*}(t) = \det (\mcA^{(*)} - tE) = \det(\ol{ \Gamma^{-1}A^T \Gamma} - tE) = \ol{\det( \Gamma^{-1}A^T) \Gamma  - \ol t \ub{E}{\Gamma^{-1} \Gamma}} = \ol{\det( \Gamma^{-1}(A^T - \ol tE) \Gamma)} = \ol{\det (A^T - \ol t E)}  = \ol {\chi_\mcA(\ol t)} $
+    \item $ \lambda$ -- с.ч., $u$ -- с.в. $\mcA$\\
+        $\mu = \neq \ol \lambda$ -- с.ч., $v$ -- с.в. $\mcA^*$\\
+        Тогда $u \perp v$\\
+        \textbf{Доказательство}\\
+        $ \lambda(u, v) = ( \lambda u, v) = (\mcA u, v) = (u, \mcA^* v) = (u, \mu v) = \ol \mu (u, v)$\\
+        $( \lambda - \ol \mu)(u, v) = 0 \LRto (u, v) = 0$
+    \item $L \subset V$ -- инвариантное относительно $\mcA \Rto L^\perp$ - инвариантное относительно $\mcA^*$\\
+        \textbf{Доказательство}\\
+        $\fall x \in L, y \in L^\perp\ (x, \mcA^* y) = (u\ub{\in L}{\mcA x}, \ub{\in L^\perp}y) = 0 \Rto \mcA^* y \in L^\perp$
+\end{enumerate}
+\subsection{Нормальные операторы и их свойства}
+\textbf{Определение}\\
+$\mcA \in \nm{End}(V), (V, (\cdot, \cdot))$\\
+$\mcA$ -- нормальный, если $\mcA\mcA^* = \mcA^*\mcA$\\
+Или $(\mcA x, \mcA y) = (\mcA^* x, \mcA^* y)$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\mcA$ -- нормальный $\LRto A^{(*)}A = AA^{(*)} $, где $A, A^{(*)}$ -- матрицы операторов в некотором базисе
+    \item $\ker \mcA^* = \ker \mcA$\\
+        $\im \mcA^* = \im \mcA$\\
+        $\ker \mcA^2 = \ker \mcA$\\
+        Тогда $V = \ker \mcA \oplus \im \mcA $\\
+        \textbf{Доказательство}\\
+        $x \in \ker \mcA \LRto \mcA x = \0 \LRto (\mcA x, \mcA x) = 0 \LRto (\mcA^* x, \mcA^* x) = 0 \LRto \mcA^* x = \0 \LRto x \in \ker \mcA^*$\\
+        $(\im \mcA)^\perp = \ker \mcA^* = \ker \mcA$\\
+        $\im \mcA = (\ker \mcA)^\perp = \im \mcA^*$\\
+        Пусть $x \in \ker \mcA^2 \LRto (\mcA^2 x \mcA^2 x) = 0 \LRto (\mcA^* \mcA x, \mcA^* \mcA x ) = 0 \LRto \mcA^*(\mcA x) = 0 \Rto \ub{\in \im \mcA}{\mcA x} \in \ker \mcA^* = \ker \mcA$\\
+        $\mcA x \in \im \mcA \cap \ker \mcA \Rto \mcA x = 0$\\
+        $x \in \ker \mcA$\\
+        Тогда $\ker \mcA^2 \subset \ker \mcA$\\
+        Очевидно также, что $\ker \mcA^2 \supset \ker \mcA$\\
+        Отсюда $\ker \mcA = \ker \mcA^2$
+    \item Если $\mcA$ -- нормальный, то $\mcB = \mcA - \lambda \eps$ -- нормальный оператор
+        \textbf{Доказательство}\\
+        $\mcB^* = \mcA^* - \ol\lambda \eps$\\
+        $\mcB \mcB^* = (\mcA - \lambda\eps)(\mcA^* - \ol \lambda\eps) = \mcA \mcA^* - \lambda\mcA^* - \ol \lambda\mcA + | \lambda|^2 \eps $\\
+        Аналогично $\mcB^*\mcB = \mcA^*\mcA - \ol \lambda\mcA - \lambda\mcA^*  + | \lambda|^2\eps $\\
+        Отсюда ч.т.д.
+    \item $ \lambda $ -- с.ч., $u$ -- с.в. $\mcA \Rto \ol \lambda$ -- с.ч., $u$ -- с.в. $\mcA^*$\\
+        \textbf{Доказательство}\\
+        $\chi_\mcA( \lambda) = 0 \LRto \chi_{\mcA^*}(\ol \lambda) = 0 $\\
+        $u$ -- с.в. $\mcA \LRto \mcA u = \lambda u \LRto \mcB u = 0 \LRto u \in \ker \mcB = \ker \mcB^* \LRto \mcB^*u = \0 \LRto \mcA^* u = \ol \lambda u \LRto u$ -- с.в. $\mcA^*$
+    \item $ \lambda$ -- с.ч., $u$ -- с.в. $\mcA$\\
+        $ \mu \new \lambda$ -- с.ч., $v$ -- с.в. $\mCA$\\
+        Тогда $u \perp v$\\
+        Т.о. собственные подмножествва $V_ \lambda \perp V_ \mu$\\
+        \textbf{Доказательство}\\
+        $ \lambda(u, v) = ( \lambda u, v) = (\mcA u, v) = (u, \mcA^* v) = (u, \ol \mu v) = \mu(u, v)$\\
+        Отсюда $(u, v) = 0 \LRto u \perp v$
+\end{enumerate}
+\textbf{Теорема о каноническом виде матрицы нормального оператора в унитарном пространстве}\\
+$\mcA \in \nm{End}(V), (V, (\cdot, \cdot))$ -- унитарное\\
+$\mcA$ -- нормальный оператор $\LRto \ex$ о.н.б. такой, что матрицы оператора $\mcA$ в этом базисе будет иметь диагональный вид $ \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_n)$\\
+Причем, матрица $\mcA^*$ в этом базисе также будет иметь диагональный вид $\ol{ \Lambda} = \nm{diag}(\ol \lambda_1, \ldots, \ol \lambda_n)$\\
+\textbf{Замечание}
+$ \lambda_1, \ldots, \lambda_n$ -- с.ч. $\mcA$\\
+    $\ol \lambda_1, \ldots, \ol \lambda_n$ -- с.ч. $\mcA^*$\\
+    $\mcA$ -- нормальный $\Rto \mcA$ -- о.п.с., но не наоборот\\
+    о.н.б. -- из собственных векторов\\
+    \textbf{Доказательство}\\
+    Пусть $ \lambda_1, v_1$ -- с.ч. и с.в. $\mcA$\\
+    Рассмотрим $L = \span(v_1), V - L \opus L^\perp$\\
+    $L$ -- инвариантное относительно $\mcA \Rto L^\perp$ -- инвариантное относительно $\mcA^*$\\
+    Также по свойству 4 $v_1$ -- с.в. $\mcA^* \Rto L$ -- инвариантное относительно $\mcA^* \Rto L^\perp$ инвариантное относительно $\mcA$\\
+    Тогда $\mcA \vl_{L^\perp}, \mcA^* \vl_{L^\perp}$ -- остаются взаимосопряженными и нормальными\\
+    Применим метод математической индукции:\\
+    База: $n = 1$ -- очевидно\\
+    Пусть для $n = k$ выполнено. Докажем для $k+1$\\
+    Пусть $ \lambda_1, v_1$ -- с.ч. и с.в. $\mcA$\\
+    $L = \span(v_1)$\\
+    $V = L \oplus L^\perp, \dim L^\perp = k$\\
+    По индукционному предположению для $\mcA\vl_{L^\perp}\ \ex$ о.н.б. $v_2, \ldots, v_{k+1}$ в $L^\perp$ из с.в., матрицы $\mcA\vl_{L^\perp}$ имеет диагональный вид $\nm{diag}( \lambda_2, \ldots, \lambda_{k+1})$\\
+    Т.к. $V = L\oplus L^\perp$, матрица $\mcA$ имеет диагональный вид $\nm{diag}( \lambda_1, \ldots, \lambda_{k+1})$\\
+    $v_1 \perp v_2, \ldots, v_{k+1}$
 \end{document}
