@@ -2623,22 +2623,211 @@ $\mcA$ -- нормальный оператор $\LRto \ex$ о.н.б. такой
 Причем, матрица $\mcA^*$ в этом базисе также будет иметь диагональный вид $\ol{ \Lambda} = \nm{diag}(\ol \lambda_1, \ldots, \ol \lambda_n)$\\
 \textbf{Замечание}
 $ \lambda_1, \ldots, \lambda_n$ -- с.ч. $\mcA$\\
-    $\ol \lambda_1, \ldots, \ol \lambda_n$ -- с.ч. $\mcA^*$\\
-    $\mcA$ -- нормальный $\Rto \mcA$ -- о.п.с., но не наоборот\\
-    о.н.б. -- из собственных векторов\\
+$\ol \lambda_1, \ldots, \ol \lambda_n$ -- с.ч. $\mcA^*$\\
+$\mcA$ -- нормальный $\Rto \mcA$ -- о.п.с., но не наоборот\\
+о.н.б. -- из собственных векторов\\
+\textbf{Доказательство}\\
+Пусть $ \lambda_1, v_1$ -- с.ч. и с.в. $\mcA$\\
+Рассмотрим $L = \span(v_1), V - L \opus L^\perp$\\
+$L$ -- инвариантное относительно $\mcA \Rto L^\perp$ -- инвариантное относительно $\mcA^*$\\
+Также по свойству 4 $v_1$ -- с.в. $\mcA^* \Rto L$ -- инвариантное относительно $\mcA^* \Rto L^\perp$ инвариантное относительно $\mcA$\\
+Тогда $\mcA \vl_{L^\perp}, \mcA^* \vl_{L^\perp}$ -- остаются взаимосопряженными и нормальными\\
+Применим метод математической индукции:\\
+База: $n = 1$ -- очевидно\\
+Пусть для $n = k$ выполнено. Докажем для $k+1$\\
+Пусть $ \lambda_1, v_1$ -- с.ч. и с.в. $\mcA$\\
+$L = \span(v_1)$\\
+$V = L \oplus L^\perp, \dim L^\perp = k$\\
+По индукционному предположению для $\mcA\vl_{L^\perp}\ \ex$ о.н.б. $v_2, \ldots, v_{k+1}$ в $L^\perp$ из с.в., матрицы $\mcA\vl_{L^\perp}$ имеет диагональный вид $\nm{diag}( \lambda_2, \ldots, \lambda_{k+1})$\\
+Т.к. $V = L\oplus L^\perp$, матрица $\mcA$ имеет диагональный вид $\nm{diag}( \lambda_1, \ldots, \lambda_{k+1})$\\
+$v_1 \perp v_2, \ldots, v_{k+1}$\\
+В обратную сторону очевидно\\
+\textbf{Следствие 1}\\
+$\mcA$ -- нормальный в унитарном пространстве $\LRto V = \bigoplus_{ \lambda}V_\lambda, V_\lambda \perp V_\mu, \lambda != \mu$\\
+\textbf{Следствие 2}\\
+$AA^* = A^*A$ -- нормальная матрица\\
+$a_{ij} \in \Cset \Rto \ex$ унитарная матрица $T: T^*AT = \ol{T^T}AT = \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_n), \lambda_i$ -- с.ч. $\mcA$\\
+\textbf{Доказательство}\\
+$A^*$ -- матрица $\mcA^*$ в о.н.б.\\
+$A$ -- матрица $\mcA$\\
+Тогда по теореме существует базис и о.н.с.в. $A$\\
+$T = \begin{pmatrix}
+    v_1 & v_2 & \ldots & v_n
+\end{pmatrix}$ -- о.н.с.в. $= T_{e\rto v}$\\
+$T^{-1} = A T = \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_n)$ -- т.к. $v_1, \ldots, v_n$ -- попарно ортогональны и нормированы\\
+$\LRto T$ -- унитарная матрица $\LRto T^{-1} = \ol{T^T} = T^*$\\\\
+Что будет в евклидовом пространстве?\\
+$A$ -- вещественная матрица $\Rto \chi_\mcA$ -- вещественные коэффициенты\\
+Не все корни $\chi_{\mcA}$ -- собственные числа, а только вещественные\\
+\textbf{Определение}\\
+$V$ -- линейное пространство над $\Rset$\\
+$(V, (\cdot, \cdot))$ -- евклидово пространство\\
+$V_\Cset$ -- комплексификация $V$\\
+$\fall z = x + iy, w=u+iv \in V_\Cset, x, y, u, v \in V\ (z, w):= (x, y) + (y, v) + i(-(x, v) + (y, u))$\\
+$(V_\Cset, (\cdot, \cdot))$ -- унитарное пространство\\
+\textbf{Упражнение}\\
+$\ol{(z_1, z_2)} = (\ol z_1, \ol z_2)$\\
+$\mcA \in \nm{End}(V)$
+$\mcA_\Cset \in \nm{End}(V_\Cset)$\\
+$\mcA_\Cset (x+iy) = \mcA x + i \mcA y$\\
+\textbf{Напоминание}\\
+$e_1, \ldots, e_n$ -- базис $V \Rto $ базис $V_\Cset$\\
+$\chi_A(t) = \chi_{A_\Cset}(t)$\\
+$\ol{\mcA_\Cset z} = \mcA_\Cset(\ol z)$\\
+$ \lambda, z$ -- с.ч., с.в. $\mcA_\Cset \Rto \ol \lambda, \ol z$ -- с.ч., с.в. $\mcA_\Cset$\\
+$\mcA_\Cset \ol z = \ol{\mcA_\Cset z} = \ol{ \lambda z} = \ol \lambda \ol z$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $ \lambda \in \Rset, V_ \lambda$ -- с.ч. и собственное подпространство $\mcA \Rto \lambda, (V_ \lambda)_\Cset$ -- с.ч. и с.п. $\mcA_\Cset$\\
+        \textbf{Доказательство}
+        //todo 12:10 11.05
+    \item $ \lambda, z$ -- с.ч. и с.в. $\mcA$\\
+        $\ol \lambda, \ol z$ -- с.ч. и с.в. $\mcA_\Cset$\\
+        $z = u + iv, \ol z = u - iv$\\
+        Тогда $(z, \ol z) = 0 \Rto u \perp v, \|u\| = \|v\|$\\
+        \textbf{Доказательство}\\
+        $0 = (z, \ol z) = (u + iv, u - iv) = \ub 0{(u,u) - (v,v)} + \ub{0}{i(v,u) + i(u, v)}$
+    \item $(\mcA_\Cset)^* = (\mcA^*)_\Cset$\\
+        \textbf{Доказательство}\\
+        $e_1, \ldots, e_n$ -- о.н.б. $V \rto e_1, \ldots, e_n$ -- о.н.б. в $V_\Cset$\\
+        $\mcA \lrto A, \mcA^* \lrto A^T \Rto (\mcA^*)_\Cset \lrto A^T$\\
+        $\mcA_\Cset \lrto A, (\mcA_\Cset)^* \lrto A^T$
+    \item $(\mcA \mcB)_\Cset = \mcA_\Cset, \mcB_\Cset$\\
+        \textbf{Доказательство}\\
+        $(\mcA\mcB)_\Cset z = (\mcA\mcB) x + i (\mcA\mcB)y = \mcA_\Cset (\mcB x + i\mcB y) = \mcA_\Cset \mcB_\Cset z$\\
+    \item $\ex \mcA^{-1} \Rto (\mcA_\Cset)^{-1}$, причем $(\mcA_\Cset)^{-1} = (\mcA^{-1})_\Cset$\\
+        \textbf{Доказательство}\\
+        $\chi_\mcA = \chi_{\mcA_\Cset} \Rto \ex (\mcA_\Cset)^{-1}$\\
+        $\mcA_\Cset \mcA_\Cset^{-1} = \eps = (\mcA \mcA^{-1})_\Cset = \mcA_\Cset (\mcA^{-1})_\Cset$
+    \item $\mcA$ нормальный $\Rto \mcA_\Cset$ нормальный
+\end{enumerate}
+\textbf{Теорема о каноническом виде матрицы нормального оператора в евклидовом пространстве}\\
+$\mcA \in \nm{End}(V), (V, (\cdot, \cdot))$ -- евклидово пространство\\
+$\mcA$ -- нормальный оператор $\LRto \ex$ о.н.б. пр-ва $V$ такой, что матрица оператора $\mcA$ в этом базисе будет иметь блочно-диагональный вид $ \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_k, \Phi_1, \ldots, \Phi_m)$, где $ \lambda_i \in R$ -- с.ч. $\mcA$\\
+$ \Phi_i = \begin{pmatrix}
+    \alpha_i & \beta_i\\
+    -\beta_i & \alpha_i 
+\end{pmatrix}, \alpha_i, \beta_i \in \Rset$, где $ \alpha_i \pm i \beta_i$ -- комплексные сопряженные корни характеристического многочлена $\mcA$\\
+Причем, матрица $\mcA^*$ имеет вид $ \Lambda^* = \Lambda^T = \nm{diag}( \lambda_1, \ldots, l_k, \Phi_1^T, \ldots, \Phi_m^T)$\\
+\textbf{Доказательство $\Lto$}\\
+Очевидно: $ \Phi_i^T \Phi_i = \begin{pmatrix}
+    \alpha_i^2 + \beta_i^2 & 0\\
+    0 \\ \alpha_i^2 + \beta_i^2
+\end{pmatrix} = \Phi_i \Phi_i^2$\\
+\textbf{Доказательство $\Rto$}\\
+Если все корни $\chi_\mcA$ вещественные, все очевидно\\
+Иначе применим комплексификацию\\
+$\mcA$ -- нормальный $\Rto \mcA_\Cset$ нормальный, $V_\Cset$ -- унитарное пространство\\
+Тогда по теореме $\ex$ о.н.б. $w_1, \ldots, w_n$ из с.в. $\mcA_\Cset$ такой, что матрица $\mcA_\Cset$ будет иметь диагональный вид\\
+$V = \bigoplus_{\lambda\text{-- с.в. } \mcA_\Cset} V_ \lambda = \bigoplus_{i=1, \lambda_i \in \Rset}^k V_{ \lambda_i}^\Cset \oplus \bigoplus_{\mu, \ol \mu} \span(z_j^\mu, \ol{z}_j^{\ol \mu})$\\
+$\mu, \ol \mu$ -- комплексные сопряженные корни $\chi_\mcA$\\
+$z, \ol z$ -- с.в., пусть они нормированные\\
+$(z, \ol z) = 0$\\
+$z = u + iv, u,v \in V$\\
+$V_\lambda \perp V_\mu$\\
+$V_{ \lambda_i}^\Cset = $ по свойству 1 $= (V_ {\lambda_i})_\Cset = \span^\Cset(\omega_1, \ldots, \omega_k)$\\
+$(z, \ol z) = 0 \Rto u \perp v, \|u\| = \|v\|$\\
+$\span^\Cset(z, \ol z) = \span^\Cset(u, v) = (\span(u,v))_\Cset$\\
+Тогда $V_\mu^\Cset = \span^\Cset(z_1, \ldots, z_r) \perp V_{\ol \mu}^\Cset = \span^\Cset(\ol z_1, \ldots, \ol z_r)$\\
+$V_\Cset = \span^\Cset(\omega_1, \ldots, \omega_k, u_1, v_1, u_2, v_2, \ldots), \omega, u, v$ -- вещественные вектора\\
+$\|z_i\|^2 = 1 = \|u_i\|^2 + \|v_i\|^2, \|u_i\|=\|v_i\| \Rto \|u_i\|=\|v_i\| = \frac1{\sqrt{2}}$\\
+$\mcA_\Cset \lrto A \lrto \mcA$ -- в вещественном базисе\\
+$\mcA_\Cset z_i = \mu_i z_i$\\
+$\mu_i = \alpha_i + i \beta_i$\\
+$\mcA_\Cset z_i = \frac12 \mcA_{\Cset}(z_i + \ol z_i) = \frac12(\mu_i z_i + \ol \mi_i \ol z_i) = \re(\mu_i z_i) = \re(( \alpha_i + i \beta_i)(u_i + i b_i)) = \alpha_i u_i - \beta_i v_i \lrto \begin{pmatrix}0\\0\\\vdots\\0\\ \alpha_i \\ - \beta_i\\0\\\vdot\end{pmatrix}$\\
+$\mcA_\Cset v_i = \frac1{2i} \mcA_\Cset(z_i - \ol z_i) = \frac1{2i}(\mu_iz_i - \ol \mu_i \ol z_i) = \im (\mu_i z_i) = \beta_i u_i + \alpha_i v_i \lrto \begin{pmatrix}0\\0\\\vdots\\0\\\beta_i\\\alpha_i\\0\\\vdot\end{pmatrix}$\\
+Осталось ортогонализовать базис. Заменим $u_i$ на $\sqrt(2)u_i, v_i$ -- на $\sqrt(2)v_i$\\
+Т.о. мы получили матрицу из теоремы\\
+\textbf{Следствие}\\
+$AA^* = A^*A(AA^T = A^TA)$\\
+$a_{ij} \in \Rset$\\
+Тогда $\ex$ ортогональная матрица $T$ такая, что $T^T AT = \Lambda = \diag( \lambda_1, \ldots, \lambda_k, \Phi_i, \ldots, \Phi_m)$\\
+\textbf{Доказательство}\\
+$T = \begin{pmatrix}\omega_1 & \ldots & \omega_k & u_1 & v_1 & \ldots\end{pmatrix}$\\
+$T$ -- ортогональная матрица $\LRto T^{-1} = T^* = T^T$
+\subsection{Самосопряженные операторы и их свойства. Изометрические операторы и их свойства}
+\textbf{Определение}\\
+$\mcA$ -- называются самосопряженный, если $\mcA = \mcA^*$\\
+Если $V$ унитарное, то -- эрмитовый\\
+Если $V$ евклидово, то -- симметричный\\
+$\LRto (\mcA x, y) = (x, \mcA y)$
+\textbf{Замечание}\\
+Если $\mcA$ -- самосопряженный, то $\mcA$ -- нормальный\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\mcA$ -- самосопряженный $\LRto \ex$ о.н.б. такой, что $A^* = A$
+    \item $\mcA, \mcB$ самосопряженные $\Rto \fall \lambda \in \Rset\ \mcA + \lambda\mcB$ -- самосопряженный
+    \item $\mcA, \mcB$ -- самосопряженные и перестановочные $\Rto \mcA\mcB, \mcB\mcA$ -- самосопряженные
+    \item Если $\ex \mcA^{-1}, \mcA$ -- самосопряженный $\Rto \mcA^{-1}$ -- самосопряженный\\
     \textbf{Доказательство}\\
-    Пусть $ \lambda_1, v_1$ -- с.ч. и с.в. $\mcA$\\
-    Рассмотрим $L = \span(v_1), V - L \opus L^\perp$\\
-    $L$ -- инвариантное относительно $\mcA \Rto L^\perp$ -- инвариантное относительно $\mcA^*$\\
-    Также по свойству 4 $v_1$ -- с.в. $\mcA^* \Rto L$ -- инвариантное относительно $\mcA^* \Rto L^\perp$ инвариантное относительно $\mcA$\\
-    Тогда $\mcA \vl_{L^\perp}, \mcA^* \vl_{L^\perp}$ -- остаются взаимосопряженными и нормальными\\
-    Применим метод математической индукции:\\
-    База: $n = 1$ -- очевидно\\
-    Пусть для $n = k$ выполнено. Докажем для $k+1$\\
-    Пусть $ \lambda_1, v_1$ -- с.ч. и с.в. $\mcA$\\
-    $L = \span(v_1)$\\
-    $V = L \oplus L^\perp, \dim L^\perp = k$\\
-    По индукционному предположению для $\mcA\vl_{L^\perp}\ \ex$ о.н.б. $v_2, \ldots, v_{k+1}$ в $L^\perp$ из с.в., матрицы $\mcA\vl_{L^\perp}$ имеет диагональный вид $\nm{diag}( \lambda_2, \ldots, \lambda_{k+1})$\\
-    Т.к. $V = L\oplus L^\perp$, матрица $\mcA$ имеет диагональный вид $\nm{diag}( \lambda_1, \ldots, \lambda_{k+1})$\\
-    $v_1 \perp v_2, \ldots, v_{k+1}$
+    $(\mcA^{-1}\mcA)^* = \eps^* = \eps$\\
+    $\mcA^* (\mcA^{-1})^* = \eps$\\
+    $\mcA(\mcA^{-1})^* = \eps \Rto (\mcA^{-1})^* = \mcA^{-1}$
+    \item $\mcA$ самосопряженный $\LRto \mcA$ нормальный и все корни $\chi_\mcA$ вещественные\\
+        \textbf{Доказательство для унитарного пространства}\\
+        По теореме о каноническим виде матрицы\\
+        $\mcA \lrto \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_n)$\\
+        $\mcA^* \lrto \ol{ \Lambda^T} = \diag{\ol \lambda_1, \ldots, \ol \lambda_n}$\\
+        $\mcA = \mcA^* \lrto \Lambda = \ol{ \Lambda^T} \LRto \lambda_i = \ol{ \lambda_i} \LRto \lambda_i \in \Rset$\\
+        \textbf{Доказательство для евклидова пространства}\\
+        По теореме о каноническом виде матрицы\\
+        $\mcA = \mcA^* \LRto \Lambda = \Lambda^T$\\
+        $ \Phi_i = \Phi_i^T \LRto \beta_i = 0$\\
+        Тогда нет блоков $ \Phi_i \Rto \Lambda$ -- диагональная $\Rto \lambda_i$ вещественные
+    \item $L \subset V$ -- линейное подпространство\\
+        $L$ -- инвариантно относительно $\mcA \Rto L^\perp$ инвариантно относительно $\mcA$
+\end{enumerate}
+//todo 11.05 13:56
+\textbf{Следствие 2}\\
+$\mcA^* = \mcA \Rto \ex$ унитарная/ортогональная $T$ такая, что $T^*AT$ имеет диагональный вид\\
+\textbf{Определение}\\
+$Q$ невырожденаая $\in \nm{End})V_$ называется изометрическим, если $Q^{-1} = Q^*$\\
+Если $V$ -- унитарная, то называется унитарным\\
+Если $V$ -- евклидово, то называется ортогональным\\
+$\LRto (Qx, Qy) = (x, Q^*Qy) = (x,y)$\\
+\textbf{Замечание}\\
+Изометрический $\Rto$ нормальный
+\textbf{Свойства}
+\begin{enumerate}
+    \item $Q$ изометрический $\ex$ базис такой, что $\ol{Q^T} = Q^* = Q^{-1}$ 
+    \item $Q$ изометрический $\Rto$ переводит ортонормированный базис в ортонормированный базис\\
+    \textbf{Доказательство $\Rto$}\\
+    $e_1, \ldots, e_n$ -- о.н.б.\\
+    $(Qe_i, Qe_j) = (e_i, e_j) = \delta_{ij}$\\
+    \textbf{Доказательство $\Lto$}\\
+    $e_1, \ldots, e_n$ -- о.н.б.\\
+    $\fall x, y \in V\ Qe_1, \ldots, Qe_n$ -- о.н.б.\\
+    Тогда $(Qe_i, Qe_j) = \delta_{ij}$\\
+    $(Qx, Qy) = \sum_{ij} x_i \ol{y_j}(Qe_i, Qe_j) = \sum_i x_i \ol{y_i} = (x,y)$
+    \item $Q, R$ -- изометрические $\Rto QR$ -- изометрические
+    \item $Q$ -- изометрический $\Rto Q^{-1}$ -- изометрический
+    \item $Q$ -- изометрический $\LRto Q$ -- нормальный и все корни $\chi_Q$ по модулю равны 1\\ 
+    \textbf{Доказательство для унитарного пространства}\\
+    По теореме о каноническом виде\\
+    $\ex$ о.н.б. такой, что $Q \lrto \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_n)$\\
+    $Q^* \lrto \ol{ \Lambda^T} = \nm{diag}( \ol{\lambda_1}, \ldots, \ol{ \lambda_n})$\\
+    $QQ^* = \eps \LRto \Lambda \ol{ \Lambda^T} = E = \nm{diag}(\| \lambda_1\|^2, \ldots, \| \lambda_n\|^2) \Rto \|\lambda\| = \pm 1$
+    \textbf{Доказательство для евклидова пространства}
+    $QQ^* = \eps \LRto \Lambda \ol{ \Lambda^T} = E = \nm{diag}(\| \lambda_1\|^2, \ldots, \| \lambda_k\|^2, |\Phi_1\Phi_1^T|, \ldots, |\Phi_k\Phi_k^T|$\\
+    $ \Phi_i \Phi_i^T = \nm{diag}( \alpha_i^2 + \beta_i^2, \alpha_i^2 + \beta_i^2)$\\
+    $ \alpha_i^2 + \beta_i^2 = 1$
+    В частности, если корни $\chi_Q$ вещественные, то $\pm 1$\\
+    \item $L \subset V$ -- линейное подпространство, инвариантное относительно $Q$. Тогда $L^\perp$ инвариантно относительно $Q$\\
+    \textbf{Доказательство}\\
+    //todo 11.05 14:19
+\end{enumerate}
+\textbf{Теорема о каноническом виде матрицы изометрического оператора}\\
+$Q \in \nm{End}(V), (V, (\cdot, \cdot))$ -- унитарное/евклидово\\
+$Q$ -- изометрический $\LRto \ex$ о.н.б. такой, что матрица имеет диагональный/блочно-диагональный вид
+$ \Lambda = \nm{diag}( \lambda_1, \ldots, \lambda_n)$ / $ \Lambda = \nm{diag}(\lambda_1, \ldots, \lambda_k, \Phi_1, \ldots, \Phi_m), \lambda_i = \pm 1 \Phi_i = \begin{pmatrix}
+    \cos \phi_i & \sin \phi_i\\
+    -\sin \phi_i & \cos \phi_i
+\end{pmatrix}, \cos \pih_i \pm i\sin \phi_i$ -- корни $\chi_Q$\\
+\textbf{Доказательство}\\
+$ \Lambda^{-1} = \ol{ \Lambda^T}$
+\textbf{Замечание}\\
+$Q$ ортогональный в евклидовом пространстве $\Rto$ композиция поворотов и отображений\\
+\textbf{Следствие}\\
+$Q^* = Q^{-1}$ -- унитарная/ортогональная матрица\\
+Тогда $\ex$ унитарная/ортогональная матрица $T$ такая, что $T^* Q T = \Lambda$ -- из теоремы
 \end{document}
