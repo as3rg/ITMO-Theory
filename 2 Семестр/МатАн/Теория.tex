@@ -1657,12 +1657,224 @@ $f: [1, +\infty) \rto \Rset, f \geq 0$, непрерывная, монотонн
 Тогда $\sum_{k=1}^{+\infty} f(k), \int_1^{+\infty} f(x)\df x$ -- сходятся/расходятся одновременно\\
 \textbf{Доказательство}\\
 Если $f\not\equiv0$, возрастает, то тривиально:\\
-НСНМ $a$ $f \geq \eps$\\
+НСНМ $f \geq \eps$\\
 Тогда $\int_1^{+\infty} f \geq \int_a^{+\infty} \eps \df x = +\infty$ -- расходится\\
 Сумму также расходится\\
 Если $f$ убывает:\\
 $\sum_{k=1}^{n-1} f(k) \geq \int_1^n f(x)\df x$ -- из графика\\
 $\sum_{k=2}^n f(k) \leq \int_1^n f(x)\df x$ -- из графика\\
 Отсюда они сходятся/расходятся одновременно\\
-//todo continue url{https://www.youtube.com/live/46TKmI9S1Nw?feature=share&t=4855}
+\textbf{Определение}\\
+$\sum a_n$ -- абсолютно сходящийся, если
+\begin{enumerate}
+    \item $\sum a_n$ -- сходится
+    \item $\sum |a_n|$ -- сходится
+\end{enumerate}
+$\sum a_n$ -- сходится $\not\Rto \sum a_n$ -- абсолютно сходится\\
+\textbf{Теорема}\\
+Утверждения эквивалентны:
+\begin{enumerate}
+    \item $\sum a_n$ -- абсолютно сходится
+    \item $\sum |a_n|$ -- сходится
+    \item $\sum a_n^+, \sum a_n^-$ -- сходятся
+\end{enumerate}
+\subsection{Ряды со слагаемыми произвольного знака}
+\textbf{Теорема(признак Лейбница)}\everymath{}
+$\sum (-1)C_n$, где $C_n \geq 0, C_n \rto 0, C_n$ -- монотонный\\
+Тогда ряд сходится\\
+\textbf{Доказательство}\\
+Н.У,О. пусть первое слагаемое положительно\\
+$S_{2n} = (C_1-C_2) + \ldots + (C_{2n-1} - C_{2n})$\\
+$S_{2n} \geq 0, \uto$\\
+$S_{2n} = C_1 - (C_2 - C_3) - \ldots - (C_{2n-2} - C_{2n-1}) - C_{2n} \leq C_1$\\
+Пусть $\ex \lim S_{2n} = S$\\
+$\lim S_{2n+1} = \lim S_{2n} + C_{2n+1} = S$\\
+Т.о. ряд сходится\\
+\textbf{Следствие (секретное приложение к признаку Лейбница)}\\
+В условии теоремы $|\sum_{n=N}^{+\infty} (-1)^n C_n| \leq C_N$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item $a_n \sim b_n$ (знаки меняются)\\
+    $\sum a_n$ -- сходится $\not\Rto \sum b_n$ -- сходится
+    \item $\sum a_n$ -- сходится, $b_n = o(a_n) \not\Rto \sum b_n$ -- сходится
+\end{enumerate}
+\textbf{Определение (преобразование Абеля)}\\
+$A_k = a_1 + \ldots + a_k$ -- аналог "первообразной"\\
+$\sum_{k=1}^n a_kb_k = A_nb_n + \sum_{k=1}^{n-1} A_k(b_k-b_{k+1})$\\
+\textbf{Теорема (признаки Дирихле и Абеля)}\\
+$\sum_{n=1}^{+\infty} a_nb_n$\\
+\begin{enumerate}
+    \item (Дирихле)\\
+    $A_k$ -- ограниченное, $b_n \rto 0, b_n$ -- монотонное\\
+    Тогда ряд сходится
+    \item (Абеля)\\
+    $a_k$ -- сходится($\lim A \in \Rset$)\\
+    $b_n$ ограниченное и монотонное\\
+    Тогда ряд сходится
+\end{enumerate}
+\textbf{Доказательство 1}\\
+$\sum_{k=1}^n a_kb_k = A_nb_n + \sum_{k=1}^{n-1} A_k(b_k-b_{k+1})$\\
+$A_nb_n \rto 0$\\
+$\sum_{k=1}^{n-1} A_k(b_k-b_{k+1})$ -- частичная сумма некоторого ряда. Изучим на абсолютную сходимость\\
+Т.к. $A_n$ ограниченное, $|A_n| \leq C_A$\\
+Т.к. $b_n$ сходится, то $|b_n| \leq C_B$\\
+$\sum_{k=1}^{n-1} |A_k||(b_k-b_{k+1})| \leq C_A \sum_{k=1}^{n-1} |b_k-b_{k+1}| = \pm C_A \sum_{k=1}^{n-1} (b_k-b_{k+1}) = \pm C_A (b_1 - b_n) \leq 2C_AC_B$\\
+\textbf{Доказательство 2}\\
+Т.к. последовательность монотонна и ограничена, то $b_n \rto b \in \Rset$\\
+$\sum a_n b_n = \ub{\text{сходится по Дирихле}}{\sum a_n(b_n-b)} + \ub{\text{сходится}}{\sum ba_n}$\\
+\subsection{Свойства сходящихся рядов}
+\begin{enumerate}
+    \item Группировка слагаемых\\
+    $\sum a_n = \ub{b_1}{(a_1 + a_2 + \ldots + a_{n_1})} + \ub{b_2}{(a_{n_1+1} + \ldots + a_{n_2})} + \ldots$\\
+    \textbf{Теорема}
+    \begin{enumerate}
+        \item $\sum a_n$ -- сходится $\Rto \sum b_k = \sum a_k$ -- сходится
+        \item $a_n \geq 0 \Rto \sum a_n = \sum b_k$ -- вместе сходятся и расходятся
+    \end{enumerate}
+    \textbf{Доказательство}\\
+    $S^{(b)}_m = S^{(a)}_{n_m} \rto S^{(a)}$\\
+    \textbf{Замечание}
+    \begin{enumerate}
+        \item $\sum b_k$ -- сходится $\not\Rto \sum a_k$ -- сходится (пример: $1 - 1 + 1 - 1 + \ldots$)
+        \item $\sum b_k$ -- сходится, $a_n \rto 0$, скобки -- ограниченного размера (т.е. $\ex M: \fall k\ n_k - n_{k-1} \leq M$)\\
+        Тогда $\sum a_k$ -- сходится\\
+        \textbf{Доказательство}\\
+        $S_N^{(a)} = S_K^{(b)} + \delta_k$, где $n_k \leq N < n_{k+1}, \delta_k = a_{n_k+1} + \ldots + a_N$\\
+        $|\delta_k| \leq |a_{n_k + 1}| + \ldots + |a_N| \leq |a_{n_k + 1}| + \ldots + |a_{n_k} + M| \xrto[k\rto +\infty]{} 0$\\
+        \textbf{Примеры}\\
+        $\sum \frac1{n(n+1)}$\\
+        Неправильное использование правила:\\
+        $\sum \frac1{n(n+1)} = \sum \frac n{n+1}-\frac{n-1}n = \frac12 - \frac01 + \frac23 - \frac12 + \ldots = 0$\\
+        Правильное использование правила:\\
+        $\sum \frac1{n(n+1)} = \sum \frac1{n} - \frac1{n+1} = \frac11 = 1$
+    \end{enumerate}
+    \item Перестановка слагаемых\\
+    $\sum a_n$\\
+    $\omega: \Nset \rto \Nset$ -- биекция\\
+    $b_k := a_{\omega(k)}$\\
+    $\sum_{k=1}^{+\infty} b_k$ -- перестановка ряда $\sum_{n=1}^{+\infty} a_n$\\
+    \textbf{Теорема}\\
+    $\sum a_n$ -- абсолютно сходится\\
+    Тогда $\sum b_k$ -- абсолютно сходится к той же величине\\
+    \textbf{Доказательство}
+    \begin{enumerate}
+        \item $a_n \geq 0$\\
+        $S_k^{(b)} = a_{\omega(1)} + \ldots + a_{\omega(k)} \leq S_M^{(a)}, M = \max_{1 \leq i \leq k} \omega(i)$\\
+        $k\rto +\infty \Rto M \rto +\infty$\\
+        Тогда $S^{(b)} \leq S^{(a)}$\\
+        Используя $\omega^{-1}$, получаем, что $S^{(a)} \leq S^{(b)}$\\
+        Тогда $S^{(a)} = S^{(b)}$
+        \item Рассмотрим $a_n^\pm, b_n^\pm$\\
+        Ряд $\sum b_k^\pm$ -- перестановка $\sum a_k^\pm$, т.е. их суммы равны\\
+        Тогда суммы исходных рядов равны
+    \end{enumerate}
+    \textbf{Теорема Римана}\\
+    $\sum a_n$ -- сходится, но не абсолютно\\
+    Тогда \begin{enumerate}
+        \item $\ex$ перестановка, не имеющая суммы
+        \item $\fall S \in \Rset\ \ex $ перестановка$: \sum b_k = S$
+    \end{enumerate}
+\end{enumerate}
+\textbf{Определение}\\
+$C$ -- счетное множество, $\fall \gamma \in C$ задано число $a_\gamma$\\
+Семейство чисел $(a_\gamma)_{\gamma \in C}$ -- суммируемое, если $\sum_{\gamma} |a_\gamma|$ -- конечная\\
+Тогда $\sum_\gamma |a_\gamma| = \sum_\gamma a^+_\gamma + \sum_\gamma a^-_\gamma$\\
+Введем линейное отображение(линейный оператор)\\
+*ввели*\\
+Оператор $L: \Rset^m \rto \Rset^n$ задается матрицей $A_{n\times m}$\\
+Рассмотрим $A: \Rset^m \rto \Rset^n$\\
+Данные утвержения эквивалентны\\
+\begin{enumerate}
+    \item $A$ -- обратимый
+    \item $\det A\neq 0$
+    \item $A(\Rset^m) = \Rset^m$
+\end{enumerate}
+\subsection{Дифференцирование}
+\textbf{Определение}
+\begin{enumerate}
+    \item $\phi: E \subset \Rset^m \rto \Rset^n$\\
+    $\phi$ -- бесконечно малое в точке $x_0 \in \nm{Int} E$, если $\phi(x) \xrto[x\rto x_0]{} \0$\\
+    /*если нам надо, считаем, что $\phi(x_0) - $*/
+    \item $\phi: E \subset \Rset^m \rto \Rset^n, \0 \in \nm{Int} E$\\
+    $\phi(h) = o(h)$, если $\frac{\phi(h)}{|h|}$ -- б.м. при $h\rto 0$
+    \item $F: E\subset \Rset^m \rto \Rset^n, a \in \nm{Int} E$\\
+    $F$ дифференцируема в точке $a$, если
+    \begin{enumerate}
+        \item $\ex L: \Rset^m \rto \Rset^n$ -- линейный оператор
+        \item $\ex$ б.м. $\alpha(h), h \rto 0$
+        \item $F(a + h) = F(a) + Lh + \alpha(h)|h|$
+    \end{enumerate}
+    Или $F(x) = F(a) + L(x-a) + \phi(x)|x-a|, \phi(x) = \alpha(x-a)$ -- б.м. в $x\rto a$\\
+    $L$ -- производный оператор $F$ в точке $a$\\
+    $L = F'(a)$\\
+    Матрица оператора $L$ -- матрица Якоби\\
+    Дифференциал оператора $F$ в точке $a$:
+    \begin{enumerate}
+        \item То же, что и производный оператор\\
+        $h\mapsto F'(a) h$
+        \item $E \times \Rset^m \rto \Rset^n$\\
+        $(x_0, h) \mapsto F'(x_0)h$
+    \end{enumerate}
+\end{enumerate}
+\section{Функции и отображения в $\Rset^m$}
+$\Rset^m = \{ (x_1, \ldots, x_m): x_i \in \Rset \}$ -- линейное пространство\\
+$\an xy = \sum_{i=1}^m x_iy_i, \|x\|:= \sqrt{\an x,y} = \sqrt{x_1^2 + \ldots + x_m^2} \lrto |x|$\\
+$\rho(x,y) = \|x-y\|$\\
+$B(a,r) = \{x: |x-a| < r\}$\\
+$S(a,r) = \{x: |x-a| = r\}$\\
+$\ol B(a,r) = B(a,r) \cap S(a,r)$\\
+$G$ -- открытое множество $\LRto \fall a \in G\ \ex \eps_a: B(a, \eps_a) \subset G$\\
+$G = \bigcup_{a \in G} B(a, \eps_a)$\\
+$a$ -- предельная точка $F$, если $\fall \eps > 0\ \overdot B(a,\eps) \cap F \neq \varnothing$\\
+$x^{(n)} \rto a$\\
+$\fall \eps > 0\ \ex N: \fall n > N\ |x^{(n)}-a|<\eps$\\\\
+$f: D\subset \Rset^m \rto \Rset^m$\\
+$a$ -- предельная точка $D$\\
+$\lim_{x\rto a} f(x) = L \in \Rset^m \LRto \fall \eps > 0\ \ex \delta > 0: \fall x: |x-a| < \delta, x \neq a,x \in D\ |f(x) - L| < \eps$\\
+Или $\fall (x_n): x_n \rto a, x_n \in D, x_n \neq a\ f(x_n) \rto L$\\
+$x^{(n)} \rto a \LRto \fall k \in \{1, \ldots m \}\ x_k^{(n)} \rto a_k$\\
+\textbf{Доказательство}\\
+$|x_k^{(n)}-a_k| \leq |x^{(n)}-a| \leq \sqrt{m}\max_k |x_k^{(n)}-a_k|$\\\\
+Или $f = (f_1(x), \ldots, f_n(x)), \fall k \in \{1\ldots m\} \lim_{x\rto a} f_k(x) \rto L_k$\\\\
+$[a, b] := [a_1, b_1] \times [a_2, b_2] \times \ldots \times [a_m, b_m]$\\\\
+$K$ -- компактно, если $\fall (G_\alpha): G_\alpha$ -- открытое$, K \subset \bigcup_\alpha G_\alpha, \ex \alpha_1, \ldots, \alpha_n: K \subset \bigcup_{i=1}^n G_{\alpha_i}$\\
+В $\Rset^m$: компактное $\LRto$ замкнутое и ограниченное $\LRto$ секвенциально компактное $\LRto \fall \eps > 0\ \ex$ конечная $\eps$-сеть + замкнутое\\
+\textbf{Определение (повторный предел)}\\
+Рассмотрим $\Rset^2$\\
+$D_1, D_2 \subset \Rset$\\
+$a_1$ -- п.т. $D_1, a_2$ -- п.т. $D_2$\\
+$D \supset (D_1 \setminus \{a_1\}) \times (D_2 \setminus \{a_2\})$\\
+$f: D \rto \Rset$\\
+\begin{enumerate}
+    \item Если $\fall x_1 \in D_1 \setminus \{a_1\} \ex \lim_{x_2\rto a_2} f(x_1, x_2) =: \phi(x_2)$ (конечный)\\
+    то $\lim_{x_1 \rto a_1} \phi(x_1)$ -- повторный предел
+    \item Аналогично $1 \leftrightarrows 2$\\
+    \item "Двойной предел" $\lim_{x_1 \rto a_1, x_2 \rto a_2} f(x_1, x_2) = L$
+    $\fall U(L)\ \ex V_1(a_1), V_2(a_2): \fall x_1 \in \overdot{V_1}(a_1) \cap D, x_2 \in \overdot{V_2}(a_2) \cap D_2\ f(x_1, x_2) \in U(L)$
+    \item Предел по направлению\\
+    Пусть $v$ -- некий ненулевой вектор\\
+    $\lim_{t\rto +0} f(a_1 + tv_1, a_2 + tv_2) = \lim_{x\rto a} f|_L$, где $L$ -- луч с началом в $a$, параллельный вектору
+    \item $\gamma: [-1, 1] \rto \Rset^2$ -- непрерывный путь\\
+    $\fall t\ \gamma'(t) != 0$ (избегаем "изломов", возможных при остановке в определенной точке)\\
+    $\gamma(0) = a$\\
+    $\lim_{t\rto 0} f(\gamma(t)) = \lim_{x\rto a} f|_{C_\gamma}$ -- предел по пути
+\end{enumerate}
+Заметим, что у функции по разным направлениям могут быть разные пределы\\
+\textbf{Утверждение}\\
+Если $\fall C^1$-гладкой кривой $C: a \in C\ \lim_{x\rto a}f|_C = L$, то $\ex \lim_{x\rto a} f(x) = L$\\
+Если $\fall C^2$-гладкой кривой $C: a \in C\ \lim_{x\rto a}f|_C = L$, то НЕ СЛЕДУЕТ $\ex \lim_{x\rto a} f(x) = L$\\
+\textbf{Теорема о двойном и повторном пределах}\\
+Пусть $f: D \rto \Rset$ (как в определении)
+\begin{enumerate}
+    \item $\ex \lim_{x_1\rto a_1, x_2 \rto a_2} f(x_1, x_2) = A \in \Rex$
+    \item $\fall x_1 \in D_1\setminus \{a_1\}\ \ex \phi(x_1) \in \Rset = \lim_{x_2 \rto a_2} f(x_1, x_2)$
+\end{enumerate}
+$\LRto \lim_{x_1 \rto a_1} \phi(x_1) = A$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $A \in \Rset$\\
+    Тогда $\fall \eps > 0\ \ex V_1(a_1): \fall \lambda_1 \in \overdot{V_1}\cap D_1\ |\phi(x_1) - A| \leq \frac\eps2 < \eps$
+    \item $A = \infty$\\
+    Аналогично
+\end{enumerate}
 \end{document}
