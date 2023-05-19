@@ -1789,6 +1789,89 @@ $C$ -- счетное множество, $\fall \gamma \in C$ задано чи
     \item $\det A\neq 0$
     \item $A(\Rset^m) = \Rset^m$
 \end{enumerate}
+\textbf{Определение}\\
+Пусть $\gamma: \Nset \rto \Nset \times \Nset$ -- биекция\\
+$k \mapsto (\phi(k), \psi(k))$\\
+$\sum_{i=1}^{+\infty} a_i \cdot \sum_{j=1}^{+\infty} b_j =: \sum_{k=1}^{+\infty} a_{\phi(k)}b_{\psi(k)}$ -- произведение рядов\\
+\textbf{Теорема Коши}\\
+Пусть $\sum a_i, \sum b_i$ -- абсолютно сходятся к $S^{(a)}, S^{(b)}$\\
+Тогда $\fall \gamma$ -- биекция $\sum a_i \sum b_i$ сходится и равна $S^{(a)}S^{(b)}$\\
+\textbf{Доказательство}\\
+$\sum |a_i| = S^{(a)}_*$\\
+$\sum |b_i| = S^{(b)}_*$\\
+Исследуем произведение на абсолютную сходимость\\
+$n:= \max_{i = 1\ldots N}(\phi_(i))$\\
+$m:= \max_{i = 1\ldots N}(\psi_(i))$\\
+$\sum_{k=1}^N |a_{\phi(k)}||b_{\psi(k)}| \leq (\sum_{k=1}^n |a_k|)(\sum_{k=1}^m |b_k|) \leq S_*^{(a)}S_*^{(b)}$\\
+Заметим, что сумма не зависит от выбора $\gamma$, т.к. перестановка слагаемых не меняет сумму\\
+Возьмем следующую $\gamma$ ("нумерация по квадратам"):\\
+$(1, 1)$\\
+$(1, 2), (2, 2), (2, 1)$\\
+$(1, 3), (2, 3), (3, 3), (3, 2), (3,1)$\\
+$\ldots$\\
+В этом случае $\sum_{k=1}^{n^2} a_{\phi(k)}b_{\psi(k)} = (\sum_{k=1}^n a_i)(\sum_{k=1}^n b_i) \rto S^{(a)}S^{(b)}$\\\\
+Пусть $\sum_{i=0}^+\infty a_i \sum_{j=0}^+\infty b_j = \sum_{k=0}^{+\infty} c_k$\\
+$c_k = a_0b_k + a_1b_{k-1} + \ldots + a_kb_0$\\
+$\sum c_k$ -- отсортированное произведение\\
+\subsection{Бесконечные произведения}
+\textbf{Определение}\\
+$P_n = \prod_{k=1}^n a_k$\\
+Если $\ex \lim P_n \in (0, +\infty)$, то произведение сходится\\
+Если $\ex \lim P_n = 0$ -- расходится к нулю\\
+Если $\ex \lim P_n = +\infty$ -- расходится\\
+Если $\not\ex \lim P_n$ -- расходится\\
+\textbf{Замечание}\\
+Сходимость возможна только при $a_k > 0$\\
+\textbf{Примеры}\\
+$\frac21\frac23\frac43\frac45\frac65\frac67 \ldots = \frac\pi2$ -- формула Валлиса\\
+\textbf{Свойства}\\
+$\Pi_n = \prod_{k=n}^{+\infty} a_k$
+\begin{enumerate}
+    \item $\prod_{k=1}^{+\infty} a_k$ -- сходится $\LRto \Pi_n$ -- сходится (любой)
+    \item $\prod_{k=1}^{+\infty} a_k$ -- сходится $\Rto \Pi_n \rto 1$\\
+    $\Pi_n = \frac{\prod_{k=1}^{+\infty} a_k}{P_{n-1}}$
+    \item $\prod_{k=1}^{+\infty} a_k$ -- сходится $\Rto a_k \rto 1$\\
+    $a_k = \frac{P_k}{P_{k-1}}$
+    \item $\ub{e^L}{\prod_{k=1}^{+\infty} a_k} \LRto \ub{L}{\sum_{k=1}^{+\infty} \ln a_k}$ -- сходится
+\end{enumerate}
+\textbf{Теорема}\\
+Рассмотрим $\prod_{k=1}^{+\infty} (1+a_k)$ ($a_k$ может быть отрицательным)\\
+\begin{enumerate}
+    \item НСНМ $a_k > 0$, тогда $\prod$ -- сходится $\LRto \sum a_k$ -- сходится
+    \item $\sum a_k$ -- сходится, $\sum a_k^2$ -- сходится $\Rto \prod$ -- сходится\\
+    Пояснение: если $a_k$ > 0, то $\sum a_k$ -- сходится $\Rto \sum a_k^2$ -- сходится, но для знакопеременных это не так
+\end{enumerate}
+\textbf{Доказательство}\\
+$\prod (1+a_k)$ -- сходится $\LRto \sum \ln(1+a_k)$ -- сходится $\LRto \sum a_k$ -- сходится\\
+$\sum \ln(1+a_k) = \sum \ub{\text{сход.}}{a_k} - \ub{\text{абс.сход.}}{\frac{a_k^2}2} + \ub{\text{сход.}}{o(a_k^2)}$\\
+\textbf{Лемма}\\
+$\Pi(n, x) := \int_0^n (1-\frac tn)^n t^{x-1}\df t$\\
+Тогда $\Pi(n,x) = \frac{1\cdot2\cdot3\ldots n}{x(x+1)\ldots (x+n)}n^x$\\
+\textbf{Доказательство}\\
+$\Pi(n,x) \us{t:=ns, \df t = n\df s}= n^x \int_0^1 (1-s)^ns^{x-1}\df s = n^x (((1-s)^n \frac{s^x}x) \vl_{s=0}^{s=1} + \frac nx \int_0^1 (1-s)^{n-1}s^x \df s)$\\
+\textbf{Лемма 2}\\
+При $0 \leq t \leq n$\\
+$0 \leq e^{-t}-(1-\frac tn)^n \leq \frac1n t^2e^{-t}$\\
+\textbf{Доказательство}\\
+$1+y \leq e^y \leq \frac1{1-y}, y \in [0,1]$ -- выпуклость $e^y$\\
+(было где-то ранее)\\
+$y:= \frac tn$\\
+$(1+\frac tn)^{-n} \geq e^{-t} \geq (1-\frac tn)^n$\\
+$e^{-t}-(1-\frac tn)^n = e^{-t} (1-e^t(1-\frac tn)^n) \leq e^{-t}(1-(1-\frac{t^2}{n^2})^n) \leq $ неравенство Бернулли $\leq e^{-t}\frac{t^2}n$\\
+\textbf{Теорема (формула Эйлера)}\\
+$\lim_{n\rto +\infty} \frac{1\cdot 2\cdot\ldots\cdot n}{x(x+1)\ldots(x+n)} n^x = \Gamma(x)$\\
+\textbf{Доказательство}\\
+$\Gamma(x) - \lim_{n\rto +\infty} \Pi(n, x) = \lim_{n\rto +\infty} (\ub{\leq \frac1n\int_0^n e^{-t}t^{x+1}\df t \leq \frac{\Gamma(x+2)}n}{\int_0^n (e^{-t} - (1-\frac tn)^n)t^{x-1}\df t} + \ub{\rto 0 \text{(ост. сход. инт.)}}{\int_n^{+\infty} t^{x-1} e^{-t} \df t}) = 0$\\
+\textbf{Теорема (формула Вейерштрасса)}\\
+$\frac1{\Gamma(x)} = xe^{\gamma x} \prod_{k=1}^{+\infty} ((1+\frac xk)e^{-\frac xk}), \gamma$ -- постоянная Эйлера -- отсюда должно быть видно, что $\Gamma(x+1)=x\Gamma(x)$\\
+\textbf{Доказательство}\\
+$\frac1{\Gamma(x)} = \lim_n (n^{-x} x(1+x)(1+\frac x2)\ldots (1+\frac xn)) = \lim_n xn^{-x} \prod_{k=1}^n (1+\frac xk) = \lim_n x\ub{\rto e^{\gamma x}}{e^{x(1+\frac12 + \ldots + \frac1n - \ln n)}}\prod_{k=1}^n \ub{1-\frac{x^2}{2k^2} + o(\frac1{k^2})}{(1+\frac xk)e^{-\frac xk}} = xe^{\gamma x} 1+\frac xk)e^{-\frac xk}$\\
+Произведение сходится по лемме (при $x \in \Cset \setminus (-\Nset)$)\\
+\textbf{Теорема (о единственности)}\\
+$f, g: \ub{\text{открытое}}\Omega \subset \Cset \rto \Cset$\\
+$f,g$ -- комплексно дифференцируема\\
+Если $\fall x\in A f(x) = g(x), A$ -- "достаточно большое" (счетное множество, содержащее хотя бы одну предельную точку)\\
+То $f = g \in \Omega$\\
 \subsection{Дифференцирование}
 \textbf{Определение}
 \begin{enumerate}
@@ -1877,4 +1960,5 @@ $\LRto \lim_{x_1 \rto a_1} \phi(x_1) = A$\\
     \item $A = \infty$\\
     Аналогично
 \end{enumerate}
+\url{https://www.youtube.com/live/4EMkUsyQQec?feature=share&t=7728}
 \end{document}
