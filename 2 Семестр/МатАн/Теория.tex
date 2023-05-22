@@ -495,7 +495,7 @@ $\Phi_x, \Phi_y: \nm{Segm}\an ab \rto \Rset$\\
 Пусть $\Phi_x[p,q] = V_{\Omega^x}$\\
 $\Phi_y[p,q] = V_{\Omega^y}$\\
 $\Omega^x = \{(x,y,z) \in \Rset^3: x \in [p,q], \sqrt{y^2+z^2} \leq f(x)\}$ -- фигура вращения вокруг $OX$\\
-$\Omega^y = \{(x,y,z) \in \Rset^3: p \leq \sqrt{x^2+z^2} \leq q, 0 \leq y \leq f(\sqrt{x^2+y^2}) \}$ -- фигура вращения вокруг $OY$\\
+$\Omega^y = \{(x,y,z) \in \Rset^3: p \leq \sqrt{x^2+z^2} \leq q, 0 \leq y \leq f(\sqrt{x^2+z^2}) \}$ -- фигура вращения вокруг $OY$\\
 $\Phi_x, \Phi_y$ -- а.ф.п.\\
 \textbf{Теорема}\\
 $f\in C[p,q], f \geq 0$\\
@@ -541,9 +541,9 @@ $l$ -- функция на множестве гладких путей назы
     $\fall \gamma: [a,b] \rto \Rset^m\ \fall c \in [a,b] l(\gamma) = l(\gamma|_{[a,c]})+l(\gamma|_{[c,b]})$
     \item $\gamma, \ol\gamma$ -- два пути в $\Rset^m, C_\gamma, C_{\ol\gamma}$ -- их носители\\
     Пусть $\ex T: C_\gamma \rto C_{\ol \gamma}$ -- сжатие:\\
-    $\fall x,y \rho(T(x), T(y)) \leq \rho(x,y)$\\
+    $\fall x,y\ \rho(T(x), T(y)) \leq \rho(x,y)$\\
     Тогда $l(\ol \gamma) \leq l(\gamma)$
-    \item $\gamma(t) = \vect A+t\cdot\vect v \Rto l(\gamma) = \rho(\gamma(a), \gamma(b)$ -- длина прямолинейного пути
+    \item $\gamma(t) = \vect A+t\cdot\vect v \Rto l(\gamma) = \rho(\gamma(a), \gamma(b))$ -- длина прямолинейного пути
 \end{enumerate}
 \textbf{Замечание 1}
 \begin{enumerate}
@@ -921,8 +921,8 @@ $z_n = \inf (x_n, x_{n+1}, \ldots) \in \Rex$ -- нижняя огибающая\
     $\ulim \lambda x_n = \lambda \ulim x_n$\\
     $\dlim \lambda x_n = \lambda \dlim x_n$
     \item $\fall \lambda < 0 $\\
-    $\ulim \lambda x_n = -\lambda \dlim x_n$\\
-    $\dlim \lambda x_n = -\lambda \ulim x_n$
+    $\ulim \lambda x_n = \lambda \dlim x_n$\\
+    $\dlim \lambda x_n = \lambda \ulim x_n$
     \item $\ulim (x_n + \ot x_n) \leq \ulim x_n + \ulim \ot x_n$\\
     $\dlim (x_n + \ot x_n) \geq \dlim x_n + \dlim \ot x_n$\\
     (если сумма в правой части имеет смысл)
@@ -1021,7 +1021,7 @@ $\pi \not\in \Qset \Rto \fall m,n \in \Nset, m\neq n\ \sin n \neq \sin m$\\
     \item $f: [a, b) \rto \Rset, -\infty < a < b \leq +\infty$ -- допустимая, если $\fall A \in (a, b)\ f\vl_{[a,A]}$ -- кусочно непрерывная
     \item $\Phi(A) = \int_a^A f(x)\df x$\\
     Если $\ex \lim_{A \rto b-0} \Phi(A) \in \Rex$, то он называется несобственным интегралом $f$ на $[a,b)$\\
-    Отозначение: $\int_a^{\rto b} f(x)\df x$
+    Обозначение: $\int_a^{\rto b} f(x)\df x$
 \end{enumerate}
 Если $\not\ex \lim \Phi(A)$ -- несобственный интеграл не существует\\
 Если $\lim_{A \rto b-0} \Phi(A)$ -- конечный, то интеграл сходится\\
@@ -1173,7 +1173,8 @@ $\int_0^1 \frac1{x^p}\df x$ -- при $p<1$ сходится, иначе рас�
 Гамма-функция Эйлера $\Gamma(t) = \int_0^{+\infty} x^{t-1}e^{-x}\df x, t > 0$\\
 $\letus\ g(t,x) = x^{t-1}e^{-x}$
 \begin{enumerate}
-    \item Определим сходимость $g(t, x)$ в $x \rto +0$\\
+    \item Интеграл сходится при всех $t > 0$:\\
+    Определим сходимость $g(t, x)$ в $x \rto +0$\\
     $x^{t-1}e^{-x} \sim x^{t-1}$ при $x\rto +0$ -- сходится при $t > 0$\\
     Определим сходимость $g(t, x)$ в $x \rto +\infty$\\
     $x^{t-1}e^{-x} = \ub{\xrto[x\rto +\infty]{} 0}{x^{t-1}e^{-\frac x2}}e^{-\frac x2} \leq e^{-\frac x2} \xrto[x\rto +\infty]{} 0$
@@ -1186,8 +1187,8 @@ $\letus\ g(t,x) = x^{t-1}e^{-x}$
     $\Gamma(t+1) = t\Gamma(t)$\\
     $\int_0^{+\infty} x^t e^{-x}\df x =-x^t e^{-x}\vl_{x=0}^{x=+\infty} + t \int_0^{+\infty} x^{t-1}e^{-x}\df x$
     \item $\Gamma(1) = 1$\\
-    Тогда $\Gamma(n+1) = n!$\\
-    \textbf{Следствие}\\
+    Тогда $\Gamma(n+1) = n!$
+    \item \textbf{Следствие}\\
     $\Gamma(t) = \frac{\Gamma(t+1)}{t} \us{t\rto +0}\sim \frac1t$
     \item $\Gamma(\frac12) = \int_0^{+\infty} x^{-\frac12}e^{-x}\df x \us{x=y^2}= 2\ub{\text{интеграл Эйлера-Пуассона}, \frac{\sqrt \pi}2}{\int_0^{+\infty} e^{-y^2} \df y} = \sqrt\pi$\\
     \textbf{Лемма}\\
@@ -1321,7 +1322,7 @@ $(\sum_k b_k^q)^{\frac1q} \rto (\int_a^b |g|^q)^{\frac1q}$\\
 \textbf{Неравенство Минковского}\\
 $p\geq 1, a_1, \ldots, a_n, b_1, \ldots, b_n \in \Rset$\\
 Тогда $(\sum_i |a_i+b_i|^p)^{\frac1p} \leq (\sum_i |a_i|^p)^{\frac1p} + (\sum_i |b_i|^p)^{\frac1p}$\\
-Это утверждение о том, что $(a_1, \ldots, a_n) \mapsto (\sum_i |a_i+b_i|^p)^{\frac1p}$ -- норма в $\Rset^n$\\
+Это утверждение о том, что $(a_1, \ldots, a_n) \mapsto (\sum_i |a_i|^p)^{\frac1p}$ -- норма в $\Rset^n$\\
 \textbf{Доказательство}\\
 Если $p = 1$, очевидно\\
 Если $p > 1$:\\
@@ -1505,7 +1506,7 @@ $\sum a_n$ -- сходится $\LRto \ex \lim S_n \in \Rset \LRto \fall \eps\ \
 \textbf{Примеры}
 \begin{enumerate}
     \item $\sum \frac1n$\\
-    $|\frac1{n+1} + \ldots + \frac1{2n}| > n\frac1{2n} = frac12$
+    $|\frac1{n+1} + \ldots + \frac1{2n}| > n\frac1{2n} = \frac12$
     \item $\sum \frac1{n^2}$\\
     $\frac1{n^2} \leq \frac1{n(n-1)} = \frac1{n-1}-\frac1n$\\
     $\frac1{(n+1)^2} + \ldots + \frac1{(n+m)^2} \leq \frac1n - \frac1{n+1} + \ldots + \frac1{n+m-1} - \frac1{n+m} = \frac1n - \frac1{n+m} < \frac1n < \eps$
@@ -1679,8 +1680,8 @@ $\sum a_n$ -- сходится $\not\Rto \sum a_n$ -- абсолютно схо�
     \item $\sum a_n^+, \sum a_n^-$ -- сходятся
 \end{enumerate}
 \subsection{Ряды со слагаемыми произвольного знака}
-\textbf{Теорема(признак Лейбница)}\everymath{}
-$\sum (-1)C_n$, где $C_n \geq 0, C_n \rto 0, C_n$ -- монотонный\\
+\textbf{Теорема(признак Лейбница)}\\
+$\sum (-1)^nC_n$, где $C_n \geq 0, C_n \rto 0, C_n$ -- монотонный\\
 Тогда ряд сходится\\
 \textbf{Доказательство}\\
 Н.У,О. пусть первое слагаемое положительно\\
@@ -1783,7 +1784,7 @@ $C$ -- счетное множество, $\fall \gamma \in C$ задано чи
 *ввели*\\
 Оператор $L: \Rset^m \rto \Rset^n$ задается матрицей $A_{n\times m}$\\
 Рассмотрим $A: \Rset^m \rto \Rset^n$\\
-Данные утвержения эквивалентны\\
+Данные утвержения эквивалентны
 \begin{enumerate}
     \item $A$ -- обратимый
     \item $\det A\neq 0$
@@ -1795,7 +1796,7 @@ $k \mapsto (\phi(k), \psi(k))$\\
 $\sum_{i=1}^{+\infty} a_i \cdot \sum_{j=1}^{+\infty} b_j =: \sum_{k=1}^{+\infty} a_{\phi(k)}b_{\psi(k)}$ -- произведение рядов\\
 \textbf{Теорема Коши}\\
 Пусть $\sum a_i, \sum b_i$ -- абсолютно сходятся к $S^{(a)}, S^{(b)}$\\
-Тогда $\fall \gamma$ -- биекция $\sum a_i \sum b_i$ сходится и равна $S^{(a)}S^{(b)}$\\
+Тогда $\fall \gamma$ -- биекция произведение $\sum a_i \sum b_i$ абсолютно сходится и равна $S^{(a)}S^{(b)}$\\
 \textbf{Доказательство}\\
 $\sum |a_i| = S^{(a)}_*$\\
 $\sum |b_i| = S^{(b)}_*$\\
@@ -1865,40 +1866,14 @@ $\Gamma(x) - \lim_{n\rto +\infty} \Pi(n, x) = \lim_{n\rto +\infty} (\ub{\leq \fr
 \textbf{Теорема (формула Вейерштрасса)}\\
 $\frac1{\Gamma(x)} = xe^{\gamma x} \prod_{k=1}^{+\infty} ((1+\frac xk)e^{-\frac xk}), \gamma$ -- постоянная Эйлера -- отсюда должно быть видно, что $\Gamma(x+1)=x\Gamma(x)$\\
 \textbf{Доказательство}\\
-$\frac1{\Gamma(x)} = \lim_n (n^{-x} x(1+x)(1+\frac x2)\ldots (1+\frac xn)) = \lim_n xn^{-x} \prod_{k=1}^n (1+\frac xk) = \lim_n x\ub{\rto e^{\gamma x}}{e^{x(1+\frac12 + \ldots + \frac1n - \ln n)}}\prod_{k=1}^n \ub{1-\frac{x^2}{2k^2} + o(\frac1{k^2})}{(1+\frac xk)e^{-\frac xk}} = xe^{\gamma x} 1+\frac xk)e^{-\frac xk}$\\
+$\frac1{\Gamma(x)} = \lim_n (n^{-x} x(1+x)(1+\frac x2)\ldots (1+\frac xn))$\\
+$ = \lim_n xn^{-x} \prod_{k=1}^n (1+\frac xk) = \lim_n x\ub{\rto e^{\gamma x}}{e^{x(1+\frac12 + \ldots + \frac1n - \ln n)}}\prod_{k=1}^n \ub{1-\frac{x^2}{2k^2} + o(\frac1{k^2})}{(1+\frac xk)e^{-\frac xk}} = xe^{\gamma x} 1+\frac xk)e^{-\frac xk}$\\
 Произведение сходится по лемме (при $x \in \Cset \setminus (-\Nset)$)\\
 \textbf{Теорема (о единственности)}\\
 $f, g: \ub{\text{открытое}}\Omega \subset \Cset \rto \Cset$\\
 $f,g$ -- комплексно дифференцируема\\
 Если $\fall x\in A f(x) = g(x), A$ -- "достаточно большое" (счетное множество, содержащее хотя бы одну предельную точку)\\
-То $f = g \in \Omega$\\
-\subsection{Дифференцирование}
-\textbf{Определение}
-\begin{enumerate}
-    \item $\phi: E \subset \Rset^m \rto \Rset^n$\\
-    $\phi$ -- бесконечно малое в точке $x_0 \in \nm{Int} E$, если $\phi(x) \xrto[x\rto x_0]{} \0$\\
-    /*если нам надо, считаем, что $\phi(x_0) - $*/
-    \item $\phi: E \subset \Rset^m \rto \Rset^n, \0 \in \nm{Int} E$\\
-    $\phi(h) = o(h)$, если $\frac{\phi(h)}{|h|}$ -- б.м. при $h\rto 0$
-    \item $F: E\subset \Rset^m \rto \Rset^n, a \in \nm{Int} E$\\
-    $F$ дифференцируема в точке $a$, если
-    \begin{enumerate}
-        \item $\ex L: \Rset^m \rto \Rset^n$ -- линейный оператор
-        \item $\ex$ б.м. $\alpha(h), h \rto 0$
-        \item $F(a + h) = F(a) + Lh + \alpha(h)|h|$
-    \end{enumerate}
-    Или $F(x) = F(a) + L(x-a) + \phi(x)|x-a|, \phi(x) = \alpha(x-a)$ -- б.м. в $x\rto a$\\
-    $L$ -- производный оператор $F$ в точке $a$\\
-    $L = F'(a)$\\
-    Матрица оператора $L$ -- матрица Якоби\\
-    Дифференциал оператора $F$ в точке $a$:
-    \begin{enumerate}
-        \item То же, что и производный оператор\\
-        $h\mapsto F'(a) h$
-        \item $E \times \Rset^m \rto \Rset^n$\\
-        $(x_0, h) \mapsto F'(x_0)h$
-    \end{enumerate}
-\end{enumerate}
+То $f = g \in \Omega$
 \section{Функции и отображения в $\Rset^m$}
 $\Rset^m = \{ (x_1, \ldots, x_m): x_i \in \Rset \}$ -- линейное пространство\\
 $\an xy = \sum_{i=1}^m x_iy_i, \|x\|:= \sqrt{\an x,y} = \sqrt{x_1^2 + \ldots + x_m^2} \lrto |x|$\\
@@ -1932,7 +1907,7 @@ $f: D \rto \Rset$\\
     \item Если $\fall x_1 \in D_1 \setminus \{a_1\} \ex \lim_{x_2\rto a_2} f(x_1, x_2) =: \phi(x_2)$ (конечный)\\
     то $\lim_{x_1 \rto a_1} \phi(x_1)$ -- повторный предел
     \item Аналогично $1 \leftrightarrows 2$\\
-    \item "Двойной предел" $\lim_{x_1 \rto a_1, x_2 \rto a_2} f(x_1, x_2) = L$
+    \item "Двойной предел" $\lim_{x_1 \rto a_1, x_2 \rto a_2} f(x_1, x_2) = L$\\
     $\fall U(L)\ \ex V_1(a_1), V_2(a_2): \fall x_1 \in \overdot{V_1}(a_1) \cap D, x_2 \in \overdot{V_2}(a_2) \cap D_2\ f(x_1, x_2) \in U(L)$
     \item Предел по направлению\\
     Пусть $v$ -- некий ненулевой вектор\\
@@ -1960,5 +1935,79 @@ $\LRto \lim_{x_1 \rto a_1} \phi(x_1) = A$\\
     \item $A = \infty$\\
     Аналогично
 \end{enumerate}
-\url{https://www.youtube.com/live/4EMkUsyQQec?feature=share&t=7728}
+\textbf{Определение}
+\begin{enumerate}
+    \item $\phi: E \subset \Rset^m \rto \Rset^n$\\
+    $\phi$ -- бесконечно малое в точке $x_0 \in \nm{Int} E$, если $\phi(x) \xrto[x\rto x_0]{} \0$\\
+    \item $\phi: E \subset \Rset^m \rto \Rset^n, \0 \in \nm{Int} E$\\
+    $\phi(h) = o(h)$, если $\frac{\phi(h)}{|h|}$ -- б.м. при $h\rto 0$
+    \item $F: E\subset \Rset^m \rto \Rset^n, a \in \nm{Int} E$\\
+    $F$ дифференцируема в точке $a$, если
+    \begin{enumerate}
+        \item $\ex L: \Rset^m \rto \Rset^n$ -- линейный оператор
+        \item $\ex$ б.м. $\alpha(h), h \rto 0$
+        \item $F(a + h) = F(a) + Lh + \alpha(h)|h|$
+    \end{enumerate}
+    Или $F(x) = F(a) + L(x-a) + \phi(x)|x-a|, \phi(x) = \alpha(x-a)$ -- б.м. в $x\rto a$\\
+    $L$ -- производный оператор $F$ в точке $a$\\
+    $L = F'(a)$\\
+    Матрица оператора $L$ -- матрица Якоби\\
+    Дифференциал оператора $F$ в точке $a$:
+    \begin{enumerate}
+        \item То же, что и производный оператор\\
+        $h\mapsto F'(a) h$
+        \item $E \times \Rset^m \rto \Rset^n$\\
+        $(x_0, h) \mapsto F'(x_0)h$
+    \end{enumerate}
+\end{enumerate}
+\textbf{Определение}\\
+$f: \Omega \subset \Cset \rto \Cset, a \in \Omega$\\
+$f$ -- комплексно дифференцируемая в $a$, если $\ex L \in \Cset: f(a+h)=f(a) + \lambda h+o(h), h\rto 0$\\
+$\LRto \ex \lim_{h\rto 0} \frac{f(a+h) - f(a)}{h} = \lambda$\\
+$F: \Omega \subset \Rset^2 \rto \Rset^2, a \in \Omega$\\
+$F$ -- вещественно дифференцируема в $a$, если $\ex L: \Rset^2 \rto \Rset^2$ -- линейный оператор, $F(a+h) = F(a) + Lh+o(h), h = h_1 + ih_2 = (h_1, h_2)$\\
+$\lambda h = (a+bi)(h_1 + ih_2) = (ah_1 - bh_2) + i(ah_2 + bh_1)$\\
+$h \mapsto \lambda h$\\
+$\begin{pmatrix}h_1\\h_2\end{pmatrix} \mapsto \begin{pmatrix}ah_1-bh_2\\ah_2+bh_1\end{pmatrix} = \begin{pmatrix}
+    a & -b\\
+    b & a
+\end{pmatrix}\begin{pmatrix}h_1\\h_2\end{pmatrix}$\\
+Заметим, что $\fall L \in \nm{Mat}_{n\times n}(\Rset) \ex F, a: F'(a) = L$\\
+Однако, отображение $\Rset^2 \rto \Rset^2$ -- вещественно дифференцируемое -- будет как отображение $\Cset\rto \Cset$ комплексно дифференцируемымЭ если матрица $L$ имеет вид $\begin{pmatrix}
+    a & -b\\
+    b & a
+\end{pmatrix}$\\
+\textbf{Утверждение}\\
+$F: \ub{\text{откр.}}\Omega \subset \Rset^m \rto \Rset^n, a\in \Omega$\\
+$F$ -- дифференцируема в $a$, тогда $F'(a)$ -- определен однозначно\\
+\textbf{Доказательство}\\
+$u \in \Rset^m$\\
+$h := tu, t \in \Rset, t\rto 0$\\
+Тогда $F(a+tu)=F(a) + tLu + o(t), t\rto 0$\\
+$Lu = \frac{F(a+tu)-F(a)}t + \frac{o(t)}{t} \rto \frac{F(a+tu)-F(a)}t$\\\\
+При $n=1$: $f: \Omega \subset \Rset^m \rto \Rset$\\
+$L = (l_1, \ldots, l_m)$\\
+$f(x_1, \ldots, x_m) = f(a_1, \ldots, a_m) + l_1(x_1-a_1) + \ldots + l_m(x_m - a_m) + \ub{\text{б.м.}}{\phi(x)}|x-a|$\\
+Если $F$ -- дифференцируема в $a$, то $F$ -- непрерывна в $a$\\
+\textbf{Лемма (о дифференцируемости отображения и дифференцируемости его координатных функций)}\\
+$F: \Omega \subset \Rset^m \rto \Rset^n, F = (f_1, \ldots, f_n), a \in \nm{Int}(\Omega)$\\
+Тогда
+\begin{enumerate}
+    \item $F$ -- дифференцируема $\LRto \fall i\ f_i$ -- дифференцируемая
+    \item строки матрицы Якоби $F$ -- это матрицы Якоби отображений $f_i$
+\end{enumerate}
+\textbf{Замечание}
+\begin{enumerate}
+    \item $F = \const$ -- дифференцируемая\\
+    $F'\equiv 0, o(h) \equiv 0$
+    \item $\mcA : \Rset^m \rto \Rset^n$ -- линейный оператор\\
+    Тогда $\fall x \in \Rset^m\ \mcA'(x) = \mcA$ (как матрицы)
+    \item Отображение $x \mapsto u_0 + \mcA x$ -- афинное отображение
+\end{enumerate}
+$f: \Omega \subset \Rset^m \rto \Rset$\\
+Зафиксируем $k: 1 \leq k \leq m$\\
+$\phi_k(u) = f(a_1, \ldots, a_{k-1}, u, a_{k+1}, a_m)$ -- функция от переменной $u \in U(a_k)$\\
+$\phi'_k(a_k) = \lim_{t\rto 0}\frac{\phi_k(a_k + t) - \phi_k(a_k)}t$\\
+Если этот предел существует, то предел называется \textit{частной производной}(в значении частичная) $f$ по $k$-оый переменной\\
+Обозначение: $\frac{\partial f}{\partial x_k}, f_k'(a), f'_{x_k}(a), D_k f$
 \end{document}
