@@ -82,7 +82,7 @@ $\lim_{x\rto a} f(x) = 0, \lim_{x\rto a} g(x) = 0$\\
 \end{array}$\\
 \textbf{Доказательство}\\
 Выберем $y_k$ как подпоследовательность $x_k$\\
-$\fall k \frac{f(x_l)}{f(x_k)},\frac{f(x_l)}{g(x_k)} \xrto[l\rto \infty]{}$\\
+$\fall k \frac{f(x_l)}{f(x_k)},\frac{f(x_l)}{g(x_k)} \xrto[l\rto \infty]{} 0$\\
 Тогда $\ex l_0: |\frac{f(x_{l_0})}{f(x_k)}|,|\frac{f(x_{l_0})}{g(x_k)}| < \frac1k$\\
 Отсюда $y_k := x_{l_0}$\\\\
 \textbf{Правило Лопиталя}\\
@@ -262,7 +262,7 @@ $\int_a^b f = \Phi(b) = \Phi(b) - \Phi(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a
     Тогда $(f(x)-f(y))(g(x)-g(y)) \geq 0$ -- из монотонности\\
     $f(x)g(x) - f(y)g(x)-f(x)g(y)+f(y)g(y) \geq 0$\\
     Проинтегрируем по $x$ по $[a,b]$:\\
-    $\int_a^b f(x)g(x) - f(y)\int_a^b g(x) - f(y)g(y)(b-a) \geq 0$\\
+    $\int_a^b f(x)g(x) - f(y)\int_a^b g(x) - g(y)\int_a^b f(x) - f(y)g(y)(b-a) \geq 0$\\
     Поделим на $b-a$:\\
     $I_{fg} - f(y)I_g - I_f g(y) + f(y)g(y) \geq 0$\\
     Проинтегрируем по $y$ по $[a,b]$ и поделим на $b-a$:\\
@@ -304,7 +304,7 @@ $\int_a^b f = \Phi(b) = \Phi(b) - \Phi(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a
     Индукция по $n$:
     \begin{enumerate}
         \item $n = 0$:\\
-        $f(x) = f(x_0) = \int_{x_0}^x f'(t)\df t$
+        $f(x) = f(x_0) + \int_{x_0}^x f'(t)\df t$
         \item Интегрирование по частям\\
         Пусть доказано для $n$\\
         $\frac1{n!}\int_{x_0}^x (x-t)^n f^{(n+1)}(t)\df t = \begin{bmatrix}
@@ -388,8 +388,8 @@ $f: \an ab \rto \Rset$ -- плотность $\Phi$, непрерывна\\
      \Phi[p,x] & p < x \leq q
 \end{array}\right.$\\
 Докажем, что $F$ -- первообразная $f$\\
-$F'_+(x) = \lim_{h \rto 0+0} \frac{F(x+h)-F(x)}{h} = \lim_{h \rto 0+0} \frac{\Phi[p, x+h]-\Phi[p,c]}h = \lim_{h\rto 0+0} \frac{\Phi[x, x+h]}{h}$\\
-$\inf_{[p,q]} \leq \frac{1}{q-p}\Phi[p,q] \leq \sum_{[p,q]} f$\\
+$F'_+(x) = \lim_{h \rto 0+0} \frac{F(x+h)-F(x)}{h} = \lim_{h \rto 0+0} \frac{\Phi[p, x+h]-\Phi[p,x]}h = \lim_{h\rto 0+0} \frac{\Phi[x, x+h]}{h}$\\
+$\inf_{[p,q]} f \leq \frac{1}{q-p}\Phi[p,q] \leq \sup_{[p,q]} f$\\
 Отсюда $F'_+(x) = \lim_{h\rto 0+0} f(x+\theta h), \theta \in [0,1] = f(x)$\\
 Аналогично $F'_-(x) = f(x)$\\
 $\Phi[p,q] = F(q)-F(p) = \int_p^q f(x)\df x$\\
@@ -600,7 +600,7 @@ $\gamma(\phi) = (r(\phi)\cos \phi, r(\phi)\sin\phi)$\\
 $f:[a, b] \rto \Rset^n$\\
 Тогда \textit{вариация} $f$ на $[a,b]$ $\nm{Var}_a^b f = \sup_{n, (t_i)} \sum_{i=1}^n \|f(t_i)-f(t_{i-1})\|$\\
 Если $f \in C^1, \nm{Var}_a^b f = $ длина пути $ = \int_a^b |f'|$\\
-\textbf{Лемма}\\
+\textbf{Теорема о функции ограниченной вариации}\\
 $f:[a,b] \rto \Rset, \nm{Var}_a^b f$ -- ограничена\\
 Тогда $\ex p,q: [a,b]\rto \Rset$ -- монотонные такие, что $f\equiv p-q$\\
 \textbf{Доказательство}\\
@@ -649,7 +649,7 @@ $\ex$ конечная 1-сеть $\{y_1, \ldots, y_k\}$\\
 Тогда $n_1 := k$\\
 $\ex$ конечная $\frac12$-сеть $D$, а значит конечная $\frac12$-сеть $D \cap B(y_i, 1)$\\
 Повторим действия\\
-Получившаяся последовательность $y_i$ фундаментальна\\
+Получившаяся последовательность $x_{n_i}$ фундаментальна\\
 \textbf{Доказательство $\Lto$}\\
 Докажем от противного\\
 Пусть $\ex \eps > 0:$ не существует конечной $\eps$-сети\\
@@ -736,7 +736,7 @@ $x_n$ монотонная и ограниченная\\
 Отсюда $n! = n^n e^{-n}\sqrt n e^{C+o(1)} \rto C_1 n^n e^{-n}\sqrt n, C_1 = e^C$\\
 Найдем $C_1$\\
 \textbf{Формула Валлиса}\\
-$I_n = \int_0^{\frac\pi2} \sin^2 x \df x = \int_0^{\frac\pi2} \sin^{n-1} x \sin x \df x = \ub0{-\sin^{n-1}\cos x\vl_0^{\frac\pi2}} + (n-1)\int_0^{\frac\pi2} \sin^{n-2} x(1-\sin^2 x)\df x = (n-1)I_{n-2} - (n-1)I_n$\\
+$I_n = \int_0^{\frac\pi2} \sin^n x \df x = \int_0^{\frac\pi2} \sin^{n-1} x \sin x \df x = \ub0{-\sin^{n-1}\cos x\vl_0^{\frac\pi2}} + (n-1)\int_0^{\frac\pi2} \sin^{n-2} x(1-\sin^2 x)\df x = (n-1)I_{n-2} - (n-1)I_n$\\
 $I_n = \frac{n-1}n I_{n-2}$\\
 $I_0 = \frac\pi2, I_1 = \int_0^{\frac\pi2} \sin x\df x = 1$\\
 $I_n = \left\{\begin{array}{ll}
@@ -1293,8 +1293,8 @@ $\sum_{i=1}^n a_ib_i \leq (\sum_i a_i^p)^{\frac1p}(\sum_i b_i^q)^{\frac1q}$\\
 \textbf{Доказательство}\\
 $f(x) = x^p, p > 1$ -- выпуклая при $x > 0$\\
 По неравенству Йенсена $(\sum_i \alpha_i x_i)^p \leq \sum_i \alpha_i x_i^p$\\
-$\alpha_i = \frac{b_i}{\sum_j b_j^q}$. Тогда $\alpha_i > 0, \sum_i \alpha_i = 1$\\
-$x_i := a_ib_i^{-\frac1{p-1}} (\sum_j b_j^q)$\\
+$\alpha_i = \frac{b_i^q}{\sum_j b_j^q}$. Тогда $\alpha_i > 0, \sum_i \alpha_i = 1$\\
+$x_i := a_ib_i^{-\frac1{p-1}=1-q} (\sum_j b_j^q)$\\
 $(\sum_i \alpha_i x_i)^p = (\sum_i a_i b_i^{q-\frac1{p-1}})^p = (\sum_i a_i b_i)^p$\\
 $\sum_i \alpha_ix_i^p = \sum_i \frac{b_i^q}{\sum_j b_j^q} a_i^p b_i^{-\frac{p}{p-1}}(\sum_j b_j)^p = \sum_i (a_i^p (\sum_j b_j^q)^{p-1}) = (\sum_i a_i^p)(\sum_j b_j^q)^{p-1}$\\
 $(\sum_i a_i b_i)^p \leq (\sum_i a_i^p)(\sum_j b_j^q)^{p-1}$\\
@@ -1360,7 +1360,7 @@ $e^2$ иррационально\\
 \textbf{Доказательство}\\
 Пусть это не так. Тогда $e^2 = \frac{2k}n$ (не требуем несократимости)\\
 $en=2ke^{-1}$\\
-$en(2k-1)!=(2k)!e^{-1}$\\
+$en(2k-1)\neq(2k)!e^{-1}$\\
 $e = 1 + 1 + \frac12 + \ldots + \frac1{n!}+\frac{e^c}{(n+1)!}, c \in [0,1]$\\
 $(1 + 1 + \frac12 + \ldots + \frac1{(2k-1)!} + \frac1{(2k)!} + \ldots)n(2k-1)!$\\
 $= \ub{\text{целое число}}{(1 + 1 + \frac12 + \ldots + \frac1{(2k-1)!})n(2k-1)!} + \ub{\leq n\frac1{2k} + n\frac1{(2k)^2} + \ldots= \frac{\frac n{2k}}{1-\frac1{2k}} = \frac{e^{-2}}{1-\frac1{2k}}\leq 2e^{-2} <\frac13}{n(\frac1{2k} + \frac1{2k{2k+1}} + \ldots)}$\\
@@ -1604,7 +1604,7 @@ Hard: $\letus\ \ex D:=\lim D_n$. Тогда \begin{enumerate}
 При $D=1$ признак не работает\\
 \textbf{Доказательство}\\
 Сравнить с прогрессией\\
-Light:\\
+Light:
 \begin{enumerate}
     \item Н.У.О. $\frac{a_{n+1}}{a_n} \leq q$ при $n \geq 1$\\
     Т.е. $a_2 \leq qa_1$\\
@@ -1623,7 +1623,7 @@ Light:\\
 Hard:
 \begin{enumerate}
     \item $q = \frac{D+1}2$\\
-    Тогда по определению $lim$: $\ex n_0: \fall n \geq n_0\ D_n < q$\\
+    Тогда по определению $\lim$: $\ex n_0: \fall n \geq n_0\ D_n < q$\\
     Дальше по Light 1
     \item $\ex n_0: \fall n > n_0\ D_n > 1$\\
     Далее по Light 2
@@ -1741,7 +1741,7 @@ $\sum a_n b_n = \ub{\text{сходится по Дирихле}}{\sum a_n(b_n-b)
         Тогда $\sum a_k$ -- сходится\\
         \textbf{Доказательство}\\
         $S_N^{(a)} = S_K^{(b)} + \delta_k$, где $n_k \leq N < n_{k+1}, \delta_k = a_{n_k+1} + \ldots + a_N$\\
-        $|\delta_k| \leq |a_{n_k + 1}| + \ldots + |a_N| \leq |a_{n_k + 1}| + \ldots + |a_{n_k} + M| \xrto[k\rto +\infty]{} 0$\\
+        $|\delta_k| \leq |a_{n_k + 1}| + \ldots + |a_N| \leq |a_{n_k + 1}| + \ldots + |a_{n_k + M}| \xrto[k\rto +\infty]{} 0$\\
         \textbf{Примеры}\\
         $\sum \frac1{n(n+1)}$\\
         Неправильное использование правила:\\
@@ -1765,7 +1765,7 @@ $\sum a_n b_n = \ub{\text{сходится по Дирихле}}{\sum a_n(b_n-b)
         Тогда $S^{(b)} \leq S^{(a)}$\\
         Используя $\omega^{-1}$, получаем, что $S^{(a)} \leq S^{(b)}$\\
         Тогда $S^{(a)} = S^{(b)}$
-        \item Рассмотрим $a_n^\pm, b_n^\pm$\\
+        \item Рассмотрим $a_n^\pm, b_n^\pm$ (срезки)\\
         Ряд $\sum b_k^\pm$ -- перестановка $\sum a_k^\pm$, т.е. их суммы равны\\
         Тогда суммы исходных рядов равны
     \end{enumerate}
@@ -1811,7 +1811,7 @@ $(1, 2), (2, 2), (2, 1)$\\
 $(1, 3), (2, 3), (3, 3), (3, 2), (3,1)$\\
 $\ldots$\\
 В этом случае $\sum_{k=1}^{n^2} a_{\phi(k)}b_{\psi(k)} = (\sum_{k=1}^n a_i)(\sum_{k=1}^n b_i) \rto S^{(a)}S^{(b)}$\\\\
-Пусть $\sum_{i=0}^+\infty a_i \sum_{j=0}^+\infty b_j = \sum_{k=0}^{+\infty} c_k$\\
+Пусть $\sum_{i=0}^{+\infty} a_i \sum_{j=0}^{+\infty} b_j = \sum_{k=0}^{+\infty} c_k$\\
 $c_k = a_0b_k + a_1b_{k-1} + \ldots + a_kb_0$\\
 $\sum c_k$ -- отсортированное произведение\\
 \subsection{Бесконечные произведения}
@@ -1869,6 +1869,31 @@ $\frac1{\Gamma(x)} = xe^{\gamma x} \prod_{k=1}^{+\infty} ((1+\frac xk)e^{-\frac 
 $\frac1{\Gamma(x)} = \lim_n (n^{-x} x(1+x)(1+\frac x2)\ldots (1+\frac xn))$\\
 $ = \lim_n xn^{-x} \prod_{k=1}^n (1+\frac xk) = \lim_n x\ub{\rto e^{\gamma x}}{e^{x(1+\frac12 + \ldots + \frac1n - \ln n)}}\prod_{k=1}^n \ub{1-\frac{x^2}{2k^2} + o(\frac1{k^2})}{(1+\frac xk)e^{-\frac xk}} = xe^{\gamma x} 1+\frac xk)e^{-\frac xk}$\\
 Произведение сходится по лемме (при $x \in \Cset \setminus (-\Nset)$)\\
+\textbf{Пример(Вычисление произведений с рациональными сомножителями)}\\
+$u_n = A\frac{(n+a_1)\ldots(n+a_k)}{(n+b_1)\ldots(n+b_l)}$\\
+$\prod_{n=1}^{\infty} u_n = ?$\\
+Необходимо $u_n \rto 1: k=l, A=1$\\
+Тогда $u = \frac{(1+\frac{a_1}{n})\ldots(1+\frac{a_k}n)}{(1+\frac{b_1}{n})\ldots(1+\frac{b_k}n)} = [\frac1{1+t}=1-t+t^2-\ldots] = 1 + \frac{\sum_{i=1}^k a_k-\sum_{i=1}^k b_k}n + O(\frac1{n^2})$\\
+Для сходимости необходимо $\sum a_i = \sum b_i$\\
+$\prod_{n=1}^{\infty} u_n = \prod_{n=1}^{\infty}\frac{(1+\frac{a_1}{n})\ldots(1+\frac{a_k}n)}{(1+\frac{b_1}{n})\ldots(1+\frac{b_k}n)} = $\\
+$= \prod_{n=1}^{\infty}\frac{(1+\frac{a_1}{n})e^{-\frac{a_1}n}\ldots(1+\frac{a_k}n)e^{-\frac{a_k}n}}{(1+\frac{b_1}{n})e^{-\frac{b_1}n}\ldots(1+\frac{b_k}n)e^{-\frac{b_k}n}} = *$\\
+$\prod (1+\frac{a_i}n)e^{-\frac{a_i}n} = \frac1{\Gamma(a_i)a_ie^{\gamma a_i}} = \frac1{\Gamma(a_i + 1)e^{\gamma a_i}}$\\
+$* = \frac{\Gamma(b_1+1)\ldots \Gamma(b_k+1)}{\Gamma(a_1+1)\ldots\Gamma(a_k+1)}$\\
+\textbf{Пример-Пример}\\
+$\prod_{n=1}^{+\infty} \frac{4n^2}{4n^2-1} = \prod \frac{(n-0)(n-0)}{(n-\frac12)(n+\frac12)} = \frac{\Gamma(\frac12)\Gamma(\Gamma(\frac12))}{\Gamma(1)\Gamma(1)} = \frac12 (\Gamma(\frac12))^2 = \frac\pi2$\\
+\textbf{Лемма о представлении синуса в виде конечного произведения}\\
+$\sin x = (2n+1)\sin \frac{x}{2n+1} \prod_{k=1}^n(1-\frac{\sin^2 \frac x{2n+1}}{\sin^2 \frac{k\pi}{2n+1}})$\\
+\textbf{Доказательство}\\
+$m=2n+1$\\
+$(\cos \phi + i\sin \phi)^m = \cos m\phi + i\sin m\phi$\\
+$\sin m\phi = m(\cos \phi)^{\ub{\text{чет}}{m-1}}\sin \phi - C_m^3 (\cos \phi)^{\ub{\text{чет}}{m-3}}\sin^3 \phi + \ldots = \sin \phi + P(\sin^2 \phi)$ -- многочлен степени $m$\\
+При $\phi = \frac\pi m, \frac{2\pi} m \ldots \frac{n\pi}m$ левая часть 0\\
+Значит $u_1 = \sin^2 \frac\pi m, \ldots, u_n = \sin^2 \frac{\pi n}m$ -- корни $P(n)$\\
+Тогда $P(x)=P(0)(1-\frac{x}{x_1})\ldots(1-\frac x{x_n})$\\
+$P(0) = \lim_{\phi \rto 0} P(\sin^2 \phi) = \lim \frac{\sin m\phi}{\sin \phi} = m$\\
+$\sin (2n+1)\phi = (2n+1)\sin \prod_{k=1}^n (1-\frac{\sin^2 \phi}{\sin^2 \frac{\pi k}m})$\\
+$(2n+1)\phi =: x$\\
+//todo continue \url{https://www.youtube.com/live/9KZRjeVTXNY?feature=share&t=2962}\\
 \textbf{Теорема (о единственности)}\\
 $f, g: \ub{\text{открытое}}\Omega \subset \Cset \rto \Cset$\\
 $f,g$ -- комплексно дифференцируема\\
@@ -1913,7 +1938,7 @@ $f: D \rto \Rset$\\
     Пусть $v$ -- некий ненулевой вектор\\
     $\lim_{t\rto +0} f(a_1 + tv_1, a_2 + tv_2) = \lim_{x\rto a} f|_L$, где $L$ -- луч с началом в $a$, параллельный вектору
     \item $\gamma: [-1, 1] \rto \Rset^2$ -- непрерывный путь\\
-    $\fall t\ \gamma'(t) != 0$ (избегаем "изломов", возможных при остановке в определенной точке)\\
+    $\fall t\ \gamma'(t) \neq 0$ (избегаем "изломов", возможных при остановке в определенной точке)\\
     $\gamma(0) = a$\\
     $\lim_{t\rto 0} f(\gamma(t)) = \lim_{x\rto a} f|_{C_\gamma}$ -- предел по пути
 \end{enumerate}
@@ -1931,7 +1956,7 @@ $\LRto \lim_{x_1 \rto a_1} \phi(x_1) = A$\\
 \textbf{Доказательство}
 \begin{enumerate}
     \item $A \in \Rset$\\
-    Тогда $\fall \eps > 0\ \ex V_1(a_1): \fall \lambda_1 \in \overdot{V_1}\cap D_1\ |\phi(x_1) - A| \leq \frac\eps2 < \eps$
+    Тогда $\fall \eps > 0\ \ex V_1(a_1): \fall x_1 \in \overdot{V_1}\cap D_1\ |\phi(x_1) - A| \leq \frac\eps2 < \eps$
     \item $A = \infty$\\
     Аналогично
 \end{enumerate}
@@ -1973,11 +1998,11 @@ $\begin{pmatrix}h_1\\h_2\end{pmatrix} \mapsto \begin{pmatrix}ah_1-bh_2\\ah_2+bh_
     b & a
 \end{pmatrix}\begin{pmatrix}h_1\\h_2\end{pmatrix}$\\
 Заметим, что $\fall L \in \nm{Mat}_{n\times n}(\Rset) \ex F, a: F'(a) = L$\\
-Однако, отображение $\Rset^2 \rto \Rset^2$ -- вещественно дифференцируемое -- будет как отображение $\Cset\rto \Cset$ комплексно дифференцируемымЭ если матрица $L$ имеет вид $\begin{pmatrix}
+Однако, отображение $\Rset^2 \rto \Rset^2$ -- вещественно дифференцируемое -- будет как отображение $\Cset\rto \Cset$ комплексно дифференцируемым, если матрица $L$ имеет вид $\begin{pmatrix}
     a & -b\\
     b & a
 \end{pmatrix}$\\
-\textbf{Утверждение}\\
+\textbf{Теорема о единственности производной}\\
 $F: \ub{\text{откр.}}\Omega \subset \Rset^m \rto \Rset^n, a\in \Omega$\\
 $F$ -- дифференцируема в $a$, тогда $F'(a)$ -- определен однозначно\\
 \textbf{Доказательство}\\
@@ -2009,5 +2034,6 @@ $f: \Omega \subset \Rset^m \rto \Rset$\\
 $\phi_k(u) = f(a_1, \ldots, a_{k-1}, u, a_{k+1}, a_m)$ -- функция от переменной $u \in U(a_k)$\\
 $\phi'_k(a_k) = \lim_{t\rto 0}\frac{\phi_k(a_k + t) - \phi_k(a_k)}t$\\
 Если этот предел существует, то предел называется \textit{частной производной}(в значении частичная) $f$ по $k$-оый переменной\\
-Обозначение: $\frac{\partial f}{\partial x_k}, f_k'(a), f'_{x_k}(a), D_k f$
+Обозначение: $\frac{\partial f}{\partial x_k}, f_k'(a), f'_{x_k}(a), D_k f$\\
+
 \end{document}
