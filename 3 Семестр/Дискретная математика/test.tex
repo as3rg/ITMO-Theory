@@ -1,0 +1,26 @@
+\documentclass {article}
+
+% example taken from 
+% http://www.guitex.org/home/images/doc/GuideGuIT/introingtikz.pdf
+
+\usepackage {tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake/.style={decorate, decoration=snake}}
+\tikzset{node/.style={circle, draw=black!60, fill=white!5, very thick, minimum size=7mm}}
+
+\begin {document}
+\begin{tikzpicture}
+%Nodes
+\node[node] (maintopic) {2};
+\node[node] (uppercircle) [above=of maintopic] {1};
+\node[node] (rightsquare) [right=of maintopic] {3};
+\node[node] (lowercircle) [below=of maintopic] {4};
+%Lines
+\draw[->] (uppercircle) -- node[left] {x} (maintopic);      %text left
+\draw[->] (uppercircle) to [loop above];                    %loop above
+\draw[->] (maintopic) to [bend left] (rightsquare);         %bending left
+\draw[-, snake] (rightsquare) -- (lowercircle);             %snake style
+\end{tikzpicture}
+ 
+\end{document}

@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+\input{../../header.tex}
+
+\title{Математическая Логика. Теория}
+\author{Александр Сергеев}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Введение}
+\textbf{Силлогизмы}\\
+\textit{Modus Ponendo Ponens}: Если $A$ и $A \rto B$, то $B$\\
+\textbf{Парадокс Рассела}\\
+$X = \{x: x \not\in x\}$\\
+$(X \in X)?$\\
+\textbf{Определение}\\
+\textit{Номинализм} -- учение о том, что существуют лишь единичные вещи, а общие понятия -- лишь имена\\
+\textit{Реализм} -- учение о том, что общие понятия объективно существуют\\
+Номинализм в вопросе решения парадокса Рассела: надо придумать понятие множества\\
+Реализм в вопросе решения парадокса Рассела: необходимо понять, что такое множество на самом деле, докопаться до сути\\
+\textit{Программа Гильберта} -- мы должны формализовать математику и избавиться от произвола, который может вносить сторонний исследователь\\
+Формализация должна быть проверена, и ее непротиворечивость должна быть доказана\\
+Программма Гильберта -- реализм: мы верим, что мир устроен некоторым образом, а значит существует некоторая идеальная математика, удовлетворяющая этим свойствам. Нам нужно лишь прислушаться к миру и найти ее
+\section{Исчисление высказываний}
+\textbf{Определение}\\
+\textit{Высказывание} -- строка, сформулированная по следующим правилам\\
+\textit{Предметный язык} -- язык, который мы изучаем (язык математической логики)\\
+\textit{Метаязык} -- соглачения о записи. Из метаязыка можно получить предметный язык некоторыми неформализованными действиями\\
+$A, B, \ldots$ -- Пропозиционная переменная\\
+$\alpha, \beta, \ldots$ -- метапеременные (высказывания)\\
+$\alpha \land \beta$ -- Конъюнкция\\
+$\alpha \lor \beta$ -- Дизъюнкция\\
+$\lnot \alpha$ -- Отрицание\\
+$\alpha \rto \beta$ -- Импликация\\
+$X, Y, Z$ -- метапеременные для пропозиционных переменных\\
+Приоритет: отрицание, конъюнкция, дизъюнкция, импликация\\
+Дизъюнкция и конъюнкция -- левоассоциативные,импликация -- правоассоциативная\\
+Выражение на предметном языке -- пропозиционные переменные, 4 вида \textit{связкок} и полностью расставленные скобки. Все остальные формы записи -- метаязык\\
+\textit{Схема} -- строка, строящаяся по правилам предметного языка, где вместо пропозиционных переменных могут стоять маленькие греческие буквы(метапеременные)\\
+\textbf{Определение}\\
+Оценка высказывания $f: P \rto V$, где $V=\{T, F\}, P$ -- множество пропозиционных переменных\\
+$[[\alpha]] = T$ -- оценка высказывания (значение $\alpha$ -- истина)\\
+$[[\alpha]]^{X_1:=v_1, \ldots, X_n:=v_n}$ -- оценка высказывания\\
+\textbf{Определение}\\
+Если $[[\alpha]] = T$ при любой оценке переменных, то она \textit{общезначима (тавтология)}: $\models \alpha$\\
+Иначе \textit{опровержима}\\
+Если $[[\alpha]] = T$ при любой оценке переменных, при которой $[[\gamma_1]] = \ldots = [[\gamma_n]] = T$, то $\alpha$ -- следствие этих высказываний: $\gamma_1,\ldots, \gamma_n \models \alpha$\\
+Если $[[\alpha]] = T$ при некоторой оценке, то она \textit{выполнима}, иначе \textit{невыполнима}\\
+\textbf{Аксиомы исчисления высказываний}
+\begin{enumerate}
+    \item $\alpha \rto \beta \rto \alpha$
+    \item $(\alpha \rto \beta) \rto (\alpha \rto \beta \rto \gamma) \rto (\alpha \rto \gamma)$
+    \item $\alpha \rto \beta \rto \alpha \land \beta$
+    \item $\alpha \land \beta \rto \alpha$
+    \item $\alpha \land \beta \rto \beta$
+    \item $\alpha \rto \alpha \lor \beta$
+    \item $\beta \rto \alpha \lor \beta$
+    \item $(\alpha \rto \gamma) \rto (\beta \rto \gamma) \rto (\alpha \lor \beta \rto \gamma)$
+    \item $(\alpha \rto \beta) \rto (\alpha \rto \lnot \beta) \rto \lnot \alpha$
+    \item $\lnot\lnot \alpha \rto \alpha$
+\end{enumerate}
+\textbf{Определение}\\
+\textit{Доказательством} назовем последовательность высказываний $\delta_1, \ldots, \delta_n$, где каждое высказывание $\delta_i$ либо:
+\begin{itemize}
+    \item является аксиомой (существует замена метапеременных для какой-либо схемы аксоим, позволяющая получить схему $\delta_i$)
+    \item получается из $\delta_1, \ldots, \delta_{i-1}$ по правилу Modus Ponens: существуют такие $j, k < i: \delta_k \equiv \delta_j \rto \delta_i$
+\end{itemize}
+Формула \textit{выводима/доказуема}, если существует ее доказательство\\
+\textbf{Пример}\\
+$A \rto (A \rto A)$\\
+$(A \rto (A\rto A)) \rto (A \rto ((A\rto A) \rto A)) \rto (A \rto A)$\\
+$(A \rto ((A\rto A)\rto A)) \rto (A \rto A)$\\
+$A \rto ((A\rto A)\rto A)$\\
+$A \rto A$\\
+\textbf{Определение}\\
+\textit{Вывод формулы $\alpha$ из гипотез $\gamma_1,\ldots, \gamma_k$} -- такая последовательность $\sigma_1, \ldots, \sigma_n$, что $\sigma_i$ является (одним из следующих):
+\begin{itemize}
+    \item аксиомой
+    \item одной из гипотез $\gamma_t$
+    \item получена по правилу Modus Ponens из предыдущих
+\end{itemize}
+Формула \textit{выводима из гипотез}, если существует ее вывод\\
+Обозначение: $\gamma_1, \ldots, \gamma_k \vdash \alpha$\\
+\textbf{Определение (корректность теории)}\\
+Теория \textit{корректна}, если любое доказуемое в ней утверждение общезначимо\\
+То есть, $\vdash \alpha$ влечет $\models \alpha$\\
+\textbf{Определение (полнота теории)}\\
+Теория семантически полна, если любое общезначимое в ней утверждение доказуемо. То есть, $\models \alpha$ влечет $\vdash \alpha$\\\\
+\textbf{Теорема (корректность вычисления высказываний)}\\
+\textbf{Доказательство}\\
+Докажем, что любая строка доказательства является общезначимой\\
+Докажем индукцией по количеству строк\\
+База: $n=1$ -- аксиома. В ней нет правила Modus Ponens. Она общезначима\\ 
+Переход: Пусть для любого доказательства длины $n$ формула $\delta_n$ общезначима. Рассмотрим $\delta_{n+1}$
+\begin{enumerate}
+    \item Аксиома. Убедимся, что аксиома общезначима
+    \item Modus Ponens j, k -- убедимся, что если $\models \delta_j$ и $\models \delta_k, \delta_k = \delta_j \rto \delta_{n+1}$, то $\models \delta_{n+1}$
+\end{enumerate}
+Аксиому проверим через таблицу истинности\\
+Докажем правило Modus Ponens\\
+По индукционному предположению $\models \delta_j, \models \delta_k$\\
+Зафиксируем произвольную оценку\\
+Из общезначимости $[[\delta_j]] = T, [[\delta_k]] = T$\\
+Тогда из таблицы истинности $[[\delta_j]] = [[\delta_k]] = T$ только при $[[\delta_{n+1}]] = T$\\
+Отсюда $\models \delta_{n+1}$\\
+\textbf{Определение}\\
+\textit{Контекст} -- совокупность всех гипотез. Обозначается большой греческой буквой\\
+Пример записи:\\
+$\Gamma = \{ \gamma_1,\ldots, \gamma_n\}$\\
+$\Delta = \{ \delta_1,\ldots, \delta_m \}$\\
+$\Gamma,\Delta \vdash \alpha$\\
+\textbf{Теорема о дедукции}\\
+$\Gamma, \alpha \vdash \beta \LRto \Gamma\vdash \alpha \rto \beta$\\
+\textbf{Доказательство $\Lto$}\\
+Пусть $\Gamma\vdash \alpha \rto \beta$\\
+Т.е. существует вывод $\delta_1,\ldots, \delta_{n-1}, \ub{\delta_n}{\alpha \rto \beta}$\\
+Дополним вывод: добавим туда $\alpha$\\
+По правилу Modus Ponens добавим туда $\beta$\\
+Отсюда $\Gamma, \alpha \vdash \beta$\\
+\textbf{Определение}\\
+\textit{Конечная последовательность} -- функция $\delta: \{1,\ldots, n\} \rto \mc F$\\
+\textit{Конечная последовательность, индексированная дробными числами} -- функция $\zeta: I \rto \mc F, I\subset \Qset^+, |I|\in \Nset$\\
+\textbf{Доказательство $\Rto$}\\
+Пусть $\Gamma, \alpha \vdash \beta$\\
+Пусть дан некоторый вывод: $\delta_1, \ldots, \delta_{n-1}, \ub{\delta_n}{\beta}$\\
+Тогда рассмотрим последовательность: $\alpha \rto \delta_1, \ldots, \alpha \rto \delta_{n-1}, \alpha \rto \beta$\\
+Заметим, что выводом эта формула не является, т.к. в ней нет аксиом\\
+Докажем по индукции по длине вывода\\
+Если $\delta_1, \ldots, \delta_n$ -- вывод $\Gamma,\alpha\vdash \beta$, то найдется $\zeta_k$ для $\Gamma\vdash \alpha\rto \beta$, причем $\zeta_1 =\alpha\rto \delta_1, \ldots, \zeta_n=\alpha\rto \delta_n$
+\begin{enumerate}
+    \item $n = 1$ -- ч.с. перехода без Modus Ponens
+    \item Пусть $\delta_1, \ldots \delta_{n+1}$ -- исходный вывод\\
+    По индукционному предположению по $\delta_1, \ldots, \delta_n$ построен вывод $\zeta_k$ утверждения $\Gamma\vdash \alpha\rto \delta_n$\\
+    Достроим его для $\delta_{n+1}$\\
+    \begin{itemize}
+        \item $\delta_{n+1}$ -- аксиома или $\delta_{n+1} \in \Gamma$:\\
+        $\zeta_{n+\sfrac13} = \delta_{n+1} \rto \alpha \rto \delta_{n+1}$\\
+        $\zeta_{n+\sfrac23} = \delta_{n+1}$\\
+        $\zeta_{n + 1} = \alpha \rto \delta_{n+1}$ 
+        \item $\delta_{n+1} = \alpha$:\\
+        $\zeta_{n+\sfrac15} = a \rto a \rto a$\\
+        $\zeta_{n+\sfrac25} = (a \rto a \rto a) \rto (a \rto (a \rto a) \rto a) \rto (a \rto a)$\\
+        $\zeta_{n+\sfrac35} = (a \rto (a \rto a) \rto a) \rto (a \rto a)$\\
+        $\zeta_{n+\sfrac45} = a \rto (a \rto a) \rto a$\\
+        $\zeta_{n+1} = a \rto a$
+        \item $\delta_{n+1}$ -- Modus Ponens из $\delta_j$ и $\delta_k = \delta_j \rto \delta_{n+1}$:\\
+        $\zeta_{n+\sfrac15} = \alpha\rto \delta_j$\\
+        $\zeta_{n+\sfrac25} = \alpha \rto \delta_j \rto \delta_{n+1}$\\
+        $\zeta_{n+\sfrac35} = (\alpha \rto \delta_j) \rto (\alpha \rto \delta_j \rto \delta_{n+1}) \rto (\alpha \rto \delta_{n+1})$\\
+        $\zeta_{n+\sfrac45} = (\alpha \rto \delta_j \rto \delta_{n+1}) \rto (\alpha \rto \delta_{n+1})$\\
+        $\zeta_{n+1} = \alpha \rto \delta_{n+1}$
+    \end{itemize}
+\end{enumerate}
+\textbf{Лемма (правило контрапозиции)}\\
+Каково бы ни были формулы $\alpha, \beta$, справедливо, что $\vdash (\alpha \rto \beta) \rto (\lnot \beta \rto \lnot \alpha)$\\
+\textbf{Лемма (правило исключенного третьего)}\\
+Какова бы ни была формула $\alpha$, справедливо, что $\vdash \alpha \lor \lnot \alpha$\\
+\textbf{Лемма (правило исключенного допущения)}\\
+Пусть справедливо $\Gamma, \rho \vdash \alpha$ и $\Gamma, \lnot \rho \vdash \alpha$\\
+Тогда $\Gamma \vdash \alpha$\\
+\textbf{Теорема}\\
+Если $\models \alpha$, то $\vdash \alpha$\\
+\textbf{Определение}\\
+Зададим некоторую оценку, что $[[\alpha]] = x$\\
+Тогда \textit{условным отрицанием} формулы $\alpha$ называется формула $(|\alpha|) = \left\{\begin{array}{cc}
+    \alpha, & x = T\\
+    \lnot \alpha, & x = F
+\end{array}\right.$\\
+Если $\Gamma=\gamma_1, \ldots, \gamma_n$, то $(|\Gamma|) = (|\gamma_1|),\ldots, (|\gamma_n|)$\\
+Пример: $(|A|), (|B|) \vdash (|A\rto B|)$ позволяет записать таблицу истинности в одну строку, перебрав ее для всех оценок\\
+\textbf{Доказательство теоремы}\\
+Для каждой возможной связки $\star$ докажем формулы $(|\phi|), (|\psi|) \vdash (|\phi \star \psi)$\\
+Теперь построим таблицу истинности для $\alpha$ и докажем в ней каждую строку:\\
+$(|\Xi|) \vdash (|\alpha|), \Xi$ -- контекст(все переменные в таблице)\\
+Если формула общезначима, то в ней все строки будут иметь вид $(|\Xi|) \vdash \alpha$. От гипотез можно избавиться индукционно по теореме об исплючении допущения и получить требуемое $\vdash \alpha$\\
+\textbf{Лемма (Условное отрицание формул)}\\
+Пусть пропозиционные переменные $\Xi = X_1, \ldots, X_n$ -- все переменные, которые используются в $\alpha$\\
+Пусть задана некоторая оценка переменных\\
+Тогда $(|\Xi|) \vdash (|\alpha|)$\\
+\textbf{Доказательство}\\
+Докажем по индукции по длине формулы $\alpha$
+\begin{itemize}
+    \item База: формула атомарная, т.е. $\alpha = X_i$\\
+    Тогда при любом $\Xi$ выполнено $(|\Xi|)^{X_i=T}\vdash X_i$ и $(|\Xi|)^{X_i=F}\vdash \lnot X_i$
+    \item Переход:\\
+    $\alpha = \phi \star \psi, (|\Xi|) \vdash (|\phi|)$ и $(|\Xi|) \vdash (|\psi|)$\\
+    Тогда построим вывод\\
+    Сначала запишем доказательство $(|\phi|)$\\
+    Потом припишем доказательство $(|\psi|)$\\
+    Потом припишем доказательство леммы о связках
+\end{itemize}
+\end{document}

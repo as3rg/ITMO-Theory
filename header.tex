@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{mathdots}
+\usepackage{xfrac}
 
 
 \def\columnseprulecolor{\color{black}}
@@ -124,3 +125,10 @@
 \DeclareMathOperator*\ulim{\overline{lim}}
 
 \everymath{\displaystyle}
+
+% Grath
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake/.style={decorate, decoration=snake}}
+\tikzset{node/.style={circle, draw=black!60, fill=white!5, very thick, minimum size=7mm}}

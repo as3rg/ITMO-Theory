@@ -1,0 +1,285 @@
+\documentclass[12pt]{article}
+\input{../../header.tex}
+
+\DeclareMathOperator{\Lin}{Lin}
+
+\title{Математический анализ. Теория}
+\author{Александр Сергеев}
+\date{}
+\begin{document}
+\maketitle
+\section{Friends and strangers graph}
+Рассмотрим связный неориентированный граф $G$ из $n$ вершин\\
+В $n-1$ вершину поставим нумерованные фишки. Одну вершину оставим свободной\\
+Будем перемещать фишки по ребрам (перемещать фишку можно только в пустую вершину)\\
+Для каких графов $G$ можно получить любое расположение фишек в графе из исходного?\\
+\textbf{Теорема Уилсона}\\
+Если граф $G$:
+\begin{itemize}
+    \item Нет точек сочленения
+    \item Граф не двудольный
+    \item Граф -- не цикл длины $n\geq 4$
+    \item $G$ -- не следующий граф:\\
+    \begin{tikzpicture}
+        %Nodes
+        \node[node] (a) at (0.5, 0) {};
+        \node[node] (b) at (1.5, 0) {};
+        \node[node] (c) at (0, 1) {};
+        \node[node] (d) at (1, 1) {};
+        \node[node] (e) at (2, 1) {};
+        \node[node] (f) at (0.5, 2) {};
+        \node[node] (g) at (1.5, 2) {};
+        %Lines
+        \draw[-] (a) -- (b);
+        \draw[-] (a) -- (c);
+        \draw[-] (c) -- (d);
+        \draw[-] (d) -- (e);
+        \draw[-] (e) -- (g);
+        \draw[-] (b) -- (e);
+        \draw[-] (c) -- (f);
+        \draw[-] (f) -- (g);
+    \end{tikzpicture}\\
+\end{itemize}
+то в таком графе возможно получить любое расположение фишек, иначе невозможно\\
+\textbf{Доказательство необходимости}
+\begin{itemize}
+    \item Рассмотрим граф\\
+    \begin{tikzpicture}
+        %Nodes
+        \node[node] (a) at (0, 0) {1};
+        \node[node] (b) at (0, 2) {2};
+        \node[node] (c) at (1, 1) {3};
+        \node[node] (d) at (2, 0) {4};
+        \node[node] (e) at (2, 2) {$\circ$};
+        %Lines
+        \draw[-] (a) -- (b);
+        \draw[-] (a) -- (c);
+        \draw[-] (c) -- (b);
+        \draw[-] (d) -- (e);
+        \draw[-] (c) -- (e);
+        \draw[-] (c) -- (d);
+    \end{tikzpicture}\\
+    Заметим, что в таком графе 1 никогда не попадет в правую половину
+    \item Рассмотрим двудольный граф\\
+    \begin{tikzpicture}
+        %Nodes
+        \node[node] (a) at (0, 0) {1};
+        \node[node] (b) at (1, 0) {2};
+        \node[node] (c) at (2, 0) {3};
+        \node[node] (d) at (0, 2) {4};
+        \node[node] (e) at (1, 2) {5};
+        \node[node] (f) at (2, 2) {$\circ$};
+        %Lines
+        \draw[-] (a) -- (d);
+        \draw[-] (a) -- (e);
+        \draw[-] (a) -- (f);
+        \draw[-] (b) -- (d);
+        \draw[-] (b) -- (e);
+        \draw[-] (b) -- (f);
+        \draw[-] (c) -- (d);
+        \draw[-] (c) -- (e);
+        \draw[-] (c) -- (f);
+    \end{tikzpicture}\\
+    Рассмотрим его как перестановку\\
+    Поменяем 2 и $\circ$ местами\\
+    \begin{tikzpicture}
+        %Nodes
+        \node[node] (a) at (0, 0) {1};
+        \node[node, text=red] (b) at (1, 0) {$\circ$};
+        \node[node] (c) at (2, 0) {3};
+        \node[node] (d) at (0, 2) {4};
+        \node[node] (e) at (1, 2) {5};
+        \node[node, text=red] (f) at (2, 2) {2};
+        %Lines
+        \draw[-] (a) -- (d);
+        \draw[-] (a) -- (e);
+        \draw[-] (a) -- (f);
+        \draw[-] (b) -- (d);
+        \draw[-] (b) -- (e);
+        \draw[-] (b) -- (f);
+        \draw[-] (c) -- (d);
+        \draw[-] (c) -- (e);
+        \draw[-] (c) -- (f);
+    \end{tikzpicture}\\
+    Заметим, что величина (четность перестановки + номер доли, где находится $\circ$) не изменилась\\
+    Отсюда из исходной перестановки невозможно получить перестановку\\
+    \begin{tikzpicture}
+        %Nodes
+        \node[node, text=red] (a) at (0, 0) {2};
+        \node[node, text=red] (b) at (1, 0) {1};
+        \node[node] (c) at (2, 0) {3};
+        \node[node] (d) at (0, 2) {4};
+        \node[node] (e) at (1, 2) {5};
+        \node[node] (f) at (2, 2) {$\circ$};
+        %Lines
+        \draw[-] (a) -- (d);
+        \draw[-] (a) -- (e);
+        \draw[-] (a) -- (f);
+        \draw[-] (b) -- (d);
+        \draw[-] (b) -- (e);
+        \draw[-] (b) -- (f);
+        \draw[-] (c) -- (d);
+        \draw[-] (c) -- (e);
+        \draw[-] (c) -- (f);
+    \end{tikzpicture}
+    \item Рассмотрим граф:\\
+    \begin{tikzpicture}
+        %Nodes
+        \node[node] (a) at (0, 0) {1};
+        \node[node] (b) at (1, 0) {2};
+        \node[node] (c) at (1, 1) {3};
+        \node[node] (d) at (0, 1) {$\circ$};
+        %Lines
+        \draw[-] (a) -- (b);
+        \draw[-] (b) -- (c);
+        \draw[-] (c) -- (d);
+        \draw[-] (a) -- (d);
+    \end{tikzpicture}\\
+    В нем невозможно поменять порядок фишек\\
+\end{itemize}
+\textbf{Доказательство достаточности}\\
+Отсутствует...\\
+Рассмотрим обобщение предыдущей игры:\\
+Пусть фишки могут меняться местами, если они соседи и "друзья"\\
+Т.е. теперь у нас два графа: "географический" граф $X$ и граф дружбы $Y$\\
+В прошлой задаче граф дружбы -- "звездочка" с $\circ$ в центре (т.е. $\circ$ дружит со всеми, а остальные не дружат между собой)\\
+Построим граф $FS(X, Y)$ -- граф друзей и врагов\\
+В нем будет $n!$ вершин\\
+Каждая вершина графа -- биекция $\sigma: V(X) \rto V(Y)$\\
+Получается, что $\sigma$ -- какой-то способ расположить фишки по вершинам\\
+(т.к. $V(x)$ -- множество вершин, а $V(Y)$ -- множество фишек)\\
+Вершины $\sigma$ и $\sigma'$ соединены ребром, если они отличаются одним "дружеским" обменом\\
+Тогда из любой перестановки можно получить любую $\LRto$ граф связен\\
+Из теоремы Уилсона: $FS(G, K_{1, n-1}), G$ -- из теоремы Уилсона, $K_{1,n-1}$ -- звездочка с вершиной $n$ в центре\\
+Ответим на другой вопрос: Для каких $G$ граф $FS(G, C_n), C_n$ -- цикл длины $n$ -- связен\\
+\textbf{Лемма}\\
+Графы $FS(X, Y)$ и $FS(Y,X)$ -- изоморфны\\
+Т.е. можно построить биекцию $u \os{\theta}{\lrto} u'$ такую, что ребра $uv$ и $\theta(u)\theta(v)$ существуют одновременно\\
+\textbf{Доказательство}\\
+Построим биекцию $\sigma \in FS(X,Y) \lrto \sigma^{-1} \in FS(Y, X)$\\
+Теперь рассмотрим граф $FS(C_n, G)$\\
+Теперь рассмотрим следующую ситуацию:\\
+По кругу стоят $3n$ человек: $n$ семей вида папа-мама-ребенок\\
+Ребенок не может меняться со своими родителями, все остальные могут меняться между собой\\
+//todo т.к. оффтоп, мне лень дальше конспектировать\\
+См. первую лекцию, начиная с 30 минуты\\
+\section{Функции и отображения в $\Rset^m$}
+\subsection{Линейные отображения}
+\textbf{Определение}\\
+$\nm{Lin}(X, Y)$ -- множество линейных отображений из $X$ в $Y$ (линейные пространства)\\
+$\nm{Lin}(X, Y)$ -- линейное пространство\\
+\textbf{Обозначение}\\
+Пусть $A \in \Lin(\Rset^m, \Rset^n)$\\
+$\|A\| := \sup_{|x| = 1} |A(x)|$\\
+\textbf{Замечание 1}\\
+$\|A\| \in \Rset$\\
+\textbf{Доказательство}\\
+Было доказано: $|Ax| \leq C_a |x|, C_A = \sqrt{\sum a_{ij}^2}$\\
+\textbf{Замечание 2}\\
+Из теоремы Вейерштрасса $\sup \lrto \max$ в конечномерном случае\\
+\textbf{Замечание 3}\\
+$\fall x \in \Rset^m\ |Ax| \leq \|A\||x|$\\
+\textbf{Доказательство}\\
+Для $x=0$ очевидно\\
+$\ot{x} := \frac{x}{|x|}$\\
+$|A\ot{x}| \leq \|A\|$\\
+\textbf{Замечание 4}\\
+Если $\ex C: \fall x\ |Ax| \leq C|x|$, то $\|A\| \leq C$\\
+\textbf{Пример}
+\begin{itemize}
+    \item $m=n=1$\\
+    $A$ -- линейное отображение: $x \mapsto ax$\\
+    $\|A\| = |a|$
+    \item $m=1, n$ -- любое\\
+    $A:\Rset\rto \Rset^n$\\
+    Тогда $\ex \ol v \in \Rset^n Ax = x\ol{v}$\\
+    $\|A\| = |\ol v|$
+    \item $n=1, m$ -- любое\\
+    $A: \Rset^m \rto \Rset$\\
+    Тогда $\ex l \in \Rset^m: Ax=\an xl$\\
+    $\|A\| = |l|$
+    \item $m,n$ -- любые\\
+    $A=(a_{ij})$\\
+    $x \mapsto Ax$\\
+    $\|A\|$ так легко не считается((((
+\end{itemize}
+\textbf{Лемма}\\
+Пусть $X, Y$ -- нормированные линейное пространство\\
+$A \in \Lin(X, Y)$\\
+Тогда следующие утверждения эквивалентны:\\
+\begin{enumerate}
+    \item $A$ -- ограничен, т.е. $\|A\| < +\infty$
+    \item $A$ -- непрерывно в $\0 \in X$
+    \item $A$ -- непрерывно на $X$
+    \item $A$ -- равномерно непрерывное ($\fall \eps > 0\ \ex \delta > 0: \fall x_1, x_2: |x_1-x_2| < \delta\ |Ax_1 - Ax_2| < \eps$)
+\end{enumerate}
+\textbf{Доказательство}\\
+$4 \Rto 3 \Rto 2$ -- очевидно\\
+Докажем $2 \Rto 1$\\
+Возьмем $\eps = 1$\\
+$\ex \delta > 0:\ \fall x: |x| < \delta\ |Ax| < 1$\\
+Возьмем $|x| = 1$\\
+$Ax| = \frac1\delta|A(\delta x)| < \frac1\delta$\\
+Тогда $\|A\| \leq \frac1\delta$\\
+Докажем $1 \Rto 4$\\
+$\fall \eps > 0\ \ex \delta = \frac\eps{\|a\|}:\ \fall x_1, x_2: |x_1-x_2| < \delta$\\
+$|Ax_1-Ax_2| = |A(x_1-x_2)| \leq \|A\||x_1-x_2| < \eps$\\
+\textbf{Теорема о пространстве линейных отображений}
+\begin{itemize}
+    \item $\|\cdot \|$ -- норма в $\Lin(X, Y), X, Y$ -- конечномерные нормированные пространства\\
+    Т.е.\begin{enumerate}
+        \item $\|A\| \geq 0, \|A\| = 0 \LRto A = 0$
+        \item $\fall \alpha \in \Rset\ \|\alpha A\| = |\alpha| \|A\|$
+        \item $\|A + B\| \leq \|A\|+\|B\|$
+    \end{enumerate}
+    \item $\|BA\|\leq \|B\|\cdot\|A\|$
+\end{itemize}
+\textbf{Доказательство}\\
+$\|A\| \geq 0$ -- тривиально\\
+$\|A\|=\sup_{|x|=1} \|Ax\| = 0 \Rto A = 0$\\
+$\|\alpha A\| = |\alpha| \|A\|$\\
+$|(A+B)x| \leq |Ax| + |Bx| \leq \ub{C}{(\|A\|+\|B\|)}|x| \Rto \|A+B\| \leq C = \|A\|+\|B\|$\\
+$|BAx|\leq \|B\||Ax| \leq \|B\|\|A\||x|$\\
+\textbf{Замечание}\\
+В $\Lin(X, Y)$\\
+$\|A\|=\sup_{|x|=1} |Ax| = \sup_{|x|\leq 1} |Ax| = \sup_{|x|<1}|Ax| = \sup_{x\neq 0} \frac{|Ax|}{|x|} = \inf\{C\in \Rset: \fall x \in X\ |Ax| \leq C|x|\}$\\
+\textbf{Теорема Лагранжа (для отображений)}\\
+$F: D \subset \Rset^m \rto \Rset^n$ -- дифференцируема в $D$ -- открытом\\
+$a, b \in D, [a,b] \subset D$\\
+Тогда $\ex c \in [a,b]$, т.е. $\ex \theta \in [0,1]: c = a+\theta(b-a):\ |F(b)-F(a)| \leq \|F'(c)\||b-a|$\\
+\textbf{Доказательство}\\
+$f(t) = F(a+t(b-a)), t \in [0,1]$\\
+$f'(t) = F'(a+t(b-a))(b-a)$\\
+$|F(b)-F(a)|=|f(1)-f(0)| \leq |f'(\theta)|(1-0) = |F'(a+\theta(b-a))(b-a)| \leq \|F'(a+\theta(b-a))\||b-a|$\\
+\textbf{Лемма}\\
+$B\in \Lin(\Rset^m, \Rset^m)$\\
+$\ex c > 0: \fall x\ |Bx| \geq c|x|$\\
+Тогда $B$ -- обратим и $\|B^{-1}\| \leq \frac1c$\\
+\textbf{Доказательство}\\
+Обратимость очевидна, т.к. $\ker B = \{\0\}$. Тогда $\ex B^{-1}$\\
+$|\ub{x}{B^{-1}y}| \leq \frac1c |BB^{-1}y| = \frac1c|y|$\\
+\textbf{Замечание}\\
+$\Omega_m$ -- множество обратимых линейных операторов $\Rset^m \rto\Rset^m$\\
+$|x| = |A^{-1}Ax| \leq \|A^{-1}\||Ax|$\\
+Т.е. $|Ax| \geq \frac1{\|A^{-1}\|}|x|$\\
+\textbf{Теорема об обратимости линейного операторого, близкого к обратимому}\\
+$L \in \Omega_m$ -- обратимый линейный оператор $\Rset^m \rto \Rset^m$\\
+$M \in \Lin(\Rset^m, \Rset^m): \|L-M\| \leq \frac1{\|L^{-1}\|}$ -- $M$ -- близкий к $L$\\
+Тогда
+\begin{itemize}
+    \item $M \in \Omega_m$ -- т.е. $\Omega_m$ -- открытое
+    \item $\|M^{-1}\| \leq \frac1{\|L^{-1}\|^{-1} - \|L-M\|}$
+    \item $\|L^{-1}-M^{-1}\| \leq \frac{\|L^{-1}\|}{\|L^{-1}\|^{-1}-\|L-M\|}\|L-M\|$
+\end{itemize}
+\textbf{Доказательство 1 и 2}\\
+$Mx = Lx + (M-L)x$\\
+$|Mx| \geq |Lx| - |(M-L)x| \geq \frac1{\|L^{-1}\|}|x| -\|M-L\||x| = (\|L^{-1}\|^{-1}-\|M-L\|)|x|$\\ 
+1 и 2 следуют из леммы\\
+\textbf{Доказательство 3}\\
+$\frac1l - \frac1m = \frac{m-l}{lm}$\\
+Аналогично $L^{-1}-M^{-1} = M^{-1}(M-L)L^{-1}$\\
+$\|L^{-1}-M^{-1}\| = \|M^{-1}(M-L)L^{-1}\| \leq \|M^{-1}\|\|M-L\|\|L^{-1}\| \leq $ из пункта 2\\
+\textbf{Следствие}\\
+Отображение $L \mapsto L^{-1}$ задано на $\Omega_m$ и непрерывно\\
+//todo лекции 3 и 4
+\end{document}
