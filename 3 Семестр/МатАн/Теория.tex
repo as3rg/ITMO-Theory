@@ -2,6 +2,9 @@
 \input{../../header.tex}
 
 \DeclareMathOperator{\Lin}{Lin}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\grad}{grad}
+\newcommand{\ppart}[2]{\frac{\partial #1}{\partial #2}}
 
 \title{Математический анализ. Теория}
 \author{Александр Сергеев}
@@ -166,8 +169,8 @@
 \section{Функции и отображения в $\Rset^m$}
 \subsection{Линейные отображения}
 \textbf{Определение}\\
-$\nm{Lin}(X, Y)$ -- множество линейных отображений из $X$ в $Y$ (линейные пространства)\\
-$\nm{Lin}(X, Y)$ -- линейное пространство\\
+$\Lin(X, Y)$ -- множество линейных отображений из $X$ в $Y$ (линейные пространства)\\
+$\Lin(X, Y)$ -- линейное пространство\\
 \textbf{Обозначение}\\
 Пусть $A \in \Lin(\Rset^m, \Rset^n)$\\
 $\|A\| := \sup_{|x| = 1} |A(x)|$\\
@@ -280,6 +283,165 @@ $\frac1l - \frac1m = \frac{m-l}{lm}$\\
 Аналогично $L^{-1}-M^{-1} = M^{-1}(M-L)L^{-1}$\\
 $\|L^{-1}-M^{-1}\| = \|M^{-1}(M-L)L^{-1}\| \leq \|M^{-1}\|\|M-L\|\|L^{-1}\| \leq $ из пункта 2\\
 \textbf{Следствие}\\
-Отображение $L \mapsto L^{-1}$ задано на $\Omega_m$ и непрерывно\\
-//todo лекции 3 и 4
+Отображение $L \mapsto L^{-1}$, заданное на $\Omega_m$, непрерывно\\
+\textbf{Доказательство}\\
+Доказательство по Гейне\\
+Рассмотрим последовательность операторов $B_k: B_k \rto L$\\
+Проверим, что $B_k^{-1} \rto L^{-1}$\\
+Н.С.Н.М. $\|B_k-L\|< \frac1{\|L^{-1}\|}$\\
+$\|B_k^{-1}-L^{-1}\| \leq \ub{\text{огр}}{\frac{\|L^{-1}\|}{\frac1{\|L^{-1}\|} - \ub{\rto 0}{\|L-B_k\|}}}\ub{\rto 0}{\|L-B_k\|} \rto 0$\\
+\textbf{Теорема (о непрерывно дифференцируемых отображениях)}\\
+$F: \ub{\text{откр}}D\subset \Rset^m \rto \Rset^l$, дифф. на $D$\\
+$F': D \rto \Lin(\Rset^m, \Rset^l)$\\
+Тогда $1 \lrto 2$
+\begin{enumerate}
+    \item $F\in C^1(D)$ (все частные производные непрерывны на $D$)
+    \item $F': D \rto \Lin(\Rset^m, \Rset^l)$ -- непрерывно на $D$\\
+    $\fall x \in D\ \fall \eps > 0\ \ex \delta > 0: \fall \ot x:|x-\ot x| < \delta\ \|F'(x)-F'(\ot x)\| < \eps$\\
+\end{enumerate}
+\textbf{Доказательство $1 \rto 2$}\\
+Пусть $F\in C^1(D)$\\
+$\fall i,j\ \fall x \in D\ \fall \eps > 0\ \ex \delta > 0: \fall \ot x:|x-\ot x| < \delta\ |\frac{\partial f_i}{\partial x_j}(x)-\frac{\partial f_i}{\partial x_j}(\ot x)| < \frac\eps{\sqrt{mn}}$\\
+Тогда $\|F'(x) - F'(\ot x)\| \leq \sqrt{\sum_{ij} (\frac{\partial f_i}{\partial x_j}(x)-\frac{\partial f_i}{\partial x_j}(\ot x))^2} \leq \eps$\\
+\textbf{Доказательство $2 \rto 1$}\\
+Пусть $\fall x \in D\ \fall \eps > 0\ \ex \delta > 0: \fall \ot x:|x-\ot x| < \delta\ \|F'(x)-F'(\ot x)\| < \eps$\\
+$h = (0, \ldots, 0, \ub{k}1, 0, \ldots 0)^T$\\
+$|\ub{\sum_{i=1}^l (\frac{\partial f_i}{\partial x_k}(x)-\frac{\partial f_i}{\partial x_k}(\ot x))}{(F'(x)-F'(\ot x)h)}| \leq \| F'(x)-F'(\ot x)\||h| \leq \eps$\\
+Отсюда $\sqrt{\sum_{i=1}^l (\frac{\partial f_i}{\partial x_k}(x)-\frac{\partial f_i}{\partial x_k}(\ot x))^2} \leq \eps$\\
+Тогда для $i=i_0$ -- $|\frac{\partial f_{i_0}}{\partial x_k}(x)-\frac{\partial f_{i_0}}{\partial x_k}(\ot x)| \leq \eps$
+\section{Экстремумы}
+\textbf{Определение}\\
+$f: D\subset \Rset^m \rto \Rset$\\
+$a \in D$ -- локальный максимум $f \LRto \ex U(a): \fall x \in U(a) \cap D\ f(x) \leq f(a)$ (нестрогий экстремум)\\
+$a \in D$ -- локальный строгий максимум $f \LRto \ex U(a): \fall x \in U(a) \cap D\ f(x) < f(a)$ (строгий экстремум)\\
+\textbf{Теорема Ферма}\\
+$f: D \subset \Rset^m \rto \Rset$\\
+$a \in \Int D, f$ -- дифференцируема\\
+$a$ -- экстремум\\
+Тогда $\fall$ направление $l\ \frac{\partial f}{\partial l} (a) = 0$\\
+\textbf{Доказательство}\\
+$g(t) = f(a+tl), t \in \Rset$ -- задана в окрестности 0\\
+$g'(0) = 0$\\
+$g'(t) = f'l = \begin{pmatrix}
+    \ppart f{x_1} & \ldots & \ppart f{x_m}
+\end{pmatrix}\cdot \begin{pmatrix}
+    l_1\\\vdots\\l_m
+\end{pmatrix} = \ppart{f}{l}$\\
+\textbf{Следствие (необходимое условие экстремума)}\\
+$a$ -- локальный экстремум\\
+Тогда $\fall 1 \leq k \leq m\ \ppart{f}{x_k}(a) = 0$\\
+\textbf{Следствие (т. Ролля)}\\
+Пусть $K \subset \Rset^m$ -- компакт\\
+$f$ -- дифференцируема в $\Int K$ ($f: K \rto \Rset$, непрерывна)\\
+$f_{\partial K} = \const, \partial K$ -- граница компакта\\
+Тогда $\ex x_0 \in \Int K: \grad f(x_0) = 0$\\
+\textbf{Доказательство}\\
+По теореме Вейерштрасса $f$ достигает $\max, \min$ на $K$\\
+Если оба на $\partial K$, то $f \equiv \const$ на $K$\\
+Иначе применим теорему Ферма\\
+\textbf{Определение}\\
+$Q(h): \Rset^m \rto \Rset$ -- квадратичная форма, если она представляет однородный многочлен 2 степени\\
+т.е. $Q(h) = \sum_{1 \leq i \leq m, 1 \leq j \leq m} a_{ij}h_i h_j, a_{ij} = a_{ji}$\\\\
+$Q$ -- положительно определенная $\LRto \fall h \neq 0\ Q(h) > 0$\\
+$Q$ -- отрицательно определенная $\LRto \fall h \neq 0\ Q(h) < 0$\\
+$Q$ -- незнакоопределенная $\LRto \ex h: Q(h) > 0, \ex h: Q(h) < 0$\\
+$Q$ -- полуопределенная (положительно определенная вырожденная) $\LRto \fall h\ Q(h) \geq 0, \ex h \neq 0: Q(h) = 0$\\
+\textbf{Лемма}
+\begin{enumerate}
+    \item $Q: \Rset^m \rto \Rset$ -- кв. форма, $Q > 0$\\
+    Тогда $\ex \gamma_Q > 0: \fall x\ Q(x) > \gamma_Q|x^2|$
+    \item $p: \Rset^m \rto \Rset$ -- норма
+    Тогда $\ex C_1, C_2 > 0: \fall x \in \Rset^m\ C_1|x_1| \leq p(x) \leq C_2|x_2|$
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $\gamma_Q:= \min_{|x|=1} Q(x) > 0$\\
+    Тогда $Q(x) = |x|^2Q(\frac x{|x|}) \geq \gamma_Q |x|^2, x \neq 0$
+    \item Проверим, что $p(x)$ непрерывна, чтобы доказать существование минимума и максимума:\\
+    $|p(x) - p(y)| \leq p(x-y) = p(\sum (x_k-y_k) \ol{e_k}) \leq \sum |x_k - y_k| p(e_k) \leq M|x-y|, M = \sqrt{\sum p(e_k)^2}$ -- по КБШ\\
+    $C_1 = \min_{|x|=1}p(x), C_2 = \max_{|x|=1}p(x)$\\
+    $p(x) = |x|p(\frac x{|x|}) \leq |x|C_2, \geq |x|C_1$
+\end{enumerate}
+\textbf{Напоминание}\\
+$f(x+h) = f(x) + \df f(x, h) + \frac1{2!}\df^2 f(x,h) + \ldots$\\
+$\df^2 f(x,h) = f''_{x_1x_1}(x) h_1^2 + \ldots + f''_{x_nx_n}h_n^2 + 2f''_{x_1x_2}h_1h_2 + \ldots$\\
+\textbf{Теорема (достаточное условие экстремума)}\\
+$f: D \subset \Rset^m \rto \Rset, a \in \Int D, \grad f(a) = 0, f \in C^2(D)$\\
+$Q(h):= \df^2 f(a,h)$\\
+Тогда $Q > 0 \Rto a$ -- локальный минимум\\
+$Q < 0 \Rto a$ -- локальный максимум\\
+$Q \lessgtr 0$ -- не точка локального экстремума\\
+$Q \geq 0$ -- информации недостаточно\\
+\textbf{Доказательство}\\
+$\fall h\ \ex t \in (0,1): f(a+h) = f(a) + \ub0{\df f(a,h)} + \frac1{2!}\df f(a+th, h)$ -- остаток в формуле Лагранжа\\
+$f(a+h) - f(a) = \frac1{2!}Q(h) + \frac1{2!}(\ub{|\text{б.м.}\cdot h_i^2| = o(|h|^2)}{f''_{x_1x_1}(a+th)h_1^2 - f''_{x_1x_1}(a)h_1^2}+ \ldots + \ub{|\text{б.м.}\cdot h_ih_j| = o(|h|^2)}{2f''_{x_1x_2}h_1h_2 - 2 f''_{x_1x_2}(a)h_1h_2}) + \ldots)$\\
+$f(a+h)-f(a) \geq \frac12 Q(h)-|\alpha(h)||h|^2  \geq \frac12 \gamma_Q|h|^2 - |\alpha(h)||h|^2 \geq \frac14 \gamma_Q|h|^2 > 0, \alpha(h)$ -- б.м., при достаточно малых $|h|$\\
+Пункт 1 доказан\\
+Пункт 2 доказывается заменой $f \rto -f$\\
+Пункт 3: $h: Q(h) > 0, \ot h: Q(\ot h) < 0$\\
+Аналогично п.1. $f(a+s\cdot h) - f(a) \geq \frac12 Q(sh) - |\alpha(s)|s^2 = \frac12Q(h)s^2 - |\alpha(s)|s^2 \geq \frac14 Q(h) \cdot s^2$\\
+С другой стороны $f(a+s\cdot \ot h) < 0$ по аналогичным соображениям\\
+Пункт 4: $f: \Rset^2 \rto \Rset, a = (0, 0)$\\
+$f(x_1, x_2) = x_1^2 - x_2^4$\\
+$Q(h) = 2h_1^2$ -- полуопределенный\\
+Тут нет экстремума\\
+$f(x_1,x_2) = x_1^2 + x_2^4$ -- в нуле экстремум
+\section{Функциональные последовательности и ряды}
+\subsection{Равномерная сходимость последовательностей и функций}
+\textbf{Определение}\\
+Последовательность функций -- отображение $N \leadsto$ множество функций\\
+Пусть $f_1(x), f_2(x), \ldots: X \rto \Rset, X$ -- любое множество\\
+Последовательность $(f_n)$ сходится поточечно на $E$ -- существует функция $f(x)$\\
+$f_n \us E\rto f$\\
+$\fall x \in E\ \fall \eps > 0\ \ex N: \fall n > N\ |f_n(x)-f(x)|<\eps$\\
+Последовательность $(f_n)$ сходится равномерно на $E$ к функции $f$\\
+$f_n \us E\rightrightarrows f$
+$\fall \eps > 0\ \ex N: \fall n > N\ \ub{\sup_{x\in E} |f_n(x)-f(x)| = \rho(f_n, f)\leq \eps}{\fall x \in E\ |f_n(x)-f(x)| < \eps}$\\
+\textbf{Замечание}\\
+$f \rrto f$ на $E, E_0 \subset E$\\
+Тогда $f_n \us {E_0}\rrto$\\
+\textbf{Замечание}\\
+$f_n \us E\rrto f$\\
+Тогда $f_n \us E\rto f$\\
+\textbf{Замечание}\\
+$\mc F = \{f: X \rto \Rset, f\text{ -- огр.}\}$\\
+Тогда $\rto(f, g) = \sup_{x\in X} |f(x) - g(x)|$ является метрикой на $\mc F$\\
+\textbf{Доказательство}\\
+Первые две аксиомы очевидны\\
+Докажем неравенство треугольника\\
+$\fall \eps > 0\ \ex x_0: \rho(f, g) - \eps < |f(x_0) - g(x_0)| \leq |f(x_0) - h(x_0)| + |h(x_0)-g(x_0)| \leq \rho(f,h)+\rho(h,g)$\\
+Отсюда $\rho(f,g) \leq \rho(f,h) + \rho(h,g)$\\
+\textbf{Замечание}\\
+$f_n \rrto f$ на $E_1$ и на $E_2$\\
+Тогда $f_n \rrto f$ на $E_1 \cup E_2$\\
+\textbf{Теорема 1 (Стокса - Зайдля)}\\
+$X$ -- метрическое пространство\\
+$f_n, f: X \rto \Rset$\\
+$c \in X, f_n$ -- непрерывная в $c$\\
+$f_n \rrto f$ на $X$\\
+Тогда $f$ -- непрерывна в $c$\\
+\textbf{Доказательство}\\
+Дано утверждение о равномерной сходимости\\
+$\fall \eps > 0\ \ex N: \fall n > N\ \sup_{x\in X} |f_n(x) - f(x)|<\eps$\\
+$|f(x)-f(c)| \leq |f(x)-f_n(x)| + |f_n(x)-f_n(c)| + |f_n(c)-f(c)|$\\
+Начиная с некоторого большого $n:$\\
+$|f(x)-f(c)| \leq \ub{< \eps}{|f(x)-f_n(x)|} + |f_n(x)-f_n(c)| + \ub{< \eps}{|f_n(c)-f(c)|}$\\
+Т.к. $f_n$ непрерывна, то $\ex U(c): \fall x \in U(c)\ |f_n(x)-f_n(c)| < \eps$\\
+Отсюда $|f(x)-f(c)| < 3\eps$\\
+Тогда $\fall \eps > 0\ \ex U(c): \fall x \in U(c)\ |f(x)-f(c)| < 3\eps$\\
+\textbf{Замечание}\\
+Вместо метрических пространств можно рассматривать топологические пространства(без изменения доказательства)\\
+\textbf{Следствие}\\
+$f_n \in C(X), f_n \rrto f$ на $X$. Тогда $f \in C(X)$\\
+\textbf{Следствие 2}\\
+$f_n \in C(X), \fall c\ \ex W(c): f_n \rrto f$ на $W(c)$. Тогда $f \in C(X)$\\
+\textbf{Замечание}\\
+$f_n \rrto f$ на $X \not \Rto \fall c\ \ex W(c): f_n \rrto f$\\
+Пример: $f_n = x^n, x \in (0,1)$\\
+$f \equiv 0$\\
+Рассмотрим точку $x$ в $(\alpha, \beta), \beta \neq 1$\\
+$\rho(f_n, f) = \beta^n \rto 0$\\
+$f_n(x) \rrto f$ на $(\alpha, \beta)$\\
+Но $\rho(f_n, f) = 1$ на $(0,1)$\\
+$f_n \not\rrto f$ на $(0,1)$\\
 \end{document}
