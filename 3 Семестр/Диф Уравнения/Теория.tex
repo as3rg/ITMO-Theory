@@ -7,6 +7,8 @@
 
 \begin{document}
 \maketitle
+\section{Глава про кроликов (Введение)}
+*задачи про размножения кроликов*
 \section{Уравнения первого порядка}
 \subsection{Дифференциальное уравнение первого порядка и его решение}
 \textbf{Определение}\\
@@ -340,7 +342,7 @@ $F\in C^1(G), G\subset \Rset^3_{x,y,y'}$ -- область\\
 Найдем $y = g(x): y'(t)=\psi(t)$\\
 Пусть мы нашли такую $g$\\
 $\df g = g'_x\df x$\\
-$x = \alpha(t), y=\beta(t), t \in E$ -- параметрическое заданеи функции $y=g(x)$\\
+$x = \alpha(t), y=\beta(t), t \in E$ -- параметрическое задание функции $y=g(x)$\\
 $\df y = y'_x\df x$ -- основное соотношение\\
 $\df g = \psi(t)\phi'(t)\df t$\\
 \textbf{Пример}\\
@@ -355,8 +357,75 @@ $F(x,y,y') = 0$\\
 \textbf{Пример}\\
 $\sigma$ -- параметризуется так: $x=\phi(u,v), y = \psi(u,v), y'=\xi(u,v)$\\
 Далее подставим $\phi,\psi,\xi$ в основное соотношение\\
-$\df y = \psi'_u\df y + \psi'_v\df v$\\
+$\df y = \psi'_u\df u + \psi'_v\df v$\\
 $y'_x = \xi$\\
 $\df x = \phi'_u\df u + \phi'_v\df v$\\
-Если $u=g(v,C)$ -- решение, то $x = \phi(g(v, C), v), y=\psi(g(v,C), v)$ -- решение исходного\\
+Если $u=g(v,C)$ -- решение, то $x = \phi(g(v, C), v), y=\psi(g(v,C), v)$ -- решение исходного
+\section{Уравнения высших порядков}
+\subsection{Основные понятия}
+\textbf{Определение}\\
+(дуn) $F(x,y,y', \ldots, y^{(n)}) = 0$ -- дифференциальное уравнение $n$-ого порядка\\
+\textbf{Определение}\\
+Функция $\phi\in C^n(E), E = \an ab$ -- решение уравнения, если $F(x, \phi, \phi', \ldots, \phi^{(n)}) \us E\equiv 0$\\
+\textbf{Определение}\\
+(кду) $y^{(n)} = f(x, y, y', \ldots, y^{(n-1)})$ -- каноническое уравнение $n$-ого порядка\\
+\textbf{Определение}\\
+Задача Коши для (кду) -- задача нахождения его решения, удовлетворяющего начальным условиям (ну) $y(x_0) = y_0, \ldots, y^{(n-1)}(x_0) = y_0^{(n-1)}$\\
+\textbf{Теорема Пеано}\\
+$G \in \Rset^{n+1}, f \in C(G), G$ -- область\\
+$(x_0, y_0, \ldots, y_0^{(n-1)}) \in G$\\
+Тогда задача Коши для данных данных условий имеет решение на некотором интервале\\
+\textbf{Теорема Пикара}\\
+$G \subset \Rset^{n+1}_{x, y, y', \ldots, y^{(n-1)}}, G$ -- область\\
+$f, f'_y, \ldots, f_{y^{(n-1)}}' \in C(G)$\\
+$(x_0, \ldots, y_0^{(n-1)}) \in G$\\
+$\phi_1, \phi_2$ -- решения\\
+Тогда $\phi_1 \equiv \phi_2$ на $D_{\phi_1} \cap D_{\phi_2}$
+\subsection{Методы понижения порядка}
+\textbf{Метод 1}\\
+$F(x, y^{(k)}, \ldots, y^{(n)}) = 0, k > 1$\\
+Пусть $p = y^{(k)}$\\
+$F(x, p, p', \ldots, p^{(n-k)}) = 0$\\
+\textbf{Метод 2}\\
+$F(y, y', \ldots, y^{(n)}) = 0$\\
+\textbf{Утверждение}\\
+$\psi$ -- решение уравнения $F(y, z, z'z) = 0$\\
+$(z = \psi(y))$\\
+$\phi$ - решение уравнения\\
+$\psi(y) = y'$\\
+$\psi(y) = y'$\\
+$(y=\phi(x))$\\
+Тогда $\phi$ -- решение уравнения\\
+$F(y, y', y'') = 0$\\
+\textbf{Доказательство}\\
+Надо показать, что $F(\phi(x), \phi'(x), \phi''(x)) = 0$\\
+Имеем:
+\begin{enumerate}
+    \item $\psi(\phi(x)) \us E \equiv \phi'(x)$
+    \item $F(y, \psi(y), \psi'(y)\psi(y)) \us D\equiv 0$
+\end{enumerate}
+$D_\phi = E$\\
+$D_\psi = D$\\
+$\psi(\phi(x)) \us E \equiv \phi'(x) \Rto E_\phi \subset D$\\
+Подставим $y = \psi(x)$ в 2\\
+$F(\phi(x), \psi(\phi(x))), \psi'(\phi(x)) \psi(\phi(x)) \us E \equiv 0$\\
+$(\psi(\phi(x)))' = \phi''(x)$\\
+$\Rto F(\phi(x), \phi'(x), \phi''(x), \ldots) \us E \equiv 0$\\
+Будем искать такую функцию, что $z(y(x)) = y'(x)$\\
+Получим уравнение для $z$, исходя из уравнения $F(y, y', y'', \ldots, y^{(n)}) = 0$\\
+$y''(x) = (y'(x))' = (z(y(x)))' = z'(y(x))y'(x) = z'(y(x))z(y(x))$\\
+$y'''(x) = (y''(x))' = (z'(y(x))z(y(x)))' = z''(y(x))z^2(y(x)) + (z'(y(x)))^2z(y(x))$\\
+$\Rto F(y, z, z'z, z''z^2 + z'^2z, \ldots) = 0$\\
+//todo 20.10\\
+\textbf{Метод 3}\\
+\textbf{Определение}\\
+Если $\ex \Phi = \Phi(x, y, y', \ldots, y^{(n-1)})$\\
+$\frac{\df}{\df x}\Phi(x, y, \ldots, y^{(n-1)}) = F(x, y, \ldots, y^{(n)})$, то $F(x, y, \ldots, y^{(n)}) = 0$ -- уравнение в точных производных\\
+\textbf{Утверждение 4.2.2}\\
+$\frac{\df}{\df x}\Phi(x, y, \ldots, y^{(n-1)}) = F(x, y, \ldots, y^{(n)})$\\
+Тогда $\phi$ -- решение $F = 0 \LRto \ex C: \phi$ -- решение $\Phi = C$\\
+\textbf{Метод 4}\\
+$F(x, y, y', \ldots, y^{(n)}) = 0$, где $F$ -- однородная по $y, y', \ldots, y^{(n)}$\\
+Т.е. $F(x, ty, ty', \ldots, ty^{(n)}) \equiv t^\alpha F(x, y, y', \ldots, y^{(n)})$\\
+Замена $z(x) = \frac{y'(x)}{y(x)}$ понимает порядок уравнения на 1\\
 \end{document}

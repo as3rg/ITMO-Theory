@@ -607,6 +607,180 @@ $\Gamma(x) = xe^{\gamma x}\exp(\sum (\ln (1+\frac xn)-\frac xn))^{-1}$ -- диф
 % Рассмотрим сумму производных: $\sum \frac{\cos nx}{n^2}$\\
 % $|\frac{\cos nx}{n^2}| \leq \frac1{n^2}$ -- отсюда равномерная сходимость\\
 % Тогда $S'(x) = \sum \frac{\cos nx}{n^2}$
+\textbf{Теорема 4' (о почленном предельном переходе в суммах)}\\
+% лекция 10 (этот год) 0:21
+$u_n: X \rto \Rset, X$ -- м.п.\\
+$x_0 \in X, x_0$ -- предельная точка в $E$\\
+Пусть \begin{enumerate}
+    \item $\ex \lim_{x\rto x_0} u_n(x) = a_n \in \Rset$
+    \item $\sum u_n(x)$ -- равномерно сходится на $E$
+\end{enumerate}
+Тогда \begin{enumerate}
+    \item $\sum a_n$ -- сходится
+    \item $\sum a_n = \lim_{x\rto x_0} \sum u_n(x)$
+\end{enumerate}
+\textbf{Доказательство п.1}\\
+Докажем сходимость\\
+$S_n(x) := \sum_{k=1}^n u_k(x)$\\
+$S_n^a = \sum_{k=1}^n a_k$\\
+Проверим фундаментальность $S_n^a$\\
+Возьмем $\eps > 0$\\
+$|S_{n+p}^a - S_n^a| \leq \us{\text{выберем $x$ близко к $x_0$, чтобы $\ldots < \frac\eps3$}}{|S_{n+p}^a - S_{n+p}(x)|} + |S_{n+p}(x)-S_n(x)| + \us{\text{выберем $x$ близко к $x_0$, чтобы $\ldots < \frac\eps3$}}{|S_n(x)-S_n^a|} < \eps$\\
+Из равномерной сходимости $\sum u_n(x)$:\\
+$\ex N: \fall n > N\ \fall p \in \Nset\ \fall x\ |S_{n+p}(x)-S_n(x)|\leq \frac\eps3$\\
+Отсюда $\fall \eps > 0\ \ex N: \fall n > N\ \fall p \in \Nset\ |S_{n+p}^a-S_n^a| < \eps$\\
+\textbf{Доказательство п.2}\\
+Результат следует из теоремы Стокса-Зайдля\\
+$\ot u_n(x) = \left[\begin{array}{cc}
+    u_n(x), & x\in E\\
+    a_n, & x = x_0
+\end{array}\right.$\\
+$\ot u_n(x)$ -- непрерывная в $x_0$\\
+$\sup_{E \cup \{x_0\}} |\sum_{n\geq N} \ot U_n(x)| \leq \ub{\xrto[N\rto +\infty]{} 0}{\sup_E |\sum_{n\geq N}u_n(x)|} + \ub{\xrto[N\rto +\infty]{} 0}{|\sum_{n\geq N}a_n|} \xrto[N\rto +\infty]{} 0$\\
+$\sum \ot u_n$ -- равномерно сходится на $E \cup \{x_0\}$\\
+\textbf{Теорема 4 (перестановки в предельных переходах)}\\
+$f_n: E \subset X \rto \Rset, x_0$ -- предельная точка $E$
+\begin{enumerate}
+    \item $f_n(x) \xrto[x\rto x_0]{} A_n$ -- конечный 
+    \item $\ex S: E \rto \Rset:\ f_n \us{n\rto +\infty}\rrto S$ на $E$
+\end{enumerate}
+Тогда \begin{enumerate}
+    \item $\ex \lim A_n = A$ -- конечный
+    \item $S(x)\xrto[x\rto x_0]{} A$
+\end{enumerate}
+Т.е. $\lim_{x\rto x_0} \lim_{n\rto +\infty} f_n(x) =  \lim_{n\rto +\infty} \lim_{x\rto x_0} f_n(x)$\\
+% лекция 10 (этот год) 0:52
+\textbf{Доказательство}\\
+Применим теорему 4'\\
+$f_n(x) \lrto S_n(x)$\\
+$u_n \lrto f_n-f_{n-1}$ (за исключением $u_1 = f_1$)\\
+$a_k \lrto A_k - A_{n-1}$ (кроме $a_1 = A_1$)\\
+$\sum u_n(x) \lrto S(x)$\\
+\textbf{Замечание}\\
+$f_n \rrto S$ на $E$\\
+Тогда $\fall \eps > 0\ \ex N: \fall n > N\ \sup_{x\in E}|f_n(x)-S(x)|<\eps$\\
+Определим равномерный предел при $t\rto t_0$\\
+$f: E \times D\rto \Rset, E$ -- множество, $D\subset Y$ -- м.п., $t_0$ -- предельная тока $D$\\
+$f(x, t) \us{t\rto t_0}\rrto h(x)$, где $h: E\rto\Rset$\\
+$\fall \eps > 0\ \ex U(t_0): \fall t \in U(t_0)\ \sup_{x\in E}|f(x,t)-h(x)| < \eps$\\
+\textbf{Теорема 4''}\\
+$f: E\times D \rto \Rset, E \subset X$ -- м.п., $D\subset Y$ -- м.п., $x_0$ -- предельная точка $E$, $t_0$ -- предельная точка $D$
+\begin{enumerate}
+    \item $\fall t\ \ex \lim_{x\rto x_0} f(x,t) = A(t)$ -- конечный
+    \item $f(x,t) \us{t\rto t_0}\rrto S(x)$, где $S: E\rto \Rset$
+\end{enumerate}
+Тогда \begin{enumerate}
+    \item $\ex$ конечный $\lim_{t\rto t_0} A(t) = A$
+    \item $\lim_{x\rto x_0} S(x) = A$
+\end{enumerate}
+\textbf{Теорема (признак Дирихле равномерной сходиости ряда)}\\
+% лекция 10 (этот год) 1:08
+Пусть $\sum_{n=1}^{\infty} a_n(x)b_n(x), x \in X$\\
+Пусть \begin{enumerate}
+    \item $\ex C_A: \fall N \ \fall x\ |\sum_{n=1}^N a_n(x)|\leq C_A$\\
+    (частичные суммы ряда $\sum a_n(x)$ равномерно ограничены)
+    \item $b_n(x) \us{n\rto \infty} \rrto 0$ на $X$ и $\fall x\ b_n\us{n\rto \infty}\rto 0$ монотонно при каждом фиксированном $X$
+\end{enumerate}
+Тогда $\sum a_n(x)b_n(x)$ -- равномерно сходится на $X$\\
+\textbf{Доказательство}\\
+$\sum_{N \leq k \leq M} a_kb_k = A_Mb_M - A_{N-1}b_{N-1} + \sum_{N \leq k \leq M-1}(b_k-b_{k+1})A_k$\\
+$A_k = a_1 + \ldots + a_k$\\
+Из равномерной сходимости: $\fall \eps>0\ \ex T: \fall M,N > T\ \sup|b_M(x)|<\eps;\sup|b_{N-1}(x)|<\eps,\sup|b_{M-1}(x)|<\eps,\sup|b_N(x)|<\eps$\\
+$|\sum_{N\leq k \leq M} a_k(x)b_k(x)| \leq |A_M||b_M|+|A_{N-1}||b_{N-1}| + \sum |b_k-b_{k+1}||A_k| \leq C_A(|b_M| + |b_{N-1}|+|b_{N-1}|+|b_N|) < 4C_A\eps$\\
+% лекция 12 (этот год) 0:00
+\textbf{Пример}\\
+$f(x) = \sum \frac{\sin nx}{n^3}, x \in \Rset$\\
+$f$ -- непрерывно по признаку Вейерштрасса: $|\frac{\sin nx}{n^3}| \leq \frac1{n^3}, \sum \frac1{n^3}$ -- сходится\\
+$f$ -- дифференцируемо: $f' = \sum \frac{\cos nx}{n^2}$ -- это выполнено по теореме 3', т.к. ряд равномерно сходится\\
+Но дважды не дифференцируемо, т.к. нет равномерной сходимости\\
+$\ex \eps=\frac1{100}: \fall N\ \ex n > N: \ex m=n\ \ex x=\frac1n: |\frac{\sin (n+1)x}{n+1} + \ldots + \frac{\sin (n+m)x}{n+m}| > \eps$\\
+$\frac{\sin \frac{n+1}n}{n+1} + \ldots + \frac{\sin \frac{2n}n}{2n} > \frac1{20}$\\
+Тогда докажем локальную равномерную сходимость (в окрестности некоторой точки)\\
+В окрестности не должно быть $2\pi k$, иначе аналогично доказательству\\
+Рассмотим окрестность $(\alpha, \beta), 2\pi k \not\in (\alpha, \beta)$\\
+$a_n = \sin nx, b_n(x) = \frac1n$ -- монотонно, $b_n \rrto 0$\\
+$|\sin x + \sin 2x + \ldots + \sin nx| \leq |\im(e^{ix} + \ldots + e^{inx})| \leq |e^{ix}\frac|{|e^{inx}-1|}{|e^{ix}-1|} \leq \frac2{|e^{ix}-1|} \leq \frac2d, d = \min(|e^{i\alpha}-1|, |e^{i\beta}-1|)$\\
+Т.о. $\fall x_0 \in (0, 2\pi)\ \ex U(x_0)$ на которой имеется равномерная сходимость\\
+Таким образом $f''(x) = \sum - \frac{\sin nx}{n}\ \fall x \in (0, 2\pi)$\\
+\textit{Спойлер}: $\sum \frac{\sin nx}{x}$ -- не непрерывна в 0 -- там имеется скачок\\
+$\not \ex f''(0)$\\
+\subsection{Степенные ряды}
+\textbf{Определение}\\
+$B(z_0, r) \in \Cset := \{z: |z-z_0| < r\}$\\
+\textit{Степенной ряд}: $\sum a_n(z-z_0)^n, z_0 \in C, a_n$ -- комплексная последовательность\\
+\textbf{Теорема (о круге сходимости степенного ряда)}\\
+$\sum a_n(z-z_0)^n$\\
+Тогда выполнено ровно одно из трех
+\begin{enumerate}
+    \item Ряд сходится при всех $z \in \Cset$
+    \item Ряд сходится только при $z=z_0$
+    \item $\ex R \in (0, +\infty): $ при $|z-z_0| > R$ -- расходися; $|z-z_0|<R$ -- ряд сходится абсолютно
+\end{enumerate}
+\textbf{Утверждение}\\
+$\sum a_n$ -- сходится $\LRto \sum \re a_n, \sum \im a_n$ -- сходятся\\
+\textbf{Доказательство}\\
+Изучим ряд на абсолютную сходимость\\
+Применим признак Коши: изучим $\ulim \sqrt[n]{|a_n(z-z_0)^n} = \ulim |z-z_0|\sqrt[n]{|a_n|}$:\\
+При $\ldots<1$ -- абсолютно сходится\\
+При $\ldots > 1$ -- расходится, т.к. слагаемые $\not\rto 0$\\
+Рассмотрим $|z-z_0|\ulim \sqrt[n]{|a_n|}$
+\begin{enumerate}
+    \item $\ulim \sqrt[n]{|a_n|} = 0$ -- всегда сходится (случай 1)
+    \item $\ulim \sqrt[n]{|a_n|} = +\infty$ -- тогда сходится при $z=z_0$, иначе расходится (случай 2)
+    \item $|z-z_0| < \frac1{\ulim \sqrt[n]{|a_n|}} =: R$ -- сходится в $B(z_0, R)$ (случай 3)
+\end{enumerate}
+$R$ -- \textit{радиус сходимости}\\
+$R = \frac1{\ulim \sqrt[n]{|a_n|}}$ -- формула Коши-Адамара\\
+Если применим признак Даламбера, то $R = \lim |\frac{a_n}{a_{n+1}}|$\\
+\textbf{Пример}
+\begin{enumerate}
+    \item $\sum_{n=0}^{+\infty} z^n$\\
+    $S_n = 1 + z + \ldots + z^n = \frac{z^{n+1}-1}{z-1} \rto \frac1{1-z}$\\
+    Сходится при $|z| < 1$\\
+    При $|z| = 1$ ряд расходится\\
+    $R=1$
+    \item $\sum \frac{z^n}n, R = 1$\\
+    Рассмотрим $|z| = 1$: $z=1$ -- расходится; $z=-1$ -- сходится\\
+    $z=e^{i\phi}$: $\sum \frac{e^{in\phi}}{n} = \sum \frac{\cos n\phi}{m} + i\sum \frac{\sin n\phi}{n}$, -- сходится при $\phi \in(0, 2\pi)$\\
+    Т.е. сходимость при $|z| \leq 1$, кроме $z=1$
+    \item $\sum \frac{z^n}{n^2}, R = 1$\\
+    Рассмотрим $|z|=1$\\
+    $|\frac{z^n}{n^2}| \leq \frac1n^2$ -- сходится при $|z| \leq 1$
+    \item $\sum n!z^n$ -- сходится при $z=0$
+    \item $\sum \frac{z^n}{n!}, R = \frac1{\lim \sqrt[n]{\frac1{n!}}} = \frac1{\lim \sqrt[n]{\frac1{n^n e^{-n}\sqrt{2\pi n}\ldots}}} = \frac1{\lim \frac en} = +\infty$ -- сходится при всех $z \in \Rset$
+\end{enumerate}
+\textbf{Теорема (о равномерной сходимости и непрерывности степенного ряда)}\\
+$\sum a_n (z-z_0)^n, 0 < R \leq +\infty$\\
+Тогда \begin{enumerate}
+    \item Для $r: 0 < r < R$ ряд равномерно сходится на $\ol B (z_0, r)$
+    \item $f(z) = \sum a_n(z-z_0)^n$ -- непрерывна на $B(z_0, R)$
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item по признаку Вейерштрасса\\
+    $|a_n(z-z_0)^n| \leq |a_n|r^n$\\
+    $\sum |a_n|r^n$ -- сходится: подставим в ряд $z:=z_0+r$ -- должен абсолютно сходиться
+    % лекция 10 (этот год) 1:15
+    \item Проверим, что $a_n(z-z_0)^n$ -- непрерывная функция:\\
+    Возьмем $z_1 \in B(z_0, R)$\\
+    Возьмем $r: |z_1-z_0| < r < R$\\
+    В круге $\ol B(z_0, r)$ есть равномерная сходимость $\Rto$ есть непрерывность
+\end{enumerate}
+\textbf{Определение}\\
+Будем считать комплексную функцию дифференцируемой, если $\lim_{z\rto z_0} \frac{f(z)-f(z_0)}{z-z_0} = A = f'(z)$ (двойной предел)\\
+Эквивалентно $f(z)=f(z_0) + A\cdot (z-z_0) + o(|z-z_0|)$
+Т.к. мы ввели другое определение производной, не будем пользоваться теоремой 2\\
+\textbf{Лемма}\\
+Пусть $w, w_0 \in \Cset, r > 0$\\
+$|w| < r, |w_0| < r$\\
+$|w^n-w_0^n| = |(w-w_0)(w^{n-1} + w^{n-2}w_0 + \ldots + ww_0^{n-2}+w_0^{n-1})|\leq |w-w_0|nr^{n-1}$\\
+\textbf{Теорема (о почленном дифференцировании ряда)}\\
+Пусть ряд A: $\sum_{n=0}^{\infty} a_n(z-z_0)^n, 0 < R \leq +\infty$\\
+Ряд A': $\sum_{n=1}^{\infty} a_n n (z-z_0)^{n-1}$\\
+Тогда\begin{enumerate}
+    \item A' имеет тот же радиус сходимости
+    \item Если $f(z) = \sum a_n (z-z_0)^n$, то $\fall z \in B(z_0, R)\ f'(z)=\sum_{n=1}^\infty a_n n (z-z_0)^{n-1}$
+\end{enumerate}
 \section{Диффеоморфизм}
 %лекция 5-6 (прошлый год) 0:0
 \textbf{Определение}\\
@@ -652,7 +826,7 @@ $r > 0$ -- потому что $\dist = \inf$ на компакте, а знач
 (надеемся, что она обращается в 0)\\
 $g(x_0) = |F(x_0) - y| < r^2$\\
 %лекция 5-6 (прошлый год) 41:58\\
-$\fall x \in S(x_0, \delta)\ \gamma(x) \geq r^2$ 
+$\fall x \in S(x_0, \delta)\ \gamma(x) \geq r^2$\\
 Тогда $\min g$ достигается(т.к. функция на компакте) внутри $B(x_0, r)$\\
 В этой точке все частные производные = 0\\
 Пусть в точке $x$ достигается минимум\\
@@ -753,5 +927,177 @@ $F(y)-F(x) = (F(x+h)-F(x)-F'(x)h) + (F'(x)h-F'(x_0)h)+F'(x_0)h$\\
 $|F(y)-F(x)|\geq |F'(x_0)h| - |F(x+h)-F(x)-F'(x)h| - |(F'(x)-F'(x_0))h|$ (неравенство треугольнка)\\
 $F(x_0+h)-F(x_0) - F'(x_0)h| \leq M|h|$\\
 $M=\sup_{x_1\in [x_0, x_0+h]} \ub{\leq \|F'(x_1)-F'(x_0)\| + \|F'(x)-F'(x_0)\|}{\|F'(x_1)-F'(x_0)} \leq \frac c2$\\
-$|F(y)-F(x)| \geq c|h|-\frac c2|h| - \frac c4|h| = \frac c4|h|$ -- т.е. $F(y)\neq F(x)$, а значит точки не склеиваются\\
+$|F(y)-F(x)| \geq c|h|-\frac c2|h| - \frac c4|h| = \frac c4|h|$ -- т.е. $F(y)\neq F(x)$, а значит точки не склеиваются\\\\
+% лекция 9 (этот год) 0:0
+Пусть $x = (x_1, \ldots, x_m) \in \Rset^m$\\
+$y = (y_1, \ldots, y_n) \in \Rset^n$\\
+$F:O\subset \Rset^{m+n} \rto \Rset^n$ -- дифференцируема, $O$ -- открытое\\
+$\df F = \begin{pmatrix}
+    \ppart {F_1}{x_1} & \ldots & \ppart {F_1}{x_m} & \ppart {F_1}{y_1} & \ldots & \ppart {F_1}{y_n}\\
+    \vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\
+    \ppart {F_n}{x_1} & \ldots & \ppart {F_n}{x_m} & \ppart {F_n}{y_1} & \ldots & \ppart {F_n}{y_n}
+\end{pmatrix} =: (F'_x, F'_y)$\\
+\textbf{Теорема о неявном отображении}\\
+$F: O \subset \Rset^{m+n} \rto \Rset^n, F \in C^r, r \in \Nset \cup \{\infty\}$\\
+Пусть $(a, b): F(a,b) = 0$\\
+$\det F'_y(a,b)\neq 0$\\
+Тогда 
+\begin{enumerate}
+    \item $\ex P \subset \Rset^m, a \in P, \ex Q \subset \Rset^n, b \in Q$\\
+    $\ex! \phi: P \rto Q \in C^r$ -- гладкое\\
+    $\fall x \in P\ F(x, \phi(x)) = 0$
+    \item $\phi'(x) = -(F'_y(x,\phi(x)))^{-1}F'_x(x,\phi(x))$
+\end{enumerate}
+\textbf{Доказательство}\\
+Построим $\Phi: O \rto \Rset^{m+n}$\\
+$(x,y) \rto (x, F(x, y))$\\
+$\Phi(a,b) = (0,0)$\\
+$\Phi' = \begin{pmatrix}
+    E & 0\\
+    F'_x & F'_y
+\end{pmatrix}$\\
+$\det \Phi'(a,b) \neq 0$\\
+$\ex \ot U(a,b): \Phi\vl_{\ot U}$ -- диффеоморфизм\\
+Можно считать, что $\ot U = P_1 \times Q$\\
+% лекция 9 (этот год) 0:25
+$\ot V = \Phi(\ot U)$ -- открытое\\
+$\ex \Psi: \ot V \rto \ot U, \Psi = \Phi^{-1}\subset C^r$\\
+$\Phi, \Psi$ не меняют первые $n$ координат\\
+$\Psi(u,v) = (u, H(u,v)), H: \ot V \rto \Rset^m, H \in C^r$\\
+Пусть $P = \ot V \cap (\Rset^m \times \{\0_n\})$ (подмножество $\ot V$, где последние $n$ координат -- нули)\\
+$\phi(x):= H(x,0)$\\
+Что $F(x, \phi(x)) = 0$ -- тривиально\\
+$F(x, \phi(x))' = (F'_x, F'_y) \begin{pmatrix}
+    E_m\\\phi'
+\end{pmatrix} = 0$\\
+$F'_x + F'y\phi' = 0$\\
+Докажем единственность\\
+$x \in P, y \in Q$\\
+$F(x,y) = 0$\\
+$\Phi(x,y) = (x,0)$\\
+$(x,y) = \Psi\Phi(x,y) = \Psi(x,0) = (x, H(x,0)) = (x, \phi(x))$\\
+\textbf{Замечание}\\
+Пусть есть система\\
+$\left\{\begin{array}{l}
+    F_1(x_1, \ldots, x_{m+n}) = 0\\
+    \vdots\\
+    F_m(x_1, \ldots, x_{m+n}) = 0\\
+\end{array}\right.$\\
+$\rg F'(x_0) = m$\\
+Н.у.о. пусть ранг реализуется на $n$ последних переменных\\
+Обозначим последние $n$ переменных $x_i$ как $y_{j}$\\
+Пусть $a = ((x_0)_1, \ldots, (x_0)_m)$\\
+Тогда для $\ex U(a), V(b)$\\
+$\fall x \in U(a)\ \ex y\in V(b)$ -- решение, которое гладко зависит от $x$\\
+\textbf{Определение}\\
+Пусть $k < m$\\
+$M \subset \Rset^m$ -- \textit{простое $k$-мерное многообразие в $\Rset^m$}, если\\
+$\ex O \subset \Rset^k$ -- область, $\ex \Phi: O \rto M$ -- биекция, гомеоморфизм ($\Phi, \Phi^{-1}: \Phi(O)\rto O$ -- непрерывно)\\
+$\Phi$ -- \textit{параметризация}\\
+\textbf{Определение}\\
+Пусть $k < m$\\
+$M \subset \Rset^m$ -- \textit{простое $k$-мерное $C^r$-гладкое многообразие в $\Rset^m$}, если\\
+$\ex O \subset \Rset^k$ -- область, $\ex \Phi: O \rto \Rset^m$ -- $\Phi \in C^r$, гомеоморфизм ($\Phi, \Phi^{-1}: \Phi(O)\rto O$ -- непрерывно), $\fall t \in O\ \rg \Phi'(t) = k$\\
+% лекция 10 (этот год) 0:00 (пример про тор)
+\textbf{Пример}
+\begin{itemize}
+    \item $x^2+y^2+z^2 = 1, z > 0$\\
+    $(x,y) \os \Phi \mapsto (x,y, \sqrt{1-x^2-y^2})$\\
+    $\df \Phi = \begin{pmatrix}
+        1 & 0\\
+        0 & 1\\
+        -\frac{x}{\sqrt{1-x^2-y^2}} & -\frac{y}{\sqrt{1-x^2-y^2}}
+    \end{pmatrix}$
+    \item Цилиндр\\
+    $x=R\cos t, y = R\sin t, z = z$\\
+    $F: \Rset^2 \rto \Rset^3$\\
+    $(t, z) \os F\mapsto (R\cos t, R\sin t, z)$\\
+    $\df F = \begin{pmatrix}
+        -R\sin t & 0\\
+        R\cos t & 0\\
+        0 & 1
+    \end{pmatrix}$
+    \item Шар -- не является\\
+    % лекция 10 (этот год) 0:19
+    Возьмем какую-то точку $a$ в исходном множестве\\
+    На шаре ей будет соответствовать точка $A$\\
+    Удалим точку $a$ и $A$ из исходного множества и шара соответственно\\
+    В исходном множестве возьмем петлю вокруг точки $a$\\
+    Она не может быть стянута в одну точку\\
+    С другой стороны, петля вокруг $a$ на шаре -- может
+\end{itemize}
+% лекция 11 (этот год) 0:00
+\textbf{Теорема}\\
+$M\subset \Rset^m, 1 \leq k < m$\\
+$1 \leq r \leq +\infty$\\
+Тогда $\fall p \in M$ эквивалентно:
+\begin{enumerate}
+    \item $\ex U = U(p) \subset \Rset^m$ (откр. множество)\\
+    $M \cap U(p)$ -- простое $k$-мерное $C^r$-гладкое многообразие в $\Rset^m$
+    \item $\ex \ot U(p)\subset \Rset^m$ и $\ex f_1,\ldots, f_{m-1}: \ot U\rto \Rset \in C^r$\\
+    $x\in M\cap \ot U(p)\LRto \left\{\begin{array}{c}
+        f_1(x_1,\ldots, x_m) = 0\\
+        \vdots\\
+        f_{m-k}(x_1,\ldots, x_m) = 0
+    \end{array}\right.$\\
+    и $\grad f_1(p), \ldots, \grad f_{m-k} (p)$ -- линейно независимые
+\end{enumerate}
+\textbf{Доказательство $1\Rto 2$}\\
+$\Phi: O\subset \Rset^k \rto \Rset^m, \Phi\in C^r$ -- параметризация $M\cap U$\\
+$\phi_1, \ldots, \phi_m$ -- координатные функции $\Phi$\\
+$p = \Phi(t^0)$\\
+Н.у.о. пусть $(\ppart{\phi_i}{t_k}(t^0))_{i,j=1\ldots k}$ -- невырожденная матрица\\
+(по непрерывности можно считать, что выполнено на всем $O$)\\
+$L: \Rset^m \rto \Rset^k$ -- проекция $x\mapsto (x_1,\ldots, x_k)$\\
+Посмотрим на $L\circ \Phi$:\\
+$(L\circ \Phi)' = (\ppart{\phi_i}{t_k}(t^0))_{i,j=1\ldots k}$\\
+$\det (L\circ \Phi)' \neq 0$ на $O$\\
+При необходимости сузим $O$ на окрестность точки $t^0$, чтобы $L\circ \Phi$ было диффеоморфизмом\\
+$W \subset O$ -- область определения $L\circ \Phi$\\
+$V = L\circ \Phi(W) \subset \Rset^k$\\
+$\ex \Psi = (L\circ \Phi)^{-1}, \Psi\in C^r$\\ 
+% лекция 11 (этот год) 0:30
+Для $x \in V$ однозначно задано $\Phi(\Psi(x)) \in M\cap U$\\
+Т.е. множество $\Phi(W)$ -- график некоторого $H: V\rto \Rset^{m-k}$\\
+Для $x'\in V$ $\Phi(\Psi(x)) = (x', H(x')) \Rto H\in C^r$\\
+$\Phi(W)$ -- множество, открытое в $M$, т.к. $\Phi$ -- гомеоморфизм\\
+Значит $\ex \ot U$ -- открытое в $\Rset^m: \Phi(W) = M \cap \ot U$ (теорема об открытых множествах в пространствах и подпространствах)\\
+Можно считать, что $\ot U \subset \ub{\text{открытое в $\Rset^m$}}{V\times \Rset^{m-k}}$\\
+(пусть это не так. Тогда возьмем $U' := U \cap V\times \Rset^{m-k}$)\\
+Определим $f_j: \ot U \rto R$\\
+$f_j(x)=H_j(L(x))-x_{k+j}, f_j \in C^r$\\
+Тогда $x\im M\cap \ot U \LRto \fall j\ f_j(x) = 0$\\
+$\begin{pmatrix}
+    \grad f_1\\
+    \vdots\\
+    \grad f_{m-k}
+\end{pmatrix} = \begin{pmatrix}
+    T_{(m-k)\times k} & \nm{diag}(-1, \ldots, -1)
+\end{pmatrix}$ -- градиенты(строки) линейно независимые\\
+\textbf{Доказательство $2 \Rto 1$}\\
+$(\ppart{f_i}{x_j})_{i=1,\ldots m-k, j=1\ldots m}$ -- матрица, у которогой строки -- градиенты $f_i$\\
+Можно считать, что $\det(\ppart{f_i}{x_j}(p))_{i=1,\ldots m-k, j={k+1}\ldots m} \neq 0$\\
+% лекция 11 (этот год) 0:58
+Тогда из теоремы о неявном отображении:\\
+$\ex P((p_1,\ldots, p_k)) \subset \Rset^k\ \ex Q((p_{k+1}, \ldots, p_m))\subset \Rset^{m-k}$\\
+$\ex H: P \rto Q:\ \Phi(u, H(u)) = 0$, где $u \in P, F=(f_1,\ldots, f_{m-k})$, равносильно $\fall x \in M\cap (P\times Q)\ F(x)=0$, т.е. $x=(u, H(u))$\\
+Т.е. $\Phi: P\rto P\times Q \subset \Rset^m$\\
+$u\mapsto (u, H(u)), H\in C^r$\\
+$\Phi \in C^r$\\
+$\Phi$ -- гомеоморфизм, т.к. $\Phi^{-1}$ -- это проекция(а она непрерывна)\\
+$\rg \Phi' = k$\\
+\textbf{Следствие (о двух параметризациях)}\\
+Пусть $M \subset \Rset^m$ -- $k$-мерное простое $C^r$-гладкое многообразие\\
+$p\in M, \ex U(p)$\\
+$\Phi_1: O_1\subset \Rset^k \rto U(p)$ -- параметризация, $\Phi_1 \in C^r$\\
+$\Phi_2: O_2\subset \Rset^k \rto U(p)$ -- параметризация, $\Phi_2 \in C^r$\\
+(обе действуют инъективно)\\
+Тогда $\ex$ диффеоморфизм $\Theta: O_1 \rto O_2, \Theta \in C^r$\\
+$\Phi_1 = \Phi_2\circ \Omega$\\
+\textbf{Доказательство}\\
+$\ex \Theta = \Phi_2^{-1}\circ \Phi_1$ -- гомеоморфизм\\
+$\Theta=\Psi_2\circ L_2\circ \Phi_1\in C^r$\\
+$\Theta^{-1} = \Psi_1 \circ L_1 \circ \Phi_2 \in C^r$\\
+% лекция 12 (этот год) 0:00
+
 \end{document}
