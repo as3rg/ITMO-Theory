@@ -679,7 +679,7 @@ $f: E\times D \rto \Rset, E \subset X$ -- м.п., $D\subset Y$ -- м.п., $x_0$ 
 Пусть \begin{enumerate}
     \item $\ex C_A: \fall N \ \fall x\ |\sum_{n=1}^N a_n(x)|\leq C_A$\\
     (частичные суммы ряда $\sum a_n(x)$ равномерно ограничены)
-    \item $b_n(x) \us{n\rto \infty} \rrto 0$ на $X$ и $\fall x\ b_n\us{n\rto \infty}\rto 0$ монотонно при каждом фиксированном $X$
+    \item $b_n(x) \us{n\rto \infty} \rrto 0$ на $X$ и $\fall x\ b_n\us{n\rto \infty}\rto 0$ монотонно при каждом фиксированном $X$  //todo проверить, правда ли это
 \end{enumerate}
 Тогда $\sum a_n(x)b_n(x)$ -- равномерно сходится на $X$\\
 \textbf{Доказательство}\\
@@ -687,6 +687,15 @@ $\sum_{N \leq k \leq M} a_kb_k = A_Mb_M - A_{N-1}b_{N-1} + \sum_{N \leq k \leq M
 $A_k = a_1 + \ldots + a_k$\\
 Из равномерной сходимости: $\fall \eps>0\ \ex T: \fall M,N > T\ \sup|b_M(x)|<\eps;\sup|b_{N-1}(x)|<\eps,\sup|b_{M-1}(x)|<\eps,\sup|b_N(x)|<\eps$\\
 $|\sum_{N\leq k \leq M} a_k(x)b_k(x)| \leq |A_M||b_M|+|A_{N-1}||b_{N-1}| + \sum |b_k-b_{k+1}||A_k| \leq C_A(|b_M| + |b_{N-1}|+|b_{N-1}|+|b_N|) < 4C_A\eps$\\
+% лекция 15 (этот год) 0:00
+\textbf{Следствие (признак Абеля)}\\
+$\sum a_n(x)b_n(x), x \in E$
+\begin{enumerate}
+    \item $\sum a_n(x)$ равномерно сходится на $E$
+    \item $b_n$ монотонно по $n$ при каждом $x$  //todo проверить, правда ли это\\
+    $b_n(x)$ -- равномерно ограничена: $\ex C_B: \fall x\ \fall n\ |b_n(x)|\leq C_B$
+\end{enumerate}
+Тогда $\sum a_n(x)b_n(x), x \in E$ равномерно сходится на $E$\\
 % лекция 12 (этот год) 0:00
 \textbf{Пример}\\
 $f(x) = \sum \frac{\sin nx}{n^3}, x \in \Rset$\\
@@ -774,12 +783,100 @@ $\sum a_n (z-z_0)^n, 0 < R \leq +\infty$\\
 Пусть $w, w_0 \in \Cset, r > 0$\\
 $|w| < r, |w_0| < r$\\
 $|w^n-w_0^n| = |(w-w_0)(w^{n-1} + w^{n-2}w_0 + \ldots + ww_0^{n-2}+w_0^{n-1})|\leq |w-w_0|nr^{n-1}$\\
+% лекция 13 (этот год) 0:0
 \textbf{Теорема (о почленном дифференцировании ряда)}\\
 Пусть ряд A: $\sum_{n=0}^{\infty} a_n(z-z_0)^n, 0 < R \leq +\infty$\\
 Ряд A': $\sum_{n=1}^{\infty} a_n n (z-z_0)^{n-1}$\\
 Тогда\begin{enumerate}
     \item A' имеет тот же радиус сходимости
     \item Если $f(z) = \sum a_n (z-z_0)^n$, то $\fall z \in B(z_0, R)\ f'(z)=\sum_{n=1}^\infty a_n n (z-z_0)^{n-1}$
+\end{enumerate}
+\textbf{Доказательство}\\
+Множество сходимости ряда A' такое же, как у ряда $\sum_{n=1}^{+\infty} a_nn(z-z_0)^n$\\
+$R^{(A')} = \frac1{\ulim \sqrt[n]{|a_n|n}} = \frac1{\ulim \sqrt[n]{|a_n|}}$\\
+Возьмем $a$ в окрестности сходимости\\
+$\frac{f(z)-f(a)}{z-a} = \sum a_n\frac{(z-z_0)^n-(a-z_0)^n}{(z-z_0)-(a-z_0)} = \left[\begin{array}{cc}
+    w=z-z_0\\
+    w_0 = a-z_0
+\end{array}\right] = \sum a_n \frac{w^n-w_0^n}{w-w_0} \xrto[w\rto w_0]{} \sum a_nnw_0^{n-1}$ -- при условии наличия равномерной сходимости в $U(w_0)$\\
+Воспользуемся леммой, взяв $|a-z_0| < r < R$\\
+Тогда при $|w| < r$ (и $|w_0| < r$): $|a_0 \frac{w^n-w_0^n}{w-w_0}| \leq n |a_n|r^{n-1}$\\
+$\sum na_nr^{n-1}$ -- ряд A' в точке $z_0+r$ -- абсолютно сходится\\
+Т.о. в $B(z_0, r)$ ряд $\sum a_n\frac{(z-z_0)^n-(a-z_0)^n}{(z-z_0)-(a-z_0)}$ равномерно сходится по признаку Вейерштрасса\\
+\textbf{Следствие 1}\\
+$f(z) = \sum a_n(z-z_0)^n, 0 < R \leq +\infty$\\
+Тогда $f\in C^\infty(B(z_0, R))$\\
+и все производные получаются почленным дифференцированием\\
+\textbf{Следствие 2}\\
+$a_n, x_0 \in \Rset$\\
+$f(x) = \sum a_n(x-x_0)^n, x \in \Rset$ при $|x-x_0| < R$\\
+Тогда при почленном интегрировании радиус сходимости сохраняется и $\int_{x_0}^x f(x)\df x = \sum_{n=0}^\infty a_n \frac{(x-x_0)^{n+1}}{n+1}$\\
+% лекция 15 (этот год) 0:07
+\textbf{Теорема (Метод Абеля суммирования рядов)}\\
+Пусть $\sum c_n$ сходится\\
+$f(x) := \sum c_n x^n, x \in (-1, 1)$\\
+Тогда $\lim_{x\rto 1-0} f(x) = \sum c_n$\\
+\textbf{Доказательство}\\
+Признак Абеля: $a_n(x) \lrto c_n$\\
+$b_n(x) = x^n$ -- здесь считаем, что $x \in [0,1)$\\
+Отсюда $\sum c_nx^n$ равномерно сходится на $[0,1)$\\
+Тогда $R \geq 1 \Rto$ равномерно сходится на $(-1, 1)$\\
+По Т.4' о предельном переходе в сумме предел суммы ($\lim_{x\rto 1-0} f(x)$) равен сумме пределов $\sum c_n$\\
+\textbf{Следствие}\\
+$\sum a_n = A$\\
+$\sum b_n = B$\\
+$c_n = a_nb_0 + a_{n-1}b_1 + \ldots + a_0b_n$\\
+Пусть ряд $\sum c_n$ сходится и $\sum c_n = C$\\
+Тогда $AB = C$\\
+\textbf{Доказательство}\\
+$f(x) = \sum a_nx^n, g(x) = \sum b_nx^n, h(x) = \sum c_n x^n$\\
+$x\in (0, 1)$ -- ряды сходятся абсолютно\\
+Тогда $f(x)g(x) = h(x)$\\
+Тогда из предельного перехода $x\rto 1-0\ AB=C$\\
+\textbf{Пример}\\
+$\sum \frac1{n^2}$\\
+$f(x) := \sum_{n=1}^{\infty} \frac{x^n}{n^2}$\\
+$f'(x) = \sum_{n=1}^\infty \frac{x^{n-1}}{n}$\\
+$xf'(x) = \sum_{n=1}^\infty \frac{x^n}{n}$\\
+$(xf')' = \sum_{n=1}^\infty x^{n-1} = \frac{1}{1-x}$\\
+$xf' = -\ln(1-x)+c$\\
+Из $f(0): c=0$\\
+Тогда $f' = -\frac{\ln(1-x)}{x}$\\
+$\sum \frac{x^n}{n^2} = -\int_0^x \frac{1-t}{t}\df t$\\
+$\sum \frac1{n^2} = -\int_0^1 \frac{1-t}{t}\df t$\\
+\section{Ряды Тейлора}
+% лекция 15 (этот год) 0:36
+\textbf{Определение}\\
+$f$ раскладывается в степенной ряд в окрестности $x_0$,\\
+если $\ex (a_n), U(x_0): \fall x\in U(x_0)\ f(x) = \sum a_n(x-x_0)^n$\\
+\textbf{Замечание}\\
+$f$ -- раскладывается $\Rto f\in C^\infty(U(x_0))$\\
+\textbf{Теорема о единственности}\\
+$f$ -- раскладывается $\Rto$ ряд определен однозначно\\
+($\ex! a_n$)\\
+\textbf{Доказательство}\\
+$\sum a_n(x-x_0)^n = f(x)$\\
+Тогда $a_n = \frac{f^{(n)}(x_0)}{n!}$\\
+\textbf{Определение}\\
+Пусть $f\in C^{\infty} ((x_0 - \eps, x_0 + \eps))$\\
+Тогда ряд $\sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$ -- ряд Тейлора функции $f$ в точке(окрестности точки) $x_0$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Ряд Тейлора может сходиться <<не туда>> (не к исходной функции)\\
+    К примеру, $f(x) = \left\{\begin{array}{cc}
+        e^{-\frac1{x^2}}, & x\neq0\\
+        0, & x = 0
+    \end{array}\right.$\\
+    $f\in C^\infty(\Rset)$\\
+    $\us{x\neq 0}{f^{(k)}(x)} = \ub{\xrto[x\rto 0]{} 0}{P_k(\frac1x)e^{e^{-\frac1{x^2}}}}, P_k$ -- многочлен степени $\leq 3k$\\
+    По следствию из т. Лагранжа функция $k$ раз дифференцируема и $f^{(k)}(0) = 0$\\
+    Тогда у $f(x)$ ряд Тейлора $\equiv 0$\\
+    Т.е. существуют $f \in C^\infty$, которые не раскладываются в ряд\\
+    (функции, раскладывающиеся в ряд -- \textit{аналитические})
+    % лекция 15 (этот год) 0:54
+    \item Ряд Тейлора может расходиться при всех $x\neq x_0$\\
+    $f(t) = \int_0^\infty \frac{e^{-x}}{1+t^2x}\df x$\\
+    //todo продолжить 00:55:24
 \end{enumerate}
 \section{Диффеоморфизм}
 %лекция 5-6 (прошлый год) 0:0
@@ -1098,6 +1195,131 @@ $\Phi_1 = \Phi_2\circ \Omega$\\
 $\ex \Theta = \Phi_2^{-1}\circ \Phi_1$ -- гомеоморфизм\\
 $\Theta=\Psi_2\circ L_2\circ \Phi_1\in C^r$\\
 $\Theta^{-1} = \Psi_1 \circ L_1 \circ \Phi_2 \in C^r$\\
-% лекция 12 (этот год) 0:00
-
+% лекция 14 (этот год) 0:0
+\textbf{Лемма}\\
+$\Phi: O\subset \Rset^k \rto \Rset^m, O$ -- открытое множество\\
+$\Phi$ -- это $C^1$-параметризация некоторого $M$ -- простого гладкого многообразия в $\Rset^m$\\
+$t_0 \in O, \Phi(t_0) = p\in M$\\
+Тогда $\Phi'(t_0): \Rset^k \rto \Rset^m$ -- не зависит от $\Phi$ и представляет собой $k$-мерное линейное подпространство в $\Rset^m$\\
+\textbf{Доказательство}\\
+$\fall \Phi$ -- гладкая параметризация $\rg \Phi' = k$ -- образ $k$-мерный\\
+Пусть есть $\Phi_1$ и $\Phi_2$ -- две параметризации\\
+$\ex \psi$ -- диффеоморфизм\\
+$\psi: O_1 \rto O_2$\\
+$\Phi_1 = \Phi_2 \circ \psi$\\
+$\Phi'_1 = \Phi'_2 \psi'$\\
+Заметим, что $E = (\psi^{-1}\psi)' = (\psi^{-1})' \psi'$\\
+Тогда $\psi'$ и $(\psi^{-1})'$ -- обратимые\\
+$\Phi'_1(\Rset^k) = \Phi'_2\psi(\Rset^k) = \Phi'_2(\Rset^k)$ (т.к. $\psi(\Rset^k) = \Rset^k$)\\
+\textbf{Определение}\\
+$M$ -- простое $k$-мерное гладкое многообразие в $\Rset^m$\\
+$p \in M, \Phi$ -- параметризация, $\Phi(t_0) = 0$\\
+Рассмотрим в $\Rset^m$ подпространство $\Phi'(t_0)(\Rset^k)$--
+Оно называется \textit{касательным подпространством} к $M$ в точке $p$\\
+Обозначается $T_pM$\\
+Множество $p+T_pM$ будем называть \textit{афинным} пространством (касательное линейное многообразие)\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Если есть $v \in T_pM$, то $\ex$ гладкий путь $\gamma_v: [-\eps, \eps] \rto M\subset \Rset^m, \gamma_v(0) = 0$ и $\gamma'_v(0) = v$\\
+    \textbf{Доказательство}\\
+    $\rg \Phi'(t_0) = k \Rto \ex u \in \Rset^j: \Phi'(t_0) u = v$\\
+    $\ot\gamma_v(s) = t_0 + t_0 + us$\\
+    $\gamma_v = \Phi\circ \ot \gamma_v$\\
+    $\gamma'_v(0) = \Phi'\ot\gamma'_v(0)= \Phi'(u) = v$
+    \item $\gamma: [-\eps, \eps] \rto M$ -- гладкий путь\\
+    $\gamma(0) = p$\\
+    Тогда $\gamma'(0) \in T_pM$\\
+    % лекция 14 (этот год) 0:30
+    \textbf{Доказательство}\\
+    Что-то рукомахательное
+    \item Рассмотрим касательное пространство к графику\\
+    $f: O \subset \Rset^m \rto \Rset$\\
+    $(x, y=f(x))$ -- поверхность в $\Rset^{m+1}$ -- это простое $k$-мерное гладкое многообразие в $\Rset^{m+1}$:\\
+    $\Phi: O\subset \Rset^m \rto \Rset^{m+1}, \Phi(x) = (x, f(x))$ -- параметризация\\
+    Тогда линейное касательное многообразие в $(x_0, y_0)$, где $y = f(x_0)$, задается уравнением $y-y_0 = \ppart{}{x_1}f(x_0)(x_1-x_1^0) + \ldots + \ppart{}{x_m}f(x_0)(x_m-x_m^0)$\\
+    \textbf{Доказательство}\\
+    $\Phi(x) = \begin{pmatrix}
+        x_1\\\vdots\\x_m\\f(x)
+    \end{pmatrix}$\\
+    $\Phi' = \begin{pmatrix}
+    &E_m&\\
+    \ppart{}{x_1}f & \ldots & \ppart{}{x_m}f
+    \end{pmatrix}$\\
+    $a \in \Rset^m$\\
+    $\Phi'(x)\cdot a = \begin{pmatrix}
+        a_1\\\vdots\\a_m\\\ppart{f}{x_1} a + \ldots + \ppart{f}{x_m}a
+    \end{pmatrix}$\\
+    Линейное многообразие -- множество векторов, перпендикулярных вектору
+    $\begin{pmatrix}
+        \ppart{}{x_1}f(x_0), \ldots, \ppart{}{x_m}f(x_0), -1
+    \end{pmatrix}$\\
+    % лекция 14 (этот год) 0:50
+    Тогда надо проверить, что $\begin{pmatrix}
+        \ppart{}{x_1}f(x_0), \ldots, \ppart{}{x_m}f(x_0), -1
+    \end{pmatrix} \cdot \Phi'(x)a = 0$
+    \item $f: O \subset \Rset^m \rto \Rset, O$ -- открытое\\
+    $p \in O$\\
+    $U(p)$ -- $m-1$-мерное простое гладкое многообразие в $\Rset^m$б заданное уравнением $f(x) = 0$\\
+    При это выполняется:\\
+    $f(p) = 0$\\
+    $\grad f(p) \neq 0$\\
+    Тогда линейное касательное многообразие в точке $p$ есть $(*)$ $f'_{x_1}(p)(x_1-p_1) + \ldots + f'_{x_m}(p)(x_m-p_m) = 0$\\
+    \textbf{Доказательство}\\
+    Н.у.о. пусть $f'_{x_m}(p) \neq 0$\\
+    $\ex \phi: U(p_1, \ldots, p_{m-1}) \subset \Rset^{m-1} \rto \Rset$ -- вычисляет последнюю координату\\
+    $f(x_1, \ldots, x_{m-1}, \phi(x_1, \ldots, x_{m-1})) = 0 \LRto (x_1, \ldots, x_{m-1}) \in U(p)$, где $x_m = \phi(x_1, \ldots, x_{m-1})$\\
+    Т.е. $U(p)$ -- есть график $\phi$ над $U(p_1, \ldots, p_{m-1})$\\
+    Тогда уравнение касательного линейного многообразия $(**)$ $x_m - p_m = \phi'_{x_1}(x_1-p_1) + \ldots + \phi'_{x_{m-1}}(x_{m-1}-p_{m-1})$\\
+    Мы знаем, что $f(x_1, \ldots, x_{m-1}, \phi(x_1, \ldots, x_{m-1})) = 0$\\
+    $f'_{x_1} + f'_{x_m} \phi'_{x_1} = \ldots = f'_{x_{m-1}} + f'_{x_m} \phi'_{x_{m-1}} = 0$\\
+    Домножим $(**)\cdot f'_{x_m} = (*)$, ч.т.д.
+\end{enumerate}
+% лекция 14 (этот год) 1:09
+\subsection{Относительный (= условный) экстремум}
+\textbf{Определение}\\
+$f: E \subset \Rset^{m+n} \rto \Rset$\\
+$\Phi: E \rto \Rset^n$\\
+$M_\Phi = \{ x \in \Rset^{n+m}: \Phi(x) = 0\}$\\
+($\Phi(x) = 0$ -- уравнения связи)\\
+$x_0 \in E$\\
+$\Phi(x_0) = 0$, т.е. $x_0 \in M_\Phi$\\
+$x_0$ -- точка относительного локального максимума, если $x_0$ -- локальный максимум $f\vl_{M_\Phi}$\\
+Т.е. $\ex U(x_0): \fall x\in U(x_0): \Phi(x) = 0\ f(x_0) \geq f(x)$\\
+\section{Экспонента}
+% лекция 13 (этот год) 0:51
+\textbf{Определение}\\
+$\exp(z) := \sum_{n=0}^{+\infty} \frac{z^n}{n!}, R = +\infty$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\exp(0) = 1$
+    \item $\exp(z)' = \exp(z)$
+    \item $\ol{\exp(z)} = \ol{\sum_{n=0}^{+\infty} \frac{z^n}{n!}} = \sum_{n=0}^{+\infty} \ol{\frac{z^n}{n!}} = \sum_{n=0}^{+\infty} \frac{\ol{z}^n}{n!} = \exp(\ol z)$
+    \item $\fall z, w \in \Cset\ \exp(z+w) = \exp(z)\exp(w)$\\
+    \textbf{Доказательство}\\
+    $\exp z \exp w = \sum_{n=0}^{+\infty} \frac{z^n}{n!} \sum_{n=0}^{+\infty} \frac{w^n}{n!} = \sum_{k=0}^{\infty} (\frac{z^k}{k!} + \frac{z^{k-1}w^1}{(k-1)!1!} + \ldots + \frac{w^k}{k!}) = \ldots$ -- по теореме Коши о произведении рядов\\
+    $\ldots = \sum_{k=0}^{\infty} (\frac{k!z^k}{k!} + \frac{k!z^{k-1}w^1}{(k-1)!1!} + \ldots + \frac{k!w^k}{k!})\frac1{k!} = \sum_{k=0}^{\infty} (C_k^0 z^k + C_k^1 z^{k-1}w^1 + \ldots + C_k^k w^k)\frac1{k!} = \sum \frac{(z+w)^k}{k!}$
+\end{enumerate}
+Тогда из 1, 2, 4 $\exp$ -- показательная функция из теоремы о существовании показательной функции\\
+\textbf{Следствие}\\
+$\fall z\in \Cset\ \exp(z) \neq 0$\\
+\textbf{Доказательство}\\
+Пусть $\ex z: \exp(z) = 0$\\
+Тогда $\fall w\ \exp(z+w) = \exp(z)\exp(w) = 0$\\
+Пусть $w = u-z$\\
+Тогда $\fall u\ \exp(z+u-z) = \exp(u) = \exp(z)\exp(u-z) = 0$\\
+$\exp(u) \equiv 0$ -- что неверно\\\\
+Пусть $x\in \Rset$\\
+Обозначим $e^{ix} = \alpha(x) + i\beta(x)$\\
+Тогда $e^{-ix} = \ol{e^{ix}} = \alpha(x) - i\beta(x)$\\
+$\alpha(x) = \frac{e^{ix}+e^{-ix}}{2}$\\
+$\beta(x) = \frac{e^{ix}-e^{-ix}}{2i}$\\
+Тогда $\alpha(x) = \frac12 \sum\frac{(ix)^n+(-ix)^n}{n!} = 1 - \frac{x^2}{2} + \frac{x^4}{4!} + \ldots$ (похоже на $\cos x$)\\
+$\beta(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!}  + \ldots$ (похоже на $\sin x$)\\
+(желающие могут думать, что $x\in \Cset$)\\
+Заметим, что $\alpha(x+y) = \alpha(x)\alpha(y) - \beta(x)\beta(y)$\\
+$\beta(x+y) = \alpha(x)\beta(y) + \alpha(y)\beta(x)$\\
+$\alpha^2(x) + \beta^2(y) = 1$\\
+$(e^{ix})' = ie^{ix}$\\
+Отображение $ie^{ix}$ -- вектор скорости\\
+Тогда $e^{ix}$ описывает движение с постоянной скоростью по окружности единичной длины\\
 \end{document}
