@@ -349,7 +349,7 @@ $Q$ -- полуопределенная (положительно определ
 \textbf{Лемма об оценке квадратичной формы и об эквивалентных нормах}
 \begin{enumerate}
     \item $Q: \Rset^m \rto \Rset$ -- кв. форма, $Q > 0$\\
-    Тогда $\ex \gamma_Q > 0: \fall x\ Q(x) > \gamma_Q|x|:2$
+    Тогда $\ex \gamma_Q > 0: \fall x\ Q(x) \geq \gamma_Q|x|^2$
     \item $p: \Rset^m \rto \Rset$ -- норма\\
     Тогда $\ex C_1, C_2 > 0: \fall x \in \Rset^m\ C_1|x_1| \leq p(x) \leq C_2|x_2|$
 \end{enumerate}
@@ -373,8 +373,8 @@ $Q < 0 \Rto a$ -- локальный максимум\\
 $Q \lessgtr 0$ -- не точка локального экстремума\\
 $Q \geq 0$ -- информации недостаточно\\
 \textbf{Доказательство}\\
-$\fall h\ \ex t \in (0,1): f(a+h) = f(a) + \ub0{\df f(a,h)} + \frac1{2!}\df f(a+th, h)$ -- остаток в формуле Лагранжа\\
-$f(a+h) - f(a) = \frac1{2!}Q(h) + \frac1{2!}(\ub{|\text{б.м.}\cdot h_i^2| = o(|h|^2)}{f''_{x_1x_1}(a+th)h_1^2 - f''_{x_1x_1}(a)h_1^2}+ \ldots + \ub{|\text{б.м.}\cdot h_ih_j| = o(|h|^2)}{2f''_{x_1x_2}h_1h_2 - 2 f''_{x_1x_2}(a)h_1h_2}) + \ldots)$\\
+$\fall h\ \ex t \in (0,1): f(a+h) = f(a) + \ub0{\df f(a,h)} + \frac1{2!}\df^2 f(a+th, h)$ -- остаток в формуле Лагранжа\\
+$f(a+h) - f(a) = \frac1{2!}Q(h) + \frac1{2!}(\ub{|\text{б.м.}\cdot h_i^2| = o(|h|^2)}{f''_{x_1x_1}(a+th)h_1^2 - f''_{x_1x_1}(a)h_1^2}+ \ldots + \ub{|\text{б.м.}\cdot h_ih_j| = o(|h|^2)}{f''_{x_1x_2}h_1h_2 - f''_{x_1x_2}(a)h_1h_2}) + \ldots)$\\
 $f(a+h)-f(a) \geq \frac12 Q(h)-|\alpha(h)||h|^2  \geq \frac12 \gamma_Q|h|^2 - |\alpha(h)||h|^2 \geq \frac14 \gamma_Q|h|^2 > 0, \alpha(h)$ -- б.м., при достаточно малых $|h|$\\
 Пункт 1 доказан\\
 Пункт 2 доказывается заменой $f \rto -f$\\
@@ -424,7 +424,7 @@ $f_n \rrto f$ на $X$\\
 Дано утверждение о равномерной сходимости\\
 $\fall \eps > 0\ \ex N: \fall n > N\ \sup_{x\in X} |f_n(x) - f(x)|<\eps$\\
 $|f(x)-f(c)| \leq |f(x)-f_n(x)| + |f_n(x)-f_n(c)| + |f_n(c)-f(c)|$\\
-Начиная с некоторого большого $n:$\\;
+Начиная с некоторого большого $n:$\\
 $|f(x)-f(c)| \leq \ub{< \eps}{|f(x)-f_n(x)|} + |f_n(x)-f_n(c)| + \ub{< \eps}{|f_n(c)-f(c)|}$\\
 Т.к. $f_n$ непрерывна, то $\ex U(c): \fall x \in U(c)\ |f_n(x)-f_n(c)| < \eps$\\
 Отсюда $|f(x)-f(c)| < 3\eps$\\
@@ -447,12 +447,12 @@ $f_n \not\rrto f$ на $(0,1)$\\
 %лекция 5-6 (прошлый год) 2:13:00
 \textbf{Теорема}\\
 $X$ -- компакт\\
-$\rho(f,g) = \sup_{x\in X}|f(x)-g(x)$ в $C(X)$\\
+$\rho(f,g) = \sup_{x\in X}|f(x)-g(x)|$ в $C(X)$\\
 Тогда $(C(X), \rho)$ -- полное метрическое пространство\\
-(т.е. $\fall x_n\text{ -- фунд.}\ \fall \eps > 0\ \ex N: \fall m,n > N\ \rho(x_n, x_m) < \eps)$\\
+(фунд. -- это $\ \fall \eps > 0\ \ex N: \fall m,n > N\ \rho(x_n, x_m) < \eps)$\\
 \textbf{Доказательство}\\
 Пусть $f_n$ -- фундаментальная последовательность в $C(X)$\\
-$\fall \eps > 0\ \ex N : \fall n, m > N\ \rho(f_n, f_m) = \sum_{x \in X} |f_n(x) - f_m(x)| < \eps$\\
+$\fall \eps > 0\ \ex N : \fall n, m > N\ \rho(f_n, f_m) = \sup_{x \in X} |f_n(x) - f_m(x)| < \eps$\\
 Тогда $\fall x_0 \in X$ последовательность $n \mapsto f_n(x_0)$ -- фунд. вещ. посл.\\
 Тогда $\ex \lim_{n\rto +\infty} f_n(x_0) = f(x_0)$ -- конечная\\
 Проверим, что $f_n \rrto f, f \in C(X)$\\
@@ -466,7 +466,7 @@ $(\mc F(X), \rho)$ -- полное м.п.\\
 \textbf{Доказательство}\\
 Аналогичное\\
 %лекция 5-6 (прошлый год) 2:32:00\\
-\textbf{Теорема (критерий Коши)}\\
+\textbf{Теорема (критерий Больцано-Коши)}\\
 $f_n \in C(X)$\\
 $\ex f \in C(x): f_n \rrto f \LRto \fall \eps > 0\ \ex N: \fall n,m > N\ \fall x \in X\ |f_n(x)-f_m(x)| < \eps$\\
 \subsection{Предельный переход под знаком интеграла}
@@ -480,7 +480,7 @@ $f_n \rrto f$ на $[a,b]$\\
 Тогда $\int_a^b f_n \rto \int_a^b f$\\
 (по т.1. $f$ -- непрерывна)\\
 \textbf{Доказательство}\\
-$|\int_a^b f_n - \int_a^b f| = |\int f_a^b f_n - f| \leq \int_a^b |f_n-f| \leq \sup |f_n-f|(b-a) \rto 0$\\
+$|\int_a^b f_n - \int_a^b f| = |\int_a^b f_n - f| \leq \int_a^b |f_n-f| \leq \sup |f_n-f|(b-a) \rto 0$\\
 \textbf{Следствие (правило Лейбница дифференцирования интеграла по параметру)}\\
 $f: \ub{x}{[a,b]} \times \ub{y}{[c,d]} \rto \Rset$\\
 $\fall x,y \ex f'_y(x,y)$ и $f, f'_y$ -- непрерывные на $[a,b]\times[c,d]$\\
@@ -609,8 +609,8 @@ $\Gamma(x) = xe^{\gamma x}\exp(\sum (\ln (1+\frac xn)-\frac xn))^{-1}$ -- диф
 % Тогда $S'(x) = \sum \frac{\cos nx}{n^2}$
 \textbf{Теорема 4' (о почленном предельном переходе в суммах)}\\
 % лекция 10 (этот год) 0:21
-$u_n: X \rto \Rset, X$ -- м.п.\\
-$x_0 \in X, x_0$ -- предельная точка в $E$\\
+$u_n: E \subset X \rto \Rset, X$ -- м.п.\\
+$x_0 \in E, x_0$ -- предельная точка в $E$\\
 Пусть \begin{enumerate}
     \item $\ex \lim_{x\rto x_0} u_n(x) = a_n \in \Rset$
     \item $\sum u_n(x)$ -- равномерно сходится на $E$
@@ -636,7 +636,7 @@ $\ot u_n(x) = \left[\begin{array}{cc}
     a_n, & x = x_0
 \end{array}\right.$\\
 $\ot u_n(x)$ -- непрерывная в $x_0$\\
-$\sup_{E \cup \{x_0\}} |\sum_{n\geq N} \ot U_n(x)| \leq \ub{\xrto[N\rto +\infty]{} 0}{\sup_E |\sum_{n\geq N}u_n(x)|} + \ub{\xrto[N\rto +\infty]{} 0}{|\sum_{n\geq N}a_n|} \xrto[N\rto +\infty]{} 0$\\
+$\sup_{E \cup \{x_0\}} |\sum_{n\geq N} \ot u_n(x)| \leq \ub{\xrto[N\rto +\infty]{} 0}{\sup_E |\sum_{n\geq N}u_n(x)|} + \ub{\xrto[N\rto +\infty]{} 0}{|\sum_{n\geq N}a_n|} \xrto[N\rto +\infty]{} 0$\\
 $\sum \ot u_n$ -- равномерно сходится на $E \cup \{x_0\}$\\
 \textbf{Теорема 4 (перестановки в предельных переходах)}\\
 $f_n: E \subset X \rto \Rset, x_0$ -- предельная точка $E$
@@ -679,7 +679,7 @@ $f: E\times D \rto \Rset, E \subset X$ -- м.п., $D\subset Y$ -- м.п., $x_0$ 
 Пусть \begin{enumerate}
     \item $\ex C_A: \fall N \ \fall x\ |\sum_{n=1}^N a_n(x)|\leq C_A$\\
     (частичные суммы ряда $\sum a_n(x)$ равномерно ограничены)
-    \item $b_n(x) \us{n\rto \infty} \rrto 0$ на $X$ и $\fall x\ b_n\us{n\rto \infty}\rto 0$ монотонно при каждом фиксированном $X$  //todo проверить, правда ли это
+    \item $b_n(x) \us{n\rto \infty} \rrto 0$ на $X$ и $\fall x\ b_n$ монотонна при каждом фиксированном $X$
 \end{enumerate}
 Тогда $\sum a_n(x)b_n(x)$ -- равномерно сходится на $X$\\
 \textbf{Доказательство}\\
@@ -692,7 +692,7 @@ $|\sum_{N\leq k \leq M} a_k(x)b_k(x)| \leq |A_M||b_M|+|A_{N-1}||b_{N-1}| + \sum 
 $\sum a_n(x)b_n(x), x \in E$
 \begin{enumerate}
     \item $\sum a_n(x)$ равномерно сходится на $E$
-    \item $b_n$ монотонно по $n$ при каждом $x$  //todo проверить, правда ли это\\
+    \item $b_n$ монотонно по $n$ при каждом $x$\\
     $b_n(x)$ -- равномерно ограничена: $\ex C_B: \fall x\ \fall n\ |b_n(x)|\leq C_B$
 \end{enumerate}
 Тогда $\sum a_n(x)b_n(x), x \in E$ равномерно сходится на $E$\\
@@ -890,11 +890,11 @@ $(f^{-1})'(y) = (f'(x))^{-1}, y = f(x)$\\
 \textbf{Лемма (о <<почти>> локальной инъективности)}\\
 $F: O \subset \Rset^m \rto \Rset^m, O$ -- область, $x_o \in O, F$ -- дифференцируемо в $x_0$\\
 $\det F'(x_0) \neq 0$\\
-Тогда $\ex C>0, \delta > 0: \fall h: |h| < \delta\ |F(x_0+h)-F(x)| \geq c|h|$\\
+Тогда $\ex C>0, \delta > 0: \fall h: |h| < \delta\ |F(x_0+h)-F(x_0)| \geq c|h|$\\
 \textbf{Доказательство}
 \begin{enumerate}
-    \item $f$ -- линейное\\
-    Тогда $|h| = |f^{-1}\circ F\cdot h| \leq \|F^{-1}\||Fh|$\\
+    \item $F$ -- линейное\\
+    Тогда $|h| = |F^{-1}\circ F\cdot h| \leq \|F^{-1}\||Fh|$\\
     $|F(x_0+h) - F(x_0)| = |Fh| \geq \frac1{\|F^{-1}\|}|h|$\\
     $\delta$ -- любое
     \item $|F(x_0+h)-F(x_0)| = |F'(x_0)h+\alpha(h)|h|| \geq \ub{\text{из п.1}}{C}|h|-|\alpha(h)||h|$\\
@@ -911,7 +911,7 @@ $\det F'(x) = 2(x_1^2 + x_2^2)$\\
 $F: O \subset \Rset^m \rto \Rset^m, O$ -- \underline{открытое}, $\fall x\ F$ -- дифференцируемый в $x$ и $\det F'(x) \neq 0$\\
 Тогда $F(O)$ -- открытое множество\\
 \textbf{Доказательство}\\
-Пусть $x_0 \in O, y_0 \in F(x_0)$\\
+Пусть $x_0 \in O, y_0 = F(x_0)$\\
 Проверим, что $y_0$ -- внутренняя точка $F(O)$\\
 По лемме $\ex C, \delta: \fall h \in \ol{B(0, \delta)}$\\
 $|F(x_0 + h) - F(x_0)| \geq C|h|$\\
@@ -934,7 +934,7 @@ $\left\{\begin{array}{ccc}
 0 & = & \ppart g{x_m} = 2(F_1-y_1)\ppart{F_1}{x_m} + \ldots + 2(F_m-y_m)\ppart{F_m}{x_m}
 \end{array}\right.$\\
 $(F(x)-y)^T F'(x) = 0$\\
-Т.е. $\det F'(x)\neq 0$, то $g(x) = F(x)-y = 0$\\
+Т.к. $\det F'(x)\neq 0$, то $g(x) = F(x)-y = 0$\\
 Отсюда $g(x)$ достигает $0$\\
 \textbf{Замечание}\\
 $F$ -- непрерывное $\LRto \fall \ub{\text{откр.}}W\ F^{-1}(W)$ -- открытое\\
@@ -1002,28 +1002,28 @@ $y \mapsto F^{-1}(y)=x\mapsto F'(x)=A\mapsto A^{-1}=(F'(x))^{-1} = (F^{-1})'(y)$
 Т.о.:\\
 Пусть $F^{-1} \in C^{r-1}$\\
 \textbf{Лемма}\\
-$F(x_0+h)-F(x_0) - F'(x_0)h| \leq M|h|$\\
-$M=\sup_{x_1\in [x_0, x_0+h]} \|F'(x_1)-F'(x_0)$\\
+$|F(x_0+h)-F(x_0) - F'(x_0)h| \leq M|h|$\\
+$M=\sup_{x_1\in [x_0, x_0+h]} \|F'(x_1)-F'(x_0)\|$\\
 //todo доказать\\
 % лекция 7-8 (этот год) 0:40
-\textbf{Теорема о локально обратимости}\\
-Пусть $F \in C^1(O, \Rset^m)$ (Т.е. $F: O \rto \Rset^m, F \in C^1)$\\
+\textbf{Теорема о локальной обратимости}\\
+Пусть $F \in C^1(O, \Rset^m)$ (Т.е. $F: O\subset \Rset^m \rto \Rset^m, F \in C^1)$\\
 $x_0 \in O$\\
 $\det F'(x_0) \neq 0$\\
 Тогда $\ex U(x_0): F\vl_{U(x_0)}$ -- диффеоморфизм\\
 \textbf{Доказательство}\\
-$\ex V(x_0): \fall x \in V\ \det F(x) \neq 0$\\
+$\ex V(x_0): \fall x \in V\ \det F'(x) \neq 0$\\
 (не представляю, откуда)\\
 По предыдущей теореме достаточно построить окрестность $x_0$, где $F$ -- обратимо\\
 $F'(x_0)$ -- невырожденный\\
-Тогда $\ex c: \fall h\ |F'(x_0)-h| \geq c|h|$\\
+Тогда $\ex c: \fall h\ |F'(x_0)h| \geq c|h|$\\
 Тогда $\ex U(x_0) = V(x_0) \cap B(x_0, r) \subset O$ такая, что $\fall x \in U(x_0)\ \|F'(x)-F'(x_0)\| < \frac c4$ и попрежнему $\det F'(x) \neq 0$\\
 Проверяем, что $F$ -- обратимо на $U(x_0)$\\
 $x \in U(x_0), y = x+h \in U(x_0)$\\
 $F(y)-F(x) = (F(x+h)-F(x)-F'(x)h) + (F'(x)h-F'(x_0)h)+F'(x_0)h$\\
 $|F(y)-F(x)|\geq |F'(x_0)h| - |F(x+h)-F(x)-F'(x)h| - |(F'(x)-F'(x_0))h|$ (неравенство треугольнка)\\
 $F(x_0+h)-F(x_0) - F'(x_0)h| \leq M|h|$\\
-$M=\sup_{x_1\in [x_0, x_0+h]} \ub{\leq \|F'(x_1)-F'(x_0)\| + \|F'(x)-F'(x_0)\|}{\|F'(x_1)-F'(x_0)} \leq \frac c2$\\
+$M=\sup_{x_1\in [x_0, x_0+h]} \ub{\leq \|F'(x_1)-F'(x_0)\| + \|F'(x)-F'(x_0)\|}{\|F'(x_1)-F'(x_0)\|} \leq \frac c2$\\
 $|F(y)-F(x)| \geq c|h|-\frac c2|h| - \frac c4|h| = \frac c4|h|$ -- т.е. $F(y)\neq F(x)$, а значит точки не склеиваются\\\\
 % лекция 9 (этот год) 0:0
 Пусть $x = (x_1, \ldots, x_m) \in \Rset^m$\\
@@ -1128,7 +1128,7 @@ $\fall t \in O\ \rg \Phi'(t) = k$\\
     С другой стороны, петля вокруг $a$ на шаре -- может
 \end{itemize}
 % лекция 11 (этот год) 0:00
-\textbf{Теорема}\\
+\textbf{Теорема о задании гладкого многообразия системой уравнений}\\
 $M\subset \Rset^m, 1 \leq k < m$\\
 $1 \leq r \leq +\infty$\\
 Тогда $\fall p \in M$ эквивалентно:
@@ -1194,7 +1194,7 @@ $\Phi_1: O_1\subset \Rset^k \rto U(p)$ -- параметризация, $\Phi_1 
 $\Phi_2: O_2\subset \Rset^k \rto U(p)$ -- параметризация, $\Phi_2 \in C^r$\\
 (обе действуют инъективно)\\
 Тогда $\ex$ диффеоморфизм $\Theta: O_1 \rto O_2, \Theta \in C^r$\\
-$\Phi_1 = \Phi_2\circ \Omega$\\
+$\Phi_1 = \Phi_2\circ \Theta$\\
 \textbf{Доказательство}\\
 $\ex \Theta = \Phi_2^{-1}\circ \Phi_1$ -- гомеоморфизм\\
 $\Theta=\Psi_2\circ L_2\circ \Phi_1\in C^r$\\
@@ -1214,7 +1214,7 @@ $\Phi_1 = \Phi_2 \circ \psi$\\
 $\Phi'_1 = \Phi'_2 \psi'$\\
 Заметим, что $E = (\psi^{-1}\psi)' = (\psi^{-1})' \psi'$\\
 Тогда $\psi'$ и $(\psi^{-1})'$ -- обратимые\\
-$\Phi'_1(\Rset^k) = \Phi'_2\psi(\Rset^k) = \Phi'_2(\Rset^k)$ (т.к. $\psi(\Rset^k) = \Rset^k$)\\
+$\Phi'_1(\Rset^k) = \Phi'_2\psi'(\Rset^k) = \Phi'_2(\Rset^k)$ (т.к. $\psi(\Rset^k) = \Rset^k$)\\
 \textbf{Определение}\\
 $M$ -- простое $k$-мерное гладкое многообразие в $\Rset^m$\\
 $p \in M, \Phi$ -- параметризация, $\Phi(t_0) = p$\\
@@ -1326,4 +1326,242 @@ $\alpha^2(x) + \beta^2(y) = 1$\\
 $(e^{ix})' = ie^{ix}$\\
 Отображение $ie^{ix}$ -- вектор скорости\\
 Тогда $e^{ix}$ описывает движение с постоянной скоростью по окружности единичной длины\\
+% пропущены лекции 15-17
+\section{Теория меры}
+\subsection{Системы множеств}
+% лекция 18 (этот год)
+\textbf{Обозначение}
+\begin{enumerate}
+    \item $A \sqcup B$ -- дизъюнктное объединение
+    \item $2^X$ -- множество всех подмножеств $X$
+\end{enumerate}
+\textbf{Определение}\\
+$\mc P \subset 2^X$ -- полукольцо, если
+\begin{enumerate}
+    \item $\fall A, B \in \mc P\ A \cap B \in \mc P$
+    \item $\varnothing \in \mc P$
+    \item $\fall A, A' \in \mc P\ \ex \text{ конечное } B_1, \ldots, B_n \in \mc P: A \setminus A' = \bigsqcup_{k=1}^n B_k$
+\end{enumerate} 
+\textbf{Определение}\\
+$[a, b) \subset \Rset^m$ -- ячейка, если $[a,b) = \{x \in \Rset^m: \fall i\ a_i \leq x_i < b_i\}$\\
+\textbf{Пример}\\
+$X = \Rset^m, \mc P$ -- множество ячеек\\
+$\mc P$ -- полукольцо\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $A, B \in \mc P$\\
+    Отсюда не следует, что $A^C \in \mc P, A \cup B \in \mc P, A \setminus B \in \mc P, A \oplus B \in \mc P$
+    \item $A, A_1, \ldots, A_n \in \mc P$\\
+    Тогда $A \setminus (A_1\cup \ldots \cup A_n)$ представимо в виде дизъюнктного объединения элементов $\mc P$
+\end{enumerate}
+\textbf{Определение}\\
+$\mcA \subset 2^X$ -- алгебра, если
+\begin{enumerate}
+    \item $A, B \in \mc A \Rto A \setminus B \in \mcA$
+    \item $X \in \mc A$
+\end{enumerate}
+\textbf{Свойства}\begin{enumerate}
+    \item $X \setminus X = \varnothing \in \mcA$
+    \item $A \cap B = A\setminus(A\setminus B) \in \mcA$
+    \item $A^C = X\setminus A \in \mcA$
+    \item $A \cup B = (A^C \cap B^C)^C \in \mcA$
+    \item $A_1, \ldots, A_n \in \mcA \Rto \bigcup_{i=1}^n A_i, \bigcap_{i=1}^n A_i \in \mcA$
+    \item Алгебра -- полукольцо
+\end{enumerate}
+\textbf{Определение}\\
+$\mcA \subset 2^X$ -- сигма-алгебра, если 
+\begin{enumerate}
+    \item $\mcA$ -- алгебра
+    \item $A_1, A_2, \ldots \in \mc A\Rto \bigcup_{i=1}^{+\infty} A_i \in \mcA$
+\end{enumerate}
+\textbf{Свойства}
+\begin{enumerate}
+    \item $A_1, A_2, \ldots \in \mc A\Rto \bigcap_{i=1}^{+\infty} A_i = (\bigcup_{i=1}^{+\infty} A_i^C)^C \in \mcA$
+    \item $E \in \mcA$ -- сигма-алгебра\\
+    Тогда $\{A\in \mcA: A \subset E\}$ -- сигма-алгебра
+\end{enumerate}
+\subsection{Объем}
+\textbf{Определение}\\
+$\mu: \mc P \rto \Rex$ -- аддитивна, если
+\begin{enumerate}
+    \item $\mu$ не принимает одновременно $+\infty$ и $-\infty$
+    \item $\mu(\varnothing) = 0$
+    \item $A = \sqcup_{\text{конеч.}} A_i, A_i \in \mc P \Rto \mu A = \sum \mu A_i$
+\end{enumerate}
+\textbf{Определение}\\
+$\mc P$ -- полукольцо\\
+$\mu: \mc P \rto \Rex$\\
+$\mu$ -- аддитивная, $\mu \geq 0$\\
+Тогда $\mu$ -- объем\\
+\textbf{Замечание}\\
+Если $X \in \mc P, \mu X < +\infty$ -- $\mu$ конечный объем\\
+\textbf{Замечание}\\
+Если $\mc P$ -- алгебра, то свойство 3 можно заменить на:\\
+$A, B \in \mc A, A \cap B = \varnothing \Rto \mu(A\cup B) = A\mu + B\mu$\\
+\textbf{Пример}\\
+Классический объем в $\Rset^m$:\\
+$\mc P^m$ -- ячейки в $\Rset^m$\\
+$\mu[a,b) = \prod_{i=1}^m (b_i-a_i)$\\
+\textbf{Замечание}\\
+Если $B \subset A$, то $\mu B \leq \mu B$ -- монотонность\\
+\textbf{Доказательство}\\
+Если в алгебре, то $A = B \sqcup (A\setminus B) \Rto \mu A = \mu B + \mu(A\setminus B) \geq \mu B$\\
+\textbf{Теорема}\\
+$\mc P$ -- полукольцо, $\mu: \mc P \rto \Rex$ -- объем\\
+Тогда выполняется
+\begin{enumerate}
+    \item Усиленная монотонность:
+    $\fall A \in \mc P, A_1, \ldots, A_n \in \mc P: A \supset \bigsqcup_{i=1}^n A_i$
+    Тогда $\sum_{i=1}^m \mu A_i \leq \mu A$
+    \item Конечная полуаддитивность\\
+    $\fall A, A_1, \ldots, A_n \in \mc P\ A \subset \cup_{i=1}^n A_i$\\
+    Тогда $\mu A \leq \sum_{i=1}^n \mu A_i$
+    \item $A, B, A \setminus B \in \mc P, \mu B$ -- конечное\\
+    Тогда $\mu(A \setminus B) \geq \mu A - \mu B$
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $A \setminus \bigcup_{i=1}^n A_i = \bigsqcup_{\text{конеч.}} B_j$
+    $A = A_1\sqcup \ldots \sqcup A_n \sqcup (\bigsqcup_{\text{конеч.}} B_j) \Rto \mu A = \sum \mu A_i + (\sum \mu B_j) \geq \sum \mu A_i$
+    \item $B_i = A \cap A_i \in \mc P$\\
+    Тогда $A = \bigcup B_i$\\
+    Сделаем эти $B_i$ дизъюнктными\\
+    $C_1 = B_1$\\
+    $C_2 = B_2 \setminus B_1, \ldots, C_k = B_k \setminus (\bigcup_{i=1}^{k-1}B_i)$\\
+    Тогда $A = \bigsqcup C_k$\\
+    По замечанию $C_k = B_k \setminus (\bigcup_{i=1}^{k-1}B_i) = \bigsqcup_{k_j\text{ -- конеч.}} D_{k_j}$
+    Теперь $A = \bigsqcup_{k, j} D_{k_j}$\\
+    $\mu A = \sum_{k, j} \mu D_{k_j}$\\
+    $\sum_{j} \mu D_{k_j} \leq \mu B_k \leq \mu A_k$\\
+    Отсюда $\mu A \leq \sum_k \mu A_k$
+    \item \begin{enumerate}
+        \item $B \subset A$\\
+        Это аддитивность
+        \item $B \not\subset A$\\
+        $A \setminus B = A \setminus (A \cap B), A\cap B \in \mc B$\\
+        $\mu(A\setminus B) + \mu B \geq \mu A$
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Мера}
+% лекция 19 (этот год) 0:54
+\textbf{Определение}\\
+$\mu: \mc P \rto \Rex$ -- мера, если $\mu$ -- объем и $\mu$ -- счетно-аддитивна:\\
+$A_1, A_2, \ldots \in \mc P, A = A_1\sqcup A_2 \sqcup \ldots \in \mc P, \mu A = \sum \mu A_i$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item Можно считать, что индексация с помощью любого произвольного счетного множества
+    \item Счетная аддитивность не следует из конечной\\
+    \textbf{Пример}\\
+    $X = \Rset^2, \mc P$ -- множество ограниченных множеств и их дополнений\\
+    $\mu(\text{огр}) = 0, \mu(\text{неогр}) = 1$\\
+    В этом множестве нет счетной аддитивности, но есть конечная
+\end{enumerate}
+\textbf{Пример (дискретная мера)}\\
+$X$ -- любое множество, $\mc P = 2^X$\\
+$A_1, A_2, \ldots \in X$\\
+$h_1, h_2, \ldots > 0$\\
+$\mu U := \sum_{i: A_i \in E} h_i$ -- мера\\
+% лекция 19 (этот год) 1:08
+\textbf{Теорема 1}\\
+$\mu: \mc P \rto \Rex$ -- объем\\
+Тогда эквивалентны:
+\begin{enumerate}
+    \item $\mu$ -- мера, т.е. имеет место счетная аддитивность
+    \item Имеет место счетная полуаддитивность\\
+    $A_1, A_2, \ldots \in \mc P$\\
+    $A \in \mc P$\\
+    $A \subset \bigcup_{i=1^{\infty}} A_i \Rto \mu A \leq \sum \mu A_i$
+\end{enumerate}
+\textbf{Доказательство $1\Rto 2$}\\
+Как в предыдущей теореме\\
+\textbf{Доказательство $2 \Rto 1$}\\
+Проверим, что $\mu$ -- мера\\
+Пусть $A = \bigsqcup_{i=1}^{+\infty} A_i$\\
+Из свойства 2 $\mu A \leq \sum \mu A_i$\\
+Из усиленной монотонности $\mu A \geq \sum \mu A_i$\\
+\textbf{Следствие}\\
+$A \in \mc P, A_n \in \in \mc P, \mu A_n = 0$\\
+$A \subset \bigcup A_n$\\
+Тогда $\mu A = 0$\\
+\textbf{Теорема 2}\\
+$\mc A$ -- алгебра\\
+$\mu: \mc A \rto \Rex$ -- объем\\
+Тогда эквивалентны:
+\begin{enumerate}
+    \item $\mu$ -- мера, т.е. имеет место счетная аддитивность
+    \item $\mu$ -- непрерывна снизу\\
+    $A, A_i \in \mc A$\\
+    $A_1 \subset A_2 \subset \ldots$\\
+    $A = \bigcup_{i=1}^{+\infty} A_i$\\
+    Тогда $\mu A = \lim_{i\rto \infty} \mu A_i$
+\end{enumerate}
+\textbf{Теорема 3}\\
+$\mc A$ -- алгебра\\
+$\mu: \mc A \rto \Rset$ -- конечным объем\\
+Тогда эквивалентны:
+\begin{enumerate}
+    \item $\mu$ -- мера, т.е. имеет место счетная аддитивность
+    \item $\mu$ -- непрерывна сверху\\
+    $A, A_i \in \mc A$\\
+    $A_1 \supset A_2 \supset \ldots$\\
+    $A = \bigcap_{i=1}^{+\infty} A_i$\\
+    Тогда $\mu A = \lim_{i\rto \infty} \mu A_i$
+\end{enumerate}
+\textbf{Контр-пример для неконечного объема}\\
+$\mu$ -- дискретная мера\\
+$\fall k \in \Zset\ \mu(k) = 1$\\
+$\fall A \subset \Rset\ \mu A = \sum_{k\in A} 1$\\
+$\mu(\Rset) = +\infty$\\
+$A_i = [i, +\infty)$\\
+$\mu A_i = +\infty$\\
+$A = \bigcap A_i = \varnothing$\\
+$\mu A = 0$
+% лекция 20 (этот год)
+//todo
+\subsection{Криволинейный интеграл в $\Rset^m$}
+% лекция 19 (этот год) 0:0
+\textbf{Определение}\\
+Векторное поле $V: E \subset \Rset^m \rto \Rset^m$ -- непрерывное\\
+\textbf{Определение}\\
+Интеграл векторного поля по пути $I(V, \gamma) := \int_a^b \lan V(\gamma(t)), \gamma'(t)\ran \df t$
+$V = (V_1, \ldots, V_m)$\\
+$\gamma(t) = (\gamma_1(t), \ldots, \gamma_m(t))$\\
+$I(V, \gamma) = \int_a^b \sum_i V_i(\gamma(t))\cdot \gamma'_i(t) \df t$\\
+Обозначение: $I(V, \gamma) = \int_\gamma V_1\df x_1 + \ldots + V_m\df x_m$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item Линейность по полю:\\
+    $I(\alpha_1 V_1 + \alpha_2 V_2, \gamma) = \alpha_1 I(V_1, \gamma) + \alpha_2 I(V_2, \gamma)$
+    \item Аддитивность по дроблению:\\
+    $a < c < b$\\
+    $\gamma_1 = \gamma\vl_{[a, c]}, \gamma_2 = \gamma\vl_{[c,b]}$\\
+    $I(V, \gamma) = I(V, \gamma_1) + I(V, \gamma_2)$\\
+    Отсюда может рассматривать кусочно-гладкие пути
+    \item Замена переменной\\
+    $\gamma:[a,b] \rto E\subset \Rset^m$\\
+    $\phi:[p, q] \rto [a,b], \phi\in C^1$\\
+    $\ot\gamma = \gamma \circ \phi: [p, q] \rto E$\\
+    Тогда $I(V, \gamma) = I(V, \ot \gamma)$\\
+    \textbf{Доказательство}\\
+    $\int_a^b \lan V(\gamma(t)), \gamma'(t)\ran \df t = \int_p^q \lan V(\gamma(\phi(s))), \gamma'(\phi(s))\ran \phi'(s)\df s \int_p^q \lan V(\gamma(\phi(s))), \gamma'(\phi(s))\phi'(s)\ran\df s$
+    \item $\gamma_1: [a, b] \rto \Rset^m, \gamma_2:[c,d]\rto \Rset^m$\\
+    $\gamma_1(b) = \gamma_2(c)$\\
+    Определим $\gamma = \gamma_2\gamma_1: [a, b+d-c] \rto \Rset^m$\\
+    $t \mapsto \left\{\begin{array}{ll}
+        \gamma_1(t), & t \in [a,b]\\
+        \gamma_2(t - b + c), & t \in [b, b+d-c]
+    \end{array}\right.$\\
+    $I(V, \gamma) = I(V, \gamma_1) + I(V, \gamma_2)$
+    % лекция 19 (этот год) 0:35
+    \item Противоположный путь\\
+    $\gamma:[a,b] \rto \Rset^m$\\
+    $\gamma_-:[a,b]\rto \Rset^m$ -- обратный путь\\
+    $\gamma_-(t) = \gamma(a+b-t)$\\
+    Тогда $I(V,\gamma_-) = -I(V, \gamma)$
+    \item Оценка интеграла пути\\
+    $|I(V, \gamma)| \leq \max_{x \in \gamma([a,b])}|V(x)|l(\gamma)$, где $\gamma([a,b])$ -- носитель пути, $l(\gamma)$ -- длина пути\\
+    \textbf{Доказательство}\\
+    $\int_a^b \lan V(\gamma(t)), \gamma'(t)\ran \df t \leq \int_a^b |V(\gamma(t))| |\gamma'(t)| \df t\leq \max |V(\gamma(t))| \int_a^b |\gamma'(t)| \df t$
+\end{enumerate}
 \end{document}
