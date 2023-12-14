@@ -1516,9 +1516,173 @@ $\mu(\Rset) = +\infty$\\
 $A_i = [i, +\infty)$\\
 $\mu A_i = +\infty$\\
 $A = \bigcap A_i = \varnothing$\\
-$\mu A = 0$
-% лекция 20 (этот год)
-//todo
+$\mu A = 0$\\
+% лекция 20 0:0 (этот год)
+\textbf{Доказательство $1 \Rto 2$}\\
+$B_k := A_l \setminus A_{k+1}$\\
+$A_1 = \bigsqcup B_k \sqcup A$\\
+$\mu A_1 = \ub{сход.}{\sum \mu B_k} + \mu A$\\
+$A_n = \bigsqcup_{k \geq n} K_k \sqcup A$\\
+$\mu A_n = \sum_{k \geq n} \mu B_k + \mu A, n \rto +\infty$\\
+\textbf{Доказательство $2 \Rto  2' \Rto 1$}\\
+$2'$: непрерывность сверху на $\varnothing$\\
+$A_1 \supset A_2 \supset \ldots, \bigcap A_n = \varnothing \Rto \mu A_n \rto 0$\\
+$2 \Rto  2'$ -- тривиально\\
+Проверим счетную аддитивность\\
+$C = \bigsqcup_i C_i$\\
+Пусть $A_k := \bigsqcup_{i=k}^{\infty} C_i$\\
+$A_1 \supset A_2 \supset \ldots, \bigcap A_k = \varnothing$\\
+$C - C_1 \sqcup C_2 \sqcup \ldots \sqcup C_{k-1} \sqcup A_k$\\
+$\mu C = \sum_{i=1}^\infty \mu C_i + \mu A_k \Rto \mu C = \sum_{i=1}^\infty \mu C_i$\\
+\subsection{Продолжение меры}
+% лекция 20 0:23 (этот год)
+\textbf{Определение}\\
+$\mu: \mc A \rto \Rex$ -- мера\\
+Мера полная, если $\fall A \in \mc A, \mu A = 0\ \fall B \subset A\ B \in \mc A$ и $\mu B = 0$\\
+$A \in \mcA$. Тогда $A$ -- измеримое множество\\
+\textbf{Определение}\\
+$\mu$ -- $\sigma$-конечная, если $\ex P_k \in \mc A\ \mu P_k < +\infty, X = \bigcup P_k$\\
+\textbf{Теорема о стандартном продолжении меры}\\
+Пусть $X$ -- множество, $\mc P_0$ -- полукольцо его подмножеств\\
+$\mu_0: \mc P_0  \rto \Rset$ -- $\sigma$-конечная мера на $\mc P_0$\\
+Тогда $\ex \sigma$-алгебра $\mc A$ и мера $\mu: \mc A \rto \Rex$ такое, что 
+\begin{enumerate}
+    \item $\mc P_0 \subset \mc A, \mu \vl_{\mc P_0} = \mu 0$
+    \item $\mu$ -- полная
+    \item Если $\mc P: \mc P_0 \subset \mc P \subset \mc A$ и $\mu_1$ -- продолжение $\mu_0$ на $\mc P$, тогда $\mu\vl_{\mc P} = \mu_1$
+    % \item Если $\mc A_1 \supset \mc A$ -- $\sigma$-алгебра, $\mu_1$ -- полное продолжение $\mu_0$ на $\mcA_1$. Тогда $\mu_1\vl_{\mc A} = \mu$
+    \item Если $\mu_1$ -- полная мера на $\sigma$ -- алгебре $\mc A_1 \supset \mc P_0$ и $\mu_1$ -- продолжает $\mu_0$, то $\mc A_1 \supset \mc A\ \mu_1 \vl_\mcA = \mu$
+    \item $A \in \mc A, \mu A = \inf(\sum \mu_0 P_i: A \subset \bigcup_{i=1}^\infty P_i, P_i \in \mc P_0)$
+\end{enumerate}
+\textbf{Доказательство}\\
+$\fall A \subset X$ заведем $\mu^*: \mu^* A = \inf (\sum \mu_0 P_i: A \subset \bigcup P_i)$\\
+Она не аддитивна\\
+Она счетно полуаддитивна\\
+Будем говорить, что $A$ -- хорошо разбивающая, если $\fall B\subset X\ \mu^* B = \mu^*(B \cap A) + \mu^*(B \cap A^C)$\\
+$\mc A = \{A: A\text{ -- хорошо разбивающая}\}$\\
+% лекция 20 0:46 (этот год)
+\textbf{Замечание}\\
+Пусть $\mu A$ -- конечное\\
+Тогда $\fall \eps > 0 \ex (P_k^\eps): P_k^\eps \in \mc P_0, \mu A \leq \sum \mu P_k^\eps \leq \mu A + \eps (A \subset \bigcup P_k^\eps)$\\
+Тогда пусть $B_n := \bigcup_{k=1}^\infty P_k^{\frac1n}$\\
+$A \subset B_n, \mu A \leq \mu B_n \leq \mu A + \frac1n$\\
+$B:= \bigcap_{n=1}^\infty B_n$\\
+$A \subset B, \mu (B \setminus A) = 0$\\
+$\fall n\ B\setminus A \subset B_n\setminus A$
+% лекция 20 0:55 (этот год)
+\subsection{Мера Лебега}
+\textbf{Определение}\\
+$\mc P^m$ -- полукольцо ячеек в $\Rset^m$\\
+Классический объем: $\mu_0[a, b) = (b_1-a_1)\cdot\ldots\cdot(b_m-a_m)$\\
+\textbf{Теорема}\\
+Классический объем в $\Rset^m$ есть $\sigma$-конечная мера на $\mc P^m$\\
+\textbf{Доказательство}\\
+$\sigma$-конечность -- смотри на листик в тетради)\\
+Проверим счетную полуаддитивность\\
+$P = [a,b), P_n = [a_n, b_n), P \subset \bigcup P_n$\\
+Пусть $P \neq \varnothing$\\
+Возьмем $b'$ чуть меньше $b$: $[a,b'] \subset [a,b)$, чтобы $\mu_0(\ub{\bigsqcup D_i, \sum \mu D_i < \eps}{[a,b)\setminus [a,b')}) < \eps$\\
+Чуть уменьшим $a_n$: $(a_n', b'n) \supset [a_n, b_n)$\\
+$\mu([a'_n, b_n) \setminus [a_n, b_n)) \leq \frac{\eps}{2^n}$\\
+$[a, b']\subset \bigcup (a_n', b_n)$\\
+$[a, b']$ -- компакт. Тогда н.у.о. $\ex k: [a,b') \subset \bigcup_{n=1}^k [a_n', b_n)$\\
+Тогда $\us{\geq \mu([a,b)) - \eps}{\mu_0 [a, b')} \leq \sum \mu_0 [a_n', b_n)$\\
+$\mu([a,b)) - \eps \leq \mu_0 [a, b')$ по лемме\\
+$\sum \mu_0 [a_n', b_n) \leq \sum (\mu_0[a_n, b_n') + \frac\eps{2^n}) \leq \sum \mu_0[a_n, b_n) + \eps$\\
+Для произвольного $\eps$\\
+Тогда возьмем $\eps \rto 0$\\\\
+\textbf{Определение}\\
+Мера Лебега в $\Rset^m$ -- стандарное продолжение классического объема\\
+$\lambda_m$ -- мера Лебега в $\Rset^m$\\
+$\sigma$-алгебра, где она задана -- $\mc M^m$ -- \textit{$\sigma$-алгера множеств, измеримых по Лебегу}\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\mc M$ -- $\sigma$-алгебра, т.е. $A_1, A_2, \ldots \in \mc M \Rto A_1 \cup A_2 \cup \ldots \in \mc M, A_1 \cap A_2 \cap \ldots \in \mc M$\\
+    $\fall n\ \lambda A_n = 0 \Rto \lambda(\bigcup A_n) = 0$ и есть полнота: $B \subset \bigcup A_n \Rto B$ -- измеримо и $\lambda B = 0$\\
+    $\fall x \in \Rset^m\ \{x\}$ -- измеримо и $\lambda\{x\} = 0$\\
+    $Q \in \Rset^1$ -- измеримо и $\lambda_1(Q) = 0$\\
+    $A \subset \Rset^m$ -- счетно $\Rto A$ -- измеримо
+    \item $\mc M^m$ содержи все открытые и замкнутые множества\\
+    \textbf{Лемма}
+    \begin{enumerate}
+        \item $O \subset \Rset^m$ -- открытое. Тогда $\ex$ кубические ячейки $Q_o: O \subset \bigsqcup Q_i$ и при этом (по желанию) $\ol Q_i \subset O$ и (по желанию) $Q_i$ -- двоичные рациональные ячейки (т.е. концы задаются рациональными числами со знаменателем -- степенью 2)
+        \item $E \subset \Rset^m$ -- измеримое, $\lambda E = 0$\\
+        Тогда $\fall \eps > 0\ \ex Q_i$ -- кубические ячейки $: E \subset \bigcup Q_i, \sum \lambda Q_i < \eps$\\
+        Тогда $\fall \eps > 0\ \ex B_i$ -- шары $: E \subset \bigcup Q_i, \sum \lambda Q_i < \eps$
+    \end{enumerate}
+    \textbf{Доказательство}\begin{enumerate}
+        \item $\fall x \in O$ Пусть $Q(x)$ -- кубическая ячейка $: x \in Q(x) \subset O$, $Q$ -- двоичная рациональная\\
+        Тогда $O = \bigcup_{x\in O} Q(x)$. Заметим, что $Q$ -- счетное множество. Тогда объединение счетное\\
+        % лекция 20 1:27 (этот год)
+        Заменим объединение на конечное дизъюнктное\\
+        $Q_1 \rto Q_1$\\
+        $Q_2 \rto Q_2 \setminus Q_1$. $Q_2 \setminus Q_1$ -- не ячейка. Тогда представим как конечное объединение ячеек\\
+        $Q_n \rto Q_n \setminus Q_1 \ldots Q_{n-1}$
+        \item $0 = \lambda E = \inf \{\sum \lambda P_i: E \subset \bigcup P_i\}$\\
+        Подберем покрытие $E$ параллелепипедами $P_i: \sum \lambda P_i < \eps$\\
+        Теперь для $P_i$ подберем множество ячеек $Q_k$, чтобы $P_i \subset \bigcup Q_k$\\
+        Мы можем подбирать $Q_i$ так, чтобы $\lambda (\bigcup Q_k \setminus P_i) \leq \frac\eps{2^i}$\\
+        % лекция 22 0:09 (этот год)
+        Чтобы покрыть шарами, опишем шар вокруг ячейки. Т.к. сам шар можно вписать в ячейку, то мы можем оценить меру шара сверху и снизу
+    \end{enumerate}
+    \item Пример\\
+    $K \subset [0,1]$ -- канторово множество\\
+    $K_1 = [0, \frac13]\cup [\frac23, 1]$ (выкинули среднюю треть)\\
+    $K_2 = [0, \frac19] \cup [\frac29, \frac13] \cup [\frac23,\frac79] \cup [\frac89, 1]$ (выкинули средние части имеющихся отрезков)\\
+    $K_3 = \ldots$\\
+    $K = \bigcap_{n=1}^{\infty} K_n \neq \varnothing$\\
+    Все концы всех отрезков содержатся в $K$\\
+    $K$ -- измеримо\\
+    $\fall n: \lambda K \leq \lambda K_n = (\frac23)^n$\\
+    Отсюда $\lambda K = 0$\\
+    $K$ -- имеет мощность континуума\\
+    Возьмем произвольную бинарную последовательность\\
+    Пусть $0$ соответствует левому подотрезку, $1$ -- правому\\
+    Будем начинать в $K_1$\\
+    % лекция 22 0:17 (этот год)
+    Если видим $0$, спускаемся в первую треть отрезка, иначе -- в третью\\
+    Это отображение -- биекция\\
+    Т.о. мы сопоставили бинарную последовательность элементу из $K$\\
+    Это пример континуального множества меры 0
+    \item $\ex$ неизмеримые множества\\
+    Рассмотрим $\Rset$\\
+    Пусть $a\sim b \LRto a-b \in \Qset$\\
+    Рассмотрим $\Rset \cap [0,1] /_\sim$\\
+    $A$ -- множество, где из каждого класса эквивалентности $\Rset \cap [0,1] /_\sim$ взят один элемент\\
+    Пусть $A$ измеримо\\
+    Тогда $\fall t\ A+t$ измеримо ($A+t = \{a + t : a \in A\})$\\
+    Возьмем $\bigsqcup_{q \in Q, q \in [-1, 1]} (A+q) \subset [-1, 2]$\\
+    Заметим, что объединение правда дизъюнктное: $a+q_1 = b+q_2 \LRto a-b = q_2-q_1$, а это значит, что не может быть, чтобы $a \in A$ и $b \in A$\\
+    $[0, 1] \subset \bigsqcup_{q \in Q, q \in [-1, 1]}$: $x \in [0,1] \Rto \ex a \in A: x - a = q \in Q, q \in [-1, 1]$\\
+    Если $\lambda A = \alpha_0 > 0$\\
+    Тогда, с одной стороны, $\sum_q \lambda(A + q) \leq 3$\\
+    С другой стороны, $\sum_q \lambda(A+q) = \sum_q \alpha_0 = +\infty$\\
+    Если $\lambda A = 0$\\
+    Тогда, с одной стороны, $\sum_q \lambda(A + q) \geq 1$\\
+    С другой стороны, $\sum_q \lambda(A+q) = \sum_q \alpha_0 = 0$
+    \item Регулярность меры Лебега\\
+    \textbf{Лемма}\\
+    $A \in \mc M^m$\\
+    Тогда $\fall \eps > 0\ \ex $ откр. $\Gamma_\eps: A \subset \Gamma_\eps, \lambda(\Gamma_\eps \setminus A) < \eps$\\
+    Тогда $\fall \eps > 0\ \ex $ замк. $F_\eps: A \subset F_\eps, \lambda(A\setminus F_\eps) < \eps$\\
+    \textbf{Доказательство 1}\\
+    $A$ -- ограничено $\Rto \lambda A$ -- конечное\\
+    $\lambda A = \int(\sum \lambda P_k: A \subset \bigcup P_k)$\\
+    % лекция 22 0:40 (этот год)
+    Из технического описания $\inf$: $\fall \eps > 0\ \ex (P_k): \lambda A \leq \sum \lambda P_k < \lambda A + \frac\eps2$\\
+    Ячейки $P_k = [a_k, b_k)$ заменим на $(a_k^*, b_k) \supset P_k$ так, чтобы мера увеличилась на $\frac\eps{2^{k+1}}$\\
+    $\Gamma_\eps := \bigcup (a_k^*, b_k)$\\
+    Если $A$ -- не ограниченное\\
+    $\Rset^m = \bigsqcup Q_i$\\
+    $A = \bigsqcup A \cap Q_i$\\
+    $\lambda A = \sum \lambda (A \cup Q_i)$\\
+    $A \cup Q_i \subset G_{i, \frac\eps2}$\\
+    $\Gamma_\eps = \bigcup G_{i, \frac\eps2}$\\
+    $A = \bigcup (A\cup Q_i) \subset \bigcup G_{i, \frac\eps2}$\\
+    % лекция 22 0:46 (этот год)
+    $G_\eps \setminus A \subset \bigcup (G_{i, \frac\eps2} \setminus (A \cap Q_i))$\\
+    $\lambda(G_\eps \setminus A) \leq \sum \lambda(\ldots) \leq \sum \frac\eps{2^i} = \eps$
+\end{enumerate}
 \subsection{Криволинейный интеграл в $\Rset^m$}
 % лекция 19 (этот год) 0:0
 \textbf{Определение}\\
@@ -1564,4 +1728,68 @@ $I(V, \gamma) = \int_a^b \sum_i V_i(\gamma(t))\cdot \gamma'_i(t) \df t$\\
     \textbf{Доказательство}\\
     $\int_a^b \lan V(\gamma(t)), \gamma'(t)\ran \df t \leq \int_a^b |V(\gamma(t))| |\gamma'(t)| \df t\leq \max |V(\gamma(t))| \int_a^b |\gamma'(t)| \df t$
 \end{enumerate}
+\subsection{Потенциальные векторные поля}
+% лекция 21 (этот год) 0:0
+\textbf{Определение}\\
+$O \subset \Rset^m$ -- область, $V: O \rto \Rset^m$ -- векторное поле\\
+$V$ -- потенциальное, если $\ex f: O \rto \Rset: \fall x \in O\ \grad f = V$\\
+$f$ -- потенциал\\
+\textbf{"Загадка"}\\
+Если $f_1$ и $f_2$ -- потенциалы на области $O$\\
+Тогда $f_1 - f_2 \equiv \const$\\
+\textbf{Теорема (обобщенная формула Ньютона-Лейбница)}\\
+$V: O \subset \Rset^m \rto \Rset^m$ -- потенциальное поле\\
+$f$ -- потенциал, $\gamma$ -- кусочно-гладкий путь\\
+$\gamma:[a,b]\rto O, \gamma(a) = A, \gamma(b) = B$\\
+Тогда $\int_\gamma \sum_i V_i\df x_i = f(B) - f(A)$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item Если $\gamma$ -- гладкий путь\\
+    $\int_a^b \sum_{i=1}^m V_i(\gamma(t))\gamma'(t) \df t = f(\gamma_1(t), \ldots \gamma_m(t))\vl_a^b = f(B) - f(A)$
+    \item Если $\gamma$ -- кусочно-гладкий\\
+    Разобъем область определения на отрезки: $a=t_0 < t_1 < \ldots < t_{n-1} < t_n = b$\\
+    Посчитаем каждый интеграл и сложим
+\end{enumerate}
+\textbf{Определение}\\
+Интеграл поля $V$ не зависит от пути в области $O$, если $\fall a,b \in O \fall \gamma_1, \gamma_2$ -- кусочно-гладкие пути из $A$ в $B\ \int_{\gamma_1} \sum_i V_i\df i = \int_{\gamma_2} \sum_i V_i\df i$\\
+\textbf{Теорема (характеризация потенциальных векторных полей в терминах интегралов)}\\
+//Лекция 21 0:20. Дальше там ничего не видно\\
+//Лекции 22-23 тоже скипаю, мне лень. \\
+//Вот конспект, там есть \url{https://github.com/Jovvik/M3137year2019/blob/pdfs/analysis/3sem/final.pdf}
+\section{Метод Лапласа}
+% лекция 25 (этот год)
+\textbf{Лемма о локализации}\\
+$f$ -- непрерывная(суммируемая) на $[a,b], f \geq 0$\\
+$f$ -- <<не изсчезает>> вблизи $a: \ex U(a): \fall x \in U(a), x > a\ \int_a^x f(t)\df t > 0$\\
+$\phi$ -- убывает на $[a, b]$ <<почти строго>>:\\
+$\fall t \in (a, b)\ \phi(t) < \phi(a) = \lim_{x \rto a + 0} \phi(x)$\\
+(отсюда $\ex t_1 \in (a, t): \phi(t) < \phi(t_1) < \phi(a+0)$)\\
+Тогда $\fall c \in (a, b)\ \int_a^b f(t)e^{A\phi(t)}\df t \us{A \rto +\infty}\sim \int_a^c f(t)e^{A\phi(t)}\df t$\\
+\textbf{Доказательство}\\
+$M := \int_a^b |f|\df t < +\infty$\\
+$\int_c^b f(t)e^{A\phi(t)}\df t \leq e^{A\phi(c)}\int_c^b f \leq e^{A\phi(c)}M$
+Выберем $c_1 \in (a, c): \phi(c_1) > \phi(c)$\\
+$\int_a^c f(t)e^{A\phi(t)}\df t \geq \int_a^{c_1} f(t)e^{A\phi(t)} \df t \geq e^{A\phi(c_1)} \ub{:=m >0}{\int_a^{c_1} f \phi t}$\\
+$e^{A\phi(c)}M = o(e^{A\phi(c_1)}m)$ при $A \rto +\infty$\\
+\textbf{Следствие}\\
+В условиях леммы при фиксированном $c\in (a,b)$\\
+$\fall \eps > 0\ \ex A_0: \fall A > A_0\ \int_a^c f(t)e^{A\phi(t)} \df t < \int_a^b f(t)e^{A\phi(t)} \df t < (1 + \eps)\int_a^c f(t)e^{A\phi(t)} \df t$\\
+\textbf{Замечание}\\
+$g = O(f)$ при $t \rto a$\\
+Тогда $\int_a^b g(t)e^{A\phi(t)}\df t = O(\int_a^b fe^{A\phi}), A \rto +\infty$\\
+То же верно при $g=o(f), f \sim g$\\
+\textbf{Теорема (метод Лапласа)}\\
+$f \geq 0$ -- непрерывная(суммируемая) на $[a,b]$\\
+$f(t) \sim L(t-a)^q, t \rto a, L \in \Rset, q > -1$\\
+$\phi$ -- монотонно убывающая\\
+$\phi(a) - \phi(t) \sim c(t-a)^p, p > 0$\\
+Тогда $\int_a^ b f(t)e^{A\phi(t)} \df t \us{A\rto +\infty}\sim e^{A\phi(a)}\int_a^b L(t-a)^q e^{-Ac(t-a)^p}\df t$\\
+\textbf{Доказательство}\\
+Возьмем $\eps > 0$\\
+Выбираем $s: \fall t \in [a, a + \eps]\ 1-\eps < \frac{f(t)}{L(t-a)^q} < 1 + \eps, 1-\eps < \frac{\phi(a)-\phi(t)}{c(t-a)^p} < 1 + \eps$\\
+Тогда $\ex A_0\text{ -- из следствия}: \fall A > A_0\ \int_a^b fe^{A\phi} < (1+\eps) \int_a^{a+s} fe^{A\phi} = (1+\eps) e^{A\phi(a)}\int_a^{a+s} fe^{-A(\phi(a)-\phi(t))} \df t \us{\text{по следствию}}< (1+\eps)e^{A\phi(a)} (1+\eps) L \int_a^{a+s}(t-a)^q e^{-A(1-\eps)c(t-a)^p}$\\
+Сделаем замену $(1-\eps)^{\frac1p}(t-a) \rto t - a$\\
+$(1+\eps)e^{A\phi(a)} (1+\eps) L \int_a^{a+s}(t-a)^q e^{-A(1-\eps)c(t-a)^p} = (1+\eps)^2 e^{A\phi(a)}L\frac{1}{(1-\eps)^{\frac{p+1}{q}}} \int_a^{a+s(1-q)^{\frac{1}{p}}} (t-a)^q e^{-Ac(t-a)^p} \df t < \frac{(1+\eps)^2}{(1-\eps)^{\frac{p+1}q}} e^{A\phi(a)}L \int_a^b (t-a)^q e^{-Ac(t-a)^p}$\\
+С другой стороны, $\int_a^b fe^{A\phi} > \int_a^{a+s} fe^{A\phi} > (1-\eps) L e^{A\phi(a)} \int_a^{a+s} (t-a)^q e^{-Ac(1+\eps)(t-a)^p} \df t = \frac{1-\eps}{1+\eps^{\frac{p+1}q}} L e^{A\phi(a)}\int_a^{a+s(1+\eps)^{\frac1p}} (t-a)^q e^{-Ac(t-a)^p} \df t > \frac{1-\eps}{1+\eps^{\frac{p+1}q}} L e^{A\phi(a)}\int_a^{a+s} (t-a)^q e^{-Ac(t-a)^p} \df t > \frac{1-\eps}{(1+\eps)^{\frac{p+1}q + 1}} e^{A\phi(a)} \int_a^b L(t-a)^qe^{-Ac(t-a)^p}$\\
+Тогда $\fall \eps > 0\ \ex A_0: \fall A > A_0\ \frac{1-\eps}{(1+\eps)^{\frac{p+1}q + 1}} < \frac{\int_a^ b f(t)e^{A\phi(t)} \df t}{e^{A\phi(a)}\int_a^b L(t-a)^q e^{-Ac(t-a)^p}\df t} < \frac{(1+\eps)^2}{(1-\eps)^{\frac{p+1}q}}$ 
 \end{document}

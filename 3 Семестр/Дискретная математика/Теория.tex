@@ -983,6 +983,70 @@ $y$ -- элемент минимального веса такой, что $A_k 
 Если $w(y) < w(z)$, то $w(A_k \cup y) < w(A_{k+1})$\\
 Тогда $A_{k+1}$ -- не минимального веса\\
 \textbf{Доказательство корректности алгоритма}\\
-По индукции\\
-
+По индукции
+\subsection{Аксиоматизация матроида}
+\textbf{Определение}\\
+Ранговая функция: $r: 2^X \rto \Zset_+$\\
+$r(A) = \max\{|B|: B \subset A, B \in I\}$\\
+$r(M) = r(X)$\\
+\textit{В матричном матроиде}: ранг -- классический\\
+\textit{В графовом матроиде}:\\
+цикл -- классический\\
+$\rg = n - k$ -- количество вершин - количство компонент связности\\
+\textit{В циклическом матроиде}: $\rg(A) = \min(k, |A|)$\\
+цикл -- множество мощности $k+1$\\
+\textbf{Теорема (О базах)}\\
+$B$ -- базы $M$
+\begin{enumerate}
+    \item $B_1, B_2 \in B, B_1 \subset B_2 \Rto B_1 = B_2$
+    \item $B_1, B_2 \in B$\\
+    Тогда $\fall x \in B_1 \setminus B_2\ \ex y\in B_2 \setminus B_1: B_1 \setminus x \cup y \in B$
+\end{enumerate}
+\textbf{Теорема (аксиоматизация базами)}\\
+$X, B \subset 2^X, B \neq \varnothing$\\
+Если для $B$ выполнена предыдущая теорема, то $B$ -- база некоторого матроида\\
+\textbf{Теорема (о рангах)}\\
+$r: 2^X \rto \Zset_+$ для матроида $M$
+\begin{enumerate}
+    \item $0 \leq r(A) \leq |A|$
+    \item $A \subset B \Rto \rg(A) \leq \rg(B)$
+    \item $\rg(A\cup B) + \rg(A \cap B) \leq \rg(A) + \rg(B)$
+\end{enumerate}
+\textbf{Лемма}\\
+Пусть $A \in I$\\
+Тогда $\ex$ база $B: A \subset B$\\
+\textbf{Теорема (аксиоматизация рангами)}\\
+Если $r: 2^X \rto \Zset_+$ и выполнены аксиомы из предыдущей теоремы, то $r$ -- ранговая функция некоторого матроида\\
+\textbf{Теорема о циклах}\\
+$Cyc$ -- множество циклов матроида $M$
+\begin{enumerate}
+    \item $C_1, C_2 \in Cyc, C_1 \subset C_2 \Rto C_1 = C_2$
+    \item $C_1, C_2 \in Cyc, C_1 \neq C_2$\\
+    $\fall p \in C_1 \cap C_2\ \ex C_3 \in Cyc: C_3 \subset (C_1 \cup C_2)\setminus p$\\
+    \textbf{Доказательство}\\
+    $r((C_1 \cup C_2)\setminus p) \leq r(C_1 \cup C_2) \leq r(C_1) + r(C_2) - r(C_1 \cap C_2) = |C_1| - 1 + |C_2| - 1 - |C_1 \cap C_2| = |C_1 \cup C_2| - 2 < |(C_1 \cup C_2) \setminus p|$
+\end{enumerate}
+\textbf{Лемма}\\
+$A \not\in I \Rto \ex C \in Cyc: C \subset A$\\
+\textbf{Лемма}\\
+$B$ -- база матроида $M$\\
+$p \in X \setminus B$\\
+Тогда $\ex ! C \subset B \cup p, C \in Cyc$\\
+\textbf{Доказательство}\\
+Существование очевидно\\
+Пусть $C_1, C_2 \subset B \cup p$\\
+$p \in C_1 \cap C_2$\\
+Тогда $\ex C: C \subset (C_1 \cup C_2) \setminus p \subset B$ -- противоречие\\
+\textbf{Теорема о базах усиленная}\\
+Пусть $B$ -- базы матроида $M$\\
+$B_1, B_2 \in B$\\
+Тогда $\fall y\in B_2 \setminus B_1\ \ex x \in B_1 \setminus B_2: B_1 \cup y \setminus x \in B$\\
+\textbf{Доказательство}\\
+Возьмем $y$ и добавим в $B_2$\\
+$B_1 \cup y$ содержит единственный цикл $C$\\
+$\ex x \in (B_1 \setminus B_2) \cap C$\\
+Тогда $B_1 \cup y \setminus x$ не содержит циклов $\Rto$ база\\
+\textbf{Определение}\\
+$\lan A \ran = A \cup \{p: \rg (A \cup p) = \rg (A)\}$
+// Доказательства конспектировать лень
 \end{document}
