@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\input{../../header.tex}
+
+\title{Теория вероятности. Теория}
+\author{Александр Сергеев}
+\date{}
+\begin{document}
+\maketitle
+\section{Вероятностное пространство. Вероятность и ее свойство}
+\textbf{Определение}\\
+\textit{Алгебра событий}:\\
+$\Omega$ -- множество элементарных исходов\\
+$\mcA$ -- набор подмножеств $\Omega$\\
+$\mcA$ -- алгебра, если
+\begin{enumerate}
+    \item $\Omega \in \mcA$
+    \item $A \in \mcA \Rto \ol A = \Omega \setminus A \in \mcA$
+    \item $A, B \in \mcA \Rto A \cup B = A + B \in \mcA$
+\end{enumerate}
+Элементы алегбры -- \textit{события}\\
+\textbf{Операции с событиями}
+\begin{enumerate}
+    \item $A \cup B = A + B$
+    \item $A \cap B = AB = \ol A + \ol B$
+    \item $\ol A = \Omega \setminus A$
+    \item $A \setminus B = A - B = A\ol B$
+\end{enumerate}
+\textbf{Определение}\\
+$\sigma$-алгебра\\
+$\mcA$ -- сигма-алгебра
+\begin{enumerate}
+    \item $\mcA$ -- алгебра
+    \item $A_1, A_2, \ldots \in \mcA \Rto \bigcup A_i \in \mcA$
+\end{enumerate}
+\textbf{Определение}\\
+События $A, B$ -- \textit{несовместные} $AB = \varnothing$\\
+Набор несовместный, если события попарно несовместные\\
+\textbf{Определение(вероятностное пространство)}\\
+$\Omega$ -- множество элементарных исходов\\
+$\mcA$ -- сигма-алгебра\\
+$P: \mcA \rto \Rset$ -- вероятность, если
+\begin{enumerate}
+    \item $P(A) \geq 0$
+    \item $P(\Omega) = 1$
+    \item $P(\bigcup A_i) = \sum P(A_i)$
+\end{enumerate} 
+\textbf{Определение(вероятностное пространство в широком смысле)}
+$\Omega$ -- множество элементарных исходов\\
+$\mcA$ -- алгебра\\
+$P: \mcA \rto \Rset$ -- вероятность, если
+\begin{enumerate}
+    \item $P(A) \geq 0$
+    \item $P(\Omega) = 1$
+    \item $\bigcup^\infty A_i \Rto P(\bigcup^\infty A_i) = \sum P(A_i)$
+\end{enumerate}
+\textbf{Теорема о продолжении меры}\\
+$\lan \Omega, \mcA, P\ran$ -- вероятностное пространство в широком смысле\\
+Тогда $\ex! Q: \sigma(\mcA) \rto \Rset$ -- вероятность, $Q\vl_{\mcA} = P$, где $\sigma(\mcA)$ -- сигма-алгебра, содержащая $\mcA$\\
+\textbf{Определение}\\
+$\mcA$ -- система интервалов на $\Rset$, замкнутая относительно конечного объединения и пересечения\\
+$\mcB = \sigma(\mcA)$ -- борелевская сигма-алгебра\\
+\textbf{Примеры вероятностных пространств}
+\begin{enumerate}
+    \item Модель классической вероятности\\
+    $\Omega = \{\omega_1, \ldots, \omega_N\}$\\
+    $\mcA = 2^\Omega$\\
+    $P(\{\omega_i\}) = P(\omega_i) = \frac1N$\\
+    $\mcA = \{\omega_{i_1}, \ldots, \omega_{i_M}\} \Rto P(\mcA) = \frac{M}{N}$
+    \item $\Omega$ -- набор $\{0^i, 1\}, i \in \Nset_0 = \{0, 1, 2, 3, \ldots\}$\\
+    $P(0^i1)=q^ip$
+    \item Модель геометрической вероятности
+    $\Omega$ -- ограниченное, измеримое по Лебегу множество\\
+    $\mcA$ -- измеримое по Лебегу подмножество $\Omega$\\
+    $P(A) = \frac{\lambda A}{\lambda \Omega}$
+\end{enumerate}
+\textbf{Теорема (свойство вероятности)}
+\begin{enumerate}
+    \item $A \subset B \Rto P(A) \leq P(B)$
+    \item $P(A) \leq 1$
+    \item $P(A) + P(\ol A) = 1$
+    \item $P(A+B) = P(A) + P(B) - P(AB)$
+    \item $P(\varnothing) = 0$
+    \item $P(\bigcup A_i) \leq \sum P(A_i)$
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $P(B) = P(A) + P(B - A)$
+    \item $A \subset \Omega \Rto P(A) \leq 1$
+    \item $A \sqcup \ol A = \Omega$
+    \item $B = AB \sqcup (B \setminus AB)$
+    \item $B_1 = A_1$
+    $B_2 = A_2 \setminus A_1$\\
+    $B_n = A_n \setminus (A_1 \cup \ldots A_{n-1})$
+    $\bigsqcup B_i = \bigcup A_i$\\
+    $B_i \subset A_i$\\
+    $P(\bigcup A_i) = P(\bigsqcup B_i) = \sum P(B_i) \leq \sum P(A_i)$
+\end{enumerate}
+\textbf{Теорема (формула включения/исключения)}\\
+$P(A_1 + \ldots + A_n) = \sum_i P(A_i) - \sum_{i < j} P(A_iA_j) + \sum_{i<j<k} P(A_iA_jA_k) + \ldots (-1)^{n+1} \sum_{i_1 < \ldots < i_n} P(A_{i_1} \ldots A_{i_n})$
+\textbf{Доказательство}\\
+Доказательство по индукции\\
+\end{document}
