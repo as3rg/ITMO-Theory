@@ -99,4 +99,53 @@ $\mcB = \sigma(\mcA)$ -- борелевская сигма-алгебра\\
 $P(A_1 + \ldots + A_n) = \sum_i P(A_i) - \sum_{i < j} P(A_iA_j) + \sum_{i<j<k} P(A_iA_jA_k) + \ldots (-1)^{n+1} \sum_{i_1 < \ldots < i_n} P(A_{i_1} \ldots A_{i_n})$
 \textbf{Доказательство}\\
 Доказательство по индукции\\
+\textbf{Теорема}\\
+$\mcA$ -- алгебра(?) на $\Omega$, $p$ -- мера\\
+Тогда равносильны
+\begin{enumerate}
+    \item $p$ -- счетно-аддитивно
+    \item $p$ -- конечно-аддитивно+$\fall (B_n)_{n=1}^\infty: B_{n+1} \subset B_n, B = \bigcap B_n \Rto P(B_n) \rto P(B)$ -- непрерывность сверху
+    \item $p$ -- конечно-аддитивно+$\fall (A_n)_{n=1}^\infty: A_{n+1} \supset A_n, A = \bigcup A_n \Rto P(A_n) \rto P(A)$ -- непрерывность снизу
+\end{enumerate}
+\textbf{Доказательство (непрерывность сверху) $\LRto$ (непрерывность снизу)}\\
+$A(n): A_n \subset A_{n+1}; A = \bigcup A_n$\\
+$B_n := \ol A_n, B := \ol A$\\
+$B_n \supset B_{n+1}$\\
+$B = \ol A = \ol{\bigcup A_n} = \cap \ol A_n = \cap B_n$\\
+$p(B_n) = 1 - p(A_n) \rto 1 - p(A) = p(B)$\\
+\textbf{Доказательство $1 \rto 2$}\\
+$C_1 = B_1\ol B_2$\\
+$C_2 = B_2\ol B_3$\\
+$C_k = B_k\ol B_{k+1}$\\
+$B_k = B \sqcup \bigsqcup_{j=k}^\infty C_j$\\
+$p(B_k) = p(B) + \ub{\rto 0}{\sum_{j=k}^\infty p(C_j)}$\\
+$p(B_k) \rto p(B)$\\
+\textbf{Доказательство $2 \rto 1$}\\
+$\sum_{k=1}^\infty p(C_k) = \lim_n \sum_{k=1}^n p(C_k) = \lim_n p(\bigsqcup_{k=1}^n C_k) = p(B)$
+\section{Условная вероятность. Формуоа полной вероятности. Теорема Байеса}
+\textbf{Определение (условная вероятность)}\\
+$(\Omega, \mcA, p)$ -- вероятностное пространство\\
+$B \in \mcA: p(B) > 0$\\
+$p_B(A) = p(A|B) := \frac{p(AB)}{p(B)}$\\
+\textbf{Замечание}\\
+$p(AB) = p(A)p(B|A)$\\
+\textbf{Теорема (формула произведения вероятностей)}\\
+$p(A_1\ldots A_1) = p(A_1)p(A_2|A_1)\ldots p(A_n|A_1\ldots A_{n-1})$\\
+\textbf{Доказательство}\\
+Тривиально\\
+\textbf{Определение}\\
+$A_1, \ldots, A_n$ -- независимые, если $\fall A_{i_1},\ldots, A_{i_k}\ p(A_{i_1}\ldots A_{i_k}) = p(A_{i_1})\ldots p(A_{i_k})$\\
+\textbf{Теорема (формула полной вероятности)}\\
+$A \subset \bigsqcup_{k} B_k$ (как правило, $\bigsqcup B_k = \Omega)$\\
+Тогда $p(A) = \sum_k p(A|B_k)p(B_k)$\\
+\textbf{Доказательство}\\
+$p(A)=p(A\cap \bigsqcup B_k) = p(\bigsqcup AB_k) = \sum_k p(AB_k) = \sum p(A|B_k)p(B_k)$\\
+\textbf{Теорема Байеса}\\
+Краткая форма:\\
+$p(B|A) = \frac{p(A|B)p(B)}{p(A)}$\\
+Полная:\\
+$A\subset \bigsqcup B_k$\\
+$\ub{\text{апостериорные; posterior}}{p(B_k|A)} = \frac{\ub{\text{likelyhood}}{p(A|B_k)}\ub{\text{априорные; prior}}{p(B_k)}}{\sum_j p(A|B_j)}p(B_j)$\\
+\textbf{Доказательство краткой формы}\\
+$p(B|A) = \frac{p(AB)}{p(A)} = \frac{p(A|B)p(B)}{p(A)}$\\
 \end{document}

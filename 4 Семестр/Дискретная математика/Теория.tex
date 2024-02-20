@@ -46,7 +46,7 @@ $b_0$ -- может быть различным\\
 \textbf{Определение}\\
 \textit{Дробно-рациональная производящая функция} $A(t) = \frac{P(t)}{Q(t)}, q_0 \neq 0, P, Q$ -- конечные многочлены\\
 \textbf{Определение}\\
-Линейное рекурр2ентное соотношение -- $a_n = \sum_{i=1}^k c_ia_{n-i}$\\
+Линейное рекуррентное соотношение -- $a_n = \sum_{i=1}^k c_ia_{n-i}$\\
 $a_1, \ldots, a_k$ -- конкретные значения\\
 \textbf{Теорема ч.1 (теорема о дробно-рациональных производящих функциях)}\\
 $A(t) = \frac{P(t)}{Q(t)} \LRto a_n = \sum_{i=1}^k c_ia_{n-i} \land Q(t) = 1-c_1t-\ldots - c_kt^k$\\
@@ -95,4 +95,94 @@ $\frac{P(t)}{Q(t)} = \frac{P(t)Q(-t)}{\ot Q(t^2)} = \frac{\ot P(t^2) + t\ol P(t^
 У последовательности четных членов производящая функция -- $\frac{\ot P}{\ot Q}$, у нечетных -- $\frac{\ol P}{\ot Q}$\\
 Т.о. мы можем каждый раз уменьшать последовательность в два раза\\
 Итого асимтотика $O(k^2\log n)$\\
+\textbf{Теорема ч.2 (о линейных рекуррентных соотношениях)}\\
+Тогда эквивалентны:
+\begin{enumerate}
+    \item $n \geq m$\ $a_n = \sum_{i=1}^k c_i a_{n-i}$
+    \item $A(t) = \frac{P(t)}{Q(t)}, Q(t) = 1-c_1t-\ldots-c_kt^k$
+    \item $a_n = \sum_{i=1}^s p_i(n) r_i^n, p_i$ -- многочлен, $r_i \in \Cset$
+\end{enumerate}
+\textbf{Доказательство $2 \Rto 3$}\\
+Пусть $Q = \prod_{i=1}^{s}(1-r_it)^{d_i}$\\
+$t_i=\frac{1}{r_i}$ -- корни кратности $d_i$\\
+$\deg p_i = d_i-1$\\
+\textbf{Лемма (о разложении на простые дроби)}\\
+$Q(t) = \prod_{i=1}^{s} (1-r_it)^{d_i}$\\
+Тогда $\frac{P(t)}{Q(t)} = \sum_{i=1}^s \frac{P_i(t)}{(1-r_it)^{d_i}}$\\\\
+$\frac{P(t)}{Q(t)} = \sum_{i=1}^s \frac{P_i(t)}{(1-r_it)^{d_i}} = \sum_{i=1}^s A_i(t)$\\
+$a_n = \sum_{i=1}^s a_{i,n}$\\
+$\frac1{1-rt} = 1 + rt + r^2t^2 + \ldots; a_n=r^n$\\
+$(\frac1{1-rt})' = \frac{r}{(1-rt^2)^2} = r+2r^2t+3r^3t^2+\ldots$\\
+$\frac{1}{(1-rt^2)^2} = 1+2rt+3r^2t^2+\ldots; a_n = r^n(n+1)$\\
+$(\frac1{(1-rt)^d})' = \frac{rd}{(1-rt)^{d+1}}; a_n = p_d(n+1)r^{n+1}(n+1)\frac{1}{rd}$\\
+$p_{d+1}(n) = p_d(n+1)(n+1)\frac{1}{d}$\\
+$\deg p_{d+1}(n) = d$\\
+//todo\\
+\textbf{Доказательство $3\Rto 2$}\\
+Достаточно доказать, что если $a_n = n^{d-1}r^n$, то $A(t) = \frac{P(t)}{(1-rt)^d}$\\
+\begin{enumerate}
+    \item $d=1$\\
+    Слева:\\
+    $a_n = r^n$\\
+    Справа:\\
+    $A(t) = \frac{1}{1-rt}$
+    \item $A_d(t) = \frac{P_d(t)}{(1-rt)^d}$\\
+    Справа:\\
+    $\frac1rA'_d(t) = \frac1r\frac{P_d'(t)(1-rt)^d+rd(1-rt)^{d-1}P_d(t)}{(1-rt)^{2d}} = \frac1r\frac{P_d'(t)(1-rt)+rP_d(t)}{(1-rt)^{d+1}}$\\
+    Слева:\\
+    $a_n = (n+1)^{d-1}(n+1)r^{n+1}\frac1r=(n+1)^dr^{n}=n^dr^n + \sum_{i=1}^d \binom{d}{i}n^{d-i}r^n$\\
+    $A(t) = \frac{1}{r}(A'_d(t)) - \sum_{i=1}^d\binom{d}{i}\frac{P_{d-i}(t)}{(1-rt)^{d-i+1}}$
+\end{enumerate}
+Попробуем найти производящую функции чисел Каталана\\
+$c_n = \sum_{i=0}^{n-1} c_ic_{n-1-i}$\\
+Пусть $C(t) = c_0 + c_1t + \ldots$\\
+$C(t)C(t)t = C(t)-1$\\
+$C^2(t)t + 1 = C(t)$\\
+$C^2(t)t - C(t) + 1 = 0$\\
+$C(t) = \frac{1\pm\sqrt{1-4t}}{2t}$\\
+$\sqrt{1-4t} = \sum_{k=0}^\infty \binom{\frac12}{k}(-4t)^k$\\
+$C(t) = \frac{1+\sqrt{1-4t}}{2t}$ -- некорректная дробь, т.к. на $t$ делить нельзя\\
+$C(t) = \frac{1-\sqrt{1-4t}}{2t} = \frac{1-\sum_{k=0}^\infty \binom{\frac12}{k}(-4t)^k}{2t} = \frac{-\sum_{k=1}^\infty \binom{\frac12}{k}(-4t)^k}{2t}$\\
+$C(t) = \frac{2^n(2n+1)!!}{n!}$ (почему-то численно не сходится)
+\section{Конструируемые комбинаторные объекты}
+Мы будем говорить о непомеченных комбинаторных объектах\\
+Представим, что $A(t) \lrto a_0, a_1, \ldots, a_n, \ldots$\\
+$a_n$ -- количество комбинаторных объектов размера $n$\\
+Комбинаторные объекты размеров $n$ и $m$ можно сложить в комбинаторный объект размера $n+m$ единственным способом\\
+$A\sqcup B \lrto A + B$ -- объединение дизъюнктных множество\\
+$A \times B \lrto AB$\\
+$C = List(A) = \sqcup_{k=0}^\infty A^k$\\
+$C(t) = \sum_{k=0}^\infty A^k(t) = \frac{1}{1-A(t)}$\\
+$List(A) = \ub{[\ ]}1 + A\times List(A)$\\
+\textbf{Пример (натуральные числа)}\\
+$\Nset_0 = \Nset \cup \{0\}$\\
+$U = \{0\}$\\
+$U(t) = t$\\
+$\Nset_0 = List(U) = \frac{1}{1-t} = 1 + t + t^2 + t^3 + \ldots$\\
+$\Nset = \frac{1}{1-t} - 1 = \frac{t}{1-t}$\\
+\textbf{Пример (натуральные числа)}\\
+$B=\{\circ, \bullet\}$\\
+$B(t) = 2t$\\
+$List(B) = \frac{1}{1-2t}$\\
+\textbf{Пример (замощение)}\\
+$D = \{-^2, \text{|}\}$\\
+$D(t) = t + t^2$\\
+$List(D) = \frac{1}{1-t-t^2}$\\\\
+$Set(A) = \prod_{x\in A} (1+x)$ -- каждый объект либо берем, либо нет\\
+//$w(x)$ -- количество объектов в $x$ | вес $x$\\
+$Set(A) = \prod_{k=0}^\infty \prod_{x\in A, w(x)=k}(1+x)$ -- сгруппируем по весу\\
+$Set(A) = \prod_{k=0}^\infty (1+t^k)^{a_k} = B$\\
+//$[t^n]A$ -- возвращает множитель при $t^n$\\
+$b_n = [t^n] \prod_{k=0}^\infty (1+t^k)^{a_k} = [t^n]\prod_{k=0}^n (1+t^k)^{a_k}$\\\\
+$Set(U) = 1 + t$\\
+$Set(B) = 1 + 2t + t^2$\\
+$Set(N) = \prod_{k=1}^n (1+t^k) = 1 + t + t^2 + 2t^3 + 2t^4 + 3t^5 + 4t6+ \ldots$ -- количество разбиений на различные слагаемые\\\\
+$Multiset(A) = \prod_{x\in A} (1+x+x^2+x^3 + \ldots) = \prod_{x\in A} \frac1{1-x} = \prod_{k=0}^\infty \frac{1}{(1-t^k)^{a_k}}$\\
+$MSet(U) = \frac{1}{1-t}$\\
+$MSet(B) = (\frac1{1-t})^2$
+$MSet(N) = \sum_{k=0}^\infty p_nt^n, p_n$ -- число разбиений $n$ на слагаемые\\\\
+$Cyc(A) = List(A) /_{\sim}, \sim$ -- равенство с точностью до перестановки\\
+$C_n$ -- циклы веса $n$\\
+$C_n = \bigcup_{l=1}^n C_{n,l}$\\
+//todo продолжить
 \end{document}

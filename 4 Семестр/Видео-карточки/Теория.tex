@@ -6,5 +6,56 @@
 \date{}
 \begin{document}
 \maketitle
-
+\section{Общие штуки}
+Платформы(Intel, AMD, NVIDIA) содержат девайсы(видяха 1, видяха 2)
+\begin{lstlisting}{language=cpp}
+clGotPlatformIDs(NULL, 0, &sz); //return memory size needed in sz
+clGotPlatformIDs(buffer, buffer_size, NULL); //return platform list in buffer
+\end{lstlisting}
+Возвращает переменное количество аргументов
+\begin{lstlisting}{language=cpp}
+#include <CL/cl.h>  //minimal needed header
+\end{lstlisting}
+Виды функций в cl:
+\begin{enumerate}
+    \item возвращает код ошибки
+    \item функции \textit{clCreate*}: возвращает объект, код ошибки по указателю
+\end{enumerate}
+\begin{lstlisting}{language=cpp}
+clGetPlatformInfo(...); //get platform info
+clGetDeviceIDs(platform, ...);
+clGetDeviceInfo(device, ...);
+\end{lstlisting}
+\section{Создание контекста}
+\begin{lstlisting}{language=cpp}
+clCreateContext(...);
+id = clCreateProgramWithSource(...);    //load files in context
+err = clBuildProgram(id, device_list, build_options, ...);   //compile file $id for devices from $device_list and link it to program $id, build_options = "...", not NULL
+clGetProgramBuildInfo(...);
+\end{lstlisting}
+\section{Код}
+\begin{lstlisting}{language=cl}
+kernel void add(global const int *a, global const int *b, global int *c) {
+    *c = *a + *b;
+}
+\end{lstlisting}
+\textit{kernel} -- точка входа
+\begin{lstlisting}{language=cpp}
+clCreateKernel(...);
+\end{lstlisting}
+\section{Память}
+size\_t на девайсе != size\_t на хосте
+\begin{lstlisting}{language=cpp}
+cl_mem buf = clCreateBuffer(...);
+clCreateCommandQueue(device, flags); //flags: profiling_info -- enable stats, out_of_order_execution_enable -- do not use it
+clSetKernelArg(id, arg_n, buf, buf_size);
+clEnqueueWriteBuffer(buf, data, data_size, ...);  //flag: blocking_write. If not, 
+clEnqueueNDRangeKernel(dimentions, &global_work_size, offset=NULL, local_work_size=NULL);             //dimentions = 1, global_work_size = 1, 
+clEnqueueReadBuffer(...);  //flag: blocking_read
+clReleaseMemObject(buf);
+\end{lstlisting}
+Можно сделать запись и исполнение неблокирующими, а чтение -- блокирующим\\
+Блокирующие операции запускают очередь\\
+Т.к. действия выполняются последовательно, то мы заблокируемся до конца исполнения\\
+CreateBuffer -- ленивый, т.е. память создается в момент использования\\
 \end{document}
