@@ -147,5 +147,269 @@ $p(B|A) = \frac{p(A|B)p(B)}{p(A)}$\\
 $A\subset \bigsqcup B_k$\\
 $\ub{\text{апостериорные; posterior}}{p(B_k|A)} = \frac{\ub{\text{likelyhood}}{p(A|B_k)}\ub{\text{априорные; prior}}{p(B_k)}}{\sum_j p(A|B_j)}p(B_j)$\\
 \textbf{Доказательство краткой формы}\\
-$p(B|A) = \frac{p(AB)}{p(A)} = \frac{p(A|B)p(B)}{p(A)}$\\
+$p(B|A) = \frac{p(AB)}{p(A)} = \frac{p(A|B)p(B)}{p(A)}$\\\
+\section{Схема Бернулли. Полиноминальная схема. Предельные теоремы, связь со схемой Бернулли}
+\textbf{Определение (независимые испытания)}\\
+$n \in \Nset$\\
+$(\Omega_1, \mcA_1, p_1), \ldots (\Omega_n, \mcA_n, p_n)$ -- вероятностные пространтсва, описывающие виды экспериментов\\
+$\Omega^{(n)} = \Omega_1 \times \ldots \times \Omega_n$\\
+$\mcA^{(n)} = \mcA_1 \times \ldots \times \mcA_n$\\
+$p^{(n)}: \mcA^{(n)} \rto \Rset$\\
+$p^{(n)}(A_1\times \ldots \times A_n) = p_1(A_1)\cdot\ldots\cdot p_n(A_n)$\\
+$(\Omega^{(n)}, \mcA^{(n)}, p^{(n)})$ -- описание $n$ независимых испытаний\\
+\textbf{Замечание}\\
+$\mcA^{(n)}$ может не быть сигма-алгеброй\\
+$(\Omega^{(n)}, \mcA^{(n)}, p^{(n)})$ -- вероятностное пространство в широком смысле\\
+$\sigma(\mcA^{(n)})$ -- сигма-алгебра\\
+\textbf{Определение (схемы Бернулли)}\\
+$n \in \Nset$\\
+$p \in (0, 1)$ -- вероятность успеха\\
+$q = 1 - p$ -- вероятность неудачи\\
+$\Omega = \{0, 1\}$\\
+$\mcA = 2^\Omega$\\
+$\Omega^{(n)} = \{0, 1\}^n$\\
+$w \in \Omega^{(n)}$ -- вектор из нуля и единиц\\
+$p(w) = p^{\sum w_i}q^{n-\sum w_i}$\\
+$(\Omega^{(n)}, \mcA^{(n)}, p^{(n)})$ -- схема Бернулли\\\\
+\textbf{Теорема}\\
+$S_n$ -- количество успехов в $n$ испытаниях\\
+$p(S_n = k) = \binom{n}{k} p^k q^{n-k}$\\
+\textbf{Теорема (о наиболее вероятном $k_*$)}\\
+$p_k := p(S_n = k)$\\
+$\frac{p_k}{p_{k+1}} = \frac{(k+1)q}{(n-k)p} \vee 1$\\
+$(k+1)(1-p) \vee (n-k)p$\\
+$k+1-pk-p \vee np - pk$\\
+$k \vee (n+1)p - 1$
+\begin{enumerate}
+    \item $p(n+1) \in \Nset$\\
+    Тогда $\ex k_0: k_0 = p(n+1) - 1$\\
+    Если $k < k_0$, то $p_k < p_{k_0 + 1}$\\
+    Если $k = k_0$, то $p_{k_0} = p_{k_0 + 1}$\\
+    Если $k > k_0$, то $p_{k} > p_{k_0+1}$\\
+    Т.о. $k_0, k_0 + 1$ -- наиболее вероятные
+    \item $p(n+1) \not\in \Nset$\\
+    Тогда $\ex k_1: p_{k_1} < p_{k_1+1}, p_{k_1+1} > p_{k_1+2}$\\
+    Т.о. $k_1$ -- наиболее вероятные
+\end{enumerate}
+Тогда $k_* = \left\{\begin{array}{ll}
+    \lceil p(n+1) - 1 \rceil, & p(n+1) \not\in \Nset\\
+    p(n+1)-1, p(n+1), & p(n+1) \in \Nset
+\end{array}\right.$\\
+\textbf{Утверждение}\\
+$p(S_n \geq 1) = 1 - q^n$\\
+\textbf{Утверждение}\\
+$\alpha \in (0, 1)$\\
+$p \in (0, 1)$\\
+$n: p(S_n \geq 1) \geq \alpha$\\
+Ответ: $n = \lceil \log_q (1-\alpha) \rceil$\\
+\textbf{Определение (полиноминальная схема)}\\
+$n$ -- количество испытаний\\
+$m$ -- количество возможных исходов\\
+$p = (p_1, \ldots, p_m)$ -- вектор вероятностей исходов\\
+$\sum p = 1$\\
+$\Omega = \{ (i_1, \ldots, i_m)^T \in \{0,1\}^m: \sum_j i_j = 1\}$ -- множество столбцов с одной единицей\\
+$\Omega^{(n)} = \{ A \in M_{m\times n}: A_{ij} \in \{0, 1\}, \sum_i A_{ij} = 1 \}$\\
+$p(A) = p_1^{\sum_j A_{1,j}}\cdot \ldots \cdot p_m^{\sum_j A_{m,j}}$\\
+\textbf{Теорема}\\
+$S_{n, j}$ -- количество исходов типа $j$ в $n$ испытаниях\\
+$p(S_{n,1}=k_1, \ldots, S_{n, m} = k_m) = \frac{n!}{k_1!\ldots k_m!} p_1^{k_1} \ldots p_m^{k_m}, \sum k_j = n$\\
+\textbf{Теорема (закон больших чисел в форме Бернулли)}\\
+$\fall \eps\ p(|\frac{S_n}{n} - p| > \eps) \xrto[n]{} 0$\\
+\textbf{Теорема (теорема Пуассона)}\\
+$p_n = \frac\lambda n + o(\frac1n), n \rto \infty$ -- схема серий из $n$ испытаний (вероятность успеха при $n$ испытаниях)\\
+Тогда $p(S_n = k) \xrto[n\rto \infty]{} e^{-\lambda} \frac{\lambda^k}{k!}$\\
+\textbf{Доказательство}\\
+$p(S_n = k) = \frac{n!}{k!(n-k)!}(\frac{\lambda}{n} + o(\frac1n))^k(1-\frac\lambda n + o(\frac1n))^{n-k} =\\= \frac{1}{k!} \frac{\prod_{j=0}^{k-1}(n-j)}{n^k} (\lambda+o(\frac1n))^k \frac{(1-\frac\lambda n +o(\frac1n))^n}{(1-\frac\lambda n + o(\frac1n))^k} = \frac{\lambda^k}{k!}e^{-\lambda}$\\
+\textbf{Замечание (о погрешности)}\\
+$\lambda = np$\\
+Тогда $|p(S_n = k) - e^{-\lambda}\frac{\lambda^k}{k!}| \leq np^2 = \frac{\lambda^2}{n}$\\
+\textbf{Лемма 1}\\
+$k \rto \infty, (n \geq k \Rto n \rto \infty)$\\
+$p_* = \frac kn$\\
+$H(x) = x \ln \frac xp + (1-x)\ln \frac{1-x}{1-p}$ -- энтропия\\
+$n - k \rto \infty \Rto p(S_n = k) \sim \frac{1}{\sqrt{2\pi n p_* (1-p_*)}}\exp(-n H(p_*))$\\
+\textbf{Доказательство}\\
+$p(S_n = k) = \frac{n!}{k!(n-k)!}p^k (1-p)^{n-k} \sim \frac{\sqrt{2\pi n}n^n e^{-n} p^k (1-p)^{n-k}}{\sqrt{2\pi k} k^k e^{-k}\sqrt{2\pi (n-k)} (n-k)^{n-k} e^{-(n-k)}} = \frac{n^k n^{n-k}(1-p)^{n-k}p^k}{\sqrt{2\pi p_* n(1-p_*)} k^k (n-k)^{n-k}} = \frac{1}{\sqrt{\ldots}} \exp{\ln{\frac{n^kp^k}{k^k} \cdot \frac{n^{n-k}(1-p)^{n-k}}{(n-k)^{n-k}}}} \\= \frac1{\sqrt{\ldots}} \exp{k \ln \frac{p}{p_*} + (n-k)\ln \frac{n(1-p)}{n-k}} \\= \frac1{\sqrt{\ldots}}\exp(-n \ub{H(p_*)}{(p_* \ln \frac{p}{p_*} + (1-p_*)\ln \frac{1-p_*}{1-p})})$\\
+\textbf{Лемма 2}\\
+$H(p_*) = \frac1{2p(1-p)}(p-p_*)^2 + O((p-p_*)^3)$\\
+При $p_* \rto p$\\
+\textbf{Доказательство}\\
+$H(p) = 0$\\
+$H'(x) = \ln \frac xp - 1 - \ln \frac{1-x}{1-p} + 1; H'(p) = 0$\\
+$H''(x) = \frac1x + \frac1{1-x} = \frac1{x(1-x)}; H''(p) = \frac1{p(1-p)}$\\
+\textbf{Теорема (локальная предельная Муавра-Лапласа)}\\
+Требуем Лемму 1 + ($k-np = o(n^{\frac23})$)\\
+Тогда $p(S_n = k) \sim \frac1{\sqrt{2\pi np(1-p)}} \exp(-\frac{(k-np)^2}{2np(1-p)})$\\
+\textbf{Доказательство}\\
+$p_* - p = o(n^{-\frac13})$ -- из $k-np = o(n^{\frac23})$\\
+Применим Л2\\
+$\ub{\text{из Л1}}{\frac{1}{\sqrt{2\pi n p_* (1-p_*)}}\exp(-n H(p_*))} = \frac1{\sqrt{2\pi n p_*(1-p_*)}} \exp{-n(\frac{(p-p_*)^2}{2p(1-p)}+O((p-p_*)^3))} \sim\\ \frac1{\sqrt{2\pi np(1-p)}} \exp(-\frac{n(\frac kn - p)^2}{2p(1-p)} + nO(o(n^{-1}))) =\\ \frac1{\sqrt{2\pi np(1-p)}}\exp (-\frac{(k-np)^2}{2np(1-p)}+o(1))$\\\\\\\\
+\textbf{Теорема(интегральная Муавра-Лапласа)}\\
+$F_n(x) = p(\frac{S_n - np}{\sqrt{npq}} \leq x)$\\
+$\Phi(x) = \int_{-\infty}^x \phi$\\
+$\phi = \frac1{\sqrt{2\pi}} e^{-\frac {x^2}2}$\\
+Тогда $\sup_{-\infty \leq x_1 \leq x_2 \leq +\infty} |F_n(x_2) - F_n(x_1) - \ub{\frac1{\sqrt{2\pi}}\int_{x_1}^{x_2} e^{-\frac {t^2}2}\df t}{(\Phi(x_2) - \Phi(x_1))}| \xrto[n\rto \infty]{} 0$\\
+\textbf{Замечание}\\
+$\sup_{x\in \Rset} |F_n(x) - \Phi(x)| \leq C \frac{p(1-p)^3 + (1-p)p^3}{(pq)^{\frac32} \sqrt n} = C \frac{(1-p)p((1-p)^2 + p^2)}{(pq)^{\frac32}\sqrt n} \leq C \frac1{\sqrt{pqn}}$\\
+По последним оценкам $C < 1$
+\section{Случайные величины. Распределение случайной величины}
+% Давайте каждому элементарному исходу сопоставлять случайное число:\\
+% $\Omega \rto \Rset$\\
+% $\mcA \rto \mcB$\\
+% $p \rto p_x$\\
+\textbf{Определение}\\
+Пусть $(\Omega, \mcA, P)$ -- вероятностное пространство\\
+$\mcB$ -- борелевская сигма-алгебра (минимальная сигма-алгебра, содержащая все интервалы)\\
+$X: \Omega \rto \Rset$ -- случайная величина, если $X$ -- измеримо, т.е. $\fall B \in \mcB$ -- борелевская сигма-алгебра $X^{-1}(B) \in \mcA$\\
+$P_X: \mcB \rto \Rset$ -- распределение случайной величины, если $P_x(B) = P(\{\omega: X(\omega) \in B\})$ для всех $B \in \Bset$\\
+\textbf{Замечание (обозначеиня)}\\
+Случайные величины обозначаются большими латинскими буквами из конца алфавита($X,Y,U,W$) или маленькими греческими $\xi, \nu, \eta$\\
+\textbf{Замечание}\\
+$P_X$ удовлетворяет аксиомам вероятности\\
+\textbf{Определение}\\
+Функция распределенич $F_X(t) = P(X \leq t) = P(\{\omega: X(\Omega) \leq t\}), t \in \Rset$\\
+\textbf{Теорема (свойства функции распределения)}
+\begin{enumerate}
+    \item $F$ не убывает
+    \item $F(+\infty) = 1, F(-\infty) = 0$
+    \item $F$ -- непрерывна справа
+\end{enumerate}
+\textbf{Доказательство}
+\begin{enumerate}
+    \item $t_1 < t_2$\\
+    $F(t_2) = F(t_1) + P(\{\omega: t_1 < X(\Omega) \leq t_2\}) \geq F(t_1)$
+    \item Пусть $t_n$ -- монотонно возрастает к $+\infty$\\
+    $(-\infty, t_n] \subset (-\infty, t_{n+1}]$\\
+    $\bigcup (-\infty,t_n] = \Rset$\\
+    Тогда $F(t_n) \rto P(X \in \Rset) = 1$\\
+    Пусть $t_n$ -- монотонно убывает к $-\infty$\\
+    $(-\infty, t_n] \supset (-\infty, t_{n+1}]$\\
+    $\bigcap (-\infty, t_n] = \varnothing$\\
+    Тогда $F(t_n) \rto P(X \in \varnothing) = 0$
+    \item Пусть $t_n$ -- монотонно стремится к 0\\
+    $F(x_0 + t_n) \rto F(x_0)$\\
+    $(-\infty, x_0 + t_{n+1}] \subset (-\infty, x_0 + t_n]$\\
+    $\bigcap (-\infty, x_0 + t_{n}] = (-\infty, x_0]$\\
+    $F(x_0+t_n) = P(X \leq x_0 + t_n) \rto P(X \leq x_0) = F(x_0)$
+\end{enumerate}
+\textbf{Замечание (непрерывность слева)}\\
+Пусть $t_n$ -- монотонно стремится к 0\\
+$F(x_0) - F(x_0 - t_n) = P(X \leq x_0) - P(X \leq x_0 - t_n) = P(x_0 - t_n < X \leq x_0)$\\
+$(x_0 - t_n, x_0] \supset (x_0-t_{n+1}, x_0]$\\
+$\bigcap (x_0-t_n, x_0] = \{x_0\}$\\
+Т.о. $F(x_0) - F(x_0 - t_n) \rto P(X = x_0)$ -- иногда не 0\\
+Т.о. нет непрерывности слева\\
+\textbf{Лемма}\\
+$\fall (B_n): B_{n+1}\subset B_n, B = \bigcap B_n\ P(B_n) \rto P(B)$\\
+Равносильно $\fall (A_n): A_{n+1} \subset A_n, \bigcap A_n = \varnothing\ P(A_n) \rto 0$\\
+\textbf{Доказательство $\Lto$}\\
+$A_n = B_n \setminus B$\\
+$A_{n+1} \subset A_n$\\
+$\bigcap A_n = \varnothing$\\
+$\ub{P(B_n) - P(B)}{P(A_n)} \rto 0$\\
+\textbf{Теорема (о достаточности $F$ для описания вероятностного распределения)}\\
+Пусть $F$ не убывает, $F(+\infty) = 1, F(-\infty) = 0, F$ -- непрерывно справа\\
+Тогда $\ex (\Omega, \mcA, P), X$ -- случайная величина, такие что $F_X = F$\\
+\textbf{Доказательство}\\
+$\Omega := \Rset$\\
+$\mcA$ -- система интервалов вида $(a,b]$ (+все лучи и $\Rset$), замкнутая относительно конечного числа $\sqcup$, т.е. $\mcA$ -- алгебра\\
+$A := \bigsqcup_{k=1}^n (a_k, b_k], P(A) := \sum_{k=1}^n (F(b_k) - F(a_k))$\\
+$P(\Rset) = F(+\infty) - F(-\infty) = 1$\\
+Проверим счетную аддитивность\\
+Пусть $(A_n): A_{n+1} \subset A_n, \bigcap A_n = \varnothing$\\
+$A_n = \bigsqcup_{k=1}^{k_n} (a_{nk}, b_{nk}]$\\
+Пусть все $A_n \subset [-M, M]$\\
+Тогда $\ex (B_n): cl(B_n) \subset A_n$ и $P(A_n) - P(B_n) < \frac{\eps}{2^n}, cl(\bullet)$ -- замыкание\\
+$B_n = \bigsqcup_{k=1}^{k_n} (a_{nk}+\delta, b_{nk}) \subset A_n$\\
+$cl(B_n) = \bigsqcup_{k=1}^{k_n} [a_{nk}+\delta, b_{nk}) \subset A_n$\\
+$P(A_n) - P(B_n) = \sum_{k=1}^{k_n} F(b_{nk})-F(a_{nk} - F(b_{nk}) + F(a_{nk}+\delta)) = \sum_{k=1}^{k_n} (F(a_{nk}+\delta) - F(a_{nk})) < \frac{\eps}{2^n}$ -- при правильном $\delta, k_n$\\
+$cl(B_n) \subset A_n$\\
+$\bigcap cl(B_n) \subset \varnothing$\\
+$\bigcap cl(B_n) = \varnothing$\\
+$\bigcup_{n=1}^\infty \ol{cl(B_n)} = \Rset \Rto \bigcup_{n=1}^\infty \ol{cl (B_n)} \supset [-M, M]$\\
+$cl(B_n)$ -- открыто\\
+$[-M, M]$ -- компакт\\
+Тогда $\bigcup_{n=1}^N \ol{cl(B_n)} \supset [-M, M]$\\
+Тогда $\bigcap_{n=1}^N cl(B_n) = \varnothing$\\
+$\bigcap_{n=1}^N B_n = \varnothing$\\
+$P(A_n) = P(A_N \setminus \bigcap_{n=1}^N B_n) + P(\bigcap_{n=1}^N B_n) = P(\bigcup_{n=1}^N (A_N \setminus B_n)) \leq \sum_{n=1}^N P(A_N \setminus B_n) \leq \sum_{n=1}^N P(A_n \setminus B_n) = \sum_{n=1}^N P(A_n) - P(B_n) \leq \sum_{n=1}^N \frac{\eps}{2^n} < \eps$\\
+Тогда $P(A_n) \rto 0$\\
+Теперь пусть $A_n$ -- не ограниченные\\
+$\eps > 0$\\
+$\ex [-M, M]: P(X \in \ol{[-M, M]}) < \eps$\\
+$N: F(N) > 1 - \frac\eps2, F(-N) < \frac\eps2$\\
+$F(N) = F(-N) + P((-N, N]) > 1 -\frac\eps2$\\
+$F(N) = 1 - P((N, +\infty))$\\
+$P((N, +\infty)) < \frac\eps2$\\
+$P(A_n) = P(A_n\cap [-M, M]) + P(A_n \cap \ol{[-M, M]}) \leq P(\ol{[-M, M]}) < \eps$\\
+Т.о. $P$ -- вероятность\\
+$X(\omega) := \omega$\\
+$F_X(t) = P((-\infty, t]) = F(t)$\\
+\textbf{Замечание}\\
+\section{Дискретные случайные величины и распределения}
+\textbf{Определение}\\
+$X, P_x$ -- дискретные, если существует не более чем счетное $E: P(X \in E) = 1$\\
+$F(t) = P(X \leq t) = \sum_k p(k) \1(t \geq x_k), \1(cond) = (int)(cond)$\\
+\textbf{Примеры}
+\begin{enumerate}
+    \item Вырожденное:\\
+    $P(X=c) = 1$\\
+    $X \sim I(c), I_c$
+    \item Дискретное равномерное на $\{x_1, \ldots, x_n\}$\\
+    $P(X = x_k) = \frac1n$\\
+    $DU(x_1, \ldots, x_n)$
+    \item Распределение Бернулли\\
+    $Bern(p), p \in (0, 1)$\\
+    $P(X = 0) = q = 1-p, P(X = 1) = p$
+    \item Биномиальное; $Bin(n, p)$\\
+    $P(X = k) = \binom{n}{k} p^k q^{n-k}, k \in \{0, \ldots, n\}$
+    \item Геометрическое; $Geom(p)$\\
+    $X$ -- количество неудач до первого успеха\\
+    $P(X = k) = q^k p, k \in \Nset_0$\\
+    \textbf{Альтернативная интерпретация геометрического распределения}\\
+    $X$ -- номер первого успеха\\
+    $P(X=k)=q^{k-1}p, k \in \Nset$
+    \item Отрицательное биномиальное; $NB(r, p), p \in (0, 1), r > 0$
+    \begin{itemize}
+        \item $r \in \Nset:$\\
+        $X \sim NB(r, p) \LRto X$ -- номер $r$-ого успеха (начало отсчета в $r$)\\
+        $P(X=k) = P(\text{успех с номером $r$ случился на шаге $k+r$}) = \binom{k+r-1}{r-1} p^r q^{k}$
+        \item Если $r \in \Rset$, то $P(X = k) = \frac{\Gamma(k+1)}{\Gamma(r)k!} p^r q^k$
+    \end{itemize}
+    \item Распределение Пуассона: $Pois(\lambda), \lambda > 0$\\
+    $P(X = k) = e^{-\lambda}\frac{\lambda^k}{k!}, k \in \Nset_0$
+    \item Гипергеометрическое\\
+    $HG(M, N, K)$\\
+    $M \in \Nset$ -- количество деталей\\
+    $N \in [1:M]$ -- количество <<хороших>> деталей\\
+    $K \in [1:M]$ -- количество деталей, которые мы вытаскиваем (без возвращения)\\
+    $X$ -- количество <<хороших>> деталей, которые мы вытащили\\
+    $P(X = j) = \frac{\binom{N}{j}\binom{M-N}{K-j}}{\binom{M}{K}}, \max(K + N - M, 0) \leq j \leq \min(N, K)$\\
+    Пусть $M \rto \infty, \frac{N}{M} \rto p$\\
+    $P(X=j) = \frac{N!(M-N)!K!(M-K)!}{j!(N-j)!(K-j)!(M-N-K+j)! M!} \\
+    = \binom{K}{j}\frac{N(N-1)\ldots (N-j+1)}{M(M-1)\ldots (M-N + 1)} \frac{(M-K)\ldots (M - N - K + j + 1)}{} \rto \binom{K}{j} p^j(1-p)^{k-j}$\\\\
+    $EX = \sum_{j = \max(0, N + K - M)}^{\min(N, K)} j \frac{\binom Nj \binom{M-N}{K-j}}{\binom{M}{K}} = \\
+    \sum_{j = \max(1, N + K - M)}^{\min(N, K)} j \frac{\binom Nj \binom{M-N}{K-j}}{\binom{M}{K}} = \\
+    N\sum_{j} \frac{(N-1)!}{(j-1)!(N-j)!}\frac{\binom{M-N}{K-j}}{\binom{M}{K}} = \\
+    \frac {NK}{M}\sum_{j} \frac{\binom{N-1}{j-1}\binom{M-N}{K-j}}{\binom{M-1}{K-1}} = \\
+    \frac{NK}{M} \ub{1}{\sum_{i = \max(0, N + K - M - 1)}^{\min(N-1, K-1)} \frac{\binom{N-1}{i}\binom{M-N}{K-i-1}}{\binom{M-1}{K-1}}} = \frac{NK}{M}$
+\end{enumerate}
+\section{Абсолютно непрерывные распределения}
+\textbf{Определение}\\
+$X, P_X$ -- абсолютно непрерывные, если $\ex p(x): \Rset \rto \Rset, p(x) \geq 0, p(x)$ -- интегрируемо по Лебегу на $\Rset$\\
+$P(X \in B) = \int_B p(x)\df x, B \in \mcB$\\
+$p$ -- плотность\\
+\textbf{Теорема}\\
+\begin{enumerate}
+    \item $P(X = c) = 0$, т.к. $P(X = c) = \int_\varnothing \ldots = 0$
+    \item \begin{enumerate}
+        \item $F(x) = P(X \leq x) = \int_{-\infty}^x p(t) \df t$
+        \item $F(x)$ -- непрерывна (равномерно непрерывная)
+        \item $F'(x) = p(x)$ почти везде
+    \end{enumerate}
+    \item $\int_{-\infty}^\infty p(x)\df x = 1$
+    \item $P(X \in (x_0, x_0 + h)) = F(x_0+h) - F(x_0) = p(x_0)h + o(h) \approx p(x_0)h$ при малых $h$
+\end{enumerate}
+\textbf{Определение (носитель)}\\
+$E$ -- носитель ($\supp P_X$) $\LRto P(X \in E) = 1, E = \ol E, E$ наименьшее по включению\\
 \end{document}

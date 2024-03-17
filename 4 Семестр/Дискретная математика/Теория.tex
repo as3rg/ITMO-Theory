@@ -111,13 +111,19 @@ $Q(t) = \prod_{i=1}^{s} (1-r_it)^{d_i}$\\
 Тогда $\frac{P(t)}{Q(t)} = \sum_{i=1}^s \frac{P_i(t)}{(1-r_it)^{d_i}}$\\\\
 $\frac{P(t)}{Q(t)} = \sum_{i=1}^s \frac{P_i(t)}{(1-r_it)^{d_i}} = \sum_{i=1}^s A_i(t)$\\
 $a_n = \sum_{i=1}^s a_{i,n}$\\
-$\frac1{1-rt} = 1 + rt + r^2t^2 + \ldots; a_n=r^n$\\
-$(\frac1{1-rt})' = \frac{r}{(1-rt^2)^2} = r+2r^2t+3r^3t^2+\ldots$\\
-$\frac{1}{(1-rt^2)^2} = 1+2rt+3r^2t^2+\ldots; a_n = r^n(n+1)$\\
-$(\frac1{(1-rt)^d})' = \frac{rd}{(1-rt)^{d+1}}; a_n = p_d(n+1)r^{n+1}(n+1)\frac{1}{rd}$\\
-$p_{d+1}(n) = p_d(n+1)(n+1)\frac{1}{d}$\\
-$\deg p_{d+1}(n) = d$\\
-//todo\\
+\textbf{Лемма}\\
+$\frac1{(1-rt)^d} = \sum_{n=0}^\infty p_d(n)r^nt^n$\\
+$\deg p_d = d-1$\\
+\textbf{Доказательство}
+\begin{enumerate}
+    \item База $d = 1$:\\
+    $\frac1{1-rt} = 1 + rt + r^2t^2 + \ldots; a_n=r^n$
+    \item переход\\
+    $(\frac1{(1-rt)^d})' = \sum_{n=0}^\infty (n+1)p_s(n+1)r^{n+1}t^n$\\
+    $\frac1{(1-rt)^{s+1}} = \sum_{n=0}^\infty \frac{n+1}s p_s(n+1)r^nt^n$\\
+    $p_{s+1}(n)=p_s(n+1)\frac{n+1}{s} = \sum_{i=0}^{s-1} p_{s,i}(n+1)^i \frac{n+1}{s}$\\
+    $p_{s,i} = \frac{a_{s,i}}{s!}, a_{s,i} \in \Zset$
+\end{enumerate}
 \textbf{Доказательство $3\Rto 2$}\\
 Достаточно доказать, что если $a_n = n^{d-1}r^n$, то $A(t) = \frac{P(t)}{(1-rt)^d}$\\
 \begin{enumerate}
@@ -179,10 +185,109 @@ $Set(B) = 1 + 2t + t^2$\\
 $Set(N) = \prod_{k=1}^n (1+t^k) = 1 + t + t^2 + 2t^3 + 2t^4 + 3t^5 + 4t6+ \ldots$ -- количество разбиений на различные слагаемые\\\\
 $Multiset(A) = \prod_{x\in A} (1+x+x^2+x^3 + \ldots) = \prod_{x\in A} \frac1{1-x} = \prod_{k=0}^\infty \frac{1}{(1-t^k)^{a_k}}$\\
 $MSet(U) = \frac{1}{1-t}$\\
-$MSet(B) = (\frac1{1-t})^2$
+$MSet(B) = (\frac1{1-t})^2$\\
 $MSet(N) = \sum_{k=0}^\infty p_nt^n, p_n$ -- число разбиений $n$ на слагаемые\\\\
 $Cyc(A) = List(A) /_{\sim}, \sim$ -- равенство с точностью до перестановки\\
 $C_n$ -- циклы веса $n$\\
 $C_n = \bigcup_{l=1}^n C_{n,l}$\\
 //todo продолжить
+\section{Регулярные языки}
+\textbf{Напоминание}\\
+\textit{Регулярный язык} -- язык, который можно задать регулярным выражением\\
+\textit{Регулярный язык} -- язык, который можно задать детерменированным конечным автоматом\\\\
+Язык $L \subset \Sigma^*$\\
+$\Sigma^m \lrto \lrto \frac1{1-|\Sigma|t}$\\
+Казалось бы, $| \lrto \cdot, \cup \lrto Seq, + \lrto \frac1{1-\bullet}$\\
+Но бывают проблемы\\
+\textbf{Определение}\\
+Регулярное выражение -- однозначное, если любая строка однозначно <<метчится>> с регулярным выражением\\
+К примеру, $(a|b)^*a(a|b)^*$ неоднозначное, поэтому для него производящие функции будут работать неверно\\
+Его можно перестроить в $b^*a(a|b)^*$\\
+\textbf{Теорема}\\
+$L$ -- регулярное $\LRto \ex S$ -- регулярное выражение для $L$\\\\
+Пусть $L$ -- язык\\
+$A$ -- ДКА для $L$\\
+Для вершины $u: L_u = \{x: x \os x\leadsto t, t \in T\}$\\
+$L = L_s, s$ -- стартовая\\
+$u \not\in T: L_u = c_1 L_{\sigma(u, c_1)} \cup \ldots \cup c_m L_{\sigma(u, c_m)}$\\
+$u \in T: L_u = c_1 L_{\sigma(u, c_1)} \cup \ldots \cup c_m L_{\sigma(u, c_m)} \cup \eps$\\
+$u \not\in T: L_u(t) = \sum tL_{\sigma(u, c_i)}(t)$\\
+$u \in T: L_u(t) = \sum tL_{\sigma(u, c_i)}(t) + 1$\\
+$\vect{L(t)} = \begin{pmatrix}
+    L_1(t)\\\vdots\\L_q(t)
+\end{pmatrix}$
+$\Delta_{i,j}= \text{число ребер} i \rto j$\\
+$\vect{L(t)} = t\Delta \vect{L(t)} + \vect f$\\
+$\vect f_i = \left\{\begin{array}{cc}
+    1,& i \in T\\
+    0,& i \not \in T
+\end{array}\right.$\\
+$(I - t\Delta)\vect{L(t)} = \vect f$\\
+$\vect{L(t)} = (I - t\Delta)^{-1} \vect f$\\
+$\det I-t\Delta = \sum_\sigma \prod_i (I-t\Delta)_{i, \sigma_i} = \prod_i (I-t\Delta)_{i,i} + \sum_{\sigma \neq id} \prod_i (I-t\Delta)_{i, \sigma_i} = \ub{1+tP(t)}{\prod_{i=1}^q (1-\sigma_{i,i}t)} + \ub{tQ(t)}{\sum_{\sigma \neq id} \prod_i (I-t\Delta)_{i, \sigma_i}} = 1 + t(P(t) + Q(t))$\\
+$(I - t\Delta)^{-1} = \frac{Q(t)}{1 + t(P(t)+Q(t))}$\\\\
+\textbf{Теорема}\\
+$L$ -- регулярный $\Rto L(t)$ -- дробно-рациональное\\
+$L(t) = \vect{S}^t (I-t\Delta)^{-1}\vect f$\\
+$\vect S_i = \left\{\begin{array}{cc}
+    1,& i = s\\
+    0,& i \neq s
+\end{array}\right.$\\\\
+\textbf{Определение}\\
+Бордер строки $s$ -- одновременный префикс и суффикс $s$\\
+$c_i = \left\{\begin{array}{cc}
+    1,& s[i:]=s[:-i]\\
+    0&
+\end{array}\right.$\\
+$c(t)$ -- автокорреляционный многочлен $s$\\
+$S$ -- не содержит подстроки $s$\\
+$T$ -- содержит $s$, единственное вхождение как суффикса\\
+$S + T = \eps + S\times \Sigma$\\
+$S(t) + T(t) = 1 + mtS(t)$\\
+$S(t)t^k = T(t)c(t)$\\
+Отсюда $S(t) = \frac{c(t)}{(1-mt)c(t)+t^k}$\\
+\textbf{Пентагональная теорема Эйлера}\\
+Разбиения на слагаемые:\\
+$P(t) = \prod_{i=1}^\infty \frac1{1-t^i} = \frac{1}{Q(t)}$\\
+$Q(t) = \prod_{i=1}^\infty (1-t^i) = 1 - t - t^2 + t^5 + t^7 - t^{12} - t^{15} + \ldots$\\
+$R(t) = \prod_{i=1}^\infty (1+t^i)$ -- разбиения на различные слагаемые\\
+$q_n = e_n - o_n, e_n$ -- число разбиений на четное число различных слагаемых, $o_n$ -- на нечетное число различных слагаемых\\
+\textbf{Лемма}\\
+$n \neq \frac{3k^2 \pm  k}{2}$\\
+Тогда $e_n = o_n$\\
+$n = \frac{3k^2 \pm k}{2}$\\
+$e_n - o_n = (-1)^k$\\
+$Q(t) = 1 + \sum_{k=1}^\infty (-1)^k (t^{\frac{3k^2+k}2}+t^{\frac{3k^2-k}2})$
+\section{Экспоненциальные производящие функции и помеченные комбинаторные объекты}
+$a_0, a_1, \ldots \lrto A(t) = \sum_{n=0}^{\infty} \frac{a_n}{n!}t^n$\\
+$b_0, a_2, \ldots \lrto B(t) = \sum_{n=0}^\infty \frac{b_n}{n!}t^n$\\
+$a_n + b_n \lrto A(t) + B(t)$\\
+$\frac{c_n}{n!} = \sum_{k=0}^{n} \binom{n}{k}a_k b_{n-k} \lrto A(t)B(t) = C(t)$\\\\
+$A \times B \lrto A(t)B(t)$ -- количество пар с различными нумерациями\\
+$a_n = n! \lrto \frac{1}{1-t}$\\
+$b_n = a_{n+1} \lrto B = A'$\\
+$a_n = 1 \lrto e^t$\\
+Найдем $B = Seq(A): B = 1 + A\times B$\\
+$B = \frac{1}{1-A}$\\
+$Set = MSet = \sum_{k=0}^\infty \frac{A^k}{k!} = e^{A(t)}$\\
+$Set(U = \{\circ\}) = e^t \lrto a_n = 1$\\
+$B = \{\circ, \bullet\}$\\
+$Set(B) = e^{2t}$\\
+Числа Белла -- количество способов разбить множество на какие-то множества\\
+$B = Set(\ub{\Nset}{Set(U) - 1}) = e^{e^t - 1}$\\\\
+$A(t) = t^k e^t$ (размещения по $k$)\\
+$a_n = \frac{n!}{(n-k)!}$\\
+$C(t) = \frac{t^k}{k!} e^t$ (сочетания по $k$)\\
+$C_n = \frac{n!}{(n-k)!k!}$\\
+Числа Стирлинга по $k$\\
+$\frac{(e^t - 1)^k}{k!}$ -- число Стирлинга 2 рода по $k$\\\\
+$Cyc(A) = \sum_{k=1}^{\infty} \frac{A^k}{k} = -\ln(1 - A(t)) = \ln(\frac{1}{1-A(t)}) = \ln(Seq(A(t)))$\\
+$Cyc(U)$ -- перестановки с точностью до циклического сдвига\\
+$Set(Cyc (U)) = Seq (U)$\\
+Числа Стирлинга 1 рода по $k$\\
+$\frac{Cyc(U)^k}{k!}$\\
+Деревья\\
+$T = U \times Seq(T)$ -- деревья с порядком на детях\\
+$T = U \times Set(T)$ -- деревья без порядка на детях
+
 \end{document}
