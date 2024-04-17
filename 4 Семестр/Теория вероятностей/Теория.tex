@@ -363,6 +363,9 @@ $F(t) = P(X \leq t) = \sum_k p(k) \1(t \geq x_k), \1(cond) = (int)(cond)$\\
     $P(X = 0) = q = 1-p, P(X = 1) = p$
     \item Биномиальное; $Bin(n, p)$\\
     $P(X = k) = \binom{n}{k} p^k q^{n-k}, k \in \{0, \ldots, n\}$
+    \item Полиномиальное; $Poly(n, p)$\\
+    $p=(p_1, \ldots, p_m)$ -- вектор вероятностей\\
+    $P(S_1 = k_1, \ldots, S_m = k_m) = \binom{n}{k_1, \ldots, k_m} p_1^{k_1}\ldots p_m^{k_m}$
     \item Геометрическое; $Geom(p)$\\
     $X$ -- количество неудач до первого успеха\\
     $P(X = k) = q^k p, k \in \Nset_0$\\
@@ -399,7 +402,7 @@ $F(t) = P(X \leq t) = \sum_k p(k) \1(t \geq x_k), \1(cond) = (int)(cond)$\\
 $X, P_X$ -- абсолютно непрерывные, если $\ex p(x): \Rset \rto \Rset, p(x) \geq 0, p(x)$ -- интегрируемо по Лебегу на $\Rset$\\
 $P(X \in B) = \int_B p(x)\df x, B \in \mcB$\\
 $p$ -- плотность\\
-\textbf{Теорема}\\
+\textbf{Теорема}
 \begin{enumerate}
     \item $P(X = c) = 0$, т.к. $P(X = c) = \int_\varnothing \ldots = 0$
     \item \begin{enumerate}
@@ -412,4 +415,346 @@ $p$ -- плотность\\
 \end{enumerate}
 \textbf{Определение (носитель)}\\
 $E$ -- носитель ($\supp P_X$) $\LRto P(X \in E) = 1, E = \ol E, E$ наименьшее по включению\\
+\textbf{Замечание}\\
+$\lambda$ -- мера Лебега\\
+$\nu$ -- другая мера, заданная на $\mcB, \nu(\Rset) < +\infty$\\
+$\nu$ -- абсолютно непрерывна относительно $\lambda \LRto \lambda(A) = 0 \Rto \nu(A) = 0$\\
+$\nu\ll \lambda$\\
+\textbf{Теорема Радона-Никодима}\\
+$\nu \ll \lambda \Rto \ex f(x): \nu(B) = \int_B f(x)\lambda(\df x)$\\
+\textbf{Пример}
+\begin{enumerate}
+    \item $U[a,b]$: Равномерное на $[a,b]$\\
+    $p(x) = \frac1{b-a} \1 (x\in [a,b])$\\
+    $F(t) = \int_{-\infty}^t p(x)\df x = \left\{\begin{array}{cc}
+        0,& t < a\\
+        \frac{t-a}{b-a},& a \leq t \leq b\\
+        1,& t > b
+    \end{array}\right.$\\
+    $X \sim U[a,b]$\\
+    $Y = cX + d, c > 0$\\
+    $Y \sim U[ca+d, cb+d]$\\
+    $F_Y(t) = P(Y \leq t) = P(cX+d \leq t) = P(X \leq \frac{t-d}{c}) = F_X(\frac{t-d}c)$\\
+    \item $N(\mu, \sigma^2), \mu \in \Rset, \sigma > 0$: Нормальное распределение\\
+    $p(x) = \frac1{\sigma\sqrt{2\pi}}\exp(-\frac12 \frac{(x-\mu)^2}{\sigma^2})$\\
+    $\mu$ -- высота графика, $\sigma$ -- ширина\\
+    $N(0, 1)$ -- стандартный нормальный закон\\
+    $\phi = \frac{1}{\sqrt{2\pi}}\exp(-\frac{x^2}{2}), \Phi(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-\frac{t^2}2}$\\
+    $\Phi(-x) = 1 - \Phi(x)$\\
+    \textbf{Доказательство}\\
+    $\Phi(x) = \int_{-\infty}^{-x} \ldots + \int_{-x}^x \ldots = \int_{-\infty}^{-x} \ldots + 2\int_0^x \ldots = \int_{-\infty}^{-x} \ldots + 2(\int_{-\infty}^x \ldots - \int_{-\infty}^0 \ldots) = \Phi(-x) + 2(\Phi(x) - \frac12)$\\
+    $\Phi_0(x) = \frac{1}{\sqrt{2\pi}} \int_0^x e^{-\frac{t^2}2}\df t$ -- функция Лапласа; $\Phi_0(-x) = -\Phi_0(x)$\\
+    $\Phi(x) = \frac12 + \Phi_0(x)$\\
+    $\nm{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2}\df t$\\
+    $\Phi_0(x) = \frac12 \nm{erf}(\frac{x}{\sqrt 2})$\\
+    $y_{\text{изм}} = y_{\text{реал}} + \eps, \eps \sim N(0, \sigma^2)$\\
+    $P(|y_{\text{изм}}-y_{\text{реал}}| > \delta) = P(|\eps| > \delta)$\\
+    $X \sim N(\mu, \sigma^2)$\\
+    $Y=aX + b$\\
+    $F_Y(t) = P(aX+b \leq t) \us{a>0}= P(X \leq \frac{t-b}{a}) = F_x(\frac{t-b}{a})$\\
+    $p_Y(t) = (F_X(\frac{t-b}{a}))'_t = p_X(\frac{t-b}{a})\frac1{a} = \ldots$\\
+    $Y \sim N(a\mu + b, \sigma^2a^2)$\\
+    Для $a < 0$ аналогично\\
+    $X \sim N(\mu, \sigma^2), Y = aX+b \Rto Y \sim N(a\mu + b, a^2 \sigma^2)$\\
+    $U=\frac{X-\mu}{\sigma} = \frac X\sigma - \frac\mu\sigma \Rto U\sim N(0, 1)$\\\\
+    $X \sim N(\mu, \sigma^2)$\\
+    $P(a \leq X \leq b) = P(\frac{a-\mu}{\sigma} \leq \frac{X-\mu}{\sigma} \leq \frac{b-\mu}{\sigma}) = \Phi(\frac{b-\mu}{\sigma}) - \Phi(\frac{a - \mu}\sigma)$\\
+    $P(|X-\mu| < k\sigma) = P(-k\sigma < X - \mu < k\sigma) = P(\frac{X - \mu}{\sigma} \in (-k, k)) = \Phi(k) - \Phi(-k) = 2\Phi(k) - 1$
+    \item $\nm{Exp}(\lambda), \lambda > 0$: Экспоненциальнле/показательное\\
+    $p(x) = \lambda e^{-\lambda x} \1(x \geq 0)$\\
+    $F(x) = (1-e^{-\lambda x}) \1(x \geq 0)$
+    \item $\Gamma(\alpha, \beta), \alpha,\beta>0$: Гамма-распределение\\
+    $p(x) = \frac{\beta^\alpha x^{\alpha-1}e^{-\beta x}}{\Gamma(\alpha)} \1(x\geq 0)$\\
+    $\Gamma(1, \beta) = \nm{Exp}(\beta)$\\
+    $\beta - rate$\\
+    $\alpha \in \Nset \Rto $ распределение Эрланга порядка $k$
+    \item $\nm{Cauchy}(x_0, \gamma)$: Распределение Коши\\
+    $x_0 \in \Rset$ -- сдвиг\\
+    $\gamma > 0$ -- scale\\
+    $p(x) = \frac{1}{\pi \gamma} \frac{1}{1+(\frac{x-x_0}{\gamma}^2)}$\\
+    $F_X(t) = \frac{1}{\pi\gamma} \int_{-\infty}^t \frac{\df x}{1 + (\frac{x-x_0}{\gamma})^2} = \left|\begin{array}{cc}
+        \frac{x-x_0}{\gamma} = a\\
+        \df x = \gamma \df u
+    \end{array}\right| = \frac1\pi \int_{-\infty}^{\frac{t-x_0}{\gamma}} \frac{\df u}{1 + u^2} = \frac{1}{\pi} \arctg u \vl_{-\infty}^{\frac{t-x_0}{\gamma}} = \frac{1}{\pi} \arctg \frac{t-x_0}{\gamma} + \frac12$\\
+    \textbf{Пример}\\
+    $X \sim \nm{Cauchy}(0, 1)$\\
+    $Y = \frac1X$\\
+    $F_Y(t) = P(\frac1X \leq t) = P(\frac1X \leq t, X < 0) + P(\frac1X \leq t, X > 0)$\\
+    $P(\frac1X \leq t, X < 0):$\\
+    $t \geq 0 \Rto P(\ldots) = P(X < 0) = \frac12$\\
+    $t < 0 \Rto P(X \leq 1, X < 0) = P(X \geq \frac1t, X < 0) = F(0) - F(\frac1t) = \frac12 - \frac12 - \frac1\pi \arctg \frac1t = -\frac1\pi\arctg \frac1t$\\
+    $P(\frac1X \leq t, X > 0):$\\
+    $t \leq 0 \Rto P(\ldots) = 0$\\
+    $t > 0 \Rto P(X \geq \frac1t, X > 0) = P(X \geq \frac1t) = 1 - F(\frac1t) = \frac12 - \frac1\pi \arctg \frac1t$\\
+    Т.о. $P(\frac1X \leq t, X > 0) = \left\{\begin{array}{ll}
+        -\frac1\pi \arctg \frac1t,& t < 0\\
+        \frac12, & t = 0\\
+        1 - \frac1\pi\arctg \frac1t,& t > 0
+    \end{array}\right.$
+\end{enumerate}
+\textbf{Теорема}\\
+Пусть $p_x$ -- плотность с.в. $X$\\
+$Y=g(X), g \in C^1$\\
+$g'$ строго монотонна\\
+Тогда $p_Y(y) = p_x(g^{-1}(y)) | \frac{\partial}{\partial y}(g^{-1}(y))| = p_x(g^{-1}(y)) \frac1{|g'_x (g^{-1}(y))}$\\
+\textbf{Доказательство}\\
+Пусть $g'\geq 0$\\
+$F_Y(t) = P(g(X) \leq t) = P(X \leq g^{-1}(t))= F_X(g^{-1}(t))$\\
+$p_Y(t) = (F_Y(t))'_t = p_X(y^{-1}(t)) \ppart{g^{-1}(t)}{y}$\\
+Пусть $g' < 0$\\
+$F_Y(t) = 1-F_X(g^{-1}(t))$\\
+$p_Y(t) = -p_X(y^{-1}(t)) \ppart{g^{-1}(t)}{y}$
+\section{Сингулярное распределение}
+\textbf{Определение}\\
+$X, P_X$ -- сингулярное $\LRto \supp P_X = E\ \&\ \lambda E = 0$ и $\fall x \in E\ P(X \in E) = 0$\\
+\textbf{Замечание}\\
+Сингулярное $\LRto \lambda\{x: F(x+\eps) - F(x - \eps) > 0\} = 0\ \fall \eps$\\
+\textbf{Теорема Лебега о разложении $F$}\\
+$F$ -- функция распределения\\
+Тогда $\ex c_1, c_2, c_3 \geq 0: c_1 + c_2 + c_3 = 1, F(x) = c_1F_1(x) + c_2F_2(x) + c_3F_3(x), F_1$ -- функция распределения дискретной величины, $F_2$ -- функция распределения, абсолютно непрерывная, $F_3$ -- функция распределения сингулярного закона\\
+\textbf{Замечание}\\
+У $F$ могут быть только скачки, не более чем счетное количество
+\section{Случайные векторы}
+\textbf{Определение}\\
+$X = \{X_1, \ldots, X_n\}$ -- случайный вектор (многомерная случайная величина), если $X_i$ -- случайная величина\\
+$P_X(X_1 \in B_1, \ldots, X_n \in B_n)$ -- распределение случайного вектора (совместное распределение случайных величин $X_1, \ldots, X_n, B_i \in \mcB$)\\
+$P_X: \sigma(\mcB^n)\rto \Rset$\\
+\textbf{Определение}\\
+$F(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)$ -- совместная функция распределения\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $x_i \rto -\infty$ для некоторого $i \Rto F(x_1,\ldots, x_n) \rto 0$
+    \item $x_i \rto +\infty$ для всех $i \Rto F(x_1,\ldots, x_n) \rto 1$
+    \item $F$ -- непрерывна справа по каждой переменной
+    \item $\Delta_i F(x_1, \ldots, x_i + \delta_i, \ldots, x_n) - F(x_1, \ldots, x_n)$\\
+    $\Delta_1, \ldots, \Delta_n F \geq 0\ \fall x_1, \ldots, x_n\ \fall \delta_1, \ldots \delta_n \geq 0$
+\end{enumerate}
+\textbf{Теорема}\\
+$F$ -- функция, для которой справедливы свойства $1-3$\\
+Тогда существует вероятностное пространство и случайная величина с данной функцией распределения\\
+\textbf{Определение}\\
+$X_i, P_X$ -- дискретно, если $\supp P_X$ -- не более чем счетный\\
+\textbf{Замечание}\\
+$\supp P_X \neq \times_{i=1}^n \supp P_x$\\
+Одномерное распределение = \textit{Маргинальное} распределение\\
+\textbf{Пример}\\
+Полиномиальное: $Poly(n, p)$\\
+$n \in \Nset$\\
+$p = (p_1, \ldots, p_n), \sum p_j = 1$\\
+$S_n = (S_{n,1}, \ldots, S_{n,m})$\\
+$P(S_{n,1}=k_1,\ldots, S_{nm}=k_m) = \frac{n!}{k_1!\ldots k_m!}p_1^{k_1}\ldots p_m^{k_m}$\\
+$\sum k_i = n, k_i \geq 0$\\
+$S_{nj} \sim Bin(n, p_j)$\\
+\textbf{Определение}\\
+$X, P_X$ -- абсолютно непрерывная $\LRto \ex p(x_1, \ldots, x_n) \geq 0$ -- плотность распределения\\
+$P(X \in B) = \int_B p(x)\df x$\\
+$F(x_1, \ldots, x_n) = \int_{-\infty}^{x_1}\ldots \int_{-\infty}^{x_n} p(t_1, \ldots, t_n) \df t_1\ldots \df t_n$\\
+$p(t_1, \ldots, t_n) = \frac{\partial^n F}{\partial x_1 \ldots \partial x_n}$\\
+$P(G(X) \in B) = \int_{x:F(x)\in B} p(x)\df x, G$ -- некая функция\\
+\textbf{Определение (равномерное распределение на подмножестве)}\\
+$U(E): p(x) = \frac{1}{\mu E}\1(x\in E), \mu$ -- мера\\
+\textbf{Определение (многомерное нормальное распределение/гауссовский вектор)}
+\begin{enumerate}
+    \item $X = (X_1, X_n)$ -- стандартный гауссовский вектор, если $p_X = \frac1{(\sqrt{2\pi})^n} \exp(-\frac12 \|x\|^2), \|x\|^2 = x^Tx = \sum x_i^2$\\
+    $X \sim N(0, E_n), 0 \in \Rset^n$
+    \item $X \sim N(0, E_n), Y = AX + b, A \in M_{m\times n}, b \in \Rset^m \Rto Y \sim N(b, AA^T)$
+    \item $U \sim N(\mu, \Sigma)$, где $\mu \in \Rset^n, \Sigma \in M_{n\times n}$\\
+    $\Sigma = \Sigma^T, \Sigma > 0$\\
+    $\Lambda = \nm{diag}(\lambda_1, \ldots, \lambda_n), \lambda_i \geq 0$\\
+    $\Lambda = L^T \Sigma L, L = (u_1, \ldots, u_n)$ -- ОНБ, $L^TL = E$\\
+    $\Sigma = L\Lambda L^T = L = \ub{\sqrt{\Sigma}}{L \sqrt{\Lambda} L^T} \ub{\sqrt{\Sigma}}{L \sqrt{\Lambda}L^T}$\\
+    $U = \sqrt{\Sigma}X + \mu, X \sim N(0, E)$\\
+    $\Sigma > 0 \Rto p(x_1, \ldots, x_n) = \frac1{(\sqrt{2\pi})^n \sqrt{\det \Sigma}} \exp{-\frac12 (x-\mu)^T \Sigma^{-1} (x-\mu)}$\\
+    Пусть $g:\Rset^n \rto \Rset^n, g$ -- гладкая биекция\\
+    Тогда $p_{g(U)}(t) = p_U(g^{-1}(t))|\det (g^{-1})'(t)| = \frac{p_U(g^{-1}(t))}{|\det g'(g^{-1}(t))|}$\\
+    $X=\sqrt{\Sigma}^{-1}(X-\mu)$\\
+    $Y' = (\sqrt{\Sigma})^{-1}$\\
+    $\det \Sigma = \det \sqrt{\Sigma}^2$\\
+    $|\det \sqrt{\Sigma}| = \sqrt{\det \Sigma}$\\
+    $p_U(t) = \frac{p_X(g^{-1}(t))}{|\det g'(g^{-1}(t))|} = \frac{1}{(\sqrt{2\pi})^n} \exp(-\frac12 (\sqrt{\Sigma})^{-1}(t-\mu)^T(\sqrt{\Sigma})^{-1}(t-\mu)) \frac{1}{|\det \sqrt{\Sigma}|}$\\
+    $= \frac1{\sqrt{(2\pi)^n \det \Sigma}}\exp(-\frac12 (t-\mu)^T \Sigma^{-1} (t-\mu))$
+\end{enumerate}
+\section{Независимые случайные величины}
+\textbf{Определение}\\
+$X_1, \ldots, X_n$ -- независимые, если $\fall B_1, \ldots, B_n\ P(X_1 \subset B_1, \ldots, X_n \subset B_n) = P(X_1 \subset B_1) \ldots P(X_n \subset B_n)$\\
+Последовательность независима, если любой ее префикс независимый\\
+\textbf{Теорема (общий критерий независимости)}\\
+Величины $X_1, \ldots, X_n$ независимы $\LRto F(x_1, \ldots, x_n) = F_1(x_1) \ldots F_n(x_n)$\\
+\textbf{Доказательство $\Rto$} очевидно\\
+\textbf{Доказательство $\Lto$}\\
+Докажем для размерности 2\\
+$P(X_1 \in (a_1, a_1 + \delta_1], X_2 \in (a2, a_2 + \delta_2]) =\\
+\Delta_1 \Delta_2 F(a_1, a_2) = \Delta_1[F(a_1, a_2 + \delta_2) - F(a_1, a_2)] =\\
+F(a_1 + \delta_1, a_2 + \delta_2) - F(a_1, a_2 + \delta_2) - F(a_1 + \delta_1, a_2) + F(a_1, a_2) =\\
+F_1(a_1+\delta_1)F_2(a_2+\delta_2) - F_1(a_1)F_2(a_2+\delta_2) - F_1(a_1+\delta_1)F_2(a_2) + F_1(a_1)F_2(a_2) =\\
+(F_1(a_1+\delta_1) - F_1(a_1))(F_2(a_2+\delta_2) - F_2(a_2)) = \\
+P(X_1 \in (a_1, a_1+\delta_1])P(X_2 \in (a_2, a_2 + \delta_2])$\\
+\textbf{Теорема (критерий независимости дискретных величин)}\\
+Дискретные $X_1, \ldots, X_n$ -- независимые $\LRto P(X_1\in \{x_{1, 1}, \ldots, x_{1,m_1}\}, \ldots, X_n\in \{x_{n, 1}, \ldots, x_{n,m_n}\}) = \prod_{j=1}^n P(X_j\in \{x_{j, 1}, \ldots, x_{j,im_j}\})$\\
+\textbf{Доказательство $\Rto$} очевидно\\
+\textbf{Доказательство $\Lto$}\\
+$P(X_1 \in B_1, \ldots, X_n \in B_n) = \sum_{i_1,\ldots, i_n} P(X_1 = x_{1, i_1}, \ldots, X_n=x_{n,i_n}) = \sum_j \prod_{i} P(X_j = x_{j, i}) =  \prod_{i}\sum_j P(X_j = x_{j, i}) = \prod_i P(X_i \in B_i)$\\
+\textbf{Теорема (критерий независимости непрерывных величин)}\\
+Непрерывные $X_1, \ldots, X_n$ -- независимые $\LRto p(x_1, \ldots, x_n) = \prod_i p_i(x_i)$\\
+\textbf{Доказательство $\Rto$}\\
+$F(x_1, x_2) = F_1(x_1) F_2(x_2) = (\int_{-\infty}^{x_1} p_1(x)\df x)(\int_{-\infty}^{x_2} p_2(y)\df y) = \int_{-\infty}^{x_1}\int_{-\infty}^{x_2} p_1(x)p_2(y)\df x \df y$\\
+\textbf{Доказательство $\Lto$} очевидно (наверное)\\
+\textbf{Пример}\\
+$\Sigma = \nm{diag}(\sigma^2_1, \ldots, \sigma^2_n), \sigma_i > 0$\\
+$p(x_1, \ldots, x_n) = \frac1{\sqrt{(2\pi)^n \sigma^2_1\ldots \sigma^2_n}} \exp(-\frac12 x^T(\sigma^2_1\ldots \sigma^2_n)x) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \sigma^2_i}}\exp(-\frac12 \frac{x_i^2}{\sigma_i^2})$\\
+\textbf{Лемма}\\
+$X,Y$ -- независимые целочисленные\\
+Тогда $P(X+Y=K)= \sum_i P(X=i)P(Y=K-i) = \sum_i P(X=K-i)P(Y=i)$\\
+\textbf{Доказательство}\\
+$P(X+Y=K) = \sum_i P(X+Y=K|X=i)P(X=i) = \sum_i P(X=K-i)P(X=i)$\\
+\textbf{Пример}
+\begin{enumerate}
+    \item $S_n \sim Bin(n, p)$\\
+    $X_n = X_1 + \ldots + X_n, X_i = Bern(p), X_i$ -- независимые\\
+    $P(S_{n+1}=k) = P(S_n=k)P(X_{n+1}=0)+P(S_n=k-1)P(X_{n+1}=1) = \binom nk p^k q^{n-k+1} + \binom n{k-1}p^kq^{n-k+1} = \binom{n+1}k p^k q^{n-k+1}$
+    \item $X \sim Pois(\lambda)$\\
+    $Y = Pois(\mu)$\\
+    $X+Y \sim Pois(\lambda+\mu)$
+    \item $X \sim NB(r_1, p), Y \sim NB(r_2, p)$\\
+    Тогда $X+Y \sim NB(r_1+r_2, p)$\\
+    $X_1+\ldots+X_n \sim NB(n, p), X_i \sim NB(1, p) = Geom(p)$\\
+    $P(X_1+X_2=K) = \binom{(K+2)-1}1 q^kp^2$\\
+    $P(S_n+X_{n+1}=K) = \binom{n+k}n q^kp^n$
+\end{enumerate}
+\textbf{Лемма}\\
+$X,Y$ -- независимые\\
+Тогда $p_{X+Y}(t) = \int_\Rset p_X(u)p_Y(t-u)\df u$\\
+\textbf{Доказательство}\\
+$F_{X+Y}(t) = P(X+Y \leq t) = \int_{-\infty}^\infty p_X(u) \int_{-\infty}^{t-u} p_Y(v)\df v$\\
+\textbf{Пример}
+\begin{enumerate}
+    \item $X+Y$ -- независимые, $X\sim N(\mu_X, \sigma_X^2), Y \sim N(\mu_Y, \sigma_Y^2)$\\
+    Тогда $X+Y \sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$\\
+    $X+Y = \sigma_X U_X + \mu_x + \sigma_Y U_Y + \mu_Y, U_X, U_Y \sim N(0, 1)$\\
+    $\sigma_Y^2 u^2 + \sigma_X^2(t-u)^2 = (\ub{y}{\sqrt{\sigma_X^2 + \sigma_Y^2}u - \frac{\sigma_X^2 t}{\sqrt{\sigma_X^2 + \sigma_Y^2}}})^2 + \frac{t^2 \sigma_X^2 \sigma_Y^2}{\sigma_X^2 + \sigma_Y^2}$\\
+    $P_{\sigma_X U_X + \mu_x + \sigma_Y U_Y + \mu_Y}(t) = \frac{1}{\sqrt{2\pi \sigma_X^2}}\frac1{\sqrt{2\pi \sigma_Y^2}} \int_{-\infty}^\infty \exp(-\frac12(\frac{u^2}{\sigma_X^2}+\frac{(t-u)^2}{\sigma_Y^2}))\df u = \\
+     = \frac{1}{\sqrt{2\pi \sigma_X^2}}\frac1{\sqrt{2\pi \sigma_Y^2}} \int_{-\infty}^\infty \frac{1}{\sqrt{\sigma_X^2 + \sigma_Y^2}}\exp(-\frac1{2(\sigma_X^2 + \sigma_Y^2)}(y^2 + \frac{t^2\sigma_X^2\sigma_Y^2}{\sigma_X^2 + \sigma_Y^2}))\df u = \\
+    = \frac{1}{\sqrt{2\pi(\sigma_X^2 + \sigma_Y^2)}} \exp (-\frac12 \frac{t^2}{\sigma_X^2 + \sigma_Y^2}) (\ub{1}{\frac{1}{2\pi\sigma_X^2\sigma_Y^2} \int_{-\infty}^{\infty} \exp(-\frac{y^2}{2\sigma_X^2\sigma_Y^2}) \df y})$\\
+    $p_{U+\mu_x + \mu_Y} (t) = p_U(t-\mu_x-\mu_y) |t'| = \frac{1}{\sqrt{2\pi \sigma_X^2 \sigma_Y^2}} \exp(-\frac12 \frac{(t-\mu_X-\mu_Y)^2}{\sigma_X^2+\sigma_Y^2})$
+\end{enumerate}
+\textbf{Утверждение}\\
+$X_1, \ldots, X_n$ -- независимые\\
+$X_i \sim Exp(\lambda)$\\
+Тогда $X_1+\ldots + X_n \sim \Gamma(n, \lambda)$ -- распределение Эранга порядка $n$\\
+$P_{X_1 + X_2}(t) = \int_{-\infty}^{+\infty} p_1(x)p_2(t-x)\df x = \lambda^2 te^{-\lambda t}\1(t \geq 0)$\\
+$P_{S_n + X_{n+1}} = \int_{-\infty}^{+\infty} \frac{\lambda^n x^{n-1}e^{-\lambda x}}{(n-1)!}\1(x \geq 0) \lambda e^{-\lambda (t-x)}\1(t-x \geq 0) \df x = \frac{\lambda^{n+1} x^n e^{-\lambda t}}{n!}\1(t \geq 0)$
+\section{Симуляция (моделирование случайных величин)}
+Пусть есть $rand(): U[0, 1]$ -- независимые\\
+\begin{lstlisting}[language=python]
+def Bern(p): 
+    return rand() <= p
+
+
+def Bin(n, p): 
+    return sum(Bern(p) for _ in range(n))
+
+def Geom(p): 
+    res = 0
+    while(!Bern(p)):
+        res += 1
+    return res
+
+def Discrete(p_1, p_2, ..., p_n, x_1, ..., x_n):
+    v = rand()
+    if p_1 + ... + p_{n-1} < v: return x_n
+    if p_1 + ... + p_{n-2} < v: return x_{n-1}
+    ...
+    if p_1 < v: return x_2
+    return x_1
+
+def Poly(1, p): ... #аналогично
+
+def Poly(n, p):
+    return sum(Poly(1, p) for _ in range(n))
+
+def U(a, b):
+    return a + (b - a) * rand()
+
+def Exp(lmbda):
+    return -ln(rand())/lmbda
+
+def Gamma(n, lmbda):
+    return sum(Exp(lmbda) for _ in range(n))
+
+# Случайная величина с распределением F
+def Generic(F):
+    G = reversed(F) #обратная функция
+    return G(rand())
+\end{lstlisting}
+\begin{lstlisting}[language=python]
+    def N(0, 1):
+        # n -- какое-то большое, p -- любое
+        return (Bin(n, p) - n*p) / sqrt(n * p * (1 - p))
+\end{lstlisting}
+
+\textbf{Утверждение}\\
+$X_1, \ldots, X_n \sim Exp(1)$ -- независимые\\
+$X = \max\{n: X_1 + \ldots + X_n < \lambda\}, \lambda \geq 0$\\
+Тогда $X \sim Pois(\lambda)$\\
+\textbf{Доказательство}\\
+$P(X \leq k) = P(\ub{\sim \Gamma(k+1, 1)}{X_1 + \ldots + X_{k+1}} \geq \lambda) = \int_\lambda^{+\infty} \frac{x^k e^{-x}}{k!}\df x = -\frac{x^k e^{-x}}{k!} \vl_\lambda^{+\infty} + \int_\lambda^{+\infty} x^{k+1}e^{-x}{(k-1)!}\df x = \frac{\lambda^k e^{-\lambda}}{k!} + \frac{\lambda^{k-1} e^{-\lambda}}{(k-1)!} + \ldots + \frac{\lambda^0 e^{-\lambda}}{0!}$\\
+\section{Вероятностные интегралы}
+$(\Omega, \mcA, P) \os{X}\mapsto (\Rset^n, \mcB, P_X)$\\
+$P_X(B) = P(\{\omega: X(\omega) \in B\})$\\
+$g \geq 0$ -- \textit{борелевская}, т.е. $\fall B \in \mcB\ g^{-1}(B) \in \mcB$\\
+$\ub{\lim_{\nm{diam} V(\omega_k) \rto 0} \sum g(X(\omega_k)) P(V(\omega_k))}{\int_\Omega g(X(\omega)) P(\df \omega)} = \ub{\lim_{\nm{diam} V(x_k) \rto 0} \sum g(x_k) P(X \in V(x_k))}{\int_{\Rset^n} g(x) P_X(\df x)}, V(\cdot)$ -- какая-то окрестность\\
+\textbf{Интеграл Стилтьеса}\\
+$\int_\Rset g(x)\df F(x) = \lim_{x_{k+1}-x_k \rto 0, x_k^* \in [x_k, x_{k+1}]} \sum g(x_k^*) (F(x_{k+1}) - F(x_k)) =\\= \left\{\begin{array}{ll}
+    \sum g(x_i) P(X = x_i),& \text{дискретный случай}\\
+    \int g(x)p(x)\df x,& \text{непрерывный случай}
+\end{array}\right.$\\\\
+$g \geq 0 \Rto$ интеграл либо конечный, либо $+\infty$\\
+$g = g_+ - g_i, I = \int_{\Rset^n} g_+(x) P(\df x) - \int_{\Rset^n} g_-(x) P(\df x)$\\
+\begin{itemize}
+    \item $I_+, I_- < +\infty \Rto I = I_+-I_-$
+    \item $I_+ = +\infty, I_i < +\infty \Rto I = +\infty$
+    \item $I_+ < +\infty, I_i = +\infty \Rto I = -\infty$
+    \item $I_+, I_i = +\infty \Rto I$ не определено
+\end{itemize}
+\textbf{Свойства}
+\begin{itemize}
+    \item $\int af + bg = a\int f + b\int g$
+    \item $\int_{A\sqcup B} =\int_A + \int_B$
+    \item $f \leq g \Rto \int f \leq \int g$
+\end{itemize}
+\textbf{Теорема Фубини для независимых величин}\\
+$X, Y$-- независимые $\Rto g(x,y) P(\df x, \df y) = \int_\Rset (\int_\Rset g(x, y) P_Y(\df y)) P_X(\df x)$\\
+\textbf{Пример (свертка распределений)}\\
+$X, Y$ -- независимые\\
+$F_{X+Y}(t) = P(X + Y \leq t) = \int_{\Rset^2} \1(X + y \leq t)P(\df x, \df y) = \int_\Rset \int_\Rset \1(x+y \leq t) P_X(\df x) P_Y(\df y) = \int_\Rset P(X \leq t - y) P_Y(\df y) = \int_\Rset F_X(t-y)\df F_Y(y)$\\
+Аналогично $F_{X+Y}(t) = \int_\Rset F_Y(t-x)\df F_X(x)$
+\section{Математическое ожидание}
+\textbf{Определение}\\
+$EX = \int_\Rset x \df F(x) = \int x P_X(\df x)$\\
+Дискретный случай: $EX = \sum x_k p_k$\\
+Непрерывный случай: $EX = \int xp(x)\df x$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $Ef(X_1, \ldots, X_n) = \int_{\Rset^n} f(x_1, \ldots, x_n) P(\df x_1, \ldots, \df x_n) = \int_\Rset y \df F_Y(y), y = f(x_1, \ldots, x_n)$
+    \item $E(aX) = aEx$
+    \item $E(X+Y) = EX+EY$
+    \item $X, Y$ -- независимые $\Rto E(XY) = (EX)(EY)$
+    \item $\ub{P(X \geq 0) = 1}{X \geq 0} \Rto EX \geq 0$
+    \item $\ub{P(X\geq Y) = 1}{X \geq Y} \Rto EX \geq EY$
+    \item 
+    \textbf{Теорема (неравенство Маркова)}\\
+    $X \geq 0 \Rto P(X \geq C) \leq \frac{EX}{c}$\\
+    \textbf{Доказательство}\\
+    $EX = \int_0^{+\infty} d\df F(x) = \int_0^c x\df F(x) + \int_{c+\infty} x\df F(x) \geq 0 + c\int_c^{+\infty} \df F(x) = cP(X \geq c)$
+    \item $X \geq 0, EX = 0 \Rto \ub{P(X = 0) = 1}{X=0}$\\
+    \textbf{Доказательство}\\
+    $P(X \geq c) \leq \frac0c = 0 \Rto P(X < c) = 1 \fall c \Rto P(X = 0) = 1$
+    \item $\supp X = \Nset \Rto EX = \sum_{k=1}^{+\infty} P(X \geq k)$
+    \item $\supp X = [0, +\infty)$\\
+    $EX = \int_0^{+\infty} P(X \geq r) \df r$\\
+    \textbf{Доказательство}\\
+    $\int_0^{+\infty} P(X \geq r) \df r = \int_0^{+\infty} (1-F(r))\df r = \ub{0}{x(1-F(x))\vl_0^{+\infty}} + \int_0^{+\infty} x p(x)\df x$
+\end{enumerate}
+\textbf{Определение}\\
+$X, Y$-- некоррелированные $\LRto E(XY)=(EX)(EY)$\\
 \end{document}
