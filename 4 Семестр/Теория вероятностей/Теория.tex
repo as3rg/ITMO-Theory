@@ -553,6 +553,9 @@ $p(t_1, \ldots, t_n) = \frac{\partial^n F}{\partial x_1 \ldots \partial x_n}$\\
 $P(G(X) \in B) = \int_{x:F(x)\in B} p(x)\df x, G$ -- некая функция\\
 \textbf{Определение (равномерное распределение на подмножестве)}\\
 $U(E): p(x) = \frac{1}{\mu E}\1(x\in E), \mu$ -- мера\\
+\textbf{Теорема (о плотности функции от непрерывного случайного вектора)}\\
+Пусть $g:\Rset^n \rto \Rset^n, g$ -- гладкая биекция\\
+Тогда $p_{g(U)}(t) = p_U(g^{-1}(t))|\det (g^{-1})'(t)| = \frac{p_U(g^{-1}(t))}{|\det g'(g^{-1}(t))|}$\\\\
 \textbf{Определение (многомерное нормальное распределение/гауссовский вектор)}
 \begin{enumerate}
     \item $X = (X_1, X_n)$ -- стандартный гауссовский вектор, если $p_X = \frac1{(\sqrt{2\pi})^n} \exp(-\frac12 \|x\|^2), \|x\|^2 = x^Tx = \sum x_i^2$\\
@@ -565,8 +568,6 @@ $U(E): p(x) = \frac{1}{\mu E}\1(x\in E), \mu$ -- мера\\
     $\Sigma = L\Lambda L^T = L = \ub{\sqrt{\Sigma}}{L \sqrt{\Lambda} L^T} \ub{\sqrt{\Sigma}}{L \sqrt{\Lambda}L^T}$\\
     $U = \sqrt{\Sigma}X + \mu, X \sim N(0, E)$\\
     $\Sigma > 0 \Rto p(x_1, \ldots, x_n) = \frac1{(\sqrt{2\pi})^n \sqrt{\det \Sigma}} \exp{-\frac12 (x-\mu)^T \Sigma^{-1} (x-\mu)}$\\
-    Пусть $g:\Rset^n \rto \Rset^n, g$ -- гладкая биекция\\
-    Тогда $p_{g(U)}(t) = p_U(g^{-1}(t))|\det (g^{-1})'(t)| = \frac{p_U(g^{-1}(t))}{|\det g'(g^{-1}(t))|}$\\
     $X=\sqrt{\Sigma}^{-1}(X-\mu)$\\
     $Y' = (\sqrt{\Sigma})^{-1}$\\
     $\det \Sigma = \det \sqrt{\Sigma}^2$\\
@@ -628,7 +629,7 @@ $X,Y$ -- независимые\\
 $F_{X+Y}(t) = P(X+Y \leq t) = \int_{-\infty}^\infty p_X(u) \int_{-\infty}^{t-u} p_Y(v)\df v$\\
 \textbf{Пример}
 \begin{enumerate}
-    \item $X+Y$ -- независимые, $X\sim N(\mu_X, \sigma_X^2), Y \sim N(\mu_Y, \sigma_Y^2)$\\
+    \item $X,Y$ -- независимые, $X\sim N(\mu_X, \sigma_X^2), Y \sim N(\mu_Y, \sigma_Y^2)$\\
     Тогда $X+Y \sim N(\mu_X + \mu_Y, \sigma_X^2 + \sigma_Y^2)$\\
     $X+Y = \sigma_X U_X + \mu_x + \sigma_Y U_Y + \mu_Y, U_X, U_Y \sim N(0, 1)$\\
     $\sigma_Y^2 u^2 + \sigma_X^2(t-u)^2 = (\ub{y}{\sqrt{\sigma_X^2 + \sigma_Y^2}u - \frac{\sigma_X^2 t}{\sqrt{\sigma_X^2 + \sigma_Y^2}}})^2 + \frac{t^2 \sigma_X^2 \sigma_Y^2}{\sigma_X^2 + \sigma_Y^2}$\\
@@ -726,7 +727,7 @@ $g = g_+ - g_i, I = \int_{\Rset^n} g_+(x) P(\df x) - \int_{\Rset^n} g_-(x) P(\df
 $X, Y$-- независимые $\Rto g(x,y) P(\df x, \df y) = \int_\Rset (\int_\Rset g(x, y) P_Y(\df y)) P_X(\df x)$\\
 \textbf{Пример (свертка распределений)}\\
 $X, Y$ -- независимые\\
-$F_{X+Y}(t) = P(X + Y \leq t) = \int_{\Rset^2} \1(X + y \leq t)P(\df x, \df y) = \int_\Rset \int_\Rset \1(x+y \leq t) P_X(\df x) P_Y(\df y) = \int_\Rset P(X \leq t - y) P_Y(\df y) = \int_\Rset F_X(t-y)\df F_Y(y)$\\
+$F_{X+Y}(t) = P(X + Y \leq t) = \int_{\Rset^2} \1(x + y \leq t)P(\df x, \df y) = \int_\Rset \int_\Rset \1(x+y \leq t) P_X(\df x) P_Y(\df y) = \int_\Rset P(X \leq t - y) P_Y(\df y) = \int_\Rset F_X(t-y)\df F_Y(y)$\\
 Аналогично $F_{X+Y}(t) = \int_\Rset F_Y(t-x)\df F_X(x)$
 \section{Математическое ожидание}
 \textbf{Определение}\\
@@ -757,4 +758,409 @@ $EX = \int_\Rset x \df F(x) = \int x P_X(\df x)$\\
 \end{enumerate}
 \textbf{Определение}\\
 $X, Y$-- некоррелированные $\LRto E(XY)=(EX)(EY)$\\
+\textbf{Определение}\\
+$\Var X = E(X-EX)^2 = \left\{\begin{array}{c}
+    \sum_k (x_k-EX)^2p_k\\
+    \int (x-EX)^2 p(x)\df x
+\end{array}\right.$\\
+$Ef(x_1, \ldots, x_n) = \int_\Rset f(x_1, \ldots, x_n)P_X(\df x_1, \ldots, \df x_n)$\\
+$\sqrt{\Var X}$ -- среднее квадратическое(стандартное) отклонение\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\Var X = EX^2 - (EX)^2$\\
+    \textbf{Доказательство}\\
+    $\Var X = E(X^2 - 2XEX + (EX)^2) = EX^2 - 2(EX)^2 + (EX)^2 = EX^2 - (EX)^2$
+    \item $\Var X \geq 0$
+    \item $\Var X = 0\Rto X = c$\\
+    \textbf{Доказательство}\\
+    $(X-EX)^2 = 0 \Rto X = EX$
+    \item $\Var (aX + b) = a^2 \Var X$
+    \item $\Var (X\pm Y) = \Var X + \Var Y \pm 2(E(XY) - EX\cdot EY)$\\
+    \textbf{Доказательство}\\
+    $\Var(X\pm Y) = E(X^2\pm 2XY + Y^2) - ((EX)^2 \pm 2EX\cdot EY + (EY)^2) = \Var X + \Var Y \pm 2(E(XY)-EX\cdot EY)$
+    \item $\Var (X_1 + \ldots + V_n) = \sum_{i=1}^n \Var X_i + 2\sum_{i < j} (E(X_iX_j) - EX_iEX_j)$
+\end{enumerate}
+\textbf{Теорема (неравенство Чебышева)}\\
+$P(|X-EX|\geq \eps) \leq \frac{\Var X}{\eps^2}$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $P(|X-EX| < \eps) \geq 1 - \frac{\Var X}{\eps^2}$
+    \item $P(|X-EX| < k\sqrt{\Var X}) \geq 1 - \frac1{k^2}$
+    \item ЗБЧ (слабый)\\
+    $X_1,\ldots, X_n$ -- независимые\\
+    $EX_i = \mc M$\\
+    $\Var X_i = \sigma^2$\\
+    $S_n = \sum_{i=1}^n X_i$\\
+    Тогда $P(|\frac{S_n}{n} - \mc M| \geq \eps) \leq \frac{\sigma^2}{n\eps^2} \rto 0$\\
+    $E \frac{S_n}{n} = \frac1n \sum EX_i = \mc M$\\
+    $\Var \frac{S_n}{n} = \frac{n \Var X_1}{n^2} = \frac{\Var X_1}{n}$
+\end{enumerate}
+\textbf{Пример}\\
+Дискретные:
+\begin{itemize}
+    \item $I(c)$\\
+    $EX = 1c = c$\\
+    $\Var X = 0$
+    \item $Bern(p)$\\
+    $EX = 1p + 0q = p$\\
+    $EX^2 = p$\\
+    $\Var X = p - p^2 = pq$
+    \item $Bin(n, p)$\\
+    $S_n = X_1 + \ldots + X_n$\\
+    $X_i \sim Bern(p)$ -- независимые\\
+    $ES_n = nEX_1 = np$\\
+    $\Var S_n = n\Var X_1 = npq$
+    \item $Pois(\lambda)$\\
+    $EX = \sum_{k=1}^\infty ke^{-\lambda}\frac{\lambda^k}{k!} = e^{-\lambda}\lambda \sum_{k=1}^\infty \frac{\lambda^{k-1}}{(k-1)!} = e^{-\lambda+\lambda}\lambda = \lambda$\\
+    $E(X(X-1)) = EX^2 - EX = EX^2 - (EX)^2  + (EX)^2 - EX = \Var X + (EX)^2 - EX \Rto \Var X = E(X(X-1)) - (EX)^2 + EX$\\
+    $E(X(X-1))=\sum_{k=2}^\infty k(k-1)e^{-\lambda}\frac{\lambda^k}{k!} = \lambda^2$\\
+    $\Var X = \lambda^2 - \lambda^2 + \lambda = \lambda$
+    \item $Geom(p)$\\
+    $EX = \sum_{k=1}^\infty P(X\geq k) = \sum_{k=1}^\infty \sum_{j=1}^k P(X=j) = \sum_{k=1}^\infty \sum_{j=k}^\infty q^jp= \sum_{k=1}^\infty \frac{q^k p}{1-q} = \sum_{k=1}^\infty q^k = \frac qp$\\
+    $E(X(X-1)) = \sum_{k=2}^\infty k(k-1)q^kp = pq^2\sum_{k=2}^\infty k(k-1)q^{k-2} = pq^2 (\sum_{k=0}^\infty q^k)'' = pq^2 (\frac1{1-q})'' = \frac{2pq^2}{(1-q)^3} = 2\frac{q^2}{p^2}$
+    Тогда $\Var X = 2\frac{q^2}{p^2} - \frac{q^2}{p^2} + \frac qp = \frac qp + (1 + \frac qp) = \frac{q}{p^2}$
+    \item $S_n \sim NB(r, p), r \in \Nset$\\
+    $X_1, \ldots, X_n$ -- независимые, $X_i \sim Geom(p)$\\
+    Тогда $EX = \frac{rq}{p}, \Var S_n = \frac{rq}{p^2}$
+\end{itemize}
+Равномерные:
+\begin{itemize}
+    \item $U[0,1]$\\
+    $EX = \frac12$\\
+    $EX^2 = \frac13$\\
+    $\Var X = \frac1{12}$
+    \item $U[a,b]$\\
+    $EX = \frac{a+b}{2}$\\
+    $\Var X = \frac{(b-a)^2}{12}$
+    \item $N(0, 1)$\\
+    $EX = 0$\\
+    $EX^2 = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty xxe^{-\frac{x^2}2}\df x = - \frac{1}{\sqrt{2\pi}}xe^{-\frac{x^2}2}\vl_{-\infty}^\infty + \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-\frac{x^2}{2}}\df x = 1$\\
+    \item $N(\mu, \sigma^2)$\\
+    $X = \sigma N(0,1) + \mu$\\
+    Тогда $EX = \mu, \Var X = \sigma^2$
+    \item $\Gamma(\alpha, \lambda)$\\
+    $p(x) = \frac{x^{\alpha-1}\lambda^\alpha e^{-\lambda x}}{\Gamma(\alpha)}\1(x \geq 0)$\\
+    $EX = \frac{\alpha}{\lambda}\int_0^\infty \frac{x^\alpha\lambda^{\alpha+1} e^{-\lambda x}}{\Gamma(\alpha+1)} = \frac{\alpha}{\lambda}$\\
+    $EX^2 = \frac{\alpha(\alpha+1)}{\lambda^2}\int_0^\infty \frac{x^{\alpha+1}\lambda^{\alpha+2} e^{-\lambda x}}{\Gamma(\alpha+2)} = \frac{\alpha(\alpha+1)}{\lambda^2}$\\
+    $\Var X = \frac{\alpha(\alpha+1)}{\lambda^2} - \frac{\alpha^2}{\lambda^2} = \frac{\alpha}{\lambda^2}$
+    \item $Exp(\lambda) = \Gamma(1, \lambda)$\\
+    $EX = \frac1\lambda, \Var X = \frac1{\lambda^2}$
+    \item $Cauchy(0, 1)$\\
+    $EX = \int_{-\infty}^{+\infty} \frac{1}{\pi} \frac{x}{1+x^2}\df x \neq 0$ -- потому что интеграл расходится\\
+    Матожидания не существует
+\end{itemize}
+\textbf{Определение (мода)}\\
+Дискретный случай: $\mod X = x_k \LRto P(X = x_k)$ -- наибольшая\\
+Непрерывный случай: $\mod X = x_* \LRto x_* = \argmax p(x)$\\
+Унимодальность -- плотность имеет одну точку локального максимума\\
+Бимодальность -- плотность имеет две точки локального максимума (но мода все равно одна)\\
+\textbf{Определение (квантиль)}\\
+$\alpha \in [0, 1]$\\
+$q_\alpha$ -- квантиль порядка $\alpha \LRto P(X \geq q_\alpha) \geq 1 - \alpha, P(X \leq q_\alpha) \geq \alpha$\\
+\textbf{Замечание}\\
+$F$ строго монотонна $\Rto F(q_\alpha) = \alpha, F^{-1}(\alpha) = q_\alpha$\\
+$F$ -- не строго монотонна\\
+$F^{-1}(\alpha) := \left[\begin{array}{c}
+    \sup \{x: F(x) \leq \alpha\}\\
+    \inf \{x: F(x) \leq \alpha\}
+\end{array}\right.$\\
+\textbf{Определение}\\
+$\med X = q_{\frac12}$\\
+\textbf{Утверждение}\\
+$\Var X = \min_{a \in \Rset} \ub{f(a)}{E(X-a)^2} \LRto EX = \argmin_{a\in \Rset} E(X-a)^2$\\
+$f(a) = EX^2 - 2aEX + a^2$\\
+$a_{\min} = EX$\\
+\textbf{Утверждение}\\
+$\med X = \argmin_{a\in \Rset} E|X-a|$\\
+\textbf{Доказательство}\\
+Н.у.о. $\med X = 0$\\
+Проверим, что $E|X-c| \geq E|X|$\\
+$c \geq 0: |X-C| - |X| = \left\{\begin{array}{cc}
+    -c,& X > c\\
+    c-2X,& 0 < X \geq c\\
+    c,& X < 0
+\end{array}\right.$\\
+$E(|X-c| - |X|) =\\
+E((|X-c| - |X|)\1(X > c)) + E((|X-c| - |X|)\1(0 < X \geq c)) + E((|X-c| - |X|)\1(X \geq 0)) =\\
+-cE\1(X > c) + E((|X-c| - |X|)\1(0 < X \geq c)) + cE(\1(X \leq 0)) \geq\\
+-cP(X > c) - cP(0 < X \leq c) + cP(X \leq 0) =\\
+c(P(X \leq 0) - P(X > 0)) = c(2P(X \geq 0) - 1) \geq 0$\\\\
+\textbf{Определение}\\
+$EX^k$ -- $k$-ый момент\\
+$E|X|^k$ -- $k$-ый абсолютный момент\\
+$E(X-EX)^k$ -- $k$-ый абсолютный центральный момент\\
+$E(X-EX)^k$ -- $k$-ый центральный момент\\
+$\gamma = \frac{E(X-EX)^3}{\sigma^3}$ -- коэффициент асимметрии\\
+$\gamma=0$ -- график симметричный\\
+$\gamma > 0$ -- правый <<хвост>> длиннее левого\\
+$\gamma < 0$ -- левый <<хвост>> длиннее правого\\
+$\beta = \frac{E(X-EX)^4}{\sigma^4} - 3$ -- коэффициент эксцесса\\
+(константа 3 для нормировки: $\beta_{N(0,1)} = 0$)\\
+$\beta > 0$ -- плотности более сконцентрированы в центре\\
+$\beta < 0$ -- плотности более распределены
+\section{Числовые характеристики случайных величин}
+\textbf{Определение}\\
+$\Cov(X, Y) = E((X-EX)(Y-EY))$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\Cov(X, Y) = E(XY)-EXEY$
+    \item Билинейность
+    \item $\Cov(X, c) = 0$
+    \item $\Cov(X, X) = \Var X$
+    \item $X,Y$ -- независимые $\Rto \Cov (X, Y) = 0$\\
+    \textbf{Пример}\\
+    $X \sim N(0, 1), Y = X^2$\\
+    $\Cov(X, Y) = EX^2 - EXEX^2 = 0$, но $X, Y$ не независимые
+\end{enumerate}
+\textbf{Определение}\\
+коэффициент корреляции $\rho(X,Y) = \frac{\Cov(X, Y)}{\sqrt{\Var X\Var Y}}$\\
+\textbf{Замечание}\\
+$X$ -- нерожденная\\
+$P(Y = c) = 1$\\
+$P(X \in B, Y = 1) = P(X \in B)P(Y = 1)$\\
+$P(X \in B, Y = 0) = 0 = P(X \in B)P(Y = 1)$\\
+Тогда они независимые\\
+Тогда пусть $\rho(X, Y) = 0$\\
+\textbf{Теорема}
+\begin{itemize}
+    \item $\rho(X, Y) \in [-1, 1]$
+    \item $|\rho(X, Y)| = 1 \LRto Y = aX + b, \sign a = \sign \rho(X, Y)$
+\end{itemize}
+\textbf{Доказательство 1}\\
+$\rho(X, Y) = \frac{\Cov(X, Y)}{\sqrt{\Var X \Var Y}} = \frac{\Cov(X - EX, Y - EY)}{\sqrt{\Var X\Var Y}} = \Cov \ot X, \ot Y$\\
+$\ot X = \frac{X-EX}{\sqrt{\Var X}}$\\
+$\ot Y = \frac{Y-EY}{\sqrt{\Var Y}}$\\
+$E \ot X = 0 = E\ot Y$\\
+$\Var \ot X = \frac{\Var \ot Y}{(\sqrt{\Var \ot Y})^2} = 1$\\
+$\Var (\ot X + \ot Y) = \Var \ot X + \Var \ot Y + 2\Cov(\ot X, \ot Y) = 2(1 + \rho(X, Y)) \geq 0$\\
+$\Var (\ot X - \ot Y) = 2(1 - \rho(X, Y)) \geq 0$\\
+\textbf{Доказательство 2($\Rto$)}\\
+$\rho(X, Y) = 1 \Rto \Var (\ot X - \ot Y) = 0 \Rto \ot X - \ot Y = c$\\
+$\rho(X, Y) = -1 \Rto \ot X + \ot Y = c$\\
+\textbf{Доказательство 2($\Lto$)}\\
+$a \neq 0: \rho(aX+b, X) = \frac{\Cov(aX+b, X)}{\sqrt{\Var(aX + b)\Var X}} = \frac{a\Cov X,X}{\sqrt{a^2\Var^2 X}} = \frac{a}{|a|} = \sign a$
+$a = 0$ -- очевидно\\
+\textbf{Определение}\\
+$X = (X_1, \ldots, X_n)^T$ -- случайный вектор\\
+$EX = (EX_1, \ldots, EX_n)^T$ -- вектор математических ожиданий\\
+\textbf{Замечание}\\
+$X$ -- случайная матрица\\
+$EX = (EX_{ij})$ -- матрица математических ожиданий\\
+\textbf{Свойства}\\
+$E(AX+b) = AEX + b$ -- линейность\\
+\textbf{Определение}\\
+$X = (X_1, \ldots, X_n)^T$ -- случайный вектор\\
+$\Var X = (\Cov(X_i, X_j))_{i,j} = E((X-EX)(X-EX)^T)$\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $\Var X = (\Var X)^T$
+    \item $\Var X \geq 0$, т.е. $\fall t \in \Rset^n t^T \Var X t \geq 0$\\
+    \textbf{Доказательство}\\
+    $t^T \Var X t  = t^T(E(X-EX)(X-EX)^T)t = E t^T(X-EX)(X-EX)^Tt = E(t^T(X-EX))^2 \geq 0$
+    \item $\Var (AX+b) = A\Var(X)A^T$
+    \item $X, Y$ -- независимые $\Rto \Var X\pm Y = \Var X + \Var Y$\\
+    \textbf{Доказательство}\\
+    $\Cov (X_i \pm Y_i, X_j \pm Y_j) = \Cov(X_i, X_j) \ub{0}{\pm \Cov(X_i, Y_j) \pm \Cov(X_j, Y_i)} + \Cov(X_j, Y_j)$
+\end{enumerate}
+\textbf{Пример (гауссовский вектор)}\\
+$X \sim N(\mu, \Sigma), \mu \in \Rset^n, \Sigma = \Sigma^T > 0$\\
+Тогда $X = \sqrt{\Sigma}Y + \mu, Y \sim N(0, E)$ -- стандартный гауссовский вектор\\
+$Y = (Y_1, \ldots, Y_n)$ -- стандартный гауссовский вектор $\LRto Y_i \sim N(0, 1), Y_i$ -- независимые\\
+$EY = 0$\\
+$\Var Y = E_n$\\
+$EX = \sqrt{\Sigma}EY + \mu = \mu$ -- вектор математических ожиданий\\
+$\Var X = \sqrt{\Sigma}\Var Y (\sqrt{\Sigma})^T = \Sigma$\\
+\textbf{Пример}\\
+$X$ -- гауссовский вектор\\
+Покажем, что $X_i, X_j$ -- независимые $\LRto \Cov(X_i, X_j) = 0 \fall i, j$\\
+$i := 1, j := 2$\\
+$X = \begin{pmatrix}
+    X_1\\X_2\\\vdots
+\end{pmatrix} = \begin{pmatrix}
+    \sqrt{\Sigma_{12}} & 0\\
+    0 & \ddots
+\end{pmatrix}\begin{pmatrix}
+    Y_1\\\vdots\\Y_n
+\end{pmatrix} + \begin{pmatrix}
+    \mu_1\\\vdots\\\mu_n
+\end{pmatrix}$\\
+$\begin{pmatrix}
+    X_1\\X_2\\
+\end{pmatrix} = \begin{pmatrix}
+    \sqrt{\Sigma_{12}} & \ldots\\
+\end{pmatrix}\begin{pmatrix}
+    Y_1\\\vdots\\Y_n
+\end{pmatrix} + \begin{pmatrix}
+    \mu_1\\\vdots\\\mu_n
+\end{pmatrix} \Rto (X_1, X_2)^T \sim N((\mu_1, \mu_2)^T, \Sigma_{12})$\\
+$(X_1, X_2)^T \sim N((\mu_1, \mu_2)^T, \nm{diag}(\sigma_1^2, \sigma_2^2))$\\
+$\sigma_1^2 = \Var X_1$\\
+$\sigma_2^2 = \Var X_2$\\
+$p(X_1, X_2) = \frac{\exp(-\frac12 (\frac{(x_1 - \mu_1)^2}{\sigma_1^2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2}))}{\sqrt{2\pi}^2 \sigma_1 \sigma_2}$\\\\
+$\begin{pmatrix}
+    X\\Y
+\end{pmatrix} = \begin{pmatrix}
+    \sqrt{\Sigma}_X & \sqrt{\Sigma}_{XY}\\
+    \sqrt{\Sigma}_{XY} & \sqrt{\Sigma}_Y
+\end{pmatrix}\begin{pmatrix}
+    U_1\\U_2
+\end{pmatrix} + \begin{pmatrix}
+    \mu_X\\\mu_Y
+\end{pmatrix}$\\
+$X = \sqrt{\Sigma}_X U_1 + \sqrt{\Sigma}_{XY}U_2 + \mu_X$\\
+$\Var X = \begin{matrix}
+    \sqrt{\Sigma}_X & \sqrt{\Sigma}_{XY}
+\end{matrix}\begin{matrix}
+    \sqrt{\Sigma}_X\\
+    \sqrt{\Sigma}_{XY}
+\end{matrix} = \sqrt{\Sigma_X}^2 + \sqrt{\Sigma_{XY}}^2$\\
+$\begin{pmatrix}
+    \sqrt{\Sigma}_X & \sqrt{\Sigma}_{XY}\\
+    \sqrt{\Sigma}_{XY} & \sqrt{\Sigma}_Y
+\end{pmatrix}\begin{pmatrix}
+    \sqrt{\Sigma}_X & \sqrt{\Sigma}_{XY}\\
+    \sqrt{\Sigma}_{XY} & \sqrt{\Sigma}_Y
+\end{pmatrix} = \begin{pmatrix}
+    \sqrt{\Sigma_X}^2 + \sqrt{\Sigma_{XY}}^2 & \sqrt{\Sigma}_{XY}(\sqrt{\Sigma}_X + \sqrt{\Sigma}_Y)\\
+    \sqrt{\Sigma}_{XY}(\sqrt{\Sigma}_X + \sqrt{\Sigma}_Y) & \sqrt{\Sigma_Y}^2 + \sqrt{\Sigma_{XY}}^2
+\end{pmatrix}$
+\section{Условное распределение числовых характеристик}
+\textbf{Определение}\\
+$(X, Y)$ -- случайный вектор\\
+Дискретный случай: $P(X = x_i|Y = y_j) = \frac{P(X=x_i, Y = y_j)}{P(Y = y_j)}$\\
+$P(Y = y_j) = \sum_k P(Y = y_j | X = x_i)P(X = x_i)$\\
+$P(X = x_i|Y = y_j) = \frac{P(X=x_i, Y = y_j)}{\sum_k P(Y = y_j | X = x_i)P(X = x_i)}$ -- теорема Байеса\\
+Непрерывный случай: $p_{X|Y}(x|y) = \frac{p_{X,Y}(x, y)}{p_Y(y)}$\\
+$p_Y(y) = \int_\Rset p_{Y|X}(y|x)p_X(x) \df x$\\
+$p_{X|Y}(x|y) = \frac{p_{X,Y}(x, y)}{\int_\Rset p_{Y|X}(y|x)p_X(x) \df x}$ -- теорема Байеса\\
+\textbf{Определение}\\
+$E(X | Y = y) = E(X|Y) = \left\{\begin{array}{c}
+    \sum_i x_iP(X=x_i|Y=y)\\
+    \int_\Rset x p(x|y)\df x
+\end{array}\right.$\\
+Условное математическое ожидание -- случайная величина\\
+\textbf{Свойства}
+\begin{enumerate}
+    \item $E(aX+bY|U) = aE(X|U) + bE(Y|U)$
+    \item $E(X|Y) = \argmin_{f(Y)} E(X-f(Y))^2$
+    \item $E(X|X) = X$
+    \item $X, Y$ -- независимые $\Rto E(X|Y) = E(X)$
+    \item $EX = E_Y(E_{X|Y}(X|Y))$\\
+    \textbf{Доказательство}\\
+    $EX = \sum_k x_k P(X=x_k) = \sum_k x_k \sum_j P(X=x_k | Y = y_j) P(Y_j) = \sum_j P(Y=y_j) \sum_k x_k P(X_k | Y=y_k) = \sum_j P(Y=y_j)E(X|Y=y_j) = E_Y(E(X|Y))$
+\end{enumerate}
+\textbf{Пример}\\
+$(X, Y) \sim N(\begin{pmatrix}
+    \mu_X\\\mu_Y
+\end{pmatrix}, \begin{pmatrix}
+    \sigma_X^2 & \sigma_{XY}\\
+    \sigma_{XY} & \sigma_Y^2
+\end{pmatrix})$\\
+Тогда $E(Y|X) = aX  + b$\\
+$E(Y|X) = E(Y-Ax + AX|X) = E(Y-aX|X) + E(aX|X) = E(Y - \frac{\sigma_{XY}}{\sigma_{X}^2}) + \frac{\sigma_{XY}}{\sigma_X^2}X = (X-\mu_X)\frac{\sigma_{XY}}{\sigma_X^2} + \mu_X$\\
+$\begin{pmatrix}
+    Y-aX\\ X
+\end{pmatrix} \sim N(\cdot, \cdot)$\\
+$0 = \Cov(Y-aX, X) = \Cov(Y, X) - a\Cov(X, X) \Rto a = \frac{\sigma_{XY}}{\sigma_X^2}$\\
+\textbf{Определение}\\
+$\Var(X|Y) = E((X-E(X|Y))|Y) = E(X^2|Y) - (E(X|Y))^2$\\
+$\Var X = \Var E(X|Y) + E \Var(X|Y)$
+\section{Сходимости}
+$X_n \xrto{a.s.} X \LRto P(\{\omega: X_n(\omega) \rto X(\pi)\}) = 1$ -- почти наверное\\
+$X_n \xrto{p} X \LRto \fall \eps > 0\ P(|X_n-X| > \eps) \rto 0$ -- по вероятности\\
+$X_n \xrto{Lp} \LRto E|X_n-X|^p \rto 0, \geq 1$\\
+$X_n \xrto{d} X \LRto F_n(x) \rto F(x), x \in C(F)$ -- по распределению\\
+$F_n \Rto F \LRto \fall f$ -- непр. $\int f\df F_n(x) \rto \int f\df F(x)$ -- слабая\\
+\textbf{Теорема}\\
+$X_n \xrto{a.s.} X \Rto X_n \xrto{d} X$\\
+$X_n \xrto{Lp} X \Rto X_n \xrto{d} X$\\\\
+% $X_n \xrto{d} X \LRto F_n \rto F$\\\\
+$\mc F$ -- множество функций распределения\\
+$\mc G = \{G: \Rset \rto \Rset| G \text{ -- монот. возр, непр. справа}, G(-\infty) \geq 0, G(+\infty \leq 1)\}$ -- расширенные распределения\\
+Распределения:\\
+$P(X \in \Rset) = G(+\infty) - G(-\infty)$\\
+$P(X = -\infty) = G(-\infty)$\\
+$P(X = +\infty) = 1 - G(+\infty)$\\
+$P(X_n = n) = P(X_n = -n) = \frac12$\\
+$F_n(x) = \left\{\begin{array}{cc}
+    0, & x < -n\\
+    \frac12, & -n \leq x < n\\
+    1, & x \geq n
+\end{array}\right.$\\
+$F_n(x) \xrto{d} \frac12$\\
+$F_n(x) \not \Rto \frac12$\\
+\textbf{Замечание}
+\begin{enumerate}
+    \item $\xrto{d} \Rto$ можно задать на $\mc G$
+    \item $G_n, G \in \mc G\ (G_n \Rto G) \Rto G_n \xrto{d} G$\\
+    В обратную сторону не действует
+\end{enumerate}
+\textbf{Теорема (Хелли)}\\
+$G_n \in G \Rto \ex G_{n_k}, G \in G: G_{n_k} \Rto G$\\
+(без доказательства)\\
+\textbf{Следствие}\\
+Если всякая слабо сходящаяся подпоследовательность сходится к одной и той же точке $G$, то $G_n \Rto G$\\
+% \textbf{Доказательство}\\
+% Пусть $G_n \xrto{d} G$\\
+% Тогда $G_n \not\Rto G$\\
+% $\ex t \in C(G): G_n(t) \not\rto G(t)$\\
+% $\ex G_{n_k}: (G_{n_k} \Rto G) \Rto G_{n_k}(t) \rto G(t)$\\
+% Тогда $G_n \xrto{d} G$
+\textbf{Определение (плотные распределения)}\\
+$F_n \in \mc G$\\
+$\{F_n$\} -- плотная, если $\fall \eps > 0\ex M: \inf_n \ub{P(M\leq X_n \leq M)}{(F_n(M) - F_n(-M-0))} > 1-\eps$\\
+Т.е. <<хвосты>> равномерно маленькие\\
+\textbf{Определение}\\
+Пусть $L$ -- подмножество непрерввных и ограниченных функций\\
+$L$ -- определеяет распределение $\LRto F \in \mc F, G \in \mc G, \fall f \in L\ \int f\df F = \int f \df G \Rto F = G$\\
+\textbf{Теорема (Критерий существования слабого предела из $\mc F$)}\\
+$F_n \in \mc F, L$ -- определяет распределение
+Тогда $\ex F \in \mc F: F_n \Rto F \LRto$
+\begin{enumerate}
+    \item $\{F_n\}$ -- плотное\\
+    \item $\ex \lim_n \int f\df F_n \fall f \in L$
+\end{enumerate}
+\textbf{Доказательство $\Rto$}\\
+2 выполнено\\
+$\int f\df F_n \rto \int f\df F\ \fall f$\\
+$F_n \xrto{d} F$\\
+$\ex  M > 0: M, -M \in C(F), F_n(+M) - F_n(-M-0) \rto F(M) - F(-M) > 1-\eps$\\
+\textbf{Доказательство $\Lto$}\\
+$\ex F_{n_k}: F_{n_k} \Rto G \in \mc G$\\
+Тогда $F_{n_k} \xrto{d} G$\\
+$F_{n_j} \Rto F \in \mc F$\\
+$\ex \lim \int f \df F_n$\\
+$\int f \df F_{n_k} \Rto A$\\
+$\int f \df F_{n_k} \Rto \int f\df G$\\
+$\int f \df F_{n_j} \Rto A$\\
+$\int f \df F_{n_j} \Rto \int f\df F$\\
+Тогда $G = F$\\
+\textbf{Следствие}\\
+$L$ -- определяет распределение\\
+$\int f \df F_n \rto f\df F$\\
+Пусть верно одно из трех условий
+\begin{enumerate}
+    \item $\{F_n\}$ -- плотное
+    \item $F \in \mc F$
+    \item $1 \in L$
+\end{enumerate}
+Тогда $F_n \Rto F \in \mc F$\\
+\textbf{Доказательство 1}\\
+По теореме\\
+\textbf{Доказательство 2}\\
+Тогда выполнено 1\\ 
+\textbf{Доказательство 3}\\
+$\ub{1}{\int \df F_n} \rto \int \df F$\\
+Тогда $\int \df F = 1$\\
+$\int \df F = F(+\infty) - F(-\infty)$\\
+Тогда $F(+\infty) = 1, F(-\infty) = 0$\\
+Тогда выполнено условие 2\\
+\textbf{Теорема}\\
+Пусть $F_n \xrto{d} F \in \mc F$\\
+Т.е. $F_n(x) \rto F(x)\ \fall x \in C(F)$\\
+Покажем, что $\fall f \in \ot C^0_1(\Rset)\ \int_{-\infty}^{\infty} f \df F_n(x) \rto \int_{-\infty}^\infty f\df F(x)$\\
+\textbf{Доказательство}\\
+$\int_{-\infty}^\infty f\df F(x) = \ub{0}{f F\vl_{-\infty}^\infty} - \int_{-\infty}^\infty F \df f(x)$\\
+$\int_{-\infty}^{\infty} f \df F_n(x) = \ub{0}{f F_n\vl_{-\infty}^\infty} - \int_{-\infty}^\infty F_n \df f(x)$\\
+Тогда $F_n \Rto F$\\
 \end{document}
