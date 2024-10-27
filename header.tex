@@ -44,6 +44,11 @@
     tabsize=2
 }
 
+\newcommand*\encirc[1]{%
+  \begin{tikzpicture}
+    \node[draw,circle,inner sep=1pt] {#1};
+  \end{tikzpicture}}
+
 \lstset{extendedchars=\true}
 \lstset{style=mystyle}
 
@@ -120,6 +125,8 @@
 \newcommand{\vl}{\Biggr|}
 \newcommand{\ub}[2]{\underbrace{#2}_{#1}}
 \newcommand{\ob}[2]{\overbrace{#2}^{#1}}
+\newcommand{\tub}[2]{\ub{\text{#1}}{#2}}
+\newcommand{\tob}[2]{\ob{\text{#1}}{#2}}
 
 \def\letus{%
     \mathord{\setbox0=\hbox{$\exists$}%

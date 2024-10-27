@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\input{../../header.tex}
+
+\title{Математическая статистика. Теория}
+\author{Александр Сергеев}
+\date{}
+\begin{document}
+\maketitle
+\section{Введение}
+\textbf{Процесс компиляции}\\
+$\text{вход} \xrto{\text{лексический анализ}} \text{токены} \xrto{\text{парсинг}} \text{дерево разбора} \xrto{\text{вычисление/компиляция}} \text{результат}$\\
+\textbf{Определение}\\
+Токен -- неделимая единица парсинга\\
+Синтаксически управляемая трансляция -- технология написания парсеров, когда одновременно задаются и зависят друг от друга парсинг и вычисление (правила вычисления применяются прямо во время разбора)
+\textbf{Напоминание}\\
+Контекстно-свободная грамматика:\\
+Алфавит $\Sigma$\\
+Нетерминалы $N$\\
+Стартовый нетерминал $S \in N$\\
+Правила $P \subset N \times (N \cup \Sigma)^*: \an A\alpha \in P$ или $A \rto \alpha$\\
+$\alpha \Rto \beta$ -- из $\alpha$ выводится за 1 шаг $\beta$, если $\alpha = \alpha_1A\alpha_2, \beta = \alpha_1 \xi \alpha_2$ и есть правило $A \rto \xi \in P$\\
+Язык грамматики $L(\Gamma) = \{x | S \Rto^* x, x \in \Sigma^*\}$\\
+\textbf{Определение}\\
+Грамматика $\Gamma \in LL(1)$, если из\\
+$S \Rto^* xA\alpha \Rto x\xi\alpha \Rto^* xcy$\\
+$S \Rto^* xA\beta \Rto x\eta\beta \Rto^* xcz$\\
+$c \in \Sigma$ или $c=\eps, y=\eps, z = \eps$\\
+следует $\xi = \eta$\\
+\textbf{Замечание}\\
+Буквы из конца латинского алфавита -- строки из терминалов\\
+Буквы из греческого алфавита -- любые строки (возможно, содержащие нетерминалы)\\
+\textbf{Замечание}\\
+Другими словами, если мы хотим, чтобы из нетерминала $A$ получилась строка, начинающаяся на $c$, то у нас есть только одно правило для достижения этого\\
+\textbf{Определение}\\
+$LL(k)$ -- вместо символа $c$ у нас $k$ символов\\
+Из\\
+$S \Rto^* xA\alpha \Rto x\xi\alpha \Rto^* xcy$\\
+$S \Rto^* xA\beta \Rto x\eta\beta \Rto^* xcz$\\
+$c \in \Sigma^k$ или $c=\Sigma^{\leq k}, y=\eps, z = \eps$\\
+следует $\xi = \eta$\\
+\textbf{Замечание}\\
+$LL(0)$-грамматики задают линейные программы (обобщение архиваторов)\\
+\textbf{Утверждение}\\
+$LL(1)$-грамматики -- это грамматики, для которых можно написать рекурсивный спуск\\
+\textbf{Определение}\\
+$FIRST: (N \cup \Sigma)^* \rto 2^{\Sigma \cup \{\eps\}}$\\
+$FOLLOW: N \rto 2^{\Sigma \cup \{\$\}}$\\\\
+Пока будем считать, что \textit{бесполезных} символов нет -- из любого нетерминала можно вывести терминал\\
+$FIRST(\alpha) = \{c | \alpha \Rto^* c\beta\} \cup \{\eps | \alpha \Rto^* \eps\}$\\
+$FOLLOW(A) = \{c| S\Rto^* \alpha Ac\beta\} \cup \{\$ | S \Rto^* \alpha A\}$\\
+\textbf{Теорема}\\
+Грамматика $\Gamma \in LL(1) \LRto \fall A \rto \alpha, A \rto \beta$ выполнено
+\begin{enumerate}
+	\item $FIRST(\alpha) \cap FIRST(\beta) = \varnothing$
+	\item $\eps \in FIRST(\alpha) \Rto FIRST(\beta) \cap FOLLOW(A) = \varnothing$
+\end{enumerate}
+\textbf{Лемма}\\
+$\alpha = c\beta \Rto FIRST(\alpha) = \{c\}$\\
+$\alpha = \eps \Rto FIRST(\alpha) = \{\eps\}$\\
+$\alpha = A\beta \Rto FIRST(\alpha) = FIRST(A) \setminus \eps \cup (FIRST(\beta)\ if\ \eps \in FIRST(A))$\\
+
+\end{document}
