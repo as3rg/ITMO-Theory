@@ -341,12 +341,13 @@ $\ol{B(X)} = \frac{V(X, \theta)}{n A'(\theta)} - \frac{C'(\theta)}{A'(\theta)}$\
 Тогда $\ol B(X)$ -- оптимальная оценка для $- \frac{C'(\theta)}{A'(\theta)}$ по критерию оптимальности
 \subsection{Байесовская постановка}
 $X_1, \ldots, X_n \in F_\theta$\\
-$\theta = ?.. \theta \sim \Pi(\theta)$ -- априорное распределение\\
+$\theta$ -- неизвестный параметр \\
+$\theta \sim \Pi(\theta)$ -- априорное распределение\\
 $l(\widehat \theta, \theta)$ -- функция потерь\\
 $R(\widehat \theta, \theta) = E_{F_\theta}l(\widehat \theta, \theta)$ -- риск\\
 $r(\widehat \theta) = E_{\pi(\theta)} R(\widehat \theta, \theta)$ -- байесовский риск\\
 $\widehat \theta_B = \argmin_{\widehat \theta} r(\widehat \theta)$\\
-$r(\widehat) = E_{(\pi(\theta), F_\theta)}l(\widehat \theta, \theta)$\\
+$r(\widehat \theta) = E_{(\pi(\theta), F_\theta)}l(\widehat \theta, \theta)$\\
 \textbf{Теорема Байеса для плотностей}\\
 $p(\theta|X) = \frac{L(X|\theta)\pi(\theta)}{\int L(X|\theta)\pi(\theta) \df \theta}$\\
 \textbf{Утверждение}\\
@@ -357,7 +358,7 @@ $r(\theta_*) = EE[l(\theta_*, \theta)|X] \leq EE[l(\widehat \theta, \theta)|X] =
 \textbf{Замечание}\\
 $l(\widehat \theta, \theta) = (\theta - \widehat \theta)^2 \Rto \widehat{\theta_B} = E[\theta|X]$\\
 % лекция 6 1:05
-% пример для какого-то распределения
+% пример для какого-то распределения и доказательство замечания
 \subsection{Минимаксная оценка}
 % лекция 7 0:00
 $m(\hat \theta) = \sup_\theta R(\hat \theta, \theta)$\\
@@ -474,4 +475,147 @@ $B_{jj} = \lambda_j u_j u^T_j = \lambda_j$\\
 	$b(I - B) = b - b = 0$\\
 	Тогда по лемме 1
 \end{enumerate}
+% Лекция 8 0:00
+% пример для поиска доверительных интервалов всяких величин
+% Лекция 8 0:30
+\textbf{Определение}\\
+$X_0, \ldots, X_n$ -- i.i.d $N(0,1)$\\
+Тогда $\frac{X_0}{\sqrt{\frac1n \sum_{k=1}^n X_k^2}} \sim T(n)$ -- распределение Стьюдента\\
+\textbf{Определение}\\
+$\chi_n^2 \sim \chi^2(n)$\\
+$\chi_m^2 \sim \chi^2(m)$ -- независимые\\
+$\frac{\chi_n^2}{\chi_m^2} \sim F(n,m)$ -- распределение Фишера\\
+\subsection{Асимптотические доверительные интервалы}
+$\lim_{n\rto \infty} P(\theta \in (l_n, r_n)) \geq 1 -\alpha$\\
+$T(X, \theta) \xrto[d]{} G, G$ не зависит от $\theta$
+\section{Проверка статистических гипотез}
+Основное предположение (по умолчанию)\\
+Альтернативное предположение (хотим доказать)\\
+\textbf{Определение}\\
+Пусть есть выборка в широком смысле $X_1, \ldots, X_n$\\
+Будем считать, что $(X_1, \ldots, X_n) \sim F$\\
+$H_0 := (F \in \mc F_0)$ -- нулевая гипотеза (основная гипотеза)\\
+$H_1 := (F \in \mc F_1)$ -- альтернатива\\
+$\alpha \in (0,1)$ -- уровень значимости\\
+Проводим стат.тест/критерий $\delta(X, \alpha)$:\\
+% Лекция 9 0:00$
+$\delta(X, \alpha) = \left\{\begin{array}{l}
+	\tub{данные не противоречат нулевой гипотезе}{\text{accept } H_0}\\
+	\tub{данные противоречат нулевой и свидетельствуют альтернативной}{\text{reject } H_0\text{ with respect to } H_1}
+\end{array}\right.$\\
+Тест не подтверждает и не опровергает гипотезу, но позволяет делать некоторые выводы о гипотезе\\\\
+Рассмотрим $T(X)$ -- статистику критерия\\
+$T(X) \sim G$ или $T(X) \xrto[n\rto \infty]{d} G$ при условии $H_0$\\
+$P(T(X) \in T_0(\alpha) | H_0) = 1 -\alpha$\\
+$P(T(X) \in T_1(\alpha) | H_0) = \alpha$ (при сходимости $\approx$)\\\
+Если $T(x) \in T_1(\alpha)$ -- reject $H_0$\\
+Иначе -- accept $H_0$\\
+$\supp G = \tub{область принятия}{T_0(\alpha)} \sqcup \tub{область опровержения}{T_1(\alpha)}$\\
+Виды тестов в зависимости от критической области:
+\begin{enumerate}
+	\item Left-sided\\
+	$T_0(\alpha) = [q_\alpha, +\infty), T_1(\alpha) = (-\infty, q_\alpha)$\\
+	$p_l = P(\Gamma \leq T(x) | H_0)$
+	\item Right-sided\\
+	$T_0(\alpha) = (-\infty,q_{1-\alpha}], T_1(\alpha) = (q_{1-\alpha}, +\infty)$
+	$p_r = P(\Gamma > T(x) | H_0)$
+	\item Two-sided\\
+	$T_0(\alpha) = [q_{\frac\alpha2}, q_{1-\frac\alpha2}], T_1 = \ol{T_0}$
+	$p=2\min(p_l, p_r)$
+\end{enumerate}
+Тогда мы получили еще одно условие:\\
+Если $p < \alpha$ -- reject $H_0$\\
+Иначе accept $H_0$\\\\
+$p$ (p-value) -- это максимальный уровень, при котором мы принимаем $H_0$\\
+Виды ошибок:
+\begin{enumerate}
+	\item first type error / false positive\\
+	$P(T(X) \in T_1(\alpha) | H_0) = \alpha$
+	\item second type error / false negative\\
+	$P(T(X) \in T_0(\alpha) | H_1) = \beta$\\
+	$1 - \beta$ -- мощность критерия
+\end{enumerate}
+\textbf{Пример (spam classifier)}\\
+$H_0$ -- не спам\\
+$H_1$ -- спам\\
+Письма не фильтруются, $\alpha = 0 \Rto \beta$ -- большое, т.к. спама много\\
+Все письма -- спам, $\beta = 0 \Rto \alpha$ -- большое
+\subsection{Статистические критерии и доверительные интервалы}
+Вспомним задачу построения доверительного интервала\\
+$X_1, \ldots, X_n \sim F_\theta, T(X, \theta) \rto G, P(q_{\frac{\alpha}{2}} \leq T(X, \theta) \leq q_{1-\frac{\alpha}{2}}) = 1 - \alpha$\\
+Рассмотрим следующую стат. гипотезу\\
+$H_0: \theta = \theta_0$\\
+$P(T(X, \theta_0) \in T_{\theta}|\theta = \theta_0) = 1-\alpha$\\
+$H_1: \theta \neq \theta_0$ или $\theta > \theta_0$ или $\theta < \theta_0$\\\\
+%lection 9 0:48:00 пример
+%lection 9 1:09:00 F-test, T-test
+\subsection{Критерий Колмагорова}
+$X_1, \ldots, X_n \sim F$\\
+$H_0: F=F_0, F_0$ -- непрерывная\\
+$H_1: F\neq F_0$\\
+\textbf{Теорема Колмагорова (напоминание)}\\
+$P(\sqrt{n} \sup_{x\in \Rset} |F_n(x) - F(x)| \leq t) \rto K(t)$\\
+Статистика критерия: $D_n = \sqrt{n}\sup_{x\in \Rset} |F_n(x) - F(x)|, F_n$ -- э.ф.р.\\
+Если $D_n > q_{1-\alpha}$ -- reject $H_0$\\
+Иначе accept $H_0$\\
+\subsection{Критерий Смирнова}
+$X_1, \dots, X_n, Y_1, \ldots, Y_m$ -- независимые\\
+$H_0: F_X = F_Y (= F_0), F_0$ -- непрерывная\\
+$H_1: \lnot H_0$\\
+$D_{m,n} = \sqrt{\frac{nm}{n+m}} \sup_x |F_n(x) - F_m(x)|$\\
+$T_1(\alpha) = (q_{1-\alpha}, +\infty)$\\
+\subsection{Критерии типа хи-квадрат}
+%lection 10 0:00
+\textbf{Критерий согласия Пирсона}\\
+Пусть есть $N$-элементное множество\\
+$p=(p_1, \ldots, p_N)$ -- настоящий вектор вероятностей (не знаем)\\
+$p_0 = (p_{01}, \ldots, p_{0N})$ -- ожидаемый, фиксированный вектор вероятностей\\
+$\nu_k$ -- кол-во элементов типа $k$ в выборке, $n=\sum_k \nu_k$\\
+$H_0: p = p_0$\\
+$H_1: p \neq p_1$\\
+Тогда возьмем статистику $\chi_N^2 = \sum_{k=1}^N \frac{(\nu_k - n p_{0k})^2}{np_{0k}}$\\
+\textbf{Теорема}\\
+$\chi_N^2 \xrto[n\rto \infty]{} \chi^2 (N-1)$ -- при условии $H_0$\\
+\textbf{Доказательство для $N=2$}\\
+$\frac{(\nu_1 - np_{01})^2}{np_{01}} + \frac{(\nu_2 - np_{02})^2}{np_{02}} = \frac{(\nu_1 - np_{01})^2}{n}(\frac1{p_{01} + \frac1{1-p_{01}}}) = \frac{(\nu_1 - np_{01})^2}{np_{01}(1-p_{01})} \rto (N(0,1))^2$\\
+\textbf{Замечание}\\
+Критерий состоятельный (мощность стремится к 1)\\
+Критическая область правосторонняя (если $H_0$ верна, то $\chi$ будет мало)\\\\
+Усложним задачу\\
+$H_0: p = p_0(\theta), \theta \in \circ H \subset \Rset^d, d < N - 1$\\
+Тогда $\chi_N^2 = \sum_{k=1}^N \frac{(\nu_k - np_{0k}(\theta))^2}{np_{0k}(\theta)}$\\
+Вместо $\theta$ подставим оценку максимального правдоподия\\
+\textbf{Теорема}\\
+$p_0(\theta) > 0 \fall \theta$\\
+$\ppart{p_0}{\theta}, \ppart{}{\theta}\ppart{}{\theta} p_0$ -- непрерывные\\
+$\rg (\ppart{p_{0k}}{\theta_j})_{1\leq k \leq N, 1 \leq j \leq d} = d$\\
+Тогда $\chi_N^2 \rto \chi^2(N-1-\tub{количество неизвестных}{d})$\\
+%lection 10 0:37
+\textbf{Критерий однородности}\\
+Есть $K$ независимых выборок\\
+Все они из $\{1\ldots,N\}$\\
+Пусть $p^{(j)}$ -- истинный вектор вероятностей для $j$-ой выборки\\
+$H_0: p^{(1)} = \ldots = p^{(k)}$ -- мы их не знаем\\
+$H_1: \lnot H_0$\\
+$\nu_{ij}$ -- количество элементов $j$ в выборке $i$\\
+$n_i = \sum \nu_{i*}$\\
+$n = n_1 + \ldots + n_k$\\
+Пусть $p^{(*)}$ известны\\
+$\chi_{n_1}^2 = \sum_j \frac{(\nu_{ij} - n_i p_j^{(i)})^2}{n_i p_j^{(i)}}, df = N - 1$\\
+$\chi_n^2 = \sum \chi_n^2, df = k(N-1)$\\
+Теперь $p^{(*)}$ -- неизвестные. Тогда суммарно $(N-1)$ неизвестных\\
+Тогда из прошлой теоремы $df = k(N-1) - (N-1) = (N-1)(k-1)$\\
+Подставим вместо $p^{(j)}$ оценку максимального правдоподия $\widehat{p_j} = \frac{\nu_{1j}+\ldots + \nu_{kj}}{n}$\\
+\textbf{Критерий независимости}\\
+$x_1, \ldots, x_n \in \{1,\ldots,N\}$\\
+$y_1, \ldots, y_n \in \{1,\ldots,M\}$\\
+$\nu_{ij}$ -- количество пар, в которых первая компонента $i$, вторая -- $j$\\
+$p_{ij} = P(X=i, Y=j)$\\
+$p_{X_i} = p(X=i)$\\
+$p_{Y_j} = p(Y=j)$\\
+$H_0: p_{ij} = p_{X_i}p_{Y_j}$\\
+$H_1: \lnot H_0$\\
+$\chi^2 = \sum_{ij} \frac{(\nu_{ij} - p_{ij}n)^2}{np_{ij}}, df = NM-1$\\
+Учитывая, что $p_{ij} = p_{X_i}p_{Y_j}, df = NM-1-N-M$\\
+
 \end{document}
