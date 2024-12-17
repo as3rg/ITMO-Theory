@@ -216,7 +216,7 @@ $V(X,\theta) = \ppart{\ln L}{\theta} = \sum \ppart{\ln p}{\theta}$ -- вклад
 $\theta_1 \neq \theta_2 \Rto p(X, \theta_1) = p(X, \theta_2)$\\
 Регулярность:
 \begin{enumerate}
-	\item $\ppart{}{\theta} \int_X T(X) L(X, \theta) \int_X \ppart{}{\theta} L(X, \theta) T(X) \df x$\\
+	\item $\ppart{}{\theta} \int_X T(X) L(X, \theta) = \int_X \ppart{}{\theta} L(X, \theta) T(X) \df x$\\
 	\textbf{Необходимое условие}\\
 	$\supp P_x$ нне зависит от $\theta$\\
 	$U[0, \theta]: \int_0^\theta \frac1\theta \df t = 1$\\
@@ -601,11 +601,11 @@ $\nu_{ij}$ -- количество элементов $j$ в выборке $i$\
 $n_i = \sum \nu_{i*}$\\
 $n = n_1 + \ldots + n_k$\\
 Пусть $p^{(*)}$ известны\\
-$\chi_{n_1}^2 = \sum_j \frac{(\nu_{ij} - n_i p_j^{(i)})^2}{n_i p_j^{(i)}}, df = N - 1$\\
+$\chi_{n_i}^2 = \sum_j \frac{(\nu_{ij} - n_i p_j^{(i)})^2}{n_i p_j^{(i)}}, df = N - 1$\\
 $\chi_n^2 = \sum \chi_n^2, df = k(N-1)$\\
 Теперь $p^{(*)}$ -- неизвестные. Тогда суммарно $(N-1)$ неизвестных\\
 Тогда из прошлой теоремы $df = k(N-1) - (N-1) = (N-1)(k-1)$\\
-Подставим вместо $p^{(j)}$ оценку максимального правдоподия $\widehat{p_j} = \frac{\nu_{1j}+\ldots + \nu_{kj}}{n}$\\
+Подставим вместо $p^{(i)}$ оценку максимального правдоподия $\widehat{p_j} = \frac{\nu_{1j}+\ldots + \nu_{kj}}{n}$\\
 \textbf{Критерий независимости}\\
 $x_1, \ldots, x_n \in \{1,\ldots,N\}$\\
 $y_1, \ldots, y_n \in \{1,\ldots,M\}$\\
@@ -616,6 +616,207 @@ $p_{Y_j} = p(Y=j)$\\
 $H_0: p_{ij} = p_{X_i}p_{Y_j}$\\
 $H_1: \lnot H_0$\\
 $\chi^2 = \sum_{ij} \frac{(\nu_{ij} - p_{ij}n)^2}{np_{ij}}, df = NM-1$\\
-Учитывая, что $p_{ij} = p_{X_i}p_{Y_j}, df = NM-1-N-M$\\
-
+Учитывая, что $p_{ij} = p_{X_i}p_{Y_j}, df = NM-1-N-M$\\\\
+\textbf{Критерий квантилей}\\
+% Lection 11, 0:00
+$H_0: F(q_1) = \alpha_1, \ldots, F(q_N) = \alpha_N$, где $0 < \alpha_1 < \ldots < \alpha_N < 1$\\
+$H_1: \lnot H_0$\\
+Разобьем множество по $\ub{q_0}{\inf \supp P} < q_1 < \ldots < q_{N} < \ub{q_{N+1}}{\sup \supp P}$\\
+$\Delta_i = [q_{i-1}, q_i), p(\Delta_i) = q_{i} - q_{i-1}$\\
+Далее воспользуемся хи-квадрат\\
+\textbf{Критерий знаков}\\
+$H_0: F(q) = \frac12$\\
+$H_1: \lnot H_0$\\
+В общем случае:\\
+Есть парная выборка $\left(\begin{array}{c}
+	X_i\\Y_i
+\end{array}\right)_i$\\
+Хотим проверить, что выборки i.i.d. $\LRto F(x, y) = F(x) F(y)$\\
+Сведем к критерию знаков: рассмотрим $U=X-Y$. Если $H_0$, то $\med U = 0$\\
+\textbf{Замечание}\\
+Рассмотрим $\nu_1$ -- количество элементов $>\med$\\
+$Z_n = \frac{2}{\sqrt{n}}(\nu_1 - \frac n2) \rto N(0,1)$\\
+С помощью данного факта можно более гибко настроить $H_1$\\
+\textbf{Тест на коэффициент корреляции}\\
+%Lection 11 0:22:00
+Есть парная выборка $\left(\begin{array}{c}
+	X_i\\Y_i
+\end{array}\right)_i \sim N(\ldots, \ldots)$\\
+Тогда $\frac{\sqrt{n-2}\rho_n}{\sqrt{1-\rho_n^2}} \sim T(n-2)$\\
+$H_0: \rho=0$\\
+$H_1: \rho \neq 0, \rho > 0, \rho < 0$
+\subsection{Ранговые критерии}
+\textbf{Определение}\\
+$X_1, \ldots, X_n$ -- выборка\\
+$r(X_k)$ -- номер в вариационном ряде\\
+\textbf{Замечание}\\
+Если число повторяется несколько раз, то можно взять
+\begin{enumerate}
+	\item минимум
+	\item максимум
+	\item среднее арифметическое
+\end{enumerate}
+\text{}\\
+$X_1, \ldots, X_n, Y_1, \ldots, Y_m$ -- две независимые выборки\\
+$R_i$ -- ранг $X_i$ в объединенной выборке\\
+$T = R_1 + \ldots + R_n$ -- статистика Вилкоксона\\
+$Z_{rs}=\1(X_r < Y_s)$\\
+$U = \sum_{r=1}^n\sum_{s=1}^m Z_{rs}$ -- статистика Манн-Уитни\\
+$T + U = nm + \frac{n(n+1)}{2}$\\\\
+Пусть хотим проверить, что распределение $X$ = распределение $Y$\\
+$E U = mn E\1(X<Y) = mnP(X < Y) = \frac{mn}2$ -- при условии $H_0$\\
+Т.е. $H_0: P(X<Y) = \frac12$\\
+$H_1: P \neq \frac12, P > \frac12, P < \frac12$\\
+(Статистика нормальная -- $U \sim N(\frac{nm}2, \frac{nm(n+m+1)}{12}))$\\
+\textbf{Коэффициент корреляции Спирмена}\\
+$\left(\begin{array}{c}
+	X_i\\Y_i
+\end{array}\right)_i$ -- парные выборки\\
+$R_i$ -- ранг $X_i$ в своей выборке\\
+$S_i$ -- ранг $Y_i$ в своей выборке\\
+$\rho$ -- выборочный коэффиент корреляции между $R_i$ и $S_i$ -- коэффициент корреляции Спирмена\\
+$H_0: \rho = 0$\\
+$H_1$ -- можем выбирать, т.к. $\sqrt{n}\rho \rto N(0,1)$\\
+\textbf{Статистический тест Кенделла}\\
+Рассмотрим последовательность $\left(\begin{array}{c}
+	R_i\\S_i
+\end{array}\right)_i$\\
+Упорядочим по $R$: $\left(\begin{array}{c}
+	i\\T_i
+\end{array}\right)_i$\\
+Тогда коэффициент корреляции Кенделла $\tau = \frac{2}{n(n-1)}\sum_{i=1}^{n-1}\sum_{j=i+1}^n \sign(T_i - T_j)$\\
+Если $H_0$, то $E\tau = 0, \Var \tau = \frac{2(2n+5)}{9n(n-1)}$\\
+Тогда $\tau \approx N(0, \frac{4}{9n})$\\
+$H_0: \tau = 0$\\
+$H_1$ -- можем настраивать\\
+% Lection 11 00:53:00
+\subsection{Проверка независимости наблюдений}
+$X_1, \ldots, X_n$ -- выборка из непрерывного распределения\\
+$H_0$ -- все наблюдения независимые и пришли из одного и того же закона\\
+Т.е. $F(x_1, \ldots, x_n) = F(x_1)\ldots F(x_n)$\\
+\textbf{Критерий инверсий}\\
+Рассмотрим вариационный ряд: $X_{(1)} \leq \ldots \leq X_{(n)}$\\
+$\nu_i$ -- количество инверсий для элемента $X_i$\\
+$T = \nu_1 + \ldots + \nu_{n-1}$\\
+$ET = \frac{n(n-1)}{4}$\\
+$\Var T = \frac{n(n-1)(2n+5)}{72}$\\
+Статистика $T$ -- асимптотически нормальная\\
+% Lection 11 01:00:00
+\section{Линейные статистические модели}
+$Y=Xb + \eps$\\
+$X \in M_{n\times m}(\Rset)$ -- матрица переменных (детерминированные)\\
+$X_{ij}$ -- количественная переменная\\
+$Y\in \Rset^n$ -- наблюдения зависимой переменной (количественная)\\
+$b \in \Rset^m$ -- вектор коэффициентов (не знаем)\\
+$\eps \in \Rset^n$ -- ошибка (случайная величина)\\
+$n \gg m$\\
+\textit{Минимальные предположения}:
+\begin{enumerate}
+	\item $E\eps = 0$
+	\item $\Var \eps_i = \sigma^2$ -- гомоскедастичность  
+	\item $\Cov(\eps_i, \eps_j) = 0$
+\end{enumerate}
+Цель -- <<оценить>> $b$ и $\sigma^2$\\
+\textbf{Определение (оценка наименьших квадратов)}\\
+$\widehat b = \argmin S^2(b) = \argmin (Xb-Y)^T(Xb-Y)$\\
+Рассмотрим $A = X^TX \in M(m\times m)$\\
+Будем предполагать, что $\rg A = m$ -- отсутствие коррелированности у переменных\\
+\textbf{Теорема}\\
+$\widehat b = A^{-1}X^TY$\\
+\textbf{Доказательство}\\
+% Lection 11 01:28:00
+Докажем, что $\widehat b = A^{-1}X^TY$ -- оценка наименьших квадратов\\
+$S^2(\widehat b + \delta) = (X\widehat b - Y + X\delta)^T(X\widehat b - Y + X\delta) = S^2(\widehat b) + \delta^TX^TX\delta + (X\widehat b - Y)^T X\delta + \delta^TX^T(X\widehat b - Y)$\\
+Подставим вместо $\widehat b$ нашу формулу\\
+Тогда $S^2(\widehat b + \delta) = S^2(\widehat b) + \delta^T X^T X\delta$\\
+Отсюда $\widehat b = A^{-1}X^TY$ -- оценка наименьших квадратов\\
+\textbf{Свойства}\\
+% lection 12 0:0
+$t = Tb, T \in M_{k \times m}, m \leq m, \rg T = k$\\
+Тогда $\widehat t = T \widehat b$\\
+\textbf{Теорема Гаусса-Маркова}\\
+\begin{enumerate}
+	\item $\widehat t$ -- несмещенная оценка $t$\\
+	$\Var \widehat t = \sigma^2 TA^{-1}T^T$\\
+	$\Var \widehat b = \sigma^2 A^{-1}$\\
+	$MSE(\widehat{t}) = \tr \Var \widehat{t}$
+	\item $\widehat t$ -- оптимальная оценка в классе линейных несмещенных оценок
+\end{enumerate}
+\textbf{Доказательство}\\
+TODO\\
+% lection 12 0:14\\
+% $E\widehat{t} = ET\widehat{b} = E(TA^{-1}X^T Y) = TA^{-1}X^T EY = TA^{-1}X^T (Xb) = Tb = t$\\
+% $\Var \widehat t = \Var TA^{-1}X^T Y =TA^{-1}X^T \Var Y
+$ES^2(b) = n\sigma^2$\\
+$E(\widehat b - b)^TA(\widehat{ b} -  b) = \sigma^2 m$\\
+$\widehat \sigma^2 = \frac{S^2(\widehat  b)}{n - m}$ -- несмещенная оценка для $\sigma^2$\\
+\subsection{Условные оценки наименьших квадратов}
+\textbf{Определение}\\
+$Tb = t_0, T \in M_{k \times m}, \rg T = k$\\
+$\widehat b_{T, t_0} = \argmin_{Tb = t_0} S^2(b)$ -- условная оценка наименьших квадратов\\
+\textbf{Теорема}\\
+$\widehat b_{T, t_0} = \widehat b - A^{-1} T^T D^{-1}(T\widehat b - t_0), D = TA^{-1}T^T$\\
+\textbf{Доказательство}\\
+Можно показать, что $S^2(b) = S^2(\widehat b_{T, t_0}) + (\widehat b_{T, t_0} - b)^TA(\widehat b_{T, t_0} - b)$\\
+\textbf{Замечание}\\
+% lection 12 0:47\\
+$S^2(b) = S^2(\widehat{ b}) + (\widehat{ b} - b)^T A (\widehat{ b} - b)$\\
+Подставим $b = \widehat b_{T, t_0}$\\
+$S^2(\widehat b_{T, t_0}) = S^2(\widehat{ b}) + (\widehat{ b} - \widehat b_{T, t_0})^TA(\widehat{ b} - \widehat b_{T, t_0})$\\
+$S^2(\widehat b_{T, t_0}) - S^2(\widehat{ b}) = (T\widehat{ b} - t_0)^TD^{-1}(T\widehat{ b} - t_0)$\\\\
+<<Обычные>> предположения = Минимальные предположения + $\eps \sim N(0, \sigma^2 E_n)$\\
+$Y = Xb + \eps \sim N(Xb, \sigma^2 E_n)$\\
+$L(b, \sigma^2; Y) = \frac1{\sqrt{2\pi \sigma^2}} \exp(-\frac12 \ub{S^2(b)}{(Xb-Y)^T (Xb - Y)})$\\
+Если $\sigma^2$ -- фиксированное, то $\sup_{b} L(b, \sigma^2; Y) \LRto \inf_b S^2(b)$\\
+$\widehat{b}$ -- оценка максимального правдоподия\\
+Тогда $\widehat b$ -- эффективно в классе несмещенных оценок\\
+\textbf{Основная теорема о линейной регресии}\\
+\begin{enumerate}
+	\item $S^2(\widehat{b}), \widehat{b}$ -- независимые
+	\item $\widehat b \sim N(b, \sigma^2 A^{-1})$
+	\item $\frac{S^2(\widehat{b})}{\sigma^2}\sim \chi^2(n-m)$\\
+	$S^2(b) - S^2(\widehat b) \sim \chi^2(m)$
+\end{enumerate}
+\textbf{Следствие (T-тест для регрессии)}\\
+$\frac{\frac{\widehat b_j - b_j}{\sigma\sqrt{A^{-1}_{jj}}}}{\sqrt{\frac1{n-m} \frac{S^2(\widehat{b})}{\sigma^2}}} = \sqrt{n-m} \frac{\widehat b_j - b_j}{S(\widehat{b})\sqrt{A^{-1}_{jj}}} \sim T(n - m)$\\
+Отсюда можем проверять гипотезы:
+$H_0: b_j = b_{j0}, H_1: \neq, >, <$\\
+\textbf{F-тест для регрессии}\\
+$H_0: Tb = t_0$ (default $T = E_m, t_0 = 0$, т.е. все $b_i$ одновременно равны 0)\\
+$H_1: Tb \neq t_0$\\
+$F = \frac{n-m}{k}\frac{S^2(\widehat b_{T, t_0}) - S^2(\widehat b)}{S^2(\widehat b)} = \frac{n-m}{k} \frac{(T\widehat b - t_0)^T D^{-1}(T\widehat b - t_0)}{S^2(\widehat b)} \sim F(k, n-m)$\\
+% lection 12 01:24
+Рассмотрим вспомогательную задачу:\\
+$E(U^TBU) = \sum_{i,j}B_{ij} E(U_i, U_j) = \sum_{i,j} B_{ij}\Cov (U_j, U_i) + \sum_{i,j} B_{ij} E U_i E U_j = \tr (B\Var U) + (EU)^T B EU$\\
+Возьмем $U = T\widehat b - t_0, b = D^{-1}, \frac1k E(U^TBU) = \frac1k \tr \ub{\sigma^2 E}{(D^{-1}\Var U)} + (Tb - t_0)^T D^{-1}(Tb-t_0)$ \\
+Тогда если $Tb \neq t_0$, то матожидание числителя будет больше $\sigma^2$\\
+Тогда F-тест правосторонний\\
+$R = corr(Y, \widehat Y), \widehat Y =X\widehat b$\\
+$R^2$ -- коэффициент детерминации\\
+\textbf{Замечание}\\
+Если $y_i = b_0 + b_1x_1 + \ldots + b_mx_m$, $H_0: b_1 = \ldots = b_m = 0$, \\
+то $F = (n-m)\frac{R^2}{1-R^2}$\\
+\textbf{Замечание}\\
+$S^2(\widehat b) = (1-R^2)\tub{константа в рамках датасета}{\sum (Y_i - \ol Y_i)^2}$\\
+\section{Дисперсионный анализ}
+% lection 13 00:00
+Неформально: $y$ -- количественная переменная, $x$ -- категориальные переменные\\
+\subsection{Однофакторный дисперсионный анализ}
+\textbf{$F$-тест}\\
+$Y_{ij} = \mu_{j} + \eps_{ij}, \mu_j$ -- среднее влияние на $j$-ом факторе\\
+$1 \leq j \leq J$ -- уровень фактора\\
+$1 \leq i \leq I_j$ -- $i$-ое наблюение для фактора с уровнем $j$\\
+$I = \sum I_j$\\
+$\eps_{ij} \sim N(0, \sigma E)$\\
+$H_0: \mu_1 = \ldots = \mu_j$\\
+$H_1 = \lnot H_0$\\
+$F = \frac{\frac{S^2_B}{df_B}}{\frac{S^2_W}{df_W}} \sim F(J - 1, I - J)$\\
+$S^2_B = \sum_{j=1}^J I_j (\ol Y_{*j} - \ol Y)^2$ -- межгрупповая дисперсия\\
+$df_B = J - 1$\\
+$S^2_W = \sum_j \sum_i (Y_{ij} - \ol Y_{*j})^2$ -- внутригрупповая дисперсия\\
+$df_W = I - J$\\
+\textbf{Замечание}: $S^2 = S^2_W + S^2_B$\\
+Тест правосторонний (как и для регрессии)\\
+% lection 13 00:45
+ПРОДОЛЖИТЬ НА ЛЕКЦИИ 13
 \end{document}
